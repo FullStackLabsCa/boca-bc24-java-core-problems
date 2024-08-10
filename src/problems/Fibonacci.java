@@ -11,20 +11,17 @@ public class Fibonacci {
         Scanner scanner = new Scanner(System.in);
         String rawInput = scanner.nextLine();
         if (isValidInput(rawInput)) {
-            System.out.println("problems.Fibonacci Series up to 4 numbers: " + generateFibonacci(Integer.valueOf(rawInput)));
+            System.out.println("problems.Fibonacci Series up to 4 numbers: " + generateFibonacci(Integer.parseInt(rawInput)));
         }
     }
 
     private static boolean isValidInput(String inputStr) {
-        int inputNum=Integer.MIN_VALUE;
-        try{
-            inputNum = Integer.valueOf(inputStr);
-        }catch (Exception e){
+        int inputNum = Integer.MIN_VALUE;
+        try {
+            inputNum = Integer.parseInt(inputStr);
+        } catch (Exception e) {
             System.out.println("Invalid input. Please enter a valid number between 4 and 47.");
         }
-
-        boolean result = false;
-
         if (inputNum < 4 || inputNum > 47) {
             System.out.println("Invalid input. Please enter a valid number between 4 and 47.");
             return false;
@@ -34,7 +31,7 @@ public class Fibonacci {
     }
 
     public static List<Integer> generateFibonacci(int n) {
-        int first = 0, temp = 0;
+        int first = 0, temp;
         int second = 1;
         List<Integer> resultList = new ArrayList<>();
         resultList.add(0);

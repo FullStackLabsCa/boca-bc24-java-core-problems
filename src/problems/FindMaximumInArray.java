@@ -1,7 +1,5 @@
 package problems;
 
-import java.util.Arrays;
-
 
 public class FindMaximumInArray {
 
@@ -9,8 +7,9 @@ public class FindMaximumInArray {
         int[] numbers = new int[0];
         System.out.println(findMax(numbers));
     }
+
     public static int findMax(int[] numbers) {
-        if (numbers==null){
+        if (numbers == null) {
             return Integer.MIN_VALUE;
         }
         int maxValue;
