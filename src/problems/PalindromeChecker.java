@@ -6,8 +6,7 @@ public class PalindromeChecker {
         if(str == null){
             return false;
         }
-        String newstr = str.replaceAll(",\\s","");
-        newstr = newstr.toLowerCase();
+        String newstr = str.replaceAll("[,\\s]","").toLowerCase();
         int l = 0;
         int r = newstr.length()-1;
 
