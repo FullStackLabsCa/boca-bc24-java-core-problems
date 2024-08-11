@@ -15,7 +15,7 @@ public class Fibonacci {
         if(isValidInput(input)){
             int n = Integer.parseInt(input);
             List<Integer> series = generateFibonacci(n);
-            System.out.println("problems.Fibonacci Series up to " + n +  " numbers:" + series);
+            System.out.println("problems.Fibonacci Series up to " + n +  " numbers: " + series);
         }else {
             System.out.println("Invalid input. Please enter a valid number between 4 and 47.");
         }
