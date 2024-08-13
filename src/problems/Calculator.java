@@ -72,7 +72,7 @@ public class Calculator {
 
     public String getAnswer(double num1,double num2,char op){
         double ans = 0;
-        if(num2 == 0){
+        if(num1 == 0 || num2 == 0){
             return "Error: Cannot divide by zero";
         }
         switch (op) {
