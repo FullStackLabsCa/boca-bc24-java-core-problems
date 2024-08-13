@@ -4,13 +4,16 @@ import java.util.List;
 
 public class CallAllValidation {
     public static String callAllValidation(String s) {
-        String result = " ";
+        String result = "";
+        if ((s == null || s.trim().isEmpty())) {
+            System.out.println(result = "Error: Input is empty or null");
+            return result;
+        }
 
-        String inputAlphabet = AlphabetInputValidation.alphabetInputValidation(s);
-        if (inputAlphabet != null) return inputAlphabet;
+        AlphabetInputValidation.alphabetInputValidation(s);
         //Validate the String Input is empty or null
-        String inputtedString = InputStringEmptyOrNull.inputStringEmptyOrNull(s);
-        if (inputtedString != null) return inputtedString;
+
+
 
         // removing the all spaces in the string input
         String stringWithOutSpace = RemoveSpaceFromString.removeSpacesFromString(s);
@@ -21,7 +24,7 @@ public class CallAllValidation {
         String[] parts = SplitStringAfterAndBeforeSpecialCharacter
                 .splitStringAfterAndBeforeSpecialCharacter(stringWithOutSpace);
 
-        List<Integer> operands = ConvertAndCollectStringArrayToInteger
+        List<Double> operands = ConvertAndCollectStringArrayToInteger
                 .convertAndCollectStringArrayToInteger(parts);
 
         String validNumbersAreAvailableToPerformOperation = CheckValidNumbersAreAvailableToPerformOperation
@@ -35,5 +38,8 @@ public class CallAllValidation {
         result = CalculateLogic.calculationLogic(result, operands, operators);
         if (result == null) return "Error: Cannot divide by zero";
         return result;
+
     }
+
+
 }

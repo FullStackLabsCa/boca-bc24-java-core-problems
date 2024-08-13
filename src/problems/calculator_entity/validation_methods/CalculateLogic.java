@@ -8,7 +8,7 @@ import problems.calculator_entity.operations.Subtraction;
 import java.util.List;
 
 public class CalculateLogic {
-    public static String calculationLogic(String result, List<Integer> operands, List<Character> operators) {
+    public static String calculationLogic(String result, List<Double> operands, List<Character> operators) {
         for (int i = 0; i < operators.size(); i++) {
             if (operators.get(i) == '+' || operators.get(i) == '-' || operators.get(i) == '*'
                     || operators.get(i) == '/') {

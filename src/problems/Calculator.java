@@ -1,7 +1,6 @@
 package problems;
 
 import problems.calculator_entity.validation_methods.*;
-import java.util.List;
 import java.util.Scanner;
 
 public class Calculator {
@@ -14,6 +13,6 @@ public class Calculator {
     }
 
     public String calculate(String s) {
-        return CallAllValidation.callAllValidation(s);
+       return CallAllValidation.callAllValidation(s);
     }
 }

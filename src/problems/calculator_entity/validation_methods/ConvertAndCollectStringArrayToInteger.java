@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ConvertAndCollectStringArrayToInteger {
-    public static List<Integer> convertAndCollectStringArrayToInteger(String[] parts) {
-        List<Integer> operands = new ArrayList<>();
+    public static List<Double> convertAndCollectStringArrayToInteger(String[] parts) {
+        List<Double> operands = new ArrayList<>();
         for (String num : parts) {
-            operands.add(Integer.parseInt(num));
+            operands.add(Double.parseDouble(num));
         }
         return operands;
     }
