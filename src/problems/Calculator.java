@@ -12,11 +12,12 @@ public class Calculator {
         boolean exit = true;
         while (exit) {
             System.out.println("Enter the operation you want to perform");
-            String input = obj.nextLine();//.trim().replaceAll("\\s","");
+            String input = obj.nextLine().trim().replaceAll("\\s","");
             if (input.equals("x")) {
                 exit = false;
                 break;
-            } else {
+            }
+            else {
 
                 System.out.println(calculate(input));
             }
@@ -26,6 +27,9 @@ public class Calculator {
 
 
     public static String calculate(String input){
+        if(input == null || input.trim().isEmpty()){
+            return "Error: Input is empty or null";
+        }
         Calculator calculator = new Calculator();
         double num1 = Double.parseDouble(calculator.getOperand1(input));
         double num2 = Double.parseDouble(calculator.getOperand2(input));
