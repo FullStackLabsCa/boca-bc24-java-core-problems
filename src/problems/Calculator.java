@@ -1,84 +1,90 @@
-//package problems;
-//
-//public class Calculator {
-//    public static void main(String[] args) {
-//        calculate calculate = new calculate();
-//
-//        boolean exit = true;
-//        while (exit) {
-//            System.out.println("Enter the operation you want to perform");
-//            String input = obj.nextLine();
-//            if (input.equals("x")) {
-//                exit = false;
-//                break;
-//            } else {
-//                int num1 = calculate.getOperand1(input);
-//                int num2 = calculate.getOperand2(input);
-//                char op = calculate.getOperator(input);
-//                System.out.println(calculate.getAnswer(num1, num2, op));
-//            }
-//        }
-//    }
-//
-//    public class calculate {
-//        int a, b;
-//        char operator = '\0';
-//
-//        public char getOperator(String input) {
-//
-//            for (char c : input.toCharArray()) {
-//                if (c == '+' || c == '*' || c == '/' || c == '-') {
-//                    operator = c;
-//                }
-//            }
-//            return operator;
-//        }
-//
-//        public int getOperand1(String input) {
-//            String[] operands = input.split("[+\\-*/]");
-//            try {
-//                a = Integer.parseInt(operands[0]);
-//
-//            } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
-//                System.out.println("First number is not valid");
-//            }
-//            return a;
-//        }
-//        public int getOperand2(String input) {
-//            String[] operands = input.split("[+\\-*/]");
-//            try {
-//                b = Integer.parseInt(operands[1]);
-//
-//            } catch (NumberFormatException  | ArrayIndexOutOfBoundsException e) {
-//                System.out.println("Second number is not valid");
-//            }
-//            return b;
-//        }
-//
-//        public int getAnswer(int num1,int num2,char op){
-//            int ans = 0;
-//
-//            switch (op) {
-//                case '+' -> ans = num1 + num2;
-//                case '-' -> ans = num1 - num2;
-//                case '*' -> ans = num1 * num2;
-//                case '/' -> {
-//                    if (num2 == 0) {
-//                        System.out.println("Cannot divide by 0");
-//                        ans = 0;
-//                    } else {
-//                        ans = num1 / num2;
-//                    }
-//                }
-//                default -> System.out.println("Invalid");
-//            }
-//            return ans;
-//        }
-//
-//
-//}
-//
-//}
-//
-//
-//
+package problems;
+
+
+import java.util.Scanner;
+
+public class Calculator {
+
+    double a, b;
+    char operator = '\0';
+    public static void main(String[] args) {
+        Scanner obj = new Scanner(System.in);
+        boolean exit = true;
+        while (exit) {
+            System.out.println("Enter the operation you want to perform");
+            String input = obj.nextLine();//.trim().replaceAll("\\s","");
+            if (input.equals("x")) {
+                exit = false;
+                break;
+            } else {
+
+                System.out.println(calculate(input));
+            }
+        }
+    }
+
+
+
+    public static String calculate(String input){
+        Calculator calculator = new Calculator();
+        double num1 = Double.parseDouble(calculator.getOperand1(input));
+        double num2 = Double.parseDouble(calculator.getOperand2(input));
+        char op = calculator.getOperator(input);
+//        System.out.println(calculator.getAnswer(num1, num2, op));
+        return calculator.getAnswer(num1,num2,op);
+    }
+
+    public char getOperator(String input) {
+
+        for (char c : input.toCharArray()) {
+            if (c == '+' || c == '*' || c == '/' || c == '-') {
+                operator = c;
+            }
+        }
+        return operator;
+    }
+
+    public String  getOperand1(String input) {
+        String[] operands = input.split("[+\\-*/]");
+        try {
+
+            a = Double.parseDouble(operands[0]);
+
+        } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
+            System.out.println("First number is not valid");
+        }
+        return String.valueOf(a);
+    }
+    public String getOperand2(String input) {
+        String[] operands = input.split("[+\\-*/]");
+        try {
+            b = Double.parseDouble(operands[1]);
+
+        } catch (NumberFormatException  | ArrayIndexOutOfBoundsException e) {
+            System.out.println("Second number is not valid");
+        }
+        return String.valueOf(b);
+    }
+
+    public String getAnswer(double num1,double num2,char op){
+        double ans = 0;
+
+        switch (op) {
+            case '+' -> ans = num1 + num2;
+            case '-' -> ans = num1 - num2;
+            case '*' -> ans = num1 * num2;
+            case '/' -> {
+                if (num2 == 0) {
+                    System.out.println("Cannot divide by 0");
+                    ans = 0;
+                } else {
+                    ans = num1 / num2;
+                }
+            }
+            default -> System.out.println("Invalid");
+        }
+        return String.valueOf(ans);
+    }
+
+}
+
