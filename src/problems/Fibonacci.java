@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Fibonacci {
     public static void main(String[] args) {
-
+        System.out.println("check");
     }
 
     private static boolean isValidInput(String input) {
