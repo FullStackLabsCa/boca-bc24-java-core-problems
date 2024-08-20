@@ -2,7 +2,7 @@ package problems.calculator_entity.validation_methods;
 
 import java.util.List;
 
-public class CallAllValidation {
+public class CallAllValidationsAndCalculationLogics {
     public static String callAllValidation(String s) {
         String result = "";
         if ((s == null || s.trim().isEmpty())) {
@@ -38,7 +38,6 @@ public class CallAllValidation {
         result = CalculateLogic.calculationLogic(result, operands, operators);
         if (result == null) return "Error: Cannot divide by zero";
         return result;
-
     }
 
 

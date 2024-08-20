@@ -13,6 +13,6 @@ public class Calculator {
     }
 
     public String calculate(String s) {
-       return CallAllValidation.callAllValidation(s);
+       return CallAllValidationsAndCalculationLogics.callAllValidation(s);
     }
 }

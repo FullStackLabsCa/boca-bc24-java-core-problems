@@ -9,6 +9,10 @@ import java.util.List;
 
 public class CalculateLogic {
     public static String calculationLogic(String result, List<Double> operands, List<Character> operators) {
+        return calculateOperations(result, operands, operators);
+    }
+
+    private static String calculateOperations(String result, List<Double> operands, List<Character> operators) {
         for (int i = 0; i < operators.size(); i++) {
             if (operators.get(i) == '+' || operators.get(i) == '-' || operators.get(i) == '*'
                     || operators.get(i) == '/') {
