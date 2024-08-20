@@ -1,4 +1,4 @@
-package problems;
+package problems.calculator;
 
 public abstract class AbstractCalculator {
 

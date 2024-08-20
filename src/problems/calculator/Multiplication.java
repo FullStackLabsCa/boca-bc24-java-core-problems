@@ -1,4 +1,4 @@
-package problems;
+package problems.calculator;
 
 public class Multiplication extends AbstractCalculator implements calculator {
 

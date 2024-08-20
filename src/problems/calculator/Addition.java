@@ -1,4 +1,4 @@
-package problems;
+package problems.calculator;
 
 public class Addition extends AbstractCalculator implements calculator {
 
