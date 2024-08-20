@@ -1,9 +1,5 @@
 package problems;
 
-import com.sun.source.doctree.BlockTagTree;
-
-import java.lang.invoke.SwitchPoint;
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Calculator {
