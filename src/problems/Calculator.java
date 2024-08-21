@@ -3,6 +3,8 @@ package problems;
 
 import java.util.Scanner;
 
+import static java.lang.Double.isNaN;
+
 public class Calculator {
 
     double a, b;
@@ -72,6 +74,9 @@ public class Calculator {
 
     public String getAnswer(double num1,double num2,char op){
         double ans = 0;
+//        if(isNaN(num1)){
+//            return "Error: Invalid number format";
+//        }
         if(num1 == 0 || num2 == 0){
             return "Error: Cannot divide by zero";
         }
