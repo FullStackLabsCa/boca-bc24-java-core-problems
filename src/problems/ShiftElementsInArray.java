@@ -1,6 +1,4 @@
-package entity;
-
-import java.util.LinkedList;
+package problems;
 
 public class ShiftElementsInArray {
     public static void main(String[] args) {

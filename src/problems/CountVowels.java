@@ -1,6 +1,4 @@
-package entity;
-
-import java.util.Locale;
+package problems;
 
 public class CountVowels {
     public static void main(String[] args) {

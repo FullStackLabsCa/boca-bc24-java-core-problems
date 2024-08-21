@@ -1,7 +1,4 @@
-package entity;
-
-import java.util.List;
-import java.util.Locale;
+package problems;
 
 public class Capitalize {
     public static void main(String[] args) {

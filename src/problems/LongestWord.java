@@ -1,7 +1,4 @@
-package entity;
-
-import java.util.ArrayList;
-import java.util.List;
+package problems;
 
 public class LongestWord {
     public static void main(String[] args) {
