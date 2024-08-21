@@ -13,7 +13,6 @@ public class DuplicateElement {
                     for (int k = 0; k < result.length; k++) {
                         result[k] = array[i];
                     }
-
                     break;
                 }
             }
@@ -24,6 +23,6 @@ public class DuplicateElement {
     public static void main(String[] args) {
         System.out.println("Arrays.toString(DuplicateElement.findDuplicates(new int[]{1, 2, 3, 2, 4, 3})) = "
                 + Arrays.toString(DuplicateElement.
-                findDuplicates(new int[]{1,2,3,2,4,3})));
+                findDuplicates(new int[]{1, 2, 3, 2, 4, 3})));
     }
 }
