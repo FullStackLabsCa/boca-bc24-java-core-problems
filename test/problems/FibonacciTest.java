@@ -10,6 +10,7 @@ import org.junit.contrib.java.lang.system.ExpectedSystemExit;
 import org.junit.contrib.java.lang.system.SystemErrRule;
 import org.junit.contrib.java.lang.system.SystemOutRule;
 import org.junit.contrib.java.lang.system.TextFromStandardInputStream;
+import problems.numbers.Fibonacci;
 
 import static org.junit.contrib.java.lang.system.TextFromStandardInputStream.emptyStandardInputStream;
 
@@ -68,7 +69,7 @@ public class FibonacciTest {
     public void testValidInput() {
         systemInMock.provideLines("4");
         Fibonacci.main(null);
-        assertTrue(systemOutRule.getLog().contains("problems.Fibonacci Series up to 4 numbers: [0, 1, 1, 2]"));
+        assertTrue(systemOutRule.getLog().contains("problems.numbers.Fibonacci Series up to 4 numbers: [0, 1, 1, 2]"));
     }
 
     @Test

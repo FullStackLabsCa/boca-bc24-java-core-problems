@@ -1,4 +1,4 @@
-package problems;
+package problems.numbers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +28,7 @@ public class Fibonacci {
             System.out.println("Invalid input. Please enter a valid number between 4 and 47.");
         }
         else if (num == 4){
-            System.out.println("problems.Fibonacci Series up to 4 numbers: [0, 1, 1, 2]");
+            System.out.println("problems.numbers.Fibonacci Series up to 4 numbers: [0, 1, 1, 2]");
         }
         else {
             return true;

@@ -1,4 +1,4 @@
-package problems;
+package problems.numbers;
 
 public class NumbersAdd {
 }
