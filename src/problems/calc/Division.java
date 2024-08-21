@@ -1,4 +1,4 @@
-package problems;
+package problems.calc;
 
 public class Division {
     public static float div(float a, float b)

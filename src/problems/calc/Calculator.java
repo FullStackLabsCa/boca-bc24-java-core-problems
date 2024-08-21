@@ -1,9 +1,11 @@
-package problems;
+package problems.calc;
 
 import java.util.Scanner;
 
 public class Calculator {
     public static void main(String[] args) {
+
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the expression: ");
         String input = scanner.nextLine();
@@ -15,7 +17,6 @@ public class Calculator {
 
     public static boolean checkExpression(String expr) {
         return expr.matches("^\\s*\\d+\\s*[+\\-*/]\\s*\\d+\\s*$");
-
     }
 
     public static String calculate(String s) {

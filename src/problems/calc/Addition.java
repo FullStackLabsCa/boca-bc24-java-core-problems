@@ -1,4 +1,4 @@
-package problems;
+package problems.calc;
 
 public class Addition {
     public static float add(float a, float b)
