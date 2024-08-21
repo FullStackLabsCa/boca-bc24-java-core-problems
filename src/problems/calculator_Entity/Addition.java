@@ -1,4 +1,4 @@
-package Calculator_Entity;
+package problems.calculator_Entity;
 
 public class Addition extends Input {
     public Addition(float num1, float num2) {

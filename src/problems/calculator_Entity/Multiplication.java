@@ -1,4 +1,4 @@
-package Calculator_Entity;
+package problems.calculator_Entity;
 
 public class Multiplication extends Input {
     public Multiplication(float num1, float num2) {

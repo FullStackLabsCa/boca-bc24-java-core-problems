@@ -1,4 +1,4 @@
-package Calculator_Entity;
+package problems.calculator_Entity;
 
 public class Subtraction extends Input{
     public Subtraction(float num1, float num2) {

@@ -1,4 +1,4 @@
-package Calculator_Entity;
+package problems.calculator_Entity;
 
 public class Division extends Input {
     public Division(float num1, float num2) {

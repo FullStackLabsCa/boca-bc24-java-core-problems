@@ -1,4 +1,4 @@
-package Calculator_Entity;
+package problems.calculator_Entity;
 
 public class Input {
     float num1;
