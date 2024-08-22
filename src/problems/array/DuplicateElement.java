@@ -1,32 +1,35 @@
 package problems.array;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 
 public class DuplicateElement {
     public static void main(String[] args) {
-        int[] arr = {1, 2, 3, 4, 3};
+        int[] arr = {1, 2, 3, 4, 3, 5, 3, 6, 2, 4, 2};
 
-        System.out.println(ArrayList.class.toString());
-
+        System.out.println("Duplicate elements are: " + Arrays.toString(findDuplicates(arr)));
     }
 
-    public static ArrayList<Integer> findDuplicates(int[] array) {
-//        int[] duplicateElements= {};
-        ArrayList<Integer> duplicateElements = new ArrayList<Integer>();
+    public static int[] findDuplicates(int[] array) {
+        int[] duplicateElements= new int[array.length];
         int count = 0;
 
         for (int i = 0; i < array.length; i++) {
             for (int j = i + 1; j < array.length; j++) {
                 if (array[i] == array[j]) {
-                    for (int k = 0; k < duplicateElements.size(); k++) {
-                        if (array[i] != duplicateElements.get(k)) {
-                            count++;
-                            duplicateElements.set(count, array[i]);
+                    boolean alreadyPresent= false;
+                    for(int k=0; k<count; k++){
+                        if(duplicateElements[k]==array[i]){
+                            alreadyPresent= true;
+                            break;
                         }
+                    }
+                    if(!alreadyPresent){
+                        duplicateElements[count]=array[i];
+                        count++;
                     }
                 }
             }
         }
-        return duplicateElements;
+        return (Arrays.copyOf(duplicateElements, count));
     }
 }
