@@ -21,7 +21,6 @@ public class PalindromeChecker {
                 backwardCounter--;
                 matchedWords++;
             }
-
         }
         return matchedWords > 0;
     }
