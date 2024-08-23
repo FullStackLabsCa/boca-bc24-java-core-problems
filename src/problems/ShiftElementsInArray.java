@@ -8,17 +8,13 @@ public class ShiftElementsInArray {
 
     }
     public static int[] shiftArray(int[] array, int positions){
-
-        for(int i = 0;i<positions;i++){
+        int[] newArr = new int[array.length];
+        for(int i = 0;i< array.length;i++){
             {
-                int temp =0;
-                temp = array[i];
-                array[i+1] = array[i];
-                array[i] = array.length-1;
-
+                newArr[(i+positions) % array.length] = array[i];
 
             }
         }
-        return array;
+        return newArr;
     }
 }
