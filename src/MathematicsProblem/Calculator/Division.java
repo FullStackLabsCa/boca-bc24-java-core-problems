@@ -1,4 +1,4 @@
-package Calculator;
+package MathematicsProblem.Calculator;
 
 public class Division {
     public double division(double a, double b) {

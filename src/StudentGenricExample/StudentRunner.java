@@ -1,12 +1,9 @@
-package Student;
-
+package StudentGenricExample;
 import java.util.*;
 
 public class StudentRunner {
     public static void main(String[] args) {
-
         StudentData<Integer, String> studentData1 = new StudentData<Integer, String>();
-
         studentData1.setRollNumber(1);
         studentData1.setStudentName("Joe");
         studentData1.setAge(27);
@@ -14,7 +11,6 @@ public class StudentRunner {
         studentData1.setAddress("Brampton");
 
         StudentData<Integer, String> studentData2 = new StudentData<Integer, String>();
-
         studentData2.setRollNumber(2);
         studentData2.setStudentName("Alexa");
         studentData2.setAge(25);
@@ -57,7 +53,6 @@ public class StudentRunner {
         treeStudent.put(1, studentData1);
         treeStudent.put(3, studentData3);
         treeStudent.put(2, studentData2);
-
         System.out.println(treeStudent);
 
         System.out.println("--------------Calling with Tree Set ----------");
@@ -65,13 +60,6 @@ public class StudentRunner {
         treesetStudent.add(studentData1);
         treesetStudent.add(studentData2);
         treesetStudent.add(studentData3);
-
         System.out.println("treesetStudent = " + treesetStudent);
-
-
-
-
-
     }
-
 }

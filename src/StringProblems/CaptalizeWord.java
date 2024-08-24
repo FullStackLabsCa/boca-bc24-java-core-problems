@@ -1,7 +1,5 @@
 package StringProblems;
-
 import java.util.Scanner;
-
 public class CaptalizeWord {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -9,7 +7,6 @@ public class CaptalizeWord {
         String input = scanner.nextLine();
         System.out.println(capitalizeWords(input));
     }
-
     public static String capitalizeWords(String input) {
         String[] values = input.split(" ");
         String firstWord = " ";

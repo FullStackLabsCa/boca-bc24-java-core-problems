@@ -1,4 +1,4 @@
-package Calculator;
+package MathematicsProblem.Calculator;
 
 public class Addition {
     public double add(double a, double b) {

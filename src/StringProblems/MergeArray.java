@@ -1,7 +1,5 @@
 package StringProblems;
-
 import java.util.Scanner;
-
 public class MergeArray {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -12,12 +10,5 @@ public class MergeArray {
         System.out.println("enter second array to merge ");
         String input2 = scanner.nextLine();
         String[] inputs2 = input2.split(",");
-
-
-
-
-
-
-
     }
 }

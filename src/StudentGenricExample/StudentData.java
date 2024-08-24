@@ -1,4 +1,4 @@
-package Student;
+package StudentGenricExample;
 
 public class StudentData<K,V> implements Student<K,V>, Comparable<StudentData<K,V>> {
     private K RollNumber;
@@ -6,7 +6,6 @@ public class StudentData<K,V> implements Student<K,V>, Comparable<StudentData<K,
     private int age;
     private String Dob;
     private String Address;
-
 
     public void setRollNumber(K rollNumber) {
         RollNumber = rollNumber;

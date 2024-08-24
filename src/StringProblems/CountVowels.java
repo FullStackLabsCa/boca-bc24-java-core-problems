@@ -1,7 +1,5 @@
 package StringProblems;
-
 import java.util.Scanner;
-
 public class CountVowels {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -9,7 +7,6 @@ public class CountVowels {
         String input = scanner.nextLine();
         System.out.println("Vowels in String are " + countVowels(input));
     }
-
     public static int countVowels(String input) {
         int count = 0;
         input = input.toLowerCase();
