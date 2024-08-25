@@ -16,7 +16,8 @@ public class Calculator {
         do {
                 FIRST:
                 if (s == null || s.trim().isEmpty()) {
-                    result = "Error: Input is empty or null";
+                    System.out.println("Error: Input is empty or null");
+//                    break ;
                 } else {
                     String stringchar[];
                     stringchar = s.split("(?=[+\\-*/])|(?<=[+\\-*/])");
@@ -24,16 +25,16 @@ public class Calculator {
                         for (String a : stringchar) {
 //                    System.out.println(a);
                             if (a.isBlank()) {
-                                System.out.println(result = "Error: Invalid input format"); //a-zA-Z
+                                System.out.println("Error: Invalid input format"); //a-zA-Z
 
                                 break FIRST;
                             } else if (a.matches(".*[a-zA-Z].*")) {
-                                System.out.println(result = "Error: Invalid number format");
+                                System.out.println("Error: Invalid number format");
                                 break FIRST;
                             }
                         }
                     } else if (stringchar.length != 3) {
-                        System.out.println(result = "Error: Invalid format");
+                        System.out.println("Error: Invalid format");
                         break FIRST;
                     }
                     float input1 = Float.parseFloat(stringchar[0]);
@@ -60,7 +61,18 @@ public class Calculator {
                         default:
                             System.out.println("Invalid Entry");
                     }
-                    System.out.println("Do you want to continue or Exit\n" +
+//                    System.out.println("Do you want to continue or Exit\n" +
+//                            "To exit please press x or press any other character key");
+//                    in = scanner.next().charAt(0);
+//                    System.out.println(scanner.nextLine());
+//                    if (in != 'x') {
+//                        System.out.println("Please Enter the values (e.g: 5/2)");
+////                    String b = null;
+//                        b = scanner.nextLine();
+//                        s = b;
+//                    }
+                }
+            System.out.println("Do you want to continue or Exit\n" +
                             "To exit please press x or press any other character key");
                     in = scanner.next().charAt(0);
                     System.out.println(scanner.nextLine());
@@ -70,7 +82,6 @@ public class Calculator {
                         b = scanner.nextLine();
                         s = b;
                     }
-                }
         } while (in != 'x');
         return result;
     }
