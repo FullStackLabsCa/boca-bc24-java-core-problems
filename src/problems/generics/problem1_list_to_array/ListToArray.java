@@ -6,9 +6,13 @@ import java.util.List;
 public class ListToArray {
     public static <T> List[] listToArray(List<T> list) {
         List[] result = new ArrayList[1];
+
+        //iterate through all elements
         for (int i = 0; i < result.length; i++) {
             result[i] = list;
         }
+
+        //Printing the ArrayList
         for (List value : result) {
             System.out.print(value);
         }
