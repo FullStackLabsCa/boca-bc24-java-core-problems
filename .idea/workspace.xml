@@ -5,20 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3b01333-d157-4793-b4ff-8016ea5cf74b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/problems/generics/ConvertListToArray.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/generics/CountOcccurence.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/generics/GradeBook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boca-bc24-java-core-problems.iml" beforeDir="false" afterPath="$PROJECT_DIR$/boca-bc24-java-core-problems.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/ConvertListToArray.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/CountOcccurence.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/arrayproblem/MergeArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/arrayproblem/MergeArray.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/gradebook/GradeBook.class" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/generics/CountOddIntegers.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -34,7 +33,9 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.ConvertListToArray.executor": "Run",
     "Application.CountOcccurence.executor": "Run",
+    "Application.CountOddIntegers.executor": "Run",
     "Application.GradeBook.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "feature/kivi-bc24-java-core-problems",
