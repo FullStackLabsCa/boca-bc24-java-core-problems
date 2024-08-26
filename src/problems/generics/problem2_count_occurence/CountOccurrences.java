@@ -5,7 +5,9 @@ public class CountOccurrences {
     public static <T> int countOccurrences(T[] array, T element) {
         int count = 0;
         for (T e : array) {
-            if (e.toString().toLowerCase().equals(element.toString().toLowerCase())) {
+            if (e.toString().equalsIgnoreCase(element.toString()))
+//            if (e.toString().toLowerCase().equals(element.toString().toLowerCase()))
+            {
                 count++;
             }
         }
