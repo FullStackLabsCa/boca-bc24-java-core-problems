@@ -1,25 +1,34 @@
 package problems.generics.problem1_list_to_array;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ListToArray {
-    public static <T> List[] listToArray(List<T> list) {
-        List[] result = new ArrayList[1];
-
-        //iterate through all elements
-        for (int i = 0; i < result.length; i++) {
-            result[i] = list;
+    public static <T> T[] listToArray(List<T> list) {
+        T[] array = (T[]) new Object[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            array[i] = list.get(i);
         }
-
-        //Printing the ArrayList
-        for (List value : result) {
-            System.out.print(value);
-        }
-        System.out.println("");
-
-        return result;
+        return array;
     }
+
+//        List[] result = new ArrayList[1];
+//
+//        //iterate through all elements
+//        for (int i = 0; i < result.length; i++) {
+//            result[i] = list;
+//        }
+//
+//        //Printing the ArrayList
+//        for (List value : result) {
+//            System.out.print(value);
+//        }
+//        System.out.println("");
+//        System.out.println("list.get(0) = " + list.get(0));
+//
+//        return null;
+//    }
 
 
     public static void main(String[] args) {
@@ -29,14 +38,14 @@ public class ListToArray {
         list.add(121);
         list.add(1221);
         list.add(102);
-        ListToArray.listToArray(list);
+        System.out.println("ListToArray.listToArray(list) = " + Arrays.toString(ListToArray.listToArray(list)));
 
 
         List<String> stringList = new ArrayList<>();
         stringList.add("Hello");
         stringList.add("Jade");
         stringList.add("John");
-        listToArray(stringList);
+        System.out.println("listToArray(stringList) = " + Arrays.toString(listToArray(stringList)));
 
 //        Integer[] integersArray = new Integer[list.size()];
 //
@@ -52,7 +61,6 @@ public class ListToArray {
 //            }
 //        }
 //        System.out.println(" ]");
-
 
 
     }
