@@ -82,6 +82,7 @@ public class GradeBook<T extends Number & Comparable<T>> {
         gradeBookDouble.addGrade(15.4);
         gradeBookDouble.addGrade(13.4);
         gradeBookDouble.addGrade(12.4);
+
         System.out.println("\n==============Gradebook Double List===========");
         System.out.println("gradeBook double list = " + gradeBookDouble);
         System.out.println("gradeBook.calculateAverage() = " + gradeBookDouble.calculateAverage());
@@ -90,6 +91,7 @@ public class GradeBook<T extends Number & Comparable<T>> {
         gradeBookDouble.removeGrade(17.3);
         System.out.println("gradeBook double list after removing [17.30] = " + gradeBookDouble);
         System.out.println("\n==============Gradebook Integer List===========");
+
         GradeBook<Integer> gradeBookInteger = new GradeBook();
         gradeBookInteger.addGrade(19);
         gradeBookInteger.addGrade(20);
