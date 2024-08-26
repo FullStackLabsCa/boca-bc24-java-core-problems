@@ -1,4 +1,4 @@
-package generic.collections.practice;
+package problems.generic;
 
 @SuppressWarnings("java:S106")
 public class Problem2CountOccurrences {
