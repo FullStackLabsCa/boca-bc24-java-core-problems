@@ -6,8 +6,13 @@ import java.util.List;
 
 public class ConvertListToArray {
 
-    public static <T> T[] listToArray(List<T> list, T[] tTypeAry) {
-        return list.toArray(tTypeAry);
+    public static <T> T[] listToArray(List<T> list) {
+        T [] numericArray = (T[]) new Object[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            numericArray[i] = list.get(i);
+        }
+        return numericArray;
+//        return list.toArray(tTypeArray);
     }
 
     public static void main(String[] args) {
@@ -17,13 +22,17 @@ public class ConvertListToArray {
         stringList.add("October");
         stringList.add("November");
         stringList.add("December");
-        System.out.println("stringList = " + Arrays.toString(listToArray(stringList, new String[0])));
+        System.out.println("stringList = " + Arrays.toString(listToArray(stringList)));
+
         List<Integer> intList = new ArrayList();
         intList.add(8);
         intList.add(9);
         intList.add(10);
         intList.add(11);
         intList.add(12);
-        System.out.println("intList = " + Arrays.toString(listToArray(intList, new Integer[0])));
+        System.out.println("intList = " + Arrays.toString(listToArray(intList)));
+
+//        System.out.println("stringList = " + Arrays.toString(listToArray(stringList), new String[0]));
+//        System.out.println("intList = " + Arrays.toString(listToArray(stringList), new Integer[0]));
     }
 }
