@@ -1,7 +1,7 @@
 package generic.collections.practice;
 
 @SuppressWarnings("java:S106")
-public class CountOccurrences {
+public class Problem2CountOccurrences {
     public static <T> int countOccurrences(T[] array, T element) {
         int count = 0;
         for (T num : array) {
