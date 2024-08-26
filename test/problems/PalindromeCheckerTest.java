@@ -1,6 +1,7 @@
 package problems;
 
 import org.junit.Test;
+import problems.palindrome.PalindromeChecker;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

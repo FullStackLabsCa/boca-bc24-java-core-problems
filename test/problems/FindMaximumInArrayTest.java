@@ -1,6 +1,7 @@
 package problems;
 
 import org.junit.Test;
+import problems.maximum_in_array.FindMaximumInArray;
 
 import static org.junit.Assert.assertEquals;
 
