@@ -28,12 +28,11 @@ public class GradeBook<T extends Number & Comparable<T>> {
 
     public double calculateAverage() {
         double sum = 0.0;
-        Number grade;
         if (this.gradeList.isEmpty()) {
             System.out.println("List is empty, Please add elements before calling this method.");
         } else {
-            for(Iterator var3 = this.gradeList.iterator(); var3.hasNext(); sum += grade.doubleValue()) {
-                grade = (Number)var3.next();
+            for (T grade: gradeList) {
+                sum += grade.doubleValue();
             }
         }
 
