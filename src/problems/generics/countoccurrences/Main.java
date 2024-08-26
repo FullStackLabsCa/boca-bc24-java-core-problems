@@ -1,10 +1,10 @@
-package problems.generics;
+package problems.generics.countoccurrences;
 
 import java.util.Scanner;
 
-public class CountOccurrences {
-
+public class Main{
     public static void main(String[] args) {
+        CountOccurrences countOcc = new CountOccurrences();
         Scanner s = new Scanner(System.in);
         System.out.println("Enter how many numbers you want to enter: ");
         int n = s.nextInt();
@@ -14,17 +14,9 @@ public class CountOccurrences {
             array[i] = s.nextInt();
         }
 
-        System.out.println("Count: "+countOccurrences(array, 2));
+        System.out.println("Enter an element to look in the list: ");
+        Integer element = s.nextInt();
+        System.out.println("Count: "+countOcc.countOccurrences(array, element));
 
-    }
-
-    public static <T> int countOccurrences(T[] array, T element){
-        int count = 0;
-
-        for(T elem: array){
-            if(elem.equals(element)) count++;
-        }
-
-        return count;
     }
 }
