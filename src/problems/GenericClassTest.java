@@ -3,6 +3,7 @@ package problems;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 public class GenericClassTest {
     public static <list> void main(String[] args) {
@@ -71,10 +72,24 @@ public class GenericClassTest {
 //        System.out.println(Arrays.toString(listToArray(intlist)));
 //        System.out.println(Arrays.toString(listToArray(stringlist)));
 
-        Integer[] intArray = {1,2,3,1,4,1,5,1,6};
-        System.out.println("Count Occurence in Int Array is => " + countOccurrences(intArray,1));
-        String[] strArray = {"hello", "how", "hello","are","hello","you"};
-        System.out.println("Count Occurence in String Array is => " + countOccurrences(strArray,"hello"));
+//       Integer[] intArray = {1,2,3,1,4,1,5,1,6};
+//        System.out.println("Count Occurence in Int Array is => " + countOccurrences(intArray,1));
+//        String[] strArray = {"hello", "how", "hello","are","hello","you"};
+//        System.out.println("Count Occurence in String Array is => " + countOccurrences(strArray,"hello"));
+
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter Size of an array => ");
+        int size = scanner.nextInt();
+        int[] intArray = new int[size];
+        System.out.println("Enter elements in the array => ");
+        int ele = 0;
+        for(int i = 0;i<intArray.length;i++){
+            ele = scanner.nextInt();
+            intArray[i] = ele;
+        }
+        System.out.println(Arrays.toString(intArray));
+        System.out.println("Count of Odd Integers in Collection => " + countOddIntegers(intArray));
 
     }
     //PROBLEM : GENERIC CONTAINER
@@ -193,10 +208,21 @@ public class GenericClassTest {
 
 
 //             PROBLEM : GENERIC METHOD TO COUNT OCCOURENCES
-    public static <T> int countOccurrences(T[] array, T element){
+//    public static <T> int countOccurrences(T[] array, T element){
+//        int count = 0;
+//        for(int i = 0;i< array.length;i++){
+//            if(element == array[i]){
+//                count ++;
+//            }
+//        }
+//        return count;
+//    }
+
+//  PROBLEM : COUNTING ODD INTEGERS IN COLLECTION
+    public static <T> int countOddIntegers(int[] array){
         int count = 0;
         for(int i = 0;i< array.length;i++){
-            if(element == array[i]){
+            if(array[i]%2 != 0){
                 count ++;
             }
         }
