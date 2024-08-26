@@ -3,8 +3,8 @@ package problems.generics.coursegrade;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Course<S, G> {
-    private Map<S, G> students;
+public class Course<S, G extends Number> {
+    private final Map<S, G> students;
 
     public Course() {
         this.students = new HashMap<>();
