@@ -10,6 +10,7 @@ public class MergeArray {
         System.arraycopy(intArray2, 0,  mergedArray, intArray1.length, intArray2.length);
         return mergedArray;
     }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter first array length::");

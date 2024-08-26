@@ -4,20 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="53a96de6-10f9-45bb-9449-0de9e13940b8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/github_stefanbirkner_system_rules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/junit.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/boca-bc24-java-core-problems.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generics-problems/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generics-problems/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generics-problems/.idea/workspace.xml" beforeDir="false" />
+    <list default="true" id="d3b01333-d157-4793-b4ff-8016ea5cf74b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/problems/generics/ConvertListToArray.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/generics/CountOcccurence.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/generics/GradeBook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boca-bc24-java-core-problems.iml" beforeDir="false" afterPath="$PROJECT_DIR$/boca-bc24-java-core-problems.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/ConvertListToArray.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/CountOcccurence.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/arrayproblem/MergeArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/arrayproblem/MergeArray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/gradebook/GradeBook.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,30 +23,42 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 0
-}</component>
-  <component name="ProjectId" id="2lCF6esqy1SFMPI4L4nrsnj8OfW" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 0
+}]]></component>
+  <component name="ProjectId" id="2lCRW6jpFozpnRuEsbSul3UwphF" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/kivi-bc24-java-core-problems&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/Kiran.Virani/reactivestax/source/boca-bc24-java-core-problems&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.CountOcccurence.executor": "Run",
+    "Application.GradeBook.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "feature/kivi-bc24-java-core-problems",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/Kiran.Virani/source/boca-bc24-java-core-problems/src/problems/generics",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/problems/generics" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/problems" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="53a96de6-10f9-45bb-9449-0de9e13940b8" name="Changes" comment="" />
-      <created>1724675977654</created>
+      <changelist id="d3b01333-d157-4793-b4ff-8016ea5cf74b" name="Changes" comment="" />
+      <created>1724682101089</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1724675977654</updated>
+      <updated>1724682101089</updated>
     </task>
     <servers />
   </component>
