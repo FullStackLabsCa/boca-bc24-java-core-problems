@@ -1,6 +1,7 @@
 package problems;
 
 
+import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.util.Scanner;
 
 import static java.lang.Double.isNaN;
@@ -10,6 +11,7 @@ public class Calculator {
     double a, b;
     char operator = '\0';
     public static void main(String[] args) {
+        System.out.println(3 + 5 * 2 - 4 / 2);
         Scanner obj = new Scanner(System.in);
         boolean exit = true;
         while (exit) {

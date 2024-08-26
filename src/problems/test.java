@@ -27,17 +27,17 @@ public class test {
         return Objects.hash(name, address);
     }
 
-    public static void main(String[] args) {
+    public static <list> void main(String[] args) {
 
-        test person1 = new test("mann","ahmedabad");
-        test person2 = new test("mann","ahmedabad");
-        test person3 = person1;
-        System.out.println(System.identityHashCode(person1));
-        System.out.println(System.identityHashCode(person3));
-        System.out.println(System.identityHashCode(person2));
-        System.out.println(person1.equals(person2));
-        System.out.println(System.identityHashCode(person1));
-        System.out.println(System.identityHashCode(person2));
+//        test person1 = new test("mann","ahmedabad");
+//        test person2 = new test("mann","ahmedabad");
+//        test person3 = person1;
+//        System.out.println(System.identityHashCode(person1));
+//        System.out.println(System.identityHashCode(person3));
+//        System.out.println(System.identityHashCode(person2));
+//        System.out.println(person1.equals(person2));
+//        System.out.println(System.identityHashCode(person1));
+//        System.out.println(System.identityHashCode(person2));
 //        String str1 = new String("Hello");
 //        String str2 = new String("Hello");
 //        String str3 = str1;
@@ -59,7 +59,6 @@ public class test {
 //        System.out.println(wrappedinteger);
 //        integer = wrappedinteger;
 //        System.out.println(integer);
-
 
 
     }
