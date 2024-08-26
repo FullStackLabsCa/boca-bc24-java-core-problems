@@ -1,5 +1,6 @@
 package generics;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,7 +17,6 @@ public class Course <S, G extends Number> {
          courseMapping = new HashMap<>();
     }
 
-    //Functionalities
     //Enroll Students
     public boolean enrollStudent(S student){
         //ValidateStudent
@@ -29,7 +29,6 @@ public class Course <S, G extends Number> {
             System.out.println("Student Already enrolled in the course.");
             return false;
         }
-
     }
 
     //Assign Grades
@@ -57,11 +56,30 @@ public class Course <S, G extends Number> {
     public void listAllGrades(){
         if(!courseMapping.isEmpty()) {
             for (S student : courseMapping.keySet()) {
-                System.out.println("Student: " + student.toString() + ", Grade: " + courseMapping.get(student));
+                System.out.println("Student: " + student.toString() + " - Grade: " + courseMapping.get(student));
             }
+            //OR
+//            Set<Map.Entry<S, G>> entries = courseMapping.entrySet();
+//            System.out.println("entries : " + entries);
         } else {
             System.out.println("EMPTY COURSE!!! No students currently enrolled within the course.");
         }
+    }
+
+    public Collection<S> getStudents(){
+        return courseMapping.keySet();
+    }
+
+
+    public double calculateAverageGrade(){
+        Collection<G> grades = courseMapping.values();
+        double sum = 0;
+
+        for (G grade : grades){
+            sum += grade.doubleValue();
+        }
+
+        return (sum / grades.size());
     }
 
     public static void main(String[] args) {
@@ -73,7 +91,12 @@ public class Course <S, G extends Number> {
 
         javaProgramming.enrollStudent("Akshat");
         javaProgramming.assignGrade("Akshat", 10.0);
+
         System.out.println(javaProgramming.retrieveGrade("Akshat"));
+
+        javaProgramming.enrollStudent("Satwik");
+        javaProgramming.assignGrade("Satwik", 9.9);
+
         javaProgramming.listAllGrades();
 
     }
