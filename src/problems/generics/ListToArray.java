@@ -2,16 +2,16 @@ package problems.generics;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class ListToArray {
     public static void main(String[] args) {
         List<Integer> li = new ArrayList<>();
-        li.add(1);
-        li.add(1);
-        li.add(1);
-        li.add(1);
-        li.add(1);
-        li.add(1);
+        Scanner s = new Scanner(System.in);
+        System.out.println("Enter 10 numbers: ");
+        for(int i=0; i<10; i++){
+            li.add(s.nextInt());
+        }
         Object[] arr = listToArray(li);
 
         for(Object elem: arr){

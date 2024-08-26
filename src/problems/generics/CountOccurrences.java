@@ -1,10 +1,18 @@
 package problems.generics;
 
+import java.util.Scanner;
+
 public class CountOccurrences {
 
     public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        System.out.println("Enter how many numbers you want to enter: ");
+        int n = s.nextInt();
+        Integer[] array = new Integer[n];
 
-        Integer[] array = {1, 2, 3, 4, 5, 6, 7, 2, 2, 4, 2};
+        for (int i=0; i<n; i++){
+            array[i] = s.nextInt();
+        }
 
         System.out.println("Count: "+countOccurrences(array, 2));
 
