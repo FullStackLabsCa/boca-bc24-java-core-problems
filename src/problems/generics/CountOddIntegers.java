@@ -26,11 +26,14 @@ public class CountOddIntegers {
 
         System.out.println("Count of odd in list collection is::" + getOddIntegerCount(list));
 
-        Set<Integer> set = new HashSet<>();
-        set.add(31);
-        set.add(33);
-        set.add(35);
-        set.add(37);
-        System.out.println("Count of odd in set collection is::" + getOddIntegerCount(set));
+        Set<Integer> hashSet = new HashSet<>();
+        hashSet.add(31);
+        hashSet.add(33);
+        hashSet.add(35);
+        hashSet.add(37);
+        System.out.println("Count of odd in hashset collection is::" + getOddIntegerCount(hashSet));
+
+        Set<Integer> treeSet = new TreeSet<>();
+        System.out.println("Count of odd in tree set collection is::" + getOddIntegerCount(treeSet));
     }
 }
