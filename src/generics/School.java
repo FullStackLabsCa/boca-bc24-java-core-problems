@@ -2,7 +2,7 @@ package generics;
 
 import java.util.*;
 
-public class School <S , G extends Number> {
+public class School<S , G extends Number> {
 
     //Mapping course-name, and course-object
     Map<String, Course<S,G>> schoolMap;
@@ -17,7 +17,7 @@ public class School <S , G extends Number> {
     //Add Course
     public boolean addCourse(String courseName){
         if(!schoolMap.containsKey(courseName)){
-            schoolMap.put(courseName, null);
+            schoolMap.put(courseName, new Course<>());
             return true;
         } else {
             System.out.println("Course Already Exists!");
@@ -73,8 +73,12 @@ public class School <S , G extends Number> {
             listOfStudents.addAll(studentsInCourse);
         }
 
-        for(S student : listOfStudents){
-            System.out.println(student);
+        if(!listOfStudents.isEmpty()){
+            for (S student : listOfStudents) {
+                System.out.println(student);
+            }
+        } else {
+            System.out.println("School does not have any students yet!");
         }
 
         //Can return listOfStudents
@@ -115,6 +119,35 @@ public class School <S , G extends Number> {
 
     public static void main(String[] args) {
 
+        //Create 2 school object Instances
+        School<String, Double> delhiPublicSchool = new School<>();
+        School<Integer, Double> convent = new School<>();
+
+        //Testing listAllCourses for Empty School
+        delhiPublicSchool.listAllCourses();
+
+        //Test AddCourse
+        delhiPublicSchool.addCourse("English-2024");
+        delhiPublicSchool.addCourse("Math-2024");
+        delhiPublicSchool.addCourse("Science-2024");
+        delhiPublicSchool.addCourse("Games-2024");
+        delhiPublicSchool.addCourse("Aptitude-2024");
+
+        convent.addCourse("math-24-25");
+        convent.addCourse("science-24-25");
+        convent.addCourse("computer-24-25");
+        convent.addCourse("sports-24-25");
+        convent.addCourse("dance-24-25");
+
+        //List all Courses
+        delhiPublicSchool.listAllCourses();
+        convent.listAllCourses();
+
+        //Retrieve students in a course
+        delhiPublicSchool.listAllStudentsInSchool(); //Should say No students in the course.
+
+        //Enrolling student to a Course
+        
     }
 
 }
