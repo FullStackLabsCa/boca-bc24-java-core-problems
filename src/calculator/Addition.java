@@ -6,6 +6,7 @@ public class Addition {
 
     public Addition(double value1, double value2)
     {
+
         this.result = value1 + value2;
     }
 
