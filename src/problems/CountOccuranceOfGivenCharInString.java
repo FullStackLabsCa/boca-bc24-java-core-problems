@@ -6,11 +6,15 @@ public class CountOccuranceOfGivenCharInString {
         char occuranceOf = 'a';
         int countOfChar =0;
 
+        countOccuranceofCharacter(input, occuranceOf, countOfChar);
+    }
+
+    private static void countOccuranceofCharacter(String input, char occuranceOf, int countOfChar) {
         for (int currentChar = 0; currentChar < input.length(); currentChar++) {
             if(input.charAt(currentChar) == occuranceOf){
                 countOfChar++;
             }
         }
-        System.out.println("Char "+occuranceOf+" count "+countOfChar);
+        System.out.println("Char "+ occuranceOf +" count "+ countOfChar);
     }
 }
