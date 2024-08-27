@@ -6,19 +6,19 @@ import java.util.Map;
 @SuppressWarnings("java:S106")
 public class Problem4Course {
     public static void main(String[] args) {
-        Course<String, Double> course = new Course<>();
-        course.enrollingStudent().put("Harry", null);
-        course.enrollingStudent().put("Garry", null);
-        course.enrollingStudent().put("Parry", null);
+        Course<String, Double> student = new Course<>();
+        student.enrollingStudent().put("Harry", null);
+        student.enrollingStudent().put("Garry", null);
+        student.enrollingStudent().put("Parry", null);
 
-        course.setGradeToStudent("Harry", 76.50);
+        student.setGradeToStudent("Harry", 76.50);
 
-        String key = String.valueOf(course.retrievingGrades("Harry"));
+        String key = String.valueOf(student.retrievingGrades("Harry"));
         System.out.println("key = " + key);
 
-        course.getGradeValues();
+        student.getGradeValues();
 
-        System.out.println("course.mapOfStudentToGrade = " + course.mapOfStudentToGrade);
+        System.out.println("course.mapOfStudentToGrade = " + student.mapOfStudentToGrade);
     }
 
     public static class Course<S, G extends Number> {
