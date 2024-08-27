@@ -150,6 +150,7 @@ public class School<S , G extends Number> {
         //Enrolling student to a Course
         delhiPublicSchool.enrollStudentToCourse("Akshat-Singla", "English-2024");
         delhiPublicSchool.enrollStudentToCourse("Akshat-Singla", "Math-2024");
+        delhiPublicSchool.enrollStudentToCourse("Akshat-Singla", "Science-2024");
         delhiPublicSchool.enrollStudentToCourse("Satwik-Singla", "Math-2024");
         delhiPublicSchool.enrollStudentToCourse("Satwik-Singla", "English-2024");
         convent.enrollStudentToCourse(1, "math-24-25");
@@ -162,7 +163,6 @@ public class School<S , G extends Number> {
         delhiPublicSchool.assignGradeToStudentInCourse("Akshat-Singla", 3.4, "English-2024");
         delhiPublicSchool.assignGradeToStudentInCourse("Akshat-Singla", 2.4, "English-2024");
         delhiPublicSchool.assignGradeToStudentInCourse("Akshat-Singla", 3.0, "Math-2024");
-        delhiPublicSchool.assignGradeToStudentInCourse("Akshat-Singla", 3.1, "Science-2024");
         delhiPublicSchool.assignGradeToStudentInCourse("Satwik-Singla", 3.7, "English-2024");
 
         System.out.println(delhiPublicSchool.calculateAverageGradeOfCourse("English-2024"));

@@ -44,11 +44,11 @@ public class Course <S, G extends Number> {
 
     //Retrieve Grades
     public double retrieveGrade(S studentID){
-        if(courseMapping.containsKey(studentID)){
+        if(courseMapping.containsKey(studentID) && courseMapping.get(studentID)  != null){
             return courseMapping.get(studentID).doubleValue();
         } else {
-            System.out.println("No such Student is enrolled in the course.");
-            return -1;
+            System.out.println("No such Student is enrolled in the course or No Grade assigned.");
+            return 0;
         }
     }
 
