@@ -16,7 +16,6 @@ public class ParanthesisWithoutStack {
         int curly_bracket = 0;
         int square_bracket = 0;
         int round_bracket = 0;
-
         for (char character : expression.toCharArray()) {
             switch (character) {
                 case '{':
