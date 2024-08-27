@@ -1,4 +1,8 @@
 package problems;
 
-public class Course {
+import java.util.HashMap;
+import java.util.Map;
+
+public class Course <S,G extends Number> {
+
 }

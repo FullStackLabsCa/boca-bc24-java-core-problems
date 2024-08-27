@@ -4,10 +4,10 @@ import java.util.*;
 
 public class GradeBook <T extends Number> {
     public static void main(String[] args) {
-        List<Double> intGradeList = new ArrayList<>();
-        intGradeList.add(78.0);
-        intGradeList.add(89.0);
-        intGradeList.add(93.0);
+        List<Integer> intGradeList = new ArrayList<>();
+        intGradeList.add(25);
+        intGradeList.add(75);
+        intGradeList.add(50);
         GradeBook gradeBook = new GradeBook();
 
         System.out.println("WELCOME TO GRADE BOOK      ");
@@ -43,11 +43,11 @@ public class GradeBook <T extends Number> {
 
 
 
-    private List<T> gradelist = new ArrayList<>();
+    private List<T> gradeList = new ArrayList<>();
 
-    public  double sumOfGrades(List <T> gradelist){
+    public  double sumOfGrades(List <T> gradeList){
         double totalSum = 0;
-        for(T grade : gradelist){
+        for(T grade : gradeList){
             totalSum += grade.doubleValue();
         }
         return totalSum;
