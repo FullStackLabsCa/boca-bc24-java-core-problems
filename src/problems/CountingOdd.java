@@ -1,6 +1,7 @@
 package problems;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
 
@@ -24,10 +25,10 @@ public class CountingOdd {
         System.out.println("Count of odd numbers:- "+oddCount(numbers));
 
     }
-    public static int oddCount(List<Integer> list){
+    public static <T> int oddCount(Collection<Integer> list){
         List<Integer> odd = new ArrayList<>();
         int count =0;
-        for(int i:list){
+        for(Integer i:list){
             if(i%2!=0){
                 odd.add(i);
                 count++;
