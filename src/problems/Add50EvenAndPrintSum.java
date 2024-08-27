@@ -5,7 +5,6 @@ public class Add50EvenAndPrintSum {
         int evenNumberSum = 0;
         int count = 0;
         int number = 2;
-
         while (count < 50) {
             evenNumberSum += number;
             number += 2;
