@@ -2,45 +2,45 @@ package problems;
 import java.util.List;
 
 public class GenericGradeBook<T extends Number & Comparable<T>> {
-    List<T> gradeBook;
+    List<T> grades;
 
-    public GenericGradeBook(List<T> gradeBook) {
-        this.gradeBook = gradeBook;
+    public GenericGradeBook(List<T> grades) {
+        this.grades = grades;
     }
 
 
     public List<T> addGrade(T grade) {
-        gradeBook.add(grade);
-        return this.gradeBook;
+        grades.add(grade);
+        return this.grades;
     }
 
     public  List<T> removeGrade(T grade) {
-        if(this.gradeBook.contains(grade)){
-            while (this.gradeBook.contains(grade)){
-                this.gradeBook.remove(grade);
+        if(this.grades.contains(grade)){
+            while (this.grades.contains(grade)){
+                this.grades.remove(grade);
             }
         }else {
             System.out.println("Given grade not exist in grade book");
         }
-        return this.gradeBook;
+        return this.grades;
     }
 
 
     public T findHighestGrade() {
-        T max = this.gradeBook.getFirst();
-        for (int i = 1; i < this.gradeBook.size(); i++) {
-            if (max.compareTo(this.gradeBook.get(i)) < 0) {
-                max = this.gradeBook.get(i);
+        T max = this.grades.getFirst();
+        for (int i = 1; i < this.grades.size(); i++) {
+            if (max.compareTo(this.grades.get(i)) < 0) {
+                max = this.grades.get(i);
             }
         }
         return max;
     }
 
     public T findLowestGrade() {
-        T min = this.gradeBook.getFirst();
-        for (int i = 1; i < this.gradeBook.size(); i++) {
-            if (min.compareTo(this.gradeBook.get(i)) > 0) {
-                min = this.gradeBook.get(i);
+        T min = this.grades.getFirst();
+        for (int i = 1; i < this.grades.size(); i++) {
+            if (min.compareTo(this.grades.get(i)) > 0) {
+                min = this.grades.get(i);
             }
         }
         return min;
@@ -49,10 +49,10 @@ public class GenericGradeBook<T extends Number & Comparable<T>> {
     public Double calcAvgGrade() {
         double result;
         double total = 0.0;
-        for (T grade : this.gradeBook) {
+        for (T grade : this.grades) {
             total += grade.doubleValue();
         }
-        result = (total / (double) this.gradeBook.size());
+        result = (total / (double) this.grades.size());
         return (result);
     }
 
