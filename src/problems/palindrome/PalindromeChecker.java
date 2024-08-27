@@ -4,9 +4,9 @@ public class PalindromeChecker {
 
 
     public static boolean isPalindrome(String s) {
-//        if (s == null) {
-//            return false;
-//        }
+        if (s == null) {
+            return false;
+        }
 
         // Normalize the string: remove non-alphanumeric characters and convert to lowercase
         String normalizedStr = s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();

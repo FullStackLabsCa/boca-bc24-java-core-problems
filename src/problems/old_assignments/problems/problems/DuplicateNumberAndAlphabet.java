@@ -5,17 +5,17 @@ import java.util.Scanner;
 public class DuplicateNumberAndAlphabet {
     //12 Read Abc given string and count how many times Abc given alphabet or number is repeated
 
-    public  void duplicateNumber(String input, char charEntry){
-        char[] charArray = input.toCharArray();
-        int count = 0;
-        for (int i = 0; i < charArray.length; i++) {
-            if (charArray[i] == charEntry) {
-                count++;
-            }
-        }
-        System.out.println("******************* Below output coming from Method *****************");
-        System.out.println("The given " + charEntry + " is repeated " +count + " times");
-    }
+//    public  void duplicateNumber(String input, char charEntry){
+//        char[] charArray = input.toCharArray();
+//        int count = 0;
+//        for (int i = 0; i < charArray.length; i++) {
+//            if (charArray[i] == charEntry) {
+//                count++;
+//            }
+//        }
+//        System.out.println("******************* Below output coming from Method *****************");
+//        System.out.println("The given " + charEntry + " is repeated " +count + " times");
+//    }
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the String....");
@@ -32,6 +32,6 @@ public class DuplicateNumberAndAlphabet {
         System.out.println("The given " + charEntry + " is repeated " +count + " times");
 
         DuplicateNumberAndAlphabet duplicateNumberAndAlphabet = new DuplicateNumberAndAlphabet();
-        duplicateNumberAndAlphabet.duplicateNumber("karan", 'a');
+       // duplicateNumberAndAlphabet.duplicateNumber("karan", 'a');
     }
 }
