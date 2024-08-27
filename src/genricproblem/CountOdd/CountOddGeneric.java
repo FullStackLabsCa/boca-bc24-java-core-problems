@@ -1,13 +1,14 @@
-//package GenricProblem;
-////
-////public class CountOddGeneric {
-////    public <T> int countOdd(T[] array) {
-////        int sum = 0;
-////       for(T value : array){
-////            if((value/2) != 0){
-////                 sum = value++;
-////            }
-////    }
-////        return sum;
-////}
-////}
+package genricproblem.CountOdd;
+import java.util.Collection;
+public class CountOddGeneric {
+
+    public <T extends Number> int countOdd(Collection<T> array) {
+        int sum = 0;
+       for(T value : array){
+            if(value.intValue()%2 != 0){
+                 sum ++;
+            }
+    }
+        return sum;
+}
+}

@@ -17,9 +17,7 @@ public class SortedArray {
         }
         else
             System.out.println("its not sorted");
-     //   System.out.println(isSorted(intInputArray));
     }
-
     public static boolean isSorted(int[] array) {
 
         for (int i = 0; i < array.length - 1; i++) {
