@@ -1,7 +1,7 @@
 package problems;
 
 public class StringReversal {
-    public String stringReveral(String toReverse){
+    public static String stringReveral(String toReverse){
         String reversedString = "";
 
         char seperatedCharacters[] = new char[toReverse.length()];
