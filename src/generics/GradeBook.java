@@ -29,7 +29,7 @@ public class GradeBook <T extends Number> {
     }
 
     //Calculate Average Grade
-    public double calculateAverage(){
+    public String calculateAverage(){
         double average = 0;
 
         for(T element : gradeBook){
@@ -38,11 +38,12 @@ public class GradeBook <T extends Number> {
 
         average = average/gradeBook.size();
 
-        return average;
+        return "Average grade: "+average;
+//        return average;
     }
 
     //Determine Highest Grade
-    public double findHighestGrade(){
+    public String findHighestGrade(){
         double max = gradeBook.get(0).doubleValue();
 
         for(T grade : gradeBook){
@@ -50,11 +51,13 @@ public class GradeBook <T extends Number> {
                 max = grade.doubleValue();
             }
         }
-        return max;
+
+        return "Highest grade: " + max;
+//        return max;
     }
 
     //Determine Lowest Grade
-    public double findLowestGrade(){
+    public String findLowestGrade(){
         double min = gradeBook.get(0).doubleValue();
 
         for(T grade : gradeBook){
@@ -62,26 +65,30 @@ public class GradeBook <T extends Number> {
                 min = grade.doubleValue();
             }
         }
-        return min;
+
+        String result = "Lowest grade: " + min;
+        return result;
+
+        //return min;
     }
 
-    public static void main(String[] args) {
-        GradeBook<Double> classA = new GradeBook<>();
-
-        classA.addGrade(85.0);
-        classA.addGrade(90.0);
-
-        System.out.println("Class Average: " + classA.calculateAverage());
-        System.out.println("Highest Grade: " + classA.findHighestGrade());
-        System.out.println("Lowest Grade: " + classA.findLowestGrade());
-
-        GradeBook<Integer> classB = new GradeBook<>();
-
-        classB.addGrade(3);
-        classB.addGrade(4);
-
-        System.out.println("Class Average: " + classB.calculateAverage());
-        System.out.println("Highest Grade: " + classB.findHighestGrade());
-        System.out.println("Lowest Grade: " + classB.findLowestGrade());
-    }
+//    public static void main(String[] args) {
+//        GradeBook<Double> classA = new GradeBook<>();
+//
+//        classA.addGrade(85.0);
+//        classA.addGrade(90.0);
+//
+//        System.out.println("Class Average: " + classA.calculateAverage());
+//        System.out.println("Highest Grade: " + classA.findHighestGrade());
+//        System.out.println("Lowest Grade: " + classA.findLowestGrade());
+//
+//        GradeBook<Integer> classB = new GradeBook<>();
+//
+//        classB.addGrade(3);
+//        classB.addGrade(4);
+//
+//        System.out.println("Class Average: " + classB.calculateAverage());
+//        System.out.println("Highest Grade: " + classB.findHighestGrade());
+//        System.out.println("Lowest Grade: " + classB.findLowestGrade());
+//    }
 }
