@@ -2,6 +2,7 @@ package generic;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.SortedMap;
 
 public class Course <S, G extends Number> {
 
@@ -11,9 +12,13 @@ public class Course <S, G extends Number> {
        studentToGradeMap.put(s,g);
    }
 
-   public G getGrade (S s){
+   public void getGrade (S s){
        G gradeOfStudent = studentToGradeMap.get(s);
-       return gradeOfStudent;
+       if(gradeOfStudent == null){
+           System.out.println("Grades for this student has not assigned");
+       } else {
+           System.out.println(gradeOfStudent);
+       }
    }
 
    public void printStudentsAndGrades (){
@@ -29,8 +34,10 @@ public class Course <S, G extends Number> {
        java2024.enrollStudents("Shifa",110);
        java2024.enrollStudents("Akshita",null);
 
-        System.out.println(java2024.getGrade("Shifa"));
-        java2024.printStudentsAndGrades();
+
+       java2024.getGrade("Akshita");
+       java2024.getGrade("Kiran");
+       java2024.printStudentsAndGrades();
 
     }
 }
