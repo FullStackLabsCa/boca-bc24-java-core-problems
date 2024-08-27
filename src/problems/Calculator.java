@@ -1,10 +1,14 @@
 package problems;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Calculator {
     public String calculate(String userInput) {
         try {
+
+            List<Object> check = new ArrayList<>();
             if (userInput == null || userInput.trim().isEmpty()) return "Error: Input is empty or null";
             char operation = 0;
             String[] splittedStrings = userInput.split("\\+|\\-|\\*|\\/");
