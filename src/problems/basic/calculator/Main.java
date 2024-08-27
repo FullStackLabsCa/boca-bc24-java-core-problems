@@ -1,9 +1,10 @@
 package basic.calculator;
 
-import calculator.Addition;
-import calculator.Division;
-import calculator.Multiplication;
-import calculator.Subtraction;
+import basic.calculator.Addition;
+import basic.calculator.Division;
+import basic.calculator.Multiplication;
+import basic.calculator.Subtraction;
+
 
 import java.util.Scanner;
 
