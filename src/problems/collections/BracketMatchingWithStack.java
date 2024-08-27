@@ -9,7 +9,7 @@ public class BracketMatchingWithStack {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String str = scanner.nextLine().trim();
-        String regex = "\\{\\[\\(]\\)}";
+        String regex = "\\{\\[\\(]\\)}|\\{\\(\\[\\)]}";
         Stack<Character> brackets = new Stack<>();
         if (str.length() % 2 == 0) {
             str = str.replaceAll(regex, "");
