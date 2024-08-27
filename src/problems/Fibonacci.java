@@ -10,10 +10,15 @@ public class Fibonacci {
 
     }
 
-    private static boolean isValidInput(String input) {
+    public static List<Integer> generateFibonacci(int i) {
+        return null;
     }
-
-    public static List<Integer> generateFibonacci(int n) {
-    }
+//
+//    private static boolean isValidInput(String input) {
+//    }
+//
+//    public static List<Integer> generateFibonacci(int n) {
+//    }
 }
+
 
