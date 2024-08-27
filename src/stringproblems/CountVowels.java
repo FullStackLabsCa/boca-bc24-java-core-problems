@@ -1,4 +1,4 @@
-package str;
+package stringproblems;
 import java.util.*;
 
 public class CountVowels {
