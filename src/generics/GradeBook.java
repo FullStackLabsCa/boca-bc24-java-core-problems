@@ -44,29 +44,35 @@ public class GradeBook <T extends Number> {
 
     //Determine Highest Grade
     public String findHighestGrade(){
-        double max = gradeBook.get(0).doubleValue();
+        if(!gradeBook.isEmpty()){
+            double max = gradeBook.get(0).doubleValue();
 
-        for(T grade : gradeBook){
-            if(grade.doubleValue() >= max){
-                max = grade.doubleValue();
+            for (T grade : gradeBook) {
+                if (grade.doubleValue() >= max) {
+                    max = grade.doubleValue();
+                }
             }
-        }
 
-        return "Highest grade: " + max;
+            return "Highest grade: " + max;
+        } else
+            return "No grades available to find the highest grade.";
 //        return max;
     }
 
     //Determine Lowest Grade
     public String findLowestGrade(){
-        double min = gradeBook.get(0).doubleValue();
+        String result;
+        if(!gradeBook.isEmpty()){
+            double min = gradeBook.get(0).doubleValue();
 
-        for(T grade : gradeBook){
-            if(grade.doubleValue() <= min){
-                min = grade.doubleValue();
+            for (T grade : gradeBook) {
+                if (grade.doubleValue() <= min) {
+                    min = grade.doubleValue();
+                }
             }
-        }
 
-        String result = "Lowest grade: " + min;
+            result = "Lowest grade: " + min;
+        } else result = "No grades available to find the lowest grade.";
         return result;
 
         //return min;
