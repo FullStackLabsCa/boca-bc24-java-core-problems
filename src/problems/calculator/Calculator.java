@@ -4,6 +4,9 @@ import java.util.*;
 
 public class Calculator {
 
+    public static String str = "5 + (6 * (2 - 4) + 3) - 1";
+    public static List<Double> storedMemoryList= new ArrayList<>();
+
     public static Double removeListElement(int position, List<String> listString, Double answerPart) {
         if(listString.stream().anyMatch(s -> s.startsWith("sqrt("))){
             for (int i = 0; i < listString.size(); i++) {
@@ -37,21 +40,34 @@ public class Calculator {
         return 0;
     }
 
-//    public static String str = " 1 + (18 / (3 - 2) * 2)";
-    public static String str = "5 + (6 * (2 - 4) + 3) - 1";
-
-
-    public static void main(String[] args) {
-        double answer = calculate(str);
-        System.out.println("answer = " + answer);
+    public static void storeInMemory(double value){
+        if (storedMemoryList.size()<5){
+            storedMemoryList.add(value);
+        }
+        else{
+            storedMemoryList.remove(0);
+            storedMemoryList.add(value);
+        }
 
     }
 
-    private List<String> slicingLogic(int startPosition, int endPosition) {
-
-        return null;
+    public static Double recallMemory(){
+       return storedMemoryList.get(storedMemoryList.size()-1);
     }
 
+    public static void clearMemory(){
+        storedMemoryList.clear();
+    }
+
+    public static void recallAllMemory(){
+        System.out.println("");
+        System.out.print(" Stored values : ");
+        for(double element : storedMemoryList){
+            System.out.print(element+" ");
+
+        }
+
+    }
 
     public static double calculate(String str) {
 
@@ -232,6 +248,17 @@ public class Calculator {
 
             answerPart= removeListElement(position, listString, answerPart);
         }
+        while (listString.contains("M+")) {
+
+
+            storeInMemory(answerPart);
+            for (int i = 0; i < listString.size(); i++) {
+                if (listString.get(i).startsWith("M+")) {
+                    listString.remove(i);
+                }
+            }
+
+        }
 
 
         return answerPart;
@@ -242,5 +269,17 @@ public class Calculator {
         if (currentValue.contains("+") || currentValue.contains("-") || currentValue.contains("/") || currentValue.contains("*") || currentValue.contains("^")) {
             System.out.println("Invalid expression.");
         }
+    }
+
+
+    public static void main(String[] args) {
+
+        System.out.println("answer = " + calculate("sqrt(9) - 2 ^ 3 M+"));
+        System.out.println("Recall one Value :"+recallMemory());
+        recallAllMemory();
+        clearMemory();
+//        recallMemory();
+
+
     }
 }
