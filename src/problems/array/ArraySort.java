@@ -2,12 +2,13 @@ package problems.array;
 
 import java.util.Scanner;
 
+@SuppressWarnings("java:S106")
 public class ArraySort {
     public static void main(String[] args) {
         boolean isValueNull = false;
         System.out.println("Please enter a values of array ");
         Scanner value = new Scanner(System.in);
-        String inputValue = new String(value.nextLine()).trim();
+        String inputValue = (value.nextLine()).trim();
 
         String[] splitInputValue = inputValue.split(",");
 

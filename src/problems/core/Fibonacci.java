@@ -1,4 +1,4 @@
-package problems;
+package problems.core;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ public class Fibonacci {
     }
 
     public static void main(String[] args) {
-        System.out.println("problems.Fibonacci Series up to 4 numbers: [0, 1, 1, 2]");
+        System.out.println("problems.core.Fibonacci Series up to 4 numbers: [0, 1, 1, 2]");
         System.out.println("Invalid input. Please enter a valid number between 4 and 47.");
     }
 }

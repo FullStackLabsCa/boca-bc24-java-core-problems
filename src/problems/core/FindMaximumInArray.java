@@ -1,4 +1,6 @@
-package problems;
+package problems.core;
+
+@SuppressWarnings("java:S106")
 
 public class FindMaximumInArray {
     public static int findMax(int[] numbers) {
@@ -14,6 +16,8 @@ public class FindMaximumInArray {
     }
 
     public static void main(String[] args) {
-
+        int[] integers = {12,33,21,323,78};
+        int max = findMax(integers);
+        System.out.println("max = " + max);
     }
 }
