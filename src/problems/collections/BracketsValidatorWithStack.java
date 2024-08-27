@@ -6,42 +6,46 @@ import java.util.Stack;
 @SuppressWarnings("java:S106")
 public class BracketsValidatorWithStack {
     public static void main(String[] args) {
-        Stack<String> brackets = new Stack<>();
         Scanner scanner = new Scanner(System.in);
-        String enterBracketString = "";
+        System.out.println("Please enter brackets");
+        String inputValue = scanner.nextLine().trim();
 
-        System.out.println("Please enter {[()]} and press q to quit");
+        if (checkParenthesis(inputValue))
+            System.out.println("Match case");
+        else
+            System.out.println("Not Matched");
+    }
 
-        while (true) {
-            String inputValue = scanner.nextLine().trim();
-            if (inputValue.contains("q")) {
-                System.out.println("Exiting from the loop......");
-                break;
+    public static boolean checkParenthesis(String str) {
+        Stack<Character> characters = new Stack<>();
+        char[] charArray = str.toCharArray();
+        for (char ch : charArray) {
+            switch (ch) {
+                case '{', '[', '(':
+                    characters.push(ch);
+                    break;
+
+                case '}':
+                    if (characters.pop() != '{') {
+                        return false;
+                    }
+                    break;
+                case ']':
+                    if (characters.pop() != '[') {
+                        return false;
+                    }
+                    break;
+                case ')':
+                    if (characters.pop() != '(') {
+                        return false;
+                    }
+                    break;
+
+                default:
+                    return false;
             }
-            brackets.push(inputValue);
-            enterBracketString += inputValue;
         }
 
-        if (!brackets.isEmpty()) {
-            Stack<String> convertedStack = new Stack<>();
-            String str;
-
-            str = brackets.pop();
-            System.out.println(str);
-            if (str == "{" || str == "[" || str == "(") {
-                convertedStack.push(str);
-            } else if (str == "}" || str == "]" || str == ")") {
-                convertedStack.push(str);
-            }
-
-            System.out.println(convertedStack);
-
-
-//            if (enterBracketString.equals(afterDoingStackOperation)) {
-//                System.out.println("Match");
-//            } else {
-//                System.out.println("Not Match");
-//            }
-        }
+        return characters.isEmpty();
     }
 }
