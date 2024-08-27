@@ -13,6 +13,5 @@ public class Main {
 //        Employee employee = new Manager(7642749);
 //        employee.performDuty();
 
-
     }
 }
