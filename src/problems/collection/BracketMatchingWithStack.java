@@ -28,9 +28,8 @@ public class BracketMatchingWithStack {
 
     public static Boolean bracketMatch(String input) {
         Boolean isMatched = false;
-        if(input == null) return false;
+        if(input == null || input.length() % 2 != 0 ) return false;
         if(!(input.contains("[") || input.contains("(") || input.contains("{"))) return false;
-
         Stack<Character> characterStack = new Stack<>();
         for (int i = 0; i < input.length(); i++) {
             if(input.charAt(i) =='(' || input.charAt(i) =='{'||input.charAt(i) =='['){
@@ -41,9 +40,11 @@ public class BracketMatchingWithStack {
 //            if(input.contains(")") || input.contains("}")||input.contains("]")){
                 if(!characterStack.isEmpty()) {
                     int check = i;
+                    Character popElement = characterStack.pop();
                     while (check < input.length()) {
-                        if (bracketMatch(characterStack.pop(), input.charAt(check))){
+                        if (bracketMatch(popElement, input.charAt(check))){
                             isMatched = true;
+                            break;
                         }else {
                             isMatched = false;
                         }
@@ -53,7 +54,7 @@ public class BracketMatchingWithStack {
                 }
                 }
             }
-        return isMatched;
+        return characterStack.isEmpty() && isMatched;
     }
 
     static Boolean bracketMatch(Character left, Character right) {
