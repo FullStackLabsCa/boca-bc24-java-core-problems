@@ -18,9 +18,10 @@ public class School<S , G extends Number> {
     public boolean addCourse(String courseName){
         if(!schoolMap.containsKey(courseName)){
             schoolMap.put(courseName, new Course<>());
+//            System.out.println("Added " + courseName + " to school.");
             return true;
         } else {
-            System.out.println("Course Already Exists!");
+            System.out.println("Course " + courseName + " Already Exists!");
             return false;
         }
     }
@@ -40,11 +41,12 @@ public class School<S , G extends Number> {
         //Check if course Exists in the School
         if(schoolMap.containsKey(courseName)){
             Course<S, G> course = schoolMap.get(courseName);
-            course.enrollStudent(studentIdentifier);
-            System.out.println("Student " + studentIdentifier + " enrolled.");
+            if(course.enrollStudent(studentIdentifier)) {
+                System.out.println("Student " + studentIdentifier + " enrolled in " + courseName);
+            }
             return true;
         } else {
-            System.out.println("Course is not available in this school.");
+            System.out.println("Course " + courseName + " is not available in this school.");
             return false;
         }
     }
@@ -74,9 +76,7 @@ public class School<S , G extends Number> {
         }
 
         if(!listOfStudents.isEmpty()){
-            for (S student : listOfStudents) {
-                System.out.println(student);
-            }
+            System.out.println("listOfStudents = " + listOfStudents);
         } else {
             System.out.println("School does not have any students yet!");
         }
@@ -129,6 +129,7 @@ public class School<S , G extends Number> {
         //Test AddCourse
         delhiPublicSchool.addCourse("English-2024");
         delhiPublicSchool.addCourse("Math-2024");
+        delhiPublicSchool.addCourse("Math-2024");
         delhiPublicSchool.addCourse("Science-2024");
         delhiPublicSchool.addCourse("Games-2024");
         delhiPublicSchool.addCourse("Aptitude-2024");
@@ -147,7 +148,14 @@ public class School<S , G extends Number> {
         delhiPublicSchool.listAllStudentsInSchool(); //Should say No students in the course.
 
         //Enrolling student to a Course
-        
+        delhiPublicSchool.enrollStudentToCourse("Akshat-Singla", "English-2024");
+        delhiPublicSchool.enrollStudentToCourse("Akshat-Singla", "Math-2024");
+        delhiPublicSchool.enrollStudentToCourse("Satwik-Singla", "Math-2024");
+        convent.enrollStudentToCourse(1, "math-24-25");
+        convent.enrollStudentToCourse(332, "math-24-24");
+
+        delhiPublicSchool.listAllStudentsInSchool();
+
     }
 
 }

@@ -23,7 +23,7 @@ public class Course <S, G extends Number> {
         //.
         if(!courseMapping.containsKey(student)){
             courseMapping.put(student,null);
-            System.out.println("student enrolled : " + student);
+//            System.out.println("student enrolled : " + student);
             return true;
         } else {
             System.out.println("Student Already enrolled in the course.");
