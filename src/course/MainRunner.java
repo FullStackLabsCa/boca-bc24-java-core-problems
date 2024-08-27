@@ -13,5 +13,12 @@ public class MainRunner {
         phy.printStudentGrade("Mann");
 
         System.out.println(math.toString());
+
+
+        System.out.println("SCHOOL");
+        School<String,Number> school = new School<>();
+        System.out.println(school.addCourseNameToSchool("math"));
+        System.out.println(school.enrollStudent("math",phy));
+
     }
 }
