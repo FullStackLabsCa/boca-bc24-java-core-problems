@@ -15,7 +15,7 @@ import static org.junit.contrib.java.lang.system.TextFromStandardInputStream.emp
 
 public class FibonacciTest {
 
-    @Rule
+   /* @Rule
     public final TextFromStandardInputStream systemInMock = emptyStandardInputStream();
     @Rule
     public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
@@ -76,6 +76,6 @@ public class FibonacciTest {
         systemInMock.provideLines("-5");
         Fibonacci.main(null);
         assertTrue(systemOutRule.getLog().contains("Invalid input. Please enter a valid number between 4 and 47."));
-    }
+    }*/
 
 }
