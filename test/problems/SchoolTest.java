@@ -1,15 +1,15 @@
-package problems;
-
-
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.contrib.java.lang.system.SystemOutRule;
-
-import static org.junit.Assert.assertTrue;
-
-public class SchoolTest {
-
+//package problems;
+//
+//
+//import org.junit.Before;
+//import org.junit.Rule;
+//import org.junit.Test;
+//import org.junit.contrib.java.lang.system.SystemOutRule;
+//
+//import static org.junit.Assert.assertTrue;
+//
+//public class SchoolTest {
+//
 //    private School<Integer, Double> school;
 //
 //    @Rule
@@ -147,4 +147,4 @@ public class SchoolTest {
 //
 //        assertTrue(systemOutRule.getLog().contains("Error: Unknown command 'unknown_command'. Please use a valid command."));
 //    }
-}
+//}

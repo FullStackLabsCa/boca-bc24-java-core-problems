@@ -3,6 +3,7 @@ package generics;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 
 public class Course <S, G extends Number> {
@@ -43,12 +44,12 @@ public class Course <S, G extends Number> {
     }
 
     //Retrieve Grades
-    public double retrieveGrade(S studentID){
+    public Optional<Double> getGrade(S studentID){
         if(courseMapping.containsKey(studentID) && courseMapping.get(studentID)  != null){
-            return courseMapping.get(studentID).doubleValue();
+            return Optional.of(courseMapping.get(studentID).doubleValue());
         } else {
             System.out.println("No such Student is enrolled in the course or No Grade assigned.");
-            return 0;
+            return Optional.empty();
         }
     }
 
@@ -86,19 +87,29 @@ public class Course <S, G extends Number> {
 
         Course<String, Double> javaProgramming  = new Course<>();
 
-        javaProgramming.retrieveGrade("Akshat");
+        javaProgramming.getGrade("Akshat");
         javaProgramming.listAllGrades();
 
         javaProgramming.enrollStudent("Akshat");
         javaProgramming.assignGrade("Akshat", 10.0);
 
-        System.out.println(javaProgramming.retrieveGrade("Akshat"));
+        System.out.println(javaProgramming.getGrade("Akshat"));
 
         javaProgramming.enrollStudent("Satwik");
         javaProgramming.assignGrade("Satwik", 9.9);
 
         javaProgramming.listAllGrades();
 
+    }
+
+    public boolean isStudentEnrolled(S studentIdentifier) {
+        if(courseMapping.containsKey(studentIdentifier)){
+            return true;
+        } else return false;
+    }
+
+    public Map<S, G> getAllGrades() {
+        return courseMapping;
     }
 
 }

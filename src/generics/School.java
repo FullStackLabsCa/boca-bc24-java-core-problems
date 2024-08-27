@@ -99,22 +99,22 @@ public class School<S , G extends Number> {
     }
 
     //Average grade of student amongst all enrolled courses
-    public double getStudentCGPA(S studentIdentifier){
-        double sumOfGPA = 0;
-        int coursesParticipated = 0;
-        Collection<Course<S, G>> courses = schoolMap.values();
-
-        for(Course<S,G> course : courses){
-            Collection<S> students = course.getStudents();
-
-            if(students.contains(studentIdentifier)){
-                sumOfGPA += course.retrieveGrade(studentIdentifier);
-                coursesParticipated++;
-            }
-        }
-
-        return (sumOfGPA / coursesParticipated);
-    }
+//    public double getStudentCGPA(S studentIdentifier){
+//        double sumOfGPA = 0;
+//        int coursesParticipated = 0;
+//        Collection<Course<S, G>> courses = schoolMap.values();
+//
+//        for(Course<S,G> course : courses){
+//            Collection<S> students = course.getStudents();
+//
+//            if(students.contains(studentIdentifier)){
+//                sumOfGPA += course.getGrade(studentIdentifier);
+//                coursesParticipated++;
+//            }
+//        }
+//
+//        return (sumOfGPA / coursesParticipated);
+//    }
 
 
     public static void main(String[] args) {
@@ -166,7 +166,7 @@ public class School<S , G extends Number> {
         delhiPublicSchool.assignGradeToStudentInCourse("Satwik-Singla", 3.7, "English-2024");
 
         System.out.println(delhiPublicSchool.calculateAverageGradeOfCourse("English-2024"));
-        System.out.println(delhiPublicSchool.getStudentCGPA("Akshat-Singla"));
+//        System.out.println(delhiPublicSchool.getStudentCGPA("Akshat-Singla"));
 
     }
 
