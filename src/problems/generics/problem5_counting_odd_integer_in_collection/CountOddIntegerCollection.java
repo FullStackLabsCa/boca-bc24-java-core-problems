@@ -10,7 +10,7 @@ public class CountOddIntegerCollection {
         }
         int count = 0;
         for (T element : collection) {
-            if (element % 2 != 0) {
+            if (element.intValue() % 2 != 0) {
                 count++;
             }
         }
