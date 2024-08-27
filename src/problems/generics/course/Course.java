@@ -31,10 +31,9 @@ public class Course< S, G extends Number>
         for (Map.Entry<S, G> entry : entries) {
             System.out.println("Student ID: " + entry.getKey() + ", Grade: " + entry.getValue());
         }
-
     }
-
-    public boolean isStudentEnrolled(S studentId) {
-        return studentGrades.containsKey(studentId);
-    }
+//
+//    public boolean isStudentEnrolled(S studentId) {
+//        return studentGrades.containsKey(studentId);
+//    }
 }
