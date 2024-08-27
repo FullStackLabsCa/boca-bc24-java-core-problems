@@ -39,5 +39,14 @@ public class GenericLauncher {
         java.listAllStudents();
 
 
+        System.out.println("\n\nOddInteher class is invoked");
+        List<Integer> integerArrayList = new ArrayList<>();
+        integerArrayList.add(12);
+        integerArrayList.add(3);
+        integerArrayList.add(8);
+        integerArrayList.add(5);
+        integerArrayList.add(7);
+        integerArrayList.add(2);
+        GenericProblems.occureneceOfOddNumbers(integerArrayList);
     }
 }

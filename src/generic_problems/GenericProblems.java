@@ -1,5 +1,6 @@
 package generic_problems;
 
+import java.util.Collection;
 import java.util.List;
 
 public class GenericProblems {
@@ -23,5 +24,18 @@ public class GenericProblems {
             }
         }
         return count;
+    }
+
+    // Generic Third Question
+    public static <T extends Integer> void occureneceOfOddNumbers(Collection<T> integerColection) {
+        int count = 0;
+
+        for (T integer : integerColection) {
+            if (Integer.valueOf(integer) % 2 != 0) {
+                count++;
+            }
+        }
+
+        System.out.println("No of Odd Integers = " + count);
     }
 }
