@@ -1,9 +1,9 @@
-package gradebook;
+package genericsproblems;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GradeBook <T extends Number> {
+public class GradeBook<T extends Number> {
 
     private List<T> grades;
 
