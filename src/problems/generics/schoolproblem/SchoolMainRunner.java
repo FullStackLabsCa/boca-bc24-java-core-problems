@@ -7,7 +7,6 @@ import java.util.Set;
 public class SchoolMainRunner {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-//        School school = new School();
         School<String, String, Integer> school = new School<>();
 
         while (true) {
@@ -25,9 +24,8 @@ public class SchoolMainRunner {
                 case 1:
                     System.out.println("How many courses do you have");
                     int courseSetSize = input.nextInt();
-                    input.nextLine();  // Consume newline
+                    input.nextLine();
 
-//                    Set<String> courseSet = new HashSet<>(Set.of());
                     for (int i = 0; i < courseSetSize; i++) {
                         System.out.print("Enter course " + (i + 1) + ":");
                         String courseName = input.nextLine();
@@ -38,11 +36,13 @@ public class SchoolMainRunner {
                     System.out.println();
                     break;
                 case 2:
+                    String studentName = "Rushi";
+
                     break;
-//                case 3:
-//                    break;
-//                case 4:
-//                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
                 case 5:
                     System.out.println("List of courses : ");
                     for (String course : school.getCourses()) {

@@ -32,8 +32,4 @@ public class Course< S, G extends Number>
             System.out.println("Student ID: " + entry.getKey() + ", Grade: " + entry.getValue());
         }
     }
-//
-//    public boolean isStudentEnrolled(S studentId) {
-//        return studentGrades.containsKey(studentId);
-//    }
 }
