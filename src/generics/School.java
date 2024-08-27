@@ -66,7 +66,7 @@ public class School<S , G extends Number> {
 
     //List all unique students in the school
     public void listAllStudentsInSchool(){
-        Set<S> listOfStudents = new HashSet<>();
+        Set<S> listOfStudents = new TreeSet<>();
 
         Collection<Course<S, G>> courses = schoolMap.values();
 
@@ -153,9 +153,18 @@ public class School<S , G extends Number> {
         delhiPublicSchool.enrollStudentToCourse("Satwik-Singla", "Math-2024");
         convent.enrollStudentToCourse(1, "math-24-25");
         convent.enrollStudentToCourse(332, "math-24-24");
+        convent.enrollStudentToCourse(332, "math-24-25");
 
         delhiPublicSchool.listAllStudentsInSchool();
+        convent.listAllStudentsInSchool();
 
+        delhiPublicSchool.assignGradeToStudentInCourse("Akshat-Singla", 3.4, "English-2024");
+        delhiPublicSchool.assignGradeToStudentInCourse("Akshat-Singla", 2.4, "English-2024");
+        delhiPublicSchool.assignGradeToStudentInCourse("Akshat-Singla", 3.0, "Math-2024");
+        delhiPublicSchool.assignGradeToStudentInCourse("Akshat-Singla", 3.1, "Science-2024");
+        delhiPublicSchool.assignGradeToStudentInCourse("Satwik-Singla", 3.7, "English-2024");
+
+        
     }
 
 }
