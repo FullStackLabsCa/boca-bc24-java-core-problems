@@ -20,25 +20,20 @@ public class Calculator {
     }
 
     public String calculate(String expression) {
-
         if (expression == null || expression.trim().isEmpty()) {
             return "Error: Input is empty or null";
         }
         expression = expression.replaceAll("\\s", "");
-
         if (expression.length() == 0) {
             return "Error: Input is empty or null";
         }
         try {
-
-
             Addition addition = new Addition();
             Subtraction subtraction = new Subtraction();
             Multiplication multiplication = new Multiplication();
             Division division = new Division();
             String[] parts = expression.split("(?<=[-+/*])|(?=[-+/*])");
             System.out.println(parts.length);
-
             if (parts.length != 3)
                 return "Error: Invalid input format";
             double number1 = Double.parseDouble(parts[0].trim());
@@ -60,7 +55,6 @@ public class Calculator {
                     System.out.println("Division of numbers are  ");
                     double div = division.division(number1, number2);
                     return String.valueOf(div);
-
                 case "*":
                     System.out.println("Multiplication of numbers are  ");
                     return String.valueOf(multiplication.multi(number1, number2));

@@ -1,4 +1,4 @@
-package GenricProblem;
+package GenricProblem.GradeBook;
 public class GradeBookMain {
     public static void main(String[] args) {
 

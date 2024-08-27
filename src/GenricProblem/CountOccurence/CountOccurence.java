@@ -1,4 +1,4 @@
-package GenricProblem;
+package GenricProblem.CountOccurence;
 
 public class CountOccurence {
     public static <T> int countOccurrences(T[] array, T element) {

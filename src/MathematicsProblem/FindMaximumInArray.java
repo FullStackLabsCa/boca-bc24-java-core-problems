@@ -2,13 +2,8 @@ package MathematicsProblem;
 
 public class FindMaximumInArray { ///ArrayListList
     public static void main(String[] args) {
-
-
         //    int[] number = {299, 3, 56, 87, 98, 4};
-
-
     }
-
     public static int findMax(int[] number) {
 
         if (number == null) {

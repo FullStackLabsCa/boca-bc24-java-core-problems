@@ -1,14 +1,13 @@
-package GenricProblem;
+package GenricProblem.GradeBook;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GradeBook<T extends Number & Comparable>{
-    private List<T> grades;
-
+    private List<T> grades;// type of  grades
     public GradeBook( ){
         grades = new  ArrayList<>();
-    }
+    } // list of grades
 
     public void addGrades( T grade){
         grades.add(grade);
