@@ -13,10 +13,10 @@ public class Problem {
 
 
     public static void main(String[] args) {
-       Integer [] numberArray = {1, 2, 3, 4, 6, 7, 229, 8, 15, 16, 17, 18};
+        Integer[] numberArray = {1, 2, 3, 4, 6, 7, 229, 8, 15, 16, 17, 18};
 
-       int max = Collections.max(Arrays.asList(numberArray));
-       int min = Collections.max(Arrays.asList(numberArray));
+        int max = Collections.max(Arrays.asList(numberArray));
+        int min = Collections.max(Arrays.asList(numberArray));
         System.out.println("Maximum number: " + max);
         System.out.println("Maximum number: " + min);
 

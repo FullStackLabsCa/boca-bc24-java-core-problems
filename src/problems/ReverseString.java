@@ -14,9 +14,6 @@ public class ReverseString {
         System.out.println("User input: " + stringInput);
 
 
-
-
-
         String rev = "";
         for (int i = 0; i < stringInput.length(); i++) {
             char ch = stringInput.charAt(i);
