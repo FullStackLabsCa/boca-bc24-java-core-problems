@@ -1,4 +1,4 @@
-import MathematicsProblem.Calculator.Calculator;
+import mathematicsproblem.Calculator.Calculator;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

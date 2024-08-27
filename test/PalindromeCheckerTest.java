@@ -1,4 +1,4 @@
-import MathematicsProblem.PalindromeChecker;
+import mathematicsproblem.PalindromeChecker;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
