@@ -15,13 +15,17 @@ public class GradeBook <T extends Number> {
     }
 
     //Method to add grades
-    public boolean addGrades(T grade){
+    public boolean addGrade(T grade){
 
         //Validate Input
         //.
         //Add to the GradeBook
         gradeBook.add(grade);
         return true;
+    }
+
+    public int getNumberOfGrades(){
+        return gradeBook.size();
     }
 
     //Calculate Average Grade
@@ -38,7 +42,7 @@ public class GradeBook <T extends Number> {
     }
 
     //Determine Highest Grade
-    public double getHighestGrade(){
+    public double findHighestGrade(){
         double max = gradeBook.get(0).doubleValue();
 
         for(T grade : gradeBook){
@@ -50,7 +54,7 @@ public class GradeBook <T extends Number> {
     }
 
     //Determine Lowest Grade
-    public double getLowestGrade(){
+    public double findLowestGrade(){
         double min = gradeBook.get(0).doubleValue();
 
         for(T grade : gradeBook){
@@ -64,20 +68,20 @@ public class GradeBook <T extends Number> {
     public static void main(String[] args) {
         GradeBook<Double> classA = new GradeBook<>();
 
-        classA.addGrades(85.0);
-        classA.addGrades(90.0);
+        classA.addGrade(85.0);
+        classA.addGrade(90.0);
 
         System.out.println("Class Average: " + classA.calculateAverage());
-        System.out.println("Highest Grade: " + classA.getHighestGrade());
-        System.out.println("Lowest Grade: " + classA.getLowestGrade());
+        System.out.println("Highest Grade: " + classA.findHighestGrade());
+        System.out.println("Lowest Grade: " + classA.findLowestGrade());
 
         GradeBook<Integer> classB = new GradeBook<>();
 
-        classB.addGrades(3);
-        classB.addGrades(4);
+        classB.addGrade(3);
+        classB.addGrade(4);
 
         System.out.println("Class Average: " + classB.calculateAverage());
-        System.out.println("Highest Grade: " + classB.getHighestGrade());
-        System.out.println("Lowest Grade: " + classB.getLowestGrade());
+        System.out.println("Highest Grade: " + classB.findHighestGrade());
+        System.out.println("Lowest Grade: " + classB.findLowestGrade());
     }
 }
