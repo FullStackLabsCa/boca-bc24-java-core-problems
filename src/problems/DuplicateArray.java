@@ -7,7 +7,7 @@ public class DuplicateArray {
         //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
         // to see how IntelliJ IDEA suggests fixing it.
 
-        int[] arr1 = {1,2,3,2,4,3,2};
+        int[] arr1 = {1,2,3,2,4,3};
         int[] duplicateArray  = duplicateValuesInArray(arr1);
         System.out.println("Merged Array");
         for (int element : duplicateArray){
