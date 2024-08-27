@@ -25,8 +25,8 @@ public class Main {
                 "list_courses", "report_unique_courses", "report_unique_students", "report_average_score",
                 "report_cumulative_average", "exit");
         String[] command;
-        School<String, String, Double> school = new School<>();
-        Course<String, Double> course;
+        School<Integer, Double> school = new School<>();
+        Course<Integer, Double> course;
 
         do {
             System.out.println("Please enter a command from the below list:\n");
@@ -35,7 +35,7 @@ public class Main {
             }
             command = scanner.nextLine().trim().split(" ");
             String courseIdentifier = "";
-            String studentIdentifier = "";
+            int studentIdentifier = 0;
             double grade = 0.0;
             if (listOfOperations.contains(command[0])) {
                 switch (command[0]) {
@@ -45,13 +45,13 @@ public class Main {
                         break;
                     case ENROLL_STUDENT:
                         courseIdentifier = command[1];
-                        studentIdentifier = command[2];
+                        studentIdentifier = Integer.parseInt(command[2]);
                         course = school.getCourse(courseIdentifier);
                         course.enrollStudent(studentIdentifier);
                         break;
                     case ASSIGN_GRADE:
                         courseIdentifier = command[1];
-                        studentIdentifier = command[2];
+                        studentIdentifier = Integer.parseInt(command[2]);
                         grade = Double.parseDouble(command[3]);
                         course = school.getCourse(courseIdentifier);
                         course.assignGrade(studentIdentifier, grade);
@@ -63,7 +63,7 @@ public class Main {
                         System.out.println(course.getStudentToGrade());
                         break;
                     case LIST_COURSES:
-//                        school.getSchoolToCourses()
+                        System.out.println(school.getSchoolToCourses().keySet());
                         break;
                     case REPORT_UNIQUE_COURSES:
                         break;
