@@ -59,18 +59,18 @@ public class GenericClassTest {
 
 
 
-//        List<Integer> intlist =new ArrayList<>();
-//        intlist.add(1);
-//        intlist.add(2);
-//        intlist.add(3);
-//
-//        List<String> stringlist =new ArrayList<>();
-//        stringlist.add("Hello");
-//        stringlist.add("How");
-//        stringlist.add("are you ?");
-//
-//        System.out.println(Arrays.toString(listToArray(intlist)));
-//        System.out.println(Arrays.toString(listToArray(stringlist)));
+        List<Integer> intlist =new ArrayList<>();
+        intlist.add(1);
+        intlist.add(2);
+        intlist.add(3);
+
+        List<String> stringlist =new ArrayList<>();
+        stringlist.add("Hello");
+        stringlist.add("How");
+        stringlist.add("are you ?");
+
+        System.out.println(Arrays.toString(listToArray(intlist)));
+        System.out.println(Arrays.toString(listToArray(stringlist)));
 
 //       Integer[] intArray = {1,2,3,1,4,1,5,1,6};
 //        System.out.println("Count Occurence in Int Array is => " + countOccurrences(intArray,1));
@@ -78,18 +78,18 @@ public class GenericClassTest {
 //        System.out.println("Count Occurence in String Array is => " + countOccurrences(strArray,"hello"));
 
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter Size of an array => ");
-        int size = scanner.nextInt();
-        int[] intArray = new int[size];
-        System.out.println("Enter elements in the array => ");
-        int ele = 0;
-        for(int i = 0;i<intArray.length;i++){
-            ele = scanner.nextInt();
-            intArray[i] = ele;
-        }
-        System.out.println(Arrays.toString(intArray));
-        System.out.println("Count of Odd Integers in Collection => " + countOddIntegers(intArray));
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.println("Enter Size of an array => ");
+//        int size = scanner.nextInt();
+//        int[] intArray = new int[size];
+//        System.out.println("Enter elements in the array => ");
+//        int ele = 0;
+//        for(int i = 0;i<intArray.length;i++){
+//            ele = scanner.nextInt();
+//            intArray[i] = ele;
+//        }
+//        System.out.println(Arrays.toString(intArray));
+//        System.out.println("Count of Odd Integers in Collection => " + countOddIntegers(intArray));
 
     }
     //PROBLEM : GENERIC CONTAINER
@@ -195,15 +195,14 @@ public class GenericClassTest {
 //        }
 
     //PROBLEM : GENERIC METHOD TO CONVERT LIST TO ARRAY
-//    public static <T> T[] listToArray(List<T> list){
-////        T[] arr = new T[list.size()];
-//        Object[] tempArray = new Object[list.size()];
-//        for(int i = 0; i< list.size();i++){
-//            tempArray[i] = list.get(i);
-//        }
-//        return (T[])tempArray;
-//
-//    }
+    public static <T> T[] listToArray(List<T> list){
+        Object[] tempArray = new Object[list.size()];
+        for(int i = 0; i< list.size();i++){
+            tempArray[i] = list.get(i);
+        }
+        return (T[])tempArray;
+
+    }
 
 
 
@@ -219,14 +218,14 @@ public class GenericClassTest {
 //    }
 
 //  PROBLEM : COUNTING ODD INTEGERS IN COLLECTION
-    public static <T> int countOddIntegers(int[] array){
-        int count = 0;
-        for(int i = 0;i< array.length;i++){
-            if(array[i]%2 != 0){
-                count ++;
-            }
-        }
-        return count;
-    }
+//    public static <T> int countOddIntegers(int[] array){
+//        int count = 0;
+//        for(int i = 0;i< array.length;i++){
+//            if(array[i]%2 != 0){
+//                count ++;
+//            }
+//        }
+//        return count;
+//    }
 
 }

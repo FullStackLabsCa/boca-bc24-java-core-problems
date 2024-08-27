@@ -1,20 +1,22 @@
-package course;
-
-public class MainRunner {
-    public static void main(String[] args) {
-
-        Course<Student, Integer> course = new Course<>();
-        Course course1 = new Course<>();
-//        Course student1 = new Student();
-        course1.setStudentName("Mann");
-        course1.setStudentId(1);
-        Course course2 = new Course<>();
-        course2.setStudentName("Abhay");
-        course2.setStudentId(2);
-
-        course.enrollStudent(course1, 90);
-        course.enrollStudent(course2,85);
-
-        System.out.println(course.getStudentToGradeMap());
-    }
-}
+//package course;
+//
+//public class MainRunner {
+//    public static void main(String[] args) {
+////        Course<String, Integer> course = new Course();
+////
+////        System.out.println(course.enrollStudent("Mann",90));
+//        // Create a Course with appropriate generics
+//        Course<Student, Integer> course = new Course<>();
+//
+//        // Create a Student object
+//        Student student = new Student();
+//        student.setName("Mann");
+//        student.setStudentId(1);
+//
+//        // Enroll the student with a grade
+//        course.enrollStudent(student, 90);
+//
+//        // Print course details
+//        System.out.println(course.getCourse());
+//    }
+//}
