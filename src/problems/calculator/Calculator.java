@@ -62,41 +62,40 @@ public class Calculator {
         listString = new ArrayList<>(listString);
 
 
-        int startPosition = startpriorityOperator(listString);
+        int startPosition = startPriorityOperator(listString);
         double partAnswer=0;
         int ctr;
         if (startPosition > 0) {
             while (startPosition > 0) {
-                int endPosition = endpriorityOperator(listString);
+                int endPosition = endPriorityOperator(listString);
 
                 List<String> slicedStringList = listString.subList(startPosition + 1, endPosition);
                 System.out.println("slicedStringList = " + slicedStringList);
                 int tempStartPosition = startPosition;
                 int tempEndPosition = listString.toArray().length - endPosition;
-                startPosition = startpriorityOperator(slicedStringList);
+                startPosition = startPriorityOperator(slicedStringList);
                 ctr=1;
                 while (startPosition > 0) {
-                    endPosition = endpriorityOperator(slicedStringList);
+                    endPosition = endPriorityOperator(slicedStringList);
                     tempStartPosition = tempStartPosition + startPosition + 1;
                     tempEndPosition = endPosition - startPosition;
                     slicedStringList = slicedStringList.subList(startPosition + 1, endPosition);
-                    startPosition = startpriorityOperator(slicedStringList);
+                    startPosition = startPriorityOperator(slicedStringList);
                     ctr--;
                 }
                 System.out.println("slicedStringList" + slicedStringList + "start position" + tempStartPosition + "tempEndPosition" + tempEndPosition);
                 if(ctr<1) {
-                    int initialcountBrackets = 0;
-                    int bracketsIndex = 0;
+
                     removeBrackets(slicedStringList, listString, tempStartPosition, tempEndPosition);
                     partAnswer = arithmeticOperation(slicedStringList);
                     removeParanthrisAnswer(tempStartPosition, tempStartPosition + tempEndPosition, listString, partAnswer);
                 }
                 else{
-                    removeBrackets(slicedStringList, listString, startpriorityOperator(listString), slicedStringList.size()+1);
+                    removeBrackets(slicedStringList, listString, startPriorityOperator(listString), slicedStringList.size()+1);
                     partAnswer = arithmeticOperation(slicedStringList);
-                    removeParanthrisAnswer(tempStartPosition, endpriorityOperator(listString) , listString, partAnswer);
+                    removeParanthrisAnswer(tempStartPosition, endPriorityOperator(listString) , listString, partAnswer);
                 }
-                startPosition = startpriorityOperator(listString);
+                startPosition = startPriorityOperator(listString);
 
             }
 
@@ -129,7 +128,7 @@ public class Calculator {
     }
 
 
-    private static int startpriorityOperator(List<String> listString) {
+    private static int startPriorityOperator(List<String> listString) {
         for (int i = 0; i < listString.toArray().length; i++) {
             if (listString.get(i).startsWith("(")) {
                 return i;
@@ -138,7 +137,7 @@ public class Calculator {
         return -1;
     }
 
-    private static int endpriorityOperator(List<String> listString) {
+    private static int endPriorityOperator(List<String> listString) {
         for (int j = listString.toArray().length - 1; j > 0; j--) {
             System.out.println(listString.get(j));
             if (listString.get(j).endsWith(")")) {
