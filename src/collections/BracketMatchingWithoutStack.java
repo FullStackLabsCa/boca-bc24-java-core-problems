@@ -14,7 +14,7 @@ public class BracketMatchingWithoutStack {
         }
 
         //Otherwise
-        if((input.length() % 2) != 0) {
+        if((input.trim().length() % 2) != 0) {
             return false;
         }
 
@@ -24,19 +24,14 @@ public class BracketMatchingWithoutStack {
         bracketMapping.put('[',']');
 
         boolean result = false;
-        String openings = input.substring(0, input.length() / 2);
-        String closings = input.substring((input.length() / 2));
 
         //Add Validation if opening contain any of the keys from the bracketsMapping then return false
         //Not sure if it is required right now. So Skipping.
         //What if we want to add " " , or ' ' , or / / to the map
 
-        // Reverse String closings
-        String reversedClosings = StringReversal.stringReveral(closings);
-
-        //Check for the match of opening and closing string
-        for (int i = 0; i < openings.length(); i++) {
-            if(reversedClosings.charAt(i) == bracketMapping.get(openings.charAt(i))){
+        //Check for the match of first and last character coming towards the middle
+        for (int i = 0; i < (input.trim().length() / 2); i++) {
+            if(input.trim().charAt(input.length() - i - 1) == bracketMapping.get(input.trim().charAt(i))){
                 result = true;
             } else {
                 return false;
@@ -56,6 +51,8 @@ public class BracketMatchingWithoutStack {
 //        System.out.println(BracketMatchingWithoutStack.matchBrackets(""));
 //        System.out.println(BracketMatchingWithoutStack.matchBrackets(null));
 //        System.out.println(BracketMatchingWithoutStack.matchBrackets("aabb"));
+
+        //The code will FAIL for this "[()()]"
 
     }
 }
