@@ -1,4 +1,4 @@
-package problems;
+package calculator;
 
 public class Substraction {
 

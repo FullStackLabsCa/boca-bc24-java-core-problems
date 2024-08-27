@@ -1,24 +1,23 @@
 package genricproblem;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static java.lang.System.in;
-
-public class GradeBook <T extends Number>{
-    private List<T> grades = getGrades();
+public class GradeBook<T extends Number & Comparable<T>>{
+    private List<T> grades;
 
     //constructor
 
     public GradeBook() {
-        grades=new ArrayList<>();
+        this.grades = new ArrayList<>();
     }
+
 
     //add the grade
 
-    public void addGarde(List<T> grade) {
-        this.grades = grade;
+    public void addGarde(T grade) {
+
+        this.grades.add(grade);
     }
 
     //calculate the average grade
@@ -27,49 +26,63 @@ public class GradeBook <T extends Number>{
             throw new IllegalStateException(" NO grades are available to calculate. ");
         }
         double sum=0;
-        for(T grade : grades){
-        sum+= grade.doubleValue();
-        }
-        return sum / grades.size();
+        for(T grade : grades) {
+                sum += grade.doubleValue();
+            }
+
+        return  sum / grades.size();
     }
 
     //find the highest grade
 
     public T getHighestGrade(){
         if(grades.isEmpty()){
-            throw new IllegalStateException("no grades available to determine the highest");
+            return null;
         }
-        return Collections.max(grades,(g1,g2)->Double.compare(g1.doubleValue(), g2.doubleValue()));
+
+        T max = grades.get(0);
+        for (T grade: grades){
+            if(grade.compareTo(max)>0){
+                max = grade;
+            }
+        }
+        return max;
 
     }
     //find the lowest grade
-
     public T getLowestGrade(){
         if(grades.isEmpty()){
-            throw new IllegalStateException(" no lowest grade available to dteremine");
+            return  null;
         }
-        return Collections.min(grades,(g1,g2)->Double.compare(g1.doubleValue(), g2.doubleValue()));
+        T min = grades.get(0);
+        for(T grade: grades){
+            if(grade.compareTo(min)<0){
+                min=grade;
+            }
+        }
+    return min;
     }
 
     //get all the grades
 
     public List<T> getGrades() {
-        assert grades != null;
-        return new ArrayList<>(grades);
+        return new ArrayList<>(grades); //RETURN the copy of list
     }
 
     public static void main(String[] args) {
         // create grade book for integer grade
         GradeBook<Integer> integerGradeBook = new GradeBook<>();
-        integerGradeBook.addGarde(Collections.singletonList(87));
-        integerGradeBook.addGarde(Collections.singletonList(75));
-        integerGradeBook.addGarde(Collections.singletonList(57));
+        integerGradeBook.addGarde(87);
+        integerGradeBook.addGarde(75);
+        integerGradeBook.addGarde(57);
+        integerGradeBook.addGarde(67);
 
         //print average , highest and lowest grades
 
         System.out.println("integer grade book");
-        System.out.println("Average : "+integerGradeBook.calculateAverage());
-        System.out.println("");
+        System.out.println("Average garde: "+integerGradeBook.calculateAverage());
+        System.out.println("highest grade : "+integerGradeBook.getHighestGrade());
+        System.out.println(("Lowest grade : "+integerGradeBook.getLowestGrade()));
 
 
     }

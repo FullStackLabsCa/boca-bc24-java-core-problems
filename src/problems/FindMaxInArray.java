@@ -1,4 +1,4 @@
-package arrays;
+package problems;
 
 public class FindMaxInArray {
     public static void main(String[] args) {
