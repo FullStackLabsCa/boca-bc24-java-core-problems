@@ -1,4 +1,4 @@
-package previous;
+package problems;
 
 import java.util.Arrays;
 import java.util.OptionalInt;

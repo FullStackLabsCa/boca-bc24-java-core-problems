@@ -1,4 +1,4 @@
-package previous;
+package problems;
 
 public class SumAllInArray {
     public static void main(String[] args) {

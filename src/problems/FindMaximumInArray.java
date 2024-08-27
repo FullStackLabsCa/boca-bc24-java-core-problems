@@ -1,7 +1,6 @@
-package previous;
+package problems;
 
 import java.util.Arrays;
-import java.util.OptionalInt;
 
 public class FindMaximumInArray {
     public static int findMax(int[] numbers) {

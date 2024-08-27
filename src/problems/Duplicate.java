@@ -1,4 +1,4 @@
-package previous;
+package problems;
 
 public class Duplicate {
     public static void main(String[] args) {

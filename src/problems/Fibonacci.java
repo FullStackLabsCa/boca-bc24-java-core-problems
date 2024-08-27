@@ -1,8 +1,7 @@
-package previous;
+package problems;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import java.util.Scanner;
 
 public class Fibonacci {
@@ -44,7 +43,7 @@ public class Fibonacci {
             second = sum;
             fibonacci.add(sum);
         }
-        System.out.println("problems.Fibonacci Series up to " +n+" numbers: " + fibonacci );
+        System.out.println("problems.Fibonacci Series up to " + n + " numbers: " + fibonacci );
         return fibonacci;
     }
 }
