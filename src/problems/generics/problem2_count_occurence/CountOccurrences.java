@@ -4,16 +4,18 @@ package problems.generics.problem2_count_occurence;
 public class CountOccurrences {
     public static <T> int countOccurrences(T[] array, T element) {
         int count = 0;
+        if (array == null) {
+            return count;
+        }
         for (T e : array) {
-            if (e.toString().equalsIgnoreCase(element.toString()))
-//            if (e.toString().toLowerCase().equals(element.toString().toLowerCase()))
-            {
+            if (e == null && element == null) {
+                count++;
+            } else if ((e != null) && e.equals(element)) {
                 count++;
             }
         }
         return count;
     }
-
 
 
     public static void main(String[] args) {
@@ -23,8 +25,8 @@ public class CountOccurrences {
 
         System.out.println("countOccurrences(array, \"jade\") = " + countOccurrences(array, "jade"));
 
-        Integer[] intArray = {1, 2, 3, 4, 5, 6, 3, 2, 4, 4, 4, 4};
-        System.out.println("countOccurrences(intArray, 4) = " + countOccurrences(intArray, 4));
+        Integer[] intArray = { 3, 2, null, null, 4, 4};
+        System.out.println("countOccurrences(intArray, null) = " + countOccurrences(intArray, null));
         System.out.println("countOccurrences(intArray, 3) = " + countOccurrences(intArray, 3));
     }
 
