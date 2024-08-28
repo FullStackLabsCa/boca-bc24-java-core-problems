@@ -2,21 +2,22 @@
 package generics;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class GradeBook<T extends Number & Comparable<T>> {
     private List<T> gradeList = new ArrayList();
+    StringBuilder methodReturnString = new StringBuilder();
 
     public String toString() {
         return "GradeBook{gradeList=" + this.gradeList + "}";
     }
 
-    public GradeBook() {
-    }
-
     public void addGrade(T grade) {
         this.gradeList.add(grade);
+    }
+
+    public int getNumberOfGrades() {
+        return this.gradeList.size();
     }
 
     public void removeGrade(T grade) {
@@ -26,23 +27,27 @@ public class GradeBook<T extends Number & Comparable<T>> {
 
     }
 
-    public double calculateAverage() {
+    public void removeAllGrades() {
+        this.gradeList.clear();
+    }
+
+    public String calculateAverage() {
         double sum = 0.0;
         if (this.gradeList.isEmpty()) {
-            System.out.println("List is empty, Please add elements before calling this method.");
+            return "No grades available to calculate the average.";
         } else {
             for (T grade: gradeList) {
                 sum += grade.doubleValue();
             }
         }
 
-        return sum / (double)this.gradeList.size();
+        return methodReturnString.append("Average grade: ").append(sum / (double)this.gradeList.size()).toString();
     }
 
-    public T findHighestGrade() {
+    public String findHighestGrade() {
         T highestGrade = null;
         if (this.gradeList.isEmpty()) {
-            System.out.println("List is empty, Please add elements before calling this method.");
+            return "No grades available to find the highest grade.";
         } else {
             highestGrade = gradeList.get(0);
 
@@ -53,13 +58,13 @@ public class GradeBook<T extends Number & Comparable<T>> {
             }
         }
 
-        return highestGrade;
+        return methodReturnString.append("Highest grade: ").append(highestGrade).toString();
     }
 
-    public T findLowestGrade() {
+    public String findLowestGrade() {
         T lowestGrade = null;
         if (this.gradeList.isEmpty()) {
-            System.out.println("List is empty, Please add elements before calling this method.");
+            return "No grades available to find the lowest grade.";
         } else {
             lowestGrade = gradeList.get(0);
 
@@ -70,37 +75,47 @@ public class GradeBook<T extends Number & Comparable<T>> {
             }
         }
 
-        return lowestGrade;
+        return methodReturnString.append("Lowest grade: ").append(lowestGrade).toString();
     }
 
     public static void main(String[] args) {
-        GradeBook<Double> gradeBookDouble = new GradeBook();
-        gradeBookDouble.addGrade(19.2);
-        gradeBookDouble.addGrade(18.2);
-        gradeBookDouble.addGrade(17.3);
-        gradeBookDouble.addGrade(15.4);
-        gradeBookDouble.addGrade(13.4);
-        gradeBookDouble.addGrade(12.4);
+        GradeBook<Double> doubleGradeBook = new GradeBook();
 
         System.out.println("\n==============Gradebook Double List===========");
-        System.out.println("gradeBook double list = " + gradeBookDouble);
-        System.out.println("gradeBook.calculateAverage() = " + gradeBookDouble.calculateAverage());
-        System.out.println("gradeBook.findHighestGrade() = " + gradeBookDouble.findHighestGrade());
-        System.out.println("gradeBook.findLowestGrade() = " + gradeBookDouble.findLowestGrade());
-        gradeBookDouble.removeGrade(17.3);
-        System.out.println("gradeBook double list after removing [17.30] = " + gradeBookDouble);
-        System.out.println("\n==============Gradebook Integer List===========");
+        doubleGradeBook.addGrade(85.0);
+        doubleGradeBook.addGrade(90.0);
+        System.out.println("doubleGradeBook.getNumberOfGrades() = " + doubleGradeBook.getNumberOfGrades());
 
-        GradeBook<Integer> gradeBookInteger = new GradeBook();
-        gradeBookInteger.addGrade(19);
-        gradeBookInteger.addGrade(20);
-        gradeBookInteger.addGrade(17);
-        System.out.println("gradeBook integer list = " + gradeBookInteger);
-        System.out.println("gradeBook.calculateAverage() = " + gradeBookInteger.calculateAverage());
-        System.out.println("gradeBook.findHighestGrade() = " + gradeBookInteger.findHighestGrade());
-        System.out.println("gradeBook.findLowestGrade() = " + gradeBookInteger.findLowestGrade());
-        gradeBookInteger.removeGrade(17);
-        gradeBookInteger.removeGrade(200);
-        System.out.println("gradeBook integer list after removing [17, 200] = " + gradeBookInteger);
+        doubleGradeBook.addGrade(85.0);
+        doubleGradeBook.addGrade(90.0);
+        doubleGradeBook.addGrade(95.0);
+
+        doubleGradeBook.removeAllGrades();
+
+        System.out.println(doubleGradeBook.calculateAverage());
+
+        System.out.println(doubleGradeBook.findHighestGrade());
+
+        System.out.println(doubleGradeBook.findLowestGrade());
+
+        GradeBook<Integer> integerGradeBook = new GradeBook();
+
+        System.out.println("\n==============Gradebook Double List===========");
+        integerGradeBook.addGrade(85);
+        integerGradeBook.addGrade(90);
+        System.out.println("integerGradeBook.getNumberOfGrades() = " + integerGradeBook.getNumberOfGrades());
+
+        integerGradeBook.addGrade(89);
+        integerGradeBook.addGrade(92);
+        integerGradeBook.addGrade(95);
+
+        integerGradeBook.removeAllGrades();
+
+        System.out.println(integerGradeBook.calculateAverage());
+
+        System.out.println(integerGradeBook.findHighestGrade());
+
+        System.out.println(integerGradeBook.findLowestGrade());
+
     }
 }
