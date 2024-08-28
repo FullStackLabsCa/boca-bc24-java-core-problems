@@ -16,7 +16,7 @@ public class FindMaximumInArray {
 
 
     public static void main(String[] args) {
-       int[] array = {122,122,1342,1,2,3,1};
+       int[] array = {};
         System.out.println(findMax(array));
     }
 
