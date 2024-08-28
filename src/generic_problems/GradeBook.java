@@ -4,70 +4,88 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GradeBook<T extends Number> {
-    public List<T> grade;
+    public List<T> gradeList;
 
     public GradeBook() {
-        this.grade = new ArrayList<>();
+        this.gradeList = new ArrayList<>();
     }
 
-    public List<T> addingGrades(T t) {
-        grade.add(t);
-        return grade;
+    public List<T> addGrade(T t) {
+        gradeList.add(t);
+        return gradeList;
     }
 
-    public double calculateAverage(List<T> list) {
-        double avg = 0.0, sum = 0;
+    public String calculateAverage() {
+        double avg, sum = 0;
         int count = 0;
-        if (list.isEmpty() || list == null) {
-            sum = 0.0;
+        String output;
+        if (gradeList==null||gradeList.isEmpty()) {
+            output = "No grades available to calculate the average.";
         } else {
-            for (T t : list) {
+            for (T t : gradeList) {
                 sum = sum + t.doubleValue();
                 count++;
             }
+            avg = sum / count;
+            output ="Average grade: "+avg;
         }
-        avg = sum / count;
-        return avg;
+        return output;
     }
 
-    public double highestGrades(List<T> list) {
-        double max = 0;
-        if (list.isEmpty() || list == null) {
-            max = 0.0;
+    public String findHighestGrade() {
+        T max;
+        String output;
+        if (gradeList==null||gradeList.isEmpty()) {
+            output ="No grades available to find the highest grade.";
         } else {
-            max = list.get(0).doubleValue();
-            for (T t : list) {
-                if (max < t.doubleValue()) {
-                    max = t.doubleValue();
+            max = gradeList.get(0);
+            for (T t : gradeList) {
+                if (max.doubleValue() < t.doubleValue()) {
+                    max = t;
                 }
             }
+            output ="Highest grade: "+max;
         }
-        return max;
+        return output;
     }
 
-    public double lowestGrades(List<T> list) {
-        double min = 0;
-        if (list.isEmpty() || list == null) {
-            min = 0.0;
+    public String findLowestGrade() {
+        T min;
+        String output;
+        if (gradeList==null||gradeList.isEmpty()) {
+            output ="No grades available to find the lowest grade.";
         } else {
-            min = list.get(0).doubleValue();
-            for (T t : list) {
-                if (min > t.doubleValue()) {
-                    min = t.doubleValue();
+            min = gradeList.get(0);
+            for (T t : gradeList) {
+                if (min.doubleValue() > t.doubleValue()) {
+                    min = t;
                 }
             }
+            output ="Lowest grade: "+min;
         }
-        return min;
+        return output;
+    }
+
+    public int getNumberOfGrades() {
+        int gradeListSize=0;
+        if (gradeList==null||gradeList.isEmpty()) {
+            gradeListSize=0;
+        } else {
+            gradeListSize = gradeList.size();
+        }
+        return gradeListSize;
     }
 
     public static void main(String[] args) {
         GradeBook<Number> gradeBook = new GradeBook<>();
-        gradeBook.addingGrades(45);
-        gradeBook.addingGrades(59.6);
-        gradeBook.addingGrades(89.9);
-        System.out.println("List of Grades is : "+gradeBook.grade);
-        System.out.println("Average of a Grades is : "+gradeBook.calculateAverage(gradeBook.grade));
-        System.out.println("Highest Grades is : "+gradeBook.highestGrades(gradeBook.grade));
-        System.out.println("Lowest Grade is : "+gradeBook.lowestGrades(gradeBook.grade));
+        gradeBook.addGrade(45);
+        gradeBook.addGrade(59.6);
+        gradeBook.addGrade(89.9);
+        System.out.println("List of Grades is : "+gradeBook.gradeList);
+        System.out.println("Average of a Grades is : "+gradeBook.calculateAverage());
+        System.out.println("Highest Grades is : "+gradeBook.findHighestGrade());
+        System.out.println("Lowest Grade is : "+gradeBook.findLowestGrade());
     }
+
+
 }
