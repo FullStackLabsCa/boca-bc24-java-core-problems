@@ -19,17 +19,17 @@ public class CourseTest {
 
     @Test
     public void testEnrollStudent() {
-        course.isStudentEnrolled(12345);
+        course.enrollStudent(12345);
         assertTrue(course.isStudentEnrolled(12345));
 
         // Attempting to enroll the same student should not change anything
-        course.isStudentEnrolled(12345);
+        course.enrollStudent(12345);
         assertEquals(1, course.getAllGrades().size());
     }
 
     @Test
     public void testAssignGrade() {
-        course.isStudentEnrolled(12345);
+        course.enrollStudent(12345);
         course.assignGrade(12345, 95.0);
         assertEquals(Optional.of(95.0), course.getGrade(12345));
     }
@@ -42,7 +42,7 @@ public class CourseTest {
 
     @Test
     public void testGetGrade() {
-        course.isStudentEnrolled(12345);
+        course.enrollStudent(12345);
         course.assignGrade(12345, 95.0);
         Optional<Double> grade = course.getGrade(12345);
         assertTrue(grade.isPresent());
@@ -51,9 +51,9 @@ public class CourseTest {
 
     @Test
     public void testGetAllGrades() {
-        course.isStudentEnrolled(12345);
+        course.enrollStudent(12345);
         course.assignGrade(12345, 95.0);
-        course.isStudentEnrolled(67890);
+        course.enrollStudent(67890);
         course.assignGrade(67890, 88.0);
 
         Map<Integer, Double> grades = course.getAllGrades();
@@ -64,9 +64,9 @@ public class CourseTest {
 
     @Test
     public void testListAllGrades() {
-        course.isStudentEnrolled(12345);
+        course.enrollStudent(12345);
         course.assignGrade(12345, 95.0);
-        course.isStudentEnrolled(67890);
+        course.enrollStudent(67890);
 
         course.listAllGrades();
 
@@ -76,7 +76,7 @@ public class CourseTest {
 
     @Test
     public void testIsStudentEnrolled() {
-        course.isStudentEnrolled(12345);
+        course.enrollStudent(12345);
         assertTrue(course.isStudentEnrolled(12345));
         assertFalse(course.isStudentEnrolled(67890));
     }

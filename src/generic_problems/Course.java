@@ -26,7 +26,7 @@ public void enrollStudent(S student){
             System.out.println(student + " is already enrolled");
             enrolled=true;
         } else {
-            enrollStudent(student);
+            enrolled=false;
         }
         return enrolled;
     }
