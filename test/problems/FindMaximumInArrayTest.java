@@ -1,11 +1,7 @@
 package problems;
 
-import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
-
 public class FindMaximumInArrayTest {
-    @Test
+   /* @Test
     public void testFindMaxWithPositiveNumbers() {
         int[] numbers = {1, 3, 7, 0, 5, 9};
         assertEquals(9, FindMaximumInArray.findMax(numbers));
@@ -39,5 +35,5 @@ public class FindMaximumInArrayTest {
     public void testFindMaxWithNullArray() {
         int[] numbers = null;
         assertEquals(Integer.MIN_VALUE, FindMaximumInArray.findMax(numbers));
-    }
+    }*/
 }

@@ -1,10 +1,14 @@
 package problems.genrics;
 
+import java.util.Objects;
+
 public class CountOccurrences {
     public static <T> int countOccurrences(T[] array, T element){
         int ctr =0;
+
+
         for(int i =0; i< array.length;i++){
-            if(array[i].equals(element)){
+            if(Objects.equals(array[i],element)){
                 ctr++;
             }
         }
