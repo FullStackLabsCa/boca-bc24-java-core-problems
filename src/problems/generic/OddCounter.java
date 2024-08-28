@@ -3,13 +3,13 @@ package problems.generic;
 import java.util.*;
 
 @SuppressWarnings("java:S106")
-public class Problem5CountingOddIntegers {
-    public static Integer oddIntegers(Collection<Integer> collections) {
+public class OddCounter {
+    public static Integer countOddNumbers(Collection<Integer> collections) {
         if (collections.isEmpty()) return 0;
         int count = 0;
 
         for (Integer collection : collections) {
-            if (collection % 2 != 0)
+            if ( collection != null && collection % 2 != 0)
                 count++;
         }
 
@@ -25,7 +25,7 @@ public class Problem5CountingOddIntegers {
         arrayList.add(4);
         arrayList.add(5);
 
-        oddNumbersCountForArrayList = oddIntegers(arrayList);
+        oddNumbersCountForArrayList = countOddNumbers(arrayList);
         System.out.println("oddNumbersCountForArrayList = " + oddNumbersCountForArrayList);
 
         int oddNumbersCountForHashSet = 0;
@@ -37,7 +37,7 @@ public class Problem5CountingOddIntegers {
         hashSet.add(5);
         hashSet.add(7);
 
-        oddNumbersCountForHashSet = oddIntegers(hashSet);
+        oddNumbersCountForHashSet = countOddNumbers(hashSet);
         System.out.println("oddNumbersCountForHashSet = " + oddNumbersCountForHashSet);
     }
 }

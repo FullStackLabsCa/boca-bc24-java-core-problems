@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @SuppressWarnings("java:S106")
-public class Problem1ConvertListToArray {
+public class ListToArray {
     public static <T> T[] listToArray(List<T> list) {
         T[] array = (T[]) java.lang.reflect.Array.newInstance(list.get(0).getClass(), list.size());
 
