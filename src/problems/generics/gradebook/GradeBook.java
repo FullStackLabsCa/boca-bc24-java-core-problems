@@ -1,50 +1,75 @@
 package problems.generics.gradebook;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GradeBook<T extends Number> {
     List<T> gradeList = new ArrayList<>();
 
-    public Double sum(List<T> gradeList){
-        double totalSum= 0;
+    /*public Double sum(List<T> gradeList){
+        T totalSum= 0;
 
         for(T grade: gradeList) {
-            totalSum = totalSum + grade.doubleValue();
+            totalSum = totalSum + grade;
         }
         return totalSum;
-    }
+    }*/
 
-    public Double avg(List<T> gradeList){
+    public String calculateAverage(){
         double totalSum= 0;
         double avg= 0;
 
-        for(T grade: gradeList) {
-            totalSum = totalSum + grade.doubleValue();
+        if(gradeList.isEmpty()){
+            return "No grades available to calculate the average.";
         }
-        avg= totalSum/ gradeList.size();
-        return avg;
+        else {
+            for (T grade : gradeList) {
+                totalSum = totalSum + grade.doubleValue();
+            }
+            avg = totalSum / gradeList.size();
+        }
+        return "Average grade: "+avg;
     }
 
-    public Double min(List<T> gradeList){
-        double min=gradeList.get(0).doubleValue();
+    public String findLowestGrade() {
+        if (gradeList.isEmpty()) {
+            return "No grades available to find the lowest grade.";
+        } else {
+            T min = gradeList.get(0);
 
-        for(T grade: gradeList) {
-            if((grade.doubleValue() < min)) {
-                min =grade.doubleValue();
+            for (T grade : gradeList) {
+                if (grade.doubleValue() < min.doubleValue()) {
+                    min = grade;
+                }
             }
+            return "Lowest grade: " + min;
         }
-        return min;
     }
 
-    public Double max(List<T> gradeList){
-        double max=gradeList.get(0).doubleValue();
+    public String findHighestGrade() {
+        if (gradeList.isEmpty()) {
+            return "No grades available to find the highest grade.";
+        } else {
+            T max = gradeList.get(0);
 
-        for(T grade: gradeList) {
-            if((grade.doubleValue() > max)) {
-                max =grade.doubleValue();
+
+            for (T grade : gradeList) {
+                if (grade.doubleValue() > max.doubleValue()) {
+                    max = grade;
+                }
             }
+            return "Highest grade: " + max;
         }
-        return max;
+    }
+
+    public void addGrade(T v) {
+        gradeList.add(v);
+    }
+
+    public <T extends Number> int getNumberOfGrades() {
+
+        return gradeList.size();
     }
 }
