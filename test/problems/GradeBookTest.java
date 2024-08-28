@@ -1,27 +1,29 @@
-//package problems;
-//
-//import org.junit.Before;
-//import org.junit.Test;
-//
-//public class GradeBookTest {
-//    private GradeBook<Double> doubleGradeBook;
-//    private GradeBook<Integer> integerGradeBook;
-//
-//    @Before
-//    public void setUp() {
-//        doubleGradeBook = new GradeBook<>();
-//        integerGradeBook = new GradeBook<>();
-//    }
-//
-//    // Tests for Double GradeBook
-//    @Test
-//    public void testAddDoubleGrade() {
-//        doubleGradeBook.addGrade(85.0);
-//        doubleGradeBook.addGrade(90.0);
-//
-//        assertEquals(2, doubleGradeBook.getNumberOfGrades());
-//    }
-//
+package problems;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
+public class GradeBookTest {
+    private GradeBook<Double> doubleGradeBook;
+    private GradeBook<Integer> integerGradeBook;
+
+    @Before
+    public void setUp() {
+        doubleGradeBook = new GradeBook<>();
+        integerGradeBook = new GradeBook<>();
+    }
+
+    // Tests for Double GradeBook
+    @Test
+    public void testAddDoubleGrade() {
+        doubleGradeBook.addGrade(85.0);
+        doubleGradeBook.addGrade(90.0);
+
+        assertEquals(2, doubleGradeBook.getNumberOfGrades());
+    }
+
 //    @Test
 //    public void testCalculateDoubleAverage() {
 //        doubleGradeBook.addGrade(85.0);
@@ -114,4 +116,4 @@
 //    public void testFindLowestIntegerGradeWithNoGrades() {
 //        assertEquals("No grades available to find the lowest grade.", integerGradeBook.findLowestGrade());
 //    }
-//}
+}
