@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Course<S, G extends Number> {
 
-    Map<S, G> studentToGrade;
+    private final Map<S, G> studentToGrade;
 
     public Course(){
         this.studentToGrade = new HashMap<>();
