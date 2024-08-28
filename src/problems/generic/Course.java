@@ -27,6 +27,10 @@ public class Course<S, G extends Number> {
         return mapOfStudentToGrade;
     }
 
+    public Map<S, G> listAllGrades() {
+        return mapOfStudentToGrade;
+    }
+
     public void assignGrade(S key, G value) {
         if (key == null) {
             System.out.println("key should not be null..... ");
@@ -63,5 +67,4 @@ public class Course<S, G extends Number> {
 
         System.out.println("course.mapOfStudentToGrade = " + student.mapOfStudentToGrade);
     }
-
 }
