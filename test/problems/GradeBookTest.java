@@ -83,37 +83,37 @@ public class GradeBookTest {
 
         assertEquals("Average grade: 90.0", integerGradeBook.calculateAverage());
     }
-//
-//    @Test
-//    public void testCalculateIntegerAverageWithNoGrades() {
-//        assertEquals("No grades available to calculate the average.", integerGradeBook.calculateAverage());
-//    }
-//
-//    @Test
-//    public void testFindHighestIntegerGrade() {
-//        integerGradeBook.addGrade(85);
-//        integerGradeBook.addGrade(90);
-//        integerGradeBook.addGrade(95);
-//
-//        assertEquals("Highest grade: 95", integerGradeBook.findHighestGrade());
-//    }
-//
-//    @Test
-//    public void testFindHighestIntegerGradeWithNoGrades() {
-//        assertEquals("No grades available to find the highest grade.", integerGradeBook.findHighestGrade());
-//    }
-//
-//    @Test
-//    public void testFindLowestIntegerGrade() {
-//        integerGradeBook.addGrade(85);
-//        integerGradeBook.addGrade(90);
-//        integerGradeBook.addGrade(95);
-//
-//        assertEquals("Lowest grade: 85", integerGradeBook.findLowestGrade());
-//    }
-//
-//    @Test
-//    public void testFindLowestIntegerGradeWithNoGrades() {
-//        assertEquals("No grades available to find the lowest grade.", integerGradeBook.findLowestGrade());
-//    }
+
+    @Test
+    public void testCalculateIntegerAverageWithNoGrades() {
+        assertEquals("No grades available to calculate the average.", integerGradeBook.calculateAverage());
+    }
+
+    @Test
+    public void testFindHighestIntegerGrade() {
+        integerGradeBook.addGrade(85);
+        integerGradeBook.addGrade(90);
+        integerGradeBook.addGrade(95);
+
+        assertEquals("Highest grade: 95", integerGradeBook.findHighestGrade());
+    }
+
+    @Test
+    public void testFindHighestIntegerGradeWithNoGrades() {
+        assertEquals("No grades available to find the highest grade.", integerGradeBook.findHighestGrade());
+    }
+
+    @Test
+    public void testFindLowestIntegerGrade() {
+        integerGradeBook.addGrade(85);
+        integerGradeBook.addGrade(90);
+        integerGradeBook.addGrade(95);
+
+        assertEquals("Lowest grade: 85", integerGradeBook.findLowestGrade());
+    }
+
+    @Test
+    public void testFindLowestIntegerGradeWithNoGrades() {
+        assertEquals("No grades available to find the lowest grade.", integerGradeBook.findLowestGrade());
+    }
 }
