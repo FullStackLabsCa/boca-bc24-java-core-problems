@@ -1,6 +1,4 @@
-package genricproblem.Course;
-
-import com.sun.jdi.PathSearchingVirtualMachine;
+package genricexampleswithouttest;
 
 public class CourseMain {
     public static void main(String[] args) {

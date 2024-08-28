@@ -1,4 +1,4 @@
-package genricproblem.CountOccurence;
+package genricexampleswithouttest;
 
 public class CountOccurence {
     public static <T> int countOccurrences(T[] array, T element) {
@@ -10,4 +10,5 @@ public class CountOccurence {
         }
         return count;
     }
+
 }

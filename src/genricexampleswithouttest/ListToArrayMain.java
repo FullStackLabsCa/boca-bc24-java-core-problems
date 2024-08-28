@@ -1,4 +1,4 @@
-package genricproblem.ListToArray;
+package genricexampleswithouttest;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,5 +1,7 @@
-package genricproblem.ListToArray;
+package genricexampleswithouttest;
+
 import java.util.List;
+
 public class ListToArray {
     public static <T> T[] listToArray(List<T> list){
         T[] listArray = (T[]) new Object[list.size()];

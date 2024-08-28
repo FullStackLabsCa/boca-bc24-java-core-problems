@@ -1,7 +1,7 @@
-package genricproblem.Course;
-
-import java.util.*;
-
+package genricexampleswithouttest;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 public class CourseGeneric<S, G> {
     private G grade;
     Map<S, G> courseGpa = new HashMap<>();
@@ -33,6 +33,4 @@ public class CourseGeneric<S, G> {
         }
 
     }
-
 }
-
