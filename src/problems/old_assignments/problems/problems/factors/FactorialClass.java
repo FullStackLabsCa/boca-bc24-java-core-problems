@@ -1,4 +1,4 @@
-package problems.old_assignments.problems.problems;
+package problems.old_assignments.problems.problems.factors;
 
 import java.util.Scanner;
 
