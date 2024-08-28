@@ -22,24 +22,18 @@ public class ListToArray {
     public static <T> T[] listToArray(List<T> list, T[] array){
         if(list == null){
             return null;
-        }
-        if (list.equals(Collections.emptyList())){
+        } else if (list.isEmpty()) {
             return null;
         }
-        if(array == null){
-            System.out.println("Array cannot be null!!!");
-        }
-        int size = list.size();
-        if (array.length < size) {
+        else{
 
-            array = (T[]) Array.newInstance(array.getClass().getComponentType(), size);
+            for(int i = 0; i< list.size();i++){
+                array[i] = list.get(i);
+            }
+            return array;
         }
   //      System.out.println(array.getClass().getComponentType());
 
-        for(int i = 0; i< list.size();i++){
-            array[i] = list.get(i);
-        }
-        return array;
 
     }
 }
