@@ -1,9 +1,6 @@
-package countoccurrences;
+package genericsproblems;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
-public class Main {
+public class CountOccurances {
     public static void main(String[] args) {
         Integer[] inumber = {5,6,5,7,5,8};
         int count = countOccurrences(inumber,5);
