@@ -6,37 +6,55 @@ import java.util.List;
 public class GradeBook<G extends Number>{
     List<G> grades =new ArrayList<>();
 
-    public List<G> add (G grade){
+    public List<G> addGrade (G grade){
         grades.add(grade);
         return grades;
     }
 
-    public double average () {
+    public String  calculateAverage() {
         double sum = 0;
-        for ( G g : grades) {
-            sum  += g.doubleValue();
+        if(grades.isEmpty()){
+            return "No grades available to calculate the average.";
+        } else {
+
+            for (G g : grades) {
+                sum += g.doubleValue();
+            }
+            return "Average grade: " + sum / grades.size();
         }
-        return sum/grades.size();
     }
 
-    public double findMax() {
-        G max = grades.get(0);
-        for (G g : grades){
-            if (max.doubleValue() < g.doubleValue()){
-                max = g;
+    public String findHighestGrade() {
+        G max ;
+        if(grades.isEmpty()){
+            return "No grades available to find the highest grade.";
+        } else {
+            max = grades.get(0);
+            for (G g : grades) {
+                if (max.doubleValue() < g.doubleValue()) {
+                    max = g;
+                }
+            }
+            return "Highest grade: " + max;
+        }
+    }
+
+    public String findLowestGrade() {
+        G min;
+        if (grades.isEmpty()) {
+            return  "No grades available to find the lowest grade.";
+        } else {
+            min = grades.get(0);
+            for (G g : grades) {
+                if (min.doubleValue() > g.doubleValue()) {
+                    min = g;
+                }
             }
         }
-        return max.doubleValue();
+        return "Lowest grade: " + min;
     }
 
-    public double findMin() {
-        G min = grades.get(0);
-        for (G g: grades){
-            if (min.doubleValue() > g.doubleValue()){
-                min = g;
-            }
-        }
-        return min.doubleValue();
+    public int getNumberOfGrades() {
+        return grades.size();
     }
-
 }

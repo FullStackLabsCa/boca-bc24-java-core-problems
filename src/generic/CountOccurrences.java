@@ -1,6 +1,6 @@
 package generic;
 
-public class CountOccurrence {
+public class CountOccurrences {
 
     public static void main(String[] args) {
 
@@ -15,7 +15,9 @@ public class CountOccurrence {
 
         int count = 0;
         for (T t : array){
-           if (t.equals(element)){
+            if(t == null && element == null){
+                count++;
+            } else if (t != null && t.equals(element)){
                count++;
            }
         }
