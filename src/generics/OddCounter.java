@@ -2,7 +2,7 @@ package generics;
 
 import java.util.*;
 
-public class OddIntegers {
+public class OddCounter {
     public static void main(String[] args) {
         List<Integer> intList = Arrays.asList(1, 2, 3, 9, 4, 5, 6, 7, 8, 9, 10);
 
@@ -17,27 +17,31 @@ public class OddIntegers {
         List<Integer> mixedList = Arrays.asList(2, 3, 4, 5, 6, 7);
 
 
-        System.out.println("List : " + countOddIntegers(intList));
-        System.out.println("LinkedList : " + countOddIntegers(linkedList));
-        System.out.println("HashSet : " + countOddIntegers(hashSet));
-        System.out.println("TreeSet : " + countOddIntegers(treeSet));
-        System.out.println("linkedHashSet : " + countOddIntegers(linkedHashSet));
-        System.out.println("priorityQueue : " + countOddIntegers(priorityQueue));
-        System.out.println("emptyList : " + countOddIntegers(emptyList));
-        System.out.println("allOdds : " + countOddIntegers(allOdds));
-        System.out.println("allEvens : " + countOddIntegers(allEvens));
-        System.out.println("mixedList : " + countOddIntegers(mixedList));
+        System.out.println("List : " + countOddNumbers(intList));
+        System.out.println("LinkedList : " + countOddNumbers(linkedList));
+        System.out.println("HashSet : " + countOddNumbers(hashSet));
+        System.out.println("TreeSet : " + countOddNumbers(treeSet));
+        System.out.println("linkedHashSet : " + countOddNumbers(linkedHashSet));
+        System.out.println("priorityQueue : " + countOddNumbers(priorityQueue));
+        System.out.println("emptyList : " + countOddNumbers(emptyList));
+        System.out.println("allOdds : " + countOddNumbers(allOdds));
+        System.out.println("allEvens : " + countOddNumbers(allEvens));
+        System.out.println("mixedList : " + countOddNumbers(mixedList));
     }
 
-    public static <T extends Number> int countOddIntegers(Collection<T> currentCollection){
+    public static <T extends Number> int countOddNumbers(Collection<T> currentCollection){
         int count =0;
+
         if(currentCollection.isEmpty()){
             return 0;
         }
         for (T element: currentCollection){
-            if(element.intValue()%2 != 0){
-                count++;
+            if(element!=null){
+                if(element.intValue()%2 != 0){
+                    count++;
+                }
             }
+
         }
         return  count;
     }

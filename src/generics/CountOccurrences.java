@@ -1,6 +1,6 @@
 package generics;
 
-public class countOccurance {
+public class CountOccurrences {
     public static void main(String[] args) {
         Integer[] array = {1, 2, 3, 4, 5, 1, 2, 1, 1, 1,2};
         int element = 1;
