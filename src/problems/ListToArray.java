@@ -15,11 +15,15 @@ public class ListToArray {
             System.out.println(name);
         }
     }
-    public static <T> T[] listToArray(List<T> list,T[] array){
-     for(int i=0;i<list.size();i++){
-         array[i] = list.get(i);
-     }
+    public static <T> T[] listToArray(List<T> list,T[] array) {
+        if (list.isEmpty()) {
+            return null;
+        } else {
+            for (int i = 0; i < list.size(); i++) {
+                array[i] = list.get(i);
+            }
 
-        return array;
+            return array;
+        }
     }
 }
