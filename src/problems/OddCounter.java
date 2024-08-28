@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
 
-public class CountingOdd {
+public class OddCounter {
 
     public static void main(String[] args) {
         List<Integer> numbers = new ArrayList<>();
@@ -22,19 +22,22 @@ public class CountingOdd {
             }
         }
         System.out.println("List of numbers:- "+numbers);
-        System.out.println("Count of odd numbers:- "+oddCount(numbers));
+        System.out.println("Count of odd numbers:- "+ countOddNumbers(numbers));
 
     }
-    public static <T> int oddCount(Collection<Integer> list){
+    public static <T> int countOddNumbers(Collection<Integer> list){
         List<Integer> odd = new ArrayList<>();
-        int count =0;
-        for(Integer i:list){
-            if(i%2!=0){
-                odd.add(i);
+        int count = 0;
+        for (Integer num : list) {
+            if (num == null) {
+                continue;
+            }
+            if (num % 2 != 0) {
+                odd.add(num);
                 count++;
             }
         }
-        System.out.println("List of odd numbers "+odd);
+        System.out.println("List of odd numbers: " + odd);
         return count;
     }
 }
