@@ -4,15 +4,17 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class OddNumbersInInteger {
+public class OddCounter {
 
-    public static <T extends Integer> int countOdd(Collection<T> collectionOfIntegers ){
+    public static <T extends Integer> int countOddNumbers(Collection<T> collectionOfIntegers ){
 
         int oddCount = 0;
 
         for(T element : collectionOfIntegers){
-            if(element.doubleValue() % 2 == 1){
-                oddCount++;
+            if(element != null) {
+                if (element.doubleValue() % 2 == 1) {
+                    oddCount++;
+                }
             }
         }
 
@@ -29,6 +31,6 @@ public class OddNumbersInInteger {
         listOfIntegers.add(11);
         listOfIntegers.add(2);
         listOfIntegers.add(7);
-        System.out.println(OddNumbersInInteger.countOdd(listOfIntegers));
+        System.out.println(OddCounter.countOddNumbers(listOfIntegers));
     }
 }
