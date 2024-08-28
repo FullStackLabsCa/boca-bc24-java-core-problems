@@ -1,8 +1,6 @@
 package problems;
 
-import java.util.Arrays;
-
-public class GenericMethodToFindOccurences {
+public class CountOccurrences {
     public static void main(String[] args) {
         Integer[] intArray = {3, 2, 3, 4};
         String[] stringArray = {"Hi", "Hello", "there"};
@@ -20,9 +18,20 @@ public class GenericMethodToFindOccurences {
 
     public static <T> int countOccurrences(T[] array, T element) {
         int count = 0;
-        for (T t : array) {
-            if (t.equals(element)) {
-                count++;
+        if (element == null) {
+            for (T t : array) {
+                if (t == null) {
+                    count++;
+                }
+            }
+        } else {
+            for (T t : array) {
+                if (t == null) {
+                    //continue to next iteration
+                    continue;
+                } else if (t.equals(element)) {
+                    count++;
+                }
             }
         }
         return count;
