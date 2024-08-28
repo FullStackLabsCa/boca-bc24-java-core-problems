@@ -49,27 +49,26 @@ public class GradeBook <T extends Number> {
     }
 
     public int addGrade(T num){
-//        double totalSum = 0;
-//        for(T grade : gradeList){
-//            totalSum += grade.doubleValue();
-//        }
-//        return totalSum;
+
         gradeList.add(num);
         int size = gradeList.size();
         return size;
     }
 
 
-    public  double calculateAverage(List <T> gradelist){
+    public  String calculateAverage(){
         double avg = 0;
         double totalSum = 0;
         int count = 0;
-        for(T grade : gradelist){
+        
+        for(T grade : gradeList){
             totalSum += grade.doubleValue();
             count++;
         }
         avg = totalSum / count;
-        return avg;
+        String str = "Average grade: "+ avg;
+        return str;
+
     }
 
     public  double findLowestGrade(List <Double> gradelist){

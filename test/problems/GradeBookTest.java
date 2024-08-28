@@ -24,14 +24,14 @@ public class GradeBookTest {
         assertEquals(2, doubleGradeBook.getNumberOfGrades());
     }
 
-//    @Test
-//    public void testCalculateDoubleAverage() {
-//        doubleGradeBook.addGrade(85.0);
-//        doubleGradeBook.addGrade(90.0);
-//        doubleGradeBook.addGrade(95.0);
-//
-//        assertEquals("Average grade: 90.0", doubleGradeBook.calculateAverage());
-//    }
+    @Test
+    public void testCalculateDoubleAverage() {
+        doubleGradeBook.addGrade(85.0);
+        doubleGradeBook.addGrade(90.0);
+        doubleGradeBook.addGrade(95.0);
+
+        assertEquals("Average grade: 90.0", doubleGradeBook.calculateAverage());
+    }
 //
 //    @Test
 //    public void testCalculateDoubleAverageWithNoGrades() {
