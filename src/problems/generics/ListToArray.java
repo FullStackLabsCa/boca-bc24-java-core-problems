@@ -6,14 +6,6 @@ import java.util.List;
 
 public class ListToArray {
 
-//    public static <T> T[] listToArray(List<T> list) {
-//        T [] numericArray = (T[]) new Object[list.size()];
-//        for (int i = 0; i < list.size(); i++) {
-//            numericArray[i] = list.get(i);
-//        }
-//        return numericArray;
-////        return list.toArray(tTypeArray);
-//    }
 
     public static <T> T[] listToArray(List<T> list, T[] tTypeArray) {
         if (list == null || list.isEmpty()) {
