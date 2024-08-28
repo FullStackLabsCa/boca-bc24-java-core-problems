@@ -6,21 +6,21 @@ public class CourseRunner {
     public static void main(String[] args) {
 
         //To use String as Student id and Integer as Grade
-        GenericCourse<String,Integer> stringAsStuId = new GenericCourse<>();
+        Course<String,Integer> stringAsStuId = new Course<>();
         stringAsStuId.enrollStudent("Mohan");
         stringAsStuId.enrollStudent("Mohan");
         stringAsStuId.enrollStudent("Kumar",90);
         stringAsStuId.enrollStudent("Ram",95);
-        stringAsStuId.setGradeforAStuent("Mohan",92);
-        stringAsStuId.displayAllStudentsAndGrade();
+        stringAsStuId.assignGrade("Mohan",92);
+        stringAsStuId.listAllGrades();
 
         //To use Integer as Student id and double as Grade
-        GenericCourse<Integer,Double> integerAsStuId = new GenericCourse<>();
+        Course<Integer,Double> integerAsStuId = new Course<>();
         integerAsStuId.enrollStudent(3);
         integerAsStuId.enrollStudent(2,90.5);
         integerAsStuId.enrollStudent(1,95.0);
-        integerAsStuId.setGradeforAStuent(3,92.8);
-        integerAsStuId.displayAllStudentsAndGrade();
+        integerAsStuId.assignGrade(3,92.8);
+        integerAsStuId.listAllGrades();
         Map<Integer,Double> integerAsStuIdMap = integerAsStuId.getAllStudentsAndGrade();
         for(Integer s : integerAsStuIdMap.keySet()) {
             System.out.println("Student : " + s + "\tGrade : " + integerAsStuIdMap.get(s));

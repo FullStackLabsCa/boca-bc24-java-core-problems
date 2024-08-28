@@ -2,12 +2,13 @@ package problems;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
-public class GenericCourse<S, G extends Number & Comparable<G>> {
+public class Course<S, G extends Number & Comparable<G>> {
     Map<S, G> studentToGradeMap;
 
-    public GenericCourse() {
+    public Course() {
         this.studentToGradeMap = new HashMap<>();
 
     }
@@ -35,7 +36,7 @@ public class GenericCourse<S, G extends Number & Comparable<G>> {
         }
     }
 
-    public boolean setGradeforAStuent(S studentIdentifier, G grade) {
+    public boolean assignGrade(S studentIdentifier, G grade) {
         if (!studentToGradeMap.containsKey(studentIdentifier)) {
             System.out.println("Student with this Identifier does not exists");
             return false;
@@ -45,16 +46,17 @@ public class GenericCourse<S, G extends Number & Comparable<G>> {
         }
     }
 
-    public G getGradeOfAStudent(S studentIdentifier) {
+    public Optional<G> getGrade(S studentIdentifier) {
         if (!studentToGradeMap.containsKey(studentIdentifier)) {
             System.out.println("Student with this Identifier does not exists");
-            return null;
-        } else {
-            return studentToGradeMap.get(studentIdentifier);
+            return Optional.empty();
+        } else
+        {
+            return Optional.of(studentToGradeMap.get(studentIdentifier));
         }
     }
 
-    public void displayAllStudentsAndGrade() {
+    public void listAllGrades() {
         if (studentToGradeMap.isEmpty()) {
             System.out.println("There is no student in this Course yet!");
         } else {
@@ -68,5 +70,14 @@ public class GenericCourse<S, G extends Number & Comparable<G>> {
     public Map<S, G> getAllStudentsAndGrade() {
         return studentToGradeMap;
     }
+    public Map<S, G> getAllGrades() {
+        return studentToGradeMap;
+    }
 
+
+    public boolean isStudentEnrolled(S i) {
+        if (studentToGradeMap.isEmpty()) {
+            return false;
+        } else return studentToGradeMap.containsKey(i);
+    }
 }
