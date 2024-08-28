@@ -189,15 +189,6 @@ public class GenericClassTest {
 //        array[index2] = temp;
 //        }
 
-    //PROBLEM : GENERIC METHOD TO CONVERT LIST TO ARRAY
-//    public static <T> T[] listToArray(List<T> list){
-//        Object[] tempArray = new Object[list.size()];
-//        for(int i = 0; i< list.size();i++){
-//            tempArray[i] = list.get(i);
-//        }
-//        return (T[])tempArray;
-//
-//    }
 
 
 
