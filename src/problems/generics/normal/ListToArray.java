@@ -23,10 +23,10 @@ public class ListToArray<T>{
 
     public static <T> T[] listToArray(List<T> list, T[] destinationArray){
        // destinationArray= (T[]) new Object[list.size()];
-        if(list.isEmpty()){
+        if(list==null){
             return null;
         }
-        else if(list==null){
+        else if(list.isEmpty()){
             return null;
         }
         else {
