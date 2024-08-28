@@ -2,7 +2,7 @@ package problems;
 
 import java.util.Stack;
 
-public class SizedStack<T> extends Stack<T> {
+public class SizedStack<T extends Double> extends Stack<T> {
     private int maxSize;
 
     public SizedStack(int size) {
