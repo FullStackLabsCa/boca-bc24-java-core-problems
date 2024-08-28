@@ -23,9 +23,16 @@ public class ListToArray<T>{
 
     public static <T> T[] listToArray(List<T> list, T[] destinationArray){
        // destinationArray= (T[]) new Object[list.size()];
-
-        for(int i=0; i<list.size(); i++){
-            destinationArray[i]= list.get(i);
+        if(list.isEmpty()){
+            return null;
+        }
+        else if(list==null){
+            return null;
+        }
+        else {
+            for (int i = 0; i < list.size(); i++) {
+                destinationArray[i] = list.get(i);
+            }
         }
         return  destinationArray;
     }
