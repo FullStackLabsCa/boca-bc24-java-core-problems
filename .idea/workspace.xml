@@ -4,8 +4,40 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d3b01333-d157-4793-b4ff-8016ea5cf74b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/problems/generics/CountOddIntegers.java" afterDir="false" />
+    <list default="true" id="d3b01333-d157-4793-b4ff-8016ea5cf74b" name="Changes" comment="course generics class with student grade map">
+      <change afterPath="$PROJECT_DIR$/src/problems/generics/school/Course.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/generics/school/School.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/generics/schoolold/Course.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/generics/schoolold/CourseRunner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/testproblems/Calculator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/testproblems/Fibonacci.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/testproblems/FindMaximumInArray.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/testproblems/NumbersAdd.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/testproblems/PalindromeChecker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/problems/ListToArrayTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boca-bc24-java-core-problems.iml" beforeDir="false" afterPath="$PROJECT_DIR$/boca-bc24-java-core-problems.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/boca-bc24-java-core-problems2/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/boca-bc24-java-core-problems2/arrayproblem/FindDuplicate.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/boca-bc24-java-core-problems2/arrayproblem/FindMinMax.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/boca-bc24-java-core-problems2/arrayproblem/MergeArray.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/boca-bc24-java-core-problems2/arrayproblem/ShiftElement.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/boca-bc24-java-core-problems2/arrayproblem/SortArray.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/boca-bc24-java-core-problems2/calculator/Calculator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/boca-bc24-java-core-problems2/generics/ConvertListToArray.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/boca-bc24-java-core-problems2/generics/CountOcccurence.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/boca-bc24-java-core-problems2/generics/CountOddIntegers.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/boca-bc24-java-core-problems2/generics/GradeBook.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/boca-bc24-java-core-problems2/stringproblems/CapitalizeFirstLetter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/boca-bc24-java-core-problems2/stringproblems/CountVowel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/boca-bc24-java-core-problems2/stringproblems/FindLongestString.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/boca-bc24-java-core-problems2/stringproblems/RemoveVowel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/generics/ConvertListToArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/generics/ListToArray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/generics/course/CourseRunner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/problems/CalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/CalculatorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/problems/FibonacciTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/FibonacciTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/problems/FindMaximumInArrayTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/FindMaximumInArrayTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/problems/PalindromeCheckerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/PalindromeCheckerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,10 +54,22 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 0
-}]]></component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;kiranvirani97&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/FullStackLabsCa/boca-bc24-java-core-problems.git&quot;,
+    &quot;accountId&quot;: &quot;7aece3c5-4c0e-4dab-ba2f-940b7bf0e267&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2lCRW6jpFozpnRuEsbSul3UwphF" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -33,24 +77,109 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.BracketMatchingWithStack.executor": "Run",
+    "Application.BracketMatchingWithoutStack.executor": "Run",
     "Application.ConvertListToArray.executor": "Run",
     "Application.CountOcccurence.executor": "Run",
     "Application.CountOddIntegers.executor": "Run",
+    "Application.Course.executor": "Run",
+    "Application.CourseRunner.executor": "Run",
     "Application.GradeBook.executor": "Run",
+    "Application.ListToArray.executor": "Run",
+    "Application.MapOfMapsExample.executor": "Run",
+    "Application.School.executor": "Run",
+    "JUnit.ListToArrayTest.executor": "Run",
+    "JUnit.ListToArrayTest.testListToArrayWithMixedElements.executor": "Run",
+    "JUnit.ListToArrayTest.testListToArrayWithNullList.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "feature/kivi-bc24-java-core-problems",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/Kiran.Virani/source/boca-bc24-java-core-problems/src/problems/generics",
+    "last_opened_file_path": "/Users/Kiran.Virani/source/boca-bc24-java-core-problems/src/problems/testproblems",
     "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/problems/testproblems" />
+      <recent name="$PROJECT_DIR$/src/problems/basic" />
       <recent name="$PROJECT_DIR$/src/problems/generics" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/problems" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="collection" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.ListToArrayTest">
+    <configuration name="ListToArray" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="generics.ListToArray" />
+      <module name="boca-bc24-java-core-problems2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="generics.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ListToArrayTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="boca-bc24-java-core-problems" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="problems.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="problems" />
+      <option name="MAIN_CLASS_NAME" value="problems.ListToArrayTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ListToArrayTest.testListToArrayWithMixedElements" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="boca-bc24-java-core-problems" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="problems.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="problems" />
+      <option name="MAIN_CLASS_NAME" value="problems.ListToArrayTest" />
+      <option name="METHOD_NAME" value="testListToArrayWithMixedElements" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ListToArrayTest.testListToArrayWithNullList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="boca-bc24-java-core-problems" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="problems.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="problems" />
+      <option name="MAIN_CLASS_NAME" value="problems.ListToArrayTest" />
+      <option name="METHOD_NAME" value="testListToArrayWithNullList" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.ListToArrayTest" />
+        <item itemvalue="JUnit.ListToArrayTest.testListToArrayWithMixedElements" />
+        <item itemvalue="Application.ListToArray" />
+        <item itemvalue="JUnit.ListToArrayTest.testListToArrayWithNullList" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -61,6 +190,100 @@
       <option name="presentableId" value="Default" />
       <updated>1724682101089</updated>
     </task>
+    <task id="LOCAL-00001" summary="bracket matching problem without using stack">
+      <option name="closed" value="true" />
+      <created>1724693638459</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1724693638459</updated>
+    </task>
+    <task id="LOCAL-00002" summary="bracket matching problem with using stack">
+      <option name="closed" value="true" />
+      <created>1724695256873</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1724695256873</updated>
+    </task>
+    <task id="LOCAL-00003" summary="convert list to array without using built in method">
+      <option name="closed" value="true" />
+      <created>1724696216998</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1724696216998</updated>
+    </task>
+    <task id="LOCAL-00004" summary="convert list to array without using built in method">
+      <option name="closed" value="true" />
+      <created>1724696262593</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1724696262593</updated>
+    </task>
+    <task id="LOCAL-00005" summary="refactor code">
+      <option name="closed" value="true" />
+      <created>1724698319632</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1724698319632</updated>
+    </task>
+    <task id="LOCAL-00006" summary="refactor code">
+      <option name="closed" value="true" />
+      <created>1724705771671</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1724705771671</updated>
+    </task>
+    <task id="LOCAL-00007" summary="basic java problems">
+      <option name="closed" value="true" />
+      <created>1724764129955</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1724764129955</updated>
+    </task>
+    <task id="LOCAL-00008" summary="minor fix in calculator">
+      <option name="closed" value="true" />
+      <created>1724767828671</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1724767828671</updated>
+    </task>
+    <task id="LOCAL-00009" summary="course generics class with student grade map">
+      <option name="closed" value="true" />
+      <created>1724772344356</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1724772344356</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="bracket matching problem without using stack" />
+    <MESSAGE value="bracket matching problem with using stack" />
+    <MESSAGE value="convert list to array without using built in method" />
+    <MESSAGE value="refactor code" />
+    <MESSAGE value="basic java problems" />
+    <MESSAGE value="minor fix in calculator" />
+    <MESSAGE value="course generics class with student grade map" />
+    <option name="LAST_COMMIT_MESSAGE" value="course generics class with student grade map" />
   </component>
 </project>
