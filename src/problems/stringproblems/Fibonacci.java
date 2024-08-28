@@ -1,4 +1,4 @@
-package problems;
+package problems.stringproblems;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ public class Fibonacci {
 
         int n = Integer.parseInt(input);
         List<Integer> fibonacciSeries = generateFibonacci(n);
-        System.out.println("problems.Fibonacci Series up to " + n + " numbers: " + fibonacciSeries);
+        System.out.println("problems.stringproblems.Fibonacci Series up to " + n + " numbers: " + fibonacciSeries);
     }
 
     private static boolean isValidInput(String input) {

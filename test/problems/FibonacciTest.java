@@ -69,7 +69,7 @@
 //    public void testValidInput() {
 //        systemInMock.provideLines("4");
 //        Fibonacci.main(null);
-//        assertTrue(systemOutRule.getLog().contains("problems.Fibonacci Series up to 4 numbers: [0, 1, 1, 2]"));
+//        assertTrue(systemOutRule.getLog().contains("problems.stringproblems.Fibonacci Series up to 4 numbers: [0, 1, 1, 2]"));
 //    }
 //
 //    @Test

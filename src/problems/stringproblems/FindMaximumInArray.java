@@ -1,4 +1,4 @@
-package problems;
+package problems.stringproblems;
 
 public class FindMaximumInArray {
     public static int findMax(int[] numbers) {

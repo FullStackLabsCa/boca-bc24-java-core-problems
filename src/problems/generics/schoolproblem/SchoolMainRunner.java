@@ -11,54 +11,74 @@ public class SchoolMainRunner {
 
         while (true) {
             System.out.println("1. Add Course");
-            System.out.println("2. Add Student");
+            System.out.println("2. Enroll Student");
             System.out.println("3. Assign grade");
             System.out.println("4. List grades");
             System.out.println("5. List courses");
-            System.out.println("6. Exit");
+            System.out.println("6. Unique courses");
+            System.out.println("7. Unique Students");
+            System.out.println("8. Average Score by Course");
+            System.out.println("9. Cumulative Average Score by Student");
+            System.out.println("10.Exit");
             System.out.println("Please choose operation to perform");
             int inputOption = input.nextInt();
             input.nextLine();
 
             switch(inputOption) {
                 case 1:
-                    System.out.println("How many courses do you have");
-                    int courseSetSize = input.nextInt();
-                    input.nextLine();
-
-                    for (int i = 0; i < courseSetSize; i++) {
-                        System.out.print("Enter course " + (i + 1) + ":");
-                        String courseName = input.nextLine();
-                        school.addCourse(courseName);
-                    }
-
-                    System.out.println("Course Added Successfully");
-                    System.out.println();
+                    System.out.print("Enter course name to add: ");
+                    String courseName = input.nextLine();
+                    school.addCourse(courseName);
                     break;
+
                 case 2:
-                    String studentName = "Rushi";
-
+                    System.out.print("Enter course name: ");
+                    courseName = input.nextLine();
+                    System.out.print("Enter student ID to enroll: ");
+                    String studentId = input.nextLine();
+                    school.enrollStudent(courseName, studentId);
                     break;
+
                 case 3:
+                    System.out.print("Enter course name: ");
+                    courseName = input.nextLine();
+                    System.out.print("Enter student ID: ");
+                    studentId = input.nextLine();
+                    System.out.print("Enter grade to assign: ");
+                    int grade = input.nextInt();
+                    input.nextLine();
+                    school.assignGrade(courseName, studentId, grade);
                     break;
                 case 4:
-                    break;
+                    System.out.print("Enter course name to find the grades: ");
+                    courseName = input.nextLine();
+                    school.listGrades(courseName);
                 case 5:
-                    System.out.println("List of courses : ");
-                    for (String course : school.getCourses()) {
-                        System.out.println("- "+course);
-                    }
-                    System.out.println();
+                    school.listCourses();
                     break;
                 case 6:
+                    school.reportUniqueCourses();
+                    break;
+                case 7:
+                    school.reportUniqueStudents();
+                    break;
+                case 8:
+                    System.out.print("Enter course name to report average score: ");
+                    courseName = input.nextLine();
+                    school.reportAverageScore(courseName);
+                    break;
+                case 9:
+                    System.out.print("Enter student ID to report cumulative average: ");
+                    studentId = input.nextLine();
+                    school.reportCumulativeAverage(studentId);
+                    break;
+                case 10:
                     System.out.println("Exiting program.");
                     input.close();
                     return;
-
                 default:
-                    System.out.println("Please choose option from 1 to 5 only");
+                    System.out.println("Error: Unknown command. Please use one of the available commands.");
                     break;
-
             }
         }
     }
