@@ -32,8 +32,12 @@ public class GradeBook <T extends Number> {
     public String calculateAverage(){
         double average = 0;
 
-        for(T element : gradeBook){
-            average += element.doubleValue();
+        if(!gradeBook.isEmpty()) {
+            for (T element : gradeBook) {
+                average += element.doubleValue();
+            }
+        } else {
+            return "No grades available to calculate the average.";
         }
 
         average = average/gradeBook.size();
@@ -45,11 +49,11 @@ public class GradeBook <T extends Number> {
     //Determine Highest Grade
     public String findHighestGrade(){
         if(!gradeBook.isEmpty()){
-            double max = gradeBook.get(0).doubleValue();
+            T max = gradeBook.get(0);
 
             for (T grade : gradeBook) {
-                if (grade.doubleValue() >= max) {
-                    max = grade.doubleValue();
+                if (grade.doubleValue() >= max.doubleValue()) {
+                    max = grade;
                 }
             }
 
@@ -63,11 +67,11 @@ public class GradeBook <T extends Number> {
     public String findLowestGrade(){
         String result;
         if(!gradeBook.isEmpty()){
-            double min = gradeBook.get(0).doubleValue();
+            T min = gradeBook.get(0);
 
             for (T grade : gradeBook) {
-                if (grade.doubleValue() <= min) {
-                    min = grade.doubleValue();
+                if (grade.doubleValue() <= min.doubleValue()) {
+                    min = grade;
                 }
             }
 
