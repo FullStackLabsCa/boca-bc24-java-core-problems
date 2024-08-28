@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d3c9f44b-ff0f-43a9-b850-9b801d0dc95b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/collection/p1_Bracket_WS_Matching/P1_Bracket_WS_Matching.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/collection/p1_Bracket_WS_Matching/notes1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/collection/p1_Bracket_WS_Matching/notes2-diff-char.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/collection/p1_Bracket_WS_Matching/notes3-regular-expression.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/collection/p1_Bracket_WS_Matching/question.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/collection/p2_bracket_s_matching/P2_bracket_s_matching.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/collection/p2_bracket_s_matching/notes1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/collection/p2_bracket_s_matching/question.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/generics/generics_Demo/Generics_Demo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/generics/generics_Demo/Student.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/generics/generics_Demo/employee/Admin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/generics/generics_Demo/employee/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/generics/generics_Demo/employee/Janitorial.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/generics/generics_Demo/employee/Maintainance.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/generics/generics_Demo/employee/Teacher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/generics/generics_Demo/services/PaySalary.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/generics/p3_Generic_GradeBook_Class/GradeBook.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/generics/p3_Generic_GradeBook_Class/GradeBook.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/generics/p3_Generic_GradeBook_Class/P3_Generic_GradeBook_Class.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/generics/p3_Generic_GradeBook_Class/note1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/generics/p3_Generic_GradeBook_Class/question.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/generics/p4_Generic_Course_Class/Course.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/generics/p4_Generic_Course_Class/P4_Generic_Course_Class.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/generics/p4_Generic_Course_Class/question.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/oldProblems/P10_Add_Sub_Number.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/oldProblems/P11_Factor_possible.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/oldProblems/P12_Prime_Number.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/oldProblems/P1_Maximum_in_Array.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/oldProblems/P2_Palindrome.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/oldProblems/P4_OddEven.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/oldProblems/P5_Factorial.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/oldProblems/P6_Fibonacci.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/oldProblems/P7_Reversed.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/oldProblems/P8_Alphabet_Number_Repeated.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/oldProblems/P9_Array.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/oldProblems/p3_calculator/Addition.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/oldProblems/p3_calculator/Division.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/oldProblems/p3_calculator/Multiplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/oldProblems/p3_calculator/P3_Calculator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/oldProblems/p3_calculator/Subtraction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/stringProblems/CountVowels.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/stringProblems/LongestWordString.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/stringProblems/RemoveVowels.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/problems/CourseTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/problems/GradeBookTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/problems/OddCounterTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/problems/SchoolTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/github_stefanbirkner_system_rules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/junit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boca-bc24-java-core-problems.iml" beforeDir="false" afterPath="$PROJECT_DIR$/boca-bc24-java-core-problems.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/hamcrest-core-1.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/junit-4.11-beta-1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/junit-4.13.2.jar" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Jay-Shah-FullStackLabs&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/FullStackLabsCa/boca-bc24-java-core-problems.git&quot;,
+    &quot;accountId&quot;: &quot;42779453-9f9b-435d-9f88-b958bbc483d1&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2lG4lSEFbN0PhCR9710HnroxOV1" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Generics_Demo.executor": "Debug",
+    "Application.Main.executor": "Run",
+    "Application.P10_Add_Sub_Number.executor": "Run",
+    "Application.P12_Prime_Number.executor": "Run",
+    "Application.P1_Maximum_in_Array.executor": "Run",
+    "Application.P2_Palindrome.executor": "Run",
+    "Application.P3_Calculator.executor": "Run",
+    "Application.P3_Generic_GradeBook_Class.executor": "Run",
+    "Application.P4_Generic_Course_Class.executor": "Run",
+    "Application.P4_OddEven.executor": "Run",
+    "Application.P5_Factorial.executor": "Run",
+    "Application.P6_Fibonacci.executor": "Run",
+    "Application.P7_Reversed.executor": "Run",
+    "Application.Palindrome.executor": "Run",
+    "Application.countVowels.executor": "Run",
+    "Application.longestWordString.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "feature/jash-bc24-java-core-problems",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/Jay.Shah/sources/student/boca-bc24-java-core-problems/src/problems/generics/generics_Demo/services",
+    "settings.editor.selected.configurable": "preferences.editor.code.editing"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/problems/generics/generics_Demo/services" />
+      <recent name="$PROJECT_DIR$/src/problems/generics/generics_Demo" />
+      <recent name="$PROJECT_DIR$/src/problems/generics/generics_Demo/employee" />
+      <recent name="$PROJECT_DIR$/src/problems/generics" />
+      <recent name="$PROJECT_DIR$/src/problems/generics/P4_Generic_Course_Class" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/oldProblems" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d3c9f44b-ff0f-43a9-b850-9b801d0dc95b" name="Changes" comment="" />
+      <created>1724793230289</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1724793230289</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/problems/generics/generics_Demo/Generics_Demo.java</url>
+          <line>38</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/problems/generics/generics_Demo/Generics_Demo.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/problems/generics/generics_Demo/Generics_Demo.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

@@ -1,10 +1,10 @@
 <component name="libraryTable">
-  <library name="github.stefanbirkner.system.rules" type="repository">
-    <properties maven-id="com.github.stefanbirkner:system-rules:1.19.0" />
+  <library name="lib">
     <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/hamcrest-core-1.3.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/system-rules-1.19.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/junit-4.11-beta-1.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/hamcrest-core-1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/junit-4.13.2.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
