@@ -1,4 +1,5 @@
-package problems;
+package problems.generics;
+
 import java.util.ArrayList;
 import java.util.List;
 

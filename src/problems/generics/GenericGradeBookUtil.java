@@ -1,4 +1,4 @@
-package problems;
+package problems.generics;
 import java.util.List;
 
 public class GenericGradeBookUtil {

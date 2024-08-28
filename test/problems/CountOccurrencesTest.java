@@ -1,6 +1,7 @@
 package problems;
 
 import org.junit.Test;
+import problems.generics.CountOccurrences;
 
 import static org.junit.Assert.assertEquals;
 

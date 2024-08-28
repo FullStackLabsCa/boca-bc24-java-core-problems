@@ -1,4 +1,6 @@
-package problems;
+package problems.generics;
+
+import problems.Student;
 
 public class CountOccurrences {
     public static void main(String[] args) {

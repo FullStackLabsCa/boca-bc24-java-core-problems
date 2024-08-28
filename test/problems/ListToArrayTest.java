@@ -1,6 +1,7 @@
 package problems;
 
 import org.junit.Test;
+import problems.generics.ListToArray;
 
 import java.util.Arrays;
 import java.util.List;
