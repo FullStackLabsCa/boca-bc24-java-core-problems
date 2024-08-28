@@ -1,4 +1,4 @@
-package longestword;
+package arrayproblems;
 
 import java.util.Scanner;
 
