@@ -12,13 +12,13 @@ public class GradeBookRunner {
         integerList.add(2);
         integerList.add(7);
         integerList.add(4);
-        GenericGradeBook<Integer> integerGenericGradeBook = new GenericGradeBook<>(integerList);
+        GradeBook<Integer> integerGradeBook = new GradeBook<>(integerList);
 
-        System.out.println("Added grade 6 = " + integerGenericGradeBook.addGrade(6));
-        System.out.println("Removed grade 7 = " + integerGenericGradeBook.removeGrade(7));
-        System.out.println("Highest of Integer grade = " + integerGenericGradeBook.findHighestGrade());
-        System.out.println("Lowest of Integer grade = " + integerGenericGradeBook.findLowestGrade());
-        System.out.println("Average of Integer grade = " + integerGenericGradeBook.calcAvgGrade());
+        System.out.println("Added grade 6 = " + integerGradeBook.addGrade(6));
+        System.out.println("Removed grade 7 = " + integerGradeBook.removeGrade(7));
+        System.out.println("Highest of Integer grade = " + integerGradeBook.findHighestGrade());
+        System.out.println("Lowest of Integer grade = " + integerGradeBook.findLowestGrade());
+        System.out.println("Average of Integer grade = " + integerGradeBook.calcAvgGrade());
 
 
         //To Test Double GradeBook
@@ -28,12 +28,12 @@ public class GradeBookRunner {
         doubleList.add(0.2);
         doubleList.add(7.0);
         doubleList.add(4.1);
-        GenericGradeBook<Double> doubleGenericGradeBook = new GenericGradeBook<>(doubleList);
+        GradeBook<Double> doubleGradeBook = new GradeBook<>(doubleList);
 
-        System.out.println("Added grade 6.4 to Double gradeList = " + doubleGenericGradeBook.addGrade(6.4));
-        System.out.println("Removed grade 7.8 to Double gradeList = " + doubleGenericGradeBook.removeGrade(7.8));
-        System.out.println("Highest of Double gradeList = " + doubleGenericGradeBook.findHighestGrade());
-        System.out.println("Lowest of Double gradeList = " + doubleGenericGradeBook.findLowestGrade());
-        System.out.println("Average of Double gradeList = " + doubleGenericGradeBook.calcAvgGrade());
+        System.out.println("Added grade 6.4 to Double gradeList = " + doubleGradeBook.addGrade(6.4));
+        System.out.println("Removed grade 7.8 to Double gradeList = " + doubleGradeBook.removeGrade(7.8));
+        System.out.println("Highest of Double gradeList = " + doubleGradeBook.findHighestGrade());
+        System.out.println("Lowest of Double gradeList = " + doubleGradeBook.findLowestGrade());
+        System.out.println("Average of Double gradeList = " + doubleGradeBook.calcAvgGrade());
     }
 }
