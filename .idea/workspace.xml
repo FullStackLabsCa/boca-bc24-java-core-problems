@@ -5,63 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3c9f44b-ff0f-43a9-b850-9b801d0dc95b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/collection/p1_Bracket_WS_Matching/P1_Bracket_WS_Matching.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/collection/p1_Bracket_WS_Matching/notes1.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/collection/p1_Bracket_WS_Matching/notes2-diff-char.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/collection/p1_Bracket_WS_Matching/notes3-regular-expression.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/collection/p1_Bracket_WS_Matching/question.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/collection/p2_bracket_s_matching/P2_bracket_s_matching.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/collection/p2_bracket_s_matching/notes1.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/collection/p2_bracket_s_matching/question.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/generics/generics_Demo/Generics_Demo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/generics/generics_Demo/Student.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/generics/generics_Demo/employee/Admin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/generics/generics_Demo/employee/Employee.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/generics/generics_Demo/employee/Janitorial.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/generics/generics_Demo/employee/Maintainance.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/generics/generics_Demo/employee/Teacher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/generics/generics_Demo/services/PaySalary.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/generics/p3_Generic_GradeBook_Class/GradeBook.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/generics/p3_Generic_GradeBook_Class/GradeBook.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/generics/p3_Generic_GradeBook_Class/P3_Generic_GradeBook_Class.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/generics/p3_Generic_GradeBook_Class/note1.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/generics/p3_Generic_GradeBook_Class/question.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/generics/p4_Generic_Course_Class/Course.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/generics/p4_Generic_Course_Class/P4_Generic_Course_Class.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/generics/p4_Generic_Course_Class/question.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/oldProblems/P10_Add_Sub_Number.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/oldProblems/P11_Factor_possible.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/oldProblems/P12_Prime_Number.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/oldProblems/P1_Maximum_in_Array.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/oldProblems/P2_Palindrome.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/oldProblems/P4_OddEven.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/oldProblems/P5_Factorial.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/oldProblems/P6_Fibonacci.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/oldProblems/P7_Reversed.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/oldProblems/P8_Alphabet_Number_Repeated.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/oldProblems/P9_Array.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/oldProblems/p3_calculator/Addition.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/oldProblems/p3_calculator/Division.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/oldProblems/p3_calculator/Multiplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/oldProblems/p3_calculator/P3_Calculator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/oldProblems/p3_calculator/Subtraction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/stringProblems/CountVowels.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/stringProblems/LongestWordString.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/stringProblems/RemoveVowels.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/problems/CourseTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/problems/GradeBookTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/problems/OddCounterTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/problems/SchoolTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/github_stefanbirkner_system_rules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/junit.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boca-bc24-java-core-problems.iml" beforeDir="false" afterPath="$PROJECT_DIR$/boca-bc24-java-core-problems.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/hamcrest-core-1.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/junit-4.11-beta-1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/junit-4.13.2.jar" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/problems/CountOccurrencesTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/problems/ListToArrayTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/generics/p3_Generic_GradeBook_Class/GradeBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/generics/p3_Generic_GradeBook_Class/GradeBook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/generics/p3_Generic_GradeBook_Class/P3_Generic_GradeBook_Class.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/generics/p3_Generic_GradeBook_Class/P3_Generic_GradeBook_Class.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/problems/CalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/CalculatorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/problems/CourseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/CourseTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/problems/FibonacciTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/FibonacciTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/problems/FindMaximumInArrayTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/FindMaximumInArrayTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/problems/GradeBookTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/GradeBookTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/problems/OddCounterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/OddCounterTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/problems/PalindromeCheckerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/PalindromeCheckerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/problems/SchoolTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/SchoolTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,6 +47,11 @@
     &quot;accountId&quot;: &quot;42779453-9f9b-435d-9f88-b958bbc483d1&quot;
   }
 }</component>
+  <component name="JavaAutoRunManager">
+    <enabled-run-configurations>
+      <run-configuration type="JUnit" name="Rerun Failed Tests" />
+    </enabled-run-configurations>
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -118,22 +79,24 @@
     "Application.P6_Fibonacci.executor": "Run",
     "Application.P7_Reversed.executor": "Run",
     "Application.Palindrome.executor": "Run",
+    "Application.RemoveVowels.executor": "Run",
     "Application.countVowels.executor": "Run",
     "Application.longestWordString.executor": "Run",
+    "JUnit.GradeBookTest.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "feature/jash-bc24-java-core-problems",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/Jay.Shah/sources/student/boca-bc24-java-core-problems/src/problems/generics/generics_Demo/services",
-    "settings.editor.selected.configurable": "preferences.editor.code.editing"
+    "last_opened_file_path": "/Users/Jay.Shah/sources/student/boca-bc24-java-core-problems/test/problems",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/test/problems" />
       <recent name="$PROJECT_DIR$/src/problems/generics/generics_Demo/services" />
       <recent name="$PROJECT_DIR$/src/problems/generics/generics_Demo" />
       <recent name="$PROJECT_DIR$/src/problems/generics/generics_Demo/employee" />
       <recent name="$PROJECT_DIR$/src/problems/generics" />
-      <recent name="$PROJECT_DIR$/src/problems/generics/P4_Generic_Course_Class" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/oldProblems" />

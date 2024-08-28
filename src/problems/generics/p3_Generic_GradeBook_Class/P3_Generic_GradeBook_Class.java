@@ -12,8 +12,9 @@ public class P3_Generic_GradeBook_Class {
 
         System.out.println("Integer");
         System.out.println("Average: " + integerGradeBook.calculateAverage());
-        System.out.println("Highest value: " + integerGradeBook.highestGrade());
-        System.out.println("Lowest Value: " + integerGradeBook.lowestGrade());
+        System.out.println("Highest value: " + integerGradeBook.findHighestGrade());
+        System.out.println("Lowest Value: " + integerGradeBook.findLowestGrade());
+
 
         GradeBook<Double> doubleGradeBook = new GradeBook<>();
         doubleGradeBook.addGrade(500.25);
@@ -22,8 +23,8 @@ public class P3_Generic_GradeBook_Class {
 
         System.out.println("Double");
         System.out.println("Average: " + doubleGradeBook.calculateAverage());
-        System.out.println("Highest value: " + doubleGradeBook.highestGrade());
-        System.out.println("Lowest Value: " + doubleGradeBook.lowestGrade());
+        System.out.println("Highest value: " + doubleGradeBook.findHighestGrade());
+        System.out.println("Lowest Value: " + doubleGradeBook.findLowestGrade());
 
 
     }
