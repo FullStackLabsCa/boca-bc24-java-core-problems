@@ -2,6 +2,8 @@ package stringsAndArraysProblems;
 
 import java.util.Scanner;
 
+import static stringsAndArraysProblems.MergeTwoArrays.*;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -21,9 +23,16 @@ public class Main {
 
        // CapitalFirstWordOfString.capitalizeWord(inputString);
 
-        System.out.println(SortedArray.isSorted(new int[]{2, 9,8, 5, 6, 6}));
+       // System.out.println(SortedArray.isSorted(new int[]{2, 9,8, 5, 6, 6}));
 
+        int[] mergedArray = (MergeTwoArrays.mergeArray(new int[]{2, 9,8, 5, 6, 6}, new int[]{233,22,24}));
+        for (int i = 0; i < mergedArray.length; i++) {
+            System.out.print(mergedArray[i]);
+            if (i < mergedArray.length - 1) {
+                System.out.print(", ");
+            }
+        }
 
+        }
 
     }
-}
