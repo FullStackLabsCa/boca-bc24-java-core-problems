@@ -1,3 +1,5 @@
+package loopproblems;
+
 public class Withoutaddition {
     public static void main(String[] args) {
         int num1 = 8;

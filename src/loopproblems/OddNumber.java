@@ -1,4 +1,6 @@
-public class Main {
+package loopproblems;
+
+public class OddNumber {
     public static void main(String[] args) {
         int num =50;
         int sum = 0;
