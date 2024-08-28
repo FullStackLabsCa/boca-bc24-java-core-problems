@@ -13,11 +13,11 @@ public class SubtractNumsWithoutSubtracting {
 
         int total = numOne;
 
-        for (int i = 0 ; i< numTwo; i++){
+        for (int i = 0; i < numTwo; i++) {
             total--;
 
         }
-        System.out.println("Sum of numOne and numTwo : "+ total);
+        System.out.println("Sum of numOne and numTwo : " + total);
     }
 }
 

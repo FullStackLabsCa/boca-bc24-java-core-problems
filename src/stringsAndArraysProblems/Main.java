@@ -6,9 +6,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Scanner intake = new Scanner(System.in);
-        System.out.println("Enter a string: ");
-        String inputString = intake.nextLine();
+//        Scanner intake = new Scanner(System.in);
+//        System.out.println("Enter a string: ");
+//        String inputString = intake.nextLine();
 
         //  int vowelCount = CountVowelsInString.countVowels(inputString);
         //  System.out.println("number of vowels : " + vowelCount);
@@ -19,9 +19,10 @@ public class Main {
 
         //LongestWordInString.findLongestWordInString(inputString);
 
-        CapitalFirstWordOfString.capitalizeWord(inputString);
+       // CapitalFirstWordOfString.capitalizeWord(inputString);
 
-//       SortedArray.isSorted(intArray);
+        System.out.println(SortedArray.isSorted(new int[]{2, 9,8, 5, 6, 6}));
+
 
 
     }
