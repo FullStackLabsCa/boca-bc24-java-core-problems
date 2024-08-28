@@ -12,7 +12,7 @@ public class Course<S, G extends Number> {
 //        this.courseName=courseName;
         this.studentGradeMap = new HashMap<>();
     }
-public void erollStudent(S student){
+public void enrollStudent(S student){
     if (studentGradeMap.containsKey(student)){
         System.out.println(student + " is already enrolled");
     }else {
@@ -26,7 +26,7 @@ public void erollStudent(S student){
             System.out.println(student + " is already enrolled");
             enrolled=true;
         } else {
-            erollStudent(student);
+            enrollStudent(student);
         }
         return enrolled;
     }
