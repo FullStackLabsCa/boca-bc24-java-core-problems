@@ -37,7 +37,7 @@ public class School<S , G extends Number> {
     }
 
     //Enroll Student to a course
-    public boolean enrollStudentToCourse(S studentIdentifier, String courseName){
+    public boolean enrollStudentToCourse(String courseName, S studentIdentifier){
         //Check if course Exists in the School
         if(schoolMap.containsKey(courseName)){
             Course<S, G> course = schoolMap.get(courseName);
@@ -52,7 +52,7 @@ public class School<S , G extends Number> {
     }
 
     //Assign grade to a student
-    public boolean assignGradeToStudentInCourse(S studentIdentifier, G grade, String courseName){
+    public boolean assignGradeToStudentInCourse(String courseName, S studentIdentifier, G grade){
         if(schoolMap.containsKey(courseName)){
             Course<S, G> course = schoolMap.get(courseName);
             course.assignGrade(studentIdentifier, grade);
@@ -62,6 +62,17 @@ public class School<S , G extends Number> {
             System.out.println("Course is not available in this school.");
             return false;
         }
+    }
+
+    public void listGrades(String courseName){
+        Course<S, G> course;
+        if(schoolMap.containsKey(courseName)) {
+            course = schoolMap.get(courseName);
+        } else return;
+
+        Map<S, G> students = course.getAllGrades();
+        System.out.println("Grades for all students of " + courseName + ":\n" + students);
+
     }
 
     //List all unique students in the school
@@ -99,22 +110,26 @@ public class School<S , G extends Number> {
     }
 
     //Average grade of student amongst all enrolled courses
-//    public double getStudentCGPA(S studentIdentifier){
-//        double sumOfGPA = 0;
-//        int coursesParticipated = 0;
-//        Collection<Course<S, G>> courses = schoolMap.values();
-//
-//        for(Course<S,G> course : courses){
-//            Collection<S> students = course.getStudents();
-//
-//            if(students.contains(studentIdentifier)){
-//                sumOfGPA += course.getGrade(studentIdentifier);
-//                coursesParticipated++;
-//            }
-//        }
-//
-//        return (sumOfGPA / coursesParticipated);
-//    }
+    public double getStudentCGPA(S studentIdentifier){
+        double sumOfGPA = 0;
+        int coursesParticipated = 0;
+        Collection<Course<S, G>> courses = schoolMap.values();
+
+        for(Course<S,G> course : courses){
+            Collection<S> students = course.getStudents();
+
+            if(students.contains(studentIdentifier)){
+                coursesParticipated++;
+                if(course.getGrade(studentIdentifier).isPresent()) {
+                    sumOfGPA += course.getGrade(studentIdentifier).get();
+                }
+            }
+        }
+
+        return (sumOfGPA / coursesParticipated);
+    }
+
+
 
 
     public static void main(String[] args) {
@@ -148,25 +163,28 @@ public class School<S , G extends Number> {
         delhiPublicSchool.listAllStudentsInSchool(); //Should say No students in the course.
 
         //Enrolling student to a Course
-        delhiPublicSchool.enrollStudentToCourse("Akshat-Singla", "English-2024");
-        delhiPublicSchool.enrollStudentToCourse("Akshat-Singla", "Math-2024");
-        delhiPublicSchool.enrollStudentToCourse("Akshat-Singla", "Science-2024");
-        delhiPublicSchool.enrollStudentToCourse("Satwik-Singla", "Math-2024");
-        delhiPublicSchool.enrollStudentToCourse("Satwik-Singla", "English-2024");
-        convent.enrollStudentToCourse(1, "math-24-25");
-        convent.enrollStudentToCourse(332, "math-24-24");
-        convent.enrollStudentToCourse(332, "math-24-25");
+        delhiPublicSchool.enrollStudentToCourse("English-2024", "Akshat-Singla");
+        delhiPublicSchool.enrollStudentToCourse("Math-2024", "Akshat-Singla");
+        delhiPublicSchool.enrollStudentToCourse("Science-2024", "Akshat-Singla");
+        delhiPublicSchool.enrollStudentToCourse("Math-2024", "Satwik-Singla");
+        delhiPublicSchool.enrollStudentToCourse("English-2024", "Satwik-Singla");
+        convent.enrollStudentToCourse("math-24-25", 1);
+        convent.enrollStudentToCourse("math-24-24", 332);
+        convent.enrollStudentToCourse("math-24-25", 332);
 
         delhiPublicSchool.listAllStudentsInSchool();
         convent.listAllStudentsInSchool();
 
-        delhiPublicSchool.assignGradeToStudentInCourse("Akshat-Singla", 3.4, "English-2024");
-        delhiPublicSchool.assignGradeToStudentInCourse("Akshat-Singla", 2.4, "English-2024");
-        delhiPublicSchool.assignGradeToStudentInCourse("Akshat-Singla", 3.0, "Math-2024");
-        delhiPublicSchool.assignGradeToStudentInCourse("Satwik-Singla", 3.7, "English-2024");
+        delhiPublicSchool.assignGradeToStudentInCourse("English-2024", "Akshat-Singla", 3.4);
+        delhiPublicSchool.assignGradeToStudentInCourse("English-2024", "Akshat-Singla", 2.4);
+        delhiPublicSchool.assignGradeToStudentInCourse("Math-2024", "Akshat-Singla", 3.0);
+//        delhiPublicSchool.assignGradeToStudentInCourse("Akshat-Singla", 0.0, "Science-2024");
+        delhiPublicSchool.assignGradeToStudentInCourse("English-2024", "Satwik-Singla", 3.7);
 
+
+        delhiPublicSchool.listGrades("English-2024");
         System.out.println(delhiPublicSchool.calculateAverageGradeOfCourse("English-2024"));
-//        System.out.println(delhiPublicSchool.getStudentCGPA("Akshat-Singla"));
+        System.out.println(delhiPublicSchool.getStudentCGPA("Akshat-Singla") + " average Grade");
 
     }
 
