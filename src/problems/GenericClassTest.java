@@ -201,16 +201,7 @@ public class GenericClassTest {
 
 
 
-//             PROBLEM : GENERIC METHOD TO COUNT OCCOURENCES
-//    public static <T> int countOccurrences(T[] array, T element){
-//        int count = 0;
-//        for(int i = 0;i< array.length;i++){
-//            if(element == array[i]){
-//                count ++;
-//            }
-//        }
-//        return count;
-//    }
+
 
 //  PROBLEM : COUNTING ODD INTEGERS IN COLLECTION
 
