@@ -15,14 +15,14 @@ public class School<S , G extends Number> {
     }
 
     //Add Course
-    public boolean addCourse(String courseName){
+    public void addCourse(String courseName){
         if(!schoolMap.containsKey(courseName)){
             schoolMap.put(courseName, new Course<>());
-//            System.out.println("Added " + courseName + " to school.");
-            return true;
+            System.out.println("Course '" + courseName + "' added.");
+//            return true;
         } else {
-            System.out.println("Course " + courseName + " Already Exists!");
-            return false;
+            System.out.println("Error! Course " + courseName + " Already Exists!");
+//            return false;
         }
     }
 
@@ -30,49 +30,54 @@ public class School<S , G extends Number> {
     public void listAllCourses(){
         if(!schoolMap.isEmpty()) {
             Set<String> listOfCourses = schoolMap.keySet();
-            System.out.println(listOfCourses);
+            System.out.println("Courses offered: \n" + listOfCourses);
         } else {
             System.out.println("School does not contain any courses right now.");
         }
     }
 
     //Enroll Student to a course
-    public boolean enrollStudentToCourse(String courseName, S studentIdentifier){
+    public void enrollStudentToCourse(String courseName, S studentIdentifier){
         //Check if course Exists in the School
         if(schoolMap.containsKey(courseName)){
             Course<S, G> course = schoolMap.get(courseName);
             if(course.enrollStudent(studentIdentifier)) {
-                System.out.println("Student " + studentIdentifier + " enrolled in " + courseName);
+                System.out.println("Student '" + studentIdentifier + "' enrolled in course '" + courseName + "'.");
             }
-            return true;
         } else {
-            System.out.println("Course " + courseName + " is not available in this school.");
-            return false;
+            System.out.println("Error: Cannot enroll student. Course '" + courseName + "' does not exist.");
         }
     }
 
     //Assign grade to a student
-    public boolean assignGradeToStudentInCourse(String courseName, S studentIdentifier, G grade){
+    public void assignGradeToStudentInCourse(String courseName, S studentIdentifier, G grade){
         if(schoolMap.containsKey(courseName)){
             Course<S, G> course = schoolMap.get(courseName);
-            course.assignGrade(studentIdentifier, grade);
-            System.out.println(grade + " assigned to " + studentIdentifier + " for course " + courseName);
-            return true;
+            if(course.assignGrade(studentIdentifier, grade)) {
+                System.out.println("Grade '" + grade + "' assigned to student '" + studentIdentifier + "' in course '" + courseName + "'.");
+//                return true;
+            } else{
+                System.out.println("Error: Cannot assign grade. Student '" + studentIdentifier + "' is not enrolled in course '"+ courseName +"'.");
+//                return false;
+            }
         } else {
             System.out.println("Course is not available in this school.");
-            return false;
+//            return false;
         }
     }
 
+    //List Grades
     public void listGrades(String courseName){
         Course<S, G> course;
         if(schoolMap.containsKey(courseName)) {
             course = schoolMap.get(courseName);
-        } else return;
+        } else {
+            System.out.println("Error! Course '"+ courseName+"' does not exist.");
+            return;
+        }
 
-        Map<S, G> students = course.getAllGrades();
-        System.out.println("Grades for all students of " + courseName + ":\n" + students);
-
+        System.out.println("List of Grades in Course '" + courseName + "':");
+        course.listAllGrades();
     }
 
     //List all unique students in the school
@@ -87,7 +92,7 @@ public class School<S , G extends Number> {
         }
 
         if(!listOfStudents.isEmpty()){
-            System.out.println("listOfStudents = " + listOfStudents);
+            System.out.println("Unique students enrolled:\n" + listOfStudents);
         } else {
             System.out.println("School does not have any students yet!");
         }
@@ -96,7 +101,7 @@ public class School<S , G extends Number> {
     }
 
     //Course's Average Grade
-    public double calculateAverageGradeOfCourse(String courseName){
+    public void calculateAverageGradeOfCourse(String courseName){
         double average;
         if(schoolMap.containsKey(courseName)){
             Course<S, G> course = schoolMap.get(courseName);
@@ -106,11 +111,12 @@ public class School<S , G extends Number> {
             average = 0;
         }
 
-        return average;
+        System.out.println("Average score for course '"+courseName+"': "+average);
+//        return average;
     }
 
     //Average grade of student amongst all enrolled courses
-    public double getStudentCGPA(S studentIdentifier){
+    public void getStudentCGPA(S studentIdentifier){
         double sumOfGPA = 0;
         int coursesParticipated = 0;
         Collection<Course<S, G>> courses = schoolMap.values();
@@ -125,14 +131,57 @@ public class School<S , G extends Number> {
                 }
             }
         }
-
-        return (sumOfGPA / coursesParticipated);
+        double CGPA = (sumOfGPA / coursesParticipated);
+        System.out.println("Cumulative average score for student '"+studentIdentifier+"': "+CGPA);
+//        return (sumOfGPA / coursesParticipated);
     }
 
 
+    //Process Commands
+    public void processCommand(String inputCommand) {
+
+        //Create an arguments array/collection which will store the arguments
+        String[] arguments = inputCommand.trim().split(" ");
+
+        //'0' the argument being the command itself on which the switch case will process the operations
+        switch (arguments[0]){
+            case "add_course":
+                addCourse(arguments[1]);
+                break;
+            case "list_courses":
+                listAllCourses();
+                break;
+            case "enroll_student":
+                enrollStudentToCourse(arguments[1], (S) arguments[2]);
+                break;
+            case "assign_grade":
+                assignGradeToStudentInCourse(arguments[1], (S) arguments[2], (G) Double.valueOf(arguments[3]));
+                break;
+            case "list_grades":
+                listGrades(arguments[1]);
+                break;
+            case "report_unique_courses":
+                listAllCourses();
+                break;
+            case "report_unique_students":
+                listAllStudentsInSchool();
+                break;
+            case "report_average_score":
+                calculateAverageGradeOfCourse(arguments[1]);
+                break;
+            case "report_cumulative_average":
+                getStudentCGPA((S) arguments[1]);
+                break;
+            default:
+                System.out.println("Error: Unknown command 'unknown_command'. Please use a valid command.");
+        }
+
+        //Other arguments will be used as arguments for method parameters when making method calls
+
+    }
 
 
-    public static void main(String[] args) {
+    public static void main2(String[] args) {
 
         //Create 2 school object Instances
         School<String, Double> delhiPublicSchool = new School<>();
@@ -142,18 +191,29 @@ public class School<S , G extends Number> {
         delhiPublicSchool.listAllCourses();
 
         //Test AddCourse
-        delhiPublicSchool.addCourse("English-2024");
-        delhiPublicSchool.addCourse("Math-2024");
-        delhiPublicSchool.addCourse("Math-2024");
-        delhiPublicSchool.addCourse("Science-2024");
-        delhiPublicSchool.addCourse("Games-2024");
-        delhiPublicSchool.addCourse("Aptitude-2024");
+//        delhiPublicSchool.addCourse("English-2024");
+//        delhiPublicSchool.addCourse("Math-2024");
+//        delhiPublicSchool.addCourse("Math-2024");
+//        delhiPublicSchool.addCourse("Science-2024");
+//        delhiPublicSchool.addCourse("Games-2024");
+//        delhiPublicSchool.addCourse("Aptitude-2024");
+        delhiPublicSchool.processCommand("add_course English-2024");
+        delhiPublicSchool.processCommand("add_course Math-2024");
+        delhiPublicSchool.processCommand("add_course Math-2024");
+        delhiPublicSchool.processCommand("add_course Science-2024");
+        delhiPublicSchool.processCommand("add_course Games-2024");
+        delhiPublicSchool.processCommand("add_course Aptitude-2024");
 
-        convent.addCourse("math-24-25");
-        convent.addCourse("science-24-25");
-        convent.addCourse("computer-24-25");
-        convent.addCourse("sports-24-25");
-        convent.addCourse("dance-24-25");
+//        convent.addCourse("math-24-25");
+//        convent.addCourse("science-24-25");
+//        convent.addCourse("computer-24-25");
+//        convent.addCourse("sports-24-25");
+//        convent.addCourse("dance-24-25");
+        convent.processCommand("add_course math-24-25");
+        convent.processCommand("add_course science-24-25");
+        convent.processCommand("add_course computer-24-25");
+        convent.processCommand("add_course sports-24-25");
+        convent.processCommand("add_course dance-24-25");
 
         //List all Courses
         delhiPublicSchool.listAllCourses();
@@ -183,9 +243,28 @@ public class School<S , G extends Number> {
 
 
         delhiPublicSchool.listGrades("English-2024");
-        System.out.println(delhiPublicSchool.calculateAverageGradeOfCourse("English-2024"));
-        System.out.println(delhiPublicSchool.getStudentCGPA("Akshat-Singla") + " average Grade");
+//        System.out.println(delhiPublicSchool.calculateAverageGradeOfCourse("English-2024"));
+//        System.out.println(delhiPublicSchool.getStudentCGPA("Akshat-Singla") + " average Grade");
 
     }
 
+    //Testing from Instructor ProcessCommands
+    public static void main(String[] args) {
+        School<Integer, Double> school= new School<>();
+
+//        school.processCommand("add_course Math101");
+//        school.processCommand("enroll_student Math101 12345");
+
+//        school.processCommand("enroll_student Physics103 12345");
+
+        school.processCommand("add_course Math101");
+        school.processCommand("enroll_student Math101 12345");
+        school.processCommand("enroll_student Math101 11223");
+        school.processCommand("assign_grade Math101 12345 85.5");
+        school.processCommand("assign_grade Math101 11223 82.5");
+
+        school.processCommand("list_grades Math101");
+        school.processCommand("list_grades Eath101");
+
+    }
 }
