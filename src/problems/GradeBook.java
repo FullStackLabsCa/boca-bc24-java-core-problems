@@ -2,7 +2,7 @@ package problems;
 
 import java.util.*;
 
-public class GradeBook <T extends Number> {
+public class GradeBook<T extends Number> {
     public static void main(String[] args) {
 //        List<Integer> intGradeList = new ArrayList<>();
 //        intGradeList.add(25);
@@ -42,13 +42,13 @@ public class GradeBook <T extends Number> {
 
     private List<T> gradeList = new ArrayList<>();
 
-    public int getNumberOfGrades(){
+    public int getNumberOfGrades() {
         int size = gradeList.size();
         return size;
 
     }
 
-    public int addGrade(T num){
+    public int addGrade(T num) {
 
         gradeList.add(num);
         int size = gradeList.size();
@@ -56,39 +56,43 @@ public class GradeBook <T extends Number> {
     }
 
 
-    public  String calculateAverage(){
+    public String calculateAverage() {
         double avg = 0;
         double totalSum = 0;
         int count = 0;
 
-        if(gradeList.isEmpty()){
+        if (gradeList.isEmpty()) {
             return "No grades available to calculate the average.";
-        }
-        else {
-            for(T grade : gradeList){
+        } else {
+            for (T grade : gradeList) {
                 totalSum += grade.doubleValue();
                 count++;
             }
             avg = totalSum / count;
-            String str = "Average grade: "+ avg;
+            String str = "Average grade: " + avg;
             return str;
         }
     }
 
-    public  double findLowestGrade(List <Double> gradelist){
-        double minGrade = 0;
-        for(Double grade : gradelist){
-            if(grade.doubleValue() < minGrade){
-                minGrade = grade;
+    public String findLowestGrade() {
+        if (gradeList.isEmpty()) {
+            return "No grades available to find the lowest grade.";
+        } else {
+            T minGrade = gradeList.get(0);
+            for (T grade : gradeList) {
+                if (grade.doubleValue() < minGrade.doubleValue()) {
+                    minGrade = grade;
+                }
             }
+            return "Lowest grade: " + minGrade;
         }
-        return minGrade;
+
     }
 
-    public  double findHighestGrade(List <Double> gradelist){
+    public double findHighestGrade(List<Double> gradelist) {
         double maxGrade = 0;
-        for(Double grade : gradelist){
-            if(grade.doubleValue() > maxGrade){
+        for (Double grade : gradelist) {
+            if (grade.doubleValue() > maxGrade) {
                 maxGrade = grade;
             }
         }
