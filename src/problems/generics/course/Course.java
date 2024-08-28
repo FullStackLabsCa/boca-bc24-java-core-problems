@@ -2,30 +2,34 @@ package generics.course;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public class Course<S, G> {
     Map<S, G> studentToGradeMap = new LinkedHashMap<>();
 
-    private void enrollstudent(S studentIdentifier) {
+    public void enrollStudent(S studentIdentifier) {
         studentToGradeMap.putIfAbsent(studentIdentifier, null);
     }
 
-    private void assignGrade(S studentIdentifier, G grade) {
-        studentToGradeMap.putIfAbsent(studentIdentifier, grade);
+    public boolean isStudentEnrolled(S studentIdentifier) {
+        return studentToGradeMap.containsKey(studentIdentifier);
     }
 
-    private G retrieveGrade(S studentIdentifier) {
-        if (studentToGradeMap.get(studentIdentifier) != null) {
-            return studentToGradeMap.get(studentIdentifier);
-        } else {
-            System.out.println("Student with this identifier doesn't exist in a map.!");
-            return null;
+    public void assignGrade(S studentIdentifier, G grade) {
+        if(isStudentEnrolled(studentIdentifier)) {
+            studentToGradeMap.put(studentIdentifier, grade);
         }
     }
 
-    private void getStudentGradeList() {
-//        System.out.println("\n*****Student grade list*****\n" + studentToGradeMap);
+    public Optional<G> getGrade(S studentIdentifier) {
+        return Optional.ofNullable(studentToGradeMap.get(studentIdentifier));
+    }
 
+    public Map<S, G>  getAllGrades() {
+        return studentToGradeMap;
+    }
+
+    public void listAllGrades() {
         for (Map.Entry<S, G> studentGradeEntry: studentToGradeMap.entrySet()) {
             System.out.println(studentGradeEntry.getKey() + " <-> " + studentGradeEntry.getValue());
         }
@@ -36,10 +40,10 @@ public class Course<S, G> {
         Course<String, Double> javFall2024 = new Course();
 
         //Enroll students for a course
-        javFall2024.enrollstudent("Nimanshu");
-        javFall2024.enrollstudent("Kiran");
-        javFall2024.enrollstudent("Anant");
-        javFall2024.enrollstudent("Akshita");
+        javFall2024.enrollStudent("Nimanshu");
+        javFall2024.enrollStudent("Kiran");
+        javFall2024.enrollStudent("Anant");
+        javFall2024.enrollStudent("Akshita");
 
         //Assign grade to specific student
         javFall2024.assignGrade("Nimanshu", 98.50);
@@ -48,19 +52,18 @@ public class Course<S, G> {
         javFall2024.assignGrade("Akshita", 98.5);
 
         //Retrieve grade of specific student
-        System.out.println("studentGrade.retrieveGrade(\"Nimanshu\") = " + javFall2024.retrieveGrade("Nimanshu"));
-        System.out.println("studentGrade.retrieveGrade(\"Akshita\") = " + javFall2024.retrieveGrade("Akshita"));
+        System.out.println("studentGrade.getGrade(\"Nimanshu\") = " + javFall2024.getGrade("Nimanshu"));
+        System.out.println("studentGrade.getGrade(\"Akshita\") = " + javFall2024.getGrade("Akshita"));
 
-        javFall2024.getStudentGradeList();
-
+        javFall2024.listAllGrades();
 
         System.out.println("\nStudent with integer student identifier and integer grade");
         Course<Integer, Integer> javaWinter2025 = new Course();
 
         //Enroll students for a course
-        javaWinter2025.enrollstudent(1);
-        javaWinter2025.enrollstudent(2);
-        javaWinter2025.enrollstudent(3);
+        javaWinter2025.enrollStudent(1);
+        javaWinter2025.enrollStudent(2);
+        javaWinter2025.enrollStudent(3);
 
         //Assign grade to specific student
         javaWinter2025.assignGrade(1, 98);
@@ -68,10 +71,12 @@ public class Course<S, G> {
         javaWinter2025.assignGrade(3, 100);
         javaWinter2025.assignGrade(4, 98);
 
-        //Retrieve grade of specific student
-        System.out.println("studentGrade.retrieveGrade(\"1\") = " + javaWinter2025.retrieveGrade(1));
-        System.out.println("studentGrade.retrieveGrade(\"4\") = " + javaWinter2025.retrieveGrade(4));
+        javaWinter2025.getAllGrades();
 
-        javaWinter2025.getStudentGradeList();
+        //Retrieve grade of specific student
+        System.out.println("studentGrade.getGrade(\"1\") = " + javaWinter2025.getGrade(1));
+        System.out.println("studentGrade.getGrade(\"4\") = " + javaWinter2025.getGrade(4));
+
+        javaWinter2025.listAllGrades();
     }
 }
