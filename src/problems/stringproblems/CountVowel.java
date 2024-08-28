@@ -69,7 +69,7 @@ public class CountVowel {
         String str = scanner.nextLine();
         boolean isValidInput = isValidateInputString(str);
         if (!isValidInput) {
-            return;
+            System.out.println("Please enter a valid string");
         } else {
             System.out.println(countVowels(str));
         }

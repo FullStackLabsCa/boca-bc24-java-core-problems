@@ -4,40 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d3b01333-d157-4793-b4ff-8016ea5cf74b" name="Changes" comment="course generics class with student grade map">
-      <change afterPath="$PROJECT_DIR$/src/problems/generics/school/Course.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/generics/school/School.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/generics/schoolold/Course.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/generics/schoolold/CourseRunner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/testproblems/Calculator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/testproblems/Fibonacci.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/testproblems/FindMaximumInArray.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/testproblems/NumbersAdd.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/testproblems/PalindromeChecker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/problems/ListToArrayTest.java" afterDir="false" />
+    <list default="true" id="d3b01333-d157-4793-b4ff-8016ea5cf74b" name="Changes" comment="Committed all previous problems with minor fix in boilerplate">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boca-bc24-java-core-problems.iml" beforeDir="false" afterPath="$PROJECT_DIR$/boca-bc24-java-core-problems.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/boca-bc24-java-core-problems2/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/boca-bc24-java-core-problems2/arrayproblem/FindDuplicate.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/boca-bc24-java-core-problems2/arrayproblem/FindMinMax.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/boca-bc24-java-core-problems2/arrayproblem/MergeArray.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/boca-bc24-java-core-problems2/arrayproblem/ShiftElement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/boca-bc24-java-core-problems2/arrayproblem/SortArray.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/boca-bc24-java-core-problems2/calculator/Calculator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/boca-bc24-java-core-problems2/generics/ConvertListToArray.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/boca-bc24-java-core-problems2/generics/CountOcccurence.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/boca-bc24-java-core-problems2/generics/CountOddIntegers.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/boca-bc24-java-core-problems2/generics/GradeBook.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/boca-bc24-java-core-problems2/stringproblems/CapitalizeFirstLetter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/boca-bc24-java-core-problems2/stringproblems/CountVowel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/boca-bc24-java-core-problems2/stringproblems/FindLongestString.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/boca-bc24-java-core-problems2/stringproblems/RemoveVowel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/generics/ConvertListToArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/generics/ListToArray.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/generics/course/CourseRunner.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/problems/CalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/CalculatorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/problems/FibonacciTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/FibonacciTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/problems/FindMaximumInArrayTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/FindMaximumInArrayTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/problems/PalindromeCheckerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/PalindromeCheckerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/stringproblems/CapitalizeFirstLetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/stringproblems/CapitalizeFirstLetter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/stringproblems/CountVowel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/stringproblems/CountVowel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/stringproblems/FindLongestString.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/stringproblems/FindLongestString.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/stringproblems/RemoveVowel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/stringproblems/RemoveVowel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/testproblems/NumbersAdd.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -262,7 +235,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724772344356</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Committed all previous problems with minor fix in boilerplate">
+      <option name="closed" value="true" />
+      <created>1724850573680</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1724850573680</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -284,6 +265,7 @@
     <MESSAGE value="basic java problems" />
     <MESSAGE value="minor fix in calculator" />
     <MESSAGE value="course generics class with student grade map" />
-    <option name="LAST_COMMIT_MESSAGE" value="course generics class with student grade map" />
+    <MESSAGE value="Committed all previous problems with minor fix in boilerplate" />
+    <option name="LAST_COMMIT_MESSAGE" value="Committed all previous problems with minor fix in boilerplate" />
   </component>
 </project>

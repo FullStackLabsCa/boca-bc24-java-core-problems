@@ -24,8 +24,8 @@ public class FindLongestString {
         System.out.println("Enter a string:: ");
         String str = scanner.nextLine();
         boolean isValidInput = isValidateInputString(str);
-        if (isValidInput) {
-            return;
+        if (!isValidInput) {
+            System.out.println("Please enter a valid string");
         } else {
             System.out.println("String without vowel is= " + findLongestWord(str));
         }
