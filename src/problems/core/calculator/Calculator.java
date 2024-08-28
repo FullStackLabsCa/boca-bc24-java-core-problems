@@ -1,4 +1,4 @@
-package problems.calculator;
+package problems.core.calculator;
 
 import java.util.Scanner;
 

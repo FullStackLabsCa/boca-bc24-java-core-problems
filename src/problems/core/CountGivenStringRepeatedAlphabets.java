@@ -9,9 +9,9 @@ public class CountGivenStringRepeatedAlphabets {
         Scanner input = new Scanner(System.in);
 
         System.out.println("Please enter a text...");
-        String value = input.nextLine();
+        String value = input.nextLine().trim();
 
-        if (value == "") {
+        if (value.equals("")) {
             isValueNull = true;
             System.out.println("Please enter a valid value");
         }

@@ -1,8 +1,6 @@
 package problems.core;
 
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
 
 @SuppressWarnings("java:S106")
 public class FindFirstDuplicateInArray {

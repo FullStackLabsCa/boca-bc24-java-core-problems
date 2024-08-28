@@ -1,4 +1,4 @@
-package problems.calculator;
+package problems.core.calculator;
 
 public class Division {
     private double result;
