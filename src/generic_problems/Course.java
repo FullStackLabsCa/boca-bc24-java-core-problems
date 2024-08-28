@@ -48,4 +48,11 @@ public class Course<S, G extends Number> {
         }
     }
 
+    public static void main(String[] args) {
+        Course<String,Double> java = new Course<>();
+        java.enrollStudent("Gurpreet");
+        java.assignGrade("Gurpreet",90.0);
+        java.retrieveGrade("Gurpreet");
+        java.listAllStudents();
+    }
 }

@@ -59,4 +59,15 @@ public class GradeBook<T extends Number> {
         }
         return min;
     }
+
+    public static void main(String[] args) {
+        GradeBook<Number> gradeBook = new GradeBook<>();
+        gradeBook.addingGrades(45);
+        gradeBook.addingGrades(59.6);
+        gradeBook.addingGrades(89.9);
+        System.out.println("List of Grades is : "+gradeBook.grade);
+        System.out.println("Average of a Grades is : "+gradeBook.calculateAverage(gradeBook.grade));
+        System.out.println("Highest Grades is : "+gradeBook.highestGrades(gradeBook.grade));
+        System.out.println("Lowest Grade is : "+gradeBook.lowestGrades(gradeBook.grade));
+    }
 }

@@ -5,8 +5,7 @@ import java.util.Scanner;
 // Write a Java program to display fibonacci series.
 
 
-class Fibonacci
-{
+class FibonacciSeries {
     public static void main(String[] args)
     {
         System.out.println("Welcome\nEnter the number of term in fibonacci series");
