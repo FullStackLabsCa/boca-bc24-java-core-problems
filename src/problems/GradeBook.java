@@ -89,13 +89,19 @@ public class GradeBook<T extends Number> {
 
     }
 
-    public double findHighestGrade(List<Double> gradelist) {
-        double maxGrade = 0;
-        for (Double grade : gradelist) {
-            if (grade.doubleValue() > maxGrade) {
-                maxGrade = grade;
-            }
+    public String findHighestGrade() {
+        if (gradeList.isEmpty()) {
+            return "No grades available to find the highest grade.";
         }
-        return maxGrade;
-    }
+        else {
+            T maxGrade = gradeList.get(0);
+            for (T grade : gradeList) {
+                if (grade.doubleValue() > maxGrade.doubleValue()) {
+                    maxGrade = grade;
+                }
+            }
+            return "Highest grade: " + maxGrade;
+        }
+        }
+
 }

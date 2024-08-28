@@ -38,19 +38,19 @@ public class GradeBookTest {
         assertEquals("No grades available to calculate the average.", doubleGradeBook.calculateAverage());
     }
 
-//    @Test
-//    public void testFindHighestDoubleGrade() {
-//        doubleGradeBook.addGrade(85.0);
-//        doubleGradeBook.addGrade(90.0);
-//        doubleGradeBook.addGrade(95.0);
-//
-//        assertEquals("Highest grade: 95.0", doubleGradeBook.findHighestGrade());
-//    }
-//
-//    @Test
-//    public void testFindHighestDoubleGradeWithNoGrades() {
-//        assertEquals("No grades available to find the highest grade.", doubleGradeBook.findHighestGrade());
-//    }
+    @Test
+    public void testFindHighestDoubleGrade() {
+        doubleGradeBook.addGrade(85.0);
+        doubleGradeBook.addGrade(90.0);
+        doubleGradeBook.addGrade(95.0);
+
+        assertEquals("Highest grade: 95.0", doubleGradeBook.findHighestGrade());
+    }
+
+    @Test
+    public void testFindHighestDoubleGradeWithNoGrades() {
+        assertEquals("No grades available to find the highest grade.", doubleGradeBook.findHighestGrade());
+    }
 //
     @Test
     public void testFindLowestDoubleGrade() {
