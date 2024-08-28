@@ -13,6 +13,6 @@ public class CountOccurence {
 
     public static void main(String[] args) {
         Integer[] integerArray = {2,3,4,5,2,2};
-        System.out.println(GenericProblems.countOccurrences(integerArray, 2));
+        System.out.println(CountOccurence.countOccurrences(integerArray, 2));
     }
 }

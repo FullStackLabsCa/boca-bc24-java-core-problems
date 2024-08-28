@@ -25,6 +25,6 @@ public class CountOddIntegerInCollection {
         integerArrayList.add(5);
         integerArrayList.add(7);
         integerArrayList.add(2);
-        GenericProblems.occureneceOfOddNumbers(integerArrayList);
+        CountOddIntegerInCollection.occureneceOfOddNumbers(integerArrayList);
     }
 }
