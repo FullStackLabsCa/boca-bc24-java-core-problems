@@ -53,7 +53,7 @@ public class BracketMatchWithStack {
     }
     private static boolean isMatchingBracket(char openB, char closeB){
         return (openB=='(' && closeB==')')||
-                (openB=='[' && closeB==']')||
+                (openB=='[' &&closeB==']')||
                 (openB=='{'&& closeB=='}');
     }
 

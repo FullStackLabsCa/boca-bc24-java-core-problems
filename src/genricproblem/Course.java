@@ -9,7 +9,7 @@ public class Course<S,G> {
 
     @Override
     public String toString() {
-        return "Course[" +
+        return "CourseBook[" +
                 "Student Record with GPA=" + courseGpa +
                 ']';
     }
@@ -31,12 +31,14 @@ public class Course<S,G> {
     // retrieve grade
 
     public G retrieveGrade(S studentID){
+
         return this.courseGpa.get(studentID);
     }
     //list all the grade
     // Method to list all students and their grades
 
     public Set<Map.Entry<S, G>> listAllGrades() {
+
         return courseGpa.entrySet(); // Returns a set of entries
     }
 
@@ -58,7 +60,7 @@ public class Course<S,G> {
         studentGrades.assignGrade(56, "C");
 
         //retrieve and display the grade
-        System.out.println("Grade for student 12 : " + studentGrades.retrieveGrade(65656));
+        System.out.println("Grade for student 12 : " + studentGrades.retrieveGrade(12));
         System.out.println("Grade for student 23 : " + studentGrades.retrieveGrade(23));
         System.out.println("Grade for student 34 : " + studentGrades.retrieveGrade(34));
         System.out.println("Grade for student 45 : " + studentGrades.retrieveGrade(45));
