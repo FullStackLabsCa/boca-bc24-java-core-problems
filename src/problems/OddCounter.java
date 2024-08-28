@@ -17,7 +17,10 @@ public class OddCounter {
         int count = 0;
 
         for(Integer i : t){
-            if(i%2 != 0){
+            if(i == null){
+                continue;
+            }
+            else if (i%2 != 0){
                 count ++;
             }
         }
