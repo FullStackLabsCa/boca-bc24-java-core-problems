@@ -2,54 +2,50 @@ package problems.generics;
 
 import java.util.*;
 
-public class GradeBook<T extends Number> {
+public class GradeBook<T extends Number & Comparable<T>> {
 
     private List<T> grades;
 
-    public GradeBook(){
+    public GradeBook() {
         this.grades = new ArrayList<>();
     }
 
-    public void addGrades(T grade){
+    public void addGrade(T grade) {
         grades.add(grade);
     }
 
-    public double calculateAverage() {
+    public String calculateAverage() {
         double average = Double.MIN_VALUE;
         if (!grades.isEmpty()) {
             average = 0;
             for (T grade : grades) {
                 average = average + grade.doubleValue();
             }
+
+            return "Average grade: " + String.format("%.1f", average / this.grades.size());
         }
 
-        return average/this.grades.size();
+        return "No grades available to calculate the average.";
     }
 
-    public double findHighestGrade(){
-        double highestGrade =Double.MIN_VALUE;
+    public String findHighestGrade() {
         if (!grades.isEmpty()) {
-            for (T grade : this.grades) {
-                if (grade.doubleValue() > highestGrade) {
-                    highestGrade = grade.doubleValue();
-                }
-            }
+            return "Highest grade: " + Collections.max(grades).toString();
         }
 
-        return highestGrade;
+        return "No grades available to find the highest grade.";
     }
 
-    public double findLowestGrade(){
-        double lowestGrade = Double.MAX_VALUE;
+    public int getNumberOfGrades() {
+        return this.grades.size();
+    }
+
+    public String findLowestGrade() {
         if (!grades.isEmpty()) {
-            for (T grade : this.grades) {
-                if (grade.doubleValue() < lowestGrade) {
-                    lowestGrade = grade.doubleValue();
-                }
-            }
+            return "Lowest grade: " + Collections.min(grades).toString();
         }
 
-        return lowestGrade;
+        return "No grades available to find the lowest grade.";
     }
 
     public static void main(String[] args) {
@@ -58,12 +54,12 @@ public class GradeBook<T extends Number> {
         GradeBook<Integer> grades = new GradeBook<>();
 
         System.out.println("Please enter grades of 10 students: ");
-        for(int i=0; i<10; i++){
-            grades.addGrades(s.nextInt());
+        for (int i = 0; i < 10; i++) {
+            grades.addGrade(s.nextInt());
         }
 
-        System.out.println("Average Grade: " + grades.calculateAverage());
-        System.out.println("Highest Grade: " + (grades.findHighestGrade() != Double.MIN_VALUE ? grades.findHighestGrade() : "No grades added."));
-        System.out.println("Lowest Grade: " + (grades.findLowestGrade() != Double.MAX_VALUE ? grades.findLowestGrade() : "No grades added."));
+        System.out.println(grades.calculateAverage());
+        System.out.println(grades.findHighestGrade());
+        System.out.println(grades.findLowestGrade());
     }
 }
