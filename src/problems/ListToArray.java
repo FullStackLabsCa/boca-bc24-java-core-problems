@@ -1,11 +1,15 @@
 package problems;
 
+import java.util.Collections;
 import java.util.List;
 //PROBLEM : GENERIC METHOD TO CONVERT LIST TO ARRAY
 public class ListToArray {
 
     public static <T> T[] listToArray(List<T> list, T[] array){
         if(list == null){
+            return null;
+        }
+        if (list.equals(Collections.emptyList())){
             return null;
         }
         Object[] tempArray = new Object[list.size()];
