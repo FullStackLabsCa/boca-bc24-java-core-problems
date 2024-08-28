@@ -5,12 +5,15 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ListToArray {
-    public static <T> T[] listToArray(List<T> list) {
-        T[] array = (T[]) new Object[list.size()];
+    public static <T> T[] listToArray(List<T> list, T[] array) {
+        if (list == null || list.isEmpty() ) {
+            return null;
+        }
+
         for (int i = 0; i < list.size(); i++) {
             array[i] = list.get(i);
         }
-        return array;
+        return list.toArray(array);
     }
 
 //        List[] result = new ArrayList[1];
@@ -31,21 +34,21 @@ public class ListToArray {
 //    }
 
 
-    public static void main(String[] args) {
-        List<Integer> list = new ArrayList<>();
-        list.add(12);
-        list.add(113);
-        list.add(121);
-        list.add(1221);
-        list.add(102);
-        System.out.println("ListToArray.listToArray(list) = " + Arrays.toString(ListToArray.listToArray(list)));
-
-
-        List<String> stringList = new ArrayList<>();
-        stringList.add("Hello");
-        stringList.add("Jade");
-        stringList.add("John");
-        System.out.println("listToArray(stringList) = " + Arrays.toString(listToArray(stringList)));
+//    public static void main(String[] args) {
+//        List<Integer> list = new ArrayList<>();
+//        list.add(12);
+//        list.add(113);
+//        list.add(121);
+//        list.add(1221);
+//        list.add(102);
+//        System.out.println("ListToArray.listToArray(list) = " + Arrays.toString(ListToArray.listToArray(list, new Integer[intList.size()])));
+//
+//
+//        List<String> stringList = new ArrayList<>();
+//        stringList.add("Hello");
+//        stringList.add("Jade");
+//        stringList.add("John");
+//        System.out.println("listToArray(stringList) = " + Arrays.toString(listToArray(stringList, new Integer[intList.size()])));
 
 //        Integer[] integersArray = new Integer[list.size()];
 //
@@ -63,5 +66,4 @@ public class ListToArray {
 //        System.out.println(" ]");
 
 
-    }
 }
