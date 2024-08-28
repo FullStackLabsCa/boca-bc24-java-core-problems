@@ -13,14 +13,14 @@ public class Teacher{
         System.out.println(student1.lowestGrade());
 
         Course<String, Integer> student = new Course<>();
-        student.addStudent("Ankit");
-        student.addGrade("Ankit", 20);
-        student.addStudent("Joshi");
-        student.addGrade("Joshi", 40);
-        student.addStudent("John");
-        student.addGrade("John", 80);
+//        student.addStudent("Ankit");
+//        student.addGrade("Ankit", 20);
+//        student.addStudent("Joshi");
+//        student.addGrade("Joshi", 40);
+//        student.addStudent("John");
+//        student.addGrade("John", 80);
 
-        student.getAllStudents();
+       // student.getAllStudents();
 
     }
 }
