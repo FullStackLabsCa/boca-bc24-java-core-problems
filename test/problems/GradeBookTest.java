@@ -1,8 +1,12 @@
 package problems;
 
+
+import genericsproblems.GradeBook;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.contrib.java.lang.system.SystemOutRule;
+import static org.junit.Assert.assertTrue;
 
 public class GradeBookTest {
     private GradeBook<Double> doubleGradeBook;
