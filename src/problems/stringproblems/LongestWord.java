@@ -22,13 +22,3 @@ public class LongestWord {
     }
 }
 
-
-//for (int i = 0; i < userSentenceSplit[i].length(); i++) {
-//for(int j = i +1; j < userSentenceSplit[j].length(); j++){
-//if (userSentenceSplit[j].length() >= userSentenceSplit[i].length()) {
-//longestWordInString = userSentenceSplit[j] ;
-
-// }
-//if (userSentenceSplit[i+1].length() >= userSentenceSplit[i].length()) {
-//  longestWordInString = userSentenceSplit[i + 1] + string;
-// }
