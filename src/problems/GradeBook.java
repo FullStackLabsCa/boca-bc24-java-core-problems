@@ -60,15 +60,19 @@ public class GradeBook <T extends Number> {
         double avg = 0;
         double totalSum = 0;
         int count = 0;
-        
-        for(T grade : gradeList){
-            totalSum += grade.doubleValue();
-            count++;
-        }
-        avg = totalSum / count;
-        String str = "Average grade: "+ avg;
-        return str;
 
+        if(gradeList.isEmpty()){
+            return "No grades available to calculate the average.";
+        }
+        else {
+            for(T grade : gradeList){
+                totalSum += grade.doubleValue();
+                count++;
+            }
+            avg = totalSum / count;
+            String str = "Average grade: "+ avg;
+            return str;
+        }
     }
 
     public  double findLowestGrade(List <Double> gradelist){

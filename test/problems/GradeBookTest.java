@@ -32,11 +32,11 @@ public class GradeBookTest {
 
         assertEquals("Average grade: 90.0", doubleGradeBook.calculateAverage());
     }
-//
-//    @Test
-//    public void testCalculateDoubleAverageWithNoGrades() {
-//        assertEquals("No grades available to calculate the average.", doubleGradeBook.calculateAverage());
-//    }
+
+    @Test
+    public void testCalculateDoubleAverageWithNoGrades() {
+        assertEquals("No grades available to calculate the average.", doubleGradeBook.calculateAverage());
+    }
 //
 //    @Test
 //    public void testFindHighestDoubleGrade() {
