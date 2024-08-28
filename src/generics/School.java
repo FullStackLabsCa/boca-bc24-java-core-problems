@@ -1,5 +1,6 @@
 package generics;
 
+import java.sql.SQLOutput;
 import java.util.*;
 
 public class School<S , G extends Number> {
@@ -180,7 +181,33 @@ public class School<S , G extends Number> {
 
     }
 
+    public static void printHelperCommands(){
+        String menu = """
+                - add_course <course_name>    ->	Adds a new course to the school.
+                - list_courses    ->	Lists all courses offered by the school.
+                - enroll_student <course_name> <id>   ->	Enrolls a student in the specified course.
+                - assign_grade <course_name> <id> <g> ->	Assigns a grade to the student in the specified course.
+                - list_grades <course_name>   ->	Lists all students and their grades for the specified course.
+                - report_unique_courses   ->	Lists all unique courses offered by the school.
+                - report_unique_students  ->	Lists all unique students enrolled in the school.
+                - report_average_score <course_name>  ->	Reports the average score of the specified course.
+                - report_cumulative_average <id>  ->	Reports the cumulative average score for the specified student.
+                """;
+        String menu1 = """
+                - add_course <course_name>
+                - list_courses
+                - enroll_student <course_name> <id>
+                - assign_grade <course_name> <id> <g>
+                - list_grades <course_name>
+                - report_unique_courses
+                - report_unique_students
+                - report_average_score <course_name>
+                - report_cumulative_average <id>
+                """;
+        System.out.println(menu1);
+    }
 
+    //Main method for testing the code:
     public static void main2(String[] args) {
 
         //Create 2 school object Instances
@@ -248,23 +275,17 @@ public class School<S , G extends Number> {
 
     }
 
-    //Testing from Instructor ProcessCommands
+    //School Launcher
     public static void main(String[] args) {
         School<Integer, Double> school= new School<>();
 
-//        school.processCommand("add_course Math101");
-//        school.processCommand("enroll_student Math101 12345");
-
-//        school.processCommand("enroll_student Physics103 12345");
-
-        school.processCommand("add_course Math101");
-        school.processCommand("enroll_student Math101 12345");
-        school.processCommand("enroll_student Math101 11223");
-        school.processCommand("assign_grade Math101 12345 85.5");
-        school.processCommand("assign_grade Math101 11223 82.5");
-
-        school.processCommand("list_grades Math101");
-        school.processCommand("list_grades Eath101");
-
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Welcome to D.P. School:");
+        System.out.println("Please follow the instructions below to help yourself:");
+        while(true){
+            printHelperCommands();
+            String input = scanner.nextLine();
+            school.processCommand(input);
+        }
     }
 }
