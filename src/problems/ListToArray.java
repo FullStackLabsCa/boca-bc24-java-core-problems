@@ -11,12 +11,19 @@ public class ListToArray {
         names.add("Nimavat");
 
         String[] namesArray = listToArray(names, new String[names.size()]);
-        for (String name : namesArray) {
-            System.out.println(name);
+        if (namesArray==null){
+            System.out.println("List is null");
+        }else {
+            for (String name : namesArray) {
+                System.out.println(name);
+            }
         }
     }
     public static <T> T[] listToArray(List<T> list,T[] array) {
-        if (list.isEmpty()) {
+        if(list==null){
+            return null;
+        }
+        else if (list.isEmpty()) {
             return null;
         } else {
             for (int i = 0; i < list.size(); i++) {
