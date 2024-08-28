@@ -10,9 +10,7 @@ public class SubtractNumwithoutsubtractingThem {
         if (i<5 && i>=0) {
             int sum = 5;
             for (int j = 0; j < i; j++) {
-                int a = 1;
-                sum -= a;
-                a = 0;
+                sum --;
             }
             System.out.println("The resultant value is :" + sum);
         }else

@@ -1,9 +1,4 @@
-package problems;
-
-import problems.calculator_Entity.Addition;
-import problems.calculator_Entity.Division;
-import problems.calculator_Entity.Multiplication;
-import problems.calculator_Entity.Subtraction;
+package problems.calculator_Entity;
 
 import java.util.Scanner;
 
