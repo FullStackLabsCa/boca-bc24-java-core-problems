@@ -7,17 +7,21 @@ import java.util.Scanner;
 public class GradeCalculator {
     public static void main(String[] args) {
         Scanner scanner =new Scanner(System.in);
-        System.out.println("Enter the number of grades you want");
-    int num = scanner.nextInt();
+
         List<Double> grades = new ArrayList<>();
-        System.out.println("Enter the grades:- ");
-    for(int i=0;i<num;i++){
-        double grade = scanner.nextInt();
-        grades.add(grade);
-    }
 
         GradeBook<Double> gradeBook = new GradeBook<>(grades);
-        System.out.println(gradeBook.toString());
+        while(true){
+            System.out.println("Enter the grade:- ");
+            double grade = scanner.nextInt();
+            if(grade==0) {
+                break;
+            }else {
+                gradeBook.addGrade(grade);
+            }
+        }
+
+        System.out.println("Average grade: "+gradeBook.calculateAverage());
 
         System.out.println("Total marks:- "+gradeBook.totalMarks(grades));
 
