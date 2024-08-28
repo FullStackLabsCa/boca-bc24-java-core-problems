@@ -22,19 +22,12 @@ public class AddSubtractNumbers {
     }
 
     // Subtract method using loops
-    private static int subtract(int a, int b) {
+    public static int subtract(int a, int b) {
         while (b > 0) {
             a = decrement(a);
             b = decrement(b);
         }
         return a;
-    }
-
-    public static void main(String[] args) {
-        int result = add(-20, 2);
-        int result1 = subtract(10, 20);
-        System.out.println("The sum of two numbers: " + result);
-        System.out.println("The subtraction of two numbers: " + result1);
     }
 }
 
