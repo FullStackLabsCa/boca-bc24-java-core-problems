@@ -1,8 +1,19 @@
-package problems.generics.countoccurrences;
+package problems.generics;
 
 import java.util.Scanner;
 
-public class Main{
+public class CountOccurrences {
+
+    public <T> int countOccurrences(T[] array, T element){
+        int count = 0;
+
+        for(T elem: array){
+            if(elem.equals(element)) count++;
+        }
+
+        return count;
+    }
+
     public static void main(String[] args) {
         CountOccurrences countOcc = new CountOccurrences();
         Scanner s = new Scanner(System.in);
@@ -20,3 +31,4 @@ public class Main{
 
     }
 }
+
