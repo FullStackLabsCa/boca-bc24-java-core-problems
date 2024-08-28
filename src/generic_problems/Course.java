@@ -1,8 +1,6 @@
 package generic_problems;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Course<S, G extends Number> {
     private S student;
@@ -14,14 +12,23 @@ public class Course<S, G extends Number> {
 //        this.courseName=courseName;
         this.studentGradeMap = new HashMap<>();
     }
-
-    public void enrollStudent(S student) {
+public void erollStudent(S student){
+    if (studentGradeMap.containsKey(student)){
+        System.out.println(student + " is already enrolled");
+    }else {
+        studentGradeMap.put(student, grade);
+        System.out.println(student + " is enrolled");
+    }
+}
+    public Boolean isStudentEnrolled(S student) {
+        boolean enrolled=false;
         if (studentGradeMap.containsKey(student)) {
             System.out.println(student + " is already enrolled");
+            enrolled=true;
         } else {
-            studentGradeMap.put(student, grade);
-            System.out.println(student + " is enrolled");
+            erollStudent(student);
         }
+        return enrolled;
     }
 
     public void assignGrade(S student,G grade) {
@@ -31,10 +38,27 @@ public class Course<S, G extends Number> {
         }else System.out.println(student+ " doesn't exist");
     }
 
-    public void retrieveGrade(S student) {
+    public Optional<G> getGrade(S student) {
+        G studentGrade;
         if (studentGradeMap.containsKey(student)) {
-            studentGradeMap.get(student);
-        }else System.out.println(student+ " doesn't exist");
+            return Optional.of(studentGradeMap.get(student));
+        }else {
+            System.out.println(student+ " doesn't exist");
+            return Optional.empty();
+        }
+    }
+
+    public static <G> Optional<G> toOptional(Collection<G> collection) {
+        if (collection == null || collection.isEmpty()) {
+            return Optional.empty();
+        } else {
+            Iterator<G> iterator = collection.iterator();
+            if (iterator.hasNext()) {
+                return Optional.of(iterator.next());
+            } else {
+                return Optional.empty();
+            }
+        }
     }
 
     public void listAllStudents(){
@@ -48,11 +72,23 @@ public class Course<S, G extends Number> {
         }
     }
 
+    public Map<S,G> getAllGrades() {
+        if (studentGradeMap.isEmpty()){
+            System.out.println("No Student enrolled in this course");
+    }else {
+            studentGradeMap.size();
+        }
+        return studentGradeMap;
+    }
+    public void listAllGrades() {
+    }
+
     public static void main(String[] args) {
         Course<String,Double> java = new Course<>();
-        java.enrollStudent("Gurpreet");
+        java.isStudentEnrolled("Gurpreet");
         java.assignGrade("Gurpreet",90.0);
-        java.retrieveGrade("Gurpreet");
+        java.getGrade("Gurpreet");
         java.listAllStudents();
     }
+
 }
