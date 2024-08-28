@@ -5,21 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a7c31fdb-21cc-4f11-a5be-d0ff7b587f29" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/loopproblems/EvenNumber.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/github_stefanbirkner_system_rules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/junit.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boca-bc24-java-core-problems.iml" beforeDir="false" afterPath="$PROJECT_DIR$/boca-bc24-java-core-problems.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/EvenNumber.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/arrayproblems/SortedArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/arrayproblems/SortedArray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/genericsproblems/GradeBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/genericsproblems/GradeBook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/loopproblems/SumOfEvenNumber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/loopproblems/SumOfEvenNumber.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/problems/GradeBookTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/GradeBookTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -47,12 +49,111 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.EvenNumber.executor": "Run",
+    "Application.GradeBook.executor": "Run",
+    "Application.SortedArray.executor": "Run",
+    "Application.SumOfEvenNumber.executor": "Run",
+    "JUnit.GradeBookTest.executor": "Run",
+    "JUnit.GradeBookTest.testAddDoubleGrade.executor": "Run",
+    "JUnit.GradeBookTest.testAddIntegerGrade.executor": "Run",
+    "JUnit.GradeBookTest.testCalculateDoubleAverageWithNoGrades.executor": "Run",
+    "JUnit.GradeBookTest.testCalculateIntegerAverage.executor": "Run",
+    "JUnit.GradeBookTest.testFindHighestDoubleGrade.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "feature/gaka-bc24-java-core-problems",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/Gagandeep.Kaur/source/students/boca-bc24-java-core-problems"
   }
 }]]></component>
+  <component name="RunManager" selected="JUnit.GradeBookTest">
+    <configuration name="GradeBookTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="boca-bc24-java-core-problems" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="problems.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="problems" />
+      <option name="MAIN_CLASS_NAME" value="problems.GradeBookTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GradeBookTest.testAddIntegerGrade" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="boca-bc24-java-core-problems" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="problems.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="problems" />
+      <option name="MAIN_CLASS_NAME" value="problems.GradeBookTest" />
+      <option name="METHOD_NAME" value="testAddIntegerGrade" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GradeBookTest.testCalculateDoubleAverageWithNoGrades" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="boca-bc24-java-core-problems" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="problems.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="problems" />
+      <option name="MAIN_CLASS_NAME" value="problems.GradeBookTest" />
+      <option name="METHOD_NAME" value="testCalculateDoubleAverageWithNoGrades" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GradeBookTest.testCalculateIntegerAverage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="boca-bc24-java-core-problems" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="problems.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="problems" />
+      <option name="MAIN_CLASS_NAME" value="problems.GradeBookTest" />
+      <option name="METHOD_NAME" value="testCalculateIntegerAverage" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GradeBookTest.testFindHighestDoubleGrade" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="boca-bc24-java-core-problems" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="problems.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="problems" />
+      <option name="MAIN_CLASS_NAME" value="problems.GradeBookTest" />
+      <option name="METHOD_NAME" value="testFindHighestDoubleGrade" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.GradeBookTest" />
+        <item itemvalue="JUnit.GradeBookTest.testFindHighestDoubleGrade" />
+        <item itemvalue="JUnit.GradeBookTest.testAddIntegerGrade" />
+        <item itemvalue="JUnit.GradeBookTest.testCalculateIntegerAverage" />
+        <item itemvalue="JUnit.GradeBookTest.testCalculateDoubleAverageWithNoGrades" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

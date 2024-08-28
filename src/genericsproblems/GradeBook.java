@@ -2,13 +2,14 @@ package genericsproblems;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class GradeBook<T extends Number> {
 
     private List<T> grades;
 
     public GradeBook() {
-       grades = new ArrayList<>();
+        grades = new ArrayList<>();
     }
 
 
@@ -16,23 +17,27 @@ public class GradeBook<T extends Number> {
         grades.add(grade);
     }
 
-
-    public double AvgCalculation() {
-        if (grades.isEmpty()){
-            return 0.0;
-        }
-        double avg = 0.0;
-        for (T t : grades) {
-            avg += t.doubleValue()/ grades.size();
-        }
-        return avg;
+    public Optional<Integer> getNumberOfGrades() {
+        return Optional.of(2);
     }
 
 
-    public T findHighestGrade() {
+    public String calculateAverage() {
+        if (grades == null || grades.isEmpty()) {
+            return "No grades available to calculate the average.";
+        }
+        double avg = 0.0;
+        for (T t : grades) {
+            avg += t.doubleValue() / grades.size();
+        }
+        return "Average grade: "+avg;
+    }
 
-        if (grades.isEmpty()) {
-            return null;
+
+    public String findHighestGrade() {
+
+        if (grades == null ||grades.isEmpty()) {
+            return "No grades available to find the highest grade.";
         }
         T highestgrade = grades.get(0);
         for (T grade : grades) {
@@ -40,14 +45,14 @@ public class GradeBook<T extends Number> {
                 highestgrade = grade;
             }
         }
-        return highestgrade;
+        return "Highest grade: "+highestgrade;
     }
 
 
-    public T findLowestGrade() {
+    public String findLowestGrade() {
 
-        if (grades.isEmpty()) {
-            return null;
+        if (grades == null || grades.isEmpty()) {
+            return "No grades available to find the lowest grade.";
         }
         T lowestgrade = grades.get(0);
         for (T grade : grades) {
@@ -55,36 +60,36 @@ public class GradeBook<T extends Number> {
                 lowestgrade = grade;
             }
         }
-        return lowestgrade;
+        return "Lowest grade: " +lowestgrade;
     }
 
     public static void main(String[] args) {
 
         GradeBook<Integer> integerGradeBook = new GradeBook<>();
 
-        integerGradeBook.addGrade(60);
-        integerGradeBook.addGrade(70);
-        integerGradeBook.addGrade(80);
-        integerGradeBook.addGrade(40);
+        integerGradeBook.addGrade(85);
+        integerGradeBook.addGrade(90);
+        integerGradeBook.addGrade(95);
 
-        System.out.println("Calculate the average:  " + integerGradeBook.AvgCalculation());
-        System.out.println("Find the highest grade: "+ integerGradeBook.findHighestGrade());
-        System.out.println("Find the lowest grade: "+ integerGradeBook.findLowestGrade());
+
+        System.out.println("List Of grades: " + integerGradeBook.getNumberOfGrades());
+        System.out.println("Calculate the average:  " + integerGradeBook.calculateAverage());
+        System.out.println("Find the highest grade: " + integerGradeBook.findHighestGrade());
+        System.out.println("Find the lowest grade: " + integerGradeBook.findLowestGrade());
 
 
         GradeBook<Double> doubleGradeBook = new GradeBook<>();
 
-        doubleGradeBook.addGrade(75.25);
-        doubleGradeBook.addGrade(85.50);
-        doubleGradeBook.addGrade(55.50);
-        doubleGradeBook.addGrade(36.50);
+        doubleGradeBook.addGrade(85.00);
+        doubleGradeBook.addGrade(90.00);
 
-        System.out.println("Calculate the average:  " + doubleGradeBook.AvgCalculation());
-        System.out.println("Find the highest grade: "+ doubleGradeBook.findHighestGrade());
-        System.out.println("Find the lowest grade: "+ doubleGradeBook.findLowestGrade());
+        System.out.println("List of Grades: " + doubleGradeBook.getNumberOfGrades());
+        System.out.println("Calculate the average:  " + doubleGradeBook.calculateAverage());
+        System.out.println("Find the highest grade: " + doubleGradeBook.findHighestGrade());
+        System.out.println("Lowest grade: " + doubleGradeBook.findLowestGrade());
 
 
     }
-}
 
+}
 

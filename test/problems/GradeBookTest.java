@@ -6,6 +6,10 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.contrib.java.lang.system.SystemOutRule;
+
+import java.util.Optional;
+
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class GradeBookTest {
@@ -24,7 +28,7 @@ public class GradeBookTest {
         doubleGradeBook.addGrade(85.0);
         doubleGradeBook.addGrade(90.0);
 
-        assertEquals(2, doubleGradeBook.getNumberOfGrades());
+        assertEquals(Optional.of(2), doubleGradeBook.getNumberOfGrades());
     }
 
     @Test
@@ -75,7 +79,7 @@ public class GradeBookTest {
         integerGradeBook.addGrade(85);
         integerGradeBook.addGrade(90);
 
-        assertEquals(2, integerGradeBook.getNumberOfGrades());
+        assertEquals(Optional.of(2), integerGradeBook.getNumberOfGrades());
     }
 
     @Test
