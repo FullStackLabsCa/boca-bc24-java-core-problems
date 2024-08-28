@@ -65,24 +65,24 @@ public class GradeBookTest {
     public void testFindLowestDoubleGradeWithNoGrades() {
         assertEquals("No grades available to find the lowest grade.", doubleGradeBook.findLowestGrade());
     }
-//
-//    // Tests for Integer GradeBook
-//    @Test
-//    public void testAddIntegerGrade() {
-//        integerGradeBook.addGrade(85);
-//        integerGradeBook.addGrade(90);
-//
-//        assertEquals(2, integerGradeBook.getNumberOfGrades());
-//    }
-//
-//    @Test
-//    public void testCalculateIntegerAverage() {
-//        integerGradeBook.addGrade(85);
-//        integerGradeBook.addGrade(90);
-//        integerGradeBook.addGrade(95);
-//
-//        assertEquals("Average grade: 90.0", integerGradeBook.calculateAverage());
-//    }
+
+    // Tests for Integer GradeBook
+    @Test
+    public void testAddIntegerGrade() {
+        integerGradeBook.addGrade(85);
+        integerGradeBook.addGrade(90);
+
+        assertEquals(2, integerGradeBook.getNumberOfGrades());
+    }
+
+    @Test
+    public void testCalculateIntegerAverage() {
+        integerGradeBook.addGrade(85);
+        integerGradeBook.addGrade(90);
+        integerGradeBook.addGrade(95);
+
+        assertEquals("Average grade: 90.0", integerGradeBook.calculateAverage());
+    }
 //
 //    @Test
 //    public void testCalculateIntegerAverageWithNoGrades() {
