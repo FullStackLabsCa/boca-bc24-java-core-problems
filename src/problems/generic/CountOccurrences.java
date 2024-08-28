@@ -1,14 +1,14 @@
 package problems.generic;
 
 @SuppressWarnings("java:S106")
-public class Problem2CountOccurrences {
+public class CountOccurrences {
     public static <T> int countOccurrences(T[] array, T element) {
-        int count = 0;
+        double count = 0;
         for (T num : array) {
-            if (num == element)
+            if (num == element || (num != null && num.equals(element)))
                 count++;
         }
-        return count;
+        return (int) count;
     }
 
     public static void main(String[] args) {
