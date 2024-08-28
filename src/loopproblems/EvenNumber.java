@@ -1,6 +1,6 @@
 package loopproblems;
 
-public class Main {
+public class EvenNumber {
     public static void main(String[] args) {
         int num =50;
         int sum = 0;
