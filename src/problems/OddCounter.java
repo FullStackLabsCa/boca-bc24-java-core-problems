@@ -4,16 +4,16 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class OddOccurrencesInGenericCollections {
+public class OddCounter {
     public static void main(String[] args) {
         List<Integer> list = new ArrayList<>();
         list.add(1);
         list.add(2);
         list.add(1);
         list.add(3);
-        System.out.println("Occurences of Odd => " + countOddIntegers(list));
+        System.out.println("Occurences of Odd => " + countOddNumbers(list));
     }
-    public static <T extends Collection<Integer>> int countOddIntegers(T t){
+    public static <T extends Collection<Integer>> int countOddNumbers(T t){
         int count = 0;
 
         for(Integer i : t){

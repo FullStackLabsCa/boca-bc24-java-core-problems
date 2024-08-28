@@ -34,7 +34,7 @@ public class ListToArray {
 
             array = (T[]) Array.newInstance(array.getClass().getComponentType(), size);
         }
-//        System.out.println(array.getClass().getComponentType());
+  //      System.out.println(array.getClass().getComponentType());
 
         for(int i = 0; i< list.size();i++){
             array[i] = list.get(i);
