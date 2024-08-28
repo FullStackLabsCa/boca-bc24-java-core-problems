@@ -46,5 +46,4 @@ public class PalindromeCheckerTest {
         public void testPalindromeWithNumericNonPalindrome() {
             assertFalse(PalindromeChecker.isPalindrome("12345"));
         }
-
 }

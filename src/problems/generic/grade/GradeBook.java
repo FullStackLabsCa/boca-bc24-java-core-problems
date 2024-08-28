@@ -21,36 +21,46 @@ import java.util.List;
 public class GradeBook<T extends Number & Comparable<T>> {
     private List<T> grades = new ArrayList<>();
 
+    public int getNumberOfGrades() {
+        return grades.size();
+    }
+
     public GradeBook(List<T> grades) {
         this.grades = grades;
     }
+
+    public GradeBook() {}
 
     public T addGrade(T grade) {
         this.grades.add(grade);
         return grade;
     }
 
-    public double calculateAverageGrade() {
-        if (grades.isEmpty()) return 0;
+    public String calculateAverage() {
+
+        if (grades.isEmpty()) return "No grades available to calculate the average." ;
         double sum = 0;
         for (T g : grades) {
             sum += Double.parseDouble(String.valueOf(g));
         }
-        return Double.valueOf(sum / grades.size());
+        String size = String.valueOf(sum/grades.size());
+        return "Average grade: " +size;
     }
 
-    public T findHighestGrade() {
-        if (grades.isEmpty()) return null;
+    public String findHighestGrade() {
+        if (grades== null || grades.isEmpty()) return "No grades available to find the highest grade.";
         T highestGrade = grades.get(0);
         for (T grade : grades) {
             if (grade.compareTo(highestGrade) > 0) {
                 highestGrade = grade;
             }
         }
-        return highestGrade;
+        return "Highest grade: "+ String.valueOf(highestGrade);
     }
 
-    public T findLowestGrade() {
+    public String findLowestGrade() {
+        if (grades== null || grades.isEmpty()) return "No grades available to find the lowest grade.";
+
         T lowestGrade = grades.get(0);
 
         for (T grade : grades) {
@@ -58,21 +68,21 @@ public class GradeBook<T extends Number & Comparable<T>> {
                 lowestGrade = grade;
             }
         }
-        return lowestGrade;
+        return "Lowest grade: "+ String.valueOf(lowestGrade);
     }
 
     public static void main(String[] args) {
         List<Double> list =new ArrayList<>(Arrays.asList(3.4, 3.5, 2.9, 4.0, 3.9));
         GradeBook<Double> doubleGradeBook = new GradeBook<>(list);
         doubleGradeBook.addGrade(3.3);
-        System.out.println("doubleGradeBook.calculateAverageGrade() = " + doubleGradeBook.calculateAverageGrade());
+        System.out.println("doubleGradeBook.calculateAverageGrade() = " + doubleGradeBook.calculateAverage());
         System.out.println("  doubleGradeBook.findHighestGrade() = " + doubleGradeBook.findHighestGrade());
         System.out.println("  doubleGradeBook.findHighestGrade() = " + doubleGradeBook.findLowestGrade());
 
         List<Integer> integerList =new ArrayList<>(Arrays.asList(50, 59, 80, 95, 60, 78));
         GradeBook<Integer> integerGradeBook = new GradeBook<>(integerList);
         integerGradeBook.addGrade(40);
-        System.out.println("integerGradeBook.calculateAverageGrade() = " + integerGradeBook.calculateAverageGrade());
+        System.out.println("integerGradeBook.calculateAverageGrade() = " + integerGradeBook.calculateAverage());
         System.out.println("  integerGradeBook.findHighestGrade() = " + integerGradeBook.findHighestGrade());
         System.out.println("  integerGradeBook.findHighestGrade() = " + integerGradeBook.findLowestGrade());
     }

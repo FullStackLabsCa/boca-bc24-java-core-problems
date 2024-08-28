@@ -6,12 +6,13 @@ Problem 2: Generic Method to Count Occurrences
 public static <T> int countOccurrences(T[] array, T element)
  */
 
-public class CountOccurenceInArray {
+public class CountOccurrences {
 
     public static <T> int countOccurrences(T[] array, T element) {
         int counter = 0;
         for (T arrayElement: array) {
-            if(arrayElement.equals(element)) {
+            if(arrayElement == null && element == null) counter++;
+            if(arrayElement!=null && arrayElement.equals(element)) {
                 counter++;
             }
         }

@@ -29,22 +29,24 @@ Counting Odd Integers in a Collection
 
 import java.util.*;
 
-public class OddInteger {
+public class OddCounter {
 
-    public static Integer countIntegerInCollection(Collection<Integer> collections) {
+    public static Integer countOddNumbers(Collection<Integer> collections) {
         if(collections.isEmpty()) return 0;
-        long count = collections.stream().filter(t -> t % 2 != 0).count();
+//        collections.contains(null)
+//        long count = collections.stream().filter(t -> t % 2 != 0).count();
+        long count = collections.stream().filter(t -> t != null && t % 2 != 0).count();
         return Integer.valueOf((int) count);
     }
 
 
     public static void main(String[] args) {
         List<Integer> integerList = Arrays.asList(3,5,6,8,11, 15 ,3, 4 ,13,99,105);
-        Integer i = countIntegerInCollection(integerList);
+        Integer i = countOddNumbers(integerList);
         System.out.println("i "+ i);
 
         Set<Integer> integerSet = new HashSet<>(Arrays.asList(3, 5, 6, 8, 11, 15, 3, 4, 13, 99, 105));
-        Integer i1 = countIntegerInCollection(integerSet);
+        Integer i1 = countOddNumbers(integerSet);
         System.out.println("i1 "+ i1);
 
 

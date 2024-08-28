@@ -28,8 +28,8 @@ public class BracketMatching {
     }
 
 
-    static Boolean bracketMatch(Character left, Character right) {
-        return left == '(' && right == ')' || left == '{' && right == '}' || left == '[' && right == ']';
+    static Boolean bracketMatch(Character leftCheck, Character rightCheck) {
+        return leftCheck == '(' && rightCheck == ')' || leftCheck == '{' && rightCheck == '}' || leftCheck == '[' && rightCheck == ']';
     }
 
 

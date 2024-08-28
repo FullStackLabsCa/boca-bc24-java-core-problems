@@ -13,15 +13,19 @@ import java.util.List;
 
 public class ListToArray {
 
-    public static <T> T[] listToArray(List<T> list) {
+    public static <T> T[] listToArray(List<T> list, T[] array) {
 
         //Tried this two way of initializing the array of generic type, didn't work so use the next method from gpt, that prevent the classCastException too.
 //        T[] array = new T[list.size()];
 //        T[] array = (T[]) new Object[list.size()];
-        T[] array = (T[]) Array.newInstance(list.get(0).getClass(), list.size());
+//        T[] array = (T[]) Array.newInstance(list.get(0).getClass(), list.size());
 
 //       T[] array = (T[]) new Object[list.size()] can be done in this way too.
 
+//        if(list.size() < 0) return null;
+        if (list == null || list.isEmpty()) {
+            return null;
+        }
         for (int i = 0; i < list.size(); i++) {
             array[i] = list.get(i);
         }
@@ -30,9 +34,11 @@ public class ListToArray {
 
     public static void main(String[] args) {
         List<Integer> integerList = Arrays.asList(2, 5, 6, 8);
+        Integer[] integerArray = new Integer[integerList.size()];
         List<String> stringList = Arrays.asList("generic", "array", "collection", "string");
-        Integer[] integers = listToArray(integerList);
-        String[] strings = listToArray(stringList);
+        String[] stringArray = new String[stringList.size()];
+        Integer[] integers = listToArray(integerList, integerArray);
+        String[] strings = listToArray(stringList, stringArray);
         System.out.println("Array is = " + Arrays.toString(integers));
         System.out.println("Array is = " + Arrays.toString(strings));
 
