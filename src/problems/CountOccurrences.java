@@ -2,7 +2,7 @@ package problems;
 
 import java.util.Scanner;
 
-public class CountOccurrence {
+public class CountOccurrences {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -22,9 +22,15 @@ public class CountOccurrence {
     public static <T> int countOccurrences(T[] array, T element){
         int count = 0;
 
-        for(T i:array){
-            if(i.equals(element)){
-                count++;
+        for (T i : array) {
+            if (element == null) {
+                if (i == null) {
+                    count++;
+                }
+            } else {
+                if (element.equals(i)) {
+                    count++;
+                }
             }
         }
         return count;
