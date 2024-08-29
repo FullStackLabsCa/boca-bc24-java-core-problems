@@ -23,27 +23,25 @@ public class ParanthesisWithoutStack {
                     break;
                 case '}':
                     curly_bracket--;
+                    if(curly_bracket<0);
                     break;
                 case '(':
                     round_bracket++;
                     break;
                 case ')':
                     round_bracket--;
+                    if(round_bracket<0)
                     break;
                 case '[':
                     square_bracket++;
                     break;
                 case ']':
                     square_bracket--;
+                    if(square_bracket<0)
                     break;
                 default:
             }
         }
-        if (curly_bracket < 0 || round_bracket < 0 || square_bracket < 0) {
-            return false;
-        }
         return curly_bracket ==0 && round_bracket == 0 && square_bracket==0;
-
     }
-
 }

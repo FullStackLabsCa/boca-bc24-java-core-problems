@@ -1,13 +1,20 @@
 package genricexampleswithouttest;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-public class CourseGeneric<S, G> {
+import java.util.*;
+
+public class CourseGeneric<S,G> {
     private G grade;
     Map<S, G> courseGpa = new HashMap<>();
+    private List<String> courses;
+
     public CourseGeneric() {// constructor
         this.courseGpa = new HashMap<>();
+        this.courses = new ArrayList<>();
     }
+
+    public void addCourse(String course_name) {
+        courses.add(course_name);
+    }
+
     public void enrollStudent(S studentid) {// enrolling students
         if (!courseGpa.containsKey(studentid)){
             G put = courseGpa.put(studentid, grade);

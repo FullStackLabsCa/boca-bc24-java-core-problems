@@ -9,6 +9,7 @@ public class CourseMain {
         courseGeneric.assigningGrades(101, 4);
         courseGeneric.assigningGrades(102, 5);
         courseGeneric.retrivingGrades(101);
+        courseGeneric.addCourse("Mathematics");
         System.out.println("student with " + courseGeneric.retrivingGrades(101) + " grades");
         courseGeneric.getlist();
     }
