@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class DuplicateValues {
+public class DuplicateValuesForGivenValue {
     public static void main(String[] args) {
 
 
@@ -15,7 +15,7 @@ public class DuplicateValues {
         System.out.println("Character frequencies:");
         for (Map.Entry<Character, Integer> entry : map.entrySet()) {
             if (entry.getValue() > 1) {
-                System.out.println(entry.getKey() + "------> " + entry.getValue()+" : Duplicatevalue");
+                System.out.println(" Duplicatevalue: "+entry.getKey() + "  Count: " + entry.getValue());
                 break;
             }
             System.out.println("Character: '" + entry.getKey() + "', Frequency: " + entry.getValue());
