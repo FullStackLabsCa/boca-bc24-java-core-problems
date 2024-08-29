@@ -5,19 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3c9f44b-ff0f-43a9-b850-9b801d0dc95b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/test/problems/CountOccurrencesTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/problems/ListToArrayTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/generics/p3_Generic_GradeBook_Class/GradeBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/generics/p3_Generic_GradeBook_Class/GradeBook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/generics/p3_Generic_GradeBook_Class/P3_Generic_GradeBook_Class.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/generics/p3_Generic_GradeBook_Class/P3_Generic_GradeBook_Class.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/problems/CalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/CalculatorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/generics/p4_Generic_Course_Class/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/generics/p4_Generic_Course_Class/Course.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/generics/p4_Generic_Course_Class/P4_Generic_Course_Class.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/generics/p4_Generic_Course_Class/P4_Generic_Course_Class.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/problems/CourseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/CourseTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/problems/FibonacciTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/FibonacciTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/problems/FindMaximumInArrayTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/FindMaximumInArrayTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/problems/GradeBookTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/GradeBookTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/problems/OddCounterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/OddCounterTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/problems/PalindromeCheckerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/PalindromeCheckerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/problems/SchoolTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/SchoolTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +40,7 @@
 }</component>
   <component name="JavaAutoRunManager">
     <enabled-run-configurations>
-      <run-configuration type="JUnit" name="Rerun Failed Tests" />
+      <run-configuration type="JUnit" name="CourseTest.testGetAllGrades" />
     </enabled-run-configurations>
   </component>
   <component name="ProjectColorInfo">{
@@ -82,6 +73,11 @@
     "Application.RemoveVowels.executor": "Run",
     "Application.countVowels.executor": "Run",
     "Application.longestWordString.executor": "Run",
+    "JUnit.CourseTest.executor": "Run",
+    "JUnit.CourseTest.testAssignGrade.executor": "Run",
+    "JUnit.CourseTest.testAssignGradeToNonEnrolledStudent.executor": "Run",
+    "JUnit.CourseTest.testGetAllGrades.executor": "Run",
+    "JUnit.CourseTest.testGetGrade.executor": "Run",
     "JUnit.GradeBookTest.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "feature/jash-bc24-java-core-problems",
@@ -101,6 +97,96 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/oldProblems" />
     </key>
+  </component>
+  <component name="RunManager" selected="JUnit.CourseTest.testGetAllGrades">
+    <configuration name="CourseTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="boca-bc24-java-core-problems" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="problems.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="problems" />
+      <option name="MAIN_CLASS_NAME" value="problems.CourseTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CourseTest.testAssignGrade" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="boca-bc24-java-core-problems" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="problems.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="problems" />
+      <option name="MAIN_CLASS_NAME" value="problems.CourseTest" />
+      <option name="METHOD_NAME" value="testAssignGrade" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CourseTest.testAssignGradeToNonEnrolledStudent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="boca-bc24-java-core-problems" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="problems.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="problems" />
+      <option name="MAIN_CLASS_NAME" value="problems.CourseTest" />
+      <option name="METHOD_NAME" value="testAssignGradeToNonEnrolledStudent" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CourseTest.testGetAllGrades" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="boca-bc24-java-core-problems" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="problems.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="problems" />
+      <option name="MAIN_CLASS_NAME" value="problems.CourseTest" />
+      <option name="METHOD_NAME" value="testGetAllGrades" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CourseTest.testGetGrade" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="boca-bc24-java-core-problems" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="problems.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="problems" />
+      <option name="MAIN_CLASS_NAME" value="problems.CourseTest" />
+      <option name="METHOD_NAME" value="testGetGrade" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.CourseTest.testGetAllGrades" />
+        <item itemvalue="JUnit.CourseTest" />
+        <item itemvalue="JUnit.CourseTest.testGetGrade" />
+        <item itemvalue="JUnit.CourseTest.testAssignGradeToNonEnrolledStudent" />
+        <item itemvalue="JUnit.CourseTest.testAssignGrade" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -130,6 +216,11 @@
           <url>file://$PROJECT_DIR$/src/problems/generics/generics_Demo/Generics_Demo.java</url>
           <line>26</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/test/problems/CourseTest.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

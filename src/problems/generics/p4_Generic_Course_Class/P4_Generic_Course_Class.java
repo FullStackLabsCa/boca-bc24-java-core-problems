@@ -17,12 +17,14 @@ public class P4_Generic_Course_Class {
         // Assign grade to not enrolled student
         course.assignGrade("TempName", 50);
 
-        System.out.println("Krishna " + course.getGrade("Krishna"));
-        System.out.println("Govardhan " + course.getGrade("Govardhan"));
-        System.out.println("Dwarkadhish " + course.getGrade("Dwarkadhish"));
-        System.out.println("TempName " + course.getGrade("TempName"));
+        System.out.println("***** call getAllGrades() *****");
+        System.out.println("Krishna " + course.getAllGrades("Krishna"));
+        System.out.println("Govardhan " + course.getAllGrades("Govardhan"));
+        System.out.println("Dwarkadhish " + course.getAllGrades("Dwarkadhish"));
+        System.out.println("TempName " + course.getAllGrades("TempName"));
 
         // List all students and their grades
-        course.listAllGrade();
+        System.out.println("***** Call listAllGrade() *****");
+        course.listAllGrades();
     }
 }
