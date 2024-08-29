@@ -67,14 +67,14 @@ public class SchoolTest {
         assertTrue(systemOutRule.getLog().contains("Grade '85.5' assigned to student '12345' in course 'Math101'."));
     }
 
-//    @Test
-//    public void testAssignGradeToNonEnrolledStudent() {
-//        school.processCommand("add_course Math101");
-//        school.processCommand("assign_grade Math101 54321 75");
-//
-//        assertTrue(systemOutRule.getLog().contains("Error: Cannot assign grade. Student '54321' is not enrolled in course 'Math101'."));
-//    }
-//
+    @Test
+    public void testAssignGradeToNonEnrolledStudent() {
+        school.processCommand("add_course Math101");
+        school.processCommand("assign_grade Math101 54321 75");
+
+        assertTrue(systemOutRule.getLog().contains("Error: Cannot assign grade. Student '54321' is not enrolled in course 'Math101'."));
+    }
+
 //    @Test
 //    public void testListGrades() {
 //        school.processCommand("add_course Math101");

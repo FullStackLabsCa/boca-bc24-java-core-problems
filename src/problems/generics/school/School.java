@@ -10,6 +10,7 @@ import java.util.Set;
 public class School<S, G extends Number> {
     Set<String> courseName;
     Map<String, Course<S, G>> courseToStudentGrade;
+
     Course<S, G> courseObj = new Course<>();
 
     public School() {
@@ -79,13 +80,18 @@ public class School<S, G extends Number> {
             }
         }
 
-        if("assign_grade".equals(array[0])){
+        if("assign_grade".equals(array[0])) {
             String course = array[1];
             S student = (S) array[2];
             double grade = Double.parseDouble(array[3]);
 
-            courseToStudentGrade.put(array[1], courseObj);
-            System.out.println("Grade '" + grade + "' assigned to student '"+ array[2] + "' in course '" + array[1] + "'.");
+            if(!(courseToStudentGrade.get(array[1]) ==null)) {
+                courseToStudentGrade.put(array[1], courseObj);
+                System.out.println("Grade '" + grade + "' assigned to student '" + array[2] + "' in course '" + array[1] + "'.");
+            }
+            else{
+                System.out.println("Error: Cannot assign grade. Student '" + array[2] + "' is not enrolled in course '" + array[1] + "'.");
+            }
+            }
         }
     }
-}
