@@ -2,8 +2,6 @@ package genericsProblems;
 
 import java.util.*;
 
-
-
 public class GradeBook<T extends Number & Comparable<T>> {
 
     public List<T> grades = new ArrayList();
