@@ -20,6 +20,7 @@ public class SchoolMainRunner {
             System.out.println("8. Average Score by Course");
             System.out.println("9. Cumulative Average Score by Student");
             System.out.println("10.Exit");
+            System.out.println("10.Exit");
             System.out.println("Please choose operation to perform");
             int inputOption = input.nextInt();
             input.nextLine();

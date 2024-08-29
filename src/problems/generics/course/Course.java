@@ -1,19 +1,35 @@
 package problems.generics.course;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.*;
 
-public class Course< S, G extends Number>
+public class Course< S, G>
 {
+//    private Set<S> studentSet;
+
     private Map<S, G> studentGrades;
     public Course() {
         this.studentGrades = new HashMap<>();
+//        this.studentSet = new HashSet<>();
+    }
+    public boolean isStudentEnrolled(S studentId) {
+        if(studentGrades.containsKey(studentId)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public void enrollStudent(S studentId) {
+        if(!studentGrades.containsKey(studentId)){
+            studentGrades.put(studentId,null);
+        }else{
+            System.out.println("It is already enrolled");
+        }
     }
 
-    public void enrollStudent(S studentId, G initialGrade) {
-        studentGrades.put(studentId, initialGrade);
-    }
 
     public void assignGrade(S studentId, G grade) {
         if (studentGrades.containsKey(studentId)) {
@@ -25,6 +41,13 @@ public class Course< S, G extends Number>
     public G retrieveGrade(S studentId) {
         return studentGrades.get(studentId);
     }
+    public Optional<G> getGrade(S studentId) {
+        return Optional.ofNullable(studentGrades.get(studentId));
+    }
+    public Map<S, G> getAllGrades() {
+        return studentGrades;
+    }
+
 
     public void listAllGrades() {
         Set<Map.Entry<S, G>> entries = studentGrades.entrySet();
@@ -32,4 +55,7 @@ public class Course< S, G extends Number>
             System.out.println("Student ID: " + entry.getKey() + ", Grade: " + entry.getValue());
         }
     }
+
+
+
 }

@@ -25,7 +25,7 @@ public class CourseMainRunner {
                     String studentID = input.nextLine();
                     System.out.print("Please enter CGPA: ");
                     Double grade = input.nextDouble();
-                    course.enrollStudent(studentID, grade);
+//                    course.enrollStudent(studentID, grade);
                     System.out.println("Student enrolled successfully.");
                     input.nextLine();
                     break;
