@@ -25,22 +25,21 @@ public class BracketMatchingWithoutStack {
         bracketPairs.put('(', ')');
         bracketPairs.put('[', ']');
         bracketPairs.put('{', '}');
-
+        char[] inputCharArray = input.toCharArray();
         // List to act as a stack substitute to track open brackets
         List<Character> openBrackets = new ArrayList<>();
-
-        for (char c : input.toCharArray()) {
+        Character c1 = bracketPairs.get(openBrackets.remove(openBrackets.size() - 1));
+        for (char c : inputCharArray) {
             if (bracketPairs.containsKey(c)) {
                 // If it's an opening bracket, add to the list
                 openBrackets.add(c);
             } else if (bracketPairs.containsValue(c)) {
                 // If it's a closing bracket, check if it matches the last opened bracket
-                if (openBrackets.isEmpty() || bracketPairs.get(openBrackets.remove(openBrackets.size() - 1)) != c) {
+                if (openBrackets.isEmpty() || c1 != c) {
                     return false; // Not balanced
                 }
             }
         }
-
         // After processing all characters, the list should be empty if balanced
         return openBrackets.isEmpty();
     }

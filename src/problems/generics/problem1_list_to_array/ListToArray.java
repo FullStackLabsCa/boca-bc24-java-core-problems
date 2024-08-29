@@ -9,7 +9,6 @@ public class ListToArray {
         if (list == null || list.isEmpty() ) {
             return null;
         }
-
         for (int i = 0; i < list.size(); i++) {
             array[i] = list.get(i);
         }

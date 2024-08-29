@@ -14,7 +14,7 @@ public class AddSubtractNumbers {
 
     // Increment method using loop
     private static int increment(int x) {
-        return x + 1;
+        return x +1;
     }
     // Decrement method using loop
     private static int decrement(int x) {
