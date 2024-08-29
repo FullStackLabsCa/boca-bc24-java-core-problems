@@ -8,34 +8,38 @@ import java.util.Set;
 
 public class School<S,G extends Number> {
     private String courseName;
-    Map<String,Course<S, G>> courseNameToCourseObjectMap;
-
+    Map<String, Course<S, G>> courseNameToCourseObjectMap;
     public School() {
-        this.courseNameToCourseObjectMap = new HashMap<>();
+        courseNameToCourseObjectMap = new HashMap<>();
     }
 
     public void addCourse(String courseName) {
         if (courseNameToCourseObjectMap.containsKey(courseName)) {
             System.out.println("Course already exist");
         } else {
-            courseNameToCourseObjectMap.put(courseName,new Course<>());
+            courseNameToCourseObjectMap.put(courseName, new Course<>());
+            System.out.println("Course '"+courseName+"' added.");
         }
     }
 
-    public void enrollStudent(String courseName,S student) {
+    public void enrollStudent(String courseName, S student) {String output=null;
         if (courseNameToCourseObjectMap.containsKey(courseName)) {
             if (courseNameToCourseObjectMap.get(courseName).enrollStudentToCourse(student)) {
-                System.out.println(student + " is enrolled in " + courseName);
-            }else System.out.println(student + " is already enrolled in " + courseName);
+                System.out.println("Student '" + student + "' enrolled in course '" + courseName+"'.");
+            }
         } else {
-            System.out.println("Course Doesn't Exist");
+            System.out.println("Error: Cannot enroll student. Course '"+courseName+ "' does not exist.");
         }
     }
 
 
-    public void assignGrade(String courseName, S student, G grade ) {
+
+    public void assignGrade(String courseName, S student, G grade) {
         if (courseNameToCourseObjectMap.containsKey(courseName)) {
-            courseNameToCourseObjectMap.get(courseName).assignGrade(student, grade);
+            if (courseNameToCourseObjectMap.get(courseName).assignGrade(student, grade)){
+                System.out.println("Grade '"+grade+"' assigned to student '"+student+"' in course '"+courseName+"'.");
+            }else System.out.println("\"Error: Cannot assign grade. Student '"+student+"' is not enrolled in course '"+courseName+"'.");
+
         } else {
             System.out.println("Course Doesn't Exist");
         }
@@ -46,7 +50,7 @@ public class School<S,G extends Number> {
         if (courseNameToCourseObjectMap.isEmpty()) {
             System.out.println("There is no Course available");
         } else {
-            System.out.println("List of Courses = " + courseNameToCourseObjectMap.keySet());
+            System.out.println("Courses offered:" + courseNameToCourseObjectMap.keySet());
         }
     }
 
@@ -61,7 +65,7 @@ public class School<S,G extends Number> {
                 String key = courseNameObjectEntrySet.getKey();
                 ListOfStudent.addAll(courseNameToCourseObjectMap.get(key).getStudents());
             }
-            System.out.println("studentsList = " + ListOfStudent);
+            System.out.println("Unique students enrolled:" + ListOfStudent);
         }
     }
 
@@ -70,12 +74,12 @@ public class School<S,G extends Number> {
             System.out.println("Course Doesn't Exist");
         } else {
             double courseAverage = courseNameToCourseObjectMap.get(courseName).averageScore();
-                System.out.println("Avergae score in "+ courseName +" is "+courseAverage);
-            }
+            System.out.println("Average score for course '" + courseName + "': " + courseAverage);
         }
+    }
 
     public void studentAverageGrade(S student) {
-        double totalMarks = 0, studentAvg=0;
+        double totalMarks = 0, studentAvg = 0;
         int count = 0;
         if (courseNameToCourseObjectMap.isEmpty()) {
             System.out.println("Course Doesn't Exist");
@@ -89,6 +93,47 @@ public class School<S,G extends Number> {
             }
             studentAvg = totalMarks / count;
         }
-        System.out.println("Average student : "+studentAvg);
+        System.out.println("Cumulative average score for student '" +student+"': " +studentAvg);
     }
+
+    public void gradesPerCourse(String courseName) {
+        System.out.println(courseNameToCourseObjectMap.get(courseName).listAllGrades());
+    }
+
+    public void processCommand(String userCommand){
+        String[] spiltUserCommand = userCommand.split("\\s");
+        switch (spiltUserCommand[0]){
+            case "add_course":
+                this.addCourse(spiltUserCommand[1]);
+                break;
+            case "list_courses":
+                this.listOfCourses();
+                break;
+            case "enroll_student":
+                this.enrollStudent(spiltUserCommand[1],(S) spiltUserCommand[2]);
+                break;
+            case "assign_grade":
+                this.assignGrade(spiltUserCommand[1],(S) spiltUserCommand[2], (G) Double.valueOf(spiltUserCommand[3]));
+                break;
+            case "list_grades":
+                this.gradesPerCourse(spiltUserCommand[1]);
+                break;
+            case "report_unique_courses":
+                this.listOfCourses();
+                break;
+            case "report_unique_students":
+                this.listOfStudents();
+                break;
+            case "report_average_score":
+                this.averageScoreInCourse(spiltUserCommand[1]);
+                break;
+            case "report_cumulative_average":
+                this.studentAverageGrade((S) spiltUserCommand[1]);
+                break;
+            case "unknown_command":
+                System.out.println("Error: Unknown command '"+spiltUserCommand[0]+"'. Please use a valid command.");
+        }
+    }
+
 }
+

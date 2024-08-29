@@ -81,6 +81,10 @@ public void enrollStudent(S student){
         return studentGradeMap;
     }
     public void listAllGrades() {
+        Set<Map.Entry<S, G>> entriesOfStudentGrade = studentGradeMap.entrySet();
+        for (Map.Entry<S, G> entry: entriesOfStudentGrade){
+            System.out.println("Student : "+entry.getKey()+" Grade : "+entry.getValue());
+        }
     }
 
     public static void main(String[] args) {

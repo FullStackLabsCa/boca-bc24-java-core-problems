@@ -22,12 +22,13 @@ public class Course<S, G extends Number> {
         }
     }
 
-    public void assignGrade(S student, G grade) {
+    public boolean assignGrade(S student, G grade) {
         if (studentGradeMap.containsKey(student)) {
             studentGradeMap.put(student, grade);
-            System.out.println(student + "  grade is updated to " + grade);
-        } else System.out.println(student + " doesn't exist");
-    }
+//            System.out.println(student + "  grade is updated to " + grade);
+            return true;
+        } else return false;
+        }
 
     public double retrieveGrade(S student) {
         double marks=0;
@@ -82,4 +83,16 @@ public class Course<S, G extends Number> {
         }
         return average;
     }
-}
+
+    public boolean listAllGrades() {
+        if (!studentGradeMap.isEmpty()){
+        Set<Map.Entry<S, G>> entriesOfStudentGrade = studentGradeMap.entrySet();
+        Set<G> gradesSet = new HashSet<>();
+        for (Map.Entry<S, G> entry: entriesOfStudentGrade){
+            System.out.println("Student: "+entry.getKey()+", Grade: "+entry.getValue());
+//            gradesSet.add(entry.getValue());
+        }
+        return true;
+//        return studentGradeMap;
+    }else{ return false;}
+}}
