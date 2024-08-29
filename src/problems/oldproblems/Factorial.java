@@ -1,4 +1,4 @@
-package problems.oldproblems.Factorial;
+package problems.oldproblems;
 
 import java.util.Scanner;
 
@@ -11,9 +11,9 @@ public class Factorial {
         int n = s.nextInt();
 
         int factorial = n;
-        while(n!=1){
+        while (n != 1) {
             n--;
-            factorial *=n;
+            factorial *= n;
         }
 
         System.out.println("Factorial: " + factorial);

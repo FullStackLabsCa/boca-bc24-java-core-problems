@@ -1,4 +1,4 @@
-package problems.oldproblems.SumOddEven;
+package problems.oldproblems;
 
 import java.util.Scanner;
 
@@ -10,16 +10,16 @@ public class SumOddEven {
         System.out.println("Please enter the numbers: ");
         int[] arr = new int[size];
 
-        for(int i=0; i<size; i++){
+        for (int i = 0; i < size; i++) {
             arr[i] = s.nextInt();
         }
         long oddSum = 0;
-        long evenSum =0;
+        long evenSum = 0;
 
-        for(int num: arr){
-            if(num%2==0){
+        for (int num : arr) {
+            if (num % 2 == 0) {
                 evenSum += num;
-            } else{
+            } else {
                 oddSum += num;
             }
         }

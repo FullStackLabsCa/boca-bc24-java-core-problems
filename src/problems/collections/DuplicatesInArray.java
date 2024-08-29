@@ -15,7 +15,7 @@ public class DuplicatesInArray {
 
         System.out.println("Enter the elements of array: ");
 
-        for(int i=0; i<size; i++){
+        for (int i = 0; i < size; i++) {
             array[i] = scanner.nextInt();
         }
 
@@ -31,12 +31,12 @@ public class DuplicatesInArray {
         System.out.println(str.append("]"));
     }
 
-    public static int[] findDuplicates(int[] array){
+    public static int[] findDuplicates(int[] array) {
         List<Integer> list = new ArrayList<>();
 
-        for(int i =0; i<array.length; i++){
-            for(int j=0; j<array.length; j++){
-                if(i!=j && array[i] == array[j] && !list.contains(array[i])){
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array.length; j++) {
+                if (i != j && array[i] == array[j] && !list.contains(array[i])) {
                     list.add(array[i]);
                 }
             }

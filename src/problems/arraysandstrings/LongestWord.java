@@ -20,8 +20,8 @@ public class LongestWord {
             String[] stringArr = input.split(" ");
             str = stringArr[0];
 
-            for(String st: stringArr){
-                if(st.length()> str.length()){
+            for (String st : stringArr) {
+                if (st.length() > str.length()) {
                     str = st;
                 }
             }

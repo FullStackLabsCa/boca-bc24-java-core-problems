@@ -11,15 +11,15 @@ public class CapitalizeFirstLetter {
 
         String str = scanner.nextLine();
 
-        System.out.println("String after capitalizing first letter of each word: "+ capitalizeWords(str));
+        System.out.println("String after capitalizing first letter of each word: " + capitalizeWords(str));
     }
 
-    public static String capitalizeWords(String input){
+    public static String capitalizeWords(String input) {
         StringBuilder str = new StringBuilder();
 
         String[] strArr = input.split(" ");
 
-        for(String st: strArr){
+        for (String st : strArr) {
             str.append(st.substring(0, 1).toUpperCase()).append(st.substring(1)).append(" ");
         }
 

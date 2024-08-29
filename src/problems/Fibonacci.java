@@ -11,7 +11,7 @@ public class Fibonacci {
 
         boolean isValid = isValidInput(str);
 
-        if(isValid){
+        if (isValid) {
             int num = Integer.parseInt(str);
             System.out.println("problems.Fibonacci Series up to " + num + " numbers: " + generateFibonacci(num));
         } else System.out.println("Invalid input. Please enter a valid number between 4 and 47.");

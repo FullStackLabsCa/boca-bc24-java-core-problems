@@ -10,14 +10,14 @@ public class MinMaxInArray {
 
         System.out.println("Enter the elements of array: ");
         int[] arr = new int[size];
-        for(int i=0; i<size; i++){
+        for (int i = 0; i < size; i++) {
             arr[i] = scanner.nextInt();
         }
         int[] minMax = findMinMax(arr);
-        System.out.print("["+minMax[0]+","+minMax[1]+"]");
+        System.out.print("[" + minMax[0] + "," + minMax[1] + "]");
     }
 
-    public static int[] findMinMax(int[] array){
+    public static int[] findMinMax(int[] array) {
         int[] minMax = new int[2];
 
         minMax[0] = array[0];

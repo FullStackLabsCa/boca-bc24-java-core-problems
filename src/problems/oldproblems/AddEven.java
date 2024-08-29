@@ -1,10 +1,10 @@
-package problems.oldproblems.AddEven;
+package problems.oldproblems;
 
 public class AddEven {
     public static void main(String[] args) {
-        int count = 0, i = 0, sum=0;
-        while(count !=50){
-            if(i%2==0){
+        int count = 0, i = 0, sum = 0;
+        while (count != 50) {
+            if (i % 2 == 0) {
                 sum += i;
                 count++;
             }

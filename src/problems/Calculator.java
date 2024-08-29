@@ -4,12 +4,12 @@ class Addition {
     private final double a;
     private final double b;
 
-    public Addition(String a, String b){
+    public Addition(String a, String b) {
         this.a = Double.parseDouble(a);
         this.b = Double.parseDouble(b);
     }
 
-    public double add(){
+    public double add() {
         return this.a + this.b;
     }
 }
@@ -18,12 +18,12 @@ class Division {
     private final double a;
     private final double b;
 
-    public Division(String a, String b){
+    public Division(String a, String b) {
         this.a = Double.parseDouble(a);
         this.b = Double.parseDouble(b);
     }
 
-    public double divide(){
+    public double divide() {
         return this.a / this.b;
     }
 }
@@ -32,12 +32,12 @@ class Multiplication {
     private final double a;
     private final double b;
 
-    public Multiplication(String a, String b){
+    public Multiplication(String a, String b) {
         this.a = Double.parseDouble(a);
         this.b = Double.parseDouble(b);
     }
 
-    public double multiply(){
+    public double multiply() {
         return this.a * this.b;
     }
 }
@@ -46,19 +46,19 @@ class Subtraction {
     private final double a;
     private final double b;
 
-    public Subtraction(String a, String b){
+    public Subtraction(String a, String b) {
         this.a = Double.parseDouble(a);
         this.b = Double.parseDouble(b);
     }
 
-    public double subtract(){
+    public double subtract() {
         return this.a - this.b;
     }
 }
 
 public class Calculator {
     public String calculate(String str) {
-        if(str != null) {
+        if (str != null) {
             str = str.replaceAll(" ", "");
 
             if (str.matches("\\d+[.]?\\d+[+\\-*/]\\d+[.]?\\d+$") || str.matches("\\d+[+\\-*/]\\d+")) {

@@ -13,12 +13,12 @@ public class BracketMatchingWithStack {
         Stack<Character> brackets = new Stack<>();
         if (str.length() % 2 == 0) {
             str = str.replaceAll(regex, "");
-            for(int i=0; i<str.length(); i++){
-                if(str.charAt(i) == '[' || str.charAt(i) == '{' || str.charAt(i) == '('){
+            for (int i = 0; i < str.length(); i++) {
+                if (str.charAt(i) == '[' || str.charAt(i) == '{' || str.charAt(i) == '(') {
                     brackets.push(str.charAt(i));
-                } else if((str.charAt(i) == ']' && brackets.peek() == '[')
+                } else if ((str.charAt(i) == ']' && brackets.peek() == '[')
                         || (str.charAt(i) == '}' && brackets.peek() == '{')
-                        || (str.charAt(i) == ')' && brackets.peek() == '(')){
+                        || (str.charAt(i) == ')' && brackets.peek() == '(')) {
                     brackets.pop();
                 } else break;
             }

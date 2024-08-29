@@ -1,4 +1,4 @@
-package problems.oldproblems.Fibonacci;
+package problems.oldproblems;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,9 +17,9 @@ public class Fibonacci {
         long second = 1;
         list.add(first);
         list.add(second);
-        n -=2;
-        while(n!=0){
-            long sum = first+second;
+        n -= 2;
+        while (n != 0) {
+            long sum = first + second;
             list.add(sum);
             n--;
             first = second;

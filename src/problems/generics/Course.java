@@ -11,25 +11,26 @@ public class Course<S, G extends Number> {
         this.students = new HashMap<>();
     }
 
-    public void enrollStudent(S studentIdentifier){
+    public void enrollStudent(S studentIdentifier) {
         this.students.put(studentIdentifier, null);
     }
 
-    public void assignGrade(S studentIdentifier, G grade){
-        if(this.students.containsKey(studentIdentifier)) this.students.replace(studentIdentifier, grade);
+    public void assignGrade(S studentIdentifier, G grade) {
+        if (this.students.containsKey(studentIdentifier)) this.students.replace(studentIdentifier, grade);
         else System.out.println("Student does not exist.");
     }
 
-    public Optional<G> getGrade(S studentIdentifier){
+    public Optional<G> getGrade(S studentIdentifier) {
         return Optional.ofNullable(this.students.get(studentIdentifier));
     }
 
-    public Map<S, G> getAllGrades(){
+    public Map<S, G> getAllGrades() {
         return this.students;
     }
 
-    public void listAllGrades(){
-        System.out.println(this.students);;
+    public void listAllGrades() {
+        System.out.println(this.students);
+        ;
     }
 
     public boolean isStudentEnrolled(S student) {

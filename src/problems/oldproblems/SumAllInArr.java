@@ -1,8 +1,8 @@
-package problems.oldproblems.FindMaxInArr;
+package problems.oldproblems;
 
 import java.util.Scanner;
 
-public class FindMaxInArr {
+public class SumAllInArr {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
         System.out.println("Please enter the count of number you want to input: ");
@@ -10,18 +10,15 @@ public class FindMaxInArr {
         System.out.println("Please enter the numbers: ");
         int[] arr = new int[size];
 
-        for(int i=0; i<size; i++){
+        for (int i = 0; i < size; i++) {
             arr[i] = s.nextInt();
         }
 
-        int max = arr[0];
-
+        long sum = 0;
         for (int num : arr) {
-            if (num > max) {
-                max = num;
-            }
+            sum += num;
         }
 
-        System.out.println("Maximum number is: " + max);
+        System.out.println("Sum of all numbers in array is: " + sum);
     }
 }

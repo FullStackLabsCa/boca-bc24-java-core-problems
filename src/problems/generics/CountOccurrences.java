@@ -4,12 +4,12 @@ import java.util.Scanner;
 
 public class CountOccurrences {
 
-    public static <T> int countOccurrences(T[] array, T element){
+    public static <T> int countOccurrences(T[] array, T element) {
         int count = 0;
 
-        for(T elem: array){
-            if(elem != null && elem.equals(element)) count++;
-            else if(elem == null && element == null) count ++;
+        for (T elem : array) {
+            if (elem != null && elem.equals(element)) count++;
+            else if (elem == null && element == null) count++;
         }
 
         return count;
@@ -21,13 +21,13 @@ public class CountOccurrences {
         int n = s.nextInt();
         Integer[] array = new Integer[n];
 
-        for (int i=0; i<n; i++){
+        for (int i = 0; i < n; i++) {
             array[i] = s.nextInt();
         }
 
         System.out.println("Enter an element to look in the list: ");
         Integer element = s.nextInt();
-        System.out.println("Count: "+ countOccurrences(array, element));
+        System.out.println("Count: " + countOccurrences(array, element));
 
     }
 }

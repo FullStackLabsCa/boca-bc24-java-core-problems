@@ -34,8 +34,8 @@ public class Calculator {
     }
 
     public static double recallMemory() {
-        if(count !=0){
-            return memory[count-1];
+        if (count != 0) {
+            return memory[count - 1];
         }
         return 0;
     }

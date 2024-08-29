@@ -1,4 +1,4 @@
-package problems.oldproblems.IndirectAddNums;
+package problems.oldproblems;
 
 import java.util.Scanner;
 
@@ -10,7 +10,7 @@ public class IndirectAddNums {
         int a = s.nextInt();
         int b = s.nextInt();
 
-        while(b!=0){
+        while (b != 0) {
             a++;
             b--;
         }

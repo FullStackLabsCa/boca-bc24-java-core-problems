@@ -12,13 +12,13 @@ public class CountVowels {
         countVowels.countVowels(str);
     }
 
-    public void countVowels(String input){
-        int count =0;
+    public void countVowels(String input) {
+        int count = 0;
         char[] vowels = {'a', 'e', 'i', 'o', 'u'};
         int[] vowelsCount = new int[5];
-        if(!input.isEmpty()){
-            for(int i=0; i< input.length(); i++){
-                switch (input.toLowerCase().charAt(i)){
+        if (!input.isEmpty()) {
+            for (int i = 0; i < input.length(); i++) {
+                switch (input.toLowerCase().charAt(i)) {
                     case 'a':
                         count++;
                         vowelsCount[0]++;
@@ -43,10 +43,10 @@ public class CountVowels {
                 }
             }
         }
-        System.out.println("Number of vowels in the string: "+ count);
+        System.out.println("Number of vowels in the string: " + count);
         System.out.println("Count of vowels: ");
-        for (int i=0; i<vowelsCount.length; i++){
-            System.out.println(vowels[i] +": "+ vowelsCount[i]);
+        for (int i = 0; i < vowelsCount.length; i++) {
+            System.out.println(vowels[i] + ": " + vowelsCount[i]);
         }
     }
 }

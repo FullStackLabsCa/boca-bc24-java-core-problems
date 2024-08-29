@@ -1,4 +1,4 @@
-package problems.oldproblems.PrimeNumbersInRange;
+package problems.oldproblems;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -34,15 +34,15 @@ public class PrimeNumbersInRange {
 
     public static ArrayList<Integer> checkPrimeNumber(int first, int second) {
         ArrayList<Integer> primeNumbers = new ArrayList<>();
-        for (int i = first; i <=second; i++) {
+        for (int i = first; i <= second; i++) {
             boolean flag = false;
-            for (int j=2; j<i; j++){
-                if(i%j == 0){
+            for (int j = 2; j < i; j++) {
+                if (i % j == 0) {
                     flag = true;
                     break;
                 }
             }
-            if(!flag) primeNumbers.add(i);
+            if (!flag) primeNumbers.add(i);
         }
         return primeNumbers;
     }

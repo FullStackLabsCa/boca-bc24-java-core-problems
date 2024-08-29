@@ -1,4 +1,4 @@
-package problems.oldproblems.FactorsNum;
+package problems.oldproblems;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,11 +10,11 @@ public class FactorsNum {
 
         System.out.println("Please enter a number to find factors for it: ");
         int num = s.nextInt();
-        int n=num;
+        int n = num;
         List<Integer> list = new ArrayList<>();
 
-        while(n>=1){
-            if(num % n == 0){
+        while (n >= 1) {
+            if (num % n == 0) {
                 list.add(n);
             }
             n--;

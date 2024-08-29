@@ -1,4 +1,4 @@
-package problems.oldproblems.FirstDuplicate;
+package problems.oldproblems;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ public class FirstDuplicate {
         System.out.println("Please enter the numbers: ");
         int[] arr = new int[size];
 
-        for(int i=0; i<size; i++){
+        for (int i = 0; i < size; i++) {
             arr[i] = s.nextInt();
         }
         int[] uniqueArr = new int[arr.length];
@@ -30,7 +30,7 @@ public class FirstDuplicate {
             }
         }
 
-        if(duplicate !=0){
+        if (duplicate != 0) {
             System.out.println("First duplicate number is: " + duplicate);
         } else {
             System.out.println("No duplicate found");

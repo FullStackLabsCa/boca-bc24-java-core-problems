@@ -26,7 +26,7 @@ public class MergeTwoArrays {
 
         System.out.println("Merged array is: ");
         int[] mergedArray = mergeArrays(array1, array2);
-        for (int num: mergedArray){
+        for (int num : mergedArray) {
             System.out.println(num);
         }
     }

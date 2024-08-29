@@ -7,7 +7,7 @@ public class Course<S, G extends Number> {
 
     private final Map<S, G> studentToGrade;
 
-    public Course(){
+    public Course() {
         this.studentToGrade = new HashMap<>();
     }
 
@@ -15,11 +15,11 @@ public class Course<S, G extends Number> {
         return studentToGrade;
     }
 
-    public void enrollStudent (S studentIdentifier) {
+    public void enrollStudent(S studentIdentifier) {
         this.studentToGrade.put(studentIdentifier, null);
     }
 
-    public void assignGrade(S studentName, G grade){
+    public void assignGrade(S studentName, G grade) {
         this.studentToGrade.put(studentName, grade);
     }
 }

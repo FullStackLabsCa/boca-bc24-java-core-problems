@@ -44,7 +44,7 @@ public class DuplicatesInArrayWithoutList {
 
         int[] duplicatesArray = new int[count];
 
-        System.arraycopy(duplicates,0,duplicatesArray,0,count);
+        System.arraycopy(duplicates, 0, duplicatesArray, 0, count);
 
         return duplicatesArray;
     }

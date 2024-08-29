@@ -11,15 +11,15 @@ public class FindMaximumInArray {
 
         int[] num = new int[n];
 
-        for(int i=0; i<n; i++){
+        for (int i = 0; i < n; i++) {
             num[i] = s.nextInt();
         }
 
         System.out.println(findMax(num));
     }
 
-    public static int findMax(int[] numbers){
-        if(numbers == null || numbers.length == 0){
+    public static int findMax(int[] numbers) {
+        if (numbers == null || numbers.length == 0) {
             return Integer.MIN_VALUE;
         }
         int max = numbers[0];
