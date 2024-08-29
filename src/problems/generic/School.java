@@ -64,7 +64,7 @@ public class School<S, G extends Number> {
         for (G v : grades) {
             value += Double.parseDouble(String.valueOf(v));
         }
-        average =  value/grades.size();
+        average = value / grades.size();
         System.out.println("Average score for course '" + courseName + "': " + average);
     }
 
@@ -107,34 +107,39 @@ public class School<S, G extends Number> {
             default:
                 System.out.println("Error: Unknown command 'unknown_command'. Please use a valid command.");
         }
+    }
 
+    public void printOperationCommands() {
+        System.out.println("Enter the command to execute the operation: " +
+                "\nadd_course <course_name>" +
+                "\nenroll_student <course_name student_name_or_id>" +
+                "\nassign_grade <course_name student_name_or_id grade>" +
+                "\nlist_courses <course_name>" +
+                "\nlist_grades <course_name>" +
+                "\nreport_unique_courses" +
+                "\nreport_unique_students" +
+                "\nreport_cumulative_average <student_name_or_id>" +
+                "\nreport_average_score <course_name>" +
+                "\nenter quit to exit the command line");
+    }
+
+    public void startProcess() {
+        Scanner scanner = new Scanner(System.in);
+        printOperationCommands();
+        while (true) {
+//            printOperationCommands();
+            String inputValue = scanner.nextLine().trim();
+            if (inputValue.equals("quit")) {
+                System.out.println("Exiting the School System");
+                break;
+            }
+            processCommand(inputValue);
+        }
     }
 
     public static void main(String[] args) {
-        School<String, Integer> stringIntegerCourses = new School<>();
-        Scanner scanner = new Scanner(System.in);
-        //Add Course
-//        System.out.println("Please enter a value for course");
-//        String inputValue = scanner.nextLine().trim();
-//        stringIntegerCourses.addingCourse(inputValue);
-
-        //Enroll Student
-//        System.out.println("Please enter a course name and Student name");
-//        String[] splitCourseNameStudentName = scanner.nextLine().split(" ");
-//        stringIntegerCourses.enrollStudentToCourse(splitCourseNameStudentName[0], splitCourseNameStudentName[1]);
-
-        //Assign Grade to Student
-//        System.out.println("Please enter a course name ,student name and grade");
-//        String[] splitCourseNameStudentNameGrade = scanner.nextLine().split(" ");
-//        stringIntegerCourses.assignGradesToStudent(splitCourseNameStudentNameGrade[0], splitCourseNameStudentNameGrade[1], Integer.valueOf(splitCourseNameStudentNameGrade[2]));
-//        stringIntegerCourses.assignGradesToStudent("Math101", "Gaurav", 97.5);
-
-        //list Grades
-        stringIntegerCourses.listGrades("Math101");
-
-        //List courses
-        stringIntegerCourses.listAllCourses();
-
+        School<String, Integer> school = new School<>();
+        school.startProcess();
     }
 }
 
