@@ -41,10 +41,10 @@ public class Course<S,G extends Number>{
         }
     }
 
-
-    public Optional<G> getGrade(S i) {
-            return studentToGradesMap.get(i);
-    }
+//
+//    public Optional<G> getGrade(S i) {
+//            return studentToGradesMap.get(i);
+//    }
 
     public Map<S, G> getAllGrades() {
             return studentToGradesMap;
