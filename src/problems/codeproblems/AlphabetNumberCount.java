@@ -13,9 +13,9 @@ public class AlphabetNumberCount {
         char userRequirement = scanner.next().charAt(0);
 
         int countInString = 0;
-        for(int i = 0; i < stringFromUser.length(); i++){
+        for (int i = 0; i < stringFromUser.length(); i++) {
             char[] characterArray = stringFromUser.toCharArray();
-            if (userRequirement== stringFromUser.charAt(i)) {
+            if (userRequirement == stringFromUser.charAt(i)) {
                 countInString++;
             }
 
