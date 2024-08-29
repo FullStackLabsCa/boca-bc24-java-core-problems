@@ -46,8 +46,13 @@ public class Course <S, G extends Number>{
 
 
     public boolean isStudentEnrolled(S i) {
-        return true;
+        if (studentGradeMap.containsKey(i)) {
+            return true;
+        } else {
+            return false;
+        }
     }
+
 
     public Map<S, G> getAllGrades() {
         return  studentGradeMap;
@@ -68,6 +73,7 @@ public class Course <S, G extends Number>{
     }
 
     public void listAllGrades() {
+        System.out.println(studentGradeMap);
 
     }
 }
