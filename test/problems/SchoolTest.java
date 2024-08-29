@@ -49,30 +49,30 @@ public class SchoolTest {
 
         assertTrue(systemOutRule.getLog().contains("Student '12345' enrolled in course 'Math101'."));
     }
-//
-//    @Test
-//    public void testEnrollStudentInNonExistentCourse() {
-//        school.processCommand("enroll_student Physics103 12345");
-//
-//        assertTrue(systemOutRule.getLog().contains("Error: Cannot enroll student. Course 'Physics103' does not exist."));
-//    }
-//
-//    @Test
-//    public void testAssignGrade() {
-//        school.processCommand("add_course Math101");
-//        school.processCommand("enroll_student Math101 12345");
-//        school.processCommand("assign_grade Math101 12345 85.5");
-//
-//        assertTrue(systemOutRule.getLog().contains("Grade '85.5' assigned to student '12345' in course 'Math101'."));
-//    }
-//
-//    @Test
-//    public void testAssignGradeToNonEnrolledStudent() {
-//        school.processCommand("add_course Math101");
-//        school.processCommand("assign_grade Math101 54321 75");
-//
-//        assertTrue(systemOutRule.getLog().contains("Error: Cannot assign grade. Student '54321' is not enrolled in course 'Math101'."));
-//    }
+
+    @Test
+    public void testEnrollStudentInNonExistentCourse() {
+        school.processCommand("enroll_student Physics103 12345");
+
+        assertTrue(systemOutRule.getLog().contains("Error: Cannot enroll student. Course 'Physics103' does not exist."));
+    }
+
+    @Test
+    public void testAssignGrade() {
+        school.processCommand("add_course Math101");
+        school.processCommand("enroll_student Math101 12345");
+        school.processCommand("assign_grade Math101 12345 85.5");
+
+        assertTrue(systemOutRule.getLog().contains("Grade '85.5' assigned to student '12345' in course 'Math101'."));
+    }
+
+    @Test
+    public void testAssignGradeToNonEnrolledStudent() {
+        school.processCommand("add_course Math101");
+        school.processCommand("assign_grade Math101 54321 75");
+
+        assertTrue(systemOutRule.getLog().contains("Error: Cannot assign grade. Student '54321' is not enrolled in course 'Math101'."));
+    }
 //
 //    @Test
 //    public void testListGrades() {
