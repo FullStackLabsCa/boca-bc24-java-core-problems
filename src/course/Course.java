@@ -42,10 +42,10 @@ public class Course <S,G extends Number>{
         return studentGradeMap.get(studentName);
     }
 
-    public Optional<Number> getGrade(S studentName) {
+    public Optional<Double> getGrade(S studentName) {
         G grade = getStudentGrade(studentName);
         if(studentGradeMap.containsKey(studentName)){
-                return Optional.ofNullable(grade);
+            return Optional.ofNullable(grade != null ? ((Number) grade).doubleValue() : null);
         }
         else{
             return Optional.empty();
