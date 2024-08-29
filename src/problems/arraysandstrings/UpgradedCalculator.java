@@ -1,130 +1,109 @@
 package problems.arraysandstrings;
 
-import org.apache.commons.lang3.StringUtils;
-
 import java.util.*;
 
 public class UpgradedCalculator {
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String sqrtRegex = "sqrt[(].+[)]";
-        String numRegexWithNegative = "(-?\\d+.\\d+)|(\\d+)";
-        String numRegexWithoutNegative = "(\\d+.\\d+)|(\\d+)";
-        System.out.println("Enter an expression to evaluate: ");
+    double[] memory = new double[5];
+    int index = 0;
 
-        String expr = scanner.nextLine().trim();
-        String expression = expr.replaceAll("\\s", "");
-        System.out.println(expression.matches(""));
-        while(expression.contains("sqrt")) {
-            String num = StringUtils.substringBetween(expression, "sqrt(", ")");
-            try{
-                double number = Double.parseDouble(num);
-                if(number < 0){
-                    System.out.println("Square root of a negative number is not allowed.");
-                    break;
-                } else{
-                    expression = expression.replaceFirst(sqrtRegex, Double.toString(Math.sqrt(number)));
-                    System.out.println(expression);
-                }
-            } catch (NumberFormatException e){
-                System.out.println("Invalid Expression");
-                break;
-            }
-        }
-
-        List<String> list = new ArrayList<>(Arrays.stream(expression.split("")).toList());
-        if(expression.matches("[/+\\-*^0-9.()]+")) {
-            while (list.contains("(")) {
-                int closingBracket = list.indexOf(")");
-                list.remove(closingBracket);
-                int j = 1;
-                StringBuilder secondNumber = new StringBuilder();
-                while (list.get(closingBracket - j).matches("(\\d+.?\\d+)|(\\d+)")) {
-                    secondNumber.insert(0, list.get(closingBracket - j));
-                    list.remove(closingBracket - j);
-                    j++;
-                }
-                String operator = list.get(closingBracket - j);
-                list.remove(closingBracket - j);
-                j++;
-                StringBuilder firstNumber = new StringBuilder();
-                while (list.get(closingBracket - j).matches("(\\d+.?\\d+)|(\\d+)")) {
-                    firstNumber.insert(0, list.get(closingBracket - j));
-                    list.remove(closingBracket - j);
-                    j++;
-                }
-
-                System.out.println(firstNumber);
-
-                System.out.println(secondNumber);
-                System.out.println(operator);
-
-                double result = solveExpression(Double.valueOf(firstNumber.toString()), operator, Double.valueOf(secondNumber.toString()));
-                if (result == Double.MIN_VALUE) System.out.print("Division by zero is not allowed.");
-                else if(result == Double.MAX_VALUE) System.out.println("Invalid Expression.");
-                else{
-                    if(list.get(closingBracket-j).matches("\\("))
-                    list.set(closingBracket-j, Double.toString(result));
-//                    else list.
-                }
-
-                System.out.println(expression);
-            }
-
-        } else {
-            System.out.println("Invalid Expression.");
-        }
-
-        System.out.println(list);
-
-//        Stack<String> calcStack = new Stack<>();
-//        String[] expArr = expression.split("");
-//
-//        int i=0;
-//
-//        while(i<expArr.length){
-//            if(expArr[i].equals("(")){
-//                calcStack.push("(");
-//            } else if(expArr[i].matches("")){
-//                String top = calcStack.pop();
-//            }
+    public void storeInMemory(double value) {
+//        if(index  ){
+//            memory[index++] = value;
 //        }
     }
-//    int i = 0;
-//        for(String exp : expArr){
-//            if(exp.equals("(")) calcStack.push(exp);
-//            if(exp.matches("-?\\d")) {
-//                if(calcStack.peek().matches("[+-/*^]")){
-//                    exp
-//                }
-//                calcStack.push(exp);
-//            }
-//            if(exp.matches("[+-/*^]")) calcStack.push(exp);
-//        }
-//    }
-//
-    public static double solveExpression(Double first, String operator, Double second){
 
-        return switch (operator) {
-            case "/" -> {
-                if (second == 0) {
-//                    System.out.print("Division by zero is not allowed.");
-                    yield Double.MIN_VALUE;
+    public static void main(String[] args) throws Exception {
+
+
+        try {
+            Scanner scanner = new Scanner(System.in);
+            String expression = scanner.nextLine().replaceAll("\\s", "");
+            double result = 0;
+            if (expression.contains("M+")) {
+                expression = expression.replace("M+", "");
+
+                result = solveExpression(expression);
+            } else result = solveExpression(expression);
+            System.out.println(result);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
+
+    private static double solveExpression(String expression) throws Exception {
+        Character[] operators = new Character[expression.length()];
+        Double[] values = new Double[expression.length()];
+        int opIndex = 0;
+        int valueIndex = 0;
+
+        for (int i = 0; i < expression.length(); i++) {
+            char c = expression.charAt(i);
+            if (expression.startsWith("sqrt", i)) {
+                i = i + 4;
+                int start = i + 1;
+                int end = expression.indexOf(')', start);
+                if (end == -1) throw new Exception("Invalid expression.");
+                double value = Double.parseDouble(expression.substring(start, end));
+                if (value < 0) throw new Exception("Square root of a negative number is not allowed.");
+                values[valueIndex++] = Math.sqrt(value);
+                i = end;
+            } else if (c == '(') {
+                operators[opIndex++] = c;
+            } else if (c == ')') {
+                while (opIndex > 0 && operators[opIndex - 1] != '(') {
+                    valueIndex--;
+                    values[valueIndex - 1] = performOperation(operators[--opIndex], values[valueIndex], values[valueIndex - 1]);
                 }
-                yield first / second;
-//                    System.out.print("Division by zero is not allowed.");
+                opIndex--;
+            } else if (Character.isDigit(c) || c == '.') {
+                StringBuilder sb = new StringBuilder();
+                while (i < expression.length() && (Character.isDigit(expression.charAt(i)) || expression.charAt(i) == '.')) {
+                    sb.append(expression.charAt(i++));
+                }
+                values[valueIndex++] = Double.parseDouble(sb.toString());
+                i--;
+            } else if (c == '+' || c == '-' || c == '*' || c == '/' || c == '^') {
+                while (opIndex > 0 && operatorPriority(c) <= operatorPriority(operators[opIndex - 1])) {
+                    valueIndex--;
+                    values[valueIndex - 1] = performOperation(operators[--opIndex], values[valueIndex], values[valueIndex - 1]);
+                }
+                operators[opIndex++] = c;
             }
-            case "*" -> first * second;
-            case "+" -> first + second;
-            case "-" -> first - second;
-            default -> Double.MAX_VALUE;
+        }
+
+        while (opIndex > 0) {
+            valueIndex--;
+            values[valueIndex - 1] = performOperation(operators[--opIndex], values[valueIndex], values[valueIndex - 1]);
+        }
+
+        if (valueIndex == 0) throw new Exception("Invalid Expression");
+
+        return values[valueIndex - 1];
+    }
+
+    public static int operatorPriority(char operator) {
+        return switch (operator) {
+            case '+', '-' -> 1;
+            case '*', '/' -> 2;
+            case '^' -> 3;
+            default -> -1;
         };
     }
 
-//    public static String checkNumberParentheses(String expr){
-//        if(expr.matches("[(]\\d+.\\d[)]|\\d")){
-////            expr = expr.replaceAll();
-//        }
-//    }
+    public static double performOperation(char operator, double valueTwo, double valueOne) throws Exception {
+        return switch (operator) {
+            case '+' -> valueOne + valueTwo;
+            case '-' -> valueOne - valueTwo;
+            case '*' -> valueOne * valueTwo;
+            case '/' -> {
+                if (valueTwo == 0) throw new ArithmeticException("Division by zero is not allowed.");
+                yield valueOne / valueTwo;
+            }
+            case '^' -> Math.pow(valueOne, valueTwo);
+            default -> throw new Exception("Invalid Expression.");
+        };
+    }
+
 }
