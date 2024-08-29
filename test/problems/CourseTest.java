@@ -34,21 +34,21 @@ public class CourseTest {
         course.assignGrade(12345, 95.0);
         assertEquals(Optional.of(95.0), course.getGrade(12345));
     }
-//
-//    @Test
-//    public void testAssignGradeToNonEnrolledStudent() {
-//        course.assignGrade(12345, 95.0);
-//        assertEquals(Optional.empty(), course.getGrade(12345));
-//    }
-//
-//    @Test
-//    public void testGetGrade() {
-//        course.enrollStudent(12345);
-//        course.assignGrade(12345, 95.0);
-//        Optional<Double> grade = course.getGrade(12345);
-//        assertTrue(grade.isPresent());
-//        assertEquals(95.0, grade.get(), 0.01);
-//    }
+
+    @Test
+    public void testAssignGradeToNonEnrolledStudent() {
+        course.assignGrade(12345, 95.0);
+        assertEquals(Optional.empty(), course.getGrade(12345));
+    }
+
+    @Test
+    public void testGetGrade() {
+        course.enrollStudent(12345);
+        course.assignGrade(12345, 95.0);
+        Optional<Double> grade = course.getGrade(12345);
+        assertTrue(grade.isPresent());
+        assertEquals(95.0, grade.get(), 0.01);
+    }
 //
 //    @Test
 //    public void testGetAllGrades() {

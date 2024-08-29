@@ -44,10 +44,12 @@ public class Course <S,G extends Number>{
 
     public Optional<Number> getGrade(S studentName) {
         G grade = getStudentGrade(studentName);
-        if (grade != null)
-            return Optional.ofNullable(grade);
-        else
-            return null;
+        if(studentGradeMap.containsKey(studentName)){
+                return Optional.ofNullable(grade);
+        }
+        else{
+            return Optional.empty();
+        }
 
     }
 
