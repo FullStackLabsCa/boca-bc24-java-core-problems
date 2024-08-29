@@ -11,13 +11,13 @@ public class CourseRunner {
         stringAsStuId.enrollStudent("Mohan");
         stringAsStuId.enrollStudent("Kumar",90);
         stringAsStuId.enrollStudent("Ram",95);
-        stringAsStuId.assignGrade("Mohan",92);
+        //stringAsStuId.assignGrade("Mohan",92);
         stringAsStuId.listAllGrades();
 
         //To use Integer as Student id and double as Grade
         Course<Integer,Double> integerAsStuId = new Course<>();
         integerAsStuId.enrollStudent(3);
-        integerAsStuId.enrollStudent(2,90.5);
+        integerAsStuId.enrollStudent(2,90.0);
         integerAsStuId.enrollStudent(1,95.0);
         integerAsStuId.assignGrade(3,92.8);
         integerAsStuId.listAllGrades();

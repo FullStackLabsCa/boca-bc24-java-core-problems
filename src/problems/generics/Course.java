@@ -10,7 +10,6 @@ public class Course<S, G extends Number & Comparable<G>> {
 
     public Course() {
         this.studentToGradeMap = new HashMap<>();
-
     }
 
     public boolean enrollStudent(S studentIdentifier) {
@@ -50,8 +49,7 @@ public class Course<S, G extends Number & Comparable<G>> {
         if (!studentToGradeMap.containsKey(studentIdentifier)) {
             System.out.println("Student with this Identifier does not exists");
             return Optional.empty();
-        } else
-        {
+        } else {
             return Optional.of(studentToGradeMap.get(studentIdentifier));
         }
     }
@@ -70,6 +68,7 @@ public class Course<S, G extends Number & Comparable<G>> {
     public Map<S, G> getAllStudentsAndGrade() {
         return studentToGradeMap;
     }
+
     public Map<S, G> getAllGrades() {
         return studentToGradeMap;
     }
@@ -80,4 +79,24 @@ public class Course<S, G extends Number & Comparable<G>> {
             return false;
         } else return studentToGradeMap.containsKey(i);
     }
+
+    public boolean isCourseNull() {
+        if (studentToGradeMap == null) {
+            return true;
+        }
+        return false;
+    }
+
+    public double getAverage() {
+        double total = 0;
+        for (G grade : this.studentToGradeMap.values()) {
+            if (grade == null) {
+                System.out.println("Student skipped due to grade is null");
+            } else {
+                total += grade.doubleValue();
+            }
+        }
+        return (total / this.studentToGradeMap.size());
+    }
+
 }
