@@ -60,6 +60,7 @@ public class School<S, G extends Number> {
         Collection<G> grades = courses.mapOfStudentToGrade.values();
         double average = 0;
         double value = 0;
+        System.out.println("grades = " + grades);
         for (G v : grades) {
             value += Double.parseDouble(String.valueOf(v));
         }

@@ -121,10 +121,19 @@ public class SchoolTest {
         school.processCommand("enroll_student Math101 12345");
         school.processCommand("assign_grade Math101 12345 85.5");
 
+        school.processCommand("enroll_student Math101 12346");
+        school.processCommand("assign_grade Math101 12346 95.5");
+
+        school.processCommand("enroll_student Math101 12347");
+        school.processCommand("assign_grade Math101 12347 105.5");
+
+        school.processCommand("enroll_student Math101 12348");
+        school.processCommand("assign_grade Math101 12348 115.5");
+
         systemOutRule.clearLog();
         school.processCommand("report_average_score Math101");
 
-        assertTrue(systemOutRule.getLog().contains("Average score for course 'Math101': 85.5"));
+        assertTrue(systemOutRule.getLog().contains("Average score for course 'Math101': 100.5"));
     }
 
     @Test
