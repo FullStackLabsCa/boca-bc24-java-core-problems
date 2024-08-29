@@ -19,12 +19,12 @@ public class GradeBook<T extends Number> {
         gradesList.add(grades);
     }
 
-    public int getNumberOfGrades(){
-    return  gradesList.size();
+    public int getNumberOfGrades() {
+        return gradesList.size();
     }
 
     public String calculateAverage() {
-        if(gradesList.isEmpty()){
+        if (gradesList.isEmpty()) {
             return ("No grades available to calculate the average.");
         }
         double sum = 0;
@@ -39,7 +39,7 @@ public class GradeBook<T extends Number> {
 
 
     public String findHighestGrade() {
-        if(gradesList.isEmpty()){
+        if (gradesList.isEmpty()) {
             return ("No grades available to find the highest grade.");
         } else {
             T highest = gradesList.get(0);
@@ -77,15 +77,20 @@ public class GradeBook<T extends Number> {
         //gradesList.addGrade(null);
 
 
-       GradeBook<Integer> integerGradeBook = new GradeBook<>();
-       integerGradeBook.addGrade(85);
-       integerGradeBook.addGrade(90);
+        GradeBook<Integer> integerGradeList = new GradeBook<>();
+        integerGradeList.addGrade(85);
+        integerGradeList.addGrade(90);
+        integerGradeList.addGrade(95);
 
 
-       System.out.println( gradesList);
-       System.out.println(gradesList.calculateAverage());
-       System.out.println(gradesList.findHighestGrade());
-       System.out.println( gradesList.findLowestGrade());
+        System.out.println(gradesList);
+        System.out.println(integerGradeList);
+        System.out.println(gradesList.calculateAverage());
+        System.out.println(gradesList.findHighestGrade());
+        System.out.println(gradesList.findLowestGrade());
+        System.out.println(integerGradeList.findHighestGrade());
+        System.out.println(integerGradeList.calculateAverage());
+        System.out.println(integerGradeList.findLowestGrade());
     }
 }
 
