@@ -4,18 +4,18 @@ import java.util.Scanner;
 
 public class CountOccurrences {
 
-    public <T> int countOccurrences(T[] array, T element){
+    public static <T> int countOccurrences(T[] array, T element){
         int count = 0;
 
         for(T elem: array){
-            if(elem.equals(element)) count++;
+            if(elem != null && elem.equals(element)) count++;
+            else if(elem == null && element == null) count ++;
         }
 
         return count;
     }
 
     public static void main(String[] args) {
-        CountOccurrences countOcc = new CountOccurrences();
         Scanner s = new Scanner(System.in);
         System.out.println("Enter how many numbers you want to enter: ");
         int n = s.nextInt();
@@ -27,7 +27,7 @@ public class CountOccurrences {
 
         System.out.println("Enter an element to look in the list: ");
         Integer element = s.nextInt();
-        System.out.println("Count: "+countOcc.countOccurrences(array, element));
+        System.out.println("Count: "+ countOccurrences(array, element));
 
     }
 }
