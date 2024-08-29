@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d3b01333-d157-4793-b4ff-8016ea5cf74b" name="Changes" comment="course problem solved and all tests passed.">
-      <change afterPath="$PROJECT_DIR$/test/problems/SchoolTest.java" afterDir="false" />
+    <list default="true" id="d3b01333-d157-4793-b4ff-8016ea5cf74b" name="Changes" comment="workspace file">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/generics/school/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/generics/school/Course.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/generics/school/School.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/generics/school/School.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/calculator/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/calculator/Calculator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +48,7 @@
   "keyToString": {
     "Application.BracketMatchingWithStack.executor": "Run",
     "Application.BracketMatchingWithoutStack.executor": "Run",
+    "Application.Calculator.executor": "Run",
     "Application.ConvertListToArray.executor": "Run",
     "Application.CountOcccurence.executor": "Run",
     "Application.CountOcccurences.executor": "Run",
@@ -306,7 +305,23 @@
       <option name="project" value="LOCAL" />
       <updated>1724859027901</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="school problem solved and all tests passed.">
+      <option name="closed" value="true" />
+      <created>1724943963227</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1724943963227</updated>
+    </task>
+    <task id="LOCAL-00017" summary="workspace file">
+      <option name="closed" value="true" />
+      <created>1724943983562</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1724943983562</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -334,6 +349,8 @@
     <MESSAGE value="countoccurence problem solved and all tests passed." />
     <MESSAGE value="gradebook problem solved and all tests passed." />
     <MESSAGE value="course problem solved and all tests passed." />
-    <option name="LAST_COMMIT_MESSAGE" value="course problem solved and all tests passed." />
+    <MESSAGE value="school problem solved and all tests passed." />
+    <MESSAGE value="workspace file" />
+    <option name="LAST_COMMIT_MESSAGE" value="workspace file" />
   </component>
 </project>

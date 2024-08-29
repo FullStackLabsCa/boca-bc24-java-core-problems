@@ -3,58 +3,64 @@ package calculator;
 import java.util.Scanner;
 
 public class Calculator {
-    static boolean isValidString(String expression) {
+    public static boolean isValidString(String expression) {
         boolean isValid = false;
-        if (expression.matches("^\\d+(\\.\\d+)?\\s[+\\-*/]\\s\\d+(\\.\\d+)?$")) {
+        if (expression.matches("^\\s*\\d+(\\.\\d+)?\\s*[+\\-*/]\\s*\\d+(\\.\\d+)?\\s*$")) {
             isValid = true;
         }
         return isValid;
     }
 
+    public static double performOperation (char operator, double operand1, double operand2) {
+        double result = 0;
+        switch (operator) {
+            case '+':
+                result = operand1 + operand2;
+                break;
+            case '-':
+                result = operand1 - operand2;
+                break;
+            case '*':
+                result = operand1 * operand2;
+                break;
+            case '/':
+                if (operand2 == 0) {
+                    System.out.println("Divide by zero exception");
+                    break;
+                }
+                result = operand1 / operand2;
+                break;
+            default:
+                System.out.println("Invalid Operation");
+                break;
+        }
+        return result;
+    }
+
     static double calculate(String expression) {
         double result = 0.0;
+
+        String[] operands = expression.split("[+\\-*/]");
+        String operand1 = operands[0];
+        String operand2 = operands[1];
+        char operator = expression.charAt(operand1.length());
+        System.out.println("Operator=" + operand1.length() + " == " + expression.charAt(operand1.length()));
+        System.out.println("Operands=" + expression);
+        result = performOperation(operator, Double.valueOf(operand1), Double.valueOf(operand2));
+
         return result;
-
-//        String [] operands = expression.split("[+\\-*/]");
-
-//        switch (operator) {
-//            case '+':
-//                Addition addition = new Addition(number1, number2);
-//                result = addition.getAddition();
-//                break;
-//            case '-':
-//                Subtraction subtraction = new Subtraction(number1, number2);
-//                result = subtraction.getSubtraction();
-//                break;
-//            case '*':
-//                Multiplication multiplication = new Multiplication(number1, number2);
-//                result = multiplication.getMultiplication();
-//                break;
-//            case '/':
-//                boolean isDivideByZero = divideByZero(number2);
-//                if (isDivideByZero) {
-//                    System.out.println("Divide by zero exception");
-//                    break;
-//                }
-//                Division division = new Division(number1, number2);
-//                result = division.getDivision();
-//                break;
-//            default:
-//                System.out.println("Invalid Operation");
-//                return;
-//        }
-
     }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.printf("Enter an expression:: ");
         String expression = scanner.nextLine();
 
         boolean isValidString = isValidString(expression.trim());
-
-        System.out.printf("Is valid string ===" + isValidString);
-
-//        double result = calculate(expression);
-//        System.out.printf("Result===" + result);
+        if (!isValidString) {
+            System.out.println("ERROR: INVALID STRING");
+            return;
+        }
+        System.out.printf("Calculate ===" + calculate(expression.trim()));
     }
 }
