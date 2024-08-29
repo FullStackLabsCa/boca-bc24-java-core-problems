@@ -2,6 +2,7 @@ package course;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public class Course <S, G extends Number>{
 
@@ -12,8 +13,8 @@ public class Course <S, G extends Number>{
         this.studentGradeMap = new HashMap<>();
     }
 
-    public void addStudentToGrade(S studentName,G studentGrade){
-        studentGradeMap.put(studentName,studentGrade);
+    public void enrollStudent(S studentName){
+        studentGradeMap.put(studentName,null);
     }
     public G getStudentGrade(S studentName) {
         return studentGradeMap.get(studentName);
@@ -41,5 +42,32 @@ public class Course <S, G extends Number>{
         return "Course{" +
                 "studentGradeMap=" + studentGradeMap +
                 '}';
+    }
+
+
+    public boolean isStudentEnrolled(S i) {
+        return true;
+    }
+
+    public Map<S, G> getAllGrades() {
+        return  studentGradeMap;
+    }
+
+    public void assignGrade(S i, G v) {
+        if(studentGradeMap.containsKey(i)){
+            studentGradeMap.put(i,v);
+        }
+    }
+
+    public Optional<G> getGrade(S i) {
+        if(studentGradeMap.containsKey(i)){
+            return Optional.of(studentGradeMap.get(i));
+        }else{
+            return Optional.empty();
+        }
+    }
+
+    public void listAllGrades() {
+
     }
 }

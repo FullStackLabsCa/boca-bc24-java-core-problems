@@ -6,8 +6,8 @@ public class Start {
         Course<String,Number> phy = new Course<>();
 
 
-        math.addStudentToGrade("Abhay",65);
-        phy.addStudentToGrade("Abhay",89);
+        math.enrollStudent("Abhay");
+        phy.enrollStudent("Abhay");
 
         math.printStudentGrade("Abhay");
 
