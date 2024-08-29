@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public class Course<S, G extends Number> {
 
-    private Map<S, G> studentGrade;
+    Map<S, G> studentGrade;
 
     public Course() {
         studentGrade = new HashMap<>();
@@ -21,12 +21,14 @@ public class Course<S, G extends Number> {
         }
     }
 
-    public void assignGrade(S studentId, G grade) {
+    public boolean assignGrade(S studentId, G grade) {
         if (studentGrade.containsKey(studentId)) {
             studentGrade.put(studentId, grade);
+            return true;
         } else {
 
             System.out.println("Student is not  enrolled.");
+            return false;
         }
     }
 
