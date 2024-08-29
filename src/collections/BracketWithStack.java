@@ -17,7 +17,7 @@ Input: [(]), Output: false (invalid, sequence does not match any valid pattern)
 
 public class BracketWithStack {
     public static void main(String[] args) {
-        String input = "{[({()})]}";
+        String input = "{[(]({)})}";
         boolean result = isResult(input);
         System.out.println(result);
     }
