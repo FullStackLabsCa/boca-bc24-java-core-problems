@@ -44,15 +44,27 @@ public class School<S, G extends Number> {
     }
 
     public void getReportCumulativeAverage(S sID) {
-        Collection<Course<S, G>> values = mapOfCourses.values();
+        Collection<Course<S, G>> courses = mapOfCourses.values();
         double value = 0;
 
-        for (Course<S, G> v : values) {
+        for (Course<S, G> v : courses) {
             Optional<G> grade = v.getGrade(sID);
             value += Double.parseDouble(String.valueOf(grade.get()));
         }
 
-        System.out.println("Cumulative average score for student '"+sID+"': " + value/values.size());
+        System.out.println("Cumulative average score for student '" + sID + "': " + value / courses.size());
+    }
+
+    public void getReportAverageScore(String courseName) {
+        Course<S, G> courses = mapOfCourses.get(courseName);
+        Collection<G> grades = courses.mapOfStudentToGrade.values();
+        double average = 0;
+        double value = 0;
+        for (G v : grades) {
+            value += Double.parseDouble(String.valueOf(v));
+        }
+        average =  value/grades.size();
+        System.out.println("Average score for course '" + courseName + "': " + average);
     }
 
     public void listAllCourses() {
@@ -87,6 +99,9 @@ public class School<S, G extends Number> {
                 break;
             case "report_cumulative_average":
                 getReportCumulativeAverage((S) array[1]);
+                break;
+            case "report_average_score":
+                getReportAverageScore(array[1]);
                 break;
             default:
                 System.out.println("Error: Unknown command 'unknown_command'. Please use a valid command.");
