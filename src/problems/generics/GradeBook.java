@@ -4,7 +4,7 @@ import java.util.*;
 
 public class GradeBook<T extends Number & Comparable<T>> {
 
-    private List<T> grades;
+    private final List<T> grades;
 
     public GradeBook() {
         this.grades = new ArrayList<>();

@@ -2,34 +2,72 @@ package problems.arraysandstrings;
 
 import java.util.*;
 
-public class UpgradedCalculator {
+import static java.lang.Double.NaN;
 
-    double[] memory = new double[5];
-    int index = 0;
+public class Calculator {
 
-    public void storeInMemory(double value) {
-//        if(index  ){
-//            memory[index++] = value;
-//        }
-    }
+    static double[] memory = new double[5];
+    static int index = 0;
+    static int count = 0;
 
-    public static void main(String[] args) throws Exception {
-
-
+    public static double calculate(String expression) {
         try {
-            Scanner scanner = new Scanner(System.in);
-            String expression = scanner.nextLine().replaceAll("\\s", "");
-            double result = 0;
+            double result;
             if (expression.contains("M+")) {
                 expression = expression.replace("M+", "");
-
                 result = solveExpression(expression);
+                storeInMemory(result);
             } else result = solveExpression(expression);
-            System.out.println(result);
+            return result;
+        } catch (ArithmeticException e) {
+            return NaN;
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        return 0;
+    }
 
+    public static void clearMemory() {
+        memory = new double[5];
+        index = 0;
+        count = 0;
+    }
+
+    public static double recallMemory() {
+        if(count !=0){
+            return memory[count-1];
+        }
+        return 0;
+    }
+
+    public static String recallAllMemory() {
+        if (count == 0) {
+            return ("No values stored in memory.");
+        } else {
+            StringBuilder sb = new StringBuilder("Stored values: ");
+
+            for (int i = 0; i < count; i++) {
+                if (i != count - 1) sb.append(memory[i]).append(", ");
+                else sb.append(memory[i]);
+//                sb.append(memory[i]);
+            }
+            return sb.toString();
+        }
+    }
+
+    public static void storeInMemory(double value) {
+        if (index >= 5) {
+            index = 0;
+            count--;
+        }
+        memory[index++] = value;
+        count++;
+    }
+
+    public static void main(String[] args) throws Exception {
+        Scanner scanner = new Scanner(System.in);
+        String expression = scanner.nextLine().replaceAll("\\s", "");
+        System.out.println(calculate(expression));
     }
 
     private static double solveExpression(String expression) throws Exception {
@@ -46,7 +84,7 @@ public class UpgradedCalculator {
                 int end = expression.indexOf(')', start);
                 if (end == -1) throw new Exception("Invalid expression.");
                 double value = Double.parseDouble(expression.substring(start, end));
-                if (value < 0) throw new Exception("Square root of a negative number is not allowed.");
+                if (value < 0) throw new ArithmeticException();
                 values[valueIndex++] = Math.sqrt(value);
                 i = end;
             } else if (c == '(') {
