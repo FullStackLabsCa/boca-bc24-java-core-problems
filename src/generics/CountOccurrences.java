@@ -16,9 +16,14 @@ public class CountOccurrences {
     public static <T> int countOccurrences(T[] array, T element){
         int count=0;
         for (int occurance = 0; occurance < array.length ; occurance++) {
-            if(array[occurance]==element){
+            if(array[occurance]!=null){
+                if(array[occurance].equals(element)){
+                    count++;
+                }
+            }else if(element == null){
                 count++;
             }
+
 
         }
         return count;

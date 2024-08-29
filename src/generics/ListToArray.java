@@ -14,8 +14,11 @@ public class ListToArray {
         listInteger.add(101);
     }
 
-    public static <T> T[] listToArray(List<T> list, T[] size){
-        T[] array = (T[]) new Object[list.size()];
+    public static <T> T[] listToArray(List<T> list, T[] array){
+       if(list == null || list.isEmpty()){
+           return null;
+       }
+
         for (int i=0; i< list.size(); i++){
             array[i] = list.get(i);
         }
