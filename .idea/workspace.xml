@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d3b01333-d157-4793-b4ff-8016ea5cf74b" name="Changes" comment="Committed all previous problems with minor fix in boilerplate">
+    <list default="true" id="d3b01333-d157-4793-b4ff-8016ea5cf74b" name="Changes" comment="course problem solved and all tests passed.">
+      <change afterPath="$PROJECT_DIR$/test/problems/SchoolTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/stringproblems/CapitalizeFirstLetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/stringproblems/CapitalizeFirstLetter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/stringproblems/CountVowel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/stringproblems/CountVowel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/stringproblems/FindLongestString.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/stringproblems/FindLongestString.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/stringproblems/RemoveVowel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/stringproblems/RemoveVowel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/testproblems/NumbersAdd.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/generics/school/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/generics/school/Course.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/generics/school/School.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/generics/school/School.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,16 +52,25 @@
     "Application.BracketMatchingWithoutStack.executor": "Run",
     "Application.ConvertListToArray.executor": "Run",
     "Application.CountOcccurence.executor": "Run",
+    "Application.CountOcccurences.executor": "Run",
+    "Application.CountOccurrences.executor": "Run",
     "Application.CountOddIntegers.executor": "Run",
     "Application.Course.executor": "Run",
     "Application.CourseRunner.executor": "Run",
     "Application.GradeBook.executor": "Run",
     "Application.ListToArray.executor": "Run",
     "Application.MapOfMapsExample.executor": "Run",
+    "Application.OddCounter.executor": "Run",
     "Application.School.executor": "Run",
+    "JUnit.CountOccurrencesTest.executor": "Run",
+    "JUnit.CourseTest.executor": "Run",
+    "JUnit.GradeBookTest.executor": "Run",
     "JUnit.ListToArrayTest.executor": "Run",
     "JUnit.ListToArrayTest.testListToArrayWithMixedElements.executor": "Run",
     "JUnit.ListToArrayTest.testListToArrayWithNullList.executor": "Run",
+    "JUnit.OddCounterTest.executor": "Run",
+    "JUnit.OddCounterTest.testCountOddNumbersInSet.executor": "Run",
+    "JUnit.SchoolTest.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "feature/kivi-bc24-java-core-problems",
     "kotlin-language-version-configured": "true",
@@ -84,9 +91,9 @@
       <recent name="collection" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ListToArrayTest">
-    <configuration name="ListToArray" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="generics.ListToArray" />
+  <component name="RunManager">
+    <configuration name="OddCounter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="generics.OddCounter" />
       <module name="boca-bc24-java-core-problems2" />
       <extension name="coverage">
         <pattern>
@@ -129,7 +136,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ListToArrayTest.testListToArrayWithNullList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="OddCounterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="boca-bc24-java-core-problems" />
       <extension name="coverage">
         <pattern>
@@ -138,8 +145,23 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="problems" />
-      <option name="MAIN_CLASS_NAME" value="problems.ListToArrayTest" />
-      <option name="METHOD_NAME" value="testListToArrayWithNullList" />
+      <option name="MAIN_CLASS_NAME" value="problems.OddCounterTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OddCounterTest.testCountOddNumbersInSet" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="boca-bc24-java-core-problems" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="problems.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="problems" />
+      <option name="MAIN_CLASS_NAME" value="problems.OddCounterTest" />
+      <option name="METHOD_NAME" value="testCountOddNumbersInSet" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -147,10 +169,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.OddCounter" />
+        <item itemvalue="JUnit.OddCounterTest" />
+        <item itemvalue="JUnit.OddCounterTest.testCountOddNumbersInSet" />
         <item itemvalue="JUnit.ListToArrayTest" />
         <item itemvalue="JUnit.ListToArrayTest.testListToArrayWithMixedElements" />
-        <item itemvalue="Application.ListToArray" />
-        <item itemvalue="JUnit.ListToArrayTest.testListToArrayWithNullList" />
       </list>
     </recent_temporary>
   </component>
@@ -243,7 +266,47 @@
       <option name="project" value="LOCAL" />
       <updated>1724850573680</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="minor fixes in string problems">
+      <option name="closed" value="true" />
+      <created>1724851212794</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1724851212794</updated>
+    </task>
+    <task id="LOCAL-00012" summary="oddcounter problem solved and all tests passed.">
+      <option name="closed" value="true" />
+      <created>1724852120965</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1724852120965</updated>
+    </task>
+    <task id="LOCAL-00013" summary="countoccurence problem solved and all tests passed.">
+      <option name="closed" value="true" />
+      <created>1724852973779</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1724852973780</updated>
+    </task>
+    <task id="LOCAL-00014" summary="gradebook problem solved and all tests passed.">
+      <option name="closed" value="true" />
+      <created>1724855753318</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1724855753318</updated>
+    </task>
+    <task id="LOCAL-00015" summary="course problem solved and all tests passed.">
+      <option name="closed" value="true" />
+      <created>1724859027901</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1724859027901</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -266,6 +329,11 @@
     <MESSAGE value="minor fix in calculator" />
     <MESSAGE value="course generics class with student grade map" />
     <MESSAGE value="Committed all previous problems with minor fix in boilerplate" />
-    <option name="LAST_COMMIT_MESSAGE" value="Committed all previous problems with minor fix in boilerplate" />
+    <MESSAGE value="minor fixes in string problems" />
+    <MESSAGE value="oddcounter problem solved and all tests passed." />
+    <MESSAGE value="countoccurence problem solved and all tests passed." />
+    <MESSAGE value="gradebook problem solved and all tests passed." />
+    <MESSAGE value="course problem solved and all tests passed." />
+    <option name="LAST_COMMIT_MESSAGE" value="course problem solved and all tests passed." />
   </component>
 </project>
