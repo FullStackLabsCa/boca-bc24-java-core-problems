@@ -2,7 +2,7 @@ package problems.codeproblems;
 
 import java.util.Scanner;
 
-public class FibonacciSeries {
+public class Fibonacci {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter value");
