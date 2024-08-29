@@ -1,34 +1,34 @@
-//package problems;
-//
-//
-//import org.junit.Before;
-//import org.junit.Rule;
-//import org.junit.Test;
-//import org.junit.contrib.java.lang.system.SystemOutRule;
-//
-//import static org.junit.Assert.assertTrue;
-//
-//public class SchoolTest {
-//
-//    private School<Integer, Double> school;
-//
-//    @Rule
-//    public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
-//
-//    @Before
-//    public void setUp() {
-//        school = new School<>();
-//    }
-//
-//    @Test
-//    public void testAddCourse() {
-//        school.processCommand("add_course Math101");
-//        school.processCommand("add_course Physics102");
-//
-//        assertTrue(systemOutRule.getLog().contains("Course 'Math101' added."));
-//        assertTrue(systemOutRule.getLog().contains("Course 'Physics102' added."));
-//    }
-//
+package problems;
+
+import course.School;
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.contrib.java.lang.system.SystemOutRule;
+
+import static org.junit.Assert.assertTrue;
+
+public class SchoolTest {
+
+    private School<Integer, Double> school;
+
+    @Rule
+    public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
+
+    @Before
+    public void setUp() {
+        school = new School<>();
+    }
+
+    @Test
+    public void testAddCourse() {
+        school.processCommand("add_course Math101");
+        school.processCommand("add_course Physics102");
+
+        assertTrue(systemOutRule.getLog().contains("Course 'Math101' added."));
+        assertTrue(systemOutRule.getLog().contains("Course 'Physics102' added."));
+    }
+
 //    @Test
 //    public void testListCourses() {
 //        school.processCommand("add_course Math101");
@@ -147,4 +147,4 @@
 //
 //        assertTrue(systemOutRule.getLog().contains("Error: Unknown command 'unknown_command'. Please use a valid command."));
 //    }
-//}
+}

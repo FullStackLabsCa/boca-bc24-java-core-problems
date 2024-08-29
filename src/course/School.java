@@ -1,5 +1,6 @@
 package course;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,13 +23,22 @@ public class School <S,G extends Number>{
 
     public Map<String,Course> addCourseNameToSchool(String courseName){
         courseNameToCourseMap.put(courseName,null);
+        System.out.println("Course '"+courseName+"' added.");
         return courseNameToCourseMap;
     }
 
-    public Map<String,Course> enrollStudent(String name, Course course){
-        courseNameToCourseMap.put(name,course);
-        return courseNameToCourseMap;
+public Map<String,Course> enrollStudent(String name, Course course){
+    courseNameToCourseMap.put(name,course);
+    return courseNameToCourseMap;
+}
+
+
+public void processCommand(String command) {
+    String[] strArray = command.trim().split("\\s+");
+    String testCommand = strArray[0];
+    String testParameter = strArray[1];
+        if("add_course".equals(testCommand)){
+            addCourseNameToSchool(testParameter);
+        }
     }
-
-
 }
