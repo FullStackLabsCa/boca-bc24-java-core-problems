@@ -10,6 +10,7 @@ import java.util.Set;
 public class School<S, G extends Number> {
     Set<String> courseName;
     Map<String, Course<S, G>> courseToStudentGrade;
+    Course<S, G> courseObj = new Course<>();
 
     public School() {
         this.courseName = new HashSet<>();
@@ -39,10 +40,21 @@ public class School<S, G extends Number> {
         return courseToStudentGrade;
     }
 
+    public Map<String, Course<S, G>> enrollStudent(String courseName, S student, G grade) {
+        Course<S, G> course = courseToStudentGrade.get(courseName);
+        if (course != null) {
+            course.assignGrade(student, grade);
+        } else {
+            System.out.println("Course not found.");
+        }
+        return courseToStudentGrade;
+    }
+
     public void processCommand(String command) {
         String[] array= command.split(" ");
         if("add_course".equals(array[0])){
             courseName.add(array[1]);
+            courseToStudentGrade.put(array[1],null);
             System.out.println("Course '" + array[1] + "' added.");
         }
 
@@ -59,16 +71,21 @@ public class School<S, G extends Number> {
             S student = (S) array[2];
             G grade = null;
 
-            Course<S, G> courseObj = new Course<>();
-
             if (!courseToStudentGrade.containsKey(array[1])) {
-                System.out.println("Error: Cannot enroll student. Course '" + array[1] + "' does not exist.");
+                System.out.println("Error: Cannot enroll student. Course '" + array[1]+ "' does not exist.");
             } else {
                 courseToStudentGrade.put(array[1], courseObj);
                 System.out.println("Student '" + array[2] + "' enrolled in course '" + array[1] + "'.");
             }
         }
 
+        if("assign_grade".equals(array[0])){
+            String course = array[1];
+            S student = (S) array[2];
+            double grade = Double.parseDouble(array[3]);
 
+            courseToStudentGrade.put(array[1], courseObj);
+            System.out.println("Grade '" + grade + "' assigned to student '"+ array[2] + "' in course '" + array[1] + "'.");
+        }
     }
 }
