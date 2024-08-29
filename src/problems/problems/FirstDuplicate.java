@@ -1,35 +1,30 @@
 package problems.problems;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+//13 Find first duplicate in an array of values
 
-public class DuplicateValuesForGivenValue {
+import java.util.ArrayList;
+
+public class FirstDuplicate {
+
     public static void main(String[] args) {
 
-
-        Scanner Obj = new Scanner(System.in);
-        String line = Obj.nextLine();
-
-        HashMap<Character, Integer> map = counter(line);
-        System.out.println("Character frequencies:");
-        for (Map.Entry<Character, Integer> entry : map.entrySet()) {
-            if (entry.getValue() > 1) {
-                System.out.println(" Duplicatevalue: "+entry.getKey() + "  Count: " + entry.getValue());
-                break;
+        ArrayList<Integer> duplicateValues
+                = new ArrayList<>();
+        int ctr = 0;
+        int[] values = {1,2,3,4,5,6,7,2};
+        for (int i = 0; i < values.length; i++) {
+            ctr++;
+            for (int j = ctr; j < values.length; j++) {
+                if (values[i] == values[j]) {
+                    duplicateValues.add(values[i]);
+                    break;
+                }
             }
-            System.out.println("Character: '" + entry.getKey() + "', Frequency: " + entry.getValue());
         }
 
-
-
-
-    }
-    public static HashMap<Character, Integer> counter(String s) {
-        HashMap<Character, Integer> map = new HashMap<>();
-        for (char c : s.toCharArray()) {
-            map.put(c, map.getOrDefault(c, 0) + 1);
+        for (Integer value: duplicateValues) {
+            System.out.println("Duplicate: " +  value);
         }
-        return map;
+
     }
 }

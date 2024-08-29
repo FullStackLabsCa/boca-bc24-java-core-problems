@@ -1,35 +1,23 @@
 package problems.problems;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
-public class DuplicateValues {
+public class DuplicateValuesForGivenValue {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the string for the count:");
+        String string = scanner.nextLine();
+        System.out.println("Enter the character to count:");
+        char check = scanner.nextLine().charAt(0);
+        int ctr = 0;
+        StringBuilder stringBuilder = new StringBuilder();
 
-
-        Scanner Obj = new Scanner(System.in);
-        String line = Obj.nextLine();
-
-        HashMap<Character, Integer> map = counter(line);
-        System.out.println("Character frequencies:");
-        for (Map.Entry<Character, Integer> entry : map.entrySet()) {
-            if (entry.getValue() > 1) {
-                System.out.println(" Duplicatevalue: "+entry.getKey() + "  Count: " + entry.getValue());
-                break;
+        for (int i = 0; i < string.length(); i++) {
+            if (string.charAt(i) == check) {
+                ctr++;
+                stringBuilder.append(check);
             }
-            System.out.println("Character: '" + entry.getKey() + "', Frequency: " + entry.getValue());
         }
-
-
-
-
-    }
-    public static HashMap<Character, Integer> counter(String s) {
-        HashMap<Character, Integer> map = new HashMap<>();
-        for (char c : s.toCharArray()) {
-            map.put(c, map.getOrDefault(c, 0) + 1);
-        }
-        return map;
+        System.out.println("Matched " + ctr + " times");
     }
 }
