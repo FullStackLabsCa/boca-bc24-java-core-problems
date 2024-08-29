@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Optional;
 
 public class Course <S,G extends Number>{
-    private final Map<S,G> studentGradeMap;
+    private  Map<S,G> studentGradeMap;
 
 
     public Course() {

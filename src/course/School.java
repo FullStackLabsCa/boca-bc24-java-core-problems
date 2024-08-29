@@ -40,12 +40,23 @@ public void processCommand(String command) {
 //    String testCommand = strArray[0];
 //    String testParameter = strArray[1];
         if("add_course".equals(strArray[0])){
-            addCourseNameToSchool(strArray[1]);
-            courseName.add(strArray[1]);
+            addCourseNameToSchool((String) strArray[1]);
+            courseName.add((String) strArray[1]);
         }
         if("list_courses".equals(strArray[0])){
             System.out.println("Courses offered:");
             System.out.println(courseName);
+        }
+        if("enroll_student".equals(strArray[0])){
+            Course<S,G> course = new Course<>();
+            String courseName = strArray[1];
+            S studentName = (S) strArray[2];
+            G grade = null;
+
+            if(courseName.contains(strArray[1])){
+                enrollStudent(strArray[1],course);
+                System.out.println("Student '"+strArray[2]+"' enrolled in course '"+strArray[1]+"'.");
+            }
         }
     }
 }

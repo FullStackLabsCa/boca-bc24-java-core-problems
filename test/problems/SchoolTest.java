@@ -41,14 +41,14 @@ public class SchoolTest {
         assertTrue(systemOutRule.getLog().contains("Math101"));
         assertTrue(systemOutRule.getLog().contains("Physics102"));
     }
-//
-//    @Test
-//    public void testEnrollStudent() {
-//        school.processCommand("add_course Math101");
-//        school.processCommand("enroll_student Math101 12345");
-//
-//        assertTrue(systemOutRule.getLog().contains("Student '12345' enrolled in course 'Math101'."));
-//    }
+
+    @Test
+    public void testEnrollStudent() {
+        school.processCommand("add_course Math101");
+        school.processCommand("enroll_student Math101 12345");
+
+        assertTrue(systemOutRule.getLog().contains("Student '12345' enrolled in course 'Math101'."));
+    }
 //
 //    @Test
 //    public void testEnrollStudentInNonExistentCourse() {
