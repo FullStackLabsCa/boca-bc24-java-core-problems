@@ -49,19 +49,19 @@ public class CourseTest {
         assertTrue(grade.isPresent());
         assertEquals(95.0, grade.get(), 0.01);
     }
-//
-//    @Test
-//    public void testGetAllGrades() {
-//        course.enrollStudent(12345);
-//        course.assignGrade(12345, 95.0);
-//        course.enrollStudent(67890);
-//        course.assignGrade(67890, 88.0);
-//
-//        Map<Integer, Double> grades = course.getAllGrades();
-//        assertEquals(2, grades.size());
-//        assertEquals(Optional.of(95.0), Optional.ofNullable(grades.get(12345)));
-//        assertEquals(Optional.of(88.0), Optional.ofNullable(grades.get(67890)));
-//    }
+
+    @Test
+    public void testGetAllGrades() {
+        course.enrollStudent(12345);
+        course.assignGrade(12345, 95.0);
+        course.enrollStudent(67890);
+        course.assignGrade(67890, 88.0);
+
+        Map<Integer, Double> grades = course.getAllGrades();
+        assertEquals(2, grades.size());
+        assertEquals(Optional.of(95.0), Optional.ofNullable(grades.get(12345)));
+        assertEquals(Optional.of(88.0), Optional.ofNullable(grades.get(67890)));
+    }
 //
 //    @Test
 //    public void testListAllGrades() {
