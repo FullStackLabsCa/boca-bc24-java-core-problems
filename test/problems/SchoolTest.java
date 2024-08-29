@@ -51,13 +51,13 @@ public class SchoolTest {
         assertTrue(systemOutRule.getLog().contains("Student '12345' enrolled in course 'Math101'."));
     }
 
-//    @Test
-//    public void testEnrollStudentInNonExistentCourse() {
-//        school.processCommand("enroll_student Physics103 12345");
-//
-//        assertTrue(systemOutRule.getLog().contains("Error: Cannot enroll student. Course 'Physics103' does not exist."));
-//    }
-//
+    @Test
+    public void testEnrollStudentInNonExistentCourse() {
+        school.processCommand("enroll_student Physics103 12345");
+
+        assertTrue(systemOutRule.getLog().contains("Error: Cannot enroll student. Course 'Physics103' does not exist."));
+    }
+
 //    @Test
 //    public void testAssignGrade() {
 //        school.processCommand("add_course Math101");

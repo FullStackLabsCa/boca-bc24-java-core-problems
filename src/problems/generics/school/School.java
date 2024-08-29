@@ -39,16 +39,6 @@ public class School<S, G extends Number> {
         return courseToStudentGrade;
     }
 
-    public Map<String, Course<S, G>> enrollStudent(String courseName, S student, G grade) {
-        Course<S, G> course = courseToStudentGrade.get(courseName);
-        if (course != null) {
-            course.assignGrade(student, grade);
-        } else {
-            System.out.println("Course not found.");
-        }
-        return courseToStudentGrade;
-    }
-
     public void processCommand(String command) {
         String[] array= command.split(" ");
         if("add_course".equals(array[0])){
@@ -64,15 +54,21 @@ public class School<S, G extends Number> {
             }
         }
 
-        if("enroll_student".equals(array[0])){
+        if("enroll_student".equals(array[0])) {
             String course = array[1];
             S student = (S) array[2];
             G grade = null;
 
             Course<S, G> courseObj = new Course<>();
-            courseObj.assignGrade(student,grade);
-            courseToStudentGrade.put(array[1], courseObj);
-            System.out.println("Student '" + array[2] + "' enrolled in course '" + array[1] + "'.");
+
+            if (!courseToStudentGrade.containsKey(array[1])) {
+                System.out.println("Error: Cannot enroll student. Course '" + array[1] + "' does not exist.");
+            } else {
+                courseToStudentGrade.put(array[1], courseObj);
+                System.out.println("Student '" + array[2] + "' enrolled in course '" + array[1] + "'.");
+            }
         }
+
+
     }
 }
