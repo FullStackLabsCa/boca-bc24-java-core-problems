@@ -167,17 +167,17 @@ public class GenericClassTest {
 //        }
 //    }
 
-//          PROBLEM : GENERIC METHOD TO FIND MAXIMUM
-//        public static<T extends Comparable<T>> T findmaximum(T a, T b, T c){
-//            T max = a;
-//            if(b.compareTo(max) > 0){
-//                max = b;
-//            }
-//            if(c.compareTo(max) > 0){
-//                max = c;
-//            }
-//            return max;
-//        }
+          //PROBLEM : GENERIC METHOD TO FIND MAXIMUM
+        public static<T extends Comparable<T>> T findmaximum(T a, T b, T c){
+            T max = a;
+            if(b.compareTo(max) > 0){
+                max = b;
+            }
+            if(c.compareTo(max) > 0){
+                max = c;
+            }
+            return max;
+        }
 
 
 

@@ -1,31 +1,32 @@
-//package problems;
-//
-//import org.junit.Before;
-//import org.junit.Test;
-//
-//import java.util.Map;
-//import java.util.Optional;
-//
-//import static org.junit.Assert.*;
-//
-//public class CourseTest {
-//
-//    private Course<Integer, Double> course;
-//
-//    @Before
-//    public void setUp() {
-//        course = new Course<>();
-//    }
-//
-//    @Test
-//    public void testEnrollStudent() {
-//        course.enrollStudent(12345);
-//        assertTrue(course.isStudentEnrolled(12345));
-//
-//        // Attempting to enroll the same student should not change anything
-//        course.enrollStudent(12345);
-//        assertEquals(1, course.getAllGrades().size());
-//    }
+package problems;
+
+import course.Course;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.util.Map;
+import java.util.Optional;
+
+import static org.junit.Assert.*;
+
+public class CourseTest {
+
+    private Course<Integer, Double> course;
+
+    @Before
+    public void setUp() {
+        course = new Course<>();
+    }
+
+    @Test
+    public void testEnrollStudent() {
+        course.enrollStudent(12345);
+        assertTrue(course.isStudentEnrolled(12345));
+
+        // Attempting to enroll the same student should not change anything
+        course.enrollStudent(12345);
+        assertEquals(1, course.getAllGrades().size());
+    }
 //
 //    @Test
 //    public void testAssignGrade() {
@@ -80,4 +81,4 @@
 //        assertTrue(course.isStudentEnrolled(12345));
 //        assertFalse(course.isStudentEnrolled(67890));
 //    }
-//}
+}

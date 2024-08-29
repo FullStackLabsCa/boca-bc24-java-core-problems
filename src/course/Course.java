@@ -11,9 +11,23 @@ public class Course <S,G extends Number>{
         this.studentGradeMap = new HashMap<>();
     }
 
-    public void addStudentToGrade(S studentName,G studentGrade){
-        studentGradeMap.put(studentName,studentGrade);
+    public void enrollStudent(S studentName){
+        studentGradeMap.put(studentName,null);
     }
+
+
+    public boolean isStudentEnrolled(S studentName) {
+        if(studentGradeMap.containsKey(studentName)){
+            return true;
+        }
+        else
+            return false;
+    }
+
+    public Map<S, G> getAllGrades() {
+        return studentGradeMap;
+    }
+
     public G getStudentGrade(S studentName) {
         return studentGradeMap.get(studentName);
     }
@@ -41,4 +55,6 @@ public class Course <S,G extends Number>{
                 "studentGradeMap=" + studentGradeMap +
                 '}';
     }
+
+
 }
