@@ -29,18 +29,18 @@ public class SchoolTest {
         assertTrue(systemOutRule.getLog().contains("Course 'Physics102' added."));
     }
 
-//    @Test
-//    public void testListCourses() {
-//        school.processCommand("add_course Math101");
-//        school.processCommand("add_course Physics102");
-//
-//        systemOutRule.clearLog();
-//        school.processCommand("list_courses");
-//
-//        assertTrue(systemOutRule.getLog().contains("Courses offered:"));
-//        assertTrue(systemOutRule.getLog().contains("Math101"));
-//        assertTrue(systemOutRule.getLog().contains("Physics102"));
-//    }
+    @Test
+    public void testListCourses() {
+        school.processCommand("add_course Math101");
+        school.processCommand("add_course Physics102");
+
+        systemOutRule.clearLog();
+        school.processCommand("list_courses");
+
+        assertTrue(systemOutRule.getLog().contains("Courses offered:"));
+        assertTrue(systemOutRule.getLog().contains("Math101"));
+        assertTrue(systemOutRule.getLog().contains("Physics102"));
+    }
 //
 //    @Test
 //    public void testEnrollStudent() {

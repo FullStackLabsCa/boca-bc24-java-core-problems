@@ -1,23 +1,25 @@
 package course;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import com.sun.source.tree.UsesTree;
+
+import java.util.*;
 
 public class School <S,G extends Number>{
-    private String courseName;
+    private Set<String> courseName;
 
-    public School() {
-        this.courseNameToCourseMap = new HashMap<>();
-    }
-
-    public String getCourseName() {
+    public Set<String> getCourseName() {
         return courseName;
     }
 
-    public void setCourseName(String courseName) {
+    public void setCourseName(Set<String> courseName) {
         this.courseName = courseName;
     }
+
+    public School() {
+        this.courseNameToCourseMap = new HashMap<>();
+        this.courseName = new HashSet<>();
+    }
+
 
     private Map<String,Course> courseNameToCourseMap = new HashMap<>();
 
@@ -35,10 +37,15 @@ public Map<String,Course> enrollStudent(String name, Course course){
 
 public void processCommand(String command) {
     String[] strArray = command.trim().split("\\s+");
-    String testCommand = strArray[0];
-    String testParameter = strArray[1];
-        if("add_course".equals(testCommand)){
-            addCourseNameToSchool(testParameter);
+//    String testCommand = strArray[0];
+//    String testParameter = strArray[1];
+        if("add_course".equals(strArray[0])){
+            addCourseNameToSchool(strArray[1]);
+            courseName.add(strArray[1]);
+        }
+        if("list_courses".equals(strArray[0])){
+            System.out.println("Courses offered:");
+            System.out.println(courseName);
         }
     }
 }
