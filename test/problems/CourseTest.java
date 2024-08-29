@@ -27,13 +27,13 @@ public class CourseTest {
         course.enrollStudent(12345);
         assertEquals(1, course.getAllGrades().size());
     }
-//
-//    @Test
-//    public void testAssignGrade() {
-//        course.enrollStudent(12345);
-//        course.assignGrade(12345, 95.0);
-//        assertEquals(Optional.of(95.0), course.getGrade(12345));
-//    }
+
+    @Test
+    public void testAssignGrade() {
+        course.enrollStudent(12345);
+        course.assignGrade(12345, 95.0);
+        assertEquals(Optional.of(95.0), course.getGrade(12345));
+    }
 //
 //    @Test
 //    public void testAssignGradeToNonEnrolledStudent() {

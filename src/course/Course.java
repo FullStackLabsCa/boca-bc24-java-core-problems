@@ -2,6 +2,7 @@ package course;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public class Course <S,G extends Number>{
     private final Map<S,G> studentGradeMap;
@@ -28,17 +29,26 @@ public class Course <S,G extends Number>{
         return studentGradeMap;
     }
 
+    public void assignGrade(S studentName, G grade) {
+        if (studentGradeMap.containsKey(studentName)){
+            studentGradeMap.put(studentName,grade);
+        }
+        else {
+            System.out.println("Student does not exist");
+        }
+    }
+
     public G getStudentGrade(S studentName) {
         return studentGradeMap.get(studentName);
     }
 
-    public void printStudentGrade(S studentName) {
+    public Optional<Number> getGrade(S studentName) {
         G grade = getStudentGrade(studentName);
-        if (grade != null) {
-            System.out.println("Student: " + studentName + ", Grade: " + grade);
-        } else {
-            System.out.println("Student: " + studentName + " not found.");
-        }
+        if (grade != null)
+            return Optional.ofNullable(grade);
+        else
+            return null;
+
     }
 
     public void updateStudentGrade(S studentName, G newGrade) {
@@ -55,6 +65,7 @@ public class Course <S,G extends Number>{
                 "studentGradeMap=" + studentGradeMap +
                 '}';
     }
+
 
 
 }
