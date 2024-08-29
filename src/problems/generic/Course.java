@@ -1,9 +1,6 @@
 package problems.generic;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @SuppressWarnings("java:S106")
 public class Course<S, G extends Number> {
@@ -24,13 +21,30 @@ public class Course<S, G extends Number> {
         return Optional.empty();
     }
 
+    public S getStudents(){
+        S key = null;
+        for (S s : mapOfStudentToGrade.keySet()) {
+            key = s;
+        }
+        return key;
+    }
+
     public Map<S, G> getAllGrades() {
         return mapOfStudentToGrade;
     }
 
     public Map<S, G> listAllGrades() {
-        System.out.println("Student: " + mapOfStudentToGrade.keySet() + ", Grade: " + mapOfStudentToGrade.values());
+        S key = null;
+        G value = null;
+        for (S s : mapOfStudentToGrade.keySet()) {
+            key = s;
+        }
 
+        for (G v : mapOfStudentToGrade.values()) {
+            value = v;
+        }
+
+        System.out.println("Student: " + key+ ", Grade: " + value);
         return mapOfStudentToGrade;
     }
 

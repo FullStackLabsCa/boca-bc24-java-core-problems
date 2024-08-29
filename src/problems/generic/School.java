@@ -35,6 +35,25 @@ public class School<S, G extends Number> {
         mapOfCourses.get(courseName).listAllGrades();
     }
 
+    public void listStudents() {
+        Collection<Course<S, G>> values = mapOfCourses.values();
+        System.out.println("Unique students enrolled:");
+        values.forEach(k ->
+                System.out.println(k.getStudents())
+        );
+    }
+
+    public void getReportCumulativeAverage(S sID) {
+        Collection<Course<S, G>> values = mapOfCourses.values();
+        double value = 0;
+
+        for (Course<S, G> v : values) {
+            Optional<G> grade = v.getGrade(sID);
+            value += Double.parseDouble(String.valueOf(grade.get()));
+        }
+
+        System.out.println("Cumulative average score for student '"+sID+"': " + value/values.size());
+    }
 
     public void listAllCourses() {
         Set<S> key = mapOfCourses.keySet();
@@ -44,7 +63,6 @@ public class School<S, G extends Number> {
 
     public void processCommand(String operation) {
         String[] array = operation.split(" ");
-//        System.out.println("array = " + Arrays.toString(array));
         switch (array[0]) {
             case "add_course":
                 addingCourse((S) array[1]);
@@ -64,12 +82,14 @@ public class School<S, G extends Number> {
             case "report_unique_courses":
                 listAllCourses();
                 break;
-            case "Unique students enrolled:":
-//                co
+            case "report_unique_students":
+                listStudents();
+                break;
+            case "report_cumulative_average":
+                getReportCumulativeAverage((S) array[1]);
                 break;
             default:
                 System.out.println("Error: Unknown command 'unknown_command'. Please use a valid command.");
-
         }
 
     }
@@ -91,7 +111,7 @@ public class School<S, G extends Number> {
 //        System.out.println("Please enter a course name ,student name and grade");
 //        String[] splitCourseNameStudentNameGrade = scanner.nextLine().split(" ");
 //        stringIntegerCourses.assignGradesToStudent(splitCourseNameStudentNameGrade[0], splitCourseNameStudentNameGrade[1], Integer.valueOf(splitCourseNameStudentNameGrade[2]));
-        stringIntegerCourses.assignGradesToStudent("Math101", "Gaurav", 97.5);
+//        stringIntegerCourses.assignGradesToStudent("Math101", "Gaurav", 97.5);
 
         //list Grades
         stringIntegerCourses.listGrades("Math101");
