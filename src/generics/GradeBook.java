@@ -36,7 +36,7 @@ public class GradeBook<T extends Number & Comparable> {
                     highest = grade;
                 }
             }
-            return "Highest grade: " + grades.get(grades.size()-1).toString();
+            return "Highest grade: " + highest.toString();
         }
     }
 
@@ -51,7 +51,7 @@ public class GradeBook<T extends Number & Comparable> {
                     lowest = grade;
                 }
             }
-            return "Lowest grade: " + grades.get(0).toString();
+            return "Lowest grade: " + lowest.toString();
         }
     }
 
