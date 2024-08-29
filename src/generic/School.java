@@ -5,7 +5,6 @@ import java.util.*;
 public class School<S, G extends Number> {
 
     Map<String, Course<S, G>> courseToStudentGradeMap;
-//    Course<S,G> course = new Course<>();
 
     public School() {
         this.courseToStudentGradeMap = new HashMap<>();
@@ -14,7 +13,6 @@ public class School<S, G extends Number> {
     public void addCourse(String course) {
         courseToStudentGradeMap.put(course, new Course<>());
         System.out.println("Course '" + course + "' added.");
-
     }
 
     public void removeCourse(String course) {
@@ -32,7 +30,6 @@ public class School<S, G extends Number> {
     public boolean isCourseAdded(String course) {
         return courseToStudentGradeMap.containsKey(course);
     }
-
 
     public void enrollStudents(String course, S s) {
         if (isCourseAdded(course)) {
@@ -86,7 +83,6 @@ public class School<S, G extends Number> {
     public void reportAverageScore(String course) {
         Course<S, G> courseOne = courseToStudentGradeMap.get(course);
         System.out.println("Average score for course '" + course + "': " + courseOne.averageScore());
-//        return courseOne.averageScore();
     }
 
     public double reportCumulativeAverage(S s) {
@@ -96,8 +92,6 @@ public class School<S, G extends Number> {
         for (String c : courseSet) {
             Course<S, G> courseOne = courseToStudentGradeMap.get(c);
             Set<S> students = courseOne.listStudents();
-            System.out.println(students);
-
             for (S student : students) {
                 if (student.equals(s)) {
                     sum += courseOne.getGrade(s).doubleValue();
@@ -113,33 +107,26 @@ public class School<S, G extends Number> {
 
     public void processCommand(String s) {
 
-        List<String> commands = Arrays.asList("add_course", "list_courses", "enroll_student", "assign_grade", "list_grades", "report_unique_courses",
-                "report_unique_students", "report_average_score", "report_cumulative_average", "unknown_command");
-
         String[] operands = s.split(" ");
 
         switch (operands[0]) {
             case "add_course" -> {
                 addCourse(operands[1]);
             }
-
             case "list_courses" -> {
                 listCourse();
             }
-
             case "enroll_student" -> {
                 enrollStudents(operands[1], (S) operands[2]);
             }
-
             case "assign_grade" -> {
                 assignGrade(operands[1], (S) operands[2], (G) Double.valueOf(operands[3]));
             }
-
             case "list_grades" -> {
                 listGrades(operands[1]);
             }
             case "report_unique_courses" -> {
-                listCourse();
+                listUniqueCourses();
             }
             case "report_unique_students" -> {
                 listUniqueStudents();
@@ -153,7 +140,6 @@ public class School<S, G extends Number> {
             default -> {
                 System.out.println("Error: Unknown command 'unknown_command'. Please use a valid command.");
             }
-
         }
     }
 
