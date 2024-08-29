@@ -14,6 +14,22 @@ public class  Course<S, G extends Number> {
     public Course() {
     }
 
+    public Map<S, G> getCourse() {
+        return course;
+    }
+
+    @Override
+    public String toString() {
+        return course.toString();
+    }
+
+    public void setCourse(Map<S, G> course) {
+        this.course = course;
+    }
+//    public String getStudents() {
+//        this.course.keySet()
+//    }
+
     public S enrollStudent(S student) {
         this.course.put(student, null);
         return student;
@@ -36,7 +52,7 @@ public class  Course<S, G extends Number> {
 
     public void listStudentWithGrade() {
         course.forEach((k, v) -> {
-            System.out.println(k + ":" + v);
+            System.out.println("Student: " +k+ ","+ " Grade: " + v);
         });
     }
 
@@ -67,6 +83,13 @@ public class  Course<S, G extends Number> {
         for (S k : allKeys) {
            listOfGrades.add(this.course.get(k));
         }
+        return listOfGrades;
+    }
+
+    public List<S> listAllStudents() {
+        Set<S> allKeys = this.course.keySet();
+        List<S> listOfGrades = new ArrayList<>();
+        listOfGrades.addAll(allKeys);
         return listOfGrades;
     }
 }
