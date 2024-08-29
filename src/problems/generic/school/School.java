@@ -17,7 +17,7 @@ public class School<S, G extends Number> {
     public Map<S, Course<S, G>> studentWithCourse;
 
     public School() {
-         studentWithCourse = new HashMap<>();
+        studentWithCourse = new HashMap<>();
     }
 
     public Course<S, G> addCourse(S courseName) {
@@ -31,7 +31,7 @@ public class School<S, G extends Number> {
             return;
         }
         studentWithCourse.get(courseName).enrollStudent(studentId);
-        System.out.println("Student '" +  studentId + "' enrolled in course '" + courseName + "'.");
+        System.out.println("Student '" + studentId + "' enrolled in course '" + courseName + "'.");
     }
 
     public Course<S, G> assignGrade(S courseName, S studentId, G grade) {
@@ -106,22 +106,27 @@ public class School<S, G extends Number> {
     public static void main(String[] args) {
         School<String, Double> school = new School<>();
 
-        System.out.println("Enter the listed option" + "\n" +
-                "add_course" + "\n" +
-                "enroll_student" + "\n" +
-                "assign_grade" + "\n" +
-                "list_grades" + "\n" +
-                "list_courses" + "\n" +
-                "report_unique_courses" + "\n" +
-                "report_unique_students" + "\n" +
-                "report_average_score" + "\n" +
-                "report_cumulative_average"
+        while (true) {
+            System.out.println("Enter the listed option or exit" + "\n" +
+                    "add_course" + "\n" +
+                    "enroll_student" + "\n" +
+                    "assign_grade" + "\n" +
+                    "list_grades" + "\n" +
+                    "list_courses" + "\n" +
+                    "report_unique_courses" + "\n" +
+                    "report_unique_students" + "\n" +
+                    "report_average_score" + "\n" +
+                    "report_cumulative_average" + "\n"
 
-        );
-        Scanner scanner = new Scanner(System.in);
-        String inputCommand = scanner.nextLine();
-        school.processCommand(inputCommand);
-
+            );
+            Scanner scanner = new Scanner(System.in);
+            String inputCommand = scanner.nextLine();
+            if (inputCommand.equalsIgnoreCase("exit")) {
+                System.out.println("Exiting from School Management System");
+                break;
+            }
+            school.processCommand(inputCommand);
+        }
     }
 
     public void processCommand(String inputCommand) {
@@ -132,21 +137,34 @@ public class School<S, G extends Number> {
 
         switch (inputCommand.contains(" ") ? splittedInput[0] : inputCommand) {
             case "add_course":
-                System.out.println();
+                if (splittedInput.length < 2) {
+                    System.out.println("Error: Missing course name for 'add_course' command.");
+                    return;
+                }
                 addCourse((S) splittedInput[1]);
                 break;
             case "enroll_student":
-                enrollStudent((S) splittedInput[1],(S) splittedInput[2]);
+                if (splittedInput.length < 3) {
+                    System.out.println("Error: Missing course name or student ID for 'enroll_student' command.");
+                    return;
+                }
+                enrollStudent((S) splittedInput[1], (S) splittedInput[2]);
                 break;
             case "assign_grade":
+                if (splittedInput.length < 4) {
+                    System.out.println("Error: Missing course name, student ID, or grade for 'assign_grade' command.");
+                    return;
+                }
                 assignGrade((S) splittedInput[1], (S) splittedInput[2], (G) Double.valueOf(splittedInput[3]));
                 break;
             case "list_grades":
+                if (splittedInput.length < 2) {
+                    System.out.println("Error: Missing course name for 'list_grades' command.");
+                    return;
+                }
                 listGrades((S) splittedInput[1]);
                 break;
             case "list_courses":
-                listAllCourses();
-                break;
             case "report_unique_courses":
                 listAllCourses();
                 break;
@@ -154,14 +172,22 @@ public class School<S, G extends Number> {
                 listUniqueStudents();
                 break;
             case "report_average_score":
+                if (splittedInput.length < 2) {
+                    System.out.println("Error: Missing course name for 'report_average_score' command.");
+                    return;
+                }
                 reportAverageScore((S) splittedInput[1]);
                 break;
             case "report_cumulative_average":
+                if (splittedInput.length < 2) {
+                    System.out.println("Error: Missing student ID for 'report_cumulative_average' command.");
+                    return;
+                }
                 reportCumulativeAverage((S) splittedInput[1]);
+                break;
             default:
                 System.out.println("Error: Unknown command 'unknown_command'. Please use a valid command.");
                 break;
-
         }
     }
 }
