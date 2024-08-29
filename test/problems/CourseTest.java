@@ -62,23 +62,23 @@ public class CourseTest {
         assertEquals(Optional.of(95.0), Optional.ofNullable(grades.get(12345)));
         assertEquals(Optional.of(88.0), Optional.ofNullable(grades.get(67890)));
     }
-//
-//    @Test
-//    public void testListAllGrades() {
-//        course.enrollStudent(12345);
-//        course.assignGrade(12345, 95.0);
-//        course.enrollStudent(67890);
-//
-//        course.listAllGrades();
-//
-//        // Here, you would capture the system output to verify that it matches expected output.
-//        // This is a basic check to ensure method runs without error.
-//    }
-//
-//    @Test
-//    public void testIsStudentEnrolled() {
-//        course.enrollStudent(12345);
-//        assertTrue(course.isStudentEnrolled(12345));
-//        assertFalse(course.isStudentEnrolled(67890));
-//    }
+
+    @Test
+    public void testListAllGrades() {
+        course.enrollStudent(12345);
+        course.assignGrade(12345, 95.0);
+        course.enrollStudent(67890);
+
+        course.listAllGrades();
+
+        // Here, you would capture the system output to verify that it matches expected output.
+        // This is a basic check to ensure method runs without error.
+    }
+
+    @Test
+    public void testIsStudentEnrolled() {
+        course.enrollStudent(12345);
+        assertTrue(course.isStudentEnrolled(12345));
+        assertFalse(course.isStudentEnrolled(67890));
+    }
 }

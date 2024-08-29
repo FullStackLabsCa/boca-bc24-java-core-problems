@@ -53,6 +53,10 @@ public class Course <S,G extends Number>{
 
     }
 
+    public Map<S,G> listAllGrades() {
+        return studentGradeMap;
+    }
+
     public void updateStudentGrade(S studentName, G newGrade) {
         if (studentGradeMap.containsKey(studentName)) {
             studentGradeMap.put(studentName, newGrade);
