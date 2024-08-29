@@ -69,10 +69,13 @@ public void processCommand(String command) {
             String courseName = strArray[1];
             S studentName = (S) strArray[2];
             Double grade =  Double.parseDouble(strArray[3]);
-                if(course.isStudentEnrolled(studentName)){
-                    courseNameToCourseMap.put(strArray[1],course);
-                    System.out.println("Grade '"+grade+"' assigned to student '"+studentName+"' in course '"+courseName+"'.");
-                }
+            if(!course.isStudentEnrolled(studentName)){
+                System.out.println("Error: Cannot assign grade. Student '"+studentName+"' is not enrolled in course '"+courseName+"'.");
+            }
+            else if(course.isStudentEnrolled(studentName)){
+                courseNameToCourseMap.put(strArray[1],course);
+                System.out.println("Grade '"+grade+"' assigned to student '"+studentName+"' in course '"+courseName+"'.");
+            }
         }
 
     }
