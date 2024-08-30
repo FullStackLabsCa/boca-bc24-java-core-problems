@@ -33,9 +33,8 @@ public class Calculator {
         for (Map.Entry<Integer, String> entry : checkBracketsMap.entrySet()) {
             Number k = entry.getKey();
             String v = entry.getValue();
-            int key = (int) k;
-            int previousNode = --key;
-            int nextNode = ++key;
+            int previousNodeKey = (int) k - 1;
+            int nextNodeKey = (int) k + 1;
 
             double num1 = 0;
             double num2 = 0;
@@ -52,16 +51,16 @@ public class Calculator {
             }
 
             if (containOpenCloseBracket) {
-                if (num2 == 0) {
-                    System.out.println("Error: Cannot divide by zero");
-                } else {
-                    operandResult = performOperation(num1, operand, num2);
-                    if(previousNode != -1){
-                        String s = checkBracketsMap.get(previousNode);
-                        System.out.println("previousNode = " + s);
-                    }
-                    System.out.println("operandResult = " + operandResult);
+                operandResult = performOperation(num1, operand, num2);
+                if (previousNodeKey != -1) {
+                    String previousNode = checkBracketsMap.get(previousNodeKey);
+                    System.out.println("previousNode = " + previousNode);
                 }
+                if (nextNodeKey < checkBracketsMap.size()) {
+                    String nextNode = checkBracketsMap.get(nextNodeKey);
+                    System.out.println("nextNode = " + nextNode);
+                }
+//                    System.out.println("operandResult = " + operandResult);
             }
         }
         System.out.println("checkBracketsMap = " + checkBracketsMap);
@@ -84,6 +83,8 @@ public class Calculator {
                 break;
             case "/":
                 Division divide = new Division(number1, number2);
+                if (number2 == 0)
+                    System.out.println("Error: Cannot divide by zero");
                 result = divide.getResult();
                 break;
             default:
