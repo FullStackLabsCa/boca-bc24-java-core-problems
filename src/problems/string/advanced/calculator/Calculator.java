@@ -35,7 +35,6 @@ public class Calculator {
             String v = entry.getValue();
             int previousNodeKey = (int) k - 1;
             int nextNodeKey = (int) k + 1;
-
             double num1 = 0;
             double num2 = 0;
             double operandResult = 0;
@@ -43,27 +42,55 @@ public class Calculator {
             char[] array = value.toCharArray();
             String operand = "";
             boolean containOpenCloseBracket = false;
+
             if (array.length == 5 && array[0] == '(' && array[4] == ')') {
                 operand = String.valueOf(array[2]);
                 containOpenCloseBracket = true;
                 num1 = parseDouble(String.valueOf(array[1]));
                 num2 = parseDouble(String.valueOf(array[3]));
             }
-
+            //previousNode logic
             if (containOpenCloseBracket) {
                 operandResult = performOperation(num1, operand, num2);
                 if (previousNodeKey != -1) {
                     String previousNode = checkBracketsMap.get(previousNodeKey);
-                    System.out.println("previousNode = " + previousNode);
+                    String valueSplit = "";
+                    String[] splitArray = previousNode.split("");
+                    for (int i = 0; i < splitArray.length; i++) {
+                        if (splitArray[i].contains("(") && splitArray[0] == "(") {
+                            valueSplit = splitArray[1] + splitArray[2] + operandResult;
+                            break;
+                        } else if (splitArray[i].contains("(") && splitArray[0] != "(") {
+                            valueSplit = splitArray[0] + splitArray[1] + operandResult;
+                            break;
+                        }
+                    }
+                    checkBracketsMap.put(previousNodeKey, valueSplit);
                 }
+                //nextNode Logic
                 if (nextNodeKey < checkBracketsMap.size()) {
                     String nextNode = checkBracketsMap.get(nextNodeKey);
-                    System.out.println("nextNode = " + nextNode);
+                    String valueSplit = "";
+                    String[] splitArray = nextNode.split("");
+                    for (int i = 0; i < splitArray.length; i++) {
+                        if (splitArray[i].contains(")") && splitArray[splitArray.length - 1] == ")") {
+                            valueSplit = splitArray[1] + splitArray[2] + operandResult;
+                            break;
+                        } else if (splitArray[i].contains(")") && splitArray[1] != ")") {
+                            valueSplit = splitArray[0] + splitArray[2] + operandResult;
+                            break;
+                        }
+                    }
+                    checkBracketsMap.put(nextNodeKey, valueSplit);
                 }
-//                    System.out.println("operandResult = " + operandResult);
+
+                //removing the processed expression tuple from the Map
+                checkBracketsMap.remove(k);
+                System.out.println("checkBracketsMap = " + checkBracketsMap);
+                break;
             }
         }
-        System.out.println("checkBracketsMap = " + checkBracketsMap);
+//        System.out.println("checkBracketsMap = " + checkBracketsMap);
     }
 
     public static double performOperation(double number1, String operand, double number2) {
