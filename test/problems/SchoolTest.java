@@ -73,18 +73,19 @@ public class SchoolTest {
 
         assertTrue(systemOutRule.getLog().contains("Error: Cannot assign grade. Student '54321' is not enrolled in course 'Math101'."));
     }
-//
-//    @Test
-//    public void testListGrades() {
-//        school.processCommand("add_course Math101");
-//        school.processCommand("enroll_student Math101 12345");
-//        school.processCommand("assign_grade Math101 12345 85.5");
-//
-//        systemOutRule.clearLog();
-//        school.processCommand("list_grades Math101");
-//
-//        assertTrue(systemOutRule.getLog().contains("Student: 12345, Grade: 85.5"));
-//    }
+
+    @Test
+    public void testListGrades() {
+        school.processCommand("add_course Math101");
+        school.processCommand("enroll_student Math101 12345");
+        school.processCommand("assign_grade Math101 12345 85.5");
+
+
+        systemOutRule.clearLog();
+        school.processCommand("list_grades Math101");
+
+        assertTrue(systemOutRule.getLog().contains("Student: 12345, Grade: 85.5"));
+    }
 //
 //    @Test
 //    public void testReportUniqueCourses() {

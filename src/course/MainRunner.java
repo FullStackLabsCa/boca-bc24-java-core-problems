@@ -24,7 +24,7 @@ public class MainRunner {
         System.out.println("SCHOOL");
         School<String,Number> school = new School<>();
         System.out.println(school.addCourseNameToSchool("math"));
-        System.out.println(school.enrollStudent("Mann",math));
+//        System.out.println(school.enrollStudent("Mann",math));
 
 
 //
