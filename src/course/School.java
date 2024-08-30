@@ -110,5 +110,15 @@ public void processCommand(String command) {
             }
         }
 
+        if("report_average_score".equals(strArray[0])){
+//            System.out.println("in report avg");
+            if(courseNameToCourseMap.containsKey(strArray[1])){
+//                System.out.println("in math 101");
+                for(Map.Entry<S,G> entry : course.getAllGrades().entrySet()  ){
+                    System.out.println("Average score for course '"+strArray[1]+"': "+entry.getValue());
+                }
+            }
+        }
+
     }
 }
