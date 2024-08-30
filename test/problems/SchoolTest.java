@@ -75,17 +75,17 @@ public class SchoolTest {
         assertTrue(systemOutRule.getLog().contains("Error: Cannot assign grade. Student '54321' is not enrolled in course 'Math101'."));
     }
 
-//    @Test
-//    public void testListGrades() {
-//        school.processCommand("add_course Math101");
-//        school.processCommand("enroll_student Math101 12345");
-//        school.processCommand("assign_grade Math101 12345 85.5");
-//
-//        systemOutRule.clearLog();
-//        school.processCommand("list_grades Math101");
-//
-//        assertTrue(systemOutRule.getLog().contains("Student: 12345, Grade: 85.5"));
-//    }
+    @Test
+    public void testListGrades() {
+        school.processCommand("add_course Math101");
+        school.processCommand("enroll_student Math101 12345");
+        school.processCommand("assign_grade Math101 12345 85.5");
+
+        systemOutRule.clearLog();
+        school.processCommand("list_grades Math101");
+
+        assertTrue(systemOutRule.getLog().contains("Student: 12345, Grade: 85.5"));
+    }
 
     @Test
     public void testReportUniqueCourses() {
@@ -115,33 +115,33 @@ public class SchoolTest {
         assertTrue(systemOutRule.getLog().contains("54321"));
     }
 
-//    @Test
-//    public void testReportAverageScore() {
-//        school.processCommand("add_course Math101");
-//        school.processCommand("enroll_student Math101 12345");
-//        school.processCommand("assign_grade Math101 12345 85.5");
-//
-//        systemOutRule.clearLog();
-//        school.processCommand("report_average_score Math101");
-//
-//        assertTrue(systemOutRule.getLog().contains("Average score for course 'Math101': 85.5"));
-//    }
-//
-//    @Test
-//    public void testReportCumulativeAverage() {
-//        school.processCommand("add_course Math101");
-//        school.processCommand("add_course Physics102");
-//        school.processCommand("enroll_student Math101 12345");
-//        school.processCommand("enroll_student Physics102 12345");
-//        school.processCommand("assign_grade Math101 12345 85.0");
-//        school.processCommand("assign_grade Physics102 12345 90.0");
-//
-//        systemOutRule.clearLog();
-//        school.processCommand("report_cumulative_average 12345");
-//
-//        assertTrue(systemOutRule.getLog().contains("Cumulative average score for student '12345': 87.5"));
-//    }
-//
+    @Test
+    public void testReportAverageScore() {
+        school.processCommand("add_course Math101");
+        school.processCommand("enroll_student Math101 12345");
+        school.processCommand("assign_grade Math101 12345 85.5");
+
+        systemOutRule.clearLog();
+        school.processCommand("report_average_score Math101");
+
+        assertTrue(systemOutRule.getLog().contains("Average score for course 'Math101': 85.5"));
+    }
+
+    @Test
+    public void testReportCumulativeAverage() {
+        school.processCommand("add_course Math101");
+        school.processCommand("add_course Physics102");
+        school.processCommand("enroll_student Math101 12345");
+        school.processCommand("enroll_student Physics102 12345");
+        school.processCommand("assign_grade Math101 12345 85.0");
+        school.processCommand("assign_grade Physics102 12345 90.0");
+
+        systemOutRule.clearLog();
+        school.processCommand("report_cumulative_average 12345");
+
+        assertTrue(systemOutRule.getLog().contains("Cumulative average score for student '12345': 87.5"));
+    }
+
     @Test
     public void testUnknownCommand() {
         school.processCommand("unknown_command");
