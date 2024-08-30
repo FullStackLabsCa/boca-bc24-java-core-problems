@@ -41,6 +41,16 @@ public class Course <S, G extends Number>{
         return studentGrades;
     }
 
+    public void listGrades() {
+        if (studentGrades.isEmpty()) {
+            System.out.println("No grades available.");
+        } else {
+            for (Map.Entry<S, G> entry : studentGrades.entrySet()) {
+                System.out.println("Student: " + entry.getKey() + ", Grade: " + entry.getValue());
+            }
+        }
+    }
+
     @Override
     public String toString() {
         return

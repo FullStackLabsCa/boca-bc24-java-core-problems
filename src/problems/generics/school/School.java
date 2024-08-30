@@ -85,13 +85,25 @@ public class School<S, G extends Number> {
             S student = (S) array[2];
             double grade = Double.parseDouble(array[3]);
 
-            if(!(courseToStudentGrade.get(array[1]) ==null)) {
+            if (!(courseToStudentGrade.get(array[1]) == null)) {
                 courseToStudentGrade.put(array[1], courseObj);
                 System.out.println("Grade '" + grade + "' assigned to student '" + array[2] + "' in course '" + array[1] + "'.");
-            }
-            else{
+            } else {
                 System.out.println("Error: Cannot assign grade. Student '" + array[2] + "' is not enrolled in course '" + array[1] + "'.");
             }
+        }
+
+//        if("list_grades".equals(array[0])){
+////            courseObj.listGrades();
+//            for (Map.Entry<S, G> entry : courseObj.entrySet()){
+//                System.out.println("Student: " + entry.getKey() + ", Grade: " + entry.getValue());
+//            }
+//        }
+        if("report_unique_courses".equals(array[0])){
+            System.out.println("\n" + "Courses offered:");
+            for (Map.Entry<String, Course<S, G>> entry : courseToStudentGrade.entrySet()){
+                System.out.println(entry.getKey());
             }
         }
     }
+}

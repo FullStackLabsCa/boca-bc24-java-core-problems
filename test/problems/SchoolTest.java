@@ -86,20 +86,20 @@ public class SchoolTest {
 //
 //        assertTrue(systemOutRule.getLog().contains("Student: 12345, Grade: 85.5"));
 //    }
-//
-//    @Test
-//    public void testReportUniqueCourses() {
-//        school.processCommand("add_course Math101");
-//        school.processCommand("add_course Physics102");
-//
-//        systemOutRule.clearLog();
-//        school.processCommand("report_unique_courses");
-//
-//        assertTrue(systemOutRule.getLog().contains("Courses offered:"));
-//        assertTrue(systemOutRule.getLog().contains("Math101"));
-//        assertTrue(systemOutRule.getLog().contains("Physics102"));
-//    }
-//
+
+    @Test
+    public void testReportUniqueCourses() {
+        school.processCommand("add_course Math101");
+        school.processCommand("add_course Physics102");
+
+        systemOutRule.clearLog();
+        school.processCommand("report_unique_courses");
+
+        assertTrue(systemOutRule.getLog().contains("Courses offered:"));
+        assertTrue(systemOutRule.getLog().contains("Math101"));
+        assertTrue(systemOutRule.getLog().contains("Physics102"));
+    }
+
 //    @Test
 //    public void testReportUniqueStudents() {
 //        school.processCommand("add_course Math101");
