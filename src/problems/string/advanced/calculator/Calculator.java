@@ -22,9 +22,14 @@ public class Calculator {
         //adding tuples
         for (int i = 0; i < parts.length - 1; i = i + 2) {
             String tuple = "";
-            tuple = parts[i] + parts[i + 1] + parts[i + 2];
-            checkDivisionMap.put(index, tuple);
-            index++;
+            //checking validation if it passes then adding to the Map
+            if (parts[i].equals(" ") || parts[i + 2].equals(" ")) {
+                System.out.println("Error: Invalid input format");
+            } else {
+                tuple = parts[i] + parts[i + 1] + parts[i + 2];
+                checkDivisionMap.put(index, tuple);
+                index++;
+            }
         }
 
         checkDivisionMap.forEach((k, v) -> {
@@ -35,8 +40,6 @@ public class Calculator {
                 String[] part = value.split(operand);
                 if (Double.parseDouble(part[1]) == 0) {
                     System.out.println("Error: Cannot divide by zero");
-                } else if (part[0].equals(" ") || part[1].equals(" ")) {
-                    System.out.println("Error: Invalid input format");
                 } else {
                     performOperation(Double.parseDouble(part[0]), operand, Double.parseDouble(part[1]));
                 }
@@ -76,7 +79,7 @@ public class Calculator {
         System.out.println("Advanced Calculator");
 
         while (true) {
-            System.out.println("Please enter a values to calculate");
+            System.out.println("Please enter a values to calculate and enter exit to quit the application");
             Scanner value = new Scanner(System.in);
             String inputValue = value.nextLine();
             if (inputValue.contains("exit")) {
