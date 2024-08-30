@@ -1,10 +1,14 @@
 package collections.calculator;
 
-import java.util.Scanner;
-import java.util.Stack;
+import java.util.*;
+import java.util.ArrayDeque.*;
 
+@SuppressWarnings("java:S2189")
 public class Calculator {
 
+    static final int SIZE_OF_MEMORY = 5;
+    static Deque<Double> memory = new ArrayDeque<>(SIZE_OF_MEMORY);
+    static boolean performedMemoryOps;
 
     // PSEUDO CODE
     //Process User Input
@@ -24,9 +28,6 @@ public class Calculator {
 
     protected static final char[] operatorsAvailable = {'+', '-', '*', '/', '^','$'};
 
-    public static void clearMemory() {
-    }
-
     private static boolean validateInput(String expression) {
         //If the input is Null or Empty String
         if (expression == null || expression.trim().isEmpty()) {
@@ -35,7 +36,12 @@ public class Calculator {
         }
         expression = expression.trim();
 
-        if(!expression.contains("sqrt")) {
+        if(getOperands(expression).length == getOperators(expression).length){
+            System.out.println("Invalid Expression");
+            return false;
+        }
+
+        if(!expression.contains("sqrt") && !expression.contains("recallMemory()") && !expression.contains("clearMemory()") && !expression.contains("recallAllMemory()")) {
             //If the Input has alphabets
             if (expression.matches(".*[a-zA-Z]+.*")) {
                 System.out.println("Illegal Arguments!!! Expression Contains Alphabets.");
@@ -60,6 +66,8 @@ public class Calculator {
                     return false;
                 }
             }
+        } else {
+            performedMemoryOps = true;
         }
         //Check if the Parenthesis are balanced
         if (!checkBalancedParenthesis(expression)) {
@@ -101,7 +109,23 @@ public class Calculator {
         //Remove spaces from the Expression
         expression = expression.replaceAll(" ", "");
         //Split on operations and return that
-        return expression.split("[-+*/^$]");
+        return removeEmptyStrings(expression.split("[-+*/^$]"));
+    }
+
+    public static String[] removeEmptyStrings(String[] array) {
+        // Use an ArrayList to collect non-empty strings
+        ArrayList<String> resultList = new ArrayList<>();
+
+        // Iterate through the array and add non-empty strings to the list
+        for (String element : array) {
+            if (element != null && !element.isEmpty()) {
+                resultList.add(element);
+            }
+        }
+
+        // Convert the ArrayList back to a String array
+        String[] resultArray = new String[resultList.size()];
+        return resultList.toArray(resultArray);
     }
 
     private static char[] getOperators(String expression) {
@@ -131,16 +155,31 @@ public class Calculator {
 
     public static double calculate(String expression) {
 
+        boolean storeResult = false;
+        if(expression.contains("M+")){
+            storeResult = true;
+            expression = expression.replace("M+", "");
+        }
+
         if(expression.contains("sqrt")){
             //return result of sqrt
             String[] Number = expression.split("[\\(\\)]");
             if(Double.valueOf(Number[1]) > 0){
                 return Math.sqrt(Double.valueOf(Number[1]));
+
+                // use this double value and replace it with the sqrt(*) text
+
+                //Set Expression =  expressionWithSqrtResult
+
             } else{
                 throw new ArithmeticException();
             }
         } else {
-            return processCalculation(expression);
+            double result = processCalculation(expression);
+            if(storeResult){
+                storeInMemory(result);
+            }
+            return result;
         }
     }
 
@@ -167,7 +206,7 @@ public class Calculator {
 
             String partialExpression = expression;
 
-            while (getOperators(partialExpression).length != 0) { //This needs some thinking
+            while (getOperators(partialExpression).length != 0) {
 
                 int indexOfOpening = 0, indexOfClosing = 0;
                 char[] partialExpressionCharacters = partialExpression.toCharArray();
@@ -190,8 +229,7 @@ public class Calculator {
                 double result = processEDMAS(sectionUnderProcessing);
                 partialExpression = String.valueOf(new StringBuilder(firstSection).append(result).append(lastSection));
 
-                processCalculation(partialExpression);
-                break;
+                return processCalculation(partialExpression);
             }
             return processEDMAS(partialExpression);
         } else {
@@ -212,7 +250,7 @@ public class Calculator {
         double result = 0;
 
 //        System.out.println("EDMAS Calculation Method.");
-        char[] operations = {'^', '/', '*', '+', '-'};
+        char[] operations = {'^', '/', '*', '-', '+'};
 
         char[] newOperators = new char[operators.length - 1];
         String[] newOperands = new String[operands.length - 1];
@@ -281,30 +319,102 @@ public class Calculator {
 
 
     public static double recallMemory() {
-        return 0;
+        if(memory.isEmpty()){
+            return 0;
+        } else {
+            return memory.peekLast();
+        }
     }
 
     public static void storeInMemory(double v) {
+        if(memory.size() < SIZE_OF_MEMORY) {
+            memory.addLast(v);
+        } else{
+            memory.removeFirst();
+            memory.addFirst(v);
+
+        }
     }
 
     public static String recallAllMemory() {
-        return null;
+        if(!memory.isEmpty())
+        {
+            String result = "Stored values: ";
+            for (double element : memory) {
+                result = result + element + ", ";
+            }
+            result = replaceLastOccurrence(result, ", ", "");
+            return result;
+        } else {
+            return "No values stored in memory.";
+        }
     }
 
+    public static String replaceLastOccurrence(String str, String toReplace, String replacement) {
+        // Find the last occurrence of the substring to be replaced
+        int lastIndex = str.lastIndexOf(toReplace);
+
+        // If the substring to be replaced is not found, return the original string
+        if (lastIndex == -1) {
+            return str;
+        }
+
+        // Build the new string with the last occurrence replaced
+        String before = str.substring(0, lastIndex);
+        String after = str.substring(lastIndex + toReplace.length());
+
+        return before + replacement + after;
+    }
+
+    public static void clearMemory(){
+        memory.clear();
+    }
+
+    public static String processMemoryOperations(String input){
+        switch (input){
+            case "clearMemory()":
+                clearMemory();
+                return "Memory Cleared";
+            case "recallAllMemory()":
+                return recallAllMemory();
+            case "recallMemory()":
+                return String.valueOf(recallMemory());
+            default:
+                return "";
+        }
+    }
 
     public static void main(String[] args) {
 
         Calculator calculatorV2 = new Calculator();
+
+        double result = 0.0;
         Scanner scanner = new Scanner(System.in);
         String input = "";
         while(true){
+
             System.out.println("Enter an expression: ");
             input = scanner.nextLine();
 
+
             if (calculatorV2.validateInput(input)) {
-                System.out.println(calculatorV2.calculate(input.trim()));
+                if(performedMemoryOps) {
+                    System.out.println(processMemoryOperations(input.trim()));
+                    performedMemoryOps = false;
+                } else {
+                    result = calculatorV2.calculate(input.trim());
+                    System.out.println(result);
+                }
             }
         }
 
     }
+
+    // Test Cases:
+    /*
+    * 10 - (4 + 2) * 3 + 5^2 = 17
+    * 5 * (3 + (2 - 1)^2) = 20
+    * ((2 + 3) * 4) - 6 / 2 = 17
+    * 2^3 * (7 - 2) / 5 = 8
+    */
 }
