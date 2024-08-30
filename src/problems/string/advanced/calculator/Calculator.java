@@ -1,9 +1,6 @@
 package problems.string.advanced.calculator;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.LinkedHashMap;
-import java.util.Scanner;
+import java.util.*;
 
 import static java.lang.Double.parseDouble;
 
@@ -15,47 +12,62 @@ public class Calculator {
             return;
         }
 
-        LinkedHashMap<Number, Object> checkBracketsDivisionMap = new LinkedHashMap<>();
+        LinkedHashMap<Integer, String> checkBracketsMap = new LinkedHashMap<>();
         String[] parts;
+        String tuple = "";
         parts = str.split(" ");
         int index = 0;
 
         //making tuples and adding to the Map
         for (int i = 0; i < parts.length - 1; i = i + 2) {
-            String tuple = "";
             //checking validation if it passes then adding to the Map
             if (parts[i].equals(" ") || parts[i + 2].equals(" ")) {
                 System.out.println("Error: Invalid input format");
             } else {
                 tuple = parts[i] + parts[i + 1] + parts[i + 2];
-                checkBracketsDivisionMap.put(index, tuple);
+                checkBracketsMap.put(index, tuple);
                 index++;
             }
         }
 
-        checkBracketsDivisionMap.forEach((k, v) -> {
+        for (Map.Entry<Integer, String> entry : checkBracketsMap.entrySet()) {
+            Number k = entry.getKey();
+            String v = entry.getValue();
+            int key = (int) k;
+            int previousNode = --key;
+            int nextNode = ++key;
+
+            double num1 = 0;
+            double num2 = 0;
+            double operandResult = 0;
             String value = v.toString();
             char[] array = value.toCharArray();
             String operand = "";
             boolean containOpenCloseBracket = false;
-            if(array.length == 5 && array[0] == '(' && array[4] == ')'){
+            if (array.length == 5 && array[0] == '(' && array[4] == ')') {
                 operand = String.valueOf(array[2]);
                 containOpenCloseBracket = true;
+                num1 = parseDouble(String.valueOf(array[1]));
+                num2 = parseDouble(String.valueOf(array[3]));
             }
 
             if (containOpenCloseBracket) {
-                double num1 = parseDouble(String.valueOf(array[1]));
-                double num2 = parseDouble(String.valueOf(array[3]));
                 if (num2 == 0) {
                     System.out.println("Error: Cannot divide by zero");
                 } else {
-                    performOperation(num1, operand,num2);
+                    operandResult = performOperation(num1, operand, num2);
+                    if(previousNode != -1){
+                        String s = checkBracketsMap.get(previousNode);
+                        System.out.println("previousNode = " + s);
+                    }
+                    System.out.println("operandResult = " + operandResult);
                 }
             }
-        });
+        }
+        System.out.println("checkBracketsMap = " + checkBracketsMap);
     }
 
-    public static void performOperation(double number1, String operand, double number2) {
+    public static double performOperation(double number1, String operand, double number2) {
         String result = "";
         switch (operand) {
             case "+":
@@ -77,7 +89,8 @@ public class Calculator {
             default:
                 System.out.println("Only Addition, Subtraction, Multiplication, Division operations are allowed");
         }
-        System.out.println("Result of two operands: " + result);
+//        System.out.println("Result of two operands: " + result);
+        return Double.parseDouble(result);
     }
 
     public static void clearMemory() {
