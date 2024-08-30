@@ -1,5 +1,5 @@
 package collections.calculator;
 
-public interface calculator {
+public interface CalculatorInterface {
     double calculate(String expression);
 }

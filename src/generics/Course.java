@@ -38,7 +38,7 @@ public class Course <S, G extends Number> {
              courseMapping.put(student, grade);
              return true;
         } else {
-            System.out.println("No such Student is enrolled in the course.");
+//            System.out.println("No such Student is enrolled in the course.");
             return false;
         }
     }
@@ -57,7 +57,7 @@ public class Course <S, G extends Number> {
     public void listAllGrades(){
         if(!courseMapping.isEmpty()) {
             for (S student : courseMapping.keySet()) {
-                System.out.println("Student: " + student.toString() + " - Grade: " + courseMapping.get(student));
+                System.out.println("Student: " + student.toString() + ", Grade: " + courseMapping.get(student));
             }
             //OR
 //            Set<Map.Entry<S, G>> entries = courseMapping.entrySet();

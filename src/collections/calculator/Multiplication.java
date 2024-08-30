@@ -1,21 +1,16 @@
 package collections.calculator;
 
-public class Multiplication extends AbstractCalculator implements calculator {
+public class Multiplication{
 
 
-    public final static double multiply(double[] operands){
-        double result = 1;
-
-        for(double element : operands){
-            result*=element;
-        }
-        return result;
+    public static double multiply(double operand1, double operand2){
+        return operand1*operand2;
     }
-
-    @Override
-    public double calculate(String expression) {
-        boolean inputValidation = validateInput(expression);
-
-        return 0;
-    }
+//
+//    @Override
+//    public double calculate(String expression) {
+//        boolean inputValidation = validateInput(expression);
+//
+//        return 0;
+//    }
 }

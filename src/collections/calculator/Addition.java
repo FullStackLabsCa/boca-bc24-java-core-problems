@@ -1,22 +1,19 @@
 package collections.calculator;
 
-public class Addition extends AbstractCalculator implements calculator {
+public class Addition{
 
 
-    public static double add(double[] operands){
-        double sum = 0 ;
+    public static double add(double operand1, double operand2){
 
-        for(double element : operands){
-            sum = sum+element;
-        }
-        return sum;
+        return operand1+operand2;
     }
 
-    @Override
-    public double calculate(String expression) {
-        boolean inputValidation = validateInput(expression);
 
-        return 0;
-    }
+//    @Override
+//    public double calculate(String expression) {
+//        boolean inputValidation = validateInput(expression);
+//
+//        return 0;
+//    }
 
 }

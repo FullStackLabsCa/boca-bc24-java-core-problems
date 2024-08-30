@@ -62,6 +62,7 @@ public class CustomBracketsMatchWithStack {
         System.out.println(CustomBracketsMatchWithStack.customBracketValidator("{(([))]}"));
         System.out.println(CustomBracketsMatchWithStack.customBracketValidator("{([{[(])})]}"));
         System.out.println(CustomBracketsMatchWithStack.customBracketValidator("{[(]]}"));
+        System.out.println(CustomBracketsMatchWithStack.customBracketValidator("[{]{(})}"));
 //        Input: {[(])}, Output: true (valid due to the custom rule)
 //        Input: {[()]}, Output: true (valid due to standard balancing)
 //        Input: {[}, Output: false (invalid, not balanced)

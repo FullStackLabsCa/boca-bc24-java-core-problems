@@ -1,20 +1,15 @@
 package collections.calculator;
 
-public class Substraction extends AbstractCalculator implements calculator {
+public class Substraction{
 
-    public final static double subtract(double[] operands){
-        double result = operands[0];
-
-        for (int i = 1; i < operands.length; i++) {
-            result = result - operands[i];
-        }
-        return result;
+    public static double subtract(double operand1, double operand2){
+        return operand1 - operand2;
     }
 
-    @Override
-    public double calculate(String expression) {
-        boolean inputValidation = validateInput(expression);
-
-        return 0;
-    }
+//    @Override
+//    public double calculate(String expression) {
+//        boolean inputValidation = validateInput(expression);
+//
+//        return 0;
+//    }
 }

@@ -1,8 +1,8 @@
 package collections.calculator;
 
-public class Division extends AbstractCalculator implements calculator {
+public class Division{
 
-    public final static double divide(double numerator, double denominator) {
+    public static double divide(double numerator, double denominator) {
         //Divide Validation
         if(denominator == 0){
             System.out.println("Illegal Argument!!! Denominator cannot be ZERO.");
@@ -12,10 +12,10 @@ public class Division extends AbstractCalculator implements calculator {
         return (numerator / denominator);
     }
 
-    @Override
-    public double calculate(String expression) {
-        boolean inputValidation = validateInput(expression);
-
-        return 0;
-    }
+//    @Override
+//    public double calculate(String expression) {
+//        boolean inputValidation = validateInput(expression);
+//
+//        return 0;
+//    }
 }

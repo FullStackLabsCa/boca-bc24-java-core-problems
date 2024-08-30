@@ -2,7 +2,7 @@ package problems;
 
 import java.util.Scanner;
 
-public class Calculator {
+public class SimpleCalculator {
 
     public String add(int firstNum, int secondNum){
         return String.valueOf((double)firstNum + secondNum);
@@ -55,7 +55,7 @@ public class Calculator {
     }
 
     public static String calculate(String input){
-        Calculator testCalc = new Calculator();
+        SimpleCalculator testCalc = new SimpleCalculator();
 
         if(input == null || input.trim().isEmpty()){
             return "Error: Input is empty or null";
@@ -65,8 +65,8 @@ public class Calculator {
         input = input.replace(" ", "");
 
         //Validate user input for Valid operations and operands
-        if(Calculator.validateInput(input) != "Valid"){
-            return Calculator.validateInput(input);
+        if(SimpleCalculator.validateInput(input) != "Valid"){
+            return SimpleCalculator.validateInput(input);
         }
 
         //Extract the operands
