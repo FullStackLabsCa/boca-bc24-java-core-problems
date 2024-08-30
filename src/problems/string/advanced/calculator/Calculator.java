@@ -14,12 +14,13 @@ public class Calculator {
             System.out.println("Error: Input is empty or null");
             return;
         }
-        LinkedHashMap<Number, Object> checkDivisionMap = new LinkedHashMap<>();
+
+        LinkedHashMap<Number, Object> checkBracketsDivisionMap = new LinkedHashMap<>();
         String[] parts;
         parts = str.split(" ");
         int index = 0;
 
-        //adding tuples
+        //making tuples and adding to the Map
         for (int i = 0; i < parts.length - 1; i = i + 2) {
             String tuple = "";
             //checking validation if it passes then adding to the Map
@@ -27,21 +28,28 @@ public class Calculator {
                 System.out.println("Error: Invalid input format");
             } else {
                 tuple = parts[i] + parts[i + 1] + parts[i + 2];
-                checkDivisionMap.put(index, tuple);
+                checkBracketsDivisionMap.put(index, tuple);
                 index++;
             }
         }
 
-        checkDivisionMap.forEach((k, v) -> {
+        checkBracketsDivisionMap.forEach((k, v) -> {
             String value = v.toString();
-            String operand = "/";
-            boolean containSlash = value.contains("/");
-            if (containSlash) {
-                String[] part = value.split(operand);
-                if (Double.parseDouble(part[1]) == 0) {
+            char[] array = value.toCharArray();
+            String operand = "";
+            boolean containOpenCloseBracket = false;
+            if(array.length == 5 && array[0] == '(' && array[4] == ')'){
+                operand = String.valueOf(array[2]);
+                containOpenCloseBracket = true;
+            }
+
+            if (containOpenCloseBracket) {
+                double num1 = parseDouble(String.valueOf(array[1]));
+                double num2 = parseDouble(String.valueOf(array[3]));
+                if (num2 == 0) {
                     System.out.println("Error: Cannot divide by zero");
                 } else {
-                    performOperation(Double.parseDouble(part[0]), operand, Double.parseDouble(part[1]));
+                    performOperation(num1, operand,num2);
                 }
             }
         });
