@@ -103,5 +103,12 @@ public void processCommand(String command) {
             }
         }
 
+        if("report_unique_students".equals(strArray[0])){
+            System.out.println("Unique students enrolled:");
+            for(Map.Entry<S,G> entry : course.getAllGrades().entrySet()  ){
+                System.out.println(entry.getKey());
+            }
+        }
+
     }
 }
