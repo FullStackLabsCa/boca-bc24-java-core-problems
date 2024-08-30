@@ -2,73 +2,34 @@ package genricproblem;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
-public class Course<S,G> {
-   Map<S,G> courseGpa= new HashMap<>();
+public class Course<S extends Number,G extends Number> {
+   private Map<S,G>  course;
+   private String courseName;
 
-    @Override
-    public String toString() {
-        return "CourseBook[" +
-                "Student Record with GPA=" + courseGpa +
-                ']';
+   //create the constructor
+
+
+    public Course() {
+        this.course = new HashMap<>();
+        this.courseName = courseName;
     }
 
-    //enroll the student
-    public void enrollStudent(S studentID){
-        this.courseGpa.putIfAbsent(studentID,null);  //only add if student not enrolled
+    public void enrollStudent(S studentId) {
+        course.get(studentId);
     }
 
-    // assigning grade
-    public void assignGrade(S studentID, G grade){
-        if(this.courseGpa.containsKey(studentID)){
-            this.courseGpa.put(studentID, grade);
+    public boolean isStudentEnrolled(S studentId) {
+        return course.containsKey(studentId);
+    }
+
+    public S getAllGrades() {
+        String course = courseName;
+        if (course != null) {
+            return course;
         } else {
-            System.out.println("Student ID not found : "+studentID);
+            System.out.println("Error: Course '" + courseName + "' does not exist.");
         }
+        return null;
     }
-
-    // retrieve grade
-
-    public G retrieveGrade(S studentID){
-
-        return this.courseGpa.get(studentID);
-    }
-    //list all the grade
-    // Method to list all students and their grades
-
-    public Set<Map.Entry<S, G>> listAllGrades() {
-
-        return courseGpa.entrySet(); // Returns a set of entries
-    }
-
-    public static void main(String[] args) {
-        Course<Integer, String> studentGrades = new Course<>();
-
-        //enroll the student
-        studentGrades.enrollStudent(12);
-        studentGrades.enrollStudent(23);
-        studentGrades.enrollStudent(34);
-        studentGrades.enrollStudent(45);
-        studentGrades.enrollStudent(56);
-
-        //assign the grade
-        studentGrades.assignGrade(12, "A");
-        studentGrades.assignGrade(23, "B");
-        studentGrades.assignGrade(34, "A");
-        studentGrades.assignGrade(45, "A");
-        studentGrades.assignGrade(56, "C");
-
-        //retrieve and display the grade
-        System.out.println("Grade for student 12 : " + studentGrades.retrieveGrade(12));
-        System.out.println("Grade for student 23 : " + studentGrades.retrieveGrade(23));
-        System.out.println("Grade for student 34 : " + studentGrades.retrieveGrade(34));
-        System.out.println("Grade for student 45 : " + studentGrades.retrieveGrade(45));
-        System.out.println("Grade for student 56 : " + studentGrades.retrieveGrade(56));
-
-        //list the grade
-        System.out.printf("All student garde : " + studentGrades.listAllGrades());
-    }
-    }
-
-
+}

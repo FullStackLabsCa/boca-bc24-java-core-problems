@@ -1,46 +1,49 @@
 package genproblem.schoolbook;
-import java.util.Collections;
+
 import java.util.HashMap;
 import java.util.Map;
 
-public class CourseBook<S,G>{
+public class CourseBook<S,G extends Number> {
+
     private final String courseName;
-    private final Map<S,G> studentGrade;
+    private final Map<S, G> studentGrades;
 
     //constructor
-
     public CourseBook(String courseName) {
         this.courseName = courseName;
-        this.studentGrade = new HashMap<>();
+        this.studentGrades = new HashMap<>();
     }
 
-    // add the course name
-
+     //get course
     public String getCourseName() {
         return courseName;
     }
 
-    //add grade to student
 
-    public void addStudent(S studentId,G grade){
-        studentGrade.put(studentId,grade);
+    //add student
+    public void addStudent(S studentId, G grade) {
+        studentGrades.put(studentId, grade);
     }
 
-    //get the grade with the help of student id
-    public G getGrade(S studentId){
-        return studentGrade.get(studentId);
+
+    //update student grade
+    public void updateGrade(S studentId, G grade) {
+        studentGrades.put(studentId, grade);
     }
 
-    //update the grade
-    public void upgradeGrade(S studentId,G grade){
-        studentGrade.put(studentId,grade);
-    }
-    // get all the grades
 
-    public Map<S, G> getAllGrade() {
-        //return new HashMap<>(studentGrade);
-        return Collections.unmodifiableMap(studentGrade);
+    //get all the grades
+    public Map<S, G> getAllGrades() {
+        return (studentGrades);
+    }
+
+   //get grade with the help of student key
+    public G getGrade(S studentId) {
+        return studentGrades.get(studentId);
+    }
+
+    //has student
+    public boolean hasStudent(S studentId) {
+        return studentGrades.containsKey(studentId);
     }
 }
-
-
