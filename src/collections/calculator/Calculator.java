@@ -22,7 +22,7 @@ public class Calculator {
 
     //Based on the
 
-    protected static final char[] operatorsAvailable = {'+', '-', '*', '/'};
+    protected static final char[] operatorsAvailable = {'+', '-', '*', '/', '^','$'};
 
     public static void clearMemory() {
     }
@@ -34,28 +34,31 @@ public class Calculator {
             return false;
         }
         expression = expression.trim();
-        //If the Input has alphabets
-        if (expression.matches(".*[a-zA-Z]+.*")) {
-            System.out.println("Illegal Arguments!!! Expression Contains Alphabets.");
-            return false;
-        }
-        //Check if the Input have at least 1 operation
-        if (getOperators(expression).length == 0) {
-            System.out.println("Illegal Expression! Cannot process expressions with no operator.");
-            return false;
-        }
-        //Check for operands with 2 decimals
-        for (String operand : getOperands(expression)) {
-            int decimalCountInOperand = 0;
-            char[] operandChar = operand.toCharArray();
-            for (char character : operandChar) {
-                if (character == '.') {
-                    decimalCountInOperand++;
-                }
-            }
-            if (decimalCountInOperand > 1) {
-                System.out.println("Illegal Expression! Cannot process operands with 2 decimals : " + operand);
+
+        if(!expression.contains("sqrt")) {
+            //If the Input has alphabets
+            if (expression.matches(".*[a-zA-Z]+.*")) {
+                System.out.println("Illegal Arguments!!! Expression Contains Alphabets.");
                 return false;
+            }
+            //Check if the Input have at least 1 operation
+            if (getOperators(expression).length == 0) {
+                System.out.println("Illegal Expression! Cannot process expressions with no operator.");
+                return false;
+            }
+            //Check for operands with 2 decimals
+            for (String operand : getOperands(expression)) {
+                int decimalCountInOperand = 0;
+                char[] operandChar = operand.toCharArray();
+                for (char character : operandChar) {
+                    if (character == '.') {
+                        decimalCountInOperand++;
+                    }
+                }
+                if (decimalCountInOperand > 1) {
+                    System.out.println("Illegal Expression! Cannot process operands with 2 decimals : " + operand);
+                    return false;
+                }
             }
         }
         //Check if the Parenthesis are balanced
@@ -98,7 +101,7 @@ public class Calculator {
         //Remove spaces from the Expression
         expression = expression.replaceAll(" ", "");
         //Split on operations and return that
-        return expression.split("[-+*/]");
+        return expression.split("[-+*/^$]");
     }
 
     private static char[] getOperators(String expression) {
@@ -128,7 +131,17 @@ public class Calculator {
 
     public static double calculate(String expression) {
 
-        return processCalculation(expression);
+        if(expression.contains("sqrt")){
+            //return result of sqrt
+            String[] Number = expression.split("[\\(\\)]");
+            if(Double.valueOf(Number[1]) > 0){
+                return Math.sqrt(Double.valueOf(Number[1]));
+            } else{
+                throw new ArithmeticException();
+            }
+        } else {
+            return processCalculation(expression);
+        }
     }
 
 
@@ -237,7 +250,7 @@ public class Calculator {
 
         switch (operation) {
             case '^':
-                System.out.println("Exponential Operation.");
+                result = Math.pow(Double.valueOf(operands[indexOfOperator]), Double.valueOf(operands[indexOfOperator + 1]));
                 break;
             case '*':
                 result = Multiplication.multiply(Double.valueOf(operands[indexOfOperator]), Double.valueOf(operands[indexOfOperator + 1]));
@@ -279,19 +292,19 @@ public class Calculator {
     }
 
 
-//    public static void main(String[] args) {
-//
-//        Calculator calculatorV2 = new Calculator();
-//        Scanner scanner = new Scanner(System.in);
-//        String input = "";
-//        while(true){
-//            System.out.println("Enter an expression: ");
-//            input = scanner.nextLine();
-//
-//            if (calculatorV2.validateInput(input)) {
-//                System.out.println(calculatorV2.calculate(input.trim()));
-//            }
-//        }
-//
-//    }
+    public static void main(String[] args) {
+
+        Calculator calculatorV2 = new Calculator();
+        Scanner scanner = new Scanner(System.in);
+        String input = "";
+        while(true){
+            System.out.println("Enter an expression: ");
+            input = scanner.nextLine();
+
+            if (calculatorV2.validateInput(input)) {
+                System.out.println(calculatorV2.calculate(input.trim()));
+            }
+        }
+
+    }
 }
