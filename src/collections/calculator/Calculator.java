@@ -36,20 +36,19 @@ public class Calculator {
         }
         expression = expression.trim();
 
-        if(getOperands(expression).length == getOperators(expression).length){
-            System.out.println("Invalid Expression");
-            return false;
-        }
-
         if(!expression.contains("sqrt") && !expression.contains("recallMemory()") && !expression.contains("clearMemory()") && !expression.contains("recallAllMemory()")) {
             //If the Input has alphabets
-            if (expression.matches(".*[a-zA-Z]+.*")) {
+            if (expression.matches(".*[a-zA-Z]+.*") && !expression.contains("M+")) {
                 System.out.println("Illegal Arguments!!! Expression Contains Alphabets.");
                 return false;
             }
             //Check if the Input have at least 1 operation
             if (getOperators(expression).length == 0) {
                 System.out.println("Illegal Expression! Cannot process expressions with no operator.");
+                return false;
+            }
+            if ((getOperands(expression).length == getOperators(expression).length) && !expression.contains("M+")) {
+                System.out.println("Invalid Expression");
                 return false;
             }
             //Check for operands with 2 decimals
