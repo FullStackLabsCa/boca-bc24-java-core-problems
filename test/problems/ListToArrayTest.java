@@ -1,6 +1,5 @@
 //package problems;
 //
-//import genricproblem.ListToArray;
 //import org.junit.Test;
 //
 //import java.util.Arrays;
@@ -21,7 +20,7 @@
 //
 //    @Test
 //    public void testListToArrayWithStrings() {
-//        List<Integer> strList = Arrays.asList("apple", "banana", "cherry");
+//        List<String> strList = Arrays.asList("apple", "banana", "cherry");
 //        String[] expectedArray = {"apple", "banana", "cherry"};
 //        String[] resultArray = ListToArray.listToArray(strList, new String[strList.size()]);
 //        assertArrayEquals(expectedArray, resultArray);
@@ -29,7 +28,7 @@
 //
 //    @Test
 //    public void testListToArrayWithEmptyList() {
-//        List<String> emptyList = Arrays.asList();
+//        List<Integer> emptyList = Arrays.asList();
 //        assertNull(ListToArray.listToArray(emptyList, new String[emptyList.size()]));
 //    }
 //
