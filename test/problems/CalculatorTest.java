@@ -21,10 +21,10 @@ public class CalculatorTest {
         assertEquals(4.0, Calculator.calculate("8 / 2"), 0.001);
     }
 
-//    @Test
-//    public void testDivisionByZero() {
-//        assertEquals(Double.NaN, Calculator.calculate("10 / 0"), 0.001);
-//    }
+    @Test
+    public void testDivisionByZero() {
+        assertEquals(Double.NaN, Calculator.calculate("10 / 0"), 0.001);
+    }
 
     @Test
     public void testMultipleOperations() {

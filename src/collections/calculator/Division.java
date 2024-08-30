@@ -6,7 +6,7 @@ public class Division{
         //Divide Validation
         if(denominator == 0){
             System.out.println("Illegal Argument!!! Denominator cannot be ZERO.");
-            System.exit(-1);
+            return Double.NaN;
         }
 
         return (numerator / denominator);
