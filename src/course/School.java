@@ -93,9 +93,14 @@ public void processCommand(String command) {
                     System.out.println("Student: "+entry.getKey()+", Grade: "+entry.getValue());
                 }
 //                System.out.println("Student: "+course.listAllGrades().keySet()+", Grade: "+course.listAllGrades().values());
-
             }
+        }
 
+        if("report_unique_courses".equals(strArray[0])){
+            System.out.println("Courses offered:");
+            for(Map.Entry<String,Course> entry : courseNameToCourseMap.entrySet()){
+                System.out.println(entry.getKey());
+            }
         }
 
     }
