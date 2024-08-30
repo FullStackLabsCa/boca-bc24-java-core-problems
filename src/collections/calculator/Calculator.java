@@ -36,18 +36,18 @@ public class Calculator {
         }
         expression = expression.trim();
 
-        if(!expression.contains("sqrt") && !expression.contains("recallMemory()") && !expression.contains("clearMemory()") && !expression.contains("recallAllMemory()")) {
+        if(!expression.contains("recallMemory()") && !expression.contains("clearMemory()") && !expression.contains("recallAllMemory()")) {
             //If the Input has alphabets
-            if (expression.matches(".*[a-zA-Z]+.*") && !expression.contains("M+")) {
+            if (expression.matches(".*[a-zA-Z]+.*") && !expression.contains("M+") && !expression.contains("sqrt") ) {
                 System.out.println("Illegal Arguments!!! Expression Contains Alphabets.");
                 return false;
             }
             //Check if the Input have at least 1 operation
-            if (getOperators(expression).length == 0) {
+            if ((getOperators(expression).length == 0) && !expression.contains("sqrt") ) {
                 System.out.println("Illegal Expression! Cannot process expressions with no operator.");
                 return false;
             }
-            if ((getOperands(expression).length == getOperators(expression).length) && !expression.contains("M+")) {
+            if ((getOperands(expression).length == getOperators(expression).length) && !expression.contains("M+") && !expression.contains("sqrt") ) {
                 System.out.println("Invalid Expression");
                 return false;
             }
