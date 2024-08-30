@@ -81,10 +81,26 @@ public class School<S, G extends Number> {
     }
 
     public void cumulativeAverage(S student) {
-        if (schoolMap.get(courseName).isStudentEnrolled(student)) {
+        double cumulativeSum = 0;
+        int courseEnrolledByStudent = 0;
+        Collection<Course<S, G>> courseCollection = schoolMap.values();
+            for (Course<S, G> course : courseCollection) {
+                Collection<S> studentCollection = course.listUniqueAllStudent();
 
+                if (studentCollection.contains(student)) {
+                    courseEnrolledByStudent++;
+                    if (course.getGrade(student).isPresent()) {
+                        cumulativeSum += course.getGrade(student).get().doubleValue();
+                    }
+                }
+            }
+            double cumulativeAverage = cumulativeSum / courseEnrolledByStudent;
+            System.out.println("Cumulative average score for student '" + student + "': " + cumulativeAverage);
         }
-    }
+
+
+
+
 
     public void processCommand(String userCommand) {
         String[] userCommandSplit = userCommand.split(" ");
@@ -112,7 +128,7 @@ public class School<S, G extends Number> {
                 averageGrades(userCommandSplit[1]);
             }
             case "report_cumulative_average" -> {
-
+                cumulativeAverage((S) userCommandSplit[1]);
             }
             case "unknown_command" -> {
                 System.out.println("Error: Unknown command 'unknown_command'. " +
