@@ -100,21 +100,21 @@ public class SchoolTest {
         assertTrue(systemOutRule.getLog().contains("Physics102"));
     }
 
-//    @Test
-//    public void testReportUniqueStudents() {
-//        school.processCommand("add_course Math101");
-//        school.processCommand("add_course Physics102");
-//        school.processCommand("enroll_student Math101 12345");
-//        school.processCommand("enroll_student Physics102 54321");
-//
-//        systemOutRule.clearLog();
-//        school.processCommand("report_unique_students");
-//
-//        assertTrue(systemOutRule.getLog().contains("Unique students enrolled:"));
-//        assertTrue(systemOutRule.getLog().contains("12345"));
-//        assertTrue(systemOutRule.getLog().contains("54321"));
-//    }
-//
+    @Test
+    public void testReportUniqueStudents() {
+        school.processCommand("add_course Math101");
+        school.processCommand("add_course Physics102");
+        school.processCommand("enroll_student Math101 12345");
+        school.processCommand("enroll_student Physics102 54321");
+
+        systemOutRule.clearLog();
+        school.processCommand("report_unique_students");
+
+        assertTrue(systemOutRule.getLog().contains("Unique students enrolled:"));
+        assertTrue(systemOutRule.getLog().contains("12345"));
+        assertTrue(systemOutRule.getLog().contains("54321"));
+    }
+
 //    @Test
 //    public void testReportAverageScore() {
 //        school.processCommand("add_course Math101");
@@ -142,10 +142,10 @@ public class SchoolTest {
 //        assertTrue(systemOutRule.getLog().contains("Cumulative average score for student '12345': 87.5"));
 //    }
 //
-//    @Test
-//    public void testUnknownCommand() {
-//        school.processCommand("unknown_command");
-//
-//        assertTrue(systemOutRule.getLog().contains("Error: Unknown command 'unknown_command'. Please use a valid command."));
-//    }
+    @Test
+    public void testUnknownCommand() {
+        school.processCommand("unknown_command");
+
+        assertTrue(systemOutRule.getLog().contains("Error: Unknown command 'unknown_command'. Please use a valid command."));
+    }
 }

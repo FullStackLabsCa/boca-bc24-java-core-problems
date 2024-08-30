@@ -105,5 +105,9 @@ public class School<S, G extends Number> {
                 System.out.println(entry.getKey());
             }
         }
+
+        if("unknown_command".equals(array[0])){
+            System.out.println("Error: Unknown command 'unknown_command'. Please use a valid command.");
+        }
     }
 }
