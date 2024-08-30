@@ -127,25 +127,25 @@ public class SchoolTest {
         assertTrue(systemOutRule.getLog().contains("Average score for course 'Math101': 85.5"));
     }
 
-//    @Test
-//    public void testReportCumulativeAverage() {
-//        school.processCommand("add_course Math101");
-//        school.processCommand("add_course Physics102");
-//        school.processCommand("enroll_student Math101 12345");
-//        school.processCommand("enroll_student Physics102 12345");
-//        school.processCommand("assign_grade Math101 12345 85.0");
-//        school.processCommand("assign_grade Physics102 12345 90.0");
-//
-//        systemOutRule.clearLog();
-//        school.processCommand("report_cumulative_average 12345");
-//
-//        assertTrue(systemOutRule.getLog().contains("Cumulative average score for student '12345': 87.5"));
-//    }
-//
-//    @Test
-//    public void testUnknownCommand() {
-//        school.processCommand("unknown_command");
-//
-//        assertTrue(systemOutRule.getLog().contains("Error: Unknown command 'unknown_command'. Please use a valid command."));
-//    }
+    @Test
+    public void testReportCumulativeAverage() {
+        school.processCommand("add_course Math101");
+        school.processCommand("add_course Physics102");
+        school.processCommand("enroll_student Math101 12345");
+        school.processCommand("enroll_student Physics102 12345");
+        school.processCommand("assign_grade Math101 12345 85.0");
+        school.processCommand("assign_grade Physics102 12345 90.0");
+
+        systemOutRule.clearLog();
+        school.processCommand("report_cumulative_average 12345");
+
+        assertTrue(systemOutRule.getLog().contains("Cumulative average score for student '12345': 87.5"));
+    }
+
+    @Test
+    public void testUnknownCommand() {
+        school.processCommand("unknown_command");
+
+        assertTrue(systemOutRule.getLog().contains("Error: Unknown command 'unknown_command'. Please use a valid command."));
+    }
 }
