@@ -19,8 +19,8 @@ public class Course<S, G extends Number> {
 
     public void assignGrade(S student, G grade) {
         if (studentGradeCourseMap.containsKey(student) && !studentGradeCourseMap.containsKey(null)) {
-           studentGradeCourseMap.put(student, grade);
-        }else {
+            studentGradeCourseMap.put(student, grade);
+        } else {
             System.out.println("Student Doesn't exist");
         }
     }
