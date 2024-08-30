@@ -14,7 +14,6 @@ public class BracketMatchingStack {
             System.out.println("Invalid Input or starting with closing bracket");
         }else{
             System.out.println(bracketStackMatch(input));
-
         }
 
     }

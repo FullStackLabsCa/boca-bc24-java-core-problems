@@ -15,7 +15,7 @@ public class SchoolStart {
         phy.enrollStudent("Mann");
 
         math.printStudentGrade("Abhay");
-        phy.printStudentGrade("Abhay");
+        phy.printStudentGrade("Mann");
         School<String,Number> school = new School<>();
 
 
@@ -25,6 +25,7 @@ public class SchoolStart {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the course name:- ");
         String courseName = scanner.nextLine();
+
         school.processCommand(courseName);
 
 

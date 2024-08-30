@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public class Course <S, G extends Number>{
 
-    private final Map<S,G> studentGradeMap;
+    private Map<S,G> studentGradeMap;
 
 
     public Course() {
@@ -22,7 +22,7 @@ public class Course <S, G extends Number>{
 
     public void printStudentGrade(S studentName) {
         G grade = getStudentGrade(studentName);
-        if (grade != null) {
+        if (studentGradeMap.containsKey(studentName)) {
             System.out.println("Student: " + studentName + ", Grade: " + grade);
         } else {
             System.out.println("Student: " + studentName + " not found.");
