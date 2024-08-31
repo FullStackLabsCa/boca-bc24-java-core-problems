@@ -7,9 +7,6 @@ public class  Course<S, G extends Number> {
 
      Map<S, G> course = new HashMap<>();
 
-    public Course(Map<S, G> course) {
-        this.course = course;
-    }
 
     public Course() {
     }

@@ -1,4 +1,4 @@
-package calculator;
+package problems.basicproblems.calculator;
 
 //Create a simple calculator that can perform basic arithmetic operations (addition, subtraction, multiplication, division).
 //
@@ -53,10 +53,10 @@ public class Calculator {
             }
 
             switch (operation) {
-                case '+' -> Addition.performAddition(numbers);
-                case '-' -> Subtraction.performSubtraction(numbers);
-                case '*' -> Multiplication.performMultiplication(numbers);
-                case '/' -> Division.performDivision(numbers);
+                case '+' -> calculator.Addition.performAddition(numbers);
+                case '-' -> calculator.Subtraction.performSubtraction(numbers);
+                case '*' -> calculator.Multiplication.performMultiplication(numbers);
+                case '/' -> calculator.Division.performDivision(numbers);
             }
         }
     }

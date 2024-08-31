@@ -1,4 +1,4 @@
-import calculator.Calculator;
+//import calculator.Calculator;
 
 public class Main {
     public static void main(String[] args) {
@@ -7,7 +7,7 @@ public class Main {
 
 //        PalindromeCheck.palindromeCheck();
 
-        Calculator.Calculate();
+//        Calculator.Calculate();
 
 //        OddNumbers.printFirstFiftyOddNumbers();
 
