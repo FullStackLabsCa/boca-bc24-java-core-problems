@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class Fibonacci {
 
     public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the number of Fibonacci numbers to generate (between 4 and 47):");
         System.out.println("problems.Fibonacci Series up to 4 numbers: [0, 1, 1, 2]");

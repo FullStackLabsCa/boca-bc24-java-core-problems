@@ -1,14 +1,21 @@
 package genricproblem;
 import java.util.Scanner;
 
-public class CountOccurrence {
+public class CountOccurrences {
 
     // Method to count occurrences of a specific element in an array
 
     public static <T> int countOccurrences(T[] array, T element) {
+
+        if (array== null) {
+            throw new IllegalArgumentException("Array cannot be zero");
+        }
         int count = 0;
+
         for (T item : array) {
-            if (item.equals(element)) {
+            if (item == null && element == null) {
+                count++;
+            } else if (item != null && item.equals(element)) {
                 count++;
             }
         }
@@ -18,8 +25,6 @@ public class CountOccurrence {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // Read a string of values
-
         System.out.println("Enter a string:");
         String value = scanner.nextLine().trim().toLowerCase();
 
@@ -27,7 +32,6 @@ public class CountOccurrence {
 
         Character[] charArray = new Character[value.length()];
 
-        //iterate the value input
 
         for (int i = 0; i < value.length(); i++) {
             charArray[i] = value.charAt(i);

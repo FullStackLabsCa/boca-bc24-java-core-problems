@@ -89,6 +89,3 @@ package genricproblem;
 //
 //
 //}
-public class GradeBook {
-
-}
