@@ -27,19 +27,27 @@ public class Calculator {
         parts = str.split(" ");
         int index = 0;
         int indexForAddingToMap = 0;
+        double sqrtResult = 0;
+        double exponentResult = 0;
 
         if (str.contains("sqrt")) {
-            String[] partsSqrt = str.split("sqrt");
-            String value = partsSqrt[1].replaceAll("[()]", "");
-            operandResult = sqrt(Double.parseDouble((value)));
-            System.out.println("operandResult = " + operandResult);
+            exponentResult = 0;
+            String[] partsSqrt = str.split("[()]");
+            sqrtResult = sqrt(Double.parseDouble((partsSqrt[1])));
+            exponentResult = sqrtResult;
+            System.out.println("sqrtResult = " + sqrtResult);
         }
 
-        if (parts[1].contains("^")) {
-            for (int i = 0; i < Integer.parseInt(parts[2]) - 1; i++) {
-                operandResult += Double.parseDouble((parts[0])) * Double.parseDouble((parts[0]));
-            }
+        if (str.contains("^")) {
+            String[] partsExponent = str.split("[()]");
+            exponentResult = Math.pow(Double.parseDouble((parts[0])), Double.parseDouble((parts[2])));
+            System.out.println("exponentResult = " + exponentResult);
         }
+
+//        if (sqrtResult != 0 && exponentResult != 0) {
+//            operandResult = sqrtResult + exponentResult;
+//            System.out.println("operandResult = " + operandResult);
+//        }
 
         //making tuples and adding to the Map
         for (int i = 0; i < parts.length - 1; i = i + 2) {
@@ -63,15 +71,15 @@ public class Calculator {
             double num1 = 0;
             double num2 = 0;
             String value = v.toString();
-            String[] array = value.split("()");
+            String[] array = value.split("(?<=[-+*/])|(?=[-+*/])");
             String operand = "";
             boolean containOpenCloseBracket = false;
 
-            if (array[0].contains("(") && array[4].contains(")")) {
-                operand = String.valueOf(array[2]);
+            if (array[0].contains("(") && array[array.length - 1].contains(")")) {
+                operand = String.valueOf(array[1]);
                 containOpenCloseBracket = true;
-                num1 = parseDouble(String.valueOf(array[1]));
-                num2 = parseDouble(String.valueOf(array[3]));
+                num1 = parseDouble((array[0].replaceAll("[(]", "")));
+                num2 = parseDouble((array[2].replaceAll("[)]", "")));
             }
 
             if (containOpenCloseBracket) {
@@ -97,13 +105,13 @@ public class Calculator {
                 if (nextNodeKey < bracketsMap.size()) {
                     String nextNode = bracketsMap.get(nextNodeKey);
                     String valueSplit = "";
-                    String[] splitArray = nextNode.split("");
+                    String[] splitArray = nextNode.split("(?<=[-+*/])|(?=[-+*/])");
                     for (int i = 0; i < splitArray.length; i++) {
                         if (splitArray[i].contains(")") && splitArray[splitArray.length - 1].equals(")")) {
                             valueSplit = splitArray[1] + splitArray[2] + operandResult;
                             break;
                         } else if (splitArray[i].contains(")") && splitArray[1] != ")") {
-                            valueSplit = operandResult + splitArray[2] + splitArray[3];
+                            valueSplit = operandResult + splitArray[1] + splitArray[2];
                             break;
                         }
                     }
@@ -259,7 +267,7 @@ public class Calculator {
         if (previousNodeKey != -1) {
             String previousNode = linkedHashMap.get(previousNodeKey);
             String valueSplit = "";
-            String[] splitArray = previousNode.split("");
+            String[] splitArray = previousNode.split("(?<=[-+*/])|(?=[-+*/])");
             for (int i = 0; i < splitArray.length; i++) {
                 valueSplit = splitArray[0] + splitArray[1] + operandResult;
                 break;
