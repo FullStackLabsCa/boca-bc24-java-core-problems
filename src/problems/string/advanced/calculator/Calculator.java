@@ -3,6 +3,7 @@ package problems.string.advanced.calculator;
 import java.util.*;
 
 import static java.lang.Double.parseDouble;
+import static java.lang.Double.valueOf;
 
 @SuppressWarnings("java:S106")
 public class Calculator {
@@ -13,10 +14,14 @@ public class Calculator {
         }
 
         LinkedHashMap<Integer, String> checkBracketsMap = new LinkedHashMap<>();
+        LinkedHashMap<Integer, String> checkForDivisionMap = new LinkedHashMap<>();
+        LinkedHashMap<Integer, String> checkForMultiplyMap = new LinkedHashMap<>();
+
         String[] parts;
         String tuple = "";
         parts = str.split(" ");
         int index = 0;
+        int indexForAddingToMap = 0;
 
         //making tuples and adding to the Map
         for (int i = 0; i < parts.length - 1; i = i + 2) {
@@ -30,6 +35,7 @@ public class Calculator {
             }
         }
 
+        //checking brackets
         for (Map.Entry<Integer, String> entry : checkBracketsMap.entrySet()) {
             Number k = entry.getKey();
             String v = entry.getValue();
@@ -43,15 +49,16 @@ public class Calculator {
             String operand = "";
             boolean containOpenCloseBracket = false;
 
-            if (array.length == 5 && array[0] == '(' && array[4] == ')') {
+            if (array[0] == '(' && array[4] == ')') {
                 operand = String.valueOf(array[2]);
                 containOpenCloseBracket = true;
                 num1 = parseDouble(String.valueOf(array[1]));
                 num2 = parseDouble(String.valueOf(array[3]));
             }
-            //previousNode logic
+
             if (containOpenCloseBracket) {
                 operandResult = performOperation(num1, operand, num2);
+                //previousNode logic
                 if (previousNodeKey != -1) {
                     String previousNode = checkBracketsMap.get(previousNodeKey);
                     String valueSplit = "";
@@ -67,6 +74,7 @@ public class Calculator {
                     }
                     checkBracketsMap.put(previousNodeKey, valueSplit);
                 }
+
                 //nextNode Logic
                 if (nextNodeKey < checkBracketsMap.size()) {
                     String nextNode = checkBracketsMap.get(nextNodeKey);
@@ -83,14 +91,111 @@ public class Calculator {
                     }
                     checkBracketsMap.put(nextNodeKey, valueSplit);
                 }
-
-                //removing the processed expression tuple from the Map
                 checkBracketsMap.remove(k);
-                System.out.println("checkBracketsMap = " + checkBracketsMap);
                 break;
             }
         }
-//        System.out.println("checkBracketsMap = " + checkBracketsMap);
+
+        //adding to division map
+        for (String entry : checkBracketsMap.values()) {
+            checkForDivisionMap.put(indexForAddingToMap, entry);
+            indexForAddingToMap++;
+        }
+        System.out.println("checkForDivisionMap= " + checkForDivisionMap);
+
+        //checking division
+        for (Map.Entry<Integer, String> entry : checkForDivisionMap.entrySet()) {
+            Number k = entry.getKey();
+            String v = entry.getValue();
+            int key = entry.getKey();
+            int previousNodeKey = (int) k - 1;
+            int nextNodeKey = (int) k + 1;
+            double num1 = 0;
+            double num2 = 0;
+            String value = v.toString();
+            char[] array = value.toCharArray();
+            String operand = "";
+            boolean containOpenDivisionOperand = false;
+            double operandResult = 0;
+
+            if (array[1] == '/') {
+                operand = String.valueOf(array[1]);
+                containOpenDivisionOperand = true;
+                num1 = parseDouble(String.valueOf(array[0]));
+                num2 = parseDouble(String.valueOf(array[2]));
+            }
+
+            if (containOpenDivisionOperand) {
+                operandResult = updateNodesAndPerformOperation(checkForDivisionMap, key, previousNodeKey, nextNodeKey, num1, num2, operand);
+                break;
+            }
+        }
+
+        //adding to multiplication map
+        indexForAddingToMap = 0;
+        for (String entry : checkForDivisionMap.values()) {
+            checkForMultiplyMap.put(indexForAddingToMap, entry);
+            indexForAddingToMap++;
+        }
+        System.out.println("checkForMultiplyMap = " + checkForMultiplyMap);
+
+        //checking multiplication
+        for (Map.Entry<Integer, String> entry : checkForMultiplyMap.entrySet()) {
+            Number k = entry.getKey();
+            String v = entry.getValue();
+            int key = entry.getKey();
+            int previousNodeKey = (int) k - 1;
+            int nextNodeKey = (int) k + 1;
+            double num1 = 0;
+            double num2 = 0;
+            String value = v.toString();
+            char[] array = value.toCharArray();
+            String operand = "";
+            boolean containOpenDivisionOperand = false;
+            double operandResult = 0;
+
+            if (array[1] == '*') {
+                operand = String.valueOf(array[1]);
+                containOpenDivisionOperand = true;
+                num1 = parseDouble(String.valueOf(array[0]));
+                num2 = parseDouble(String.valueOf(array[2]));
+            }
+
+            if (containOpenDivisionOperand) {
+                operandResult = updateNodesAndPerformOperation(checkForMultiplyMap, key, previousNodeKey, nextNodeKey, num1, num2, operand);
+                break;
+            }
+        }
+    }
+
+    public static double updateNodesAndPerformOperation(LinkedHashMap<Integer, String> linkedHashMap, int key, int previousNodeKey, int nextNodeKey, Double num1, Double num2, String operand) {
+        double operandResult = 0;
+        operandResult = performOperation(num1, operand, num2);
+        //previousNode logic
+        if (previousNodeKey != -1) {
+            String previousNode = linkedHashMap.get(previousNodeKey);
+            String valueSplit = "";
+            String[] splitArray = previousNode.split("");
+            for (int i = 0; i < splitArray.length; i++) {
+                valueSplit = splitArray[0] + splitArray[1] + operandResult;
+                break;
+            }
+            linkedHashMap.put(previousNodeKey, valueSplit);
+        }
+
+        //nextNode Logic
+        if (nextNodeKey < linkedHashMap.size()) {
+            String nextNode = linkedHashMap.get(nextNodeKey);
+            String valueSplit = "";
+            String[] splitArray = nextNode.split("");
+            for (int i = 0; i < splitArray.length; i++) {
+                valueSplit = splitArray[0] + splitArray[1] + operandResult;
+                break;
+            }
+            linkedHashMap.put(nextNodeKey, valueSplit);
+        }
+        linkedHashMap.remove(key);
+        return operandResult;
     }
 
     public static double performOperation(double number1, String operand, double number2) {
@@ -119,9 +224,6 @@ public class Calculator {
         }
 //        System.out.println("Result of two operands: " + result);
         return Double.parseDouble(result);
-    }
-
-    public static void clearMemory() {
     }
 
     public static void main(String[] args) {
