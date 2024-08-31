@@ -13,11 +13,11 @@ public class Calculator {
             return;
         }
 
-        LinkedHashMap<Integer, String> checkBracketsMap = new LinkedHashMap<>();
-        LinkedHashMap<Integer, String> checkForDivisionMap = new LinkedHashMap<>();
-        LinkedHashMap<Integer, String> checkForMultiplyMap = new LinkedHashMap<>();
-        LinkedHashMap<Integer, String> checkForAdditionMap = new LinkedHashMap<>();
-        LinkedHashMap<Integer, String> checkForSubtractionMap = new LinkedHashMap<>();
+        LinkedHashMap<Integer, String> bracketsMap = new LinkedHashMap<>();
+        LinkedHashMap<Integer, String> divisionMap = new LinkedHashMap<>();
+        LinkedHashMap<Integer, String> multiplyMap = new LinkedHashMap<>();
+        LinkedHashMap<Integer, String> additionMap = new LinkedHashMap<>();
+        LinkedHashMap<Integer, String> subtractionMap = new LinkedHashMap<>();
 
         String[] parts;
         String tuple = "";
@@ -32,14 +32,14 @@ public class Calculator {
                 System.out.println("Error: Invalid input format");
             } else {
                 tuple = parts[i] + parts[i + 1] + parts[i + 2];
-                checkBracketsMap.put(index, tuple);
+                bracketsMap.put(index, tuple);
                 index++;
             }
         }
 
-        System.out.println("checkBracketsMap= " + checkBracketsMap);
+        System.out.println("bracketsMap= " + bracketsMap);
         //checking brackets
-        for (Map.Entry<Integer, String> entry : checkBracketsMap.entrySet()) {
+        for (Map.Entry<Integer, String> entry : bracketsMap.entrySet()) {
             Number k = entry.getKey();
             String v = entry.getValue();
             int previousNodeKey = (int) k - 1;
@@ -52,7 +52,7 @@ public class Calculator {
             String operand = "";
             boolean containOpenCloseBracket = false;
 
-            if (array[0] == '(' && array[4] == ')') {
+            if (array[0] == '(' && array[array.length-1] == ')') {
                 operand = String.valueOf(array[2]);
                 containOpenCloseBracket = true;
                 num1 = parseDouble(String.valueOf(array[1]));
@@ -63,7 +63,7 @@ public class Calculator {
                 operandResult = performOperation(num1, operand, num2);
                 //previousNode logic
                 if (previousNodeKey != -1) {
-                    String previousNode = checkBracketsMap.get(previousNodeKey);
+                    String previousNode = bracketsMap.get(previousNodeKey);
                     String valueSplit = "";
                     String[] splitArray = previousNode.split("");
                     for (int i = 0; i < splitArray.length; i++) {
@@ -75,16 +75,16 @@ public class Calculator {
                             break;
                         }
                     }
-                    checkBracketsMap.put(previousNodeKey, valueSplit);
+                    bracketsMap.put(previousNodeKey, valueSplit);
                 }
 
                 //nextNode Logic
-                if (nextNodeKey < checkBracketsMap.size()) {
-                    String nextNode = checkBracketsMap.get(nextNodeKey);
+                if (nextNodeKey < bracketsMap.size()) {
+                    String nextNode = bracketsMap.get(nextNodeKey);
                     String valueSplit = "";
                     String[] splitArray = nextNode.split("");
                     for (int i = 0; i < splitArray.length; i++) {
-                        if (splitArray[i].contains(")") && splitArray[splitArray.length - 1] == ")") {
+                        if (splitArray[i].contains(")") && splitArray[splitArray.length - 1].equals(")")) {
                             valueSplit = splitArray[1] + splitArray[2] + operandResult;
                             break;
                         } else if (splitArray[i].contains(")") && splitArray[1] != ")") {
@@ -92,22 +92,22 @@ public class Calculator {
                             break;
                         }
                     }
-                    checkBracketsMap.put(nextNodeKey, valueSplit);
+                    bracketsMap.put(nextNodeKey, valueSplit);
                 }
-                checkBracketsMap.remove(k);
+                bracketsMap.remove(k);
                 break;
             }
         }
 
         //adding to division map
-        for (String entry : checkBracketsMap.values()) {
-            checkForDivisionMap.put(indexForAddingToMap, entry);
+        for (String entry : bracketsMap.values()) {
+            divisionMap.put(indexForAddingToMap, entry);
             indexForAddingToMap++;
         }
-        System.out.println("checkForDivisionMap= " + checkForDivisionMap);
+        System.out.println("divisionMap= " + divisionMap);
 
         //checking division
-        for (Map.Entry<Integer, String> entry : checkForDivisionMap.entrySet()) {
+        for (Map.Entry<Integer, String> entry : divisionMap.entrySet()) {
             Number k = entry.getKey();
             String v = entry.getValue();
             int key = entry.getKey();
@@ -129,21 +129,21 @@ public class Calculator {
             }
 
             if (containDivisionOperand) {
-                operandResult = updateNodesAndPerformOperation(checkForDivisionMap, key, previousNodeKey, nextNodeKey, num1, num2, operand);
+                operandResult = updateNodesAndPerformOperation(divisionMap, key, previousNodeKey, nextNodeKey, num1, num2, operand);
                 break;
             }
         }
 
         //adding to multiplication map
         indexForAddingToMap = 0;
-        for (String entry : checkForDivisionMap.values()) {
-            checkForMultiplyMap.put(indexForAddingToMap, entry);
+        for (String entry : divisionMap.values()) {
+            multiplyMap.put(indexForAddingToMap, entry);
             indexForAddingToMap++;
         }
-        System.out.println("checkForMultiplyMap = " + checkForMultiplyMap);
+        System.out.println("multiplyMap = " + multiplyMap);
 
         //checking multiplication
-        for (Map.Entry<Integer, String> entry : checkForMultiplyMap.entrySet()) {
+        for (Map.Entry<Integer, String> entry : multiplyMap.entrySet()) {
             Number k = entry.getKey();
             String v = entry.getValue();
             int key = entry.getKey();
@@ -165,21 +165,21 @@ public class Calculator {
             }
 
             if (containMultiplyOperand) {
-                operandResult = updateNodesAndPerformOperation(checkForMultiplyMap, key, previousNodeKey, nextNodeKey, num1, num2, operand);
+                operandResult = updateNodesAndPerformOperation(multiplyMap, key, previousNodeKey, nextNodeKey, num1, num2, operand);
                 break;
             }
         }
 
         //adding to addition map
         indexForAddingToMap = 0;
-        for (String entry : checkForMultiplyMap.values()) {
-            checkForAdditionMap.put(indexForAddingToMap, entry);
+        for (String entry : multiplyMap.values()) {
+            additionMap.put(indexForAddingToMap, entry);
             indexForAddingToMap++;
         }
-        System.out.println("checkForAdditionMap = " + checkForAdditionMap);
+        System.out.println("additionMap = " + additionMap);
 
         //checking addition
-        for (Map.Entry<Integer, String> entry : checkForAdditionMap.entrySet()) {
+        for (Map.Entry<Integer, String> entry : additionMap.entrySet()) {
             Number k = entry.getKey();
             String v = entry.getValue();
             int key = entry.getKey();
@@ -201,22 +201,51 @@ public class Calculator {
             }
 
             if (containAdditionOperand) {
-                operandResult = updateNodesAndPerformOperation(checkForAdditionMap, key, previousNodeKey, nextNodeKey, num1, num2, operand);
+                operandResult = updateNodesAndPerformOperation(additionMap, key, previousNodeKey, nextNodeKey, num1, num2, operand);
+                System.out.println("operandResult = " + operandResult);
                 break;
             }
         }
 
         //adding to addition map
         indexForAddingToMap = 0;
-        for (String entry : checkForAdditionMap.values()) {
-            checkForSubtractionMap.put(indexForAddingToMap, entry);
+        for (String entry : additionMap.values()) {
+            subtractionMap.put(indexForAddingToMap, entry);
             indexForAddingToMap++;
         }
-        System.out.println("checkForSubtractionMap = " + checkForSubtractionMap);
+        System.out.println("subtractionMap = " + subtractionMap);
 
+        //checking subtract
+        for (Map.Entry<Integer, String> entry : subtractionMap.entrySet()) {
+            Number k = entry.getKey();
+            String v = entry.getValue();
+            int key = entry.getKey();
+            int previousNodeKey = (int) k - 1;
+            int nextNodeKey = (int) k + 1;
+            double num1 = 0;
+            double num2 = 0;
+            String value = v.toString();
+            char[] array = value.toCharArray();
+            String operand = "";
+            boolean containSubtractOperand = false;
+            double operandResult = 0;
+
+            if (array[1] == '-') {
+                operand = String.valueOf(array[1]);
+                containSubtractOperand = true;
+                num1 = parseDouble(String.valueOf(array[0]));
+                num2 = parseDouble(String.valueOf(array[2]));
+            }
+
+            if (containSubtractOperand) {
+                operandResult = updateNodesAndPerformOperation(subtractionMap, key, previousNodeKey, nextNodeKey, num1, num2, operand);
+                System.out.println("operandResult = " + operandResult);
+                break;
+            }
+        }
     }
 
-    public static double updateNodesAndPerformOperation(LinkedHashMap<Integer, String> linkedHashMap, int key, int previousNodeKey, int nextNodeKey, Double num1, Double num2, String operand) {
+    public static double updateNodesAndPerformOperation(Map<Integer, String> linkedHashMap, int key, int previousNodeKey, int nextNodeKey, Double num1, Double num2, String operand) {
         double operandResult = 0;
         operandResult = performOperation(num1, operand, num2);
         //previousNode logic
