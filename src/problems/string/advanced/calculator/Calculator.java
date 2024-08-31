@@ -4,6 +4,7 @@ import java.util.*;
 
 import static java.lang.Double.parseDouble;
 import static java.lang.Double.valueOf;
+import static java.lang.Math.*;
 
 @SuppressWarnings("java:S106")
 public class Calculator {
@@ -26,6 +27,13 @@ public class Calculator {
         parts = str.split(" ");
         int index = 0;
         int indexForAddingToMap = 0;
+
+        if (str.contains("sqrt")) {
+            String[] partsSqrt = str.split("sqrt");
+            String value = partsSqrt[1].replaceAll("[()]", "");
+            operandResult = sqrt(Double.parseDouble((value)));
+            System.out.println("operandResult = " + operandResult);
+        }
 
         if (parts[1].contains("^")) {
             for (int i = 0; i < Integer.parseInt(parts[2]) - 1; i++) {
