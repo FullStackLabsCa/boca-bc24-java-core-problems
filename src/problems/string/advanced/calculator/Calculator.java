@@ -16,6 +16,8 @@ public class Calculator {
         LinkedHashMap<Integer, String> checkBracketsMap = new LinkedHashMap<>();
         LinkedHashMap<Integer, String> checkForDivisionMap = new LinkedHashMap<>();
         LinkedHashMap<Integer, String> checkForMultiplyMap = new LinkedHashMap<>();
+        LinkedHashMap<Integer, String> checkForAdditionMap = new LinkedHashMap<>();
+        LinkedHashMap<Integer, String> checkForSubtractionMap = new LinkedHashMap<>();
 
         String[] parts;
         String tuple = "";
@@ -35,6 +37,7 @@ public class Calculator {
             }
         }
 
+        System.out.println("checkBracketsMap= " + checkBracketsMap);
         //checking brackets
         for (Map.Entry<Integer, String> entry : checkBracketsMap.entrySet()) {
             Number k = entry.getKey();
@@ -115,17 +118,17 @@ public class Calculator {
             String value = v.toString();
             char[] array = value.toCharArray();
             String operand = "";
-            boolean containOpenDivisionOperand = false;
+            boolean containDivisionOperand = false;
             double operandResult = 0;
 
             if (array[1] == '/') {
                 operand = String.valueOf(array[1]);
-                containOpenDivisionOperand = true;
+                containDivisionOperand = true;
                 num1 = parseDouble(String.valueOf(array[0]));
                 num2 = parseDouble(String.valueOf(array[2]));
             }
 
-            if (containOpenDivisionOperand) {
+            if (containDivisionOperand) {
                 operandResult = updateNodesAndPerformOperation(checkForDivisionMap, key, previousNodeKey, nextNodeKey, num1, num2, operand);
                 break;
             }
@@ -151,21 +154,66 @@ public class Calculator {
             String value = v.toString();
             char[] array = value.toCharArray();
             String operand = "";
-            boolean containOpenDivisionOperand = false;
+            boolean containMultiplyOperand = false;
             double operandResult = 0;
 
             if (array[1] == '*') {
                 operand = String.valueOf(array[1]);
-                containOpenDivisionOperand = true;
+                containMultiplyOperand = true;
                 num1 = parseDouble(String.valueOf(array[0]));
                 num2 = parseDouble(String.valueOf(array[2]));
             }
 
-            if (containOpenDivisionOperand) {
+            if (containMultiplyOperand) {
                 operandResult = updateNodesAndPerformOperation(checkForMultiplyMap, key, previousNodeKey, nextNodeKey, num1, num2, operand);
                 break;
             }
         }
+
+        //adding to addition map
+        indexForAddingToMap = 0;
+        for (String entry : checkForMultiplyMap.values()) {
+            checkForAdditionMap.put(indexForAddingToMap, entry);
+            indexForAddingToMap++;
+        }
+        System.out.println("checkForAdditionMap = " + checkForAdditionMap);
+
+        //checking addition
+        for (Map.Entry<Integer, String> entry : checkForAdditionMap.entrySet()) {
+            Number k = entry.getKey();
+            String v = entry.getValue();
+            int key = entry.getKey();
+            int previousNodeKey = (int) k - 1;
+            int nextNodeKey = (int) k + 1;
+            double num1 = 0;
+            double num2 = 0;
+            String value = v.toString();
+            char[] array = value.toCharArray();
+            String operand = "";
+            boolean containAdditionOperand = false;
+            double operandResult = 0;
+
+            if (array[1] == '+') {
+                operand = String.valueOf(array[1]);
+                containAdditionOperand = true;
+                num1 = parseDouble(String.valueOf(array[0]));
+                num2 = parseDouble(String.valueOf(array[2]));
+            }
+
+            if (containAdditionOperand) {
+                operandResult = updateNodesAndPerformOperation(checkForAdditionMap, key, previousNodeKey, nextNodeKey, num1, num2, operand);
+                break;
+            }
+        }
+
+        //adding to addition map
+        indexForAddingToMap = 0;
+        for (String entry : checkForAdditionMap.values()) {
+            checkForSubtractionMap.put(indexForAddingToMap, entry);
+            indexForAddingToMap++;
+        }
+        System.out.println("checkForSubtractionMap = " + checkForSubtractionMap);
+
     }
 
     public static double updateNodesAndPerformOperation(LinkedHashMap<Integer, String> linkedHashMap, int key, int previousNodeKey, int nextNodeKey, Double num1, Double num2, String operand) {
@@ -189,7 +237,7 @@ public class Calculator {
             String valueSplit = "";
             String[] splitArray = nextNode.split("");
             for (int i = 0; i < splitArray.length; i++) {
-                valueSplit = splitArray[0] + splitArray[1] + operandResult;
+                valueSplit = operandResult + splitArray[1] + splitArray[2];
                 break;
             }
             linkedHashMap.put(nextNodeKey, valueSplit);
