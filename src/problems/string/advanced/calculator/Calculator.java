@@ -7,6 +7,8 @@ import static java.lang.Double.valueOf;
 
 @SuppressWarnings("java:S106")
 public class Calculator {
+    public static double operandResult = 0;
+
     public static void calculate(String str) {
         if (str == null || str.isEmpty()) {
             System.out.println("Error: Input is empty or null");
@@ -46,7 +48,6 @@ public class Calculator {
             int nextNodeKey = (int) k + 1;
             double num1 = 0;
             double num2 = 0;
-            double operandResult = 0;
             String value = v.toString();
             String[] array = value.split("()");
             String operand = "";
@@ -119,7 +120,6 @@ public class Calculator {
             String[] array = value.split("/");
             String operand = "/";
             boolean containDivisionOperand = false;
-            double operandResult = 0;
 
             if (value.contains("/")) {
                 containDivisionOperand = true;
@@ -128,7 +128,7 @@ public class Calculator {
             }
 
             if (containDivisionOperand) {
-                operandResult = updateNodesAndPerformOperation(divisionMap, key, previousNodeKey, nextNodeKey, num1, num2, operand);
+                updateNodesAndPerformOperation(divisionMap, key, previousNodeKey, nextNodeKey, num1, num2, operand);
                 break;
             }
         }
@@ -154,7 +154,6 @@ public class Calculator {
             String[] array = value.split("\\*");
             String operand = "*";
             boolean containMultiplyOperand = false;
-            double operandResult = 0;
 
             if (value.contains(operand)) {
                 containMultiplyOperand = true;
@@ -163,7 +162,7 @@ public class Calculator {
             }
 
             if (containMultiplyOperand) {
-                operandResult = updateNodesAndPerformOperation(multiplyMap, key, previousNodeKey, nextNodeKey, num1, num2, operand);
+                updateNodesAndPerformOperation(multiplyMap, key, previousNodeKey, nextNodeKey, num1, num2, operand);
                 break;
             }
         }
@@ -189,7 +188,6 @@ public class Calculator {
             String[] array = value.split("\\+");
             String operand = "+";
             boolean containAdditionOperand = false;
-            double operandResult = 0;
 
             if (value.contains("+")) {
                 containAdditionOperand = true;
@@ -198,8 +196,7 @@ public class Calculator {
             }
 
             if (containAdditionOperand) {
-                operandResult = updateNodesAndPerformOperation(additionMap, key, previousNodeKey, nextNodeKey, num1, num2, operand);
-                System.out.println("operandResult = " + operandResult);
+                updateNodesAndPerformOperation(additionMap, key, previousNodeKey, nextNodeKey, num1, num2, operand);
                 break;
             }
         }
@@ -225,7 +222,6 @@ public class Calculator {
             String[] array = value.split("-");
             String operand = "-";
             boolean containSubtractOperand = false;
-            double operandResult = 0;
 
             if (value.contains("-")) {
                 containSubtractOperand = true;
@@ -234,15 +230,16 @@ public class Calculator {
             }
 
             if (containSubtractOperand) {
-                operandResult = updateNodesAndPerformOperation(subtractionMap, key, previousNodeKey, nextNodeKey, num1, num2, operand);
-                System.out.println("operandResult = " + operandResult);
+                updateNodesAndPerformOperation(subtractionMap, key, previousNodeKey, nextNodeKey, num1, num2, operand);
                 break;
             }
         }
+
+        System.out.println("Result of the given expression: " + operandResult);
     }
 
-    public static double updateNodesAndPerformOperation(Map<Integer, String> linkedHashMap, int key, int previousNodeKey, int nextNodeKey, Double num1, Double num2, String operand) {
-        double operandResult = 0;
+    public static void updateNodesAndPerformOperation(Map<Integer, String> linkedHashMap, int key, int previousNodeKey, int nextNodeKey, Double num1, Double num2, String operand) {
+        operandResult = 0;
         operandResult = performOperation(num1, operand, num2);
         //previousNode logic
         if (previousNodeKey != -1) {
@@ -268,7 +265,6 @@ public class Calculator {
             linkedHashMap.put(nextNodeKey, valueSplit);
         }
         linkedHashMap.remove(key);
-        return operandResult;
     }
 
     public static double performOperation(double number1, String operand, double number2) {
@@ -295,7 +291,6 @@ public class Calculator {
             default:
                 System.out.println("Only Addition, Subtraction, Multiplication, Division operations are allowed");
         }
-//        System.out.println("Result of two operands: " + result);
         return Double.parseDouble(result);
     }
 
