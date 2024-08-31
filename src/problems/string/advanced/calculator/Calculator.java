@@ -27,6 +27,12 @@ public class Calculator {
         int index = 0;
         int indexForAddingToMap = 0;
 
+        if (parts[1].contains("^")) {
+            for (int i = 0; i < Integer.parseInt(parts[2]) - 1; i++) {
+                operandResult += Double.parseDouble((parts[0])) * Double.parseDouble((parts[0]));
+            }
+        }
+
         //making tuples and adding to the Map
         for (int i = 0; i < parts.length - 1; i = i + 2) {
             //checking validation if it passes then adding to the Map
