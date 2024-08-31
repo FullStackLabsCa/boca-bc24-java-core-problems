@@ -37,8 +37,8 @@ public class Calculator {
             }
         }
 
-        System.out.println("bracketsMap= " + bracketsMap);
         //checking brackets
+        System.out.println("bracketsMap= " + bracketsMap);
         for (Map.Entry<Integer, String> entry : bracketsMap.entrySet()) {
             Number k = entry.getKey();
             String v = entry.getValue();
@@ -48,11 +48,11 @@ public class Calculator {
             double num2 = 0;
             double operandResult = 0;
             String value = v.toString();
-            char[] array = value.toCharArray();
+            String[] array = value.split("()");
             String operand = "";
             boolean containOpenCloseBracket = false;
 
-            if (array[0] == '(' && array[array.length-1] == ')') {
+            if (array[0].contains("(") && array[4].contains(")")) {
                 operand = String.valueOf(array[2]);
                 containOpenCloseBracket = true;
                 num1 = parseDouble(String.valueOf(array[1]));
@@ -65,7 +65,7 @@ public class Calculator {
                 if (previousNodeKey != -1) {
                     String previousNode = bracketsMap.get(previousNodeKey);
                     String valueSplit = "";
-                    String[] splitArray = previousNode.split("");
+                    String[] splitArray = previousNode.split("(?<=[-+*/])|(?=[-+*/])");
                     for (int i = 0; i < splitArray.length; i++) {
                         if (splitArray[i].contains("(") && splitArray[0] == "(") {
                             valueSplit = splitArray[1] + splitArray[2] + operandResult;
@@ -88,7 +88,7 @@ public class Calculator {
                             valueSplit = splitArray[1] + splitArray[2] + operandResult;
                             break;
                         } else if (splitArray[i].contains(")") && splitArray[1] != ")") {
-                            valueSplit = splitArray[0] + splitArray[2] + operandResult;
+                            valueSplit = operandResult + splitArray[2] + splitArray[3];
                             break;
                         }
                     }
@@ -116,16 +116,15 @@ public class Calculator {
             double num1 = 0;
             double num2 = 0;
             String value = v.toString();
-            char[] array = value.toCharArray();
-            String operand = "";
+            String[] array = value.split("/");
+            String operand = "/";
             boolean containDivisionOperand = false;
             double operandResult = 0;
 
-            if (array[1] == '/') {
-                operand = String.valueOf(array[1]);
+            if (value.contains("/")) {
                 containDivisionOperand = true;
                 num1 = parseDouble(String.valueOf(array[0]));
-                num2 = parseDouble(String.valueOf(array[2]));
+                num2 = parseDouble(String.valueOf(array[1]));
             }
 
             if (containDivisionOperand) {
@@ -152,16 +151,15 @@ public class Calculator {
             double num1 = 0;
             double num2 = 0;
             String value = v.toString();
-            char[] array = value.toCharArray();
-            String operand = "";
+            String[] array = value.split("\\*");
+            String operand = "*";
             boolean containMultiplyOperand = false;
             double operandResult = 0;
 
-            if (array[1] == '*') {
-                operand = String.valueOf(array[1]);
+            if (value.contains(operand)) {
                 containMultiplyOperand = true;
                 num1 = parseDouble(String.valueOf(array[0]));
-                num2 = parseDouble(String.valueOf(array[2]));
+                num2 = parseDouble(String.valueOf(array[1]));
             }
 
             if (containMultiplyOperand) {
@@ -188,16 +186,15 @@ public class Calculator {
             double num1 = 0;
             double num2 = 0;
             String value = v.toString();
-            char[] array = value.toCharArray();
-            String operand = "";
+            String[] array = value.split("\\+");
+            String operand = "+";
             boolean containAdditionOperand = false;
             double operandResult = 0;
 
-            if (array[1] == '+') {
-                operand = String.valueOf(array[1]);
+            if (value.contains("+")) {
                 containAdditionOperand = true;
                 num1 = parseDouble(String.valueOf(array[0]));
-                num2 = parseDouble(String.valueOf(array[2]));
+                num2 = parseDouble(String.valueOf(array[1]));
             }
 
             if (containAdditionOperand) {
@@ -225,16 +222,15 @@ public class Calculator {
             double num1 = 0;
             double num2 = 0;
             String value = v.toString();
-            char[] array = value.toCharArray();
-            String operand = "";
+            String[] array = value.split("-");
+            String operand = "-";
             boolean containSubtractOperand = false;
             double operandResult = 0;
 
-            if (array[1] == '-') {
-                operand = String.valueOf(array[1]);
+            if (value.contains("-")) {
                 containSubtractOperand = true;
                 num1 = parseDouble(String.valueOf(array[0]));
-                num2 = parseDouble(String.valueOf(array[2]));
+                num2 = parseDouble(String.valueOf(array[1]));
             }
 
             if (containSubtractOperand) {
@@ -264,7 +260,7 @@ public class Calculator {
         if (nextNodeKey < linkedHashMap.size()) {
             String nextNode = linkedHashMap.get(nextNodeKey);
             String valueSplit = "";
-            String[] splitArray = nextNode.split("");
+            String[] splitArray = nextNode.split("(?<=[-+*/])|(?=[-+*/])");
             for (int i = 0; i < splitArray.length; i++) {
                 valueSplit = operandResult + splitArray[1] + splitArray[2];
                 break;
