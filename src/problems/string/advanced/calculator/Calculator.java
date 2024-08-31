@@ -10,10 +10,10 @@ import static java.lang.Math.*;
 public class Calculator {
     public static double operandResult = 0;
 
-    public static void calculate(String str) {
+    public static double calculate(String str) {
         if (str == null || str.isEmpty()) {
             System.out.println("Error: Input is empty or null");
-            return;
+            return 0;
         }
 
         LinkedHashMap<Integer, String> bracketsMap = new LinkedHashMap<>();
@@ -35,13 +35,15 @@ public class Calculator {
             String[] partsSqrt = str.split("[()]");
             sqrtResult = sqrt(Double.parseDouble((partsSqrt[1])));
             exponentResult = sqrtResult;
-            System.out.println("sqrtResult = " + sqrtResult);
+//            System.out.println("sqrtResult = " + sqrtResult);
+            return exponentResult;
         }
 
         if (str.contains("^")) {
             String[] partsExponent = str.split("[()]");
             exponentResult = Math.pow(Double.parseDouble((parts[0])), Double.parseDouble((parts[2])));
             System.out.println("exponentResult = " + exponentResult);
+            return exponentResult;
         }
 
 //        if (sqrtResult != 0 && exponentResult != 0) {
@@ -62,7 +64,7 @@ public class Calculator {
         }
 
         //checking brackets
-        System.out.println("bracketsMap= " + bracketsMap);
+//        System.out.println("bracketsMap= " + bracketsMap);
         for (Map.Entry<Integer, String> entry : bracketsMap.entrySet()) {
             Number k = entry.getKey();
             String v = entry.getValue();
@@ -127,7 +129,7 @@ public class Calculator {
             divisionMap.put(indexForAddingToMap, entry);
             indexForAddingToMap++;
         }
-        System.out.println("divisionMap= " + divisionMap);
+//        System.out.println("divisionMap= " + divisionMap);
 
         //checking division
         for (Map.Entry<Integer, String> entry : divisionMap.entrySet()) {
@@ -161,7 +163,7 @@ public class Calculator {
             multiplyMap.put(indexForAddingToMap, entry);
             indexForAddingToMap++;
         }
-        System.out.println("multiplyMap = " + multiplyMap);
+//        System.out.println("multiplyMap = " + multiplyMap);
 
         //checking multiplication
         for (Map.Entry<Integer, String> entry : multiplyMap.entrySet()) {
@@ -195,7 +197,7 @@ public class Calculator {
             additionMap.put(indexForAddingToMap, entry);
             indexForAddingToMap++;
         }
-        System.out.println("additionMap = " + additionMap);
+//        System.out.println("additionMap = " + additionMap);
 
         //checking addition
         for (Map.Entry<Integer, String> entry : additionMap.entrySet()) {
@@ -229,7 +231,7 @@ public class Calculator {
             subtractionMap.put(indexForAddingToMap, entry);
             indexForAddingToMap++;
         }
-        System.out.println("subtractionMap = " + subtractionMap);
+//        System.out.println("subtractionMap = " + subtractionMap);
 
         //checking subtract
         for (Map.Entry<Integer, String> entry : subtractionMap.entrySet()) {
@@ -258,6 +260,7 @@ public class Calculator {
         }
 
         System.out.println("Result of the given expression: " + operandResult);
+        return operandResult;
     }
 
     public static void updateNodesAndPerformOperation(Map<Integer, String> linkedHashMap, int key, int previousNodeKey, int nextNodeKey, Double num1, Double num2, String operand) {
@@ -306,14 +309,26 @@ public class Calculator {
                 break;
             case "/":
                 Division divide = new Division(number1, number2);
-                if (number2 == 0)
-                    System.out.println("Error: Cannot divide by zero");
                 result = divide.getResult();
                 break;
             default:
                 System.out.println("Only Addition, Subtraction, Multiplication, Division operations are allowed");
         }
         return Double.parseDouble(result);
+    }
+
+    public static void storeInMemory(double v) {
+    }
+
+    public static void clearMemory() {
+    }
+
+    public static double recallMemory() {
+        return 0;
+    }
+
+    public static String recallAllMemory() {
+        return null;
     }
 
     public static void main(String[] args) {
