@@ -6,26 +6,29 @@ import java.util.List;
 import java.util.Objects;
 
 public class test {
-    String name;
-    String address;
-
-    public test(String name, String address) {
-        this.name = name;
-        this.address = address;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        test test = (test) o;
-        return Objects.equals(name, test.name) && Objects.equals(address, test.address);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, address);
-    }
+//    String name;
+//    String address;
+//
+//    public test(String name, String address) {
+//        this.name = name;
+//        this.address = address;
+//    }
+//
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        test test = (test) o;
+//        return Objects.equals(name, test.name) && Objects.equals(address, test.address);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(name, address);
+//    }
+//
+//
+//
 
     public static <list> void main(String[] args) {
 
@@ -59,7 +62,19 @@ public class test {
 //        System.out.println(wrappedinteger);
 //        integer = wrappedinteger;
 //        System.out.println(integer);
-
-
+//
+//        String str = "3 + (2 * 4) -5";
+//        String[] newStr = (str.split("(\\(\\))"));
+//        System.out.println(Arrays.toString(newStr));
+//
+//        new test();
+//    }
+//    public test() {
+        String myString = "(2*(3-2)+[5-3])";
+        String myArray[] = myString.split("[\\(||\\)]");
+        System.out.println("Input String is : "+myString);
+        for(int i=1; i<=(myArray.length)-1; i++)
+            System.out.println("myArray["+i+"] : "+ myArray[i]);
     }
+    //}
 }
