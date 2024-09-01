@@ -3,14 +3,17 @@ package problems.string.advanced.calculator;
 import java.util.*;
 
 import static java.lang.Double.parseDouble;
-import static java.lang.Double.valueOf;
 import static java.lang.Math.*;
 
 @SuppressWarnings("java:S106")
 public class Calculator {
     public static double operandResult = 0;
+    private static List<Double> arrayList = new ArrayList<>();
+    private static int indexForArrayList = 0;
+    private static boolean resultStoreInMemory = false;
 
-    public static double calculate(String str) {
+
+    public static double calculate(String str) throws ArithmeticException {
         if (str == null || str.isEmpty()) {
             System.out.println("Error: Input is empty or null");
             return 0;
@@ -30,11 +33,18 @@ public class Calculator {
         double sqrtResult = 0;
         double exponentResult = 0;
 
+        if (str.contains("M+")) {
+            resultStoreInMemory = true;
+        }
+
         if (str.contains("sqrt")) {
             exponentResult = 0;
             String[] partsSqrt = str.split("[()]");
             sqrtResult = sqrt(Double.parseDouble((partsSqrt[1])));
             exponentResult = sqrtResult;
+            if (sqrtResult == Double.NaN) {
+                throw new ArithmeticException();
+            }
 //            System.out.println("sqrtResult = " + sqrtResult);
             return exponentResult;
         }
@@ -54,6 +64,10 @@ public class Calculator {
         //making tuples and adding to the Map
         for (int i = 0; i < parts.length - 1; i = i + 2) {
             //checking validation if it passes then adding to the Map
+            if (parts[parts.length-1].equals("M+") && i > 1 && resultStoreInMemory) {
+                resultStoreInMemory = false;
+                break;
+            }
             if (parts[i].equals(" ") || parts[i + 2].equals(" ")) {
                 System.out.println("Error: Invalid input format");
             } else {
@@ -314,21 +328,42 @@ public class Calculator {
             default:
                 System.out.println("Only Addition, Subtraction, Multiplication, Division operations are allowed");
         }
+        if (resultStoreInMemory) {
+            storeInMemory(Double.parseDouble(result));
+        }
         return Double.parseDouble(result);
     }
 
-    public static void storeInMemory(double v) {
+    public static void storeInMemory(double value) {
+//        arrayList.add(value);
+        arrayList.add(indexForArrayList, value);
+        indexForArrayList++;
     }
 
     public static void clearMemory() {
+        boolean b = arrayList.removeAll(arrayList);
     }
 
     public static double recallMemory() {
-        return 0;
+        System.out.println("arrayList: "+arrayList);
+        return arrayList.get(indexForArrayList);
     }
 
     public static String recallAllMemory() {
-        return null;
+        if (arrayList.isEmpty()) {
+            return "No values stored in memory.";
+        }
+        String memoryValues = "";
+        for (int i = 0; i < 5; i++) {
+            if (i == 0) {
+                memoryValues = memoryValues + arrayList.get(arrayList.size() - 1) + ", ";
+            } else if (i == 4) {
+                memoryValues = memoryValues + arrayList.get(i);
+            } else {
+                memoryValues = memoryValues + arrayList.get(i) + ", ";
+            }
+        }
+        return "Stored values: " + memoryValues;
     }
 
     public static void main(String[] args) {

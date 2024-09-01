@@ -50,7 +50,6 @@ public class CalculatorTest {
         Calculator.calculate("sqrt(-9)");
     }
 
-    @Ignore
     @Test
     public void testMemoryOperations() {
         Calculator.calculate("3 + 5 M+");
@@ -63,7 +62,6 @@ public class CalculatorTest {
         assertEquals("No values stored in memory.", Calculator.recallAllMemory());
     }
 
-    @Ignore
     @Test
     public void testRecallAllMemory() {
         Calculator.storeInMemory(8.0);
