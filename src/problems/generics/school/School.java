@@ -4,10 +4,10 @@ import java.util.*;
 
 
 public class School<S, G extends Number> {
-    private Map<String, Course<S, G>> schoolMap;
+    public Map<String, Course<S, G>> schoolMap;
     S studentID;
     G grade;
-    String courseID;
+    static String courseID;
 
 
     public School() {
@@ -20,6 +20,9 @@ public class School<S, G extends Number> {
         switch (userStringAfterSplit[0]) {
             case "add_course":
                 addCourse(userStringAfterSplit[1]);
+                break;
+            case "remove_course":
+                removeCourse(userStringAfterSplit[1]);
                 break;
             case "list_courses":
                 listCourses();
@@ -61,6 +64,14 @@ public class School<S, G extends Number> {
     public void addCourse(String courseID) {
         schoolMap.put(courseID, new Course<>());
         System.out.println("Course '" + courseID + "' added.");
+    }
+
+    public void removeCourse(String courseID) {
+        if (schoolMap.containsKey(courseID)) {
+            schoolMap.remove(courseID);
+        } else {
+            System.out.println("course ID does not exist.");
+        }
     }
 
     public void enrollStudents(String courseID, S studentID) {
@@ -146,6 +157,19 @@ public class School<S, G extends Number> {
     }
 
     public static void main(String[] args) {
+        School<String, Double> school = new School<>();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("School ABC");
+        System.out.println("Enter the command you want to execute. Type quit to exit from process.");
+        while (true) {
+            String userCommand = scanner.nextLine();
+            if (userCommand.equalsIgnoreCase("quit")) {
+                System.out.println("Exiting from the process");
+                break;
+            }
+
+            school.processCommand(userCommand);
+        }
 
     }
 }
