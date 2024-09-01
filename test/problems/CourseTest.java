@@ -1,9 +1,8 @@
 package problems;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
-import problems.generics.Course;
+import problems.generics.course_book.Course;
 
 import java.util.Map;
 import java.util.Optional;

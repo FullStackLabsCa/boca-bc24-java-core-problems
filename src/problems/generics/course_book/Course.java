@@ -1,8 +1,7 @@
-package problems.generics;
+package problems.generics.course_book;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 public class Course<S, G> {
     private Map<S, G> course;
@@ -29,7 +28,7 @@ public class Course<S, G> {
 
     public void assignGrade(S studentId, G grade) {
 
-            course.put(studentId, grade);
+        course.put(studentId, grade);
     }
 
     public void getGrade(S studentId) {
@@ -43,9 +42,11 @@ public class Course<S, G> {
             return false;
         }
     }
+
     public Map<S, G> getAllGrades() {
         return new HashMap<>(course);
     }
+
     public void listAllGrades() {
         for (Map.Entry<S, G> entry : course.entrySet()) {
             System.out.println("StudentID: " + entry.getKey() + " their grade: " + entry.getValue());
@@ -69,11 +70,11 @@ public class Course<S, G> {
         System.out.println(course.isStudentEnrolled(103));
         System.out.println(course.isStudentEnrolled(104));
         System.out.println(course.isStudentEnrolled(105));
-        System.out.println("all grades are :"+course.getAllGrades());
+        System.out.println("all grades are :" + course.getAllGrades());
         course.listAllGrades();
         course.getGrade(102);
         course.enrollStudent(109);
-       // System.out.println(course.enrollStudent(8));
+        // System.out.println(course.enrollStudent(8));
 
     }
 }

@@ -1,4 +1,4 @@
-package problems.generics;
+package problems.generics.list_to_array;
 
 import java.util.ArrayList;
 import java.util.List;

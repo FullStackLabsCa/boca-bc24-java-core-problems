@@ -2,7 +2,7 @@ package problems;
 
 import org.junit.Before;
 import org.junit.Test;
-import problems.generics.GradeBook;
+import problems.generics.grade_book.GradeBook;
 
 import static org.junit.Assert.assertEquals;
 

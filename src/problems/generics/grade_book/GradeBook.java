@@ -1,4 +1,4 @@
-package problems.generics;
+package problems.generics.grade_book;
 
 import java.util.ArrayList;
 import java.util.List;
