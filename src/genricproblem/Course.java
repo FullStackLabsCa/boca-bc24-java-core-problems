@@ -1,36 +1,66 @@
 package genricproblem;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
-public class Course<S extends Number,G extends Number> {
-   private Map<S,G>  course;
-   private String courseName;
+public class Course<S,G extends Number> {
+    private final Map<S, G> studentGrades;
+    private G grade;
 
-   //create the constructor
-
-
+    //create the constructor
     public Course() {
-        this.course = new HashMap<>();
-        this.courseName = courseName;
+        this.studentGrades = new HashMap<>();
+
     }
 
+    //enroll the student
     public void enrollStudent(S studentId) {
-        course.get(studentId);
+        studentGrades.putIfAbsent(studentId, null);
+
     }
 
+    //check if the student is enrolled if not return false
     public boolean isStudentEnrolled(S studentId) {
-        return course.containsKey(studentId);
+        if (studentGrades.containsKey(studentId))
+            return true;
+        else
+            return false;
     }
 
-    public S getAllGrades() {
-
-        if (course != null) {
-            S grade = null;
-            return grade;
-        } else {
-            System.out.println("Error: Course '" + courseName + "' does not exist.");
+    //assign the grade
+    public void assignGrade(S studentId, G grade) {
+        if (studentGrades.containsKey(studentId) == true) {
+            System.out.println(studentGrades.put(studentId, grade));
         }
-        return null;
+    }
+
+    //get the grade for a student
+    public Optional<G> getGrade(S studentId) {
+        if(studentId==null){
+            System.out.println("no student id");
+        }
+        if(studentGrades.containsKey(studentId)){
+            grade=studentGrades.get(studentId);
+            return Optional.of(grade);
+
+        }
+        return Optional.empty();
+    }
+
+    //get all the grades as  a map
+    public Map<S, G> getAllGrades() {
+        return new HashMap<>(studentGrades);//return a new copy of the map to avoid external modification
+
+    }
+
+    public void listAllGrades() {
+        if (studentGrades.isEmpty()) {
+            System.out.println("No grades assigned. ");
+        } else {
+            for (Map.Entry<S, G> entry : studentGrades.entrySet()) {
+                System.out.println("Student ID: " + entry.getKey() + ", Grade: " + entry.getValue());
+            }
+        }
     }
 }
+
+
