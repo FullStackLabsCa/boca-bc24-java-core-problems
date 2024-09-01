@@ -50,17 +50,6 @@ public class Course<S, G> {
         }
     }
 
-//    public Map<S, G> getAllGrades(S identifier) {
-//
-//        // check if student is already enrolled
-//        if (isStudentEnrolled(identifier)) {
-//            return (Map<S, G>) studentToGradeMap.get(identifier); // return the student's grade
-//        } else {
-//            System.out.println("Student is not enrolled");
-//            return null;
-//        }
-//    }
-
     public void listAllGrades() {
 
         // loop through the map and print each student's identifier and geade
@@ -69,9 +58,6 @@ public class Course<S, G> {
         }
     }
 
-//    public Map<Integer, Double> getAllGrades() {
-//        return getAllGrades();
-//    }
 
 
 
