@@ -12,6 +12,7 @@ public class Division extends Input {
 //            System.out.println("Result is " + div);
         }else {
             System.out.println("Division by zero is not allowed.");
+            div=Double.NaN;
         }
         return div;
     }

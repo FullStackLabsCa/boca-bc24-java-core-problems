@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class SchoolLauncher {
     public static void main(String[] args) {
-        School<Object, Number> objectNumberSchool = new School<>();
+        School<String, Number> objectNumberSchool = new School<>();
         Scanner scanner = new Scanner(System.in);
         char exitInput;
         final String BOLD = "\033[1m";
