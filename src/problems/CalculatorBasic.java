@@ -3,13 +3,13 @@ package problems;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Calculator {
+public class CalculatorBasic {
     public static void main(String[] args) {
-        Calculator cal = new Calculator();
-        cal.calculate("5 +");
+        CalculatorBasic cal = new CalculatorBasic();
+        System.out.println(cal.calculateBasic("5 + 5"));
     }
 
-    public String calculate(String exp) {
+    public String calculateBasic(String exp) {
         String regex = "\\d+[.]?\\d*[-+*/]\\d+[.]?\\d*$";
 
         String x = validateEmptyOrNull(exp);

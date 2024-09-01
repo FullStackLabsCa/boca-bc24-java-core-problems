@@ -1,82 +1,187 @@
 package arrays;
 
-import java.util.Stack;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Calculator {
-    public static void main(String[] args) {
-        String expression = "3 + (2 * 4) - 5".replaceAll("\\s", "").toLowerCase();
-        //calculateSquareRoot(expression);
-        Stack<Double> numb = new Stack<>();
-        Stack<Character> operation = new Stack<>();
-        String ValidNumber = "[0-9]*";
-        for (int current = 0; current < expression.length()-1; current++) {
-            if (expression.charAt(current) == '+' ||
-                    expression.charAt(current) == '-' ||
-                    expression.charAt(current) == '+' ||
-                    expression.charAt(current) == '/' ||
-                    expression.charAt(current) == '*' ||
-                    expression.charAt(current) == '(' ||
-                    expression.charAt(current) == ')'
-            ){
-                operation.push(expression.charAt(current));
-            } else {
 
-                numb.push(Double.parseDouble(String.valueOf(expression.charAt(current))));
+    static List<Double> memory = new ArrayList<>();
+    static double currentResult;
+    static int memorySize = 0;
+    static final int MAX_MEMORY = 5;
+
+    public static void main(String[] args) {
+        String calculator = "\uD83D\uDCF1";
+        System.out.println("===========CALCULATOR========== " + calculator);
+        calculate("3 + 5 M+");
+
+    }
+
+    public static double calculate(String expression) {
+        boolean memoryOperation = false;
+        expression = expression.replaceAll("\\s", "").toLowerCase();
+        if (expression.contains("sqrt")) {
+            try {
+                currentResult = calculateSquareRoot(expression);
+                memory.add(currentResult);
+                return currentResult;
+            } catch (IllegalArgumentException e) {
+                e.printStackTrace();
+            }
+
+
+        }
+        if (expression.contains("m+")) {
+            String pattern = "m\\+";
+            expression = expression.replaceAll(pattern, "").trim();
+            memoryOperation = true;
+        }
+
+        String resultSoFar = "0";
+        int openingBracketIndex = 0;
+        int closingBracketIndex = 0;
+        for (int currentIndex = 1; currentIndex < expression.length(); currentIndex++) {
+            if (expression.charAt(currentIndex) == '(') {
+                openingBracketIndex = currentIndex;
+            } else if (expression.charAt(currentIndex) == ')') {
+                closingBracketIndex = currentIndex;
+                resultSoFar = expression.substring(openingBracketIndex + 1, closingBracketIndex);
+                resultSoFar = solveExpression(resultSoFar);
+                expression = expression.substring(0, openingBracketIndex) + resultSoFar + expression.substring(closingBracketIndex + 1);
+
+            }
+            if (currentIndex == expression.length() - 1) {
+                resultSoFar = solveExpression(expression);
+            }
+
+        }
+        memory.add(Double.valueOf(resultSoFar));
+        return Double.valueOf(resultSoFar);
+    }
+
+    private static String solveExpression(String expression) {
+        String numberRegex = "\\d+\\.\\d+|\\d+";
+        String operatorRegex = "[+*/^-]";
+
+        List<Double> operands = new ArrayList<>();
+        List<String> operators = new ArrayList<>();
+
+        Matcher numberMatcher = Pattern.compile(numberRegex).matcher(expression);
+        while (numberMatcher.find()) {
+            operands.add(Double.parseDouble(numberMatcher.group()));
+        }
+        Matcher operatorMatcher = Pattern.compile(operatorRegex).matcher(expression);
+        while (operatorMatcher.find()) {
+            operators.add(operatorMatcher.group());
+        }
+        String result = subExpressionCalculate(operators, operands);
+        return result;
+
+    }
+
+    private static String subExpressionCalculate(List<String> operators, List<Double> operands) {
+        int index = 0;
+        while (index < operators.size()) {
+            String operator = operators.get(index);
+            if (operator.equals("^")) {
+                double base = operands.get(index);
+                double exponent = operands.get(index + 1);
+                double result = Math.pow(base, exponent);
+                operands.set(index, result);
+                operands.remove(index + 1);
+                operators.remove(index);
+            } else {
+                index++;
             }
         }
 
+        index = 0;
+        while (index < operators.size()) {
+            String operator = operators.get(index);
+            if (operator.equals("*") || operator.equals("/")) {
+                double firstOperand = operands.get(index);
+                double secondOperand = operands.get(index + 1);
+                double result = 0;
+                if (operator.equals("*")) {
+                    result = firstOperand * secondOperand;
+                } else if (operator.equals("/")) {
+                    if (secondOperand == 0) {
+                        return "NaN";
+                    }
+                    result = firstOperand / secondOperand;
+                }
+                operands.set(index, result);
+                operands.remove(index + 1);
+                operators.remove(index);
+            } else {
+                index++;
+            }
+        }
 
-
-        char value;
-        double result = 0;
-        double value1;
-        double value2;
-//        for (int expValue = 0; expValue < expression.length(); expValue++) {
-//            result = getExpressionResult(expression, expValue, result, calculation);
-//            System.out.println(result);
-//        }
-//        System.out.println(result);
+        double finalResult = operands.get(0);
+        for (int j = 0; j < operators.size(); j++) {
+            String operator = operators.get(j);
+            double nextOperand = operands.get(j + 1);
+            if (operator.equals("+")) {
+                finalResult += nextOperand;
+            } else if (operator.equals("-")) {
+                finalResult -= nextOperand;
+            }
+        }
+        return String.valueOf(finalResult);
     }
 
-    private static void calculateSquareRoot(String expression) {
+
+    private static Double calculateSquareRoot(String expression) {
         String sqrtRegex = "sqrt[(][0-9]*[)]";
         Pattern pattern = Pattern.compile(sqrtRegex);
         Matcher matcher = pattern.matcher(expression);
         String fullMatch = "";
         if (matcher.find()) {
             fullMatch = matcher.group();
-            System.out.println("Full match: " + fullMatch);
         } else {
-            System.out.println("Invalid Sqrt Expression found.");
+            throw new ArithmeticException("Invalid sqrt expression found.");
         }
 
         double squrtResult = Math.sqrt(Double.parseDouble(fullMatch.replaceAll("\\D", "")));
-        System.out.println(squrtResult);
+        return squrtResult;
     }
 
-    private static double getExpressionResult(String expression, int expValue, double result, Stack<Double> calculation) {
-        switch (expression.charAt(expValue)) {
-            case '+':
-                result += calculation.pop();
-                break;
-            case '-':
-                result = result - calculation.pop();
-                break;
-            case '*':
-                result = result * calculation.pop();
-                break;
-            case '/':
-                result = result / calculation.pop();
-                break;
-            case '(':
-                break;
-            case ')':
-                break;
-            default:
-                calculation.push(Double.parseDouble(String.valueOf(expression.charAt(expValue))));
+    public static void clearMemory() {
+        memory = new ArrayList<>();
+    }
+
+    public static Double recallMemory() {
+        return memory.get(memory.size() - 1);
+
+    }
+
+    public static void storeInMemory(double v) {
+        if (memorySize > MAX_MEMORY) {
+            memory.set(0, v);
+        } else {
+            memory.add(v);
+            memorySize++;
         }
-        return result;
+
+
+    }
+
+    public static String recallAllMemory() {
+        String output = "Stored values: ";
+        if (memory.size() == 0) {
+            return "No values stored in memory.";
+        } else {
+            for (Double value : memory) {
+                if (memory.indexOf(value) == memory.size() - 1) {
+                    output += value;
+                } else {
+                    output += value + ", ";
+                }
+            }
+        }
+
+        return output;
     }
 }
