@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d3b01333-d157-4793-b4ff-8016ea5cf74b" name="Changes" comment="workspace file">
+    <list default="true" id="d3b01333-d157-4793-b4ff-8016ea5cf74b" name="Changes" comment="calculator problem with multiple operations">
+      <change afterPath="$PROJECT_DIR$/src/problems/Calculator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/problems/calculator/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/calculator/Calculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/problems/calculator/CalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/calculator/CalculatorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +63,7 @@
     "Application.MapOfMapsExample.executor": "Run",
     "Application.OddCounter.executor": "Run",
     "Application.School.executor": "Run",
+    "JUnit.CalculatorTest.executor": "Run",
     "JUnit.CountOccurrencesTest.executor": "Run",
     "JUnit.CourseTest.executor": "Run",
     "JUnit.GradeBookTest.executor": "Run",
@@ -73,7 +76,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "feature/kivi-bc24-java-core-problems",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/Kiran.Virani/source/boca-bc24-java-core-problems/src/problems/testproblems",
+    "last_opened_file_path": "/Users/Kiran.Virani/reactivestax/source/boca-bc24-java-core-problems",
     "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
@@ -321,7 +324,23 @@
       <option name="project" value="LOCAL" />
       <updated>1724943983562</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="calculator problem with basic arithmetic operations">
+      <option name="closed" value="true" />
+      <created>1724953019783</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1724953019783</updated>
+    </task>
+    <task id="LOCAL-00019" summary="calculator problem with multiple operations">
+      <option name="closed" value="true" />
+      <created>1725122909181</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1725122909181</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -351,6 +370,8 @@
     <MESSAGE value="course problem solved and all tests passed." />
     <MESSAGE value="school problem solved and all tests passed." />
     <MESSAGE value="workspace file" />
-    <option name="LAST_COMMIT_MESSAGE" value="workspace file" />
+    <MESSAGE value="calculator problem with basic arithmetic operations" />
+    <MESSAGE value="calculator problem with multiple operations" />
+    <option name="LAST_COMMIT_MESSAGE" value="calculator problem with multiple operations" />
   </component>
 </project>

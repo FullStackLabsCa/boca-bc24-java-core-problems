@@ -5,8 +5,6 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-
-
 public class CalculatorTest {
 
     @Before
@@ -15,7 +13,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void testBasicOperations() {
+    public void testBasicOperations() throws Exception {
         assertEquals(5.6, Calculator.calculate("3.5 + 2.1"), 0.001);
         assertEquals(6.0, Calculator.calculate("10 - 4"), 0.001);
         assertEquals(42.0, Calculator.calculate("6 * 7"), 0.001);
@@ -23,13 +21,13 @@ public class CalculatorTest {
     }
 
     @Test
-    public void testDivisionByZero() {
+    public void testDivisionByZero() throws Exception {
         assertEquals(Double.NaN, Calculator.calculate("10 / 0"), 0.001);
     }
 
     @Test
     public void testMultipleOperations() {
-        assertEquals(10.0, Calculator.calculate("3 + 5 * 2 - 4 / 2"), 0.001);
+        assertEquals(11.0, Calculator.calculate("3 + 5 * 2 - 4 / 2"), 0.001);
     }
 
     @Test
