@@ -65,7 +65,7 @@ public class Calculator {
         for (int i = 0; i < parts.length - 1; i = i + 2) {
             //checking validation if it passes then adding to the Map
             if (parts[parts.length-1].equals("M+") && i > 1 && resultStoreInMemory) {
-                resultStoreInMemory = false;
+//                resultStoreInMemory = false;
                 break;
             }
             if (parts[i].equals(" ") || parts[i + 2].equals(" ")) {
@@ -330,23 +330,27 @@ public class Calculator {
         }
         if (resultStoreInMemory) {
             storeInMemory(Double.parseDouble(result));
+            resultStoreInMemory = false;
         }
         return Double.parseDouble(result);
     }
 
     public static void storeInMemory(double value) {
-//        arrayList.add(value);
         arrayList.add(indexForArrayList, value);
         indexForArrayList++;
     }
 
     public static void clearMemory() {
         boolean b = arrayList.removeAll(arrayList);
+        indexForArrayList = 0;
     }
 
     public static double recallMemory() {
-        System.out.println("arrayList: "+arrayList);
-        return arrayList.get(indexForArrayList);
+        double value= 0;
+        for (double val: arrayList){
+            value = val;
+        }
+        return value;
     }
 
     public static String recallAllMemory() {

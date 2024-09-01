@@ -50,6 +50,7 @@ public class CalculatorTest {
         Calculator.calculate("sqrt(-9)");
     }
 
+//    @Ignore
     @Test
     public void testMemoryOperations() {
         Calculator.calculate("3 + 5 M+");
