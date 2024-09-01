@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d3b01333-d157-4793-b4ff-8016ea5cf74b" name="Changes" comment="calculator problem with multiple operations">
-      <change afterPath="$PROJECT_DIR$/src/problems/Calculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/calculator/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/calculator/Calculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/problems/calculator/CalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/calculator/CalculatorTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="d3b01333-d157-4793-b4ff-8016ea5cf74b" name="Changes" comment="calculator problem and all test cases passed" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -340,7 +335,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725122909181</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="calculator problem and all test cases passed">
+      <option name="closed" value="true" />
+      <created>1725220774654</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1725220774654</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -372,6 +375,7 @@
     <MESSAGE value="workspace file" />
     <MESSAGE value="calculator problem with basic arithmetic operations" />
     <MESSAGE value="calculator problem with multiple operations" />
-    <option name="LAST_COMMIT_MESSAGE" value="calculator problem with multiple operations" />
+    <MESSAGE value="calculator problem and all test cases passed" />
+    <option name="LAST_COMMIT_MESSAGE" value="calculator problem and all test cases passed" />
   </component>
 </project>
