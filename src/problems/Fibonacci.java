@@ -11,15 +11,11 @@ public class Fibonacci {
     }
 
     private static boolean isValidInput(String input) {
+        return  true;
     }
 
     public static List<Integer> generateFibonacci(int n) {
-        int n=0;
-        if(n<=1){
-            return n;
-        }
-
-        return(Fibonacci(n-1)+Fibonacci)(n-2));
+         return null;
 
     }
 }
