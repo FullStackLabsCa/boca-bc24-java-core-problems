@@ -26,7 +26,6 @@ public class School<S, G extends Number> {
             System.out.println("Student '" + studentId + "' enrolled in course '" + courseName + "'.");
         } else {
             System.out.println("Error: Cannot enroll student. Course '" + courseName + "' does not exist.");
-            //  System.out.println("Error: Cannot assign grade. Student '"+ studentId+"' is not enrolled in course '"+courseName+"'.");
         }
     }
 
@@ -63,7 +62,7 @@ public class School<S, G extends Number> {
         for (Course<S, G> course1 : courseHashMap.values()) {
             uniquestudentset.addAll(course1.getStudents());
         }
-        System.out.println("Unique students enrolled:\n" + uniquestudentset);
+        System.out.println("Unique studentsc enrolled:\n" + uniquestudentset);
     }
 
     public void uniqueCourses() {
@@ -85,7 +84,6 @@ public class School<S, G extends Number> {
             System.out.println("Average score for course '" + courseName + "': " + averagegrade);
         }
     }
-
     public void cumulativeAverage(S student) {
         double sum = 0;
         int count = 0;

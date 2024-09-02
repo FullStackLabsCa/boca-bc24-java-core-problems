@@ -24,7 +24,7 @@ public class FindMinMax {
                  maxValue=array[i];
             }
             if(array[i] < minValue){
-                minValue = array[i];      ;
+                minValue = array[i];
             }
         }
         return new int[]{minValue,maxValue};

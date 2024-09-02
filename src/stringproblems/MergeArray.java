@@ -24,12 +24,8 @@ public class MergeArray {
         int arrayLength = input1.length + input2.length;
         int[] mergeArray = new int[arrayLength];
 
-        for(int i=0;i<input1.length;i++){
-             mergeArray[i] = input1[i];
-        }
-        for (int j=0; j<input2.length;j++){
-             mergeArray[input1.length+j] = input2[j];
-        }
+        System.arraycopy(input1, 0, mergeArray, 0, input1.length);
+        System.arraycopy(input2, 0, mergeArray, input1.length, input2.length);
         return mergeArray;
     }
 }

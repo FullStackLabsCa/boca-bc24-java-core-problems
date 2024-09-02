@@ -7,7 +7,7 @@ public class ParanthesisWithoutStack {
         Scanner scanner = new Scanner(System.in);
         System.out.println("enter an expression to match");
         String input = scanner.nextLine();
-        if(paranthesis(input)==true)
+        if(paranthesis(input))
         System.out.println("Paranthesis are matching"+ input);
         else
             System.out.println("Paranthesis are not  matching"+ input);

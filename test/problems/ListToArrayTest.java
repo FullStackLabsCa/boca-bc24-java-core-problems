@@ -27,7 +27,7 @@ public class ListToArrayTest {
 
     @Test
     public void testListToArrayWithEmptyList() {
-        List<String> emptyList = Arrays.asList();
+        List<String> emptyList = List.of();
         assertNull(ListToArray.listToArray(emptyList, new String[emptyList.size()]));
     }
 

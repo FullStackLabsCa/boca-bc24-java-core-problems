@@ -12,7 +12,7 @@ public class SortedArray {
         for (int i = 0; i < inputs.length; i++) {
             intInputArray[i] = Integer.parseInt(inputs[i].trim());
         }
-        if(isSorted(intInputArray)==true){
+        if(isSorted(intInputArray)){
             System.out.println("its sorted ");
         }
         else

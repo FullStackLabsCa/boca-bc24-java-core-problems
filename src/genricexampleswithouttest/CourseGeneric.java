@@ -4,7 +4,7 @@ import java.util.*;
 public class CourseGeneric<S,G> {
     private G grade;
     Map<S, G> courseGpa = new HashMap<>();
-    private List<String> courses;
+    private final List<String> courses;
 
     public CourseGeneric() {// constructor
         this.courseGpa = new HashMap<>();

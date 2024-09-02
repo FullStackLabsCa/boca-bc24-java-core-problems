@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public class GradeBook<T extends Number & Comparable> {
 
-    private List<T> grades;// type of  grades
+    private final List<T> grades;// type of  grades
 
     public GradeBook() {
         grades = new ArrayList<>();
@@ -80,4 +80,3 @@ public class GradeBook<T extends Number & Comparable> {
     }
 
 }
-

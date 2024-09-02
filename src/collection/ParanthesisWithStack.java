@@ -8,7 +8,7 @@ public class ParanthesisWithStack {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter parantheis");
         String input = scanner.nextLine();
-        if (checkParanthesis(input) == true) {
+        if (checkParanthesis(input)) {
             System.out.println("paranthesis are balanced :" + input);
         } else
             System.out.println("Paranthesis are  not balanced :" + input);

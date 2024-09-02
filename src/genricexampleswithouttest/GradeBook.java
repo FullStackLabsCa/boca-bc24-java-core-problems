@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GradeBook<T extends Number & Comparable>{
-    private List<T> grades;// type of  grades
+    private final List<T> grades;// type of  grades
     public GradeBook( ){
         grades = new ArrayList<>();
     } // list of grades

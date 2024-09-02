@@ -3,8 +3,8 @@ package genricproblem;
 import java.util.*;
 
 public class Course<S, G extends Number> {
-    private G grade;
     Map<S, G> courseGpa = new HashMap<>();
+    private G grade;
 
     public Course() {
     }
@@ -14,10 +14,7 @@ public class Course<S, G extends Number> {
     }
 
     public boolean isStudentEnrolled(S studentid) {
-        if (courseGpa.containsKey(studentid))
-            return true;
-        else
-            return false;
+        return courseGpa.containsKey(studentid);
     }
 
     public Collection<Object> getAllGrades(S studentid) {
@@ -45,7 +42,7 @@ public class Course<S, G extends Number> {
     }
 
     public void assignGrade(S studentid, G grade) {
-        if (courseGpa.containsKey(studentid) == true)
+        if (courseGpa.containsKey(studentid))
             System.out.println(courseGpa.put(studentid, grade));
 
     }
@@ -64,8 +61,3 @@ public class Course<S, G extends Number> {
         }
     }
 }
-
-
-
-
-
