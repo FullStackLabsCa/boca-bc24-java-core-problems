@@ -4,6 +4,7 @@ public class ArithmeticOperations {
     public static double division(double oerrandOne, double operandTwo) {
         if (operandTwo == 0) {
             System.out.println("Division by zero not allowed");
+            return Double.NaN;
         }
         return oerrandOne / operandTwo;
 
@@ -38,7 +39,7 @@ public class ArithmeticOperations {
 
     public static double sqrt(double oerrandOne) {
         if (oerrandOne < 0) {
-            System.out.println("Square root of a negative number is not allowed");
+            throw new ArithmeticException("Square root of a negative number is not allowed");
         }
         return Math.sqrt(oerrandOne);
     }

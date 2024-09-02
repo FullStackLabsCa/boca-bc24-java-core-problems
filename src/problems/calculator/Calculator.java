@@ -43,30 +43,40 @@ public class Calculator {
     public static void storeInMemory(double value){
         if (storedMemoryList.size()<5){
             storedMemoryList.add(value);
+            System.out.println("Added "+value);
         }
         else{
+            System.out.println("Removing: "+storedMemoryList.get(0));
             storedMemoryList.remove(0);
+
             storedMemoryList.add(value);
+            System.out.println("Added "+value);
         }
 
     }
 
     public static Double recallMemory(){
+        if (storedMemoryList.get(storedMemoryList.size()-1)==null){
+            System.out.println("No values stored in memory.");
+        }
        return storedMemoryList.get(storedMemoryList.size()-1);
     }
 
     public static void clearMemory(){
+        System.out.println("No values stored in memory.");
         storedMemoryList.clear();
     }
 
-    public static void recallAllMemory(){
-        System.out.println("");
-        System.out.print(" Stored values : ");
-        for(double element : storedMemoryList){
-            System.out.print(element+" ");
-
+    public static Object recallAllMemory(){
+        if (storedMemoryList.isEmpty()) {
+            System.out.println("No values stored in memory.");
+            return "No values stored in memory.";
         }
+        System.out.print("Stored values: "+storedMemoryList.toString().replace("[", "").replace("]", ""));
+//
 
+        return "Stored values: "+storedMemoryList.toString().replace("[", "").replace("]", "");
+//;
     }
 
     public static double calculate(String str) {
@@ -81,8 +91,8 @@ public class Calculator {
         int startPosition = startPriorityOperator(listString);
         double partAnswer=0;
         int ctr;
-        if (startPosition > 0) {
-            while (startPosition > 0) {
+        if (startPosition >=0) {
+            while (startPosition >= 0) {
                 int endPosition = endPriorityOperator(listString);
 
                 List<String> slicedStringList = listString.subList(startPosition + 1, endPosition);
