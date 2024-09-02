@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d3c9f44b-ff0f-43a9-b850-9b801d0dc95b" name="Changes" comment="" />
+    <list default="true" id="d3c9f44b-ff0f-43a9-b850-9b801d0dc95b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/problems/calculator/ArithmeticOperations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/calculator/Calculator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/oldcalculator/ArithmeticOperations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/oldcalculator/Calculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/OldCalculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/problems/CalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/CalculatorTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,6 +59,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Calculator.executor": "Run",
     "Application.Course.executor": "Run",
     "Application.Generics_Demo.executor": "Debug",
     "Application.Main.executor": "Run",
@@ -71,6 +80,7 @@
     "Application.School.executor": "Run",
     "Application.countVowels.executor": "Run",
     "Application.longestWordString.executor": "Run",
+    "JUnit.CalculatorTest.executor": "Run",
     "JUnit.CourseTest.executor": "Run",
     "JUnit.CourseTest.testAssignGrade.executor": "Run",
     "JUnit.CourseTest.testAssignGradeToNonEnrolledStudent.executor": "Run",
@@ -88,8 +98,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
-      <recent name="problems.generics.dhruv" />
       <recent name="problems" />
+      <recent name="problems.generics.dhruv" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/test/problems" />

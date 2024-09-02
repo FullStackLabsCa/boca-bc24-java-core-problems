@@ -2,7 +2,7 @@ package problems;
 
 import java.util.Scanner;
 
-public class Calculator {
+public class OldCalculator {
 
     public static void main(String[] args) {
 
@@ -10,7 +10,7 @@ public class Calculator {
         System.out.println("Enter string (ex. 2 + 5): ");
         String inputString  = scanner.nextLine();
 
-        Calculator calculator = new Calculator();
+        OldCalculator calculator = new OldCalculator();
         String result  = calculator.calculate(inputString);
         System.out.println(result);
 
