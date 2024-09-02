@@ -29,7 +29,7 @@ public class CalculatorTest {
 
     @Test
     public void testMultipleOperations() {
-        assertEquals(10.0, Calculator.calculate("3 + 5 * 2 - 4 / 2"), 0.001);
+        assertEquals(11.0, Calculator.calculate("3 + 5 * 2 - 4 / 2"), 0.001);
     }
 
     @Test
@@ -70,7 +70,7 @@ public class CalculatorTest {
         Calculator.storeInMemory(99.99);
         Calculator.storeInMemory(27.5);
 
-        String expected = "Stored values: 27.5, 15.5, 42.0, 3.14, 99.99";
+        String expected = "Stored values: 15.5, 42.0, 3.14, 99.99, 27.5";
         assertEquals(expected, Calculator.recallAllMemory());
     }
 }
