@@ -1,8 +1,19 @@
 package problems.collectionproblems.bracketwithoutStack;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class BracketMatchingWithoutStack {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter your expression: Eg :- [({ })] ==> ");
+        String expression = input.nextLine();
+        BracketMatchingWithoutStack bracketmatching = new BracketMatchingWithoutStack();
+        bracketmatching.findBracketMatch(expression);
+        //        bracketmatching.findBracketMatch("{([ ] ) }");
+
+    }
+
     boolean findBracketMatch(String expression) {
         ArrayList<String> bracketExpression = new ArrayList<>();
         bracketExpression.add(expression);
@@ -10,20 +21,21 @@ public class BracketMatchingWithoutStack {
         for (int i = 0; i < bracketExpression.size(); i++) {
             bracketExpression.set(i, bracketExpression.get(i).replaceAll("\\s", "").trim());
         }
-        System.out.println("List Size :- " + bracketExpression.size());
+
+//        System.out.println("List Size :- " + bracketExpression.size());
         if (bracketExpression.size() == 1) {
             String element = bracketExpression.get(0);
-            System.out.println("elements are :- " + element.length());
+//            System.out.println("elements are :- " + element.length());
 
             if (element.length() % 2 != 0) {
-                System.out.println("Brackets are not matching");
+//                System.out.println("Brackets are not matching");
             } else {
                 int midpoint = element.length() / 2;
-
                 String part1 = element.substring(0, midpoint);
                 String part2 = element.substring(midpoint);
                 StringBuilder reversed = new StringBuilder(part2);
                 String reversedPart2 =reversed.reverse().toString();
+
                 System.out.println("Part 1 - "+part1);
                 System.out.println("Part 1 length : "+part1.length());
                 System.out.println("Part 2 Reverse - "+reversedPart2);

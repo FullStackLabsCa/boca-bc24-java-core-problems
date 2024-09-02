@@ -19,5 +19,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="github.stefanbirkner.system.rules1" level="project" />
   </component>
 </module>

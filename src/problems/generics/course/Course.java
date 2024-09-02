@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.*;
 
-public class Course< S, G>
+public class Course<S, G>
 {
 //    private Set<S> studentSet;
 
