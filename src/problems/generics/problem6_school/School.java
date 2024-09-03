@@ -1,8 +1,6 @@
 package problems.generics.problem6_school;
 
-
 import java.util.*;
-
 
 public class School<S, G extends Number> {
     S student;
@@ -83,80 +81,43 @@ public class School<S, G extends Number> {
     public void cumulativeAverage(S student) {
         double cumulativeSum = 0;
         int courseEnrolledByStudent = 0;
+        //Collecting values of SchoolMap into Collection, So that we can iterate and
+        // retrieve the student and their grades.
         Collection<Course<S, G>> courseCollection = schoolMap.values();
-            for (Course<S, G> course : courseCollection) {
-                Collection<S> studentCollection = course.listUniqueAllStudent();
-
-                if (studentCollection.contains(student)) {
-                    courseEnrolledByStudent++;
-                    if (course.getGrade(student).isPresent()) {
-                        cumulativeSum += course.getGrade(student).get().doubleValue();
-                    }
+        for (Course<S, G> course : courseCollection) {
+            Collection<S> studentCollection = course.listUniqueAllStudent();
+            if (studentCollection.contains(student)) {
+                courseEnrolledByStudent++;
+                if (course.getGrade(student).isPresent()) {
+                    cumulativeSum += course.getGrade(student).get().doubleValue();
                 }
             }
-            double cumulativeAverage = cumulativeSum / courseEnrolledByStudent;
-            System.out.println("Cumulative average score for student '" + student + "': " + cumulativeAverage);
         }
-
-
-
+        double cumulativeAverage = cumulativeSum / courseEnrolledByStudent;
+        System.out.println("Cumulative average score for student '" + student + "': " + cumulativeAverage);
+    }
 
 
     public void processCommand(String userCommand) {
         String[] userCommandSplit = userCommand.split(" ");
         switch (userCommandSplit[0]) {
-            case "add_course" -> {
-                addCourse(userCommandSplit[1]);
-            }
-            case "list_courses", "report_unique_courses" -> {
-                listCourse();
-            }
-            case "enroll_student" -> {
-                enrollStudent(userCommandSplit[1], (S) userCommandSplit[2]);
-            }
-            case "assign_grade" -> {
-
-                assignGrade(userCommandSplit[1], (S) userCommandSplit[2], (G) Double.valueOf(userCommandSplit[3]));
-            }
-            case "list_grades" -> {
-                listGrade(userCommandSplit[1]);
-            }
-            case "report_unique_students" -> {
-                listUniqueStudent();
-            }
-            case "report_average_score" -> {
-                averageGrades(userCommandSplit[1]);
-            }
-            case "report_cumulative_average" -> {
-                cumulativeAverage((S) userCommandSplit[1]);
-            }
-            case "unknown_command" -> {
-                System.out.println("Error: Unknown command 'unknown_command'. " +
-                        "Please use a valid command.");
-            }
-
+            case "add_course" -> addCourse(userCommandSplit[1]);
+            case "list_courses", "report_unique_courses" -> listCourse();
+            case "enroll_student" -> enrollStudent(userCommandSplit[1], (S) userCommandSplit[2]);
+            case "assign_grade" ->
+                    assignGrade(userCommandSplit[1], (S) userCommandSplit[2], (G) Double.valueOf(userCommandSplit[3]));
+            case "list_grades" -> listGrade(userCommandSplit[1]);
+            case "report_unique_students" -> listUniqueStudent();
+            case "report_average_score" -> averageGrades(userCommandSplit[1]);
+            case "report_cumulative_average" -> cumulativeAverage((S) userCommandSplit[1]);
+            case "unknown_command" -> System.out.println("Error: Unknown command 'unknown_command'. " +
+                    "Please use a valid command.");
+            default ->
+                    System.out.println("Error: Unknown command 'unknown_command'. \nPlease use one of the following commands: \nadd_course, \nenroll_student, \nassign_grade \nlist_grades, \nlist_courses, \nreport_unique_courses, \nreport_unique_students, \nreport_average_score, \nreport_cumulative_average.");
         }
-    }
-
-    public static void main(String[] args) {
-        School<String, Double> school = new School<>();
-        System.out.println("********************");
-        school.addCourse("Java");
-        System.out.println("+++++++++++++++++++");
-        school.enrollStudent("Java", "Karan");
-        System.out.println("================================");
-        school.assignGrade("Java", "Karan", 95.02d);
-        school.addCourse("Spring");
-        school.enrollStudent("Spring", "Karan");
-        school.addCourse("JAva");
-        school.enrollStudent("JAva", "Gurpreet");
-        school.listCourse();
-        System.out.println("=================================");
-        school.listGrade("Java");
-        System.out.println("_____________________");
-        school.listUniqueStudent();
     }
 
 
 }
+
 

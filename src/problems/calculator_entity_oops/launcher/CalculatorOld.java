@@ -3,13 +3,13 @@ package problems.calculator_entity_oops.launcher;
 import problems.calculator_entity_oops.validation_methods.*;
 import java.util.Scanner;
 
-public class Calculator {
+public class CalculatorOld {
     public static void main(String[] args) {
-        Calculator calculator = new Calculator();
+        CalculatorOld calculatorOld = new CalculatorOld();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the Input to Calculator....");
         String input = scanner.nextLine();
-        calculator.calculate(input);
+        calculatorOld.calculate(input);
     }
 
     public String calculate(String s) {
