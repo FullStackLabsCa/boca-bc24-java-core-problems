@@ -13,7 +13,6 @@ public class Calculator {
 
     static List<Double> inMemoryStorage = new ArrayList<>();
 
-//    static List<Integer> keysToRemove = new ArrayList<>();
 
     public static Double calculate(String userInput) {
 
@@ -60,7 +59,7 @@ public class Calculator {
                 substring = userInput.substring(openIndex, closeIndex + 1);
                 for (int j = 0; j < openIndex; j = j + 2) {
                     if (j + 1 < userInput.length()) {
-                        tuple = inputArray[j] + inputArray[j + 1] + (inputArray[j + 2].contains("(") ? "_" : inputArray[j + 2]);
+                        tuple = inputArray[j] + inputArray[j + 1] + (inputArray[j + 2].contains("(") ? inputArray[j + 3] : inputArray[j + 2]);
                         tuplesLinkedHashMap.put(mapIndex, tuple);
                         mapIndex++;
                     }
@@ -69,7 +68,7 @@ public class Calculator {
                 mapIndex++;
                 for (int j = closeIndex + 1; j < inputArray.length; j = j + 2) {
                     if (j + 1 < userInput.length()) {
-                        tuple = "_" + inputArray[j] + inputArray[j + 1];
+                        tuple = ((j == closeIndex + 1) ? inputArray[j - 2] : inputArray[j - 1]) + inputArray[j] + inputArray[j + 1];
                         tuplesLinkedHashMap.put(mapIndex, tuple);
                         mapIndex++;
                     }
@@ -182,12 +181,24 @@ public class Calculator {
 
     private static void updateHashMapTable(List<Integer> keysToRemove) {
         if (!keysToRemove.isEmpty()) {
-            for (Integer key : keysToRemove) {
+//            for (Integer key : keysToRemove) {
+//                tuplesLinkedHashMap.remove(key);
+//            }
+
+            Integer key = keysToRemove.get(0);
+
+            if (key != tuplesLinkedHashMap.size() - 1) {
+                for (int i = key; i < tuplesLinkedHashMap.size() - 1; i++) {
+                    tuplesLinkedHashMap.put(i, tuplesLinkedHashMap.get(i + 1));
+                }
+                tuplesLinkedHashMap.remove(tuplesLinkedHashMap.size() - 1);
+            } else{
                 tuplesLinkedHashMap.remove(key);
             }
             keysToRemove.remove(0);
         }
     }
+
 // keeping it to make generic. Need to work later for refactoring and to reduce the code
 //    public static String precedenceLevelCheckAndPerformingOperation(String operatorLevel) {
 //        String output = "";
@@ -287,7 +298,7 @@ public class Calculator {
             String userInput = scanner.nextLine().trim();
 
             //Checking if user wants to exit
-            if (userInput.equalsIgnoreCase("x")) {
+            if (userInput.equalsIgnoreCase("exit")) {
                 System.out.println("Exit From Calculator");
                 return;
             }
