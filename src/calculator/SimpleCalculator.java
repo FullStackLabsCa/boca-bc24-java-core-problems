@@ -3,7 +3,7 @@ package calculator;
 
 import java.util.Scanner;
 
-public class Calculator {
+public class SimpleCalculator {
     public String calculate(String s) {
 
         if (s == null || s.isEmpty()) {
@@ -60,7 +60,7 @@ public class Calculator {
         String s = scanner.nextLine();
         char var;
         do {
-            Calculator calculator = new Calculator();
+            SimpleCalculator calculator = new SimpleCalculator();
             System.out.println(calculator.calculate(s));
             System.out.println("to exit please enter x");
              var = scanner.next().charAt(0);
