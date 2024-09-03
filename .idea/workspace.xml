@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3c9f44b-ff0f-43a9-b850-9b801d0dc95b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/test/problems/CalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/CalculatorTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/generics/CountOccurrences.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/stringProblems/DuplicateArray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/stringProblems/LongestWordString.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/stringProblems/LongestWordString.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/problems/CountOccurrencesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/CountOccurrencesTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +60,7 @@
     "Application.Calculator.executor": "Run",
     "Application.Course.executor": "Run",
     "Application.Generics_Demo.executor": "Debug",
+    "Application.LongestWordString.executor": "Run",
     "Application.Main.executor": "Run",
     "Application.P10_Add_Sub_Number.executor": "Run",
     "Application.P12_Prime_Number.executor": "Run",
@@ -74,7 +79,9 @@
     "Application.School.executor": "Run",
     "Application.countVowels.executor": "Run",
     "Application.longestWordString.executor": "Run",
+    "Application.p2_CountOccurrences.executor": "Run",
     "JUnit.CalculatorTest.executor": "Run",
+    "JUnit.CountOccurrencesTest.executor": "Run",
     "JUnit.CourseTest.executor": "Run",
     "JUnit.CourseTest.testAssignGrade.executor": "Run",
     "JUnit.CourseTest.testAssignGradeToNonEnrolledStudent.executor": "Run",

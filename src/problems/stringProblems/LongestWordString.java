@@ -19,24 +19,24 @@ public class LongestWordString {
 
     public static void main(String[] args) {
 
-        String str = "The quick brown fox jumps over the lazy dog";
+        String str = longestWord("The quick brown fox jumps over the lazy dog");
+        System.out.println("The first longest word is: " + str);
 
+    }
+
+    public static String longestWord(String str) {
+        int len = 0;
+        String longestPart="";
         String[] stringArray = str.split(" ");
 
-        for (String a : stringArray) {
-            System.out.println(a);
+        for(String part : stringArray){
+            if (len<part.length()){
+                longestPart = part;
+                len = part.length();
+            }
         }
 
-//        for (int i=0; i<str.length(); i++ ){
-//
-//            char ch = str.charAt(i);
-//            System.out.println(ch);
-//            if(ch != ' '){
-//
-//            }
-//
-//        }
-
+        return longestPart;
 
     }
 
