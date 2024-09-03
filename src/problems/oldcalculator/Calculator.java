@@ -9,49 +9,11 @@ import java.util.List;
     Important notes:
         - Parsing the input string.
         - Handling arithmetic operations in order of precedence.
-        - Managing memory operations (M+, recall, clear).
+        -
  */
 public class Calculator {
 
-    private static List<Double> storedMemoryList = new ArrayList<>();
-
-    // Store value in memory
-    public static void storeInMemory(double value) {
-        if (storedMemoryList.size() < 5) {
-            storedMemoryList.add(value);
-            System.out.println("Added " + value);
-        } else {
-            System.out.println("Removing: " + storedMemoryList.get(0));
-            storedMemoryList.remove(0);
-            storedMemoryList.add(value);
-            System.out.println("Added " + value);
-        }
-    }
-
-    // Recall the last value from memory
-    public static Double recallMemory() {
-        if (storedMemoryList.isEmpty()) {
-            System.out.println("No values stored in memory.");
-            return null;
-        }
-        return storedMemoryList.get(storedMemoryList.size() - 1);
-    }
-
-    // Clear all values from memory
-    public static void clearMemory() {
-        storedMemoryList.clear();
-        System.out.println("Memory cleared.");
-    }
-
-    // Display all stored values in memory
-    public static String recallAllMemory() {
-        if (storedMemoryList.isEmpty()) {
-            return "No values stored in memory.";
-        }
-        return "Stored values: " + storedMemoryList.toString().replace("[", "").replace("]", "");
-    }
-
-    public static double calculate(String args) {
+    public static void main(String[] args) {
 
 //        String expression = "5 + ( 6 * 2 - 4 )"; // exp-1 - for checking List<String> parsedToken + parseInput method
 //        List<String> parsedTokens = parseInput(expression); // taking exp-1
@@ -96,7 +58,7 @@ public class Calculator {
 //        System.out.println(recallAllMemory()); // Should print stored values
         clearMemory();
 
-        return result;
+
     }
 
 
@@ -220,6 +182,45 @@ public class Calculator {
         return evaluateExpression(parseInput(expression));
     }
 
+    // ----------------------------------------------------------------------------------------
+    // MemoryOperation:  Managing memory operations (M+, recall, clear).
+    private static List<Double> storedMemoryList = new ArrayList<>();
+
+    // Store value in memory
+    public static void storeInMemory(double value) {
+        if (storedMemoryList.size() < 5) {
+            storedMemoryList.add(value);
+            System.out.println("Added " + value);
+        } else {
+            System.out.println("Removing: " + storedMemoryList.get(0));
+            storedMemoryList.remove(0);
+            storedMemoryList.add(value);
+            System.out.println("Added " + value);
+        }
+    }
+
+    // Recall the last value from memory
+    public static Double recallMemory() {
+        if (storedMemoryList.isEmpty()) {
+            System.out.println("No values stored in memory.");
+            return null;
+        }
+        return storedMemoryList.get(storedMemoryList.size() - 1);
+    }
+
+    // Clear all values from memory
+    public static void clearMemory() {
+        storedMemoryList.clear();
+        System.out.println("Memory cleared.");
+    }
+
+    // Display all stored values in memory
+    public static String recallAllMemory() {
+        if (storedMemoryList.isEmpty()) {
+            return "No values stored in memory.";
+        }
+        return "Stored values: " + storedMemoryList.toString().replace("[", "").replace("]", "");
+    }
 
 }
 

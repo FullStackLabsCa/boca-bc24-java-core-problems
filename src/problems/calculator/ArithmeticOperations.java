@@ -10,7 +10,7 @@ public class ArithmeticOperations {
 
     }
 
-    public static double additioon(double oerrandOne, double operandTwo) {
+    public static double addition(double oerrandOne, double operandTwo) {
 
         return oerrandOne + operandTwo;
     }

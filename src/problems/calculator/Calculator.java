@@ -1,295 +1,207 @@
 package problems.calculator;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+import java.util.Stack;
 
 public class Calculator {
 
-    public static String str = "5 + (6 * (2 - 4) + 3) - 1";
-    public static List<Double> storedMemoryList= new ArrayList<>();
+    private static final int MEMORY_LIMIT = 5;
+    private static List<Double> memory = new ArrayList<>();
 
-    public static Double removeListElement(int position, List<String> listString, Double answerPart) {
-        if(listString.stream().anyMatch(s -> s.startsWith("sqrt("))){
-            for (int i = 0; i < listString.size(); i++) {
-                if (listString.get(i).startsWith("sqrt(")) {
-                    listString.remove(i);
-                }
-            }
-            listString.add(position , answerPart.toString());
-            System.out.println(listString.toString());
-
-        }
-        else {
-            for (int i = 0; i < 3; i++) {
-                System.out.println(listString.toString());
-                listString.remove(position - 1);
-                System.out.println(listString.toString());
-            }
-
-            listString.add(position - 1, answerPart.toString());
-            System.out.println(listString.toString());
-        }
-        return Double.parseDouble(listString.get(0));
+    // Public method to perform calculations
+    public static double calculate(String expression) {
+        expression = expression.trim();
+        List<String> tokens = tokenize(expression);
+        List<String> postfix = infixToPostfix(tokens);
+        return evaluatePostfix(postfix);
     }
 
-    public static int operatorPosition(List<String> listString, String operator) {
-        for (int i = 0; i < listString.toArray().length; i++) {
-            if (Objects.equals(listString.get(i), operator)) {
-                return i;
-            }
+    // Public method to store a value in memory
+    public static void storeInMemory(double value) {
+        if (memory.size() >= MEMORY_LIMIT) {
+            memory.remove(0);
         }
-        return 0;
+        memory.add(value);
+        System.out.println("Added " + value);
     }
 
-    public static void storeInMemory(double value){
-        if (storedMemoryList.size()<5){
-            storedMemoryList.add(value);
-            System.out.println("Added "+value);
-        }
-        else{
-            System.out.println("Removing: "+storedMemoryList.get(0));
-            storedMemoryList.remove(0);
-
-            storedMemoryList.add(value);
-            System.out.println("Added "+value);
-        }
-
-    }
-
-    public static Double recallMemory(){
-        if (storedMemoryList.get(storedMemoryList.size()-1)==null){
+    // Public method to recall the most recent value from memory
+    public static Double recallMemory() {
+        if (memory.isEmpty()) {
             System.out.println("No values stored in memory.");
+            return null;
         }
-        return storedMemoryList.get(storedMemoryList.size()-1);
+        return memory.get(memory.size() - 1);
     }
 
-    public static void clearMemory(){
-        System.out.println("No values stored in memory.");
-        storedMemoryList.clear();
+    // Public method to clear memory
+    public static void clearMemory() {
+        memory.clear();
+        System.out.println("Memory cleared.");
     }
 
-    public static Object recallAllMemory(){
-        if (storedMemoryList.isEmpty()) {
-            System.out.println("No values stored in memory.");
+    // Public method to recall all values from memory
+    public static String recallAllMemory() {
+        if (memory.isEmpty()) {
             return "No values stored in memory.";
         }
-        System.out.print("Stored values: "+storedMemoryList.toString().replace("[", "").replace("]", ""));
-//
-
-        return "Stored values: "+storedMemoryList.toString().replace("[", "").replace("]", "");
-//;
+        return "Stored values: " + String.join(", ", memory.toString().replace("[", "").replace("]", ""));
     }
 
-    public static double calculate(String str) {
+    // Private methods for internal calculations and conversions
+    private static List<String> tokenize(String expression) {
+        String[] parts = expression.split(" ");
+        return new ArrayList<>(Arrays.asList(parts));
+    }
 
-        String newStr = str.trim();
-        String[] parts = newStr.split(" ");
-        System.out.println("to = " + Arrays.toString(parts));
-        List<String> listString = Arrays.asList(parts);
-        listString = new ArrayList<>(listString);
+    private static List<String> infixToPostfix(List<String> infix) {
+        Stack<String> operators = new Stack<>();
+        List<String> postfix = new ArrayList<>();
 
-
-        int startPosition = startPriorityOperator(listString);
-        double partAnswer=0;
-        int ctr;
-        if (startPosition >=0) {
-            while (startPosition >= 0) {
-                int endPosition = endPriorityOperator(listString);
-
-                List<String> slicedStringList = listString.subList(startPosition + 1, endPosition);
-                System.out.println("slicedStringList = " + slicedStringList);
-                int tempStartPosition = startPosition;
-                int tempEndPosition = listString.toArray().length - endPosition;
-                startPosition = startPriorityOperator(slicedStringList);
-                ctr=1;
-                while (startPosition > 0) {
-                    endPosition = endPriorityOperator(slicedStringList);
-                    tempStartPosition = tempStartPosition + startPosition + 1;
-                    tempEndPosition = endPosition - startPosition;
-                    slicedStringList = slicedStringList.subList(startPosition + 1, endPosition);
-                    startPosition = startPriorityOperator(slicedStringList);
-                    ctr--;
+        for (String token : infix) {
+            if (isNumber(token)) {
+                postfix.add(token);
+            } else if (isOperator(token)) {
+                while (!operators.isEmpty() && precedence(token) <= precedence(operators.peek())) {
+                    postfix.add(operators.pop());
                 }
-                System.out.println("slicedStringList" + slicedStringList + "start position" + tempStartPosition + "tempEndPosition" + tempEndPosition);
-                if(ctr<1) {
-
-                    removeBrackets(slicedStringList, listString, tempStartPosition, tempEndPosition);
-                    partAnswer = arithmeticOperation(slicedStringList);
-                    removeParanthrisAnswer(tempStartPosition, tempStartPosition + tempEndPosition, listString, partAnswer);
+                operators.push(token);
+            } else if (token.equals("(")) {
+                operators.push(token);
+            } else if (token.equals(")")) {
+                while (!operators.peek().equals("(")) {
+                    postfix.add(operators.pop());
                 }
-                else{
-                    removeBrackets(slicedStringList, listString, startPriorityOperator(listString), slicedStringList.size()+1);
-                    partAnswer = arithmeticOperation(slicedStringList);
-                    removeParanthrisAnswer(tempStartPosition, endPriorityOperator(listString) , listString, partAnswer);
-                }
-                startPosition = startPriorityOperator(listString);
-
-            }
-
-        }
-        else {
-            return arithmeticOperation(listString);
-        }
-
-        return arithmeticOperation(listString);
-
-    }
-
-    private static void removeBrackets(List<String> slicedStringList, List<String> listString, int tempStartPosition, int endPosition) {
-        slicedStringList.add(listString.get(tempStartPosition + endPosition ).replace(")", ""));
-        slicedStringList.add(0, listString.get(tempStartPosition).replace("(", ""));
-
-        System.out.println("slicedStringList = " + slicedStringList);
-    }
-
-    private static void removeParanthrisAnswer(int startPosition, int endPosition, List<String> listString, double partAnswer) {
-        System.out.println("listString = " + listString);
-        for (int i = startPosition; i <= endPosition; i++) {
-
-            listString.remove(startPosition);
-            System.out.println("listString = " + listString);
-        }
-
-        listString.add(startPosition, (String.valueOf(partAnswer)));
-        System.out.println("listString = " + listString);
-    }
-
-
-    private static int startPriorityOperator(List<String> listString) {
-        for (int i = 0; i < listString.toArray().length; i++) {
-            if (listString.get(i).startsWith("(")) {
-                return i;
+                operators.pop();
+            } else if (token.startsWith("sqrt(")) {
+                postfix.add(handleSqrt(token));
+            } else if (token.equals("M+")) {
+                storeInMemory(Double.parseDouble(postfix.get(postfix.size() - 1)));
             }
         }
-        return -1;
+
+        while (!operators.isEmpty()) {
+            postfix.add(operators.pop());
+        }
+
+        return postfix;
     }
 
-    private static int endPriorityOperator(List<String> listString) {
-        for (int j = listString.toArray().length - 1; j > 0; j--) {
-            System.out.println(listString.get(j));
-            if (listString.get(j).endsWith(")")) {
+    private static double evaluatePostfix(List<String> postfix) {
+        Stack<Double> stack = new Stack<>();
 
-                return j;
+        for (String token : postfix) {
+            if (isNumber(token)) {
+                stack.push(Double.parseDouble(token));
+            } else if (isOperator(token)) {
+                double b = stack.pop();
+                double a = stack.pop();
+                double result = performOperation(a, b, token);
+                stack.push(result);
             }
         }
-        return -1;
+
+        return stack.pop();
     }
 
-    private static Double arithmeticOperation(List<String> listString) {
-
-        double answerPart=0;
-        while (listString.stream().anyMatch(s -> s.startsWith("sqrt("))) {
-            int position = 0;
-            String tempString = "";
-            String calculateSqrt = null;
-            for (int i = 0; i < listString.size(); i++) {
-                if (listString.get(i).startsWith("sqrt(")) {
-                    tempString = listString.get(i);
-                    int startPosition = 0;
-                    int endPosition = 0;
-                    for (int j = 0; j < tempString.length(); j++) {
-                        System.out.println("j = " + j + " " + tempString.toCharArray()[j]);
-
-                        if (Objects.equals(tempString.toCharArray()[j], ')')) {
-                            endPosition = j;
-                        }
-
-                        if (Objects.equals(tempString.toCharArray()[j], '(')) {
-                            startPosition = j;
-                        }
-
-                    }
-                    for (int k = startPosition; k <= endPosition; k++) {
-                        calculateSqrt = new String(tempString.toCharArray(), startPosition+1, endPosition - startPosition-1);
-
-                    }
-                }
-            }
-            answerPart = ArithmeticOperations.sqrt(( Double.parseDouble(calculateSqrt)));
-
-            answerPart = removeListElement(position, listString, answerPart);
-        }
-
-        while (listString.contains("^")) {
-
-            int position = operatorPosition(listString, "^");
-            answerPart = ArithmeticOperations.power(Double.parseDouble(listString.get(position - 1)), Double.parseDouble(listString.get(position + 1)));
-
-            answerPart= removeListElement(position, listString, answerPart);
-        }
-
-
-        while (listString.contains("/")) {
-
-            int position = operatorPosition(listString, "/");
-            checkInvalidInput(listString.get(position - 1));
-            checkInvalidInput(listString.get(position + 1));
-            answerPart = ArithmeticOperations.division(Double.parseDouble(listString.get(position - 1)), Double.parseDouble(listString.get(position + 1)));
-
-            answerPart= removeListElement(position, listString, answerPart);
-
-        }
-//            System.out.printf(listString.toString());
-        while (listString.contains("*")) {
-
-            int position = operatorPosition(listString, "*");
-
-            checkInvalidInput(listString.get(position - 1));
-            checkInvalidInput(listString.get(position + 1));
-
-            answerPart = ArithmeticOperations.multiplication(Double.parseDouble(listString.get(position - 1)), Double.parseDouble(listString.get(position + 1)));
-
-            answerPart= removeListElement(position, listString, answerPart);
-        }
-        while (listString.contains("+")) {
-
-            int position = operatorPosition(listString, "+");
-            checkInvalidInput(listString.get(position - 1));
-            checkInvalidInput(listString.get(position + 1));
-            answerPart = ArithmeticOperations.additioon(Double.parseDouble(listString.get(position - 1)), Double.parseDouble(listString.get(position + 1)));
-
-            answerPart= removeListElement(position, listString, answerPart);
-        }
-        while (listString.contains("-")) {
-
-            int position = operatorPosition(listString, "-");
-            checkInvalidInput(listString.get(position - 1));
-            checkInvalidInput(listString.get(position + 1));
-            answerPart = ArithmeticOperations.subtraction(Double.parseDouble(listString.get(position - 1)), Double.parseDouble(listString.get(position + 1)));
-
-            answerPart= removeListElement(position, listString, answerPart);
-        }
-        while (listString.contains("M+")) {
-
-
-            storeInMemory(answerPart);
-            for (int i = 0; i < listString.size(); i++) {
-                if (listString.get(i).startsWith("M+")) {
-                    listString.remove(i);
-                }
-            }
-
-        }
-
-
-        return answerPart;
-
-    }
-
-    private static void checkInvalidInput(String currentValue) {
-        if (currentValue.contains("+") || currentValue.contains("-") || currentValue.contains("/") || currentValue.contains("*") || currentValue.contains("^")) {
-            System.out.println("Invalid expression.");
+    private static double performOperation(double a, double b, String operator) {
+        switch (operator) {
+            case "^":
+                return ArithmeticOperations.power(a, b);
+            case "/":
+                return ArithmeticOperations.division(a, b);
+            case "*":
+                return ArithmeticOperations.multiplication(a, b);
+            case "+":
+                return ArithmeticOperations.addition(a, b);
+            case "-":
+                return ArithmeticOperations.subtraction(a, b);
+            default:
+                throw new IllegalArgumentException("Invalid operator: " + operator);
         }
     }
 
+    private static String handleSqrt(String token) {
+        String number = token.replace("sqrt(", "").replace(")", "");
+        double result = ArithmeticOperations.sqrt(Double.parseDouble(number));
+        return String.valueOf(result);
+    }
+
+    private static boolean isNumber(String token) {
+        try {
+            Double.parseDouble(token);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    private static boolean isOperator(String token) {
+        return token.matches("[+\\-*/^]");
+    }
+
+    private static int precedence(String operator) {
+        switch (operator) {
+            case "^":
+                return 3;
+            case "*":
+            case "/":
+                return 2;
+            case "+":
+            case "-":
+                return 1;
+            default:
+                return 0;
+        }
+    }
 
     public static void main(String[] args) {
+        // Perform basic operations
+        System.out.println("Basic Operations:");
+        System.out.println("3.5 + 2.1 = " + calculate("3.5 + 2.1"));
+        System.out.println("10 - 4 = " + calculate("10 - 4"));
+        System.out.println("6 * 7 = " + calculate("6 * 7"));
+        System.out.println("8 / 2 = " + calculate("8 / 2"));
 
-        System.out.println("answer = " + calculate("sqrt(9) - 2 ^ 3 M+"));
-        System.out.println("Recall one Value :"+recallMemory());
-        recallAllMemory();
+        // Test division by zero
+        System.out.println("Division by zero:");
+        try {
+            System.out.println("10 / 0 = " + calculate("10 / 0"));
+        } catch (ArithmeticException e) {
+            System.out.println("Division by zero not allowed");
+        }
+
+        // Test multiple operations
+        System.out.println("Multiple Operations:");
+        System.out.println("3 + 5 * 2 - 4 / 2 = " + calculate("3 + 5 * 2 - 4 / 2"));
+
+        // Test parentheses
+        System.out.println("Parentheses:");
+        try {
+            System.out.println("3 + (2 * 4) - 5 = " + calculate("3 + (2 * 4) - 5"));
+            System.out.println("(10 + 2) * 3 = " + calculate("(10 + 2) * 3"));
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+        // Test advanced operations
+        System.out.println("Advanced Operations:");
+        System.out.println("sqrt(16) = " + calculate("sqrt(16)"));
+        System.out.println("2 ^ 3 = " + calculate("2 ^ 3"));
+
+        // Test memory operations
+        System.out.println("Memory Operations:");
+        storeInMemory(8.0);
+        System.out.println("Stored value: " + recallMemory());
+        storeInMemory(15.5);
+        System.out.println("Stored value: " + recallMemory());
+        System.out.println("Recall all memory: " + recallAllMemory());
         clearMemory();
-//        recallMemory();
-
-
+        System.out.println("Memory after clearing: " + recallAllMemory());
     }
+
+
 }
