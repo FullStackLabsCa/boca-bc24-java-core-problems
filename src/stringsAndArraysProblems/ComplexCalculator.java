@@ -1,38 +1,51 @@
 package stringsAndArraysProblems;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 import static java.lang.Double.parseDouble;
 
 public class ComplexCalculator {
 
     public static void main(String[] args) {
-        LinkedHashMap<Integer, String> originalEquationTuplesMap = new LinkedHashMap<>();
+        Map<Integer, String> originalEquationTuplesMap = new LinkedHashMap<>();
 
-        // Define the operation string
-        String operation = "2+3*8/4-2+5-4/2";
+        // Define the expression string
+        String expression = "55/210+5-433*31";
+
+        final List<String> operatorsList = extractOperatorsFromExpression(expression);
+
+        final List<String> operandsList = extractOperandsFromExpression(expression);
+
+        originalEquationTuplesMap = buildTupleMap(operatorsList, operandsList);
 
         // Convert the string to a character array and store each character
-        char[] operationCharArray = operation.toCharArray();
-        ArrayList<Character> arrayOfOperation = new ArrayList<>();
-        for (char c : operationCharArray) {
-            arrayOfOperation.add(c);
-        }
-
-        // Pick tuples of three characters
-        String tuple;
-        int count = 0;
-        for (int i = 0; i < arrayOfOperation.size() - 2; i += 2) {
-            tuple = "" + arrayOfOperation.get(i) + arrayOfOperation.get(i + 1) + arrayOfOperation.get(i + 2);
-            originalEquationTuplesMap.put(count, tuple);
-            count++;
-        }
+//        char[] operationCharArray = expression.toCharArray();
+//        ArrayList<Character> arrayOfOperation = new ArrayList<>();
+//        for (char c : operationCharArray) {
+//            arrayOfOperation.add(c);
+//        }
+//
+//        // Pick tuples of three characters
+//        String tuple;
+//        int count = 0;
+//        for (int i = 0; i < arrayOfOperation.size() - 2; i += 2) {
+//
+//            tuple = "" + arrayOfOperation.get(i) + arrayOfOperation.get(i + 1) + arrayOfOperation.get(i + 2);
+//            originalEquationTuplesMap.put(count, tuple);
+//            count++;
+//        }
         System.out.println("\nOriginal Equation Tuples: " + originalEquationTuplesMap + "\n\n");
 
+        // Process parenthesis
+        LinkedHashMap<Integer, String> parenthesisMap = processForParenthesis(originalEquationTuplesMap);
+        System.out.println("parenthesis Done Map: " + parenthesisMap);
+
+
+        LinkedHashMap<Integer, String> filteredForDivMap = filterMapForOperators(parenthesisMap);
+        System.out.println("Filtered Map to Perform Division (Without Results): " + filteredForDivMap);
+
         // Process division
-        LinkedHashMap<Integer, String> divisionMap = processForDivision(originalEquationTuplesMap);
+        LinkedHashMap<Integer, String> divisionMap = processForDivision(filteredForDivMap);
         System.out.println("Division Done Map: " + divisionMap);
 
         // Filter map for multiplication
@@ -58,11 +71,70 @@ public class ComplexCalculator {
         // Process addition
         LinkedHashMap<Integer, String> subtractMap = processForSubtraction(filteredForSubMap);
         System.out.println("Subtraction Done Map: " + subtractMap);
+
     }
 
-    private static LinkedHashMap<Integer, String> processForDivision(LinkedHashMap<Integer, String> originalMap) {
+    private static Map<Integer, String> buildTupleMap(List<String> operatorsList, List<String> operandsList) {
+        Map<Integer, String> tupleMap = new LinkedHashMap<>();
+        for (int i = 0; i < operatorsList.size(); i++) {
+            final String operator = operatorsList.get(i);
+            final String operand1 = operandsList.get(i);
+            final String operand2 = operandsList.get(i + 1);
+            StringBuilder tupleBuilder = new StringBuilder();
+            String tuple = tupleBuilder.append(operand1).append(operator).append(operand2).toString();
+            tupleMap.put(i, tuple);
+        }
+        return tupleMap;
+    }
+
+    private static List<String> extractOperandsFromExpression(String expression) {
+        final String afterReplacementString = expression.replaceAll("[^0-9]", "=");
+        System.out.println("afterReplacementString = " + afterReplacementString);
+        final String[] splitStringArray = afterReplacementString.split("[=]");
+        int count=0;
+        for (String tuple: splitStringArray){
+            System.out.println("string = " + tuple);
+            //originalEquationTuplesMap.put(count++, tuple);
+        }
+        return Arrays.asList(splitStringArray);
+    }
+
+    private static List<String> extractOperatorsFromExpression(String expression) {
+        // Iterate over the string
+        List<String> operatorsList = new ArrayList<>();
+        for (char ch : expression.toCharArray()) {
+            if (!Character.isDigit(ch)) {
+                // Add non-numeric character to the list
+                operatorsList.add(String.valueOf(ch));
+            }
+        }
+        return operatorsList;
+    }
+
+
+    private static LinkedHashMap<Integer, String> processForParenthesis(LinkedHashMap<Integer, String> originalMap) {
+        LinkedHashMap<Integer, String> parenthesisMap = new LinkedHashMap<>(originalMap);
+//        ArrayList<String> combinedTuples = new ArrayList<>();
+//
+//        // Traverse the map to handle parentheses
+//        int i = 0;
+//        while (i < parenthesisMap.size()) {
+ //           String value = parenthesisMap.get(i);
+//
+//            // Check for opening parenthesis
+//            if (value.contains("(")) {
+//                int openIndex = value.indexOf('(');
+//                int closeIndex = value.indexOf(')', openIndex);
+//
+//            }
+
+        return parenthesisMap;
+    }
+
+
+    private static LinkedHashMap<Integer, String> processForDivision(LinkedHashMap<Integer, String> filteredForDivMap) {
         String divOperator = "/";
-        LinkedHashMap<Integer, String> divisionMap = new LinkedHashMap<>(originalMap);
+        LinkedHashMap<Integer, String> divisionMap = new LinkedHashMap<>(filteredForDivMap);
         for (Map.Entry<Integer, String> entry : divisionMap.entrySet()) {
             String divTuple = entry.getValue();
 
@@ -85,20 +157,20 @@ public class ComplexCalculator {
                         divisionMap.put(previousKey, previousTupleReplacement);
                     }
 
-                // Update the next tuple
-                if (entryKey < divisionMap.size() -1) {
-                    Integer nextKey = entryKey + 1;
-                    String nextTuple = divisionMap.get(nextKey);
-                    if (nextTuple != null && nextTuple.length() > 1) {
-                        String nextTupleReplacement = result + nextTuple.substring(1);
-                        divisionMap.put(nextKey, nextTupleReplacement);
+                    // Update the next tuple
+                    if (entryKey < divisionMap.size() - 1) {
+                        Integer nextKey = entryKey + 1;
+                        String nextTuple = divisionMap.get(nextKey);
+                        if (nextTuple != null && nextTuple.length() > 1) {
+                            String nextTupleReplacement = result + nextTuple.substring(1);
+                            divisionMap.put(nextKey, nextTupleReplacement);
+                        }
                     }
-                }
 
                 }
             }
 
-                }
+        }
 
 
         return divisionMap;
@@ -130,15 +202,15 @@ public class ComplexCalculator {
                         multiplyMap.put(previousKey, previousTupleReplacement);
                     }
 
-                // Update the next tuple
-                if (entryKey < multiplyMap.size() - 1) {
-                    Integer nextKey = entryKey + 1;
-                    String nextTuple = multiplyMap.get(nextKey);
-                    if (nextTuple != null && nextTuple.length() > 1) {
-                        String nextTupleReplacement = result + nextTuple.substring(1);
-                        multiplyMap.put(nextKey, nextTupleReplacement);
+                    // Update the next tuple
+                    if (entryKey < multiplyMap.size() - 1) {
+                        Integer nextKey = entryKey + 1;
+                        String nextTuple = multiplyMap.get(nextKey);
+                        if (nextTuple != null && nextTuple.length() > 1) {
+                            String nextTupleReplacement = result + nextTuple.substring(1);
+                            multiplyMap.put(nextKey, nextTupleReplacement);
+                        }
                     }
-                }
 
                 }
             }
@@ -170,15 +242,15 @@ public class ComplexCalculator {
                         additionMap.put(previousKey, previousTupleReplacement);
                     }
 
-                // Update the next tuple
-                if (entryKey < additionMap.size() - 1) {
-                    Integer nextKey = entryKey + 1;
-                    String nextTuple = additionMap.get(nextKey);
-                    if (nextTuple != null && nextTuple.length() > 1) {
-                        String nextTupleReplacement = result + nextTuple.substring(1);
-                        additionMap.put(nextKey, nextTupleReplacement);
+                    // Update the next tuple
+                    if (entryKey < additionMap.size() - 1) {
+                        Integer nextKey = entryKey + 1;
+                        String nextTuple = additionMap.get(nextKey);
+                        if (nextTuple != null && nextTuple.length() > 1) {
+                            String nextTupleReplacement = result + nextTuple.substring(1);
+                            additionMap.put(nextKey, nextTupleReplacement);
+                        }
                     }
-                }
 
 
                 }
@@ -213,15 +285,15 @@ public class ComplexCalculator {
                         subtractMap.put(previousKey, previousTupleReplacement);
                     }
 
-                // Update the next tuple
-                if (entryKey < subtractMap.size() - 1) {
-                    Integer nextKey = entryKey +1;
-                    String nextTuple = subtractMap.get(nextKey);
-                    if (nextTuple != null && nextTuple.length() > 1) {
-                        String nextTupleReplacement = result + nextTuple.substring(1);
-                        subtractMap.put(nextKey, nextTupleReplacement);
+                    // Update the next tuple
+                    if (entryKey < subtractMap.size() - 1) {
+                        Integer nextKey = entryKey + 1;
+                        String nextTuple = subtractMap.get(nextKey);
+                        if (nextTuple != null && nextTuple.length() > 1) {
+                            String nextTupleReplacement = result + nextTuple.substring(1);
+                            subtractMap.put(nextKey, nextTupleReplacement);
+                        }
                     }
-                }
 
 
                 }
@@ -247,8 +319,6 @@ public class ComplexCalculator {
     }
 
 
-
-
     //methods to perform arithmetic operations
     public static int div(double num1, double num2) {
         if (num2 == 0) {
@@ -271,18 +341,9 @@ public class ComplexCalculator {
     }
 
 
-
-
-
-
-
-
-
-
     ///test methods
 
-    public static double calculate(String s) {
-
+    public static double calculate(String expression) {
         return 0.0;
     }
 
@@ -299,20 +360,7 @@ public class ComplexCalculator {
     public static String recallAllMemory() {
         return "null";
     }
+
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
