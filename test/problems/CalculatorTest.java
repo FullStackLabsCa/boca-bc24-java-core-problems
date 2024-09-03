@@ -70,10 +70,9 @@ public class CalculatorTest {
         Calculator.storeInMemory(99.99);
         Calculator.storeInMemory(27.5);
 
-        // Order is not maintained in the test case and it's sensitive to the order
 
-        //String expected = "Stored values: 27.5, 15.5, 42.0, 3.14, 99.99";
-        String expected = "Stored values: 15.5, 42.0, 3.14, 99.99, 27.5";
+        String expected = "Stored values: 27.5, 15.5, 42.0, 3.14, 99.99";
+
         assertEquals(expected, Calculator.recallAllMemory());
     }
 }

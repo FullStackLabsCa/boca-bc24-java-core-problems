@@ -41,15 +41,20 @@ public class Calculator {
     }
 
     public static void storeInMemory(double value){
+        int ctr=0;
         if (storedMemoryList.size()<5){
             storedMemoryList.add(value);
             System.out.println("Added "+value);
         }
         else{
-            System.out.println("Removing: "+storedMemoryList.get(0));
-            storedMemoryList.remove(0);
 
-            storedMemoryList.add(value);
+            System.out.println("Removing: "+storedMemoryList.get(0));
+            int position  = (storedMemoryList.size()+ctr)%5;
+            storedMemoryList.remove(position);
+
+
+            storedMemoryList.add(position,value);
+            ctr++;
             System.out.println("Added "+value);
         }
 
