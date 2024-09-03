@@ -71,6 +71,7 @@ public class CalculatorTest {
         Calculator.storeInMemory(27.5);
 
 
+
         String expected = "Stored values: 27.5, 15.5, 42.0, 3.14, 99.99";
 
         assertEquals(expected, Calculator.recallAllMemory());

@@ -39,9 +39,9 @@ public class Calculator {
         }
         return 0;
     }
-
+    static int positionCtr=0;
     public static void storeInMemory(double value){
-        int ctr=0;
+
         if (storedMemoryList.size()<5){
             storedMemoryList.add(value);
             System.out.println("Added "+value);
@@ -49,12 +49,12 @@ public class Calculator {
         else{
 
             System.out.println("Removing: "+storedMemoryList.get(0));
-            int position  = (storedMemoryList.size()+ctr)%5;
+            int position  = (storedMemoryList.size()+positionCtr)%5;
             storedMemoryList.remove(position);
 
 
             storedMemoryList.add(position,value);
-            ctr++;
+            positionCtr++;
             System.out.println("Added "+value);
         }
 
