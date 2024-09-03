@@ -66,8 +66,23 @@ public class Calculator {
 
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
-        String expression = scanner.nextLine().replaceAll("\\s", "");
-        System.out.println(calculate(expression));
+        label:
+        while (true) {
+            String expression = scanner.nextLine().replaceAll("\\s", "");
+            switch (expression) {
+                case "exit":
+                    break label;
+                case "recall":
+                    System.out.println(recallMemory());
+                    break;
+                case "recall_all":
+                    System.out.println(recallAllMemory());
+                    break;
+                default:
+                    System.out.println(calculate(expression));
+                    break;
+            }
+        }
     }
 
     private static double solveExpression(String expression) throws Exception {
