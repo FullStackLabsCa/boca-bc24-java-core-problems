@@ -2,12 +2,16 @@ package problems.advancedcalculator;
 
 public class Division {
 
-    static String performDivision(int[] numbers) {
+    static String performDivision(double[] numbers) {
+
         try {
-            System.out.println(" Division " + Math.floor(numbers[0] / numbers[1]));
-            return String.valueOf(Math.floor(numbers[0] / numbers[1]));
+            if(numbers[1] == 0) {
+                return String.valueOf(Double.NaN);
+            }
+            System.out.println(" Division " +  (int) Math.round((double) numbers[0] / numbers[1]));
+            return String.valueOf( (int) Math.round((double) numbers[0] / numbers[1]));
         } catch (ArithmeticException e) {
-            return "Error: Cannot divide by zero";
+            return String.valueOf(Double.NaN);
         }
     }
 }

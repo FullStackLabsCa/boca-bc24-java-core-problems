@@ -13,6 +13,8 @@ Objective: Write a method that checks if an array is sorted in ascending order.
 
  */
 
+import problems.advancedcalculator.Utility;
+
 import java.util.Scanner;
 
 public class CheckIfArraySorted {

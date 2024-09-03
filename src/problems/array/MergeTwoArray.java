@@ -12,6 +12,8 @@ Merge Two Arrays
 
  */
 
+import problems.advancedcalculator.Utility;
+
 import java.util.Arrays;
 import java.util.Scanner;
 

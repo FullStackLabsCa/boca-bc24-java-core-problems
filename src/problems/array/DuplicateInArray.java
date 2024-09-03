@@ -14,6 +14,8 @@ Find the Duplicate Elements in an Array
 
  */
 
+import problems.advancedcalculator.Utility;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
