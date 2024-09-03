@@ -5,10 +5,6 @@ import java.util.*;
 public class Course <S, G extends Number>{
         Map<S, G> studentGrades;
 
-    public Course(String courseName, Map<S, G> studentGrades) {
-        this.studentGrades = studentGrades;
-    }
-
     public Course() {
         this.studentGrades = new HashMap<>();
     }

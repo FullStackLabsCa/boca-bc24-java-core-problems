@@ -11,7 +11,7 @@ public class School<S, G extends Number> {
     Set<String> courseName;
     Map<String, Course<S, G>> courseToStudentGrade;
 
-    Course<S, G> courseObj = new Course<>();
+
 
     public School() {
         this.courseName = new HashSet<>();
@@ -23,25 +23,25 @@ public class School<S, G extends Number> {
         this.courseToStudentGrade = courseToStudentGrade;
     }
 
-    public Map<String, Course<S, G>> add_Course(String name){
-        courseToStudentGrade.put(name, null);
-        return courseToStudentGrade;
-    }
-
-    public Map<String, Course<S, G>> enroll_Student(String name, Course course){
-        courseToStudentGrade.put(name, course);
-        return courseToStudentGrade;
-    }
-
-    public Map<String, Course<S, G>> enrollStudent(String courseName, S student, G grade) {
-        Course<S, G> course = courseToStudentGrade.get(courseName);
-        if (course != null) {
-            course.assignGrade(student, grade);
-        } else {
-            System.out.println("Course not found.");
-        }
-        return courseToStudentGrade;
-    }
+//    public Map<String, Course<S, G>> add_Course(String name){
+//        courseToStudentGrade.put(name, null);
+//        return courseToStudentGrade;
+//    }
+//
+//    public Map<String, Course<S, G>> enroll_Student(String name, Course course){
+//        courseToStudentGrade.put(name, course);
+//        return courseToStudentGrade;
+//    }
+//
+//    public Map<String, Course<S, G>> enrollStudent(String courseName, S student, G grade) {
+//        Course<S, G> course = courseToStudentGrade.get(courseName);
+//        if (course != null) {
+//            course.assignGrade(student, grade);
+//        } else {
+//            System.out.println("Course not found.");
+//        }
+//        return courseToStudentGrade;
+//    }
 
     public void processCommand(String command) {
         String[] array= command.split(" ");
@@ -52,11 +52,15 @@ public class School<S, G extends Number> {
         }
 
         if("list_courses".equals(array[0])){
-            String[] arrayCourseName = courseName.toArray(new String[courseName.size()]);
             System.out.println("\n" + "Courses offered:");
-            for (String s : arrayCourseName) {
-                System.out.println(s);
+            for(String c : courseName){
+                System.out.println(c);
             }
+//            String[] arrayCourseName = courseName.toArray(new String[courseName.size()]);
+//            System.out.println("\n" + "Courses offered:");
+//            for (String s : arrayCourseName) {
+//                System.out.println(s);
+//            }
         }
 
         if("enroll_student".equals(array[0])) {

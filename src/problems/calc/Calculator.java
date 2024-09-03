@@ -1,6 +1,6 @@
 package problems.calc;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class Calculator {
     public static void main(String[] args) {
@@ -8,59 +8,53 @@ public class Calculator {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the expression: ");
-        String input = scanner.nextLine();
+        String input = scanner.nextLine().trim();
 
-
-        String result = calculate(input);
+        double result = calculate(input);
         System.out.println("Result: " + result);
     }
 
-    public static boolean checkExpression(String expr) {
-        return expr.matches("^\\s*\\d+\\s*[+\\-*/]\\s*\\d+\\s*$");
-    }
+//    public static double calculate(String expr){
+//        if(!expr.contains("(")){
+//            return evaluateExpression(expr);
+//        }
+//        else{
+//            if()
+//        }
+//    }
 
-    public static String calculate(String s) {
-        float result = 0;
-        if(s == null || s.equalsIgnoreCase("")){
-            return "Error: Input is empty or null";
-        }
-        else if  (!checkExpression(s)){
-            String[] parts = s.split("\\s*[+\\-*/]\\s*");
+    public static double evaluateExpression(String expr) {
+        List<Character> operation = new ArrayList<>();
+        List<Double> numbers = new ArrayList<>();
 
-            if (parts.length!=2 || parts[0].trim().isEmpty() || parts[1].trim().isEmpty()){
-                return "Error: Invalid input format";
-            }
-            else {
-                return "Error: Invalid number format";
-            }
-        }else {
-            String[] parts = s.split(" ");
+        StringBuilder number = new StringBuilder();
 
-            float num1 = Float.parseFloat(parts[0]);
-            float num2 = Float.parseFloat(parts[2]);
-            char operator = parts[1].charAt(0);
-
-            switch (operator) {
-                case '+':
-                    result = Addition.add(num1, num2);
-                    break;
-                case '-':
-                    result = Subtraction.sub(num1, num2);
-                    break;
-                case '*':
-                    result = Multiplication.mul(num1, num2);
-                    break;
-                case '/':
-                    if(num2 == 0){
-                        return "Error: Cannot divide by zero";
-                    }else {
-                        result = Division.div(num1, num2);
-                    }
-                    break;
-                default:
-                    return "Invalid operator";
+        for (int i = 0; i < expr.length(); i++) {
+            if (expr.charAt(i) == '+' || expr.charAt(i) == '-' || expr.charAt(i) == '*' || expr.charAt(i) == '/') {
+                operation.add(expr.charAt(i));
+                numbers.add(Double.parseDouble(number.toString()));
+                number.setLength(0);
+            } else {
+                number.append(expr.charAt(i));
             }
         }
-        return String.valueOf(result);
+
+        if (!number.isEmpty()) {
+            numbers.add(Double.parseDouble(number.toString()));
+        }
+
+        double sum = numbers.get(0);
+        for (int j = 0; j < operation.size(); j++) {
+            if (operation.get(j) == '+') {
+                sum += numbers.get(j + 1);
+            } else if (operation.get(j) == '-') {
+                sum -= numbers.get(j + 1);
+            } else if (operation.get(j) == '/') {
+                sum /= numbers.get(j + 1);
+            } else if (operation.get(j) == '*') {
+                sum *= numbers.get(j + 1);
+            }
+        }
+            return sum;
     }
 }
