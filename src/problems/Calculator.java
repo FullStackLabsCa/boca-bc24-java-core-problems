@@ -13,11 +13,13 @@ public class Calculator {
 
     public static void main(String[] args) {
 
-        String input = "8 + 5 M+";
-//        String input = "3 + 5 * 2 - 4 / 2";
+//        String input = "8 + 5 M+";
+        String input = "(10 + 2) * 3";
 //        String input = "3 + 5 * ( 9 / 3 ) / 2";
+//        String input = "10 / 0";
 //        String input = "3 + (2 * 4) - ( 4 / 2 + 3) + 5 ";
 //        String input = "sqrt(25) + 3 ^ 2";
+//        String input = "sqrt(-9)";
 //        String input = "sqrt(16)","2 ^ 3";
 //        String input = "8 + 5";
 
@@ -26,7 +28,6 @@ public class Calculator {
             if (input.contains("M+")) {
                 String pattern = "M\\+";
                 input = input.replaceAll(pattern, "").trim();
-                memoryOperation = true;
                 memoryOperation = true;
             }
             System.out.println(calculate(input));
@@ -40,31 +41,37 @@ public class Calculator {
         }
     }
 
-    public static String calculate(String input) {
+    public static Double calculate(String input) {
 
-        String output = "";
+        if (input.contains("M+")) {
+            String pattern = "M\\+";
+            input = input.replaceAll(pattern, "").trim();
+            memoryOperation = true;
+        }
+
+        Double output = 0.0;
         if (input == null || input.equalsIgnoreCase("") || input.trim().isEmpty()) {
-            return "Error: Input is empty or null";
+//            return "Error: Input is empty or null";
         } else if (checkExpression(input) != 0) {
             switch (checkExpression(input)) {
                 case 1:
                     if (checkExpression(input) == 0) {
                         String[] parts = input.split("\\s*[+\\-*/]\\s*");
                         if (parts.length != 2 || parts[0].trim().isEmpty() || parts[1].trim().isEmpty()) {
-                            return "Error: Invalid input format";
+//                            return "Error: Invalid input format";
                         } else {
-                            return ERROR_MSG;
+//                            return ERROR_MSG;
                         }
                     }
-                    output = basicOperation(input);
+                    output = (basicOperation(input));
                 case 2:
-                    output = multiOperation(input);
+                    output = Double.parseDouble(multiOperation(input));
                     break;
                 case 3:
-                    output = paranthesisOperation(input);
+                    output = Double.parseDouble(paranthesisOperation(input));
                     break;
                 case 4:
-                    output = AdvancedOperation(input);
+                    output = Double.parseDouble(AdvancedOperation(input));
                     break;
                 case 5:
 //                    output = memoryFunction(input).toString();
@@ -73,12 +80,16 @@ public class Calculator {
         }
 
         if(memoryOperation){
-            calculatorMemory.add(Double.parseDouble(output));
+            calculatorMemory.add(output);
         }
-        return output;
+        if(output == 0.001){
+            return Double.NaN;
+        }else {
+            return output;
+        }
     }
 
-    private static String basicOperation(String input) {
+    private static Double basicOperation(String input) {
         String returnString = "";
         String[] parts = input.trim().split("\\s*[+\\-*/]\\s*");
         float addendum1 = Integer.parseInt(parts[0]);
@@ -87,7 +98,8 @@ public class Calculator {
         switch (operator) {
             case "/":
                 if (addendum2 == 0) {
-                    return "Error: Cannot divide by zero";
+//                    return "Error: Cannot divide by zero";
+                    return Double.NaN;
                 } else {
                     returnString = "" + (addendum1 / addendum2);
                 }
@@ -104,15 +116,15 @@ public class Calculator {
             default:
                 returnString = ERROR_MSG;
         }
-        return returnString;
+        return  Double.parseDouble(returnString);
     }
 
 
-    private static void memoryFunction(String input) {
+    public static void storeInMemory(Double input) {
         if (memorySize > MAX_MEMORY) {
-            calculatorMemory.set(0, Double.parseDouble(input));
+            calculatorMemory.set(0, input);
         } else {
-            calculatorMemory.add(Double.parseDouble(input));
+            calculatorMemory.add(input);
             memorySize++;
         }
     }
@@ -122,8 +134,10 @@ public class Calculator {
     }
 
     public static Double recallMemory() {
-        return calculatorMemory.get(calculatorMemory.size() - 1);
-
+        if(!calculatorMemory.isEmpty()) {
+            return calculatorMemory.get(calculatorMemory.size() - 1);
+        }
+        return null;
     }
 
     public static String recallAllMemory() {
@@ -152,10 +166,13 @@ public class Calculator {
             String numberStr = input.substring(start + 5, end);
             int number = Integer.parseInt(numberStr);
             int result = (int) Math.sqrt(number);
+            if(number<0) {
+                throw new ArithmeticException("Invalid expression");
+            }
             input = input.substring(0, start) + result + input.substring(end + 1);
         }
 
-        return multiOperation(input);
+        return (multiOperation(input));
     }
 
     private static String paranthesisOperation(String input) {
@@ -165,40 +182,77 @@ public class Calculator {
         input = input.replaceAll(" ", "");
         StringBuilder tempString = new StringBuilder();
 
-        for (int lastIndex = 0; lastIndex < input.trim().length(); lastIndex++) {
-            int startIndex = lastIndex;
-            if (input.charAt(lastIndex) == '(') {
-                while (input.charAt(lastIndex) != ')') {
-                    tempString.append(input.charAt(lastIndex + 1));
-                    lastIndex++;
-                }
-                tempString = tempString.deleteCharAt(tempString.length() - 1);
-                String operationVal = multiOperation(tempString.toString());
-                input = input.replace(input.substring(startIndex, lastIndex + 1), operationVal);
+        if(input.contains("sqrt") || input.contains("^") ) {
+            input = input.replaceAll(" ", "");
+            while (input.contains("sqrt")) {
+                int start = input.indexOf("sqrt");
+                int end = input.indexOf(')', start);
+                String numberStr = input.substring(start + 5, end);
+                int number = Integer.parseInt(numberStr);
+                int result = (int) Math.sqrt(number);
 
+                if(number<0) {
+                    throw new ArithmeticException("Invalid expression");
+                }
+                input = input.substring(0, start) + result + input.substring(end + 1);
             }
+            return (multiOperation(input));
+        }else {
+
+            for (int lastIndex = 0; lastIndex < input.trim().length(); lastIndex++) {
+                int startIndex = lastIndex;
+                if (input.charAt(lastIndex) == '(') {
+                    while (input.charAt(lastIndex) != ')') {
+                        tempString.append(input.charAt(lastIndex + 1));
+                        lastIndex++;
+                    }
+                    tempString = tempString.deleteCharAt(tempString.length() - 1);
+                    String operationVal = (multiOperation(tempString.toString()));
+                    input = input.replace(input.substring(startIndex, lastIndex + 1), String.valueOf(operationVal));
+
+                }
+            }
+            return (multiOperation(input.toString()));
         }
-        if (input.contains("Error")) {
-            return ERROR_MSG;
-        } else {
-            return multiOperation(input.toString());
-        }
+
     }
 
     private static String multiOperation(String input) {
         System.out.println("Multi Operation start ...." + input);
 
         List<Character> operators = new ArrayList<>();
-        List<Integer> numbers = new ArrayList<>();
+        List<Double> numbers = new ArrayList<>();
 
-        for (Character character : input.toCharArray()) {
+        StringBuilder currentNumber = new StringBuilder();
+
+//        for (Character character : input.toCharArray()) {
+        for (int i=0; i< input.length(); i++) {
+            char character  = input.charAt(i);
+//            System.out.println(""+character);
             if (character != ' ') {
                 if (Character.isDigit(character)) {
-                    numbers.add(Integer.parseInt(character.toString()));
+                    currentNumber.append(character);
                 } else {
-                    operators.add(character);
+                    if (Character.isDigit(character) || character == '.') {
+                        currentNumber.append(character);
+                    }else{
+                        if (currentNumber.length() > 0) {
+
+                            numbers.add(Double.parseDouble(currentNumber.toString()));
+//                        System.out.println("current number : "+currentNumber);
+                            currentNumber.setLength(0);
+                        }
+                    }
+//                    System.out.println("current number : "+currentNumber);
+                    if (character == '+' || character == '-' || character == '*' || character == '/' || character == '^') {
+                        operators.add(character);
+                    }
+//                    System.out.println("OP :"+operators);
                 }
             }
+        }
+        if (currentNumber.length() > 0) {
+            numbers.add(Double.parseDouble(currentNumber.toString()));
         }
 
         if (!input.isEmpty()) {
@@ -206,32 +260,34 @@ public class Calculator {
             int power = 0;
             while (power < operators.size()) {
                 if (operators.get(power) == '^') {
-                    int base = numbers.get(power);
-                    int exponent = numbers.get(power + 1);
-                    numbers.set(power, (int) Math.pow(base, exponent));
+                    double base = numbers.get(power);
+                    double exponent = numbers.get(power + 1);
+                    numbers.set(power,  Math.pow(base, exponent));
                     numbers.remove(power + 1);
                     operators.remove(power);
                 } else {
                     power++;
                 }
             }
-
+            System.out.println("Numbers start :> " + numbers);
+            System.out.println("Operators start :> " + operators);
             int i = 0;
             while (i < operators.size()) {
 
                 if (operators.get(i) == '/') {
                     if (numbers.get(i + 1) == 0) {
-                        return "Error: Cannot divide by zero";
+                        return "0.001";
+//                        System.out.println("Error: Cannot divide by zero");
                     } else {
-                        numbers.add(i + 1, numbers.get(i) / numbers.get(i + 1));
-                        numbers.remove(i);
+                        double result = numbers.get(i) / numbers.get(i + 1);
+                        numbers.set(i, result);
                         numbers.remove(i + 1);
                         operators.remove(i);
                     }
 
                 } else if (operators.get(i) == '*') {
-                    numbers.add(i + 1, numbers.get(i) * numbers.get(i + 1));
-                    numbers.remove(i);
+                    double result = numbers.get(i) * numbers.get(i + 1);
+                    numbers.set(i, result);
                     numbers.remove(i + 1);
                     operators.remove(i);
 
@@ -247,22 +303,20 @@ public class Calculator {
             while (i < operators.size()) {
                 String operator = String.valueOf(operators.get(i));
                 if (operator.equals("+")) {
-                    int result = numbers.get(i) + numbers.get(i + 1);
-                    numbers.set(i, (int) result);
+                    numbers.set(i,  numbers.get(i) + numbers.get(i + 1));
                     numbers.remove(i + 1);
                     operators.remove(i);
                 } else if (operator.equals("-")) {
-                    int result = numbers.get(i) - numbers.get(i + 1);
-                    numbers.set(i, (int) result);
+                    numbers.set(i, numbers.get(i) - numbers.get(i + 1));
                     numbers.remove(i + 1);
                     operators.remove(i);
                 }
             }
 
-            input = String.valueOf((int) numbers.get(0));
-            System.out.println("O U T P U T :> " + input);
+
+            System.out.println("O U T P U T :> " + numbers.get(0));
         }
-        return input;
+        return String.valueOf(numbers.get(0));
 
     }
 
