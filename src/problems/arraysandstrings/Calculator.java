@@ -20,7 +20,9 @@ public class Calculator {
             } else result = solveExpression(expression);
             return result;
         } catch (ArithmeticException e) {
-            return NaN;
+            if (Objects.equals(e.getMessage(), "Division by zero is not allowed."))
+                return NaN;
+            else throw new ArithmeticException();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

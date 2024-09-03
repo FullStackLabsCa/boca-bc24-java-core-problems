@@ -3,7 +3,9 @@ package problems;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
+
 import problems.arraysandstrings.Calculator;
 
 public class CalculatorTest {
@@ -43,7 +45,6 @@ public class CalculatorTest {
         assertEquals(8.0, Calculator.calculate("2 ^ 3"), 0.001);
     }
 
-    @Ignore
     @Test(expected = ArithmeticException.class)
     public void testSquareRootOfNegativeNumber() {
         Calculator.calculate("sqrt(-9)");
