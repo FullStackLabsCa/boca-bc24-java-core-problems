@@ -9,7 +9,7 @@ import static problems.advancedcalculator.Multiplication.performMultiplication;
 import static problems.advancedcalculator.Subtraction.performSubtraction;
 
 public class Calculator {
-    static LinkedHashMap<Integer, String> tuplesLinkedHashMap = new LinkedHashMap<>();
+    static Map<Integer, String> tuplesLinkedHashMap = new LinkedHashMap<>();
 
     static List<Double> inMemoryStorage = new ArrayList<>();
 
@@ -96,14 +96,13 @@ public class Calculator {
         }
     }
 
-    private static String processOperationsByPrecedence(LinkedHashMap<Integer, String> tuplesLinkedHashMap) {
+    private static String processOperationsByPrecedence(Map<Integer, String> tuplesLinkedHashMap) {
         List<Integer> keysToRemove = new ArrayList<>();
         String output = null;
         //For performing the operation in linkedHashmap
         for (Map.Entry<Integer, String> entry : tuplesLinkedHashMap.entrySet()) {
             Integer key = entry.getKey();
             String value = entry.getValue();
-            precedenceLevelCheck(entry.getValue());
             char operation = getOperation(entry.getValue());
             if (value.contains("(")) {
                 String value1 = value.substring(1, value.length() - 1);
@@ -178,7 +177,7 @@ public class Calculator {
         }
         return output;
     }
-
+    //updating nodes of hashMap
     private static void updateHashMapTable(List<Integer> keysToRemove) {
         if (!keysToRemove.isEmpty()) {
 //            for (Integer key : keysToRemove) {
@@ -192,7 +191,7 @@ public class Calculator {
                     tuplesLinkedHashMap.put(i, tuplesLinkedHashMap.get(i + 1));
                 }
                 tuplesLinkedHashMap.remove(tuplesLinkedHashMap.size() - 1);
-            } else{
+            } else {
                 tuplesLinkedHashMap.remove(key);
             }
             keysToRemove.remove(0);
@@ -221,7 +220,7 @@ public class Calculator {
 //        return output;
 //    }
 
-
+    //implementing sir algorithm
     public static void performMappingOperation(Integer key, String output, char operation) {
         //updating upward node. Need to update for non zero key(down to up)
         if (key != 0) {
@@ -246,16 +245,6 @@ public class Calculator {
             }
         }
     }
-
-    public static Integer precedenceLevelCheck(String input) {
-        if (input.equals("(")) return 5;
-        if (input.equals("/")) return 4;
-        if (input.equals("*")) return 3;
-        if (input.equals("+")) return 2;
-        if (input.equals("-")) return 1;
-        return 0;
-    }
-
 
     private static String performCalculation(char operation, double[] numbers) {
         switch (operation) {
