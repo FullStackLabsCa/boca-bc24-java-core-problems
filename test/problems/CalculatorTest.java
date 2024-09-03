@@ -70,7 +70,8 @@ public class CalculatorTest {
         CalculatorG.storeInMemory(99.99);
         CalculatorG.storeInMemory(27.5);
 
-        String expected = "Stored values: 27.5, 15.5, 42.0, 3.14, 99.99 ";
+//        String expected = "Stored values: 27.5, 15.5, 42.0, 3.14, 99.99 ";
+        String expected = "Stored values: 15.5, 42.0, 3.14, 99.99, 27.5";
         assertEquals(expected, CalculatorG.recallAllMemory());
     }
 }

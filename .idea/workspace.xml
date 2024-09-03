@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3c9f44b-ff0f-43a9-b850-9b801d0dc95b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/problems/arrayProblem/sortedArray.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/calculator/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/calculator/Calculator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +54,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.Calculator.executor": "Run",
+    "Application.Calculator.executor": "Debug",
     "Application.Course.executor": "Run",
     "Application.DuplicateElementInArray.executor": "Debug",
     "Application.Generics_Demo.executor": "Debug",
@@ -237,6 +237,11 @@
           <url>file://$PROJECT_DIR$/test/problems/ListToArrayTest.java</url>
           <line>15</line>
           <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/problems/calculator/Calculator.java</url>
+          <line>59</line>
+          <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -163,50 +163,50 @@ public class Calculator {
 
 
 
-    public static void main(String[] args) {
-        // Perform basic operations
-        System.out.println("Basic Operations:");
-        System.out.println("3.5 + 2.1 = " + calculate("3.5 + 2.1"));
-        System.out.println("10 - 4 = " + calculate("10 - 4"));
-        System.out.println("6 * 7 = " + calculate("6 * 7"));
-        System.out.println("8 / 2 = " + calculate("8 / 2"));
-
-        // Test division by zero
-        System.out.println("Division by zero:");
-        try {
-            System.out.println("10 / 0 = " + calculate("10 / 0"));
-        } catch (ArithmeticException e) {
-            System.out.println("Division by zero not allowed");
-        }
-
-        // Test multiple operations
-        System.out.println("Multiple Operations:");
-        System.out.println("3 + 5 * 2 - 4 / 2 = " + calculate("3 + 5 * 2 - 4 / 2"));
-
-        // Test parentheses
-        System.out.println("Parentheses:");
-        try {
-            System.out.println("3 + (2 * 4) - 5 = " + calculate("3 + (2 * 4) - 5"));
-            System.out.println("(10 + 2) * 3 = " + calculate("(10 + 2) * 3"));
-        } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-
-        // Test advanced operations
-        System.out.println("Advanced Operations:");
-        System.out.println("sqrt(16) = " + calculate("sqrt(16)"));
-        System.out.println("2 ^ 3 = " + calculate("2 ^ 3"));
-
-        // Test memory operations
-        System.out.println("Memory Operations:");
-        storeInMemory(8.0);
-        System.out.println("Stored value: " + recallMemory());
-        storeInMemory(15.5);
-        System.out.println("Stored value: " + recallMemory());
-        System.out.println("Recall all memory: " + recallAllMemory());
-        clearMemory();
-        System.out.println("Memory after clearing: " + recallAllMemory());
-    }
+//    public static void main(String[] args) {
+//        // Perform basic operations
+//        System.out.println("Basic Operations:");
+//        System.out.println("3.5 + 2.1 = " + calculate("3.5 + 2.1"));
+//        System.out.println("10 - 4 = " + calculate("10 - 4"));
+//        System.out.println("6 * 7 = " + calculate("6 * 7"));
+//        System.out.println("8 / 2 = " + calculate("8 / 2"));
+//
+//        // Test division by zero
+//        System.out.println("Division by zero:");
+//        try {
+//            System.out.println("10 / 0 = " + calculate("10 / 0"));
+//        } catch (ArithmeticException e) {
+//            System.out.println("Division by zero not allowed");
+//        }
+//
+//        // Test multiple operations
+//        System.out.println("Multiple Operations:");
+//        System.out.println("3 + 5 * 2 - 4 / 2 = " + calculate("3 + 5 * 2 - 4 / 2"));
+//
+//        // Test parentheses
+//        System.out.println("Parentheses:");
+//        try {
+//            System.out.println("3 + (2 * 4) - 5 = " + calculate("3 + (2 * 4) - 5"));
+//            System.out.println("(10 + 2) * 3 = " + calculate("(10 + 2) * 3"));
+//        } catch (Exception e) {
+//            System.out.println("Error: " + e.getMessage());
+//        }
+//
+//        // Test advanced operations
+//        System.out.println("Advanced Operations:");
+//        System.out.println("sqrt(16) = " + calculate("sqrt(16)"));
+//        System.out.println("2 ^ 3 = " + calculate("2 ^ 3"));
+//
+//        // Test memory operations
+//        System.out.println("Memory Operations:");
+//        storeInMemory(8.0);
+//        System.out.println("Stored value: " + recallMemory());
+//        storeInMemory(15.5);
+//        System.out.println("Stored value: " + recallMemory());
+//        System.out.println("Recall all memory: " + recallAllMemory());
+//        clearMemory();
+//        System.out.println("Memory after clearing: " + recallAllMemory());
+//    }
 
 
 }
