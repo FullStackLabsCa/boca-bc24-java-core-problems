@@ -1,58 +1,22 @@
 package problems.calculator;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
-import java.util.Stack;
+import java.util.*;
 
 public class Calculator {
-
-    private static final int MEMORY_LIMIT = 5;
-    private static List<Double> memory = new ArrayList<>();
 
     // Public method to perform calculations
     public static double calculate(String expression) {
         expression = expression.trim();
-        List<String> tokens = tokenize(expression);
+        List<String> tokens = tokenSize(expression);
         List<String> postfix = infixToPostfix(tokens);
         return evaluatePostfix(postfix);
-    }
 
-    // Public method to store a value in memory
-    public static void storeInMemory(double value) {
-        if (memory.size() >= MEMORY_LIMIT) {
-            memory.remove(0);
-        }
-        memory.add(value);
-        System.out.println("Added " + value);
-    }
-
-    // Public method to recall the most recent value from memory
-    public static Double recallMemory() {
-        if (memory.isEmpty()) {
-            System.out.println("No values stored in memory.");
-            return null;
-        }
-        return memory.get(memory.size() - 1);
-    }
-
-    // Public method to clear memory
-    public static void clearMemory() {
-        memory.clear();
-        System.out.println("Memory cleared.");
-    }
-
-    // Public method to recall all values from memory
-    public static String recallAllMemory() {
-        if (memory.isEmpty()) {
-            return "No values stored in memory.";
-        }
-        return "Stored values: " + String.join(", ", memory.toString().replace("[", "").replace("]", ""));
+//  Infix expression:  a operator b (a + b)
+//  Postfix expression: a b operator (ab+) Examples: Input: A + B * C + D.
     }
 
     // Private methods for internal calculations and conversions
-    private static List<String> tokenize(String expression) {
+    private static List<String> tokenSize(String expression) {
         String[] parts = expression.split(" ");
         return new ArrayList<>(Arrays.asList(parts));
     }
@@ -158,6 +122,47 @@ public class Calculator {
         }
     }
 
+    // Memory Management - Using Stack
+    private static final int MEMORY_LIMIT = 5;
+    private static Stack<Double> memory = new Stack<>();
+
+    // Public method to store a value in memory
+    public static void storeInMemory(double value) {
+        if (memory.size() >= MEMORY_LIMIT) {
+            memory.remove(0); // Remove the oldest value to maintain the limit
+        }
+        memory.push(value); // Add the new value to the stack
+        System.out.println("Added " + value);
+    }
+
+    // Public method to recall the most recent value from memory
+    public static Double recallMemory() {
+        if (memory.isEmpty()) {
+            System.out.println("No values stored in memory.");
+            return null;
+        }
+        return memory.peek(); // Get the top value of the stack without removing it
+    }
+
+    // Public method to clear memory
+    public static void clearMemory() {
+        memory.clear(); // Clears all values from the stack
+        System.out.println("Memory cleared.");
+    }
+
+    // Public method to recall all values from memory
+    public static String recallAllMemory() {
+        if (memory.isEmpty()) {
+            return "No values stored in memory.";
+        }
+        // Create a copy of the stack and reverse it to maintain the order
+        Stack<Double> reversedMemory = (Stack<Double>) memory.clone();
+        Collections.reverse(reversedMemory);
+        return "Stored values: " + String.join(", ", reversedMemory.toString().replace("[", "").replace("]", ""));
+    }
+
+
+
     public static void main(String[] args) {
         // Perform basic operations
         System.out.println("Basic Operations:");
@@ -205,3 +210,45 @@ public class Calculator {
 
 
 }
+
+
+/*
+
+// Memory Management - Using List
+private static final int MEMORY_LIMIT = 5;
+private static List<Double> memory = new ArrayList<>();
+
+// Public method to store a value in memory
+public static void storeInMemory(double value) {
+    if (memory.size() >= MEMORY_LIMIT) {
+        memory.remove(0);
+    }
+    memory.add(value);
+    System.out.println("Added " + value);
+}
+
+// Public method to recall the most recent value from memory
+public static Double recallMemory() {
+    if (memory.isEmpty()) {
+        System.out.println("No values stored in memory.");
+        return null;
+    }
+    return memory.get(memory.size() - 1);
+}
+
+// Public method to clear memory
+public static void clearMemory() {
+    memory.clear();
+    System.out.println("Memory cleared.");
+}
+
+// Public method to recall all values from memory
+public static String recallAllMemory() {
+    if (memory.isEmpty()) {
+        return "No values stored in memory.";
+    }
+    return "Stored values: " + String.join(", ", memory.toString().replace("[", "").replace("]", ""));
+}
+
+
+*/
