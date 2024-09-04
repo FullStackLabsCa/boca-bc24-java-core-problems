@@ -44,13 +44,11 @@ public class CalculatorTest {
         assertEquals(8.0, Calculator.calculate("2 ^ 3"), 0.001);
     }
 
-    @Ignore
     @Test(expected = ArithmeticException.class)
     public void testSquareRootOfNegativeNumber() {
         Calculator.calculate("sqrt(-9)");
     }
 
-//    @Ignore
     @Test
     public void testMemoryOperations() {
         Calculator.calculate("3 + 5 M+");

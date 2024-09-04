@@ -39,12 +39,12 @@ public class Calculator {
         if (str.contains("sqrt")) {
             exponentResult = 0;
             String[] partsSqrt = str.split("[()]");
-            sqrtResult = sqrt(Double.parseDouble((partsSqrt[1])));
-            exponentResult = sqrtResult;
-            if (sqrtResult == Double.NaN) {
+            Double value = Double.parseDouble((partsSqrt[1]));
+            if (value < 0) {
                 throw new ArithmeticException();
             }
-//            System.out.println("sqrtResult = " + sqrtResult);
+            sqrtResult = Math.sqrt(value);
+            exponentResult = sqrtResult;
             return exponentResult;
         }
 
