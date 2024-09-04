@@ -11,7 +11,8 @@ import static problems.advancedcalculator.Subtraction.performSubtraction;
 public class Calculator {
     static Map<Integer, String> tuplesLinkedHashMap = new LinkedHashMap<>();
 
-    static List<Double> inMemoryStorage = new ArrayList<>();
+//    static List<Double> inMemoryStorage = new ArrayList<>();
+    static Stack<Double> inMemoryStorageStackImplementation = new Stack<>();
 
 
     public static Double calculate(String userInput) {
@@ -33,7 +34,7 @@ public class Calculator {
             if (userInput.contains("M+")) {
                 String[] split = userInput.trim().split("M\\+");
                 String output = performCalculation(getOperation(split[0]), Utility.convertToDoubleArray(split[0].split("\\+|\\-|\\*|\\/")));
-                inMemoryStorage.add(Double.parseDouble(output));
+                inMemoryStorageStackImplementation.add(Double.parseDouble(output));
                 return Double.parseDouble(output);
             }
 
@@ -177,6 +178,7 @@ public class Calculator {
         }
         return output;
     }
+
     //updating nodes of hashMap
     private static void updateHashMapTable(List<Integer> keysToRemove) {
         if (!keysToRemove.isEmpty()) {
@@ -298,32 +300,47 @@ public class Calculator {
     }
 
     public static double recallMemory() {
-        return inMemoryStorage.get(inMemoryStorage.size() - 1);
+//        return inMemoryStorage.get(inMemoryStorage.size() - 1);
+        return inMemoryStorageStackImplementation.get(inMemoryStorageStackImplementation.size() - 1);
     }
 
     public static void storeInMemory(double valuToBeStored) {
-        if (inMemoryStorage.size() > 4) {
-            inMemoryStorage.remove(0);
-            inMemoryStorage.add(valuToBeStored);
-            List<Double> shiftedResult = problems.advancedcalculator.Utility.shiftInputArrayList(inMemoryStorage, 1);
-            inMemoryStorage = shiftedResult;
+//        if (inMemoryStorage.size() > 4) {
+//            inMemoryStorage.remove(0);
+//            inMemoryStorage.add(valuToBeStored);
+//            List<Double> shiftedResult = problems.advancedcalculator.Utility.shiftInputArrayList(inMemoryStorage, 1);
+//            inMemoryStorage = shiftedResult;
+//            return;
+//        }
+//        inMemoryStorage.add(valuToBeStored);
+
+        if (inMemoryStorageStackImplementation.size() > 4) {
+            inMemoryStorageStackImplementation.remove(inMemoryStorageStackImplementation.get(0));
+            inMemoryStorageStackImplementation.push(valuToBeStored);
+            List<Double> shiftedResult = problems.advancedcalculator.Utility.shiftInputArrayList(inMemoryStorageStackImplementation, 1);
+            inMemoryStorageStackImplementation.clear();
+            for(Double result: shiftedResult) {
+                inMemoryStorageStackImplementation.push(result);
+            }
             return;
         }
-        inMemoryStorage.add(valuToBeStored);
+        inMemoryStorageStackImplementation.push(valuToBeStored);
     }
 
     public static void clearMemory() {
-        inMemoryStorage.clear();
+//        inMemoryStorage.clear();
+        inMemoryStorageStackImplementation.clear();
     }
 
     public static String recallAllMemory() {
         String result = "Stored values: ";
-        if (inMemoryStorage.isEmpty()) {
+        if (inMemoryStorageStackImplementation.isEmpty()) {
             return "No values stored in memory.";
         }
-        for (int i = 0; i < inMemoryStorage.size(); i++) {
-            String concat = !(inMemoryStorage.size() - i == 1) ? ", " : "";
-            result += inMemoryStorage.get(i) + concat;
+//        int size = inMemoryStorageStackImplementation.size();
+        for (int i = 0; i < inMemoryStorageStackImplementation.size(); i++) {
+            String concat = !(inMemoryStorageStackImplementation.size() - i == 1) ? ", " : "";
+            result += inMemoryStorageStackImplementation.get(i) + concat;
         }
         return result;
     }
