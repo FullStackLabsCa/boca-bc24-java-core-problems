@@ -5,11 +5,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListToArray {
+    public static <T> T[] listToArray(List<T> list,T[] array) {
 
+        if (list == null || list.isEmpty()){
+            return null;
 
-//    public static T<> T[] listToArray(List<T> list, Class<T> class) {
-//
-//    }
+        }
+        else {
+
+            for (int i = 0; i < list.size(); i++) {
+                array[i] = list.get(i);
+
+            }
+            return array;
+        }
+
+    }
 
 
 }
