@@ -8,8 +8,7 @@ import static java.lang.Math.*;
 @SuppressWarnings("java:S106")
 public class Calculator {
     public static double operandResult = 0;
-    private static List<Double> arrayList = new ArrayList<>();
-    private static int indexForArrayList = 0;
+    private static Stack<Double> memoryStack = new Stack<>();
     private static boolean resultStoreInMemory = false;
 
 
@@ -64,7 +63,7 @@ public class Calculator {
         //making tuples and adding to the Map
         for (int i = 0; i < parts.length - 1; i = i + 2) {
             //checking validation if it passes then adding to the Map
-            if (parts[parts.length-1].equals("M+") && i > 1 && resultStoreInMemory) {
+            if (parts[parts.length - 1].equals("M+") && i > 1 && resultStoreInMemory) {
 //                resultStoreInMemory = false;
                 break;
             }
@@ -336,35 +335,36 @@ public class Calculator {
     }
 
     public static void storeInMemory(double value) {
-        arrayList.add(indexForArrayList, value);
-        indexForArrayList++;
+        memoryStack.push(value);
     }
 
     public static void clearMemory() {
-        boolean b = arrayList.removeAll(arrayList);
-        indexForArrayList = 0;
+        int size = memoryStack.size();
+        for (int i = 0; i < size; i++) {
+            memoryStack.pop();
+        }
     }
 
     public static double recallMemory() {
-        double value= 0;
-        for (double val: arrayList){
+        double value = 0;
+        for (double val : memoryStack) {
             value = val;
         }
         return value;
     }
 
     public static String recallAllMemory() {
-        if (arrayList.isEmpty()) {
+        if (memoryStack.isEmpty()) {
             return "No values stored in memory.";
         }
         String memoryValues = "";
         for (int i = 0; i < 5; i++) {
             if (i == 0) {
-                memoryValues = memoryValues + arrayList.get(arrayList.size() - 1) + ", ";
+                memoryValues = memoryValues + memoryStack.peek() + ", ";
             } else if (i == 4) {
-                memoryValues = memoryValues + arrayList.get(i);
+                memoryValues = memoryValues + memoryStack.get(i);
             } else {
-                memoryValues = memoryValues + arrayList.get(i) + ", ";
+                memoryValues = memoryValues + memoryStack.get(i) + ", ";
             }
         }
         return "Stored values: " + memoryValues;
