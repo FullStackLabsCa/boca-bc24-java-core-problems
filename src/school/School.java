@@ -58,6 +58,7 @@ public class School <S,G extends Number> extends Course<S,G>{
                 if (courseToStudentGrade.containsKey(courseName)) {
                     Course<S, G> course = courseToStudentGrade.get(courseName);
                     course.enrollStudent(studentId);
+                    courseToStudentGrade.put(parts[1],course);
                     System.out.println("Student '" + studentId + "' enrolled in course '" + courseName + "'.");
                 } else {
                     System.out.println("Error: Cannot enroll student. Course '" + courseName + "' does not exist.");
@@ -65,13 +66,6 @@ public class School <S,G extends Number> extends Course<S,G>{
             } else {
                 System.out.println("Invalid command format.");
             }
-//            if (courseToStudentGrade.containsKey(parts[1])) {
-//                course.enrollStudent(parts[2]);
-//                courseToStudentGrade.put(parts[1], course);
-//                System.out.println("Student '" + parts[2] + "' enrolled in course '" + parts[1] + "'.");
-//            } else {
-//                System.out.println("Error: Cannot enroll student. Course '" + parts[1] + "' does not exist.");
-//            }
         } else if (command.startsWith("assign_grade")) {
             if (parts.length == 4) {
                 String courseName = parts[1];
@@ -81,6 +75,7 @@ public class School <S,G extends Number> extends Course<S,G>{
                 Course<S, G> course = courseToStudentGrade.get(courseName);
                 if (course != null && course.isStudentEnrolled(studentId)) {
                     course.assignGrade(studentId, grade);
+                    courseToStudentGrade.put(parts[1],course);
                     System.out.println("Grade '" + grade + "' assigned to student '" + studentId + "' in course '" + courseName + "'.");
                 } else {
                     System.out.println("Error: Cannot assign grade. Student '" + studentId + "' is not enrolled in course '" + courseName + "'.");

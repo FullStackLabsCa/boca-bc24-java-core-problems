@@ -2,9 +2,6 @@ package problems;
 
 import java.util.Arrays;
 import java.util.Scanner;
-
-
-
 public class Calculator {
     double a, b;
     char operator = '\0';
@@ -46,12 +43,6 @@ public class Calculator {
                 return "Error: Invalid number format";
             }
         }
-
-
-
-
-
-
     public char getOperator(String input) {
 
         for (char c : input.toCharArray()) {
