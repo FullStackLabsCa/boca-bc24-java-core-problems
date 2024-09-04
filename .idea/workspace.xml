@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3c9f44b-ff0f-43a9-b850-9b801d0dc95b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/problems/stringProblems/CapitalizeFirstLetterOfEachWord.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/collection/p1_Bracket_WS_Matching/P1_Bracket_WS_Matching.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/collection/p1_Bracket_WS_Matching/P1_Bracket_WS_Matching.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/collection/p2_bracket_s_matching/P2_bracket_s_matching.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/collection/p2_bracket_s_matching/P2_bracket_s_matching.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +55,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Calculator.executor": "Debug",
+    "Application.CapitalizeFirstLetterOfEachWord.executor": "Debug",
     "Application.Course.executor": "Run",
     "Application.DuplicateElementInArray.executor": "Debug",
     "Application.Generics_Demo.executor": "Debug",
@@ -245,6 +245,11 @@
           <url>file://$PROJECT_DIR$/src/problems/calculator/Calculator.java</url>
           <line>59</line>
           <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/problems/stringProblems/CapitalizeFirstLetterOfEachWord.java</url>
+          <line>14</line>
+          <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
