@@ -1,12 +1,15 @@
 package calculator;
 
 import java.util.Scanner;
+import java.util.Stack;
+import java.util.Vector;
 
 import static java.lang.Double.NaN;
 
 public class Calculator {
     static double[] memory = new double[5];
     static int index = 0, count = 0;
+    static Stack<Double> stackMemory = new Stack<>();
 
     // Check whether expression is valid or not, but not working need to fix it
     public static boolean isValidString(String expression) {
@@ -162,9 +165,10 @@ public class Calculator {
 
     // Clear memory
     public static void clearMemory() {
-        memory = new double[5];
-        index = 0;
+//        memory = new double[5];
+//        index = 0;
         count = 0;
+        stackMemory.empty();
     }
 
     // Recall memory
@@ -173,18 +177,35 @@ public class Calculator {
             System.out.println("No value stored in memory.");
             return 0;
         } else {
-            return memory[count - 1];
+            return stackMemory.peek();
+//            return memory[count - 1];
         }
     }
 
     // Store value in memory
     public static void storeInMemory(double value) {
-        if (index >= 5) {
-            index = 0;
-            count--;
+        if (stackMemory.size() >= 5) {
+            Stack<Double> tempStack = new Stack<>();
+            while (!stackMemory.isEmpty()) {
+                tempStack.push(stackMemory.pop());
+            }
+            tempStack.pop();
+            stackMemory.push(value);
+            while (!tempStack.isEmpty()) {
+                stackMemory.push(tempStack.pop());
+            }
+        } else {
+            stackMemory.push(value);
+            count++;
         }
-        memory[index++] = value;
-        count++;
+
+
+//        if (index >= 5) {
+//            index = 0;
+//            count--;
+//        }
+//        memory[index++] = value;
+//        count++;
     }
 
     // Recall all memory
@@ -195,7 +216,8 @@ public class Calculator {
         StringBuilder sb = new StringBuilder("Stored values: ");
         for (int i = 0; i < count; i++) {
             if (i > 0) sb.append(", ");
-            sb.append(memory[i]);
+            sb.append(stackMemory.get(i));
+//            sb.append(memory[i]);
         }
         return sb.toString();
     }
