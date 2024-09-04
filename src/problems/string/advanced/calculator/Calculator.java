@@ -81,6 +81,7 @@ public class Calculator {
         for (Map.Entry<Integer, String> entry : bracketsMap.entrySet()) {
             Number k = entry.getKey();
             String v = entry.getValue();
+            int key = entry.getKey();
             int previousNodeKey = (int) k - 1;
             int nextNodeKey = (int) k + 1;
             double num1 = 0;
@@ -98,41 +99,7 @@ public class Calculator {
             }
 
             if (containOpenCloseBracket) {
-                operandResult = performOperation(num1, operand, num2);
-                //previousNode logic
-                if (previousNodeKey != -1) {
-                    String previousNode = bracketsMap.get(previousNodeKey);
-                    String valueSplit = "";
-                    String[] splitArray = previousNode.split("(?<=[-+*/])|(?=[-+*/])");
-                    for (int i = 0; i < splitArray.length; i++) {
-                        if (splitArray[i].contains("(") && splitArray[0] == "(") {
-                            valueSplit = splitArray[1] + splitArray[2] + operandResult;
-                            break;
-                        } else if (splitArray[i].contains("(") && splitArray[0] != "(") {
-                            valueSplit = splitArray[0] + splitArray[1] + operandResult;
-                            break;
-                        }
-                    }
-                    bracketsMap.put(previousNodeKey, valueSplit);
-                }
-
-                //nextNode Logic
-                if (nextNodeKey < bracketsMap.size()) {
-                    String nextNode = bracketsMap.get(nextNodeKey);
-                    String valueSplit = "";
-                    String[] splitArray = nextNode.split("(?<=[-+*/])|(?=[-+*/])");
-                    for (int i = 0; i < splitArray.length; i++) {
-                        if (splitArray[i].contains(")") && splitArray[splitArray.length - 1].equals(")")) {
-                            valueSplit = splitArray[1] + splitArray[2] + operandResult;
-                            break;
-                        } else if (splitArray[i].contains(")") && splitArray[1] != ")") {
-                            valueSplit = operandResult + splitArray[1] + splitArray[2];
-                            break;
-                        }
-                    }
-                    bracketsMap.put(nextNodeKey, valueSplit);
-                }
-                bracketsMap.remove(k);
+                updateNodesAndPerformOperation(bracketsMap, key, previousNodeKey, nextNodeKey, num1, num2, operand);
                 break;
             }
         }
