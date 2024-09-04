@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d3c9f44b-ff0f-43a9-b850-9b801d0dc95b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/collection/p1_Bracket_WS_Matching/P1_Bracket_WS_Matching.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/collection/p1_Bracket_WS_Matching/P1_Bracket_WS_Matching.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/collection/p2_bracket_s_matching/P2_bracket_s_matching.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/collection/p2_bracket_s_matching/P2_bracket_s_matching.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,8 +63,10 @@
     "Application.Main.executor": "Run",
     "Application.P10_Add_Sub_Number.executor": "Run",
     "Application.P12_Prime_Number.executor": "Run",
+    "Application.P1_Bracket_WS_Matching.executor": "Run",
     "Application.P1_Maximum_in_Array.executor": "Run",
     "Application.P2_Palindrome.executor": "Run",
+    "Application.P2_bracket_s_matching.executor": "Run",
     "Application.P3_Calculator.executor": "Run",
     "Application.P3_Generic_GradeBook_Class.executor": "Run",
     "Application.P4_Generic_Course_Class.executor": "Run",

@@ -18,7 +18,8 @@ public class P1_Bracket_WS_Matching {
                 break;
             }
 
-            if(!input.matches("[(){}\\[\\]]*") || !input.matches("")){  // refer: notes3-regular-expression.md
+//            if(!input.matches("[(){}\\[\\]]*") || !input.matches("")){  // refer: notes3-regular-expression.md
+            if(input.matches("")){  // refer: notes3-regular-expression.md
                 System.out.println("Invalid Input");
                 System.out.println("Please enter valid input brackets: (), [], {} ");
                 continue;
