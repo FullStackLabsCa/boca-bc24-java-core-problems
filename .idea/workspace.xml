@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3c9f44b-ff0f-43a9-b850-9b801d0dc95b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/problems/stringProblems/CapitalizeFirstLetterOfEachWord.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/arrayProblem/MergeTwoArrays.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,6 +61,7 @@
     "Application.Generics_Demo.executor": "Debug",
     "Application.LongestWordString.executor": "Run",
     "Application.Main.executor": "Run",
+    "Application.MergeTwoArrays.executor": "Run",
     "Application.P10_Add_Sub_Number.executor": "Run",
     "Application.P12_Prime_Number.executor": "Run",
     "Application.P1_Bracket_WS_Matching.executor": "Run",
@@ -245,11 +246,6 @@
           <url>file://$PROJECT_DIR$/src/problems/calculator/Calculator.java</url>
           <line>59</line>
           <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/problems/stringProblems/CapitalizeFirstLetterOfEachWord.java</url>
-          <line>14</line>
-          <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
