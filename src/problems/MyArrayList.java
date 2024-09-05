@@ -39,7 +39,12 @@ public class  MyArrayList <T> {
     }
     
     public <T> Object get(int position){
-        return ts[position];
+        if(position <= size){
+                return ts[position];
+            }
+            else{
+                throw new IndexOutOfBoundsException();
+            }
     }
 
 //    public void remove(int position){
