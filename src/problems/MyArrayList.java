@@ -46,18 +46,19 @@ public class  MyArrayList <T> {
     }
 
     public String remove(int position){
-        String removedElement = ts[position].toString();
 
-        try {
+        if (position < 0 || position >= size) {
+            throw new IndexOutOfBoundsException();
+        }
+        String removedElement = ts[position].toString();
+            if (ts[position].equals(null)) {
+                throw new IndexOutOfBoundsException();
+            }
             for (int i = position; i < size - 1; i++) {
                 ts[i] = ts[i + 1];
             }
             ts[size - 1] = null;
             size--;
-        }
-        catch (IndexOutOfBoundsException e){
-            throw e;
-        }
         return removedElement;
     }
 
