@@ -11,7 +11,6 @@ public class Calculator {
     private static Stack<Double> memoryStack = new Stack<>();
     private static boolean resultStoreInMemory = false;
 
-
     public static double calculate(String str) throws ArithmeticException {
         if (str == null || str.isEmpty()) {
             System.out.println("Error: Input is empty or null");
@@ -24,9 +23,8 @@ public class Calculator {
         LinkedHashMap<Integer, String> additionMap = new LinkedHashMap<>();
         LinkedHashMap<Integer, String> subtractionMap = new LinkedHashMap<>();
 
-        String[] parts;
         String tuple = "";
-        parts = str.split(" ");
+        String[] parts = str.split("(?<=[-+*/])|(?=[-+*/])");
         int index = 0;
         int indexForAddingToMap = 0;
         double sqrtResult = 0;
@@ -49,6 +47,7 @@ public class Calculator {
         }
 
         if (str.contains("^")) {
+            exponentResult = 0;
             String[] partsExponent = str.split("[()]");
             exponentResult = Math.pow(Double.parseDouble((parts[0])), Double.parseDouble((parts[2])));
             System.out.println("exponentResult = " + exponentResult);
