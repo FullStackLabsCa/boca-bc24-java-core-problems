@@ -1,5 +1,6 @@
 package problems.codeproblems;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class AlphabetNumberCount {
