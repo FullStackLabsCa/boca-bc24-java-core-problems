@@ -4,39 +4,55 @@ import java.util.Arrays;
 
 public class ArrayListImplementation<T> {
 
-    T[] underLyingArray;
+    Object[] underLyingArray;
+    static int lastElementIndex;
 
 
     public ArrayListImplementation() {
         //Default Capacity of 10
+        underLyingArray = new Object[10];
     }
 
     public ArrayListImplementation(int capacity) {
         //Capacity User Desired
+        underLyingArray = new Object[capacity];
     }
 
     public void add(T element){
-        //Double size if full and then add
-        //Or simply add
+        //Double size if full
+        if(lastElementIndex == underLyingArray.length - 1){
+            resize();
+        }
+        //and add
+        underLyingArray[lastElementIndex] = element;
+        lastElementIndex++;
     }
 
     public T get(int index){
-        //Get Element and return it
-
         //If IndexOutOfBounds
             //Throw IndexOutOfBoundsException
+        if(index < 0 || index > underLyingArray.length){
+            throw new IndexOutOfBoundsException();
+        } else {
+            //Get Element and return it
+            return (T) underLyingArray[index];
+        }
 
-        return null;
     }
 
     public T remove(int index){
+        Object[] tempArray = underLyingArray;
+
         //Remove the element from the array
+        underLyingArray = new Object[underLyingArray.length - 1];
 
         //Shift the elements to the right of it towards left 1 position
+        System.arraycopy(tempArray, 0, underLyingArray, 0, index);
+        System.arraycopy(tempArray, index, underLyingArray, index + 1, tempArray.length - index - 1);
 
-        //Throw IndexOutOfBoundsException when occured
+        //Throw IndexOutOfBoundsException when occurred
 
-        return underLyingArray[index];
+        return (T) tempArray[index];
     }
 
     public int size(){
@@ -50,7 +66,7 @@ public class ArrayListImplementation<T> {
 
     public boolean isEmpty(){
         boolean isEmpty = true;
-        for(T element : underLyingArray){
+        for(Object element : underLyingArray){
             if(!element.equals(null)){
                 return false;
             } else {
@@ -67,13 +83,20 @@ public class ArrayListImplementation<T> {
         return null;
     }
 
-    public T[] resize(){
+    public void resize(){
         //double the size of array when its called
 
-        //create and array of double the length
-        //copy the elements from the previous array to the new array
+        //create an array of double the length
+        //copy the elements from the temp array to the original array
         //return the new array with half filled with previous info and half empty
+        Object[] tempArray = underLyingArray;
+        underLyingArray = new Object[underLyingArray.length * 2];
+        System.arraycopy(tempArray, 0, underLyingArray, 0, tempArray.length);
 
-        return null;
+    }
+
+
+    public static void main(String[] args) {
+        
     }
 }
