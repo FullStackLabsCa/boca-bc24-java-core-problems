@@ -11,9 +11,10 @@ import static problems.advancedcalculator.Subtraction.performSubtraction;
 public class Calculator {
     static Map<Integer, String> tuplesLinkedHashMap = new LinkedHashMap<>();
 
-//    static List<Double> inMemoryStorage = new ArrayList<>();
+    //    static List<Double> inMemoryStorage = new ArrayList<>();
     static Stack<Double> inMemoryStorageStackImplementation = new Stack<>();
 
+    static List<Integer> keysToRemove = new ArrayList<>();
 
     public static Double calculate(String userInput) {
 
@@ -45,7 +46,7 @@ public class Calculator {
             userInput = userInput.replaceAll("\\s+", "");
             String[] split = userInput.split("\\+|\\-|\\*|\\/");
 
-
+            //Checking the input to make it tuple or not. Handling the operation normally for simpler input without making tuples and using LinkedHashMap
             if (!(split.length > 2)) {
                 String resultedValue = performCalculation(getOperation(userInput), Utility.convertToDoubleArray(userInput.split("\\+|\\-|\\*|\\/")));
                 return Double.parseDouble(resultedValue);
@@ -98,83 +99,17 @@ public class Calculator {
     }
 
     private static String processOperationsByPrecedence(Map<Integer, String> tuplesLinkedHashMap) {
-        List<Integer> keysToRemove = new ArrayList<>();
         String output = null;
-        //For performing the operation in linkedHashmap
-        for (Map.Entry<Integer, String> entry : tuplesLinkedHashMap.entrySet()) {
-            Integer key = entry.getKey();
-            String value = entry.getValue();
-            char operation = getOperation(entry.getValue());
-            if (value.contains("(")) {
-                String value1 = value.substring(1, value.length() - 1);
-                output = performCalculation(operation, Utility.convertToDoubleArray(value1.split("\\+|\\-|\\*|\\/")));
-                if (tuplesLinkedHashMap.size() < 2) return output;
-                performMappingOperation(key, output, operation);
-                keysToRemove.add(entry.getKey());
+
+        String[] iterator = {"(", "/", "*", "+", "-"};
+        if (tuplesLinkedHashMap.isEmpty()) return "";
+
+        //Using recursion for the different operation as provided by the iterator.
+        for (String i : iterator) {
+            output = precedenceLevelCheckAndPerformingOperation(i);
+            if (tuplesLinkedHashMap.size() < 2 && tuplesLinkedHashMap.get(0).contains(i)) {
+                break;
             }
-        }
-        updateHashMapTable(keysToRemove);
-
-        for (Map.Entry<Integer, String> entry : tuplesLinkedHashMap.entrySet()) {
-            char operation = getOperation(entry.getValue());
-            if (entry.getValue().contains("/")) {
-                output = performCalculation('/', Utility.convertToDoubleArray(entry.getValue().split("\\+|\\-|\\*|\\/")));
-                if (tuplesLinkedHashMap.size() < 2) return output;
-                performMappingOperation(entry.getKey(), output, operation);
-                keysToRemove.add(entry.getKey());
-            }
-        }
-
-        updateHashMapTable(keysToRemove);
-        if (tuplesLinkedHashMap.isEmpty()) {
-            return "";
-        }
-
-        for (Map.Entry<Integer, String> entry : tuplesLinkedHashMap.entrySet()) {
-            Integer key = entry.getKey();
-            String value = entry.getValue();
-            char operation = getOperation(entry.getValue());
-            if (value.contains("*")) {
-                output = performCalculation('*', Utility.convertToDoubleArray(value.split("\\+|\\-|\\*|\\/")));
-                if (tuplesLinkedHashMap.size() < 2) return output;
-                performMappingOperation(key, output, operation);
-                keysToRemove.add(entry.getKey());
-            }
-        }
-
-        updateHashMapTable(keysToRemove);
-        if (tuplesLinkedHashMap.isEmpty()) {
-            return "";
-        }
-
-        for (Map.Entry<Integer, String> entry : tuplesLinkedHashMap.entrySet()) {
-            char operation = getOperation(entry.getValue());
-            if (entry.getValue().contains("+")) {
-                output = performCalculation('+', Utility.convertToDoubleArray(entry.getValue().split("\\+|\\-|\\*|\\/")));
-                if (tuplesLinkedHashMap.size() < 2) return output;
-                performMappingOperation(entry.getKey(), output, operation);
-                keysToRemove.add(entry.getKey());
-            }
-        }
-        updateHashMapTable(keysToRemove);
-        if (tuplesLinkedHashMap.isEmpty()) {
-            return "";
-        }
-
-
-        for (Map.Entry<Integer, String> entry : tuplesLinkedHashMap.entrySet()) {
-            char operation = getOperation(entry.getValue());
-            if (entry.getValue().contains("-")) {
-                output = performCalculation('-', Utility.convertToDoubleArray(entry.getValue().split("\\+|\\-|\\*|\\/")));
-                if (tuplesLinkedHashMap.size() < 2) return output;
-                performMappingOperation(entry.getKey(), output, operation);
-                keysToRemove.add(entry.getKey());
-            }
-        }
-
-        updateHashMapTable(keysToRemove);
-        if (tuplesLinkedHashMap.isEmpty()) {
-            return "";
         }
         return output;
     }
@@ -182,13 +117,9 @@ public class Calculator {
     //updating nodes of hashMap
     private static void updateHashMapTable(List<Integer> keysToRemove) {
         if (!keysToRemove.isEmpty()) {
-//            for (Integer key : keysToRemove) {
-//                tuplesLinkedHashMap.remove(key);
-//            }
-
             Integer key = keysToRemove.get(0);
 
-            if (key != tuplesLinkedHashMap.size() - 1) {
+            if (key != tuplesLinkedHashMap.size() - 1) { //not the last key index of hashmap
                 for (int i = key; i < tuplesLinkedHashMap.size() - 1; i++) {
                     tuplesLinkedHashMap.put(i, tuplesLinkedHashMap.get(i + 1));
                 }
@@ -200,27 +131,27 @@ public class Calculator {
         }
     }
 
-// keeping it to make generic. Need to work later for refactoring and to reduce the code
-//    public static String precedenceLevelCheckAndPerformingOperation(String operatorLevel) {
-//        String output = "";
-//        for (Map.Entry<Integer, String> entry : tuplesLinkedHashMap.entrySet()) {
-//            Integer key = entry.getKey();
-//            String value = entry.getValue();
-//            precedenceLevelCheck(entry.getValue());
-//            char operation = getOperation(entry.getValue());
-//            if (value.contains(operatorLevel)) {
-//                if(operatorLevel.contains("(")){
-//                 value = value.substring(1, value.length() - 1);
-//                }
-//                 output = performCalculation(operation, Utility.convertToDoubleArray(value.split("\\+|\\-|\\*|\\/")));
-//                if (tuplesLinkedHashMap.size() < 2) return output;
-//                performMappingOperation(key, output, operation);
-//                keysToRemove.add(entry.getKey());
-//            }
-//        }
-//        updateHashMapTable(keysToRemove);
-//        return output;
-//    }
+    public static String precedenceLevelCheckAndPerformingOperation(String operatorLevel) {
+        String output = "";
+        for (Map.Entry<Integer, String> entry : tuplesLinkedHashMap.entrySet()) {
+            Integer key = entry.getKey();
+            String value = entry.getValue();
+            char operation = getOperation(entry.getValue());
+            if (value.contains(operatorLevel)) {
+                if (operatorLevel.contains("(")) {
+                    value = value.substring(1, value.length() - 1);
+                }
+                output = performCalculation(operation, Utility.convertToDoubleArray(value.split("\\+|\\-|\\*|\\/")));
+                if (tuplesLinkedHashMap.size() < 2) {
+                    return output;
+                }
+                performMappingOperation(key, output, operation);
+                keysToRemove.add(entry.getKey());
+            }
+        }
+        updateHashMapTable(keysToRemove);
+        return output;
+    }
 
     //implementing sir algorithm
     public static void performMappingOperation(Integer key, String output, char operation) {
@@ -237,10 +168,8 @@ public class Calculator {
             if (tuplesLinkedHashMap.get(key + 1) == null) {
                 int operationIndex = problems.advancedcalculator.Utility.getOperationIndex(tuplesLinkedHashMap.get(key + 2));
                 String updatedValue = tuplesLinkedHashMap.get(key + 2).substring(operationIndex);
-
                 tuplesLinkedHashMap.put(key + 2, output.concat(updatedValue));
             } else {
-
                 int operationIndex = problems.advancedcalculator.Utility.getOperationIndex(tuplesLinkedHashMap.get(key + 1));
                 String updatedValue = tuplesLinkedHashMap.get(key + 1).substring(operationIndex);
                 tuplesLinkedHashMap.put(key + 1, output.concat(updatedValue));
@@ -319,7 +248,7 @@ public class Calculator {
             inMemoryStorageStackImplementation.push(valuToBeStored);
             List<Double> shiftedResult = problems.advancedcalculator.Utility.shiftInputArrayList(inMemoryStorageStackImplementation, 1);
             inMemoryStorageStackImplementation.clear();
-            for(Double result: shiftedResult) {
+            for (Double result : shiftedResult) {
                 inMemoryStorageStackImplementation.push(result);
             }
             return;

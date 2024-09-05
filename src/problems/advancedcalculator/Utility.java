@@ -7,7 +7,7 @@ public class Utility {
 
     public static int getOperationIndex(String userInput) {
         int index = 0;
-        if(userInput == null) return 0;
+        if (userInput == null) return 0;
         if (userInput.contains("+")) {
             index = userInput.indexOf("+");
         } else if (userInput.contains("-")) {
@@ -37,7 +37,7 @@ public class Utility {
             }
         }
         return Arrays.asList(shiftedArray);
-}
+    }
 
     public static int[] convertToIntegerArray(String[] input) {
         int[] array = new int[input.length];
@@ -55,4 +55,11 @@ public class Utility {
         return array;
     }
 
+    public static Boolean containOperation(String userInput) {
+        if (userInput.contains("+") || userInput.contains("-") || userInput.contains("*") || userInput.contains("/")) {
+            return true;
+        }
+        return false;
+
+    }
 }
