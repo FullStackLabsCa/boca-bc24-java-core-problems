@@ -1,17 +1,12 @@
 package problems.array;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MyArrayList <T>{
     public ArrayList<T> list;
 
     public MyArrayList() {
         this.list= new ArrayList<>(10);
-    }
-
-    public MyArrayList(ArrayList<T> list) {
-        this.list = list;
     }
 
     public void increaseCapacity(){
