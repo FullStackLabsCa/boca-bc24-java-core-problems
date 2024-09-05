@@ -74,33 +74,33 @@ public class MyArrayListTest {
         assertEquals("Size should be 2 after removal", 2, list.size());
         assertEquals("Element at index 1 should now be 'Cherry'", "Cherry", list.get(1));
     }
-//
-//    // Test removing element at first index
-//    @Test
-//    public void testRemoveFirstElement() {
-//        list.add("Apple");
-//        list.add("Banana");
-//
-//        String removedElement = list.remove(0);
-//        assertEquals("Removed element should be 'Apple'", "Apple", removedElement);
-//        assertEquals("Size should be 1 after removal", 1, list.size());
-//        assertEquals("Element at index 0 should now be 'Banana'", "Banana", list.get(0));
-//    }
-//
-//    // Test removing element at invalid index (negative index)
-//    @Test(expected = IndexOutOfBoundsException.class)
-//    public void testRemoveElementAtNegativeIndex() {
-//        list.add("Apple");
-//        list.remove(-1); // This should throw IndexOutOfBoundsException
-//    }
-//
-//    // Test removing element at invalid index (out of bounds)
-//    @Test(expected = IndexOutOfBoundsException.class)
-//    public void testRemoveElementAtOutOfBoundsIndex() {
-//        list.add("Apple");
-//        list.remove(2); // This should throw IndexOutOfBoundsException
-//    }
-//
+
+    // Test removing element at first index
+    @Test
+    public void testRemoveFirstElement() {
+        list.add("Apple");
+        list.add("Banana");
+
+        String removedElement = list.remove(0);
+        assertEquals("Removed element should be 'Apple'", "Apple", removedElement);
+        assertEquals("Size should be 1 after removal", 1, list.size());
+        assertEquals("Element at index 0 should now be 'Banana'", "Banana", list.get(0));
+    }
+
+    // Test removing element at invalid index (negative index)
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testRemoveElementAtNegativeIndex() {
+        list.add("Apple");
+        list.remove(-1); // This should throw IndexOutOfBoundsException
+    }
+
+    // Test removing element at invalid index (out of bounds)
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testRemoveElementAtOutOfBoundsIndex() {
+        list.add("Apple");
+        list.remove(2); // This should throw IndexOutOfBoundsException
+    }
+
 //    // Test list size
 //    @Test
 //    public void testListSize() {

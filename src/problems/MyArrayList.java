@@ -47,11 +47,17 @@ public class  MyArrayList <T> {
 
     public String remove(int position){
         String removedElement = ts[position].toString();
-        for(int i = position;i<size-1;i++) {
-                ts[i] = ts[i+1];
+
+        try {
+            for (int i = position; i < size - 1; i++) {
+                ts[i] = ts[i + 1];
+            }
+            ts[size - 1] = null;
+            size--;
         }
-        ts[size-1]=null;
-        size--;
+        catch (IndexOutOfBoundsException e){
+            throw e;
+        }
         return removedElement;
     }
 
