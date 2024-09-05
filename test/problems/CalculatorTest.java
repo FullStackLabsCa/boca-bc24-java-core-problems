@@ -2,6 +2,7 @@ package problems;
 
 import org.junit.Before;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 public class CalculatorTest {
@@ -49,6 +50,7 @@ public class CalculatorTest {
     @Test
     public void testMemoryOperations() {
         Calculator.calculate("3 + 5 M+");
+        Calculator.storeInMemory(8.0);
         assertEquals(8.0, Calculator.recallMemory(), 0.001);
 
         Calculator.storeInMemory(15.5);
@@ -69,5 +71,10 @@ public class CalculatorTest {
 
         String expected = "Stored values: 27.5, 15.5, 42.0, 3.14, 99.99";
         assertEquals(expected, Calculator.recallAllMemory());
+    }
+
+    @Test(expected = IllegalStateException.class)
+    public void testRecallMemoryWhenEmpty() {
+        Calculator.recallMemory();
     }
 }
