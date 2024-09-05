@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3c9f44b-ff0f-43a9-b850-9b801d0dc95b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/problems/arrayProblem/ShiftElementsArray.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/arrayProblem/SmallestLargestElementInAraay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +79,8 @@
     "Application.Palindrome.executor": "Run",
     "Application.RemoveVowels.executor": "Run",
     "Application.School.executor": "Run",
-    "Application.ShiftElementsArray.executor": "Debug",
+    "Application.ShiftElementsArray.executor": "Run",
+    "Application.SmallestLargestElementInAraay.executor": "Run",
     "Application.countVowels.executor": "Run",
     "Application.longestWordString.executor": "Run",
     "Application.p2_CountOccurrences.executor": "Run",
@@ -246,16 +248,6 @@
           <url>file://$PROJECT_DIR$/src/problems/calculator/Calculator.java</url>
           <line>59</line>
           <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/problems/arrayProblem/ShiftElementsArray.java</url>
-          <line>18</line>
-          <option name="timeStamp" value="32" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/problems/arrayProblem/ShiftElementsArray.java</url>
-          <line>20</line>
-          <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
