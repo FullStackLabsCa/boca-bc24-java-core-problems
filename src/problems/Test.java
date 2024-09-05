@@ -1,11 +1,8 @@
 package problems;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.io.IOException;
 
-public class test {
+public class Test extends Exception {
 //    String name;
 //    String address;
 //
@@ -70,11 +67,47 @@ public class test {
 //        new test();
 //    }
 //    public test() {
-        String myString = "(2*(3-2)+[5-3])";
-        String myArray[] = myString.split("[\\(||\\)]");
-        System.out.println("Input String is : "+myString);
-        for(int i=1; i<=(myArray.length)-1; i++)
-            System.out.println("myArray["+i+"] : "+ myArray[i]);
+//        String myString = "(2*(3-2)+[5-3])";
+//        String myArray[] = myString.split("[\\(||\\)]");
+//        System.out.println("Input String is : "+myString);
+//        for(int i=1; i<=(myArray.length)-1; i++)
+//            System.out.println("myArray["+i+"] : "+ myArray[i]);
+//    }
+        //}
+
+        method1();
     }
-    //}
+
+    public static class TestException extends ArithmeticException{
+        public TestException(String input){
+            super(input);
+        }
+        public static void main(String[] args) {
+            System.out.println("TestException is working");
+        }
+    }
+
+    public static void method1(){
+
+        try{
+            method2();
+        }
+        catch(TestException e){
+            System.out.println("sample exception working.");
+        }
+
+    }
+
+    public static void method2() throws TestException {
+try {
+
+
+    int a = 0;
+    int b = 12;
+    int ans = b / a;
+}catch (ArithmeticException e) {
+    throw new TestException("in method2()");
+}
+    }
+
 }

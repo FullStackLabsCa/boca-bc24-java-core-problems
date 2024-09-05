@@ -1,103 +1,104 @@
 package problems;
 
-
-import javax.swing.plaf.synth.SynthOptionPaneUI;
-import java.util.Scanner;
-
-import static java.lang.Double.isNaN;
+import java.util.Stack;
 
 public class Calculator {
-
-    double a, b;
-    char operator = '\0';
-    public static void main(String[] args) {
-        System.out.println(3 + 5 * 2 - 4 / 2);
-        Scanner obj = new Scanner(System.in);
-        boolean exit = true;
-        while (exit) {
-            System.out.println("Enter the operation you want to perform");
-            String input = obj.nextLine().trim().replaceAll("\\s","");
-            if (input.equals("x")) {
-                exit = false;
-                break;
-            }
-            else {
-
-                System.out.println(calculate(input));
+        public static void main(String[] args) {
+            String usrStr = "(10 + 2) * 3";
+            System.out.println("Expected Result : "+usrStr+" = 4");
+            try {
+                int result = calculate(usrStr);
+                System.out.println(usrStr + " = " + result);
+            } catch (Exception e) {
+                System.out.println("Error evaluating expression: " + e.getMessage());
+                e.printStackTrace();
             }
         }
-    }
+
+        static int calculate(String usrStr) throws Exception{
+            Stack<Integer> numbers = new Stack<>();
+            Stack<Character> operators = new Stack<>();
+            Stack<Double> memory = new Stack<>();
 
 
-
-    public static String calculate(String input){
-        if(input == null || input.trim().isEmpty()){
-            return "Error: Input is empty or null";
-        }
-        Calculator calculator = new Calculator();
-        double num1 = Double.parseDouble(calculator.getOperand1(input));
-        double num2 = Double.parseDouble(calculator.getOperand2(input));
-        char op = calculator.getOperator(input);
-//        System.out.println(calculator.getAnswer(num1, num2, op));
-        return calculator.getAnswer(num1,num2,op);
-    }
-
-    public char getOperator(String input) {
-
-        for (char c : input.toCharArray()) {
-            if (c == '+' || c == '*' || c == '/' || c == '-') {
-                operator = c;
-            }
-        }
-        return operator;
-    }
-
-    public String  getOperand1(String input) {
-        String[] operands = input.split("[+\\-*/]");
-        try {
-
-            a = Double.parseDouble(operands[0]);
-
-        } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
-            System.out.println("First number is not valid");
-        }
-        return String.valueOf(a);
-    }
-    public String getOperand2(String input) {
-        String[] operands = input.split("[+\\-*/]");
-        try {
-            b = Double.parseDouble(operands[1]);
-
-        } catch (NumberFormatException  | ArrayIndexOutOfBoundsException e) {
-            System.out.println("Second number is not valid");
-        }
-        return String.valueOf(b);
-    }
-
-    public String getAnswer(double num1,double num2,char op){
-        double ans = 0;
-//        if(isNaN(num1)){
-//            return "Error: Invalid number format";
-//        }
-        if(num1 == 0 || num2 == 0){
-            return "Error: Cannot divide by zero";
-        }
-        switch (op) {
-            case '+' -> ans = num1 + num2;
-            case '-' -> ans = num1 - num2;
-            case '*' -> ans = num1 * num2;
-            case '/' -> {
-                if (num2 == 0) {
-                    System.out.println("Cannot divide by 0");
-                    ans = 0;
-                } else {
-                    ans = num1 / num2;
+            int i = 0;
+            while(i<usrStr.length())
+            {
+                char ch = usrStr.charAt(i);
+                if(Character.isDigit(ch)){
+                    int num = 0;
+                    while(i<usrStr.length() && Character.isDigit(usrStr.charAt(i))){
+                        num = num * 10 + (usrStr.charAt(i)-'0');
+                        i++;
+                    }
+                    numbers.push(num);
+                } else if (ch == '(') {
+                    operators.push(ch);
+                    i++;
+                } else if (ch == ')') {
+                    while(operators.peek()!='('){
+                        calculation(operators.pop(),numbers);
+//                    System.out.println(ch);
+                    }
+                    operators.pop();
+                    i++;
+                } else if (checkOperator(ch)) {
+                    while(!operators.isEmpty() && operatorSequence(ch) <= operatorSequence((operators.peek()))){
+                        calculation(operators.pop(),numbers);
+                    }
+                    operators.push(ch);
+                    i++;
+                }
+                else{
+                    i++;
                 }
             }
-            default -> System.out.println("Invalid");
+            while(!operators.isEmpty()){
+                calculation(operators.pop(), numbers);
+            }
+            if(numbers.size() != 1){
+                throw new Exception("Invalid Expression");
+            }
+            return numbers.pop();
         }
-        return String.valueOf(ans);
+
+
+        private static void calculation(char operator, Stack<Integer> numbers) throws Exception{
+            int b = numbers.pop();
+            int a = numbers.pop();
+            switch (operator){
+                case '+' :
+                    numbers.push(a+b);
+                    break;
+                case '-' :
+                    numbers.push(a-b);
+                    break;
+                case '*':
+                    numbers.push(a*b);
+                    break;
+                case '/':
+                    if(b == 0){
+                        throw new ArithmeticException("Division by Zero");
+                    }
+                    numbers.push(a/b);
+                default:
+                    throw new Exception("Invalid Exception");
+            }
+        }
+
+        private static boolean checkOperator(char ch){
+            if(ch == '+' || ch == '-' || ch == '*' || ch == '/'){
+                return true;
+            }
+            else return false;
+        }
+
+        private static int operatorSequence(char operator){
+            if(operator == '+' || operator == '-') {
+                return 1;
+            } else if (operator == '*' || operator == '/') {
+                return 2;
+            }
+            else return -1;
+        }
     }
-
-}
-
