@@ -75,8 +75,8 @@ public class CalculatorTest {
         assertEquals(expected, Calculator.recallAllMemory());
     }
 
-//    @Test(expected = IllegalStateException.class)
-//    public void testRecallMemoryWhenEmpty() {
-//        Calculator.recallMemory();
-//    }
+    @Test(expected = IllegalStateException.class)
+    public void testRecallMemoryWhenEmpty() {
+        Calculator.recallMemory();
+    }
 }

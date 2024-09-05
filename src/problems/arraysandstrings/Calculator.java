@@ -39,7 +39,7 @@ public class Calculator {
         if (count != 0) {
             return memory[count - 1];
         }
-        return 0;
+        throw new IllegalStateException();
     }
 
     public static String recallAllMemory() {
