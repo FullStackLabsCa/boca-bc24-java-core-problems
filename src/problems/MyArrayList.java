@@ -8,9 +8,7 @@ public class  MyArrayList <T> {
     T[] ts;
     int size = 0;
     public static void main(String[] args) {
-
     }
-
     public MyArrayList(){
         this.ts = (T[]) new Object[10];
     }
@@ -47,9 +45,15 @@ public class  MyArrayList <T> {
             }
     }
 
-//    public void remove(int position){
-//        ts.remove(position);
-//    }
+    public String remove(int position){
+        String removedElement = ts[position].toString();
+        for(int i = position;i<size-1;i++) {
+                ts[i] = ts[i+1];
+        }
+        ts[size-1]=null;
+        size--;
+        return removedElement;
+    }
 
 
 }

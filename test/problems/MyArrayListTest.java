@@ -61,19 +61,19 @@ public class MyArrayListTest {
         list.add("Apple");
         list.get(2); // This should throw IndexOutOfBoundsException
     }
-//
-//    // Test removing elements
-//    @Test
-//    public void testRemoveElements() {
-//        list.add("Apple");
-//        list.add("Banana");
-//        list.add("Cherry");
-//
-//        String removedElement = list.remove(1);
-//        assertEquals("Removed element should be 'Banana'", "Banana", removedElement);
-//        assertEquals("Size should be 2 after removal", 2, list.size());
-//        assertEquals("Element at index 1 should now be 'Cherry'", "Cherry", list.get(1));
-//    }
+
+    // Test removing elements
+    @Test
+    public void testRemoveElements() {
+        list.add("Apple");
+        list.add("Banana");
+        list.add("Cherry");
+
+        String removedElement = list.remove(1);
+        assertEquals("Removed element should be 'Banana'", "Banana", removedElement);
+        assertEquals("Size should be 2 after removal", 2, list.size());
+        assertEquals("Element at index 1 should now be 'Cherry'", "Cherry", list.get(1));
+    }
 //
 //    // Test removing element at first index
 //    @Test
