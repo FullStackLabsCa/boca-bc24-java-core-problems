@@ -1,6 +1,7 @@
 package problems;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -26,40 +27,40 @@ public class MyArrayListTest {
     }
 
     // Test adding elements beyond initial capacity
-//    @Test
-//    public void testAddBeyondInitialCapacity() {
-//        // Add elements more than default capacity (assuming default capacity is 10)
-//        for (int i = 1; i <= 12; i++) {
-//            list.add("Element" + i);
-//        }
-//
-//        assertEquals("Size should be 12 after adding 12 elements", 12, list.size());
-//        assertEquals("Last element should be 'Element12'", "Element12", list.get(11));
-//    }
-//
-//    // Test getting elements at valid indices
-//    @Test
-//    public void testGetElements() {
-//        list.add("Apple");
-//        list.add("Banana");
-//
-//        assertEquals("Element at index 0 should be 'Apple'", "Apple", list.get(0));
-//        assertEquals("Element at index 1 should be 'Banana'", "Banana", list.get(1));
-//    }
-//
-//    // Test getting element at invalid index (negative index)
-//    @Test(expected = IndexOutOfBoundsException.class)
-//    public void testGetElementAtNegativeIndex() {
-//        list.add("Apple");
-//        list.get(-1); // This should throw IndexOutOfBoundsException
-//    }
-//
-//    // Test getting element at invalid index (out of bounds)
-//    @Test(expected = IndexOutOfBoundsException.class)
-//    public void testGetElementAtOutOfBoundsIndex() {
-//        list.add("Apple");
-//        list.get(2); // This should throw IndexOutOfBoundsException
-//    }
+    @Test
+    public void testAddBeyondInitialCapacity() {
+        // Add elements more than default capacity (assuming default capacity is 10)
+        for (int i = 1; i <= 12; i++) {
+            list.add("Element" + i);
+        }
+
+        assertEquals("Size should be 12 after adding 12 elements", 12, list.size());
+        assertEquals("Last element should be 'Element12'", "Element12", list.get(11));
+    }
+
+    // Test getting elements at valid indices
+    @Test
+    public void testGetElements() {
+        list.add("Apple");
+        list.add("Banana");
+
+        assertEquals("Element at index 0 should be 'Apple'", "Apple", list.get(0));
+        assertEquals("Element at index 1 should be 'Banana'", "Banana", list.get(1));
+    }
+
+    // Test getting element at invalid index (negative index)
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testGetElementAtNegativeIndex() {
+        list.add("Apple");
+        list.get(-1); // This should throw IndexOutOfBoundsException
+    }
+
+    // Test getting element at invalid index (out of bounds)
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testGetElementAtOutOfBoundsIndex() {
+        list.add("Apple");
+        list.get(2); // This should throw IndexOutOfBoundsException
+    }
 //
 //    // Test removing elements
 //    @Test
