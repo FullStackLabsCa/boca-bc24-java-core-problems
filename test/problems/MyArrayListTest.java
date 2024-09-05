@@ -101,48 +101,48 @@ public class MyArrayListTest {
         list.remove(2); // This should throw IndexOutOfBoundsException
     }
 
-//    // Test list size
-//    @Test
-//    public void testListSize() {
-//        assertEquals("Size should be 0 for a new empty list", 0, list.size());
-//
-//        list.add("Apple");
-//        list.add("Banana");
-//
-//        assertEquals("Size should be 2 after adding two elements", 2, list.size());
-//
-//        list.remove(0);
-//        assertEquals("Size should be 1 after removing one element", 1, list.size());
-//    }
-//
-//    // Test clearing the list
-//    @Test
-//    public void testClearList() {
-//        list.add("Apple");
-//        list.add("Banana");
-//
-//        list.clear();
-//        assertEquals("Size should be 0 after clearing the list", 0, list.size());
-//        assertTrue("List should be empty after clear", list.isEmpty());
-//    }
-//
-//    // Test if the list is empty
-//    @Test
-//    public void testIsEmpty() {
-//        assertTrue("List should be empty for a new list", list.isEmpty());
-//
-//        list.add("Apple");
-//        assertFalse("List should not be empty after adding an element", list.isEmpty());
-//
-//        list.clear();
-//        assertTrue("List should be empty after clearing", list.isEmpty());
-//    }
-//
-//    // Test adding null values
-//    @Test
-//    public void testAddNullValue() {
-//        list.add(null);
-//        assertNull("First element should be null", list.get(0));
-//        assertEquals("Size should be 1 after adding a null value", 1, list.size());
-//    }
+    // Test list size
+    @Test
+    public void testListSize() {
+        assertEquals("Size should be 0 for a new empty list", 0, list.size());
+
+        list.add("Apple");
+        list.add("Banana");
+
+        assertEquals("Size should be 2 after adding two elements", 2, list.size());
+
+        list.remove(0);
+        assertEquals("Size should be 1 after removing one element", 1, list.size());
+    }
+
+    // Test clearing the list
+    @Test
+    public void testClearList() {
+        list.add("Apple");
+        list.add("Banana");
+
+        list.clear();
+        assertEquals("Size should be 0 after clearing the list", 0, list.size());
+        assertTrue("List should be empty after clear", list.isEmpty());
+    }
+
+    // Test if the list is empty
+    @Test
+    public void testIsEmpty() {
+        assertTrue("List should be empty for a new list", list.isEmpty());
+
+        list.add("Apple");
+        assertFalse("List should not be empty after adding an element", list.isEmpty());
+
+        list.clear();
+        assertTrue("List should be empty after clearing", list.isEmpty());
+    }
+
+    // Test adding null values
+    @Test
+    public void testAddNullValue() {
+        list.add(null);
+        assertNull("First element should be null", list.get(0));
+        assertEquals("Size should be 1 after adding a null value", 1, list.size());
+    }
 }

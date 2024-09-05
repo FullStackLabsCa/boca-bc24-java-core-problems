@@ -62,5 +62,14 @@ public class  MyArrayList <T> {
         return removedElement;
     }
 
+    public void clear(){
+        Arrays.fill(ts,0,size,null);
+        size =0;
+    }
 
+    public boolean isEmpty(){
+        if(size == 0)
+            return true;
+        return false;
+    }
 }
