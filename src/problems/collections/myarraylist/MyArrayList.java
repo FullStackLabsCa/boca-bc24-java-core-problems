@@ -54,7 +54,7 @@ public class MyArrayList<T> {
     }
 
     private void resize() {
-        array = Arrays.copyOf(array, array.length + 10);
+        array = Arrays.copyOf(array, array.length + 1);
     }
 
     @Override
