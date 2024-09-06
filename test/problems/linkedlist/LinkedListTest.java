@@ -3,6 +3,7 @@ package problems.linkedlist;
 import org.junit.Before;
 import org.junit.Test;
 
+import collections.linkedList.LinkedList;
 
 import static org.junit.Assert.*;
 

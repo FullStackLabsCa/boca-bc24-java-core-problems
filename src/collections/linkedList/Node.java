@@ -3,17 +3,18 @@ package collections.linkedList;
 class Node {
 
     private int value;
-    private int nextNode;
-    private int previousNode;
+    private Node nextNode;
+
+    public Node() {
+    }
 
     public Node(int value) {
         this.value = value;
     }
 
-    public Node(int value, int nextNode, int previousNode) {
+    public Node(int value, Node nextNode) {
         this.value = value;
         this.nextNode = nextNode;
-        this.previousNode = previousNode;
     }
 
     public int getValue() {
@@ -24,19 +25,12 @@ class Node {
         this.value = value;
     }
 
-    public int getNextNode() {
+    public Node getNextNode() {
         return nextNode;
     }
 
-    public void setNextNode(int nextNode) {
+    public void setNextNode(Node nextNode) {
         this.nextNode = nextNode;
     }
 
-    public int getPreviousNode() {
-        return previousNode;
-    }
-
-    public void setPreviousNode(int previousNode) {
-        this.previousNode = previousNode;
-    }
 }
