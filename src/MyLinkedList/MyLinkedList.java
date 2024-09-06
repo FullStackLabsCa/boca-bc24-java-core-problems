@@ -29,13 +29,41 @@ public class MyLinkedList {
         head = newNode;
         size++;
     }
+
+    public int removeFirst(){
+        Node temp = head;
+        head = head.getRefrence();
+        size--;
+        return temp.getData();
+    }
+    public int removeLast(){
+        Node temp = head;
+        //Node current = head;
+        while(true){
+            Node nextNode = temp.refrence;
+            if(nextNode.refrence == null){
+                temp.refrence = null;
+                size --;
+                return nextNode.getData();
+            }
+            else {
+                temp = nextNode;
+            }
+
+        }
+    }
+
+    public boolean isEmpty(){
+        return  size==0;
+    }
+
     public int size(){
         return size;
     }
     public void printList() {
         Node current = head;
         while (current != null) {
-            System.out.print(current.getData() + " => "+current.getRefrence());
+            System.out.print(current.getData() + " ");
             current = current.getRefrence();
         }
         System.out.println();
