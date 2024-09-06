@@ -6,7 +6,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import problems.calculator_entity_oops.launcher.CalculatorOld;
 
-public class CalculatorOldOldTest {
+public class CalculatorOldTest {
 
     @Test
     public void testAddition() {
