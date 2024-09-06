@@ -2,18 +2,18 @@ package collections.arrayList;
 
 import java.util.Arrays;
 
-public class ArrayListImplementation<T> {
+public class MyArrayList<T> {
 
     Object[] underLyingArray;
-    static int lastElementIndex;
+    int lastElementIndex;
 
 
-    public ArrayListImplementation() {
+    public MyArrayList() {
         //Default Capacity of 10
         underLyingArray = new Object[10];
     }
 
-    public ArrayListImplementation(int capacity) {
+    public MyArrayList(int capacity) {
         //Capacity User Desired
         underLyingArray = new Object[capacity];
     }
@@ -31,7 +31,7 @@ public class ArrayListImplementation<T> {
     public T get(int index){
         //If IndexOutOfBounds
             //Throw IndexOutOfBoundsException
-        if(index < 0 || index > underLyingArray.length){
+        if(index < 0 || index > lastElementIndex){
             throw new IndexOutOfBoundsException();
         } else {
             //Get Element and return it
@@ -50,31 +50,28 @@ public class ArrayListImplementation<T> {
         System.arraycopy(tempArray, 0, underLyingArray, 0, index);
         System.arraycopy(tempArray, index, underLyingArray, index + 1, tempArray.length - index - 1);
 
+        lastElementIndex--;
         //Throw IndexOutOfBoundsException when occurred
 
         return (T) tempArray[index];
     }
 
     public int size(){
-        return underLyingArray.length;
+        if(lastElementIndex == 0)
+            return 0;
+        else {
+            return lastElementIndex;
+        }
     }
 
     public void clear(){
-        Arrays.fill(underLyingArray, null);
+        underLyingArray = new Object[10];
         // Set the size of the underlying array back to default
+        lastElementIndex = 0;
     }
 
     public boolean isEmpty(){
-        boolean isEmpty = true;
-        for(Object element : underLyingArray){
-            if(!element.equals(null)){
-                return false;
-            } else {
-                isEmpty = true;
-            }
-        }
-
-        if(isEmpty) return true;
+        if(lastElementIndex == 0) return true;
         else return false;
     }
 
@@ -94,7 +91,6 @@ public class ArrayListImplementation<T> {
         System.arraycopy(tempArray, 0, underLyingArray, 0, tempArray.length);
 
     }
-
 
     public static void main(String[] args) {
 
