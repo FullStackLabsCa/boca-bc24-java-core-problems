@@ -5,8 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3c9f44b-ff0f-43a9-b850-9b801d0dc95b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/problems/arrayProblem/SmallestLargestElementInAraay.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/collection/myArrayList/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/collection/myArrayList/MyArrayList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/collection/myArrayList/OMyArrayList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/selfPractice/CollectionExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/problems/MyArrayListTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/oldcalculator/ArithmeticOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/oldcalculator/ArithmeticOperations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/oldcalculator/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/oldcalculator/Calculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/oldcalculator/CalculatorG.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/problems/CalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/CalculatorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,8 +62,9 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.Calculator.executor": "Debug",
+    "Application.Calculator.executor": "Run",
     "Application.CapitalizeFirstLetterOfEachWord.executor": "Debug",
+    "Application.CollectionExample.executor": "Run",
     "Application.Course.executor": "Run",
     "Application.DuplicateElementInArray.executor": "Debug",
     "Application.Generics_Demo.executor": "Debug",
@@ -85,6 +94,10 @@
     "Application.longestWordString.executor": "Run",
     "Application.p2_CountOccurrences.executor": "Run",
     "JUnit.CalculatorTest.executor": "Run",
+    "JUnit.CalculatorTest.testBasicOperations.executor": "Run",
+    "JUnit.CalculatorTest.testDivisionByZero.executor": "Run",
+    "JUnit.CalculatorTest.testMemoryOperations.executor": "Run",
+    "JUnit.CalculatorTest.testParentheses.executor": "Run",
     "JUnit.CountOccurrencesTest.executor": "Run",
     "JUnit.CourseTest.executor": "Run",
     "JUnit.CourseTest.testAssignGrade.executor": "Run",
@@ -92,6 +105,7 @@
     "JUnit.CourseTest.testGetAllGrades.executor": "Run",
     "JUnit.CourseTest.testGetGrade.executor": "Run",
     "JUnit.GradeBookTest.executor": "Run",
+    "JUnit.MyArrayListTest.executor": "Run",
     "JUnit.OddCounterTest.executor": "Run",
     "JUnit.SchoolTest.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -118,74 +132,13 @@
       <recent name="$PROJECT_DIR$/src/oldProblems" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="problems.collection.myArrayList" />
+      <recent name="problems" />
       <recent name="problems.calculator" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="CourseTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="boca-bc24-java-core-problems" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="problems.generics.p1_Convert_List_to_Array.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="problems" />
-      <option name="MAIN_CLASS_NAME" value="problems.CourseTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CourseTest.testAssignGradeToNonEnrolledStudent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="boca-bc24-java-core-problems" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="problems.generics.p1_Convert_List_to_Array.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="problems" />
-      <option name="MAIN_CLASS_NAME" value="problems.CourseTest" />
-      <option name="METHOD_NAME" value="testAssignGradeToNonEnrolledStudent" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CourseTest.testGetAllGrades" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="boca-bc24-java-core-problems" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="problems.generics.p1_Convert_List_to_Array.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="problems" />
-      <option name="MAIN_CLASS_NAME" value="problems.CourseTest" />
-      <option name="METHOD_NAME" value="testGetAllGrades" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CourseTest.testGetGrade" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="boca-bc24-java-core-problems" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="problems.generics.p1_Convert_List_to_Array.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="problems" />
-      <option name="MAIN_CLASS_NAME" value="problems.CourseTest" />
-      <option name="METHOD_NAME" value="testGetGrade" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SchoolTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CalculatorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="boca-bc24-java-core-problems" />
       <extension name="coverage">
         <pattern>
@@ -194,19 +147,83 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="problems" />
-      <option name="MAIN_CLASS_NAME" value="problems.SchoolTest" />
+      <option name="MAIN_CLASS_NAME" value="problems.CalculatorTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CalculatorTest.testBasicOperations" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="boca-bc24-java-core-problems" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="problems.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="problems" />
+      <option name="MAIN_CLASS_NAME" value="problems.CalculatorTest" />
+      <option name="METHOD_NAME" value="testBasicOperations" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CalculatorTest.testDivisionByZero" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="boca-bc24-java-core-problems" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="problems.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="problems" />
+      <option name="MAIN_CLASS_NAME" value="problems.CalculatorTest" />
+      <option name="METHOD_NAME" value="testDivisionByZero" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CalculatorTest.testMemoryOperations" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="boca-bc24-java-core-problems" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="problems.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="problems" />
+      <option name="MAIN_CLASS_NAME" value="problems.CalculatorTest" />
+      <option name="METHOD_NAME" value="testMemoryOperations" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CalculatorTest.testParentheses" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="boca-bc24-java-core-problems" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="problems.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="problems" />
+      <option name="MAIN_CLASS_NAME" value="problems.CalculatorTest" />
+      <option name="METHOD_NAME" value="testParentheses" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CourseTest" />
-        <item itemvalue="JUnit.SchoolTest" />
-        <item itemvalue="JUnit.CourseTest.testGetAllGrades" />
-        <item itemvalue="JUnit.CourseTest.testGetGrade" />
-        <item itemvalue="JUnit.CourseTest.testAssignGradeToNonEnrolledStudent" />
+        <item itemvalue="JUnit.CalculatorTest.testParentheses" />
+        <item itemvalue="JUnit.CalculatorTest.testMemoryOperations" />
+        <item itemvalue="JUnit.CalculatorTest.testDivisionByZero" />
+        <item itemvalue="JUnit.CalculatorTest" />
+        <item itemvalue="JUnit.CalculatorTest.testBasicOperations" />
       </list>
     </recent_temporary>
   </component>

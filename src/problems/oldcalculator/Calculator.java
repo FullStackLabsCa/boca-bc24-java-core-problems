@@ -42,23 +42,41 @@ public class Calculator {
 //        double result = evaluateExpression(tokens);
 //        System.out.println("Result: " + result);
 
-        String expression = "sqrt(9) + 6 * 2 - 4";
+//        String expression = "sqrt(9) + 6 * 2 - 4";
+        String expression = "3 + (2 * 4) - 5";
+        double result = calculate(expression);
+        System.out.println("Result: " + result); //
+
+
+
+//        storeInMemory(10.0);
+//        storeInMemory(20.0);
+//        System.out.println("Recall one Value: " + recallMemory()); // Should print 20.0
+//        System.out.println(recallAllMemory()); // Should print stored values
+        clearMemory();
+
+
+    }
+
+    public static double calculate(String expression){
+
+
         List<String> tokens = parseInput(expression);
 //        System.out.println("Tokens before sqrt evaluation: " + tokens); // Debugging line
         tokens = evaluateSquareRoot(tokens);
 //        System.out.println("Tokens after sqrt evaluation: " + tokens); // Debugging line
         tokens = evaluatePrecedence(tokens);
 //        System.out.println("Tokens after precedence evaluation: " + tokens); // Debugging line
+
         double result = evaluateExpression(tokens);
-        System.out.println("Result: " + result); //
 
-        storeInMemory(10.0);
-        storeInMemory(20.0);
-//        System.out.println("Recall one Value: " + recallMemory()); // Should print 20.0
-//        System.out.println(recallAllMemory()); // Should print stored values
-        clearMemory();
+        // Check if the expression contains "M+"
+        if (expression.contains("M+")) {
+            storeInMemory(result);
+            System.out.println("Stored result in memory: " + result);
+        }
 
-
+        return evaluateExpression(tokens);
     }
 
 
@@ -67,7 +85,9 @@ public class Calculator {
 
         // Trim and split the input string by spaces
         String[] tokens = expression.trim().split(" ");
-        return new ArrayList<>(Arrays.asList(tokens));
+//        return new ArrayList<>(Arrays.asList(tokens));
+        return evaluatePrecedence(new ArrayList<>(Arrays.asList(tokens)));
+
     }
 
     // Method to evaluate expression with + and - operators
@@ -77,6 +97,15 @@ public class Calculator {
         int i = 0;
         while (i < parsedTokens.size()) {
             String token = parsedTokens.get(i);
+//            if (token.equals("(")) {
+//                int openParenIndex = i;
+//                int closeParenIndex = findMatchingParenthesis(parsedTokens, openParenIndex);
+//                List<String> subExpression = parsedTokens.subList(openParenIndex + 1, closeParenIndex);
+//
+//                double subResult = evaluateExpression(new ArrayList<>(subExpression)); // Recursive call to evaluate inside parentheses
+//                tempTokens.add(String.valueOf(subResult));
+//                i = closeParenIndex + 1; // Skip past the closing parenthesis
+//            } else
             if (token.equals("*") || token.equals("/")) {
                 // Perform multiplication or division
                 double operand1 = Double.parseDouble(tempTokens.remove(tempTokens.size() - 1));
@@ -111,9 +140,11 @@ public class Calculator {
                     try {
                         double value = Double.parseDouble(token);
                         if (operator.equals("+")) {
-                            finalResult += value;
+//                            finalResult += value;
+                            finalResult = ArithmeticOperations.addition(finalResult, value);
                         } else if (operator.equals("-")) {
-                            finalResult -= value;
+//                            finalResult -= value;
+                            finalResult = ArithmeticOperations.subtraction(finalResult, value);
                         }
                     } catch (NumberFormatException e) {
                         System.out.println("Error parsing number: " + token);
@@ -153,11 +184,22 @@ public class Calculator {
 
         while (iterator.hasNext()) {
             String token = iterator.next();
-            if (token.equals("*") || token.equals("/")) {
+            if (token.equals("*") || token.equals("/") || token.equals("^")) {
                 double leftOperand = Double.parseDouble(newTokens.remove(newTokens.size() - 1));
+//                double leftOperand = Double.parseDouble(newTokens.removeLast()); // ArrayList doesn't have a removeLast() method.
                 double rightOperand = Double.parseDouble(iterator.next());
-                double result = (token.equals("*")) ? ArithmeticOperations.multiplication(leftOperand, rightOperand)
-                        : ArithmeticOperations.division(leftOperand, rightOperand);
+//                double result = (token.equals("*")) ? ArithmeticOperations.multiplication(leftOperand, rightOperand)
+//                        : ArithmeticOperations.division(leftOperand, rightOperand);
+                double result = 0;
+
+                if (token.equals("*")) {
+                    result = ArithmeticOperations.multiplication(leftOperand, rightOperand);
+                } else if (token.equals("/")) {
+                    result = ArithmeticOperations.division(leftOperand, rightOperand);
+                } else if (token.equals("^")) {
+                    result = ArithmeticOperations.power(leftOperand, rightOperand);
+                }
+
                 newTokens.add(String.valueOf(result));
             } else {
                 newTokens.add(token);
@@ -171,12 +213,20 @@ public class Calculator {
 
         while (expression.contains("(")) {
 
-            int openIndex = expression.indexOf("(");
-            int closeIndex = expression.indexOf(")", openIndex);
+            int openIndex = expression.lastIndexOf("(");  // Find the last open parenthesis
+            int closeIndex = expression.indexOf(")", openIndex);  // Find the corresponding close parenthesis
 
-            String innerExpresssion = expression.substring(openIndex + 1, closeIndex);
-            double innerResult = evaluateExpression(parseInput(innerExpresssion));
+            if (closeIndex == -1) {
+                throw new IllegalArgumentException("Unmatched parentheses.");
+            }
+
+            // Extract the inner expression
+            String innerExpression = expression.substring(openIndex + 1, closeIndex);
+            double innerResult = evaluateExpression(parseInput(innerExpression));
+
+            // Replace the inner expression with its result
             expression = expression.substring(0, openIndex) + innerResult + expression.substring(closeIndex + 1);
+
         }
 
         return evaluateExpression(parseInput(expression));
@@ -203,7 +253,8 @@ public class Calculator {
     public static Double recallMemory() {
         if (storedMemoryList.isEmpty()) {
             System.out.println("No values stored in memory.");
-            return null;
+//            return null;
+            return 0.0;
         }
         return storedMemoryList.get(storedMemoryList.size() - 1);
     }
@@ -220,6 +271,7 @@ public class Calculator {
             return "No values stored in memory.";
         }
         return "Stored values: " + storedMemoryList.toString().replace("[", "").replace("]", "");
+
     }
 
 }

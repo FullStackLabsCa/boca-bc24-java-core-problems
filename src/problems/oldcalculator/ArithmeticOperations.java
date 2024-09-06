@@ -5,7 +5,9 @@ public class ArithmeticOperations {
     // Method for division
     public static double division(double operandOne, double operandTwo) {
         if (operandTwo == 0) {
-            throw new ArithmeticException("Division by zero is not allowed.");
+//            throw new ArithmeticException("Division by zero is not allowed.");
+            System.out.println("Division by zero is not allowed.");
+            return Double.NaN;
         }
         return operandOne / operandTwo;
     }
