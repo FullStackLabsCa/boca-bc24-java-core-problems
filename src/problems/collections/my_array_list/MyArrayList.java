@@ -1,6 +1,5 @@
 package problems.collections.my_array_list;
-
-
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MyArrayList<T> {
@@ -91,5 +90,47 @@ public class MyArrayList<T> {
 
     public void clear() {
        size = 0;
+    }
+
+    @Override
+    public String toString() {
+        return  Arrays.toString(Arrays.copyOf(myArray, size));
+    }
+
+
+    public static void main(String[] args) {
+        //Array testing
+        int[] array = new int[10];
+        array[0]=45;
+        array[2] = 12;
+        array[4] = 23;
+        System.out.println("array[1] = " + array[1]);
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(" ");
+            System.out.print(array[i]);
+        }
+
+        //ArrayList testing
+        System.out.println(" ");
+        System.out.println("***************************************************");
+        ArrayList<Integer> arrayList = new ArrayList<>(15);
+        arrayList.add(0,11);
+        arrayList.add(1, null);
+//        arrayList.add(1, 12);
+        arrayList.add(2,14);
+        arrayList.add(3, null);
+
+//        System.out.println("arrayList.size() = " + arrayList.size());
+//        for (int element : arrayList) {
+//            System.out.print(" "+ element);
+//        }
+        System.out.println("arrayList = " + arrayList);
+
+        MyArrayList<Integer> myArrayList = new MyArrayList<>();
+        myArrayList.add(12);
+        myArrayList.add(null);
+        myArrayList.add(14);
+        myArrayList.add(null);
+        System.out.println("myArrayList = " + myArrayList);
     }
 }

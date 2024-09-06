@@ -38,6 +38,7 @@ public class MyArrayListTest {
         assertEquals("Last element should be 'Element12'", "Element12", list.get(11));
     }
 
+
     // Test getting elements at valid indices
     @Test
     public void testGetElements() {
