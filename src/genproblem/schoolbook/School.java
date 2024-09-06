@@ -15,7 +15,7 @@ public class School<S, G extends Number> {
     }
 
     public void start() {
-        while (true) {
+        while(true){
             System.out.println("Choose an action:");
             System.out.println("1. Add Course");
             System.out.println("2. Enroll Student");

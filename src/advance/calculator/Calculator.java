@@ -5,7 +5,6 @@ import java.util.*;
 public class Calculator {
 
     private static Stack<Double> memoryStack = new Stack<>();
-
     // we are handling the user input
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -16,11 +15,10 @@ public class Calculator {
             if (input.equalsIgnoreCase("exit")) {
                 break;
             }
-            try {
-                // call the method to calculate and display the result
-                if (input.endsWith(" M+")) {
-                    input = input.substring(0, input.length() - 2).trim(); // Remove M+
-                    double result = calculate(input);
+            try {// call the method to calculate and display the result
+                if (input.endsWith("M+")) {
+                  String  vamueM =input.substring(0, input.length() - 2).trim(); // Remove M+
+                    double result = calculate(vamueM);
                     storeInMemory(result);
                     System.out.println("Stored " + result + " in memory.");
                 } else if (input.equalsIgnoreCase("recall")) {
@@ -34,14 +32,11 @@ public class Calculator {
                     double result = calculate(input);
                     System.out.println("Result: " + result);
                 }
-            } catch (Exception e) {
-                //System.out.println("Error: " + e.getMessage());
-               // e.printStackTrace();
+            } catch (Exception e) {;
             }
         }
         scanner.close();
     }
-
     //expression cleanup for basic operations
     public static double calculate(String expression) {
         //trim and remove extra spaces
@@ -72,7 +67,6 @@ public class Calculator {
             throw new IllegalArgumentException("Invalid number format.");
         }
     }
-
     //evaluating expression with the operators and brackets
     private static double evaluateExpression(String expression) {
         Stack<Double> values = new Stack<>();
@@ -124,12 +118,10 @@ public class Calculator {
                 return 2;
             case '^':
                 return 3;
-
             default:
                 return -1;
         }
     }
-
 
     //perform operation based on the operator
     private static double applyOperation(char op, double value2, double value1) {
@@ -158,6 +150,7 @@ public class Calculator {
             memoryStack.remove(0); // Remove the oldest value (last element)
         }
         memoryStack.push(value);
+        System.out.println("value pop"+memoryStack.pop());
     }
 
     // Clear the memory
@@ -178,17 +171,15 @@ public class Calculator {
             System.out.println("No values stored in memory.");
             return null;
         } else {
-            return memoryStack.peek();
+            return memoryStack.pop();
         }
     }
-
     // Recall all stored values from memory
     public static String recallAllMemory() {
         if (memoryStack.isEmpty()) {
             return "No values stored in memory.";
         } else {
-            String result = "";
-            result = "";
+           String result = "";
             result = "Stored values: " + result + memoryStack.pop() + ", " + memoryStack.toString().replaceAll("(\\[)", "").replaceAll("(\\])", "");
             return (result);
         }
