@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d3b01333-d157-4793-b4ff-8016ea5cf74b" name="Changes" comment="handled memory operation with stack collection">
-      <change afterPath="$PROJECT_DIR$/src/problems/arraylist/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/arraylist/MyArrayList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/problems/MyArrayListTest.java" afterDir="false" />
+    <list default="true" id="d3b01333-d157-4793-b4ff-8016ea5cf74b" name="Changes" comment="solved arraylist with standard array and all tests passed.">
+      <change afterPath="$PROJECT_DIR$/src/problems/linkedlist/MyLinkedList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/linkedlist/Node.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/problems/MyHashMapTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/problems/MyLinkedListTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/problems/calculator/CalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/calculator/CalculatorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/calculator/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/calculator/Calculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/problems/calculator/CalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/calculator/AdvancedCalculatorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +67,7 @@
     "Application.MapOfMapsExample.executor": "Run",
     "Application.OddCounter.executor": "Run",
     "Application.School.executor": "Run",
+    "JUnit.AdvancedCalculatorTest.executor": "Run",
     "JUnit.CalculatorTest.executor": "Run",
     "JUnit.CountOccurrencesTest.executor": "Run",
     "JUnit.CourseTest.executor": "Run",
@@ -75,18 +78,20 @@
     "JUnit.MyArrayListTest.executor": "Run",
     "JUnit.MyArrayListTest.testAddElements.executor": "Run",
     "JUnit.MyArrayListTest.testRemoveFirstElement.executor": "Run",
+    "JUnit.MyLinkedListTest.executor": "Run",
     "JUnit.OddCounterTest.executor": "Run",
     "JUnit.OddCounterTest.testCountOddNumbersInSet.executor": "Run",
     "JUnit.SchoolTest.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "feature/kivi-bc24-java-core-problems",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/Kiran.Virani/reactivestax/source/boca-bc24-java-core-problems",
+    "last_opened_file_path": "/Users/Kiran.Virani/reactivestax/source/boca-bc24-java-core-problems/src/problems",
     "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/problems" />
       <recent name="$PROJECT_DIR$/src/problems/testproblems" />
       <recent name="$PROJECT_DIR$/src/problems/basic" />
       <recent name="$PROJECT_DIR$/src/problems/generics" />
@@ -108,6 +113,21 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AdvancedCalculatorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="boca-bc24-java-core-problems" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="problems.calculator.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="problems.calculator" />
+      <option name="MAIN_CLASS_NAME" value="problems.calculator.AdvancedCalculatorTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -159,28 +179,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OddCounterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="boca-bc24-java-core-problems" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="problems.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="problems" />
-      <option name="MAIN_CLASS_NAME" value="problems.OddCounterTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AdvancedCalculatorTest" />
         <item itemvalue="JUnit.MyArrayListTest" />
         <item itemvalue="JUnit.MyArrayListTest.testAddElements" />
         <item itemvalue="JUnit.MyArrayListTest.testRemoveFirstElement" />
         <item itemvalue="Application.OddCounter" />
-        <item itemvalue="JUnit.OddCounterTest" />
       </list>
     </recent_temporary>
   </component>
@@ -369,7 +374,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725472675987</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="solved arraylist with standard array and all tests passed.">
+      <option name="closed" value="true" />
+      <created>1725565746066</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1725565746066</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -404,6 +417,7 @@
     <MESSAGE value="calculator problem and all test cases passed" />
     <MESSAGE value="minor change." />
     <MESSAGE value="handled memory operation with stack collection" />
-    <option name="LAST_COMMIT_MESSAGE" value="handled memory operation with stack collection" />
+    <MESSAGE value="solved arraylist with standard array and all tests passed." />
+    <option name="LAST_COMMIT_MESSAGE" value="solved arraylist with standard array and all tests passed." />
   </component>
 </project>
