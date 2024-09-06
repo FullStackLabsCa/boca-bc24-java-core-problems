@@ -225,7 +225,7 @@ public class LinkedListGeneric<T> {
     public static void main(String[] args) {
 
         /* TESTING INSERTION */
-        LinkedList<String> insertionTestingList = new LinkedList<>();
+        LinkedListGeneric<String> insertionTestingList = new LinkedListGeneric<>();
         insertionTestingList.add("First");   // Adding to the end of the list
         insertionTestingList.add("Second");  // Adding to the end of the list
         insertionTestingList.add("Third");   // Adding to the end of the list
@@ -249,7 +249,7 @@ public class LinkedListGeneric<T> {
         System.out.println("End of Program.");
 
         /* TESTING REMOVAL */
-        LinkedList<Integer> removalTestingList = new LinkedList<>();
+        LinkedListGeneric<Integer> removalTestingList = new LinkedListGeneric<>();
         removalTestingList.addFirst(10); // List: 10
         removalTestingList.addLast(20);  // List: 10 20
         removalTestingList.add(30);  // List: 10 20 30

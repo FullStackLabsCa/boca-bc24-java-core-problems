@@ -3,7 +3,6 @@ package problems.linkedlist;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.LinkedList;
 
 import static org.junit.Assert.*;
 
@@ -32,7 +31,7 @@ public class LinkedListTest {
 
         assertEquals(3, linkedList.size());
     }
-    
+
     @Test
     public void testRemoveFirst() {
         linkedList.addLast(10);
