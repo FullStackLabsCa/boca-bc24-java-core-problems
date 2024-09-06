@@ -13,10 +13,6 @@ public class MyArrayList <T>{
     public MyArrayList() {
         this.ts = (T[]) new Object[0];
     }
-
-    public MyArrayList(int capacity) {
-        this.ts = (T[]) new Object[capacity];
-    }
     public void increaseCapacity(){
        ts = Arrays.copyOf(ts,ts.length+1);
     }
