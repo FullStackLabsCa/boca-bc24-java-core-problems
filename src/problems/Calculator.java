@@ -14,9 +14,9 @@ public class Calculator {
     public static void main(String[] args) {
 
 //        String input = "8 + 5 M+";
-        String input = "(10 + 2) * 3";
+//        String input = "(10 + 2) * 3";
 //        String input = "3 + 5 * ( 9 / 3 ) / 2";
-//        String input = "10 / 0";
+          String input = "10 / 0";
 //        String input = "3 + (2 * 4) - ( 4 / 2 + 3) + 5 ";
 //        String input = "sqrt(25) + 3 ^ 2";
 //        String input = "sqrt(-9)";
@@ -137,24 +137,24 @@ public class Calculator {
         if(!calculatorMemory.isEmpty()) {
             return calculatorMemory.get(calculatorMemory.size() - 1);
         }
-        return null;
+    return null;
     }
 
     public static String recallAllMemory() {
-        String output = "Stored values: ";
-        if (calculatorMemory.size() == 0) {
+        StringBuilder output = new StringBuilder("Stored values: ");
+        if (calculatorMemory.isEmpty()) {
             return "No values stored in memory.";
         } else {
             for (Double value : calculatorMemory) {
                 if (calculatorMemory.indexOf(value) == calculatorMemory.size() - 1) {
-                    output += value;
+                    output.append(value);
                 } else {
-                    output += value + ", ";
+                    output.append(value).append(", ");
                 }
             }
         }
 
-        return output;
+        return output.toString();
     }
 
     private static String AdvancedOperation(String input) {
@@ -236,12 +236,11 @@ public class Calculator {
                     if (Character.isDigit(character) || character == '.') {
                         currentNumber.append(character);
                     }else{
-                        if (currentNumber.length() > 0) {
-
-                            numbers.add(Double.parseDouble(currentNumber.toString()));
+                    if (currentNumber.length() > 0) {
+                        numbers.add(Double.parseDouble(currentNumber.toString()));
 //                        System.out.println("current number : "+currentNumber);
-                            currentNumber.setLength(0);
-                        }
+                        currentNumber.setLength(0);
+                    }
                     }
 //                    System.out.println("current number : "+currentNumber);
                     if (character == '+' || character == '-' || character == '*' || character == '/' || character == '^') {
