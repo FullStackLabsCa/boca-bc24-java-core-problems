@@ -1,8 +1,9 @@
 package collection_Implementation_using_array;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
-public class MyArrayList<T>  {
+public class MyArrayList<T> {
     public Object[] myArray;
     public int size;
 
@@ -41,7 +42,7 @@ public class MyArrayList<T>  {
                 }
             } else {
                 Object[] objects = resizingArray(myArray);
-                objects[size()]=t;
+                objects[size()] = t;
                 size++;
                 break;
             }
@@ -61,11 +62,11 @@ public class MyArrayList<T>  {
         if (index > (size())) {
             throw new IndexOutOfBoundsException();
         } else {
-            removeElement=String.valueOf(myArray[index]);
+            removeElement = String.valueOf(myArray[index]);
             myArray[index] = null;
             for (int i = index; i < (size()); i++) {
                 myArray[index] = myArray[index + 1];
-                myArray[index+1]=null;
+                myArray[index + 1] = null;
                 size--;
             }
         }
@@ -102,8 +103,13 @@ public class MyArrayList<T>  {
 
     @Override
     public String toString() {
-        return "collection_Implementation_using_array.MyArrayList{" +
-                "myArray=" + Arrays.toString(myArray) +
-                '}';
+        return Arrays.toString(Arrays.copyOf(myArray, size));
+    }
+
+
+    public static void main(String[] args) {
+MyArrayList<String> myArrayList =new MyArrayList<>();
+myArrayList.add("Apple");
+        System.out.println(myArrayList.toString());
     }
 }
