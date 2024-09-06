@@ -15,7 +15,7 @@ Equals and HashCode: Implement these methods if you need to compare linked lists
 public class LinkedList {
 
     int size;
-    Node collection = new Node();
+    Node collection;
 
     public boolean add(int index, int value){
 
@@ -30,7 +30,7 @@ public class LinkedList {
             //Insert the created node
         if(size == 0){
             node.setNextNode(null);
-            collection.setNextNode(node);
+            collection = node;
             size++;
             return true;
         } else if(index > size){
@@ -82,47 +82,43 @@ public class LinkedList {
         return add(0, value);
     }
 
-    /*
+
     public int removeFirst(){
-
-        if(!collection.isEmpty()) {
-            Node removedNode = collection.get(0);
-            collection.remove(0);
-
-            // Update the indexes of all the nodes after that to -1 each.
-            for (int i = 0; i < collection.size() - 1; i++) {
-                Node nextNode = collection.get(i);
-                nextNode.setNextNode(nextNode.getNextNode() - 1);
-                nextNode.setPreviousNode(nextNode.getPreviousNode() - 1);
-            }
-
-            if(!collection.isEmpty()) {
-                Node lastNode = collection.get(collection.size() - 1);
-                lastNode.setPreviousNode(lastNode.getPreviousNode() - 1);
-                lastNode.setNextNode(0);
-            }
-
+        //If collection is not empty
+        if(!isEmpty()) {
+            Node removedNode = collection;
+            collection = collection.getNextNode();
+            size--;
             return removedNode.getValue();
         } else {
             throw new EmptyListException("List is Empty. Nothing to remove!");
         }
     }
+
 
     public int removeLast(){
 
-        if(!collection.isEmpty()) {
-            Node removedNode = collection.get(collection.size() - 1);
-            collection.remove(collection.size() - 1);
+        if(!isEmpty()) {
 
-            //Update the next node of the previousNode
-            Node previousNode = collection.get(collection.size() - 1);
-            previousNode.setNextNode(0);
+            //Go to the last node in the collection
+            Node lastNode = collection;
+            int iteration = 0;
+            while(iteration != size - 2){
+                lastNode = lastNode.getNextNode();
+                iteration++;
+            }
+
+            Node removedNode = lastNode.getNextNode();
+
+            lastNode.setNextNode(null);
+            size--;
+
             return removedNode.getValue();
         } else {
             throw new EmptyListException("List is Empty. Nothing to remove!");
         }
     }
-
+    /*
     public boolean removeIndex(int index){
 
         if(index == 0){
@@ -151,7 +147,6 @@ public class LinkedList {
             return true;
         }
     }
-
     */
     public int size(){
         return size;
