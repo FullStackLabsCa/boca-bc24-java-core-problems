@@ -3,7 +3,7 @@ package problems.generics;
 public class MyArrayList<T> {
 
     T[] arrayList;
-
+    int listSize = 0;
 
     public MyArrayList() {
         arrayList = (T[]) new Object[10];
@@ -20,11 +20,13 @@ public class MyArrayList<T> {
         int currentArrayItemsCount = this.size();
         if (currentArrayItemsCount < arrayList.length) {
             arrayList[currentArrayItemsCount] = t;
+            listSize++;
         } else {
             T[] temp = (T[]) new Object[this.size() * 2];
             System.arraycopy(arrayList, 0, temp, 0, currentArrayItemsCount);
             this.arrayList = temp;
             arrayList[currentArrayItemsCount] = t;
+            listSize++;
         }
     }
 
@@ -47,6 +49,7 @@ public class MyArrayList<T> {
             T element = arrayList[index];
             System.arraycopy(arrayList, index + 1, arrayList, index, ((currentArrayItemsCount - 1) - index));  //since index is 0 bases
             arrayList[currentArrayItemsCount - 1] = null;
+            listSize--;
             System.out.println("after remove");
             return element;
         }
@@ -54,6 +57,7 @@ public class MyArrayList<T> {
 
     public void clear() {
         arrayList = (T[]) new Object[10];
+        listSize = 0;
     }
 
     public boolean isEmpty() {
@@ -79,13 +83,18 @@ public class MyArrayList<T> {
     }
 
     public int size() {
-        int length = arrayList.length;
-        int count = 0;
-        for (T item : arrayList) {
-            if (item != null) {
-                count++;
-            }
-        }
-        return count;
+        return listSize;
     }
+
+//   To find the size of the ArrayList Dynamically
+//    public int size() {
+//        int length = arrayList.length;
+//        int count = 0;
+//        for (T item : arrayList) {
+//            if (item != null) {
+//                count++;
+//            }
+//        }
+//        return count;
+//    }
 }
