@@ -1,5 +1,7 @@
 package collections.myArrayList;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.assertEquals;
 
 public class MyArrayList<T> {
@@ -15,6 +17,13 @@ public class MyArrayList<T> {
         this.currentArray = (T[]) new Object[size];
     }
 
+    @Override
+    public String toString() {
+        return "MyArrayList{" +
+                "currentArray=" + Arrays.toString(currentArray) +
+                ", index=" + index +
+                '}';
+    }
 
     public void add(T element) {
         System.out.println(element);
@@ -34,7 +43,6 @@ public class MyArrayList<T> {
     }
 
     public int size() {
-
         return index;
     }
 
