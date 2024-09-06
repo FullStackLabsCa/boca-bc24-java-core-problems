@@ -1,4 +1,4 @@
-package problems.array;
+package problems.custom;
 
 import java.util.Arrays;
 
@@ -85,6 +85,6 @@ public class MyArrayList<T> {
         integerMyArrayList.size();
 //        integerMyArrayList.clear();
         System.out.println("checking the array is Empty or not: " + integerMyArrayList.isEmpty());
-        System.out.println("Array Value: " + integerMyArrayList.toString());
+        System.out.println("Array Value: " + integerMyArrayList);
     }
 }

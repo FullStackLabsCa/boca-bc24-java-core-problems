@@ -3,7 +3,7 @@ package problems;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import problems.array.MyArrayList;;
+import problems.custom.MyArrayList;;
 
 
 public class MyArrayListTest {
