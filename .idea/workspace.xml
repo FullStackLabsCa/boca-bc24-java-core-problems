@@ -5,16 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3c9f44b-ff0f-43a9-b850-9b801d0dc95b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/problems/collection/myArrayList/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/collection/myArrayList/MyArrayList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/collection/myArrayList/OMyArrayList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/selfPractice/CollectionExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/problems/MyArrayListTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/collection/linkedList/MyLinkedList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/collection/linkedList/PracticeLinkedList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/problems/hashmap/MyHashMapTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/problems/linkedlist/MyLinkedListTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/oldcalculator/ArithmeticOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/oldcalculator/ArithmeticOperations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/oldcalculator/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/oldcalculator/Calculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/oldcalculator/CalculatorG.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/problems/CalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/CalculatorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +63,7 @@
     "Application.Course.executor": "Run",
     "Application.DuplicateElementInArray.executor": "Debug",
     "Application.Generics_Demo.executor": "Debug",
+    "Application.LinkedList.executor": "Run",
     "Application.LongestWordString.executor": "Run",
     "Application.Main.executor": "Run",
     "Application.MergeTwoArrays.executor": "Run",
@@ -86,6 +82,7 @@
     "Application.P6_Generic_School.executor": "Run",
     "Application.P7_Reversed.executor": "Run",
     "Application.Palindrome.executor": "Run",
+    "Application.PracticeLinkedList.executor": "Run",
     "Application.RemoveVowels.executor": "Run",
     "Application.School.executor": "Run",
     "Application.ShiftElementsArray.executor": "Run",
@@ -106,6 +103,7 @@
     "JUnit.CourseTest.testGetGrade.executor": "Run",
     "JUnit.GradeBookTest.executor": "Run",
     "JUnit.MyArrayListTest.executor": "Run",
+    "JUnit.MyLinkedListTest.executor": "Run",
     "JUnit.OddCounterTest.executor": "Run",
     "JUnit.SchoolTest.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -265,6 +263,15 @@
           <url>file://$PROJECT_DIR$/src/problems/calculator/Calculator.java</url>
           <line>59</line>
           <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/problems/collection/linkedList/MyLinkedList.java</url>
+          <line>71</line>
+          <properties class="problems.collection.linkedList.MyLinkedList" method="removeLast">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
