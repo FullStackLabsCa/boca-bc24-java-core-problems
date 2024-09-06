@@ -24,7 +24,8 @@ public class Calculator {
         LinkedHashMap<Integer, String> subtractionMap = new LinkedHashMap<>();
 
         String tuple = "";
-        String[] parts = str.split("(?<=[-+*/])|(?=[-+*/])");
+//        String[] parts = str.split("(?<=[-+*/])|(?=[-+*/])");
+        String[] parts = str.split(" ");
         int index = 0;
         int indexForAddingToMap = 0;
         double sqrtResult = 0;
@@ -48,8 +49,11 @@ public class Calculator {
 
         if (str.contains("^")) {
             exponentResult = 0;
-            String[] partsExponent = str.split("[()]");
-            exponentResult = Math.pow(Double.parseDouble((parts[0])), Double.parseDouble((parts[2])));
+            String[] partsExponent = str.split(" ");
+            System.out.println("partsExponent = " + Arrays.toString(partsExponent));
+            double num1 = Double.parseDouble(partsExponent[0]);
+            double num2 = Double.parseDouble(partsExponent[2]);
+            exponentResult = Math.pow(num1, num2);
             System.out.println("exponentResult = " + exponentResult);
             return exponentResult;
         }

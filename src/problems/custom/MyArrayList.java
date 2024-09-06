@@ -18,7 +18,7 @@ public class MyArrayList<T> {
     }
 
     public void add(T element) {
-        if(index > capacity-1) {
+        if (index > capacity - 1) {
             resize();
         }
         myArray[index] = element;
@@ -62,9 +62,14 @@ public class MyArrayList<T> {
         return myArray[0] == null ? true : false;
     }
 
+
     @Override
     public String toString() {
-        return Arrays.toString(myArray);
+        return "MyArrayList{" +
+                "capacity=" + capacity +
+                ", myArray=" + Arrays.toString(Arrays.copyOf(myArray, size())) +
+                ", index=" + index +
+                '}';
     }
 
     public void resize() {
@@ -73,7 +78,7 @@ public class MyArrayList<T> {
     }
 
     public static void main(String[] args) {
-        MyArrayList<Integer> integerMyArrayList = new MyArrayList<>(5);
+        MyArrayList<Integer> integerMyArrayList = new MyArrayList<>(15);
         integerMyArrayList.add(null);
         integerMyArrayList.add(20);
         integerMyArrayList.add(30);

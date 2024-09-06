@@ -27,7 +27,7 @@ public class LinkedList<T> {
 
     public int removeFirst() {
         Integer value = (Integer) myLinkedList[0];
-        for (int i = 0; i < myLinkedList.length-1; i++) {
+        for (int i = 0; i < myLinkedList.length - 1; i++) {
             myLinkedList[i] = myLinkedList[i + 1];
         }
         index--;
@@ -36,7 +36,7 @@ public class LinkedList<T> {
 
     public int removeLast() {
         Integer value = (Integer) myLinkedList[index - 1];
-        for (int i = 0; i < myLinkedList.length-1; i++) {
+        for (int i = 0; i < myLinkedList.length - 1; i++) {
             myLinkedList[i] = myLinkedList[i + 1];
         }
         index--;
@@ -44,6 +44,11 @@ public class LinkedList<T> {
     }
 
     public void printList() {
+        for (int i = 0; i < myLinkedList.length; i++) {
+            if (myLinkedList[i] != null) {
+                System.out.println("element = " + myLinkedList[i]);
+            }
+        }
     }
 
     public int size() {
@@ -63,12 +68,19 @@ public class LinkedList<T> {
                 count++;
             }
         }
-        if(count > 0)
+        if (count > 0)
             return false;
         return true;
     }
 
     public static void main(String[] args) {
         LinkedList<Integer> integerMyLinkedList = new LinkedList<>(5);
+        integerMyLinkedList.addFirst(1);
+        integerMyLinkedList.addLast(2);
+        integerMyLinkedList.addLast(3);
+
+//        integerMyLinkedList.removeFirst();
+
+        integerMyLinkedList.printList();
     }
 }
