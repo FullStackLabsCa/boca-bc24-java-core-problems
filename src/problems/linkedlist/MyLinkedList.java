@@ -54,10 +54,11 @@ public class MyLinkedList {
             head = null;
         } else {
             current = head;
-            while (current.next != null) {
+            while (current.next.next != null) {
                 current = current.next;
             }
-            removedElement = current.data;
+            removedElement = current.next.data;
+            current.next = null;
             count--;
         }
         return removedElement;
