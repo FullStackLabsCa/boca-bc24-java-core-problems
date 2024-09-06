@@ -1,10 +1,6 @@
 package stringproblems;
-
 import java.util.Scanner;
 import java.util.Stack;
-
-import static java.lang.Float.NaN;
-
 public class Calculator {
     public static void clearMemory() {
     }
@@ -38,7 +34,7 @@ public class Calculator {
                     num.append(expression.charAt(i++));
                 }
                 numbers.push(Double.parseDouble(num.toString()));
-                continue; // skipping  the rest of the loop
+                continue;  // skipping  the rest of the loop
             }
 
             if (c == '(') {

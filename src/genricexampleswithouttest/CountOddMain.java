@@ -8,5 +8,7 @@ public class CountOddMain {
         CountOddGeneric countOdd = new CountOddGeneric();
         List<Integer> integerList = new ArrayList<>(Arrays.asList(1, 2, 3,4,5,6));
         System.out.println(countOdd.countOdd(integerList));
+
+
     }
 }

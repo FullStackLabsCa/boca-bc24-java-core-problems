@@ -12,6 +12,7 @@ public class DuplicateNumber {
         for (int i = 0; i < inputs.length; i++) {
             intInputArray[i] = Integer.parseInt(inputs[i].trim());
         }
+        System.out.println(duplicateArray(intInputArray));
     }
 
     public static int[] duplicateArray(int[] inputs) {
@@ -30,4 +31,3 @@ public class DuplicateNumber {
         return repeatedValues;
     }
 }
-

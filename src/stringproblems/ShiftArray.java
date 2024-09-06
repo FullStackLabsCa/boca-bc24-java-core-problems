@@ -23,7 +23,6 @@ public class ShiftArray {
         }
     public static int[] shiftarray(int[] values, int shiftCount) {
         int[] shiftedArray = new int[values.length];
-        int index = 0;
         for (int i = 0; i < values.length; i++) {
             if (i < values.length - shiftCount) {
                 shiftedArray[i + shiftCount] = values[i];

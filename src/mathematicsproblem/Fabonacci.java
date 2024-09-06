@@ -25,6 +25,7 @@ public class Fabonacci {
             }
         } catch (NumberFormatException e) {
             System.out.println("Invalid input. Please enter a valid number between 4 and 47.");
+
         }
     }
 
@@ -47,9 +48,3 @@ public class Fabonacci {
         return FibonaccSeries;
     }
 }
-
-
-
-
-
-
