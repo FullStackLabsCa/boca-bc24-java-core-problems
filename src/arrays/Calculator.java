@@ -14,7 +14,7 @@ public class Calculator {
     public static void main(String[] args) {
         String calculator = "\uD83D\uDCF1";
         System.out.println("===========CALCULATOR========== " + calculator);
-        calculate("3 + 5 M+");
+        System.out.println(calculate("sqrt(-9)"));
 
     }
 
@@ -133,7 +133,7 @@ public class Calculator {
     }
 
 
-    private static Double calculateSquareRoot(String expression) {
+    private static Double calculateSquareRoot(String expression){
         String sqrtRegex = "sqrt[(][0-9]*[)]";
         Pattern pattern = Pattern.compile(sqrtRegex);
         Matcher matcher = pattern.matcher(expression);
