@@ -10,7 +10,7 @@ public class CalculatorLauncher {
         char exitInput;
         System.out.println("Welcome to Calculator");
 //        Calculator calculator = new Calculator();
-        do {
+//        do {
             System.out.println("Please Enter the values (e.g: 5/2)");
             input = sc.nextLine();
             switch (input){
@@ -29,6 +29,6 @@ public class CalculatorLauncher {
             }
             System.out.println("To exit please press 'X' otherwise press any key");
             exitInput = sc.nextLine().charAt(0);
-        }while ('X'!=exitInput);
+//        }while ('X'!=exitInput);
     }
 }

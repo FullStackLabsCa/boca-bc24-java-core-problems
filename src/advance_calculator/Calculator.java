@@ -90,6 +90,7 @@ public class Calculator {
                         memoryArray[j] = String.valueOf(output);
                         j++;
                     }
+                    if (j==5)j=0;
                 }
         return memoryArray;
                 }
