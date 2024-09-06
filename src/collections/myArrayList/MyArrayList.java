@@ -5,23 +5,24 @@ import static org.junit.Assert.assertEquals;
 public class MyArrayList<T> {
 
     T[] currentArray;
-     int index = 0;
+    int index = 0;
+
     public MyArrayList() {
         this.currentArray = (T[]) new Object[10];
     }
 
-    public MyArrayList(Integer size){
+    public MyArrayList(Integer size) {
         this.currentArray = (T[]) new Object[size];
     }
 
 
     public void add(T element) {
         System.out.println(element);
-        if(index < currentArray.length){
+        if (index < currentArray.length) {
             currentArray[index] = element;
             index++;
 
-        }else{
+        } else {
 //            System.out.println(currentArray[index]);
             T[] newArray = (T[]) new Object[currentArray.length + 1];
             System.arraycopy(currentArray, 0, newArray, 0, currentArray.length);
@@ -38,11 +39,11 @@ public class MyArrayList<T> {
     }
 
     public T get(int position) {
-        if(position > index){
+        if (position > index) {
             throw new IndexOutOfBoundsException();
         }
-        for(int index = 0; index <= position; index++){
-            if(index  == position){
+        for (int index = 0; index <= position; index++) {
+            if (index == position) {
                 return currentArray[position];
             }
         }
@@ -52,28 +53,23 @@ public class MyArrayList<T> {
 
     public T remove(int position) {
         T currentValue = null;
-        if(position > index || position < 0){
+        if (position > index || position < 0) {
             throw new IndexOutOfBoundsException();
-        }else{
-            for(int i=0; i< currentArray.length; i++){
-                if(i==position){
+        } else {
+            for (int i = 0; i < currentArray.length; i++) {
+                if (i == position) {
                     currentValue = currentArray[i];
-                    currentArray[i] = currentArray[i+1];
-
-
+                    currentArray[i] = currentArray[i + 1];
                 }
             }
             index--;
             return currentValue;
-
         }
-
-
     }
 
     public boolean isEmpty() {
-        if(index==0){
-            return  true;
+        if (index == 0) {
+            return true;
         }
         return false;
     }
