@@ -15,17 +15,17 @@ Equals and HashCode: Implement these methods if you need to compare linked lists
 import java.util.ArrayList;
 import java.util.List;
 
-class Node<T>{
+class NodeGeneric<T>{
 
     private T value;
     private int nextNode;
     private int previousNode;
 
-    public Node(T value) {
+    public NodeGeneric(T value) {
         this.value = value;
     }
 
-    public Node(T value, int nextNode, int previousNode) {
+    public NodeGeneric(T value, int nextNode, int previousNode) {
         this.value = value;
         this.nextNode = nextNode;
         this.previousNode = previousNode;
@@ -56,9 +56,9 @@ class Node<T>{
     }
 }
 
-public class MyLinkedList<T> {
+public class LinkedListGeneric<T> {
 
-    List<Node<T>> list = new ArrayList<>();
+    List<NodeGeneric<T>> list = new ArrayList<>();
 
     public boolean add(int index, T value){
 
@@ -70,22 +70,22 @@ public class MyLinkedList<T> {
             //If index is first index
             //If index is somewhere in the middle
             //If index is the last element
-        Node<T> node = new Node<>(value);
+        NodeGeneric<T> nodeGeneric = new NodeGeneric<>(value);
         if(index == 0){
-            node.setPreviousNode(index);
+            nodeGeneric.setPreviousNode(index);
         } else {
-            node.setPreviousNode(index - 1);
+            nodeGeneric.setPreviousNode(index - 1);
         }
         if(index >= (list.size() - 1)){
-            node.setNextNode(0);
+            nodeGeneric.setNextNode(0);
         } else {
-            node.setNextNode(index + 1);
+            nodeGeneric.setNextNode(index + 1);
         }
 
         //If LinkedList is Empty
             //Insert the created node
         if(list.isEmpty()){
-            list.add(node);
+            list.add(nodeGeneric);
 
             // Update the linkedList.Node Previous and Next.
 
@@ -94,24 +94,24 @@ public class MyLinkedList<T> {
         //If adding to the last element of LinkedList
             //Insert the created node
         else if ((index >= list.size())) {
-            list.add(node);
+            list.add(nodeGeneric);
 
             // Update the linkedList.Node Previous and Next.
-            node.setNextNode(0);
-            node.setPreviousNode(index - 1);
+            nodeGeneric.setNextNode(0);
+            nodeGeneric.setPreviousNode(index - 1);
 
-            Node<T> previousNode = list.get(index-1);
-            previousNode.setNextNode(index);
+            NodeGeneric<T> previousNodeGeneric = list.get(index-1);
+            previousNodeGeneric.setNextNode(index);
 
             return true;
         } else {
             //If adding to the middle of the LinkedList
             //Shift the list, right, 1 element from the index chosen
             //Insert the node at the index
-            list.add(index, node);
+            list.add(index, nodeGeneric);
 
-            node.setNextNode(index + 1);
-            node.setPreviousNode(index - 1);
+            nodeGeneric.setNextNode(index + 1);
+            nodeGeneric.setPreviousNode(index - 1);
 
             //Update the next and the previous nodes
 //            if(index != 0) {
@@ -124,14 +124,14 @@ public class MyLinkedList<T> {
 //            nextNodej.setNextNode(nextNodej.getNextNode() + 1);
 
             for(int i = index + 1; i < list.size() - 1; i++) {
-                Node<T> nextNode = list.get(i);
-                nextNode.setPreviousNode(nextNode.getPreviousNode() + 1);
-                nextNode.setNextNode(nextNode.getNextNode() + 1);
+                NodeGeneric<T> nextNodeGeneric = list.get(i);
+                nextNodeGeneric.setPreviousNode(nextNodeGeneric.getPreviousNode() + 1);
+                nextNodeGeneric.setNextNode(nextNodeGeneric.getNextNode() + 1);
             }
 
-            Node<T> lastNode = list.get(list.size() - 1);
-            lastNode.setNextNode(0);
-            lastNode.setPreviousNode(lastNode.getPreviousNode() + 1);
+            NodeGeneric<T> lastNodeGeneric = list.get(list.size() - 1);
+            lastNodeGeneric.setNextNode(0);
+            lastNodeGeneric.setPreviousNode(lastNodeGeneric.getPreviousNode() + 1);
 
             return true;
         }
@@ -156,15 +156,15 @@ public class MyLinkedList<T> {
 
             // Update the indexes of all the nodes after that to -1 each.
             for (int i = 0; i < list.size() - 1; i++) {
-                Node<T> nextNode = list.get(i);
-                nextNode.setNextNode(nextNode.getNextNode() - 1);
-                nextNode.setPreviousNode(nextNode.getPreviousNode() - 1);
+                NodeGeneric<T> nextNodeGeneric = list.get(i);
+                nextNodeGeneric.setNextNode(nextNodeGeneric.getNextNode() - 1);
+                nextNodeGeneric.setPreviousNode(nextNodeGeneric.getPreviousNode() - 1);
             }
 
             if(!list.isEmpty()) {
-                Node<T> lastNode = list.get(list.size() - 1);
-                lastNode.setPreviousNode(lastNode.getPreviousNode() - 1);
-                lastNode.setNextNode(0);
+                NodeGeneric<T> lastNodeGeneric = list.get(list.size() - 1);
+                lastNodeGeneric.setPreviousNode(lastNodeGeneric.getPreviousNode() - 1);
+                lastNodeGeneric.setNextNode(0);
             }
 
             return true;
@@ -180,8 +180,8 @@ public class MyLinkedList<T> {
             list.remove(list.size() - 1);
 
             //Update the next node of the previousNode
-            Node<T> previousNode = list.get(list.size() - 1);
-            previousNode.setNextNode(0);
+            NodeGeneric<T> previousNodeGeneric = list.get(list.size() - 1);
+            previousNodeGeneric.setNextNode(0);
             return true;
         } else {
             System.out.println("List is Empty. Nothing to remove!");
@@ -205,14 +205,14 @@ public class MyLinkedList<T> {
 
             // update the nextNode's connections
             for (int i = index; i < list.size() - 1; i++) {
-                Node<T> nextNode = list.get(i);
-                nextNode.setPreviousNode(nextNode.getPreviousNode() - 1);
-                nextNode.setNextNode(nextNode.getNextNode() - 1);
+                NodeGeneric<T> nextNodeGeneric = list.get(i);
+                nextNodeGeneric.setPreviousNode(nextNodeGeneric.getPreviousNode() - 1);
+                nextNodeGeneric.setNextNode(nextNodeGeneric.getNextNode() - 1);
             }
 
-            Node<T> lastNode = list.get(list.size() -1);
-            lastNode.setPreviousNode(lastNode.getPreviousNode() - 1);
-            lastNode.setNextNode(0);
+            NodeGeneric<T> lastNodeGeneric = list.get(list.size() -1);
+            lastNodeGeneric.setPreviousNode(lastNodeGeneric.getPreviousNode() - 1);
+            lastNodeGeneric.setNextNode(0);
 
             return true;
         }
@@ -225,7 +225,7 @@ public class MyLinkedList<T> {
     public static void main(String[] args) {
 
         /* TESTING INSERTION */
-        MyLinkedList<String> insertionTestingList = new MyLinkedList<>();
+        LinkedList<String> insertionTestingList = new LinkedList<>();
         insertionTestingList.add("First");   // Adding to the end of the list
         insertionTestingList.add("Second");  // Adding to the end of the list
         insertionTestingList.add("Third");   // Adding to the end of the list
@@ -249,7 +249,7 @@ public class MyLinkedList<T> {
         System.out.println("End of Program.");
 
         /* TESTING REMOVAL */
-        MyLinkedList<Integer> removalTestingList = new MyLinkedList<>();
+        LinkedList<Integer> removalTestingList = new LinkedList<>();
         removalTestingList.addFirst(10); // List: 10
         removalTestingList.addLast(20);  // List: 10 20
         removalTestingList.add(30);  // List: 10 20 30
