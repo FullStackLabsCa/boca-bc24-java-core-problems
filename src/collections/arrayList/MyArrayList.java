@@ -6,16 +6,18 @@ public class MyArrayList<T> {
 
     Object[] underLyingArray;
     int lastElementIndex;
+    int capacity = 10;
 
 
     public MyArrayList() {
         //Default Capacity of 10
-        underLyingArray = new Object[10];
+        underLyingArray = new Object[capacity];
     }
 
     public MyArrayList(int capacity) {
         //Capacity User Desired
-        underLyingArray = new Object[capacity];
+        this.capacity = capacity;
+        underLyingArray = new Object[this.capacity];
     }
 
     public void add(T element){
@@ -41,19 +43,28 @@ public class MyArrayList<T> {
     }
 
     public T remove(int index){
-        Object[] tempArray = underLyingArray;
 
-        //Remove the element from the array
-        underLyingArray = new Object[underLyingArray.length - 1];
+        //If array not empty
+        if(index > lastElementIndex || index < 0) {
+            //Throw IndexOutOfBoundsException when occurred
+            throw new IndexOutOfBoundsException("Invalid Index Trying to be accessed");
+        } else if (lastElementIndex == 0) {
+            throw new TryingToRemoveFromEmptyArrayException();
+        } else{
+            Object[] tempArray = underLyingArray;
 
-        //Shift the elements to the right of it towards left 1 position
-        System.arraycopy(tempArray, 0, underLyingArray, 0, index);
-        System.arraycopy(tempArray, index, underLyingArray, index + 1, tempArray.length - index - 1);
+            //Remove the element from the array
+            //Create a new array with length less than
+            underLyingArray = new Object[underLyingArray.length];
 
-        lastElementIndex--;
-        //Throw IndexOutOfBoundsException when occurred
+            //Shift the elements to the right of it towards left 1 position
+            System.arraycopy(tempArray, 0, underLyingArray, 0, index);
+            System.arraycopy(tempArray, index + 1, underLyingArray, index, tempArray.length - index - 1);
 
-        return (T) tempArray[index];
+            lastElementIndex--;
+            return (T) tempArray[index];
+        }
+
     }
 
     public int size(){
@@ -65,7 +76,7 @@ public class MyArrayList<T> {
     }
 
     public void clear(){
-        underLyingArray = new Object[10];
+        underLyingArray = new Object[this.capacity];
         // Set the size of the underlying array back to default
         lastElementIndex = 0;
     }
