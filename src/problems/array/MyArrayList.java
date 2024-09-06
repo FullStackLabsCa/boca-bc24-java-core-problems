@@ -18,6 +18,9 @@ public class MyArrayList<T> {
     }
 
     public void add(T element) {
+        if(index > capacity-1) {
+            resize();
+        }
         myArray[index] = element;
         index++;
     }
@@ -65,6 +68,8 @@ public class MyArrayList<T> {
     }
 
     public void resize() {
+        int newLength = myArray.length * 2;
+        myArray = Arrays.copyOf(myArray, newLength);
     }
 
     public static void main(String[] args) {
