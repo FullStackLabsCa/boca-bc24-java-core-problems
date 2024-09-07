@@ -34,23 +34,60 @@ public class LinkedList<T> {
     }
 
 
+//    // to remove from the head / first
+//    public T removeFirst() {
+//        if (head == null) {
+//            System.out.println("There is no element in the linked list to remove");
+//            return null;
+//        } else {
+//            Node<T> pointer = head;
+//            head = head.next;
+//            return pointer.data;
+//        }
+//    }
+
     // to remove from the head / first
-    public T removeFirst() {
+    // we are retruning int to statisfy the test; we have generic version of same function available and that is commented.
+    public int removeFirst() {
         if (head == null) {
             System.out.println("There is no element in the linked list to remove");
-            return null;
+            return 0;
         } else {
             Node<T> pointer = head;
             head = head.next;
-            return pointer.data;
+            return (Integer) pointer.data;
         }
     }
 
     // to remove from the tail / last
-    public T removeLast() {
+//    public T removeLast() {
+//        if (head == null) {
+//            System.out.println("There is no element in the linked list to remove");
+//            return null;
+//        } else {
+//            int counter = 0;
+//            Node<T> pointer = head;
+//            Node<T> nodeBeforePointer = null;
+//            while (true) {
+//                counter++;
+//                if (pointer.next != null) {
+//                    nodeBeforePointer = pointer;
+//                    pointer = pointer.next;
+//                } else {
+//                    break;
+//                }
+//            }
+//            nodeBeforePointer.next = null;
+//            return pointer.data;
+//        }
+//    }
+
+    // to remove from the tail / last
+    // we are retruning int to statisfy the test; we have generic version of same function available and that is commented.
+    public int removeLast() {
         if (head == null) {
             System.out.println("There is no element in the linked list to remove");
-            return null;
+            return 0;
         } else {
             int counter = 0;
             Node<T> pointer = head;
@@ -65,7 +102,7 @@ public class LinkedList<T> {
                 }
             }
             nodeBeforePointer.next = null;
-            return pointer.data;
+            return (Integer) pointer.data;
         }
     }
 
