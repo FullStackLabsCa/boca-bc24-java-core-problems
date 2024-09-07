@@ -17,8 +17,8 @@ public class GradeBook<T extends Number> {
         grades.add(grade);
     }
 
-    public Optional<Integer> getNumberOfGrades() {
-        return Optional.of(2);
+    public Integer getNumberOfGrades() {
+        return grades.size();
     }
 
 

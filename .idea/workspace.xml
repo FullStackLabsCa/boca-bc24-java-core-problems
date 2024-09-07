@@ -5,11 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a7c31fdb-21cc-4f11-a5be-d0ff7b587f29" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/arrayproblems/MyArrayList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/genericsproblems/Course.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/genericsproblems/School.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/problems/CourseTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/problems/ListToArrayTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/problems/SchoolTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/arrayproblems/SortedArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/arrayproblems/SortedArray.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/genericsproblems/GradeBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/genericsproblems/GradeBook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loopproblems/SumOfEvenNumber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/loopproblems/SumOfEvenNumber.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/problems/GradeBookTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/GradeBookTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/genericsproblems/ListToArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/genericsproblems/ListToArray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/Calculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/problems/CalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/CalculatorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,26 +52,71 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.EvenNumber.executor": "Run",
-    "Application.GradeBook.executor": "Run",
-    "Application.SortedArray.executor": "Run",
-    "Application.SumOfEvenNumber.executor": "Run",
-    "JUnit.GradeBookTest.executor": "Run",
-    "JUnit.GradeBookTest.testAddDoubleGrade.executor": "Run",
-    "JUnit.GradeBookTest.testAddIntegerGrade.executor": "Run",
-    "JUnit.GradeBookTest.testCalculateDoubleAverageWithNoGrades.executor": "Run",
-    "JUnit.GradeBookTest.testCalculateIntegerAverage.executor": "Run",
-    "JUnit.GradeBookTest.testFindHighestDoubleGrade.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "feature/gaka-bc24-java-core-problems",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/Gagandeep.Kaur/source/students/boca-bc24-java-core-problems"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Calculator.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Course.executor&quot;: &quot;Run&quot;,
+    &quot;Application.EvenNumber.executor&quot;: &quot;Run&quot;,
+    &quot;Application.GradeBook.executor&quot;: &quot;Run&quot;,
+    &quot;Application.School.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SortedArray.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SumOfEvenNumber.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CalculatorTest.testBasicOperations.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CourseTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CourseTest.testAssignGradeToNonEnrolledStudent.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CourseTest.testEnrollStudent.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CourseTest.testListAllGrades.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GradeBookTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GradeBookTest.testAddDoubleGrade.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GradeBookTest.testAddIntegerGrade.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GradeBookTest.testCalculateDoubleAverageWithNoGrades.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GradeBookTest.testCalculateIntegerAverage.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GradeBookTest.testFindHighestDoubleGrade.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SchoolTest.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/gaka-bc24-java-core-problems&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/Gagandeep.Kaur/source/students/boca-bc24-java-core-problems&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="JUnit.GradeBookTest">
-    <configuration name="GradeBookTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="genericsproblems" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="arrayproblems" />
+      <recent name="problems" />
+      <recent name="genericsproblems" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.CourseTest">
+    <configuration name="Calculator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="problems.Calculator" />
+      <module name="boca-bc24-java-core-problems" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="problems.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GradeBook" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="genericsproblems.GradeBook" />
+      <module name="boca-bc24-java-core-problems" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="genericsproblems.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CalculatorTest.testBasicOperations" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="boca-bc24-java-core-problems" />
       <extension name="coverage">
         <pattern>
@@ -74,13 +125,29 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="problems" />
-      <option name="MAIN_CLASS_NAME" value="problems.GradeBookTest" />
+      <option name="MAIN_CLASS_NAME" value="problems.CalculatorTest" />
+      <option name="METHOD_NAME" value="testBasicOperations" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CourseTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="boca-bc24-java-core-problems" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="problems.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="problems" />
+      <option name="MAIN_CLASS_NAME" value="problems.CourseTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GradeBookTest.testAddIntegerGrade" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SchoolTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="boca-bc24-java-core-problems" />
       <extension name="coverage">
         <pattern>
@@ -89,68 +156,19 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="problems" />
-      <option name="MAIN_CLASS_NAME" value="problems.GradeBookTest" />
-      <option name="METHOD_NAME" value="testAddIntegerGrade" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GradeBookTest.testCalculateDoubleAverageWithNoGrades" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="boca-bc24-java-core-problems" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="problems.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="problems" />
-      <option name="MAIN_CLASS_NAME" value="problems.GradeBookTest" />
-      <option name="METHOD_NAME" value="testCalculateDoubleAverageWithNoGrades" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GradeBookTest.testCalculateIntegerAverage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="boca-bc24-java-core-problems" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="problems.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="problems" />
-      <option name="MAIN_CLASS_NAME" value="problems.GradeBookTest" />
-      <option name="METHOD_NAME" value="testCalculateIntegerAverage" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GradeBookTest.testFindHighestDoubleGrade" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="boca-bc24-java-core-problems" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="problems.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="problems" />
-      <option name="MAIN_CLASS_NAME" value="problems.GradeBookTest" />
-      <option name="METHOD_NAME" value="testFindHighestDoubleGrade" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="problems.SchoolTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.GradeBookTest" />
-        <item itemvalue="JUnit.GradeBookTest.testFindHighestDoubleGrade" />
-        <item itemvalue="JUnit.GradeBookTest.testAddIntegerGrade" />
-        <item itemvalue="JUnit.GradeBookTest.testCalculateIntegerAverage" />
-        <item itemvalue="JUnit.GradeBookTest.testCalculateDoubleAverageWithNoGrades" />
+        <item itemvalue="JUnit.CourseTest" />
+        <item itemvalue="Application.Calculator" />
+        <item itemvalue="JUnit.CalculatorTest.testBasicOperations" />
+        <item itemvalue="JUnit.SchoolTest" />
+        <item itemvalue="Application.GradeBook" />
       </list>
     </recent_temporary>
   </component>
@@ -164,5 +182,56 @@
       <updated>1724793567433</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/problems/Calculator.java</url>
+          <line>71</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/problems/Calculator.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/problems/Calculator.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/problems/Calculator.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/problems/Calculator.java</url>
+          <line>35</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/problems/Calculator.java</url>
+          <line>16</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/problems/Calculator.java</url>
+          <line>19</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/problems/Calculator.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/problems/Calculator.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

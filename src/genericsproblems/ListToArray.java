@@ -23,7 +23,7 @@ public class ListToArray {
 
     }
 
-    public static <T> T[] listToArray(List<T> list) {
+    public static <T> T[] listToArray(List<Integer> list) {
         T[] array = (T[]) new Object[list.size()];
         for (int i = 0; i < list.size(); i++) {
             array[i] = list.get(i);
