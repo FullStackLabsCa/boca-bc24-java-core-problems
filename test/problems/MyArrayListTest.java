@@ -1,6 +1,6 @@
 package problems;
 
-import advance.calculator.MyArrayList;
+import collectionproblem.MyArrayList;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;

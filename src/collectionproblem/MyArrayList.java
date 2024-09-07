@@ -1,4 +1,4 @@
-package advance.calculator;
+package collectionproblem;
 
 import java.util.Arrays;
 
