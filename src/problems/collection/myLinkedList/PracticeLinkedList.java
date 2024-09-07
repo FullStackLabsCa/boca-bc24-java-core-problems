@@ -1,4 +1,4 @@
-package problems.collection.linkedList;
+package problems.collection.myLinkedList;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

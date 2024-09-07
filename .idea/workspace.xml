@@ -5,11 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3c9f44b-ff0f-43a9-b850-9b801d0dc95b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/problems/collection/linkedList/MyLinkedList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/collection/linkedList/PracticeLinkedList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/problems/hashmap/MyHashMapTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/problems/linkedlist/MyLinkedListTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/collection/myHashMap/MyHashMap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/collection/myHashMap/notes.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/collection/myHashMap/steps.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/collection/linkedList/MyLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/collection/myLinkedList/MyLinkedList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/collection/linkedList/PracticeLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/collection/myLinkedList/PracticeLinkedList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/problems/hashmap/MyHashMapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/hashmap/MyHashMapTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/problems/linkedlist/MyLinkedListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/linkedlist/MyLinkedListTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +70,7 @@
     "Application.LongestWordString.executor": "Run",
     "Application.Main.executor": "Run",
     "Application.MergeTwoArrays.executor": "Run",
+    "Application.MyHashMap.executor": "Run",
     "Application.P10_Add_Sub_Number.executor": "Run",
     "Application.P12_Prime_Number.executor": "Run",
     "Application.P1_Bracket_WS_Matching.executor": "Run",
@@ -103,12 +107,14 @@
     "JUnit.CourseTest.testGetGrade.executor": "Run",
     "JUnit.GradeBookTest.executor": "Run",
     "JUnit.MyArrayListTest.executor": "Run",
+    "JUnit.MyHashMapTest.executor": "Run",
     "JUnit.MyLinkedListTest.executor": "Run",
     "JUnit.OddCounterTest.executor": "Run",
     "JUnit.SchoolTest.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "feature/jash-bc24-java-core-problems",
     "kotlin-language-version-configured": "true",
+    "last_directory_selection": "/Users/Jay.Shah/sources/student/boca-bc24-java-core-problems/test/problems/hashmap",
     "last_opened_file_path": "/Users/Jay.Shah/sources/student/boca-bc24-java-core-problems/test/problems",
     "settings.build.tools.auto.reload": "SELECTIVE",
     "settings.editor.selected.configurable": "project.propCompiler"
@@ -116,6 +122,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="problems.hashmap" />
       <recent name="problems" />
       <recent name="problems.generics.dhruv" />
     </key>
@@ -217,10 +224,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CalculatorTest" />
         <item itemvalue="JUnit.CalculatorTest.testParentheses" />
         <item itemvalue="JUnit.CalculatorTest.testMemoryOperations" />
         <item itemvalue="JUnit.CalculatorTest.testDivisionByZero" />
-        <item itemvalue="JUnit.CalculatorTest" />
         <item itemvalue="JUnit.CalculatorTest.testBasicOperations" />
       </list>
     </recent_temporary>
@@ -263,15 +270,6 @@
           <url>file://$PROJECT_DIR$/src/problems/calculator/Calculator.java</url>
           <line>59</line>
           <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/problems/collection/linkedList/MyLinkedList.java</url>
-          <line>71</line>
-          <properties class="problems.collection.linkedList.MyLinkedList" method="removeLast">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
-import problems.collection.linkedList.MyLinkedList;
+import problems.collection.myLinkedList.MyLinkedList;
 
 public class MyLinkedListTest {
     private MyLinkedList myLinkedList;
