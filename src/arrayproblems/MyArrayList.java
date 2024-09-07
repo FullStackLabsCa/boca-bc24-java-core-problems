@@ -1,8 +1,10 @@
+package arrayproblems;
+
 import java.util.Arrays;
 
 public class MyArrayList<T> {
-    private Object[] arrayElement;
-    private int size;
+    public T[] arrayElement;
+    public int size;
     public static final int INITIAL_VALUE = 10;
 
     @Override
@@ -14,7 +16,8 @@ public class MyArrayList<T> {
     }
 
     public MyArrayList() {
-        arrayElement = new Object[INITIAL_VALUE];
+        arrayElement = (T[]) new Object[INITIAL_VALUE];
+//        arrayElement = new T[INITIAL_VALUE];
         this.size = 0;
     }
 
@@ -37,25 +40,36 @@ public class MyArrayList<T> {
 
     }
 
-    public Object get(int index) {
+    public T get(int index) {
         if (index < 0 || index >= arrayElement.length) {
             throw new IndexOutOfBoundsException();
         }
         return arrayElement[index];
     }
 
-    public Object remove(int index) {
+    public T remove(int index) {
 
         if (index >= arrayElement.length) {
             throw new IndexOutOfBoundsException();
         }
 
-        Object removedElement = arrayElement[index];
+        T removedElement = arrayElement[index];
 
         for (int i = index; i < arrayElement.length - 1; i++) {
             arrayElement[i] = arrayElement[i + 1];
         }
         return removedElement;
+    }
+    public int size() {
+        return 0;
+    }
+
+    public void clear() {
+
+    }
+
+    public boolean isEmpty() {
+        return false;
     }
 
 

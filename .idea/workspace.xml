@@ -5,17 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a7c31fdb-21cc-4f11-a5be-d0ff7b587f29" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/arrayproblems/MyArrayList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/genericsproblems/Course.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/genericsproblems/School.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/problems/CourseTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/problems/ListToArrayTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/problems/SchoolTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/problems/MyArrayListTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/arrayproblems/MyArrayList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/arrayproblems/MyArrayList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/genericsproblems/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/genericsproblems/Course.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/genericsproblems/GradeBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/genericsproblems/GradeBook.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/genericsproblems/ListToArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/genericsproblems/ListToArray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/genericsproblems/School.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/genericsproblems/School.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/problems/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/Calculator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/problems/CalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/CalculatorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/problems/CourseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/CourseTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/problems/ListToArrayTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/ListToArrayTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/problems/SchoolTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/SchoolTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +73,10 @@
     &quot;JUnit.GradeBookTest.testCalculateDoubleAverageWithNoGrades.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.GradeBookTest.testCalculateIntegerAverage.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.GradeBookTest.testFindHighestDoubleGrade.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MyArrayListTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MyArrayListTest.testAddElements.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MyArrayListTest.testGetElementAtOutOfBoundsIndex.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MyArrayListTest.testRemoveElements.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.SchoolTest.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;feature/gaka-bc24-java-core-problems&quot;,
@@ -84,12 +89,12 @@
       <recent name="genericsproblems" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="arrayproblems" />
       <recent name="problems" />
+      <recent name="arrayproblems" />
       <recent name="genericsproblems" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CourseTest">
+  <component name="RunManager">
     <configuration name="Calculator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="problems.Calculator" />
       <module name="boca-bc24-java-core-problems" />
@@ -99,35 +104,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GradeBook" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="genericsproblems.GradeBook" />
-      <module name="boca-bc24-java-core-problems" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="genericsproblems.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CalculatorTest.testBasicOperations" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="boca-bc24-java-core-problems" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="problems.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="problems" />
-      <option name="MAIN_CLASS_NAME" value="problems.CalculatorTest" />
-      <option name="METHOD_NAME" value="testBasicOperations" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -147,7 +123,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SchoolTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MyArrayListTest.testAddElements" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="boca-bc24-java-core-problems" />
       <extension name="coverage">
         <pattern>
@@ -156,19 +132,51 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="problems" />
-      <option name="MAIN_CLASS_NAME" value="problems.SchoolTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="problems.MyArrayListTest" />
+      <option name="METHOD_NAME" value="testAddElements" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyArrayListTest.testGetElementAtOutOfBoundsIndex" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <module name="boca-bc24-java-core-problems" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="problems.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="problems" />
+      <option name="MAIN_CLASS_NAME" value="problems.MyArrayListTest" />
+      <option name="METHOD_NAME" value="testGetElementAtOutOfBoundsIndex" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyArrayListTest.testRemoveElements" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="boca-bc24-java-core-problems" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="problems.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="problems" />
+      <option name="MAIN_CLASS_NAME" value="problems.MyArrayListTest" />
+      <option name="METHOD_NAME" value="testRemoveElements" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MyArrayListTest.testAddElements" />
+        <item itemvalue="JUnit.MyArrayListTest.testRemoveElements" />
         <item itemvalue="JUnit.CourseTest" />
         <item itemvalue="Application.Calculator" />
-        <item itemvalue="JUnit.CalculatorTest.testBasicOperations" />
-        <item itemvalue="JUnit.SchoolTest" />
-        <item itemvalue="Application.GradeBook" />
       </list>
     </recent_temporary>
   </component>
