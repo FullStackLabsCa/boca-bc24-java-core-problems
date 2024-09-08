@@ -1,4 +1,4 @@
-package problems.custom;
+package problems.collections;
 
 import java.util.Arrays;
 
@@ -78,18 +78,28 @@ public class MyArrayList<T> {
     }
 
     public static void main(String[] args) {
-        MyArrayList<Integer> integerMyArrayList = new MyArrayList<>(15);
-        integerMyArrayList.add(null);
-        integerMyArrayList.add(20);
-        integerMyArrayList.add(30);
-        integerMyArrayList.add(40);
-        integerMyArrayList.add(50);
+        MyArrayList<String> list = new MyArrayList<>();
 
-        System.out.println("integerMyArrayList.get(1): " + integerMyArrayList.get(1));
-        System.out.println("removing value: " + integerMyArrayList.remove(2));
-        integerMyArrayList.size();
-//        integerMyArrayList.clear();
-        System.out.println("checking the array is Empty or not: " + integerMyArrayList.isEmpty());
-        System.out.println("Array Value: " + integerMyArrayList);
+        // Adding elements
+        list.add("Apple");
+        list.add("Banana");
+        list.add("Cherry");
+
+        // Print the list
+        System.out.println("List: " + list); // Output: [Apple, Banana, Cherry]
+
+        // Get an element
+        System.out.println("Element at index 1: " + list.get(1)); // Output: Banana
+
+        // Remove an element
+        list.remove(1);
+        System.out.println("After removal: " + list); // Output: [Apple, Cherry]
+
+        // Check the size
+        System.out.println("Size: " + list.size()); // Output: 2
+
+        // Clear the list
+        list.clear();
+        System.out.println("After clear: " + list.isEmpty()); // Output: true
     }
 }

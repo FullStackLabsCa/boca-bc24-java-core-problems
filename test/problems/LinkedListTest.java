@@ -1,10 +1,10 @@
 package problems;
 
-import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
+import problems.collections.linkedlist.LinkedList;
 
-import problems.custom.LinkedList;
+import static org.junit.Assert.*;
 
 public class LinkedListTest {
     private LinkedList linkedList;
@@ -19,8 +19,10 @@ public class LinkedListTest {
         linkedList.addLast(10);
         linkedList.addLast(20);
         linkedList.addLast(30);
+        linkedList.addLast(40);
+        linkedList.addLast(50);
 
-        assertEquals(3, linkedList.size());
+        assertEquals(5, linkedList.size());
     }
 
     @Test
