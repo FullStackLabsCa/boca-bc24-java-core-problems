@@ -1,11 +1,12 @@
 package problems.custom;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MyArrayList<T> {
     int capacity =10;
     int index = 0;
-    T[] myArray = (T[]) new Object[capacity];
+    T[] myArray;
     T[] tempArray =(T[]) new Object[capacity * 2];
 
 
@@ -14,12 +15,13 @@ public class MyArrayList<T> {
 
     public MyArrayList(int capacity) {
         this.capacity = capacity;
+        myArray = (T[]) new Object[capacity];
     }
 
     public void add(T element) {
         myArray[index] = element;
         index++;
-        if(index> 9) {
+        if(capacity - index == 1) {
             myArray = Arrays.copyOf(myArray, capacity * 2);
             capacity *= 2;
         }
@@ -69,7 +71,7 @@ public class MyArrayList<T> {
         return "MyArrayList{" +
                 "capacity=" + capacity +
                 ", index=" + index +
-                ", myArray=" + Arrays.toString(myArray) +
+                ", myArray=" + Arrays.toString(Arrays.copyOf(myArray, size())) +
                 '}';
     }
 
@@ -77,46 +79,46 @@ public class MyArrayList<T> {
            return size() == 0;
     }
 
-//    public String[] toString() {
-//        String[] stringType = new String[myArray.length];
-//        for (int i = 0; i < myArray.length ; i++) {
-//            if (myArray[i] != null) {
-//                stringType[i] = Arrays.toString(stringType);
-//                System.out.println("Array element is: " + myArray[i]);
-//            }
-//        }
-//        return stringType;
-//    }
-
     private T[] resize() {
            return Arrays.copyOf(tempArray, capacity*2);
         }
 
     public static void main(String[] args) {
-        MyArrayList<Object> objectMyArrayList = new MyArrayList<>();
+        MyArrayList<Object> objectMyArrayList = new MyArrayList<>(15);
 
 
         objectMyArrayList.add("Apple");
         objectMyArrayList.add("Banana");
         objectMyArrayList.add("Chery");
+        objectMyArrayList.add(null);
         objectMyArrayList.add("Pineapple");
-        objectMyArrayList.add("Mango");
-        objectMyArrayList.add("Peach");
-        objectMyArrayList.add("Guava");
-        objectMyArrayList.add("papaya");
-        objectMyArrayList.add("sugarcane");
-        objectMyArrayList.add("litchi");
-//        objectMyArrayList.resize();
-        objectMyArrayList.add("Pomogranate");
-        objectMyArrayList.add("Berry");
+//        objectMyArrayList.add("Mango");
+//        objectMyArrayList.add("Peach");
+//        objectMyArrayList.add("Guava");
+//        objectMyArrayList.add("papaya");
+//        objectMyArrayList.add("sugarcane");
+//        objectMyArrayList.add("litchi");
+////        objectMyArrayList.resize();
+//        objectMyArrayList.add("Pomogranate");
+//        objectMyArrayList.add("Berry");
 
-        objectMyArrayList.size();
+//        objectMyArrayList.size();
 //        objectMyArrayList.remove(2);
-        objectMyArrayList.size();
+//        objectMyArrayList.size();
 
 //        objectMyArrayList.clear();
 
-        System.out.println("oop" + objectMyArrayList.toString());
+//        System.out.println("oop" + objectMyArrayList.toString());
+        System.out.println("objectMyArrayList = " + objectMyArrayList);
+        //testing ArrayList
+
+        ArrayList<Integer> integerArrayList = new ArrayList<>(15);
+        integerArrayList.add(0, 12);
+        integerArrayList.add(1, null);
+        integerArrayList.add(2, 12);
+        integerArrayList.add(3, null);
+
+        System.out.println("integerArrayList = " + integerArrayList);
 
     }
 }
