@@ -1,13 +1,19 @@
 package problems.collections.linkedlist;
 
-public class Node<E>{
-    E element;
-    Node<E> nextElement;
-    Node<E> previousElement;
+public class Node<E extends Integer>{
+    E data;
+    Node<E > link;
 
-    public Node(E element, Node<E> nextElement, Node<E> previousElement) {
-        this.element = element;
-        this.nextElement = nextElement;
-        this.previousElement = previousElement;
+    public Node(E data) {
+        this.data = data;
+        this.link = null;
+    }
+
+    @Override
+    public String toString() {
+        return "Node{" +
+                "data=" + data +
+                ", link=" + link +
+                '}';
     }
 }
