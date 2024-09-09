@@ -5,6 +5,7 @@
       <root url="jar://$PROJECT_DIR$/lib/junit-4.13.2.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/system-rules-1.19.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/junit-4.11-beta-1.jar!/" />
+      <root url="jar://$USER_HOME$/tools/mysql-connector-j-9.0.0/mysql-connector-j-9.0.0.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
