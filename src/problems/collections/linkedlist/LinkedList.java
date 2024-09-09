@@ -54,9 +54,12 @@ public class LinkedList {
         if (size == 0) throw new NoSuchElementException();
         else if (size == 1) head = null;
         else {
-            while (current.next != null) {
+            while (current.next.next != null) {
                 current = current.next;
             }
+            Node temp = current.next;
+            current.next = null;
+            current = temp;
         }
         size--;
 
