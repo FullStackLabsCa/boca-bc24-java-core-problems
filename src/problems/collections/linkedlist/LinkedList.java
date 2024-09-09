@@ -1,5 +1,7 @@
 package problems.collections.linkedlist;
 
+import java.util.NoSuchElementException;
+
 @SuppressWarnings("java:S106")
 public class LinkedList<T> {
     Node headNode;
@@ -24,27 +26,43 @@ public class LinkedList<T> {
     }
 
     public void addFirst(int data) {
-        Node tempNode = new Node(data, null);
-        headNode = new Node(data, tempNode);
+        if (headNode == null) {
+            headNode = new Node(data, null);
+        } else {
+            Node currentNode = new Node(data, headNode);
+            headNode = currentNode;
+        }
         size++;
     }
 
     public int removeFirst() {
-        int value = 0;
-//        for (int i = 0; i < myLinkedList.length - 1; i++) {
-//            myLinkedList[i] = myLinkedList[i + 1];
-//        }
-        size--;
-        return value;
+        if (size > 0) {
+            Node currentNode = headNode;
+            headNode = currentNode.pointer;
+            size--;
+            return currentNode.data;
+        }
+        throw new NoSuchElementException();
     }
 
     public int removeLast() {
         int value = 0;
-//        for (int i = 0; i < myLinkedList.length - 1; i++) {
-//            myLinkedList[i] = myLinkedList[i + 1];
-//        }
-        size--;
+        if (size > 0) {
+            Node currentNode = headNode;
+            Node previousNode = currentNode;
+            while (currentNode.pointer != null) {
+                previousNode = currentNode;
+                currentNode = currentNode.pointer;
+            }
+            if (previousNode.pointer == null) {
+                headNode = null;
+            }
+            previousNode.pointer = null;
+            size--;
+            value = currentNode.data;
+        }
         return value;
+//        throw new NoSuchElementException();
     }
 
     public void printList() {
