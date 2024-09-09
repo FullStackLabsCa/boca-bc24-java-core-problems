@@ -1,4 +1,4 @@
-package problems.collections.linkedlist;
+package problems.collections.my_linked_list;
 
 public class Node<E extends Integer>{
     E data;

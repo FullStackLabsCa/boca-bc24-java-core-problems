@@ -1,4 +1,4 @@
-package problems.collections.linkedlist;
+package problems.collections.my_linked_list;
 
 public class MyLinkedList<E extends Integer> {
     private int size = 0;
@@ -13,9 +13,9 @@ public class MyLinkedList<E extends Integer> {
                 '}';
     }
 
-    //empty constructor to store the value
-//    public MyLinkedList() {
-//    }
+
+    public MyLinkedList() {
+    }
 
     public void addLast(E element) {
         Node<E> tempNode = new Node<>(element);
@@ -49,7 +49,7 @@ public class MyLinkedList<E extends Integer> {
         }
         return removedData;
     }
-
+// to get the Vale of the Node at particular index or size number
     public Node get(int size) {
         Node node = headNode;
         for (int i = 1; i < size; i++) {
@@ -57,15 +57,17 @@ public class MyLinkedList<E extends Integer> {
         }
         return node;
     }
-
+/*
+to remove the last the Node or any Node from the linkedList first we need to search the Node
+in the list and then change/remove the pointer/link of the node.
+ */
     public int removeLast() {
         if (size == 1) {
             return removeFirst();
         }
-        Node lastNode = get(size);
+        Node<E> lastNode = get(size);
         Integer lastNodeData = lastNode.data;
-        Node secondLast = get(size - 1);
-        lastNode = secondLast;
+        lastNode = get(size - 1);
         lastNode.link = null;
         size--;
         return lastNodeData;
@@ -84,7 +86,7 @@ public class MyLinkedList<E extends Integer> {
             System.out.print(tempNode.data + " -> ");
             tempNode = tempNode.link;
         }
-        System.out.println("END");
+        System.out.println("Null");
     }
 
     public int size() {

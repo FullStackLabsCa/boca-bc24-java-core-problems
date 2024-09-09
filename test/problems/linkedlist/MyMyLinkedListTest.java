@@ -2,7 +2,7 @@ package problems.linkedlist;
 
 import org.junit.Before;
 import org.junit.Test;
-import problems.collections.linkedlist.MyLinkedList;
+import problems.collections.my_linked_list.MyLinkedList;
 
 import static org.junit.Assert.*;
 
