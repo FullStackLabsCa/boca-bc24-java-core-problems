@@ -1,6 +1,6 @@
 package collections.maps;
 
-import linkedList.EmptyListException;
+import collections.linkedList.EmptyListException;
 
 public class MyHashMap<K, V> {
 
