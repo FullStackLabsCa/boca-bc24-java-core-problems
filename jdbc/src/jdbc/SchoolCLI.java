@@ -29,7 +29,14 @@ public class SchoolCLI {
                     school.removeCourse(command[1]);
                     break;
                 case "list_Courses":
-                    school.listCourses(command[1]);
+                    school.listCourses();
+                    break;
+                case "report_unique_courses":
+                    school.reportUniqueCourses();
+                    break;
+                case "report_average_score":
+                    school.reportAverageScore(command[1]);
+                    break;
                 case "exit":
                     System.out.println("Exiting...");
                     return;
