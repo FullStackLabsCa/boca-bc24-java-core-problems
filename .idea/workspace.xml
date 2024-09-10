@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d3b01333-d157-4793-b4ff-8016ea5cf74b" name="Changes" comment="solved arraylist with standard array and all tests passed.">
-      <change afterPath="$PROJECT_DIR$/src/problems/linkedlist/MyLinkedList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/linkedlist/Node.java" afterDir="false" />
+    <list default="true" id="d3b01333-d157-4793-b4ff-8016ea5cf74b" name="Changes" comment="Minor fix in linked list implementation.">
+      <change afterPath="$PROJECT_DIR$/src/problems/hashmap/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/hashmap/MyHashMap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/hashmap/Node.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/test/problems/MyHashMapTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/problems/MyLinkedListTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/problems/calculator/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/calculator/Calculator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/problems/calculator/CalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/calculator/AdvancedCalculatorTest.java" afterDir="false" />
@@ -78,6 +78,7 @@
     "JUnit.MyArrayListTest.executor": "Run",
     "JUnit.MyArrayListTest.testAddElements.executor": "Run",
     "JUnit.MyArrayListTest.testRemoveFirstElement.executor": "Run",
+    "JUnit.MyHashMapTest.executor": "Run",
     "JUnit.MyLinkedListTest.executor": "Run",
     "JUnit.OddCounterTest.executor": "Run",
     "JUnit.OddCounterTest.testCountOddNumbersInSet.executor": "Run",
@@ -85,7 +86,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "feature/kivi-bc24-java-core-problems",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/Kiran.Virani/reactivestax/source/boca-bc24-java-core-problems/src/problems",
+    "last_opened_file_path": "/Users/Kiran.Virani/reactivestax/source/boca-bc24-java-core-problems",
     "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
@@ -181,11 +182,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.OddCounter" />
         <item itemvalue="JUnit.AdvancedCalculatorTest" />
         <item itemvalue="JUnit.MyArrayListTest" />
         <item itemvalue="JUnit.MyArrayListTest.testAddElements" />
         <item itemvalue="JUnit.MyArrayListTest.testRemoveFirstElement" />
-        <item itemvalue="Application.OddCounter" />
       </list>
     </recent_temporary>
   </component>
@@ -382,7 +383,23 @@
       <option name="project" value="LOCAL" />
       <updated>1725565746066</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="implemented linked list with nodes and all tests passed.">
+      <option name="closed" value="true" />
+      <created>1725636860942</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1725636860942</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Minor fix in linked list implementation.">
+      <option name="closed" value="true" />
+      <created>1725637438801</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1725637438801</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -418,6 +435,8 @@
     <MESSAGE value="minor change." />
     <MESSAGE value="handled memory operation with stack collection" />
     <MESSAGE value="solved arraylist with standard array and all tests passed." />
-    <option name="LAST_COMMIT_MESSAGE" value="solved arraylist with standard array and all tests passed." />
+    <MESSAGE value="implemented linked list with nodes and all tests passed." />
+    <MESSAGE value="Minor fix in linked list implementation." />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor fix in linked list implementation." />
   </component>
 </project>
