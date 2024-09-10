@@ -1,7 +1,6 @@
 package problems;
 import org.junit.Before;
 import org.junit.Test;
-import stringproblems.*;
 
 import static org.junit.Assert.assertEquals;
 
