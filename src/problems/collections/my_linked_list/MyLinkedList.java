@@ -49,7 +49,7 @@ public class MyLinkedList<E extends Integer> {
         }
         return removedData;
     }
-// to get the Vale of the Node at particular index or size number
+// to get the value of the Node at particular index or size number
     public Node get(int size) {
         Node node = headNode;
         for (int i = 1; i < size; i++) {
