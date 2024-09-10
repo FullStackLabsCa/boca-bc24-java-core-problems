@@ -1,21 +1,21 @@
-package problems;
+package problems.generics.course_book;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
-public class Course<S,G extends Number>{
+public class Course<S, G extends Number> {
 
     private S studentId;
     private G grades;
     Map<S, G> studentToGradesMap = new HashMap<>();
 
 
-    public void enrollStudent(S studentId){
-        studentToGradesMap.put(studentId,null);
+    public void enrollStudent(S studentId) {
+        studentToGradesMap.put(studentId, null);
     }
-    public void assignGrade(S studentId, G grades){
-        studentToGradesMap.put(studentId,grades);
+
+    public void assignGrade(S studentId, G grades) {
+        studentToGradesMap.put(studentId, grades);
 //        if(studentToGradesMap.containsKey(studentId)){
 //            studentToGradesMap.put(studentId,grades);
 //        }else{
@@ -23,20 +23,23 @@ public class Course<S,G extends Number>{
 //        }
 //        return null;
     }
-    public G retrieveGrades(S studentId){
+
+    public G retrieveGrades(S studentId) {
         return studentToGradesMap.get(studentId);
 
     }
-    public void listAllGrade(){
+
+    public void listAllGrade() {
         studentToGradesMap.values();
 
     }
-    public void listAllStudent(){
-        if (studentToGradesMap.isEmpty()){
+
+    public void listAllStudent() {
+        if (studentToGradesMap.isEmpty()) {
             System.out.println("No grades");
-        }else{
-            for(Map.Entry<S,G> entry:studentToGradesMap.entrySet()){
-                System.out.println("Student Id: "+ entry.getKey() +" Grades "+ entry.getValue());
+        } else {
+            for (Map.Entry<S, G> entry : studentToGradesMap.entrySet()) {
+                System.out.println("Student Id: " + entry.getKey() + " Grades " + entry.getValue());
             }
         }
     }
@@ -47,7 +50,7 @@ public class Course<S,G extends Number>{
 //    }
 
     public Map<S, G> getAllGrades() {
-            return studentToGradesMap;
+        return studentToGradesMap;
     }
 
     public void listAllGrades() {
@@ -55,7 +58,7 @@ public class Course<S,G extends Number>{
     }
 
     public boolean isStudentEnrolled(S i) {
-        if(studentToGradesMap.containsKey(i))
+        if (studentToGradesMap.containsKey(i))
             return true;
         return false;
     }

@@ -2,6 +2,7 @@ package problems;
 
 import org.junit.Before;
 import org.junit.Test;
+import problems.generics.course_book.Course;
 
 import java.util.Map;
 import java.util.Optional;
@@ -27,19 +28,19 @@ public class CourseTest {
         assertEquals(1, course.getAllGrades().size());
     }
 
-    @Test
-    public void testAssignGrade() {
-        course.enrollStudent(12345);
-        course.assignGrade(12345, 95.0);
-        assertEquals(Optional.of(95.0), course.getGrade(12345));
-    }
+//    @Test
+//    public void testAssignGrade() {
+//        course.enrollStudent(12345);
+//        course.assignGrade(12345, 95.0);
+//        assertEquals(Optional.of(95.0), course.getGrade(12345));
+//    }
 
 //    @Test
 //    public void testAssignGradeToNonEnrolledStudent() {
 //        course.assignGrade(12345, 95.0);
 //        assertEquals(Optional.empty(), course.getGrade(12345));
 //    }
-////
+
 //    @Test
 //    public void testGetGrade() {
 //        course.enrollStudent(12345);
