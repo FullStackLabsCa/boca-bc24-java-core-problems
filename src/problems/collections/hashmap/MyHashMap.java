@@ -12,7 +12,12 @@ public class MyHashMap<K, V> {
     }
 
     public void put(K key, V value) {
-        int index = key.hashCode() % capacity;
+        int index = 0;
+        if (key == null) {
+            index = 0;
+        } else {
+            index = key.hashCode() % capacity;
+        }
         Entry<K, V> entry = table[index];
 
         if (entry == null) {
@@ -30,15 +35,20 @@ public class MyHashMap<K, V> {
             if (entry.getKey() == key) {
                 entry.setValue(value);
                 System.out.println("The value for '" + key + "' should be updated to " + value);
+            } else {
+                entry.next = new Entry<K, V>(key, value);
+                count++;
             }
-
-            entry.next = new Entry<K, V>(key, value);
-            count++;
         }
     }
 
     public V get(K key) {
-        int index = key.hashCode() % capacity;
+        int index = 0;
+        if (key == null) {
+            index = 0;
+        } else {
+            index = key.hashCode() % capacity;
+        }
         Entry<K, V> entry = table[index];
         if (entry == null) {
             return null;
@@ -46,7 +56,6 @@ public class MyHashMap<K, V> {
 
         while (entry != null) {
             if (entry.getKey() == key) {
-                System.out.println("entry.getValue()"+ entry.getValue());
                 return entry.getValue();
             }
             entry = entry.next;
@@ -55,25 +64,30 @@ public class MyHashMap<K, V> {
     }
 
     public V remove(K key) {
-        int index = key.hashCode() % capacity;
-        index = key.hashCode() % capacity;
+        int index = 0;
+        if (key == null) {
+            index = 0;
+        } else {
+            index = key.hashCode() % capacity;
+        }
         Entry<K, V> entry = table[index];
+        Entry<K, V> previousEntry = entry;
 
-        while (entry.getKey() == key) {
-            table[index] = entry.next;
-            entry.next = null;
+        if(size() == 1 && entry.getKey() == key){
+            table[index] = null;
+            count--;
+            return previousEntry.getValue();
+        }
+
+        while (entry.getKey() != null && entry.next != null) {
+            previousEntry = entry;
+            entry = entry.next;
+        }
+        if (entry.getKey() == key) {
+            previousEntry.next = entry.next;
+            table[index] = null;
             count--;
             return entry.getValue();
-        }
-        Entry<K, V> previousEntry = entry;
-        entry = entry.next;
-
-        while (entry != null) {
-            if (entry.getKey() == key) {
-                previousEntry.next = entry.next;
-                entry.next = null;
-                count--;
-            }
         }
         return null;
     }
@@ -102,7 +116,12 @@ public class MyHashMap<K, V> {
         MyHashMap<String, Integer> stringIntegerMyHashMap = new MyHashMap<>();
         stringIntegerMyHashMap.put("Apple", 10);
         stringIntegerMyHashMap.put(null, 10);
-        stringIntegerMyHashMap.get(null);
-
+//        HashMap<String, Integer> stringIntegerHashMap = new HashMap<>();
+//        stringIntegerHashMap.put("Apple", 10);
+//        stringIntegerHashMap.put(null, 20);
+//        stringIntegerHashMap.put("Orange", 30);
+//        stringIntegerHashMap.put(null, 40);
+//
+//        stringIntegerHashMap.forEach((k, v) -> System.out.println("key " + k + " value " + v));
     }
 }
