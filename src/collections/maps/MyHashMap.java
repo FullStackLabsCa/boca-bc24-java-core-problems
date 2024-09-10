@@ -33,7 +33,7 @@ public class MyHashMap<K, V> {
                 myHashMap[0] = new Node<>(null, value);
             } else {
                 //Add to the last
-                while(top != null){
+                while(top.getNextNode() != null){
                     if(top.getKey() == null){
                         top.setValue(value);
                         return;
