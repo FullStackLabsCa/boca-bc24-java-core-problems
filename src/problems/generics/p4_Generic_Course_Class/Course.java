@@ -69,4 +69,30 @@ public class Course<S, G> {
     listAllGrades(): Lists all students and their grades.
      */
 
+
+//    public static void main(String[] args) {
+//        // Create a Course instance with String as student identifier and Integer as grade
+//        Course<String, Integer> course = new Course<>();
+//
+//        // Enroll some students
+//        course.enrollStudent("Alice");
+//        course.enrollStudent("Bob");
+//        course.enrollStudent("Charlie");
+//
+//        // Assign grades to the students
+//        course.assignGrade("Alice", 85);
+//        course.assignGrade("Bob", 90);
+//        course.assignGrade("Charlie", 78);
+//
+//        // Attempt to enroll a student who is already enrolled
+//        course.enrollStudent("Alice");
+//
+//        // Retrieve and print grades
+//        System.out.println("Grade for Alice: " + course.getAllGrades("Alice"));
+//        System.out.println("Grade for Bob: " + course.getAllGrades("Bob"));
+//
+//        // List all students and their grades
+//        System.out.println("Listing all grades:");
+//        course.listAllGrades();
+//    }
 }

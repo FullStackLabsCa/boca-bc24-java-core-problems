@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d3c9f44b-ff0f-43a9-b850-9b801d0dc95b" name="Changes" comment="" />
+    <list default="true" id="d3c9f44b-ff0f-43a9-b850-9b801d0dc95b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/problems/generics/databaseCourse/Course.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/generics/databaseCourse/DatabaseHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/generics/databaseCourse/Generic_DB_Course_Class.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/generics/p4_Generic_Course_Class/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/generics/p4_Generic_Course_Class/Course.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,7 +37,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/FullStackLabsCa/boca-bc24-java-core-problems.git&quot;,
-    &quot;accountId&quot;: &quot;42779453-9f9b-435d-9f88-b958bbc483d1&quot;
+    &quot;accountId&quot;: &quot;ca161512-2337-4773-a48b-b514d33f4909&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -51,6 +58,7 @@
     "Application.CollectionExample.executor": "Run",
     "Application.Course.executor": "Run",
     "Application.DuplicateElementInArray.executor": "Debug",
+    "Application.Generic_DB_Course_Class.executor": "Run",
     "Application.Generics_Demo.executor": "Debug",
     "Application.LinkedList.executor": "Run",
     "Application.LongestWordString.executor": "Run",
@@ -106,7 +114,7 @@
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
     "settings.build.tools.auto.reload": "SELECTIVE",
-    "settings.editor.selected.configurable": "project.propCompiler"
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -126,12 +134,26 @@
       <recent name="$PROJECT_DIR$/src/oldProblems" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="problems.generics.databaseCourse" />
       <recent name="problems.collection.myArrayList" />
       <recent name="problems" />
       <recent name="problems.calculator" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CalculatorTest">
+  <component name="RunManager">
+    <configuration name="Generic_DB_Course_Class" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="problems.generics.databaseCourse.Generic_DB_Course_Class" />
+      <module name="boca-bc24-java-core-problems" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="problems.generics.databaseCourse.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CalculatorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="boca-bc24-java-core-problems" />
       <extension name="coverage">
@@ -143,22 +165,6 @@
       <option name="PACKAGE_NAME" value="problems" />
       <option name="MAIN_CLASS_NAME" value="problems.CalculatorTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CalculatorTest.testBasicOperations" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="boca-bc24-java-core-problems" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="problems.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="problems" />
-      <option name="MAIN_CLASS_NAME" value="problems.CalculatorTest" />
-      <option name="METHOD_NAME" value="testBasicOperations" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -213,11 +219,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Generic_DB_Course_Class" />
         <item itemvalue="JUnit.CalculatorTest" />
         <item itemvalue="JUnit.CalculatorTest.testParentheses" />
         <item itemvalue="JUnit.CalculatorTest.testMemoryOperations" />
         <item itemvalue="JUnit.CalculatorTest.testDivisionByZero" />
-        <item itemvalue="JUnit.CalculatorTest.testBasicOperations" />
       </list>
     </recent_temporary>
   </component>
@@ -231,6 +237,17 @@
       <updated>1724793230289</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -259,6 +276,20 @@
           <url>file://$PROJECT_DIR$/src/problems/calculator/Calculator.java</url>
           <line>59</line>
           <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/problems/generics/databaseCourse/Course.java</url>
+          <line>35</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/problems/generics/databaseCourse/Course.java</url>
+          <line>32</line>
+          <properties class="problems.generics.databaseCourse.Course" method="enrollStudent">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
