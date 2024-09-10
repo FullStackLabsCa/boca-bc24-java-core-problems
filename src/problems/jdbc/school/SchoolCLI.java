@@ -1,11 +1,12 @@
 package problems.jdbc.school;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class SchoolCLI {
     private static final School school = new School();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to the School Management System");
@@ -38,7 +39,8 @@ public class SchoolCLI {
                     school.listUniqueStudents();
                     break;
                 case "report_averageStudentScore": //
-                    school.reportAverageScoreOfStudent(command[1]);
+                    school.callStoreProcedure(command[1]);
+//                    school.reportAverageScoreOfStudent(command[1]);
                     break;
                 case "report_averageScoreOfCourse": //
                     school.reportAverageScoreOfCourse(command[1]);

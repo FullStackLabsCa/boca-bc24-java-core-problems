@@ -1,9 +1,7 @@
 package problems.jdbc.school;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.lang.reflect.Type;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -179,6 +177,22 @@ public class School {
             }
         } catch (SQLException e) {
             System.out.println("Error Getting Average grade: " + e.getMessage());
+        }
+    }
+
+    public void callStoreProcedure(String studentId) throws SQLException {
+        String query = "{call getStudentGrade(?, ?)}";
+        try (Connection conn = DatabaseHelper.getConnection();
+             CallableStatement stmt = conn.prepareCall(query)) {
+            stmt.setInt(1, Integer.parseInt(studentId));
+            stmt.registerOutParameter(2, Types.DOUBLE);
+            stmt.execute();
+            double aDouble1 = stmt.getDouble("grade");
+            System.out.println("aa" + aDouble1);
+            double aDouble = stmt.getDouble(2);
+            System.out.println("average is: " + aDouble);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 }
