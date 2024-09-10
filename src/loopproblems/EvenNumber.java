@@ -11,7 +11,7 @@ public class EvenNumber {
                 }
 
             }
-            System.out.println("Sum of Even Number: "+sum);
+           // System.out.println("Sum of Even Number: "+sum);
         }
     }
 

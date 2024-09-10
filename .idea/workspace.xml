@@ -5,18 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a7c31fdb-21cc-4f11-a5be-d0ff7b587f29" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/test/problems/MyArrayListTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/loopproblems/CountAlphabet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/loopproblems/SumArray.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/loopproblems/SumArrayEven.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/loopproblems/SumOfOddNumber.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/loopproblems/WithoutSubtraction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/arrayproblems/MyArrayList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/arrayproblems/MyArrayList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/genericsproblems/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/genericsproblems/Course.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/genericsproblems/GradeBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/genericsproblems/GradeBook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/genericsproblems/ListToArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/genericsproblems/ListToArray.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/genericsproblems/School.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/genericsproblems/School.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/Calculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/loopproblems/EvenNumber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/loopproblems/EvenNumber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/loopproblems/OddNumber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/loopproblems/OddNumber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/PalindromeChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/PalindromeChecker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/problems/CalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/CalculatorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/problems/CourseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/CourseTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/problems/ListToArrayTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/ListToArrayTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/problems/SchoolTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/SchoolTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,37 +52,47 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Calculator.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Course.executor&quot;: &quot;Run&quot;,
-    &quot;Application.EvenNumber.executor&quot;: &quot;Run&quot;,
-    &quot;Application.GradeBook.executor&quot;: &quot;Run&quot;,
-    &quot;Application.School.executor&quot;: &quot;Run&quot;,
-    &quot;Application.SortedArray.executor&quot;: &quot;Run&quot;,
-    &quot;Application.SumOfEvenNumber.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CalculatorTest.testBasicOperations.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CourseTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CourseTest.testAssignGradeToNonEnrolledStudent.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CourseTest.testEnrollStudent.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CourseTest.testListAllGrades.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.GradeBookTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.GradeBookTest.testAddDoubleGrade.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.GradeBookTest.testAddIntegerGrade.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.GradeBookTest.testCalculateDoubleAverageWithNoGrades.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.GradeBookTest.testCalculateIntegerAverage.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.GradeBookTest.testFindHighestDoubleGrade.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.MyArrayListTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.MyArrayListTest.testAddElements.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.MyArrayListTest.testGetElementAtOutOfBoundsIndex.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.MyArrayListTest.testRemoveElements.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SchoolTest.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/gaka-bc24-java-core-problems&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/Gagandeep.Kaur/source/students/boca-bc24-java-core-problems&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Calculator.executor": "Run",
+    "Application.CountAlphabet.executor": "Run",
+    "Application.Course.executor": "Run",
+    "Application.EvenNumber.executor": "Run",
+    "Application.GradeBook.executor": "Run",
+    "Application.PalindromeChecker.executor": "Run",
+    "Application.School.executor": "Run",
+    "Application.SortedArray.executor": "Run",
+    "Application.SumArray.executor": "Run",
+    "Application.SumArrayEven.executor": "Run",
+    "Application.SumOfEvenNumber.executor": "Run",
+    "Application.SumOfOddNumber.executor": "Run",
+    "Application.WithoutSubtraction.executor": "Run",
+    "JUnit.CalculatorTest.testBasicOperations.executor": "Run",
+    "JUnit.CourseTest.executor": "Run",
+    "JUnit.CourseTest.testAssignGradeToNonEnrolledStudent.executor": "Run",
+    "JUnit.CourseTest.testEnrollStudent.executor": "Run",
+    "JUnit.CourseTest.testListAllGrades.executor": "Run",
+    "JUnit.GradeBookTest.executor": "Run",
+    "JUnit.GradeBookTest.testAddDoubleGrade.executor": "Run",
+    "JUnit.GradeBookTest.testAddIntegerGrade.executor": "Run",
+    "JUnit.GradeBookTest.testCalculateDoubleAverageWithNoGrades.executor": "Run",
+    "JUnit.GradeBookTest.testCalculateIntegerAverage.executor": "Run",
+    "JUnit.GradeBookTest.testFindHighestDoubleGrade.executor": "Run",
+    "JUnit.MyArrayListTest.executor": "Run",
+    "JUnit.MyArrayListTest.testAddElements.executor": "Run",
+    "JUnit.MyArrayListTest.testGetElementAtOutOfBoundsIndex.executor": "Run",
+    "JUnit.MyArrayListTest.testRemoveElements.executor": "Run",
+    "JUnit.SchoolTest.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "feature/gaka-bc24-java-core-problems",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/Gagandeep.Kaur/source/students/boca-bc24-java-core-problems",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="genericsproblems" />

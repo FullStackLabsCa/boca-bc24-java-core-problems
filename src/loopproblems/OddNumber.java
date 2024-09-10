@@ -10,6 +10,6 @@ public class OddNumber {
                 System.out.println("Odd Number:" + i);
             }
         }
-        System.out.println("Sum Of Odd Number: " +sum);
+      //  System.out.println("Sum Of Odd Number: " +sum);
     }
 }
