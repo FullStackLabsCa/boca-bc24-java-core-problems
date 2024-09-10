@@ -1,3 +1,5 @@
+package loopproblems;
+
 public class DuplicateInArray {
     public static void main(String[] args) {
         int[] array = {2, 3, 4, 5, 5, 4, 7};
