@@ -37,6 +37,9 @@ public class SchoolCLI {
                 case "report_average_score":
                     school.reportAverageScore(command[1]);
                     break;
+                case "report_cumulative_gpa":
+                    school.reportCumulativeAverage(command[1]);
+                    break;
                 case "exit":
                     System.out.println("Exiting...");
                     return;

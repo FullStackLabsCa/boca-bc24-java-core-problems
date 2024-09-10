@@ -96,6 +96,7 @@ public class School {
             System.out.println("Error assigning grade: " + e.getMessage());
         }
     }
+
     public void removeCourse(String courseName) {
         String query = "DELETE FROM Courses WHERE course_name = ?";
         try (Connection conn = DatabaseHelper.getConnection();
@@ -108,37 +109,36 @@ public class School {
         }
     }
 
-    public void listCourses(){
+    public void listCourses() {
         String query = "SELECT * FROM Courses";
         try (Connection conn = DatabaseHelper.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)){
+             PreparedStatement stmt = conn.prepareStatement(query)) {
             ResultSet resultSet = stmt.executeQuery();
-                while(resultSet.next()){
-                    System.out.println(resultSet.getString("course_name"));
-                }
+            while (resultSet.next()) {
+                System.out.println(resultSet.getString("course_name"));
+            }
 
             System.out.println("Course list: " + resultSet);
-        } catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println("Error listing courses");
         }
     }
 
-    public void reportUniqueCourses(){
+    public void reportUniqueCourses() {
         String query = "SELECT DISTINCT course_name FROM Courses";
         try (Connection conn = DatabaseHelper.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             ResultSet resultSet = stmt.executeQuery();
             System.out.println("Unique courses are:" + resultSet);
-        }
-        catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println("No unique courses found");
         }
     }
 
-    public void reportAverageScore(String course_id){
+    public void reportAverageScore(String course_id) {
         String query = "SELECT AVG(grade) AS average_grade FROM Grades WHERE course_id = ?";
-        try(Connection conn = DatabaseHelper.getConnection();
-            PreparedStatement stmt = conn.prepareStatement(query)){
+        try (Connection conn = DatabaseHelper.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setInt(1, Integer.parseInt(course_id));
             ResultSet resultSet = stmt.executeQuery();
             resultSet.next();
@@ -151,7 +151,26 @@ public class School {
         }
     }
 
-    public void reportCumulativeAverage(String student_id){}
+    public void reportCumulativeAverage(String student_id) {
 
+        String query = "SELECT AVG(grade) AS cumulative_grade FROM Grades WHERE student_id = ? having cumulative_grade is not null";
+        if (student_id != null) {
+            try (Connection conn = DatabaseHelper.getConnection();
+                 PreparedStatement stmt = conn.prepareStatement(query)) {
+                stmt.setInt(1, Integer.parseInt(student_id));
+                ResultSet resultSet = stmt.executeQuery();
+                while (resultSet.next()) {
+                    double cumulativeGrade = resultSet.getDouble("cumulative_grade");
+                    System.out.println("Cumulative average for " + student_id + " is: " + cumulativeGrade);
+                    return;
+                }
+                System.out.println("student with student_id: "+ student_id+" does not exist");
+            } catch (SQLException e) {
+                System.out.println("Error calculating cumulative average: " + e.getMessage());
+            }
+        }
     }
+}
+
+
 
