@@ -7,20 +7,28 @@ import java.util.List;
 public class ListToArray {
     public static void main(String[] args) {
 
-        List<String> myStrings = new ArrayList<>();
-        myStrings.add("Gagan");
-        myStrings.add("Deep");
-        myStrings.add("Kaur");
-        myStrings.add("Batth");
-        System.out.println("myStrings = " + Arrays.toString(listToArray(myStrings)));
+//        List<String> myStrings = new ArrayList<>();
+//        myStrings.add("Gagan");
+//        myStrings.add("Deep");
+//        myStrings.add("Kaur");
+//        myStrings.add("Batth");
+//        System.out.println("myStrings = " + Arrays.toString(listToArray(myStrings)));
+//
+//        List<Integer> myInteger = new ArrayList<>();
+//        myInteger.add(1);
+//        myInteger.add(2);
+//        myInteger.add(3);
+//        myInteger.add(4);
+//        System.out.println("My Interger list : "+Arrays.toString(listToArray(myInteger)));
+        List<Integer> listOfIntegers = new ArrayList<>();
+        listOfIntegers.add(3);
+        listOfIntegers.add(6);
+        listOfIntegers.add(4);
 
-        List<Integer> myInteger = new ArrayList<>();
-        myInteger.add(1);
-        myInteger.add(2);
-        myInteger.add(3);
-        myInteger.add(4);
-        System.out.println("My Interger list : "+Arrays.toString(listToArray(myInteger)));
-
+        Object[] lists = ListToArray.listToArray(listOfIntegers);
+        for(Object array : lists) {
+            System.out.println(array);
+        }
     }
 
     public static <T> T[] listToArray(List<Integer> list) {
@@ -29,6 +37,6 @@ public class ListToArray {
             array[i] = (T) list.get(i);
         }
         return array;
-    }
 
+    }
 }

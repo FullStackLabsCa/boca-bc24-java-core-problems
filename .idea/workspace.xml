@@ -5,17 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a7c31fdb-21cc-4f11-a5be-d0ff7b587f29" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/loopproblems/CountAlphabet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/loopproblems/SumArray.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/loopproblems/SumArrayEven.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/loopproblems/SumOfOddNumber.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/loopproblems/WithoutSubtraction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loopproblems/EvenNumber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/loopproblems/EvenNumber.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loopproblems/OddNumber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/loopproblems/OddNumber.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/PalindromeChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/PalindromeChecker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/problems/CalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/CalculatorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/problems/ListToArrayTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/ListToArrayTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/genericsproblems/ListToArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/genericsproblems/ListToArray.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +49,7 @@
     "Application.Course.executor": "Run",
     "Application.EvenNumber.executor": "Run",
     "Application.GradeBook.executor": "Run",
+    "Application.ListToArray.executor": "Run",
     "Application.PalindromeChecker.executor": "Run",
     "Application.School.executor": "Run",
     "Application.SortedArray.executor": "Run",
