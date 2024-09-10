@@ -13,10 +13,6 @@ public class Main {
         System.out.println("Welcome to the School: ->>>>>");
         Scanner scanner = new Scanner(System.in);
         boolean flag = true;
-        Course course = new Course();
-        GradeBook gradeBook = new GradeBook();
-        EnrolStudent enrolStudent = new EnrolStudent();
-        Student student = new Student();
 
         while (flag) {
             System.out.println("""
@@ -56,11 +52,26 @@ public class Main {
                         2-> Get students with grades.\s
                         """);
                 case "exit" -> flag = false;
+                default -> flag = false;
+
             }
-            if (flag) {
-                System.out.println("Give the input\n");
-                String input = scanner.nextLine();
-                String[] inputPart = input.split(" ");
+            if(flag){
+                processSchool();
+            }
+        }
+    }
+    public static void processSchool() throws SQLException {
+        boolean flag = true;
+        Course course = new Course();
+        GradeBook gradeBook = new GradeBook();
+        EnrolStudent enrolStudent = new EnrolStudent();
+        Scanner scanner = new Scanner(System.in);
+        Student student = new Student();
+        while (flag) {
+            System.out.println("Give the input\n");
+            String input = scanner.nextLine();
+            String[] inputPart = input.split(" ");
+            try {
 
                 switch (inputPart[0]) {
                     case "add-course" -> course.addCourse(inputPart[1]);
@@ -79,8 +90,11 @@ public class Main {
                     case "exit" -> flag = false;
                     default -> throw new IllegalStateException("Unexpected value: " + inputPart[0]);
                 }
-
+            } catch (SQLException | IllegalStateException e) {
+                System.out.println("You have entered some wrong input. Try Again");
+                processSchool();
             }
+
         }
     }
-}
+    }
