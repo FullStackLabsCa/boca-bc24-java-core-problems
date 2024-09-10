@@ -1,13 +1,13 @@
-package problems.collections.linkedlist;
+package problems.collections.mylinkedlist;
 
 import java.util.NoSuchElementException;
 
-public class LinkedList {
+public class MyLinkedList {
 
     private Node head;
     private int size;
 
-    public LinkedList() {
+    public MyLinkedList() {
         head = null;
         size = 0;
     }

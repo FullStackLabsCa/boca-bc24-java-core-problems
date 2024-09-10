@@ -4,14 +4,14 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
-import problems.collections.linkedlist.LinkedList;
+import problems.collections.mylinkedlist.MyLinkedList;
 
-public class LinkedListTest {
-    private LinkedList linkedList;
+public class MyLinkedListTest {
+    private MyLinkedList linkedList;
 
     @Before
     public void setUp() {
-        linkedList = new LinkedList();
+        linkedList = new MyLinkedList();
     }
 
     @Test

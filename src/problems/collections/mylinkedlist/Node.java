@@ -1,4 +1,4 @@
-package problems.collections.linkedlist;
+package problems.collections.mylinkedlist;
 
 public class Node {
     int data;

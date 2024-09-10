@@ -1,9 +1,9 @@
-package problems.collections.linkedlist;
+package problems.collections.mylinkedlist;
 
 public class Main {
 
     public static void main(String[] args) {
-        LinkedList list = new LinkedList();
+        MyLinkedList list = new MyLinkedList();
 
         list.printList();
     }
