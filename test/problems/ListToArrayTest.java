@@ -1,10 +1,14 @@
 package problems;
 
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 import java.util.Arrays;
 import java.util.List;
+import problems.generics.ListToArray;
+
+
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertNull;
 
 public class ListToArrayTest {
 

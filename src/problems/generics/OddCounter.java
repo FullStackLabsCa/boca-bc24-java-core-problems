@@ -2,7 +2,7 @@ package problems.generics;
 
 import java.util.*;
 
-public class CountOddIntegers {
+public class OddCounter {
 
     public static void main(String[] args) {
 
@@ -19,26 +19,25 @@ public class CountOddIntegers {
         List<Integer> mixedList = Arrays.asList(2, 3, 4, 5, 6, 7);
 
 
-        System.out.println("List : " + countOddIntegers(intList));
-        System.out.println("LinkedList : " + countOddIntegers(linkedList));
-        System.out.println("HashSet : " + countOddIntegers(hashSet));
-        System.out.println("TreeSet : " + countOddIntegers(treeSet));
-        System.out.println("linkedHashSet : " + countOddIntegers(linkedHashSet));
-        System.out.println("priorityQueue : " + countOddIntegers(priorityQueue));
-        System.out.println("emptyList : " + countOddIntegers(emptyList));
-        System.out.println("allOdds : " + countOddIntegers(allOdds));
-        System.out.println("allEvens : " + countOddIntegers(allEvens));
-        System.out.println("mixedList : " + countOddIntegers(mixedList));
+        System.out.println("List : " + countOddNumbers(intList));
+        System.out.println("LinkedList : " + countOddNumbers(linkedList));
+        System.out.println("HashSet : " + countOddNumbers((List<Integer>) hashSet));
+        System.out.println("TreeSet : " + countOddNumbers((List<Integer>) treeSet));
+        System.out.println("linkedHashSet : " + countOddNumbers((List<Integer>) linkedHashSet));
+        System.out.println("priorityQueue : " + countOddNumbers((List<Integer>) priorityQueue));
+        System.out.println("emptyList : " + countOddNumbers(emptyList));
+        System.out.println("allOdds : " + countOddNumbers(allOdds));
+        System.out.println("allEvens : " + countOddNumbers(allEvens));
+        System.out.println("mixedList : " + countOddNumbers(mixedList));
     }
 
 
-    public static <T> int countOddIntegers(Collection<T> collection) {
+    public static int countOddNumbers(Collection<Integer> collection) {
 
         int oddCount = 0;
         if (!collection.isEmpty()) {
-            for (T val : collection) {
-//                if (val instanceof Integer && ((((Integer) val).intValue()) % 2 != 0)) {
-                if (val instanceof Integer integer && integer % 2 != 0) {
+            for (Integer val : collection) {
+                if (val != null && val % 2 != 0) {
                     oddCount++;
                 }
             }
@@ -48,5 +47,6 @@ public class CountOddIntegers {
 
         return oddCount;
     }
+
 
 }

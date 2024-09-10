@@ -2,7 +2,9 @@ package problems;
 
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
+import problems.generics.GradeBook;
+import static org.junit.Assert.assertEquals;
+
 
 public class GradeBookTest {
     private GradeBook<Double> doubleGradeBook;

@@ -15,6 +15,10 @@ public class GradeBook<T extends Number & Comparable<T>> {
         gradeBookList.add(grade);
     }
 
+    public int getNumberOfGrades() {
+        return gradeBookList.size();
+    }
+
     public boolean removeGrade(T grade) {
         if (gradeBookList.contains(grade)) {
             gradeBookList.remove(grade);
@@ -23,50 +27,63 @@ public class GradeBook<T extends Number & Comparable<T>> {
         return false;
     }
 
-    public double calculateAverage() {
+    public String calculateAverage() {
         double sum = 0;
+        String msg = "";
         if (gradeBookList.isEmpty()) {
-            System.out.println("List Empty! Cannot calculate Average");
+            msg ="No grades available to calculate the average.";
         } else {
             if (!gradeBookList.isEmpty()) {
                 for (T grades : gradeBookList) {
                     sum += grades.doubleValue();
                 }
+                msg = "Average grade: " + sum / gradeBookList.size();
             }
         }
-        return sum / gradeBookList.size();
+        return msg;
     }
 
-    public T findHighestGrade() {
-        T highestGrade = null;
-        if (gradeBookList.isEmpty()) {
-            System.out.println("List Empty! Cannot find highest grade");
+    public String findHighestGrade() {
+
+        String msg = "";
+        Double highestGrade = null;
+        if (gradeBookList == null || gradeBookList.isEmpty()) {
+            msg = "No grades available to find the highest grade.";
         } else {
-            highestGrade = gradeBookList.get(0);
+            highestGrade = gradeBookList.get(0).doubleValue();
             for (T grade : gradeBookList) {
-                if (grade.compareTo(highestGrade) > 0) {
-                    highestGrade = grade;
+                if (highestGrade < grade.doubleValue()) {
+                    highestGrade = grade.doubleValue();
                 }
             }
+            if(gradeBookList.get(0) instanceof Integer){
+                msg = "Highest grade: " + highestGrade.intValue();
+            }else{
+                msg = "Highest grade: " + highestGrade;
+            }
         }
-        return highestGrade;
+        return msg;
     }
 
+    public String findLowestGrade() {
 
-    public T findLowestGrade() {
-
-        T lowestGrade = null;
-        if (gradeBookList.isEmpty()) {
-            System.out.println("List Empty! Cannot find lowest grade");
+        String msg = "";
+        if (gradeBookList == null || gradeBookList.isEmpty()) {
+            msg = "No grades available to find the lowest grade.";
         } else {
-            lowestGrade = gradeBookList.get(0);
+            double lowestGrade = gradeBookList.get(0).doubleValue();
             for (T grade : gradeBookList) {
-                if (grade.compareTo(lowestGrade) < 0) {
-                    lowestGrade = grade;
+                if (lowestGrade > grade.doubleValue()) {
+                    lowestGrade = grade.doubleValue();
                 }
             }
+            if(gradeBookList.get(0) instanceof Integer){
+                msg = "Lowest grade: " + (int)lowestGrade;
+            }else{
+                msg = "Lowest grade: " + (double)lowestGrade;
+            }
         }
-        return lowestGrade;
+        return msg;
     }
 
     @Override
@@ -75,5 +92,7 @@ public class GradeBook<T extends Number & Comparable<T>> {
                 "gradeBookList=" + gradeBookList +
                 '}';
     }
+
+
 }
 

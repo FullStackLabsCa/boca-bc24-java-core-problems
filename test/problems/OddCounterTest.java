@@ -2,11 +2,8 @@ package problems;
 
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+import problems.generics.OddCounter;
 
 import static org.junit.Assert.assertEquals;
 

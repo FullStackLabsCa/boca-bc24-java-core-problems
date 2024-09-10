@@ -2,6 +2,7 @@ package problems;
 
 import org.junit.Before;
 import org.junit.Test;
+import problems.generics.Course;
 
 import java.util.Map;
 import java.util.Optional;

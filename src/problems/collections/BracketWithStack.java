@@ -11,12 +11,14 @@ public class BracketWithStack {
 //         brackets = "{[(])}";
 //         brackets = "{[())}";
            brackets = "{[(])}()";
+//           brackets = "}{[(]){}()";
 //         brackets = "{[}";
 
 //        Scanner reader = new Scanner(System.in); // Reading from System.in
 //        System.out.println("Enter your Expression to validate : ");
 //        brackets = reader.nextLine();
 //        reader.close();
+
 
 
         System.out.println("isBalanced : " + isBalancedStack(brackets));
@@ -30,9 +32,13 @@ public class BracketWithStack {
             for (int i = 0; i < brackets.length(); i++) {
                 char currentChar = brackets.charAt(i);
 
-                if (currentChar == '(' || currentChar == '[' || currentChar == '{') {
+                if (currentChar == '(' || currentChar == '[' || currentChar == '{'
+                        || currentChar == ')'|| currentChar == ']'|| currentChar == '}'
+                ) {
                     bracketStack.push(currentChar);
-                } else if (currentChar == ')' || currentChar == ']' || currentChar == '}') {
+                } else if (currentChar == ')' || currentChar == ']' || currentChar == '}'
+                        || currentChar == '(' || currentChar == '[' || currentChar == '{'
+                ) {
                     if (bracketStack.isEmpty() || !isMatchingPair(bracketStack.pop(), currentChar)) {
                         isBalanced = false;
                     }
@@ -46,9 +52,13 @@ public class BracketWithStack {
     }
 
     private static boolean isMatchingPair(char open, char close) {
-        return (open == '(' && close == ')') ||
+        return ( open == '(' && close == ')') ||
                 (open == '[' && close == ']') ||
-                (open == '{' && close == '}');
+                (open == '{' && close == '}') ||
+                (open == '}' && close == '{') ||
+                (open == ']' && close == '[') ||
+                (open == ')' && close == '(')
+                ;
     }
 
 
