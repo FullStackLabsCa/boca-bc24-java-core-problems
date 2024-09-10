@@ -19,7 +19,6 @@ public class MyHashMapTest {
         map.put("Apple", 10);
         map.put("Banana", 20);
 
-
         assertEquals("The value for 'Apple' should be 10", Integer.valueOf(10), map.get("Apple"));
         assertEquals("The value for 'Banana' should be 20", Integer.valueOf(20), map.get("Banana"));
 

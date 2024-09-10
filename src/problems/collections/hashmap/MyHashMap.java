@@ -1,22 +1,108 @@
 package problems.collections.hashmap;
 
-public class MyHashMap<String, Integer> {
-    public void put(String apple, Integer i) {
+
+@SuppressWarnings("java:S106")
+public class MyHashMap<K, V> {
+    int capacity = 5;
+    private final Entry<K, V>[] table;
+    int count = 0;
+
+    public MyHashMap() {
+        this.table = new Entry[capacity];
     }
 
-    public Integer get(String apple) {
+    public void put(K key, V value) {
+        int index = key.hashCode() % capacity;
+        Entry<K, V> entry = table[index];
+
+        if (entry == null) {
+            table[index] = new Entry<K, V>(key, value);
+            count++;
+        } else {
+            while (entry.next != null) {
+                if (entry.getKey() == key) {
+                    entry.setValue(value);
+                    System.out.println("The value for '" + key + "' should be updated to " + value);
+                    return;
+                }
+                entry = entry.next;
+            }
+            if (entry.getKey() == key) {
+                entry.setValue(value);
+                System.out.println("The value for '" + key + "' should be updated to " + value);
+            }
+
+            entry.next = new Entry<K, V>(key, value);
+            count++;
+        }
+    }
+
+    public V get(K key) {
+        int index = key.hashCode() % capacity;
+        Entry<K, V> entry = table[index];
+        if (entry == null) {
+            return null;
+        }
+
+        while (entry != null) {
+            if (entry.getKey() == key) {
+                System.out.println("entry.getValue()"+ entry.getValue());
+                return entry.getValue();
+            }
+            entry = entry.next;
+        }
         return null;
     }
 
-    public Integer remove(String apple) {
+    public V remove(K key) {
+        int index = key.hashCode() % capacity;
+        index = key.hashCode() % capacity;
+        Entry<K, V> entry = table[index];
+
+        while (entry.getKey() == key) {
+            table[index] = entry.next;
+            entry.next = null;
+            count--;
+            return entry.getValue();
+        }
+        Entry<K, V> previousEntry = entry;
+        entry = entry.next;
+
+        while (entry != null) {
+            if (entry.getKey() == key) {
+                previousEntry.next = entry.next;
+                entry.next = null;
+                count--;
+            }
+        }
         return null;
     }
 
-    public boolean containsKey(String apple) {
+    public boolean containsKey(K key) {
+        int index = key.hashCode() % capacity;
+        Entry<K, V> entry = table[index];
+        if (entry == null) {
+            return false;
+        }
+
+        while (entry != null) {
+            if (entry.getKey() == key) {
+                return true;
+            }
+            entry = entry.next;
+        }
         return false;
     }
 
     public int size() {
-        return 0;
+        return count;
+    }
+
+    public static void main(String[] args) {
+        MyHashMap<String, Integer> stringIntegerMyHashMap = new MyHashMap<>();
+        stringIntegerMyHashMap.put("Apple", 10);
+        stringIntegerMyHashMap.put(null, 10);
+        stringIntegerMyHashMap.get(null);
+
     }
 }
