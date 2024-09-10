@@ -96,9 +96,12 @@ public class LinkedList<T extends Integer> {
 
     public static void main(String[] args) {
         LinkedList<Integer> list = new LinkedList<>();
+        list.addFirst(1);
+        list.addFirst(2);
         list.addLast(10);
         list.addLast(20);
         list.addLast(30);
+        list.addFirst(70);
         list.printList();
     }
 }
