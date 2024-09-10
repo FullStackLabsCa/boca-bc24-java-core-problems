@@ -4,6 +4,10 @@ public class Node {
     Integer data;
     Node next;
 
+    public Integer getData() {
+        return data;
+    }
+
     @Override
     public String toString() {
         return "Node@" + Integer.toHexString(System.identityHashCode(this)) +

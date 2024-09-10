@@ -42,16 +42,16 @@ public class MyLinkedListTest {
         assertEquals(2, myLinkedList.size());
     }
 
-//    @Test
-//    public void testRemoveLast() {
-//        myLinkedList.addLast(10);
-//        myLinkedList.addLast(20);
-//        myLinkedList.addLast(30);
-//
-//        int removed = myLinkedList.removeLast();
-//        assertEquals(30, removed);
-//        assertEquals(2, myLinkedList.size());
-//    }
+    @Test
+    public void testRemoveLast() {
+        myLinkedList.addLast(10);
+        myLinkedList.addLast(20);
+        myLinkedList.addLast(30);
+
+        int removed = myLinkedList.removeLast();
+        assertEquals(30, removed);
+        assertEquals(2, myLinkedList.size());
+    }
 
     @Test
     public void testIsEmpty() {

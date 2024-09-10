@@ -5,14 +5,12 @@ import problems.jdbc.DatabaseHelper;
 import java.sql.*;
 
 public class Enrollment {
-    private int enrollment_id;
-
-    public void addEnrollment(int course_id, int student_id){
+        public void addEnrollment(int course_id, int student_id){
         String query= "INSERT INTO Enrollments (course_id, student_id) "
                 + "SELECT course_id, student_id "
                 + "FROM Courses, Students "
                 + "WHERE course_id = ? AND student_id= ?";
-        try (Connection conn= DatabaseHelper.getConnection();
+        try (Connection conn = DatabaseHelper.getConnection();
              PreparedStatement stmt= conn.prepareStatement(query)) {
             stmt.setInt(1, course_id);
             stmt.setInt(2, student_id);
@@ -25,7 +23,7 @@ public class Enrollment {
 
     public void removeEnrollment(int enrollmentId){
         String query= "DELETE FROM Enrollments WHERE (enrollment_id) = ?";
-        try (Connection conn= DatabaseHelper.getConnection();
+        try (Connection conn = DatabaseHelper.getConnection();
              PreparedStatement stmt= conn.prepareStatement(query)) {
             stmt.setInt(1, enrollmentId);
             stmt.executeUpdate();
@@ -37,8 +35,7 @@ public class Enrollment {
 
     public void getEnrollment(){
         String query= "SELECT * FROM Enrollments";
-        try {
-            Connection conn= DatabaseHelper.getConnection();
+        try {Connection conn = DatabaseHelper.getConnection();
             Statement st= conn.createStatement();
             ResultSet rs= st.executeQuery(query);
             while (rs.next()){

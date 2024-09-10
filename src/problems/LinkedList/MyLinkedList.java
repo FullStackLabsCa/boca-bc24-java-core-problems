@@ -61,9 +61,19 @@ public class MyLinkedList {
         }
     }
 
-//    public int removeLast() {
-//        tail.
-//    }
+    public int removeLast() {
+        Node temp  = head;
+        while(true) {
+            Node nextNode = temp.next;
+            if (nextNode.next == null) {
+                temp.next = null;
+                size--;
+                return nextNode.getData();
+            }else{
+                temp = nextNode;
+            }
+        }
+    }
 
     public int size() {
         return size;
