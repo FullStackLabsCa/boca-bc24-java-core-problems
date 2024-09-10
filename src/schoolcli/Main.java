@@ -27,7 +27,6 @@ public class Main {
                     
                     5. Exit""");
             String userIntention = scanner.nextLine();
-
             switch (userIntention) {
                 case "Course" -> System.out.println("""
                         You have four options to perform:-->\s
@@ -68,7 +67,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Student student = new Student();
         while (flag) {
-            System.out.println("Give the input\n");
+            System.out.println("Give the input");
             String input = scanner.nextLine();
             String[] inputPart = input.split(" ");
             try {
