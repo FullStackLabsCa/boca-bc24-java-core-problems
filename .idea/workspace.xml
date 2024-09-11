@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d3b01333-d157-4793-b4ff-8016ea5cf74b" name="Changes" comment="Minor fix in linked list implementation.">
-      <change afterPath="$PROJECT_DIR$/src/problems/hashmap/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/hashmap/MyHashMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/hashmap/Node.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/problems/MyHashMapTest.java" afterDir="false" />
+    <list default="true" id="d3b01333-d157-4793-b4ff-8016ea5cf74b" name="Changes" comment="Hash map problem solved and all tests are passed.">
+      <change afterPath="$PROJECT_DIR$/src/problems/jdbc/school/DatabaseHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/jdbc/school/School.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/jdbc/school/SchoolCLI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boca-bc24-java-core-problems.iml" beforeDir="false" afterPath="$PROJECT_DIR$/boca-bc24-java-core-problems.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/problems/calculator/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/calculator/Calculator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/problems/calculator/CalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/calculator/AdvancedCalculatorTest.java" afterDir="false" />
     </list>
@@ -67,6 +67,7 @@
     "Application.MapOfMapsExample.executor": "Run",
     "Application.OddCounter.executor": "Run",
     "Application.School.executor": "Run",
+    "Application.SchoolCLI.executor": "Run",
     "JUnit.AdvancedCalculatorTest.executor": "Run",
     "JUnit.CalculatorTest.executor": "Run",
     "JUnit.CountOccurrencesTest.executor": "Run",
@@ -86,12 +87,16 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "feature/kivi-bc24-java-core-problems",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/Kiran.Virani/reactivestax/source/boca-bc24-java-core-problems",
+    "last_opened_file_path": "/Users/Kiran.Virani/reactivestax/source/boca-bc24-java-core-problems/src/problems/jdbc",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/problems/jdbc" />
       <recent name="$PROJECT_DIR$/src/problems" />
       <recent name="$PROJECT_DIR$/src/problems/testproblems" />
       <recent name="$PROJECT_DIR$/src/problems/basic" />
@@ -399,7 +404,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725637438801</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Hash map problem solved and all tests are passed.">
+      <option name="closed" value="true" />
+      <created>1725988545946</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1725988545946</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -437,6 +450,7 @@
     <MESSAGE value="solved arraylist with standard array and all tests passed." />
     <MESSAGE value="implemented linked list with nodes and all tests passed." />
     <MESSAGE value="Minor fix in linked list implementation." />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor fix in linked list implementation." />
+    <MESSAGE value="Hash map problem solved and all tests are passed." />
+    <option name="LAST_COMMIT_MESSAGE" value="Hash map problem solved and all tests are passed." />
   </component>
 </project>
