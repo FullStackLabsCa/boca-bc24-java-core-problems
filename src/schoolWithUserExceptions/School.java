@@ -20,15 +20,15 @@ public class School<S, G extends Number> {
             courseHashMap.get(courseName).enrollStudent(studentId);//Student '12345' enrolled in course 'Math101'.
             System.out.println("Student '" + studentId + "' enrolled in course '" + courseName + "'.");
         } else {
-            throw new CourseNotFoundException("course is not added yet  "+courseName);
+            throw new CourseNotFoundException();
         }
     }
     public void assignGrade(String courseName, S studentid, G grade) throws CourseNotFoundException, StudentNotFoundException {
         if ((courseName == null) && (isCourseAdded(courseName))) {
-            throw new CourseNotFoundException(courseName+ "Error: Cannot enroll student. Course '\" + courseName + \"' does not exist.");
+            throw new CourseNotFoundException();
         }
         if ((studentid == null) && !courseHashMap.get(studentid).isStudentEnrolled(studentid)) {
-            throw new StudentNotFoundException( studentid +" student is not found.");
+            throw new StudentNotFoundException();
         }
         courseHashMap.get(courseName).assignGrade(studentid, grade);
         System.out.println("Grade '" + grade + "' assigned to student '" + studentid + "' in course '" + courseName + "'.");
@@ -129,7 +129,6 @@ public class School<S, G extends Number> {
                 break;
             case "report_cumulative_average":
                 cumulativeAverage((S) parts[1]);
-
                 break;
           case "unknown_command":
                System.out.println("Error: Unknown command 'unknown_command'. Please use a valid command.");             break;

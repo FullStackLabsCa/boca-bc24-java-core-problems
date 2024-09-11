@@ -20,7 +20,7 @@ public class GradeBook<T extends Number & Comparable> {
 
     public String calculateAverage() {
         if (grades.isEmpty()) {
-            return "No grades available to calculate the average.";
+            throw new GradesNotFoundException();
         }
         double sum = 0;
         double average = 0;
@@ -30,10 +30,9 @@ public class GradeBook<T extends Number & Comparable> {
         }
         return "Average grade: " + average;
     }
-
     public String findHighestGrade() {
         if (grades.isEmpty()) {
-            return "No grades available to find the highest grade.";
+            throw new GradesNotFoundException();
         }
         T highest = grades.get(0);
         for (T grade : grades) {
@@ -46,7 +45,7 @@ public class GradeBook<T extends Number & Comparable> {
 
     public String findLowestGrade() {
         if (grades.isEmpty()) {
-            return "No grades available to find the lowest grade.";
+           throw  new GradesNotFoundException();
         }
         T lowest = grades.get(0);
         for (T grade : grades) {
@@ -56,7 +55,6 @@ public class GradeBook<T extends Number & Comparable> {
         }
         return "Lowest grade: " + lowest;
     }
-
     public static void main(String[] args) {
         GradeBook<Integer> grade = new GradeBook<>();
         grade.addGrade(54);
@@ -76,5 +74,4 @@ public class GradeBook<T extends Number & Comparable> {
         System.out.println(grade1.findHighestGrade());
         System.out.println(grade1.findLowestGrade());
     }
-
 }

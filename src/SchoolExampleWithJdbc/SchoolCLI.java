@@ -39,15 +39,18 @@ public class SchoolCLI {
                 case "list_grades":
                     school.listGrades();
                     break;
-                case "report_unique_courses":
-                    school.uniqueCourse();
-                    break;
                 case "report_unique_students":
                     school.uniqueStudents();
                     break;
                 case "report_average_score":
                     school.averageGrades(command[1]);
                     break;
+                case"report_cumulative_average":
+                    school.cumulativeAverage(Integer.parseInt(command[4]));
+                    break;
+                case "student_cumulative_average":
+                   school.cumulativeAverage(Integer.parseInt(command[1]));
+                   break;
                 case "exit":
                     System.out.println("Exiting...");
                     return;

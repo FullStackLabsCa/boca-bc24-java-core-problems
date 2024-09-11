@@ -64,6 +64,7 @@ public class School {
             System.out.println("Error enrolling student: " + e.getMessage());
         }
     }
+
     // Assign grade
     public void assignGrade(int studentId, String courseName, double grade) {
         String courseQuery = "SELECT course_id FROM Courses WHERE course_name = ?";
@@ -125,57 +126,41 @@ public class School {
             throw new RuntimeException(e);
         }
     }
-
-    public void uniqueCourse() {
-        String uniqueCourse = "select Courses.course_name, enrollments.student_id ,students.student_name from Courses Inner Join enrollments On enrollments.course_id = courses.course_id\n" +
-                "inner join  students on students.student_id = enrollments.student_id ";
-        try (Connection connection = DatabaseHelper.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(uniqueCourse)) {
-            ResultSet rs = preparedStatement.executeQuery();
-            System.out.println("Students with unique Courses");
-            System.out.println("Courses :" + " " + " Students");
-            while ((rs.next())) {
-                String courseName = rs.getString("course_name");
-                String studentName = rs.getString("student_name");
-                System.out.println("Course Name : " + courseName + ",  Student Name : " + studentName + ".");
-            }
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void uniqueStudents() {
-        String query = "select students.student_name from students" +
-                " join enrollments on students.student_id = enrollments.student_id ;";
-        try (Connection connection = DatabaseHelper.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            ResultSet rs = preparedStatement.executeQuery();
-            System.out.println("Students with unique courses are :");
-            while (rs.next()) {
-                String studentName = rs.getString("student_name");
-                System.out.println(studentName);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     public void averageGrades(String CourseName) {
-        String avgQuery = " SELECT courses.course_name, AVG(grades.grade) AS average_grade FROM grades  INNER JOIN courses ON courses.course_id = grades.course_id INNER JOIN students ON students.student_id = grades.student_id where courses.course_name = ?";
+        String avgQuery = " SELECT AVG(grades.grade) AS avg_table, courses.course_name FROM grades JOIN courses ON grades.course_id = courses.course_id WHERE courses.course_name = ? GROUP BY courses.course_name;";
         try (Connection connection = DatabaseHelper.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(avgQuery)) {
-
             preparedStatement.setString(1, CourseName);
             ResultSet avgRs = preparedStatement.executeQuery();
-
             while (avgRs.next()) {
                 String courseName = avgRs.getString("course_name");
-                double grade = avgRs.getDouble("average_grade");
+                double grade = avgRs.getDouble("avg_table");
+
                 System.out.println("Course Name : " + courseName);
                 System.out.println("Average grade :" + grade);
             }
 
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void cumulativeAverage(int studentId) {
+
+        String query = "SELECT AVG(grades.grade) AS avg_table,students.student_id, students.student_name FROM students LEFT JOIN grades ON students.student_id = grades.student_id WHERE students.student_id = ? GROUP BY students.student_id, students.student_name";
+
+        try (Connection connection = DatabaseHelper.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, studentId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                resultSet.getInt("student_id");
+                String studentName = resultSet.getString("student_name");
+                Double grades = resultSet.getDouble("avg_table");
+                System.out.println("Student : "+studentName + ",  Grades :"+grades);
+                return;
+            }
+                System.out.println("student does not exist ........");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

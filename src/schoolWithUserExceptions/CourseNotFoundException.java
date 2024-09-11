@@ -1,6 +1,7 @@
 package schoolWithUserExceptions;
-public class CourseNotFoundException extends  Exception {
-    public CourseNotFoundException(String message) {
-        super(message);
+public class CourseNotFoundException extends  RuntimeException {
+    public CourseNotFoundException() {
+        System.out.println("Course Not found");
     }
+
 }
