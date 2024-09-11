@@ -146,9 +146,7 @@ public class School {
     }
 
     public void cumulativeAverage(int studentId) {
-
         String query = "SELECT AVG(grades.grade) AS avg_table,students.student_id, students.student_name FROM students LEFT JOIN grades ON students.student_id = grades.student_id WHERE students.student_id = ? GROUP BY students.student_id, students.student_name";
-
         try (Connection connection = DatabaseHelper.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, studentId);
