@@ -2,7 +2,7 @@ package problems.hashmap;
 
 import org.junit.Before;
 import org.junit.Test;
-import problems.collections.hashmap.MyHashMap;
+import problems.collections.my_hash_map.MyHashMap;
 
 import static org.junit.Assert.*;
 

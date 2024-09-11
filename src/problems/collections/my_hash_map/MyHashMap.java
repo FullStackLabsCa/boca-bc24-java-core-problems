@@ -1,4 +1,4 @@
-package problems.collections.hashmap;
+package problems.collections.my_hash_map;
 
 import java.util.LinkedList;
 import java.util.Objects;
