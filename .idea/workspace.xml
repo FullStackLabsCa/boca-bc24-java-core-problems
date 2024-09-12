@@ -5,19 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3c9f44b-ff0f-43a9-b850-9b801d0dc95b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/zaxxer_HikariCP.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/selfPractice/connectionPooling/DataSourceFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/selfPractice/connectionPooling/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/selfPractice/connectionPooling/Order.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/selfPractice/connectionPooling/OrderDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/selfPractice/connectionPooling/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/selfPractice/connectionPooling/UserDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/selfPractice/connectionPooling/employeeTemp.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/selfPractice/dockerCommand/Start-Stop-Docker.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/selfPractice/transactionExample/Bank.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/selfPractice/transactionExample/TransactionExample.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boca-bc24-java-core-problems.iml" beforeDir="false" afterPath="$PROJECT_DIR$/boca-bc24-java-core-problems.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/collection/myHashMap/MyHashMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/collection/myHashMap/MyHashMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/problems/CourseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/CourseTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,6 +82,7 @@
     "Application.School.executor": "Run",
     "Application.ShiftElementsArray.executor": "Run",
     "Application.SmallestLargestElementInAraay.executor": "Run",
+    "Application.TransactionExample.executor": "Run",
     "Application.countVowels.executor": "Run",
     "Application.longestWordString.executor": "Run",
     "Application.p2_CountOccurrences.executor": "Run",
@@ -123,9 +114,9 @@
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "/Users/Jay.Shah/sources/student/boca-bc24-java-core-problems/test/problems/hashmap",
     "last_opened_file_path": "/Users/Jay.Shah/source/student/boca-bc24-java-core-problems",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "settings.build.tools.auto.reload": "SELECTIVE",
     "settings.editor.selected.configurable": "editor.preferences.fonts.default"
   }
