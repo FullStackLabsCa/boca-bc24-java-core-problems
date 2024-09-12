@@ -1,6 +1,6 @@
 package schoolcli.gradebook;
 
-import config.DatabaseHelper;
+import schoolcli.config.DatabaseHelper;
 
 import java.sql.*;
 import java.util.ArrayList;

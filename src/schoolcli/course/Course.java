@@ -1,6 +1,6 @@
 package schoolcli.course;
 
-import config.DatabaseHelper;
+import schoolcli.config.DatabaseHelper;
 
 import java.sql.*;
 

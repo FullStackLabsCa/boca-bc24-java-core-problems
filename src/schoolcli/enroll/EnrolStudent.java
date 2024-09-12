@@ -1,6 +1,6 @@
 package schoolcli.enroll;
 
-import config.DatabaseHelper;
+import schoolcli.config.DatabaseHelper;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
