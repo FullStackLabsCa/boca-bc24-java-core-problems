@@ -5,12 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3c9f44b-ff0f-43a9-b850-9b801d0dc95b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/problems/generics/databaseCourse/Course.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/generics/databaseCourse/DatabaseHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/generics/databaseCourse/Generic_DB_Course_Class.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/zaxxer_HikariCP.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/selfPractice/connectionPooling/DataSourceFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/selfPractice/connectionPooling/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/selfPractice/connectionPooling/Order.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/selfPractice/connectionPooling/OrderDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/selfPractice/connectionPooling/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/selfPractice/connectionPooling/UserDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/selfPractice/connectionPooling/employeeTemp.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/selfPractice/dockerCommand/Start-Stop-Docker.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/generics/p4_Generic_Course_Class/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/generics/p4_Generic_Course_Class/Course.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boca-bc24-java-core-problems.iml" beforeDir="false" afterPath="$PROJECT_DIR$/boca-bc24-java-core-problems.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/collection/myHashMap/MyHashMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/collection/myHashMap/MyHashMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/problems/CourseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/CourseTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,6 +95,7 @@
     "Application.countVowels.executor": "Run",
     "Application.longestWordString.executor": "Run",
     "Application.p2_CountOccurrences.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
     "JUnit.CalculatorTest.executor": "Run",
     "JUnit.CalculatorTest.testBasicOperations.executor": "Run",
     "JUnit.CalculatorTest.testDivisionByZero.executor": "Run",
@@ -102,10 +110,15 @@
     "JUnit.GradeBookTest.executor": "Run",
     "JUnit.MyArrayListTest.executor": "Run",
     "JUnit.MyHashMapTest.executor": "Run",
+    "JUnit.MyHashMapTest.testNullKey.executor": "Run",
     "JUnit.MyLinkedListTest.executor": "Run",
     "JUnit.OddCounterTest.executor": "Run",
     "JUnit.SchoolTest.executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "feature/jash-bc24-java-core-problems",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "/Users/Jay.Shah/sources/student/boca-bc24-java-core-problems/test/problems/hashmap",
@@ -169,22 +182,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CalculatorTest.testDivisionByZero" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="boca-bc24-java-core-problems" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="problems.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="problems" />
-      <option name="MAIN_CLASS_NAME" value="problems.CalculatorTest" />
-      <option name="METHOD_NAME" value="testDivisionByZero" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="CalculatorTest.testMemoryOperations" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="boca-bc24-java-core-problems" />
       <extension name="coverage">
@@ -217,13 +214,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MyHashMapTest.testNullKey" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="boca-bc24-java-core-problems" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="problems.hashmap.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="problems.hashmap" />
+      <option name="MAIN_CLASS_NAME" value="problems.hashmap.MyHashMapTest" />
+      <option name="METHOD_NAME" value="testNullKey" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MyHashMapTest.testNullKey" />
         <item itemvalue="Application.Generic_DB_Course_Class" />
         <item itemvalue="JUnit.CalculatorTest" />
         <item itemvalue="JUnit.CalculatorTest.testParentheses" />
         <item itemvalue="JUnit.CalculatorTest.testMemoryOperations" />
-        <item itemvalue="JUnit.CalculatorTest.testDivisionByZero" />
       </list>
     </recent_temporary>
   </component>
@@ -276,20 +289,6 @@
           <url>file://$PROJECT_DIR$/src/problems/calculator/Calculator.java</url>
           <line>59</line>
           <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/problems/generics/databaseCourse/Course.java</url>
-          <line>35</line>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/problems/generics/databaseCourse/Course.java</url>
-          <line>32</line>
-          <properties class="problems.generics.databaseCourse.Course" method="enrollStudent">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

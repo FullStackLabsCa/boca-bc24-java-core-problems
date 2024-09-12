@@ -230,6 +230,21 @@ public class MyHashMap<K, V> {
         map.put("one", 1);
         map.put("two", 2);
         map.put("three", 3);
+        map.put("four", 4);
+        map.put("five", 5);
+        map.put("six", 6);
+        map.put("seven", 7);
+        map.put("eight", 8);
+        map.put("nine", 9);
+        map.put("ten", 10);
+        map.put("eleven", 11);
+        map.put("twele", 12);
+        map.put("thirteen", 13);
+        map.put("fourteen", 14);
+        map.put("fifteen", 15);
+        map.put("sixteen", 16);
+        map.put("seventeen", 17);
+        map.put("eightteen", 18);
 
         System.out.println("Get 'one': " + map.get("one")); // Should print 1
         System.out.println("Get 'two': " + map.get("two")); // Should print 2

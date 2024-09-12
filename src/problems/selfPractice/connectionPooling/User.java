@@ -1,0 +1,36 @@
+package problems.selfPractice.connectionPooling;
+
+public class User {
+
+    private int id;
+    private String name;
+    private String email;
+
+    public User(int id, String name, String email) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    @Override
+    public String toString() {
+//        return "User{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", email='" + email + '\'' +
+//                '}';
+        return String.format("%-5d %-20s %-30s", id, name, email);
+    }
+}
