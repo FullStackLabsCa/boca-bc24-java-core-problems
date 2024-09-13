@@ -181,16 +181,14 @@ public class School {
     }
 
     public void callStoreProcedure(String studentId) throws SQLException {
-        String query = "{call getStudentGrade(?, ?)}";
+        String query = "{call calculate_average_grade(?, ?)}"; // need to match the name of the stored procedure in the db
         try (Connection conn = DatabaseHelper.getConnection();
              CallableStatement stmt = conn.prepareCall(query)) {
             stmt.setInt(1, Integer.parseInt(studentId));
             stmt.registerOutParameter(2, Types.DOUBLE);
             stmt.execute();
-            double aDouble1 = stmt.getDouble("grade");
-            System.out.println("aa" + aDouble1);
-            double aDouble = stmt.getDouble(2);
-            System.out.println("average is: " + aDouble);
+            double aDouble = stmt.getDouble(2); // fetching the output as the output parameter is declared as 2 parameter in the stored procedure
+            System.out.println("average of student with studentId:"  + studentId + " is " + aDouble);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
