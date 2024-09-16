@@ -66,7 +66,6 @@ class TransactionServiceImpl implements TransactionService, Runnable {
     public void adjustTransactionQueue(CreditCardTransaction creditCardTransaction) throws InterruptedException {
         // This will be a temporary queue to store other elements
         Queue<CreditCardTransaction> tempQueue = new LinkedList<>();
-
         tempQueue.add(creditCardTransaction);  // Adding the element to the front of tempQueue
         // Add remaining elements back to the main queue
         while (!creditCardTransactionQueue.isEmpty()) {
