@@ -50,14 +50,10 @@ class TransactionServiceImpl implements TransactionService, Runnable {
                 }
                 // Step 3: Now update with optimistic locking
                 updateAccountBalance(connection, creditCardTransaction, version);
-
-
-
             } catch (
-                    OptimisticLockingException e) { // check here u have to update the queue to put it in the front of queue
+                    OptimisticLockingException e) {
                 System.err.println(e.getMessage() + creditCardTransaction.getCreditCardNumber());
 //                creditCardTransactionQueue.put(creditCardTransaction);
-                //With this method the transaction is placed back to the queue
                 adjustTransactionQueue(creditCardTransaction);
             } catch (SQLException e) {
                 e.printStackTrace();
