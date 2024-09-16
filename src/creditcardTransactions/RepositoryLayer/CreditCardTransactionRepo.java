@@ -1,17 +1,13 @@
 package creditcardTransactions.RepositoryLayer;
-
 import creditcardTransactions.Model.CreditCardTransaction;
 import creditcardTransactions.Utility.OptimisticLockingException;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class CreditCardTransactionRepo {
-
     // Get the current version of the account for optimistic locking
-
     public static int getAccountVersion(Connection connection, String creditCardNumber) throws SQLException {
         String query = "SELECT version FROM accounts WHERE credit_card_number = ?";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
@@ -25,8 +21,6 @@ public class CreditCardTransactionRepo {
             }
         }
     }
-
-
     // Insert a new account for a credit card number
     public  static  void insertAccount(Connection connection, CreditCardTransaction creditCardTransaction) throws SQLException {
         connection.setAutoCommit(false);
@@ -55,6 +49,5 @@ public class CreditCardTransactionRepo {
             throw new OptimisticLockingException("Optimistic locking failed, retrying transaction...");
         }
         connection.commit();
-//        connection.setAutoCommit(true);
     }
 }

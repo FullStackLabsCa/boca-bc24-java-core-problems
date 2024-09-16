@@ -1,5 +1,9 @@
 package creditcardTransactions.ServiceLayer;
-
+//Deque Implementation
+//2. Try with slow file reads and understand the flow
+//3. Versioning - reason about it (optimistic locking)
+//4. Unique Constraints to be Observed
+//5. Make the Program OOP
 import creditcardTransactions.Model.CreditCardTransaction;
 
 import java.io.BufferedReader;
@@ -24,7 +28,7 @@ public class CreditCardService {
 
                     CreditCardTransaction creditCardTransaction = new CreditCardTransaction(data[0], data[1], data[2], Double.parseDouble(data[3]), Double.parseDouble(data[4]));
                     System.out.println("adding transaction #" + counter + "in the queue >> " + creditCardTransaction);
-                    // Thread.sleep(50);
+                     Thread.sleep(1000);
                     creditCardTransactionQueue.putFirst(creditCardTransaction);  // Place transaction in the queue
                 }
             }
