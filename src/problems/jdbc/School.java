@@ -12,6 +12,7 @@ public class School {
         try (Connection conn = DatabaseHelper.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, courseName);
+            stmt.addBatch();
             stmt.executeUpdate();
             System.out.println("Course '" + courseName + "' added.");
         } catch (SQLException e) {
@@ -19,21 +20,10 @@ public class School {
         }
     }
 
-    // Enroll student
-    // Enroll student and ensure the student exists in the Students table
-    public void enrollStudent(int studentId, String studentName, String courseName) {
-        String courseQuery = "SELECT course_id FROM Courses WHERE course_name = ?";
-        String studentQuery = "SELECT student_id FROM Students WHERE student_id = ?";
-        String addStudentQuery = "INSERT INTO Students (student_id, student_name) VALUES (?, ?)";
-        String enrollQuery = "INSERT INTO Enrollments (course_id, student_id) VALUES (?, ?)";
-
-        try (Connection conn = DatabaseHelper.getConnection();
-             PreparedStatement courseStmt = conn.prepareStatement(courseQuery);
-             PreparedStatement studentStmt = conn.prepareStatement(studentQuery);
-             PreparedStatement addStudentStmt = conn.prepareStatement(addStudentQuery);
-             PreparedStatement enrollStmt = conn.prepareStatement(enrollQuery)) {
-
+    public void enrollStudentTransaction(Connection conn, PreparedStatement courseStmt, PreparedStatement studentStmt, PreparedStatement addStudentStmt, PreparedStatement enrollStmt, int studentId, String studentName, String courseName) throws SQLException {
+        try {
             // Step 1: Check if the course exists
+            conn.setAutoCommit(false);
             courseStmt.setString(1, courseName);
             ResultSet courseRs = courseStmt.executeQuery();
 
@@ -60,7 +50,31 @@ public class School {
             enrollStmt.setInt(2, studentId);
             enrollStmt.executeUpdate();
 
+            conn.commit();
+
             System.out.println("Student '" + studentId + "' enrolled in course '" + courseName + "'.");
+
+        } catch (SQLException e) {
+            conn.rollback();
+            throw new RuntimeException(e);
+        }
+    }
+
+    // Enroll student
+    // Enroll student and ensure the student exists in the Students table
+    public void enrollStudent(int studentId, String studentName, String courseName) {
+        String courseQuery = "SELECT course_id FROM Courses WHERE course_name = ?";
+        String studentQuery = "SELECT student_id FROM Students WHERE student_id = ?";
+        String addStudentQuery = "INSERT INTO Students (student_id, student_name) VALUES (?, ?)";
+        String enrollQuery = "INSERT INTO Enrollments (course_id, student_id) VALUES (?, ?)";
+
+        try (Connection conn = DatabaseHelper.getConnection();
+             PreparedStatement courseStmt = conn.prepareStatement(courseQuery);
+             PreparedStatement studentStmt = conn.prepareStatement(studentQuery);
+             PreparedStatement addStudentStmt = conn.prepareStatement(addStudentQuery);
+             PreparedStatement enrollStmt = conn.prepareStatement(enrollQuery)) {
+
+            enrollStudentTransaction(conn, courseStmt, studentStmt, addStudentStmt, enrollStmt, studentId, studentName, courseName);
 
         } catch (SQLException e) {
             System.out.println("Error enrolling student: " + e.getMessage());

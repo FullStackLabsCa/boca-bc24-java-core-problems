@@ -45,10 +45,12 @@ public class SchoolCLI {
                     break;
                 case "exit":
                     System.out.println("Exiting...");
+                    DatabaseHelper.close();
                     return;
                 default:
                     System.out.println("Unknown command");
             }
         }
+
     }
 }
