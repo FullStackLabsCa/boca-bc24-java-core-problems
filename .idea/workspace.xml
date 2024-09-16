@@ -4,7 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d3c9f44b-ff0f-43a9-b850-9b801d0dc95b" name="Changes" comment="" />
+    <list default="true" id="d3c9f44b-ff0f-43a9-b850-9b801d0dc95b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/slf4j_log4j12.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/jdbc/transactions/hwFinal/CreditCardTransaction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/jdbc/transactions/hwFinal/CreditCardTransactionProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/jdbc/transactions/hwFinal/DatabaseManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/jdbc/transactions/hwFinal/OptimisticLockingException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/jdbc/transactions/hwFinal/TransactionConsumer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/jdbc/transactions/hwFinal/bootcamp2.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/jdbc/transactions/hwFinal/credit_card_transactions.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/jdbc/transactions/locking_optimistic/CreditCardTransaction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/jdbc/transactions/locking_optimistic/CreditCardTransactionProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/jdbc/transactions/locking_optimistic/DatabaseManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/jdbc/transactions/locking_optimistic/TransactionConsumer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/jdbc/transactions/locking_optimistic/TransactionFileReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/jdbc/transactions/locking_optimistic/TransactionProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/jdbc/transactions/locking_optimistic/credit_card_transactions.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/jdbc/transactions/practice/BatchInsert.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/jdbc/transactions/practice/CreditCardTransactionProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/jdbc/transactions/practice/DatabaseManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/jdbc/transactions/practice/credit_card_transactions.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/selfPractice/credit_card_transactions.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/selfPractice/isolation/Notes/READ COMMITTED.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/selfPractice/isolation/Notes/READ-UNCOMMITTED.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/selfPractice/isolation/Notes/REPEATABLE READ.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boca-bc24-java-core-problems.iml" beforeDir="false" afterPath="$PROJECT_DIR$/boca-bc24-java-core-problems.iml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,6 +39,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -44,80 +71,82 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Calculator.executor&quot;: &quot;Run&quot;,
-    &quot;Application.CapitalizeFirstLetterOfEachWord.executor&quot;: &quot;Debug&quot;,
-    &quot;Application.CollectionExample.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Course.executor&quot;: &quot;Run&quot;,
-    &quot;Application.DuplicateElementInArray.executor&quot;: &quot;Debug&quot;,
-    &quot;Application.Generic_DB_Course_Class.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Generics_Demo.executor&quot;: &quot;Debug&quot;,
-    &quot;Application.LinkedList.executor&quot;: &quot;Run&quot;,
-    &quot;Application.LongestWordString.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MergeTwoArrays.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MyHashMap.executor&quot;: &quot;Run&quot;,
-    &quot;Application.P10_Add_Sub_Number.executor&quot;: &quot;Run&quot;,
-    &quot;Application.P12_Prime_Number.executor&quot;: &quot;Run&quot;,
-    &quot;Application.P1_Bracket_WS_Matching.executor&quot;: &quot;Run&quot;,
-    &quot;Application.P1_Maximum_in_Array.executor&quot;: &quot;Run&quot;,
-    &quot;Application.P2_Palindrome.executor&quot;: &quot;Run&quot;,
-    &quot;Application.P2_bracket_s_matching.executor&quot;: &quot;Run&quot;,
-    &quot;Application.P3_Calculator.executor&quot;: &quot;Run&quot;,
-    &quot;Application.P3_Generic_GradeBook_Class.executor&quot;: &quot;Run&quot;,
-    &quot;Application.P4_Generic_Course_Class.executor&quot;: &quot;Run&quot;,
-    &quot;Application.P4_OddEven.executor&quot;: &quot;Run&quot;,
-    &quot;Application.P5_Factorial.executor&quot;: &quot;Run&quot;,
-    &quot;Application.P6_Fibonacci.executor&quot;: &quot;Run&quot;,
-    &quot;Application.P6_Generic_School.executor&quot;: &quot;Run&quot;,
-    &quot;Application.P7_Reversed.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Palindrome.executor&quot;: &quot;Run&quot;,
-    &quot;Application.PracticeLinkedList.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ReadUncommitedExample.executor&quot;: &quot;Run&quot;,
-    &quot;Application.RemoveVowels.executor&quot;: &quot;Run&quot;,
-    &quot;Application.School.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ShiftElementsArray.executor&quot;: &quot;Run&quot;,
-    &quot;Application.SmallestLargestElementInAraay.executor&quot;: &quot;Run&quot;,
-    &quot;Application.TransactionExample.executor&quot;: &quot;Run&quot;,
-    &quot;Application.countVowels.executor&quot;: &quot;Run&quot;,
-    &quot;Application.longestWordString.executor&quot;: &quot;Run&quot;,
-    &quot;Application.p2_CountOccurrences.executor&quot;: &quot;Run&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;JUnit.CalculatorTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CalculatorTest.testBasicOperations.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CalculatorTest.testDivisionByZero.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CalculatorTest.testMemoryOperations.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CalculatorTest.testParentheses.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CountOccurrencesTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CourseTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CourseTest.testAssignGrade.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CourseTest.testAssignGradeToNonEnrolledStudent.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CourseTest.testGetAllGrades.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CourseTest.testGetGrade.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.GradeBookTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.MyArrayListTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.MyHashMapTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.MyHashMapTest.testNullKey.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.MyLinkedListTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.OddCounterTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SchoolTest.executor&quot;: &quot;Run&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/jash-bc24-java-core-problems&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_directory_selection&quot;: &quot;/Users/Jay.Shah/sources/student/boca-bc24-java-core-problems/test/problems/hashmap&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/Jay.Shah/source/student/boca-bc24-java-core-problems&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.build.tools.auto.reload&quot;: &quot;SELECTIVE&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.BatchInsert.executor": "Run",
+    "Application.Calculator.executor": "Run",
+    "Application.CapitalizeFirstLetterOfEachWord.executor": "Debug",
+    "Application.CollectionExample.executor": "Run",
+    "Application.Course.executor": "Run",
+    "Application.CreditCardTransactionProcessor.executor": "Run",
+    "Application.DuplicateElementInArray.executor": "Debug",
+    "Application.Generic_DB_Course_Class.executor": "Run",
+    "Application.Generics_Demo.executor": "Debug",
+    "Application.LinkedList.executor": "Run",
+    "Application.LongestWordString.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.MergeTwoArrays.executor": "Run",
+    "Application.MyHashMap.executor": "Run",
+    "Application.P10_Add_Sub_Number.executor": "Run",
+    "Application.P12_Prime_Number.executor": "Run",
+    "Application.P1_Bracket_WS_Matching.executor": "Run",
+    "Application.P1_Maximum_in_Array.executor": "Run",
+    "Application.P2_Palindrome.executor": "Run",
+    "Application.P2_bracket_s_matching.executor": "Run",
+    "Application.P3_Calculator.executor": "Run",
+    "Application.P3_Generic_GradeBook_Class.executor": "Run",
+    "Application.P4_Generic_Course_Class.executor": "Run",
+    "Application.P4_OddEven.executor": "Run",
+    "Application.P5_Factorial.executor": "Run",
+    "Application.P6_Fibonacci.executor": "Run",
+    "Application.P6_Generic_School.executor": "Run",
+    "Application.P7_Reversed.executor": "Run",
+    "Application.Palindrome.executor": "Run",
+    "Application.PracticeLinkedList.executor": "Run",
+    "Application.ReadUncommitedExample.executor": "Run",
+    "Application.RemoveVowels.executor": "Run",
+    "Application.School.executor": "Run",
+    "Application.ShiftElementsArray.executor": "Run",
+    "Application.SmallestLargestElementInAraay.executor": "Run",
+    "Application.TransactionExample.executor": "Run",
+    "Application.countVowels.executor": "Run",
+    "Application.longestWordString.executor": "Run",
+    "Application.p2_CountOccurrences.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.CalculatorTest.executor": "Run",
+    "JUnit.CalculatorTest.testBasicOperations.executor": "Run",
+    "JUnit.CalculatorTest.testDivisionByZero.executor": "Run",
+    "JUnit.CalculatorTest.testMemoryOperations.executor": "Run",
+    "JUnit.CalculatorTest.testParentheses.executor": "Run",
+    "JUnit.CountOccurrencesTest.executor": "Run",
+    "JUnit.CourseTest.executor": "Run",
+    "JUnit.CourseTest.testAssignGrade.executor": "Run",
+    "JUnit.CourseTest.testAssignGradeToNonEnrolledStudent.executor": "Run",
+    "JUnit.CourseTest.testGetAllGrades.executor": "Run",
+    "JUnit.CourseTest.testGetGrade.executor": "Run",
+    "JUnit.GradeBookTest.executor": "Run",
+    "JUnit.MyArrayListTest.executor": "Run",
+    "JUnit.MyHashMapTest.executor": "Run",
+    "JUnit.MyHashMapTest.testNullKey.executor": "Run",
+    "JUnit.MyLinkedListTest.executor": "Run",
+    "JUnit.OddCounterTest.executor": "Run",
+    "JUnit.SchoolTest.executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "feature/jash-bc24-java-core-problems",
+    "kotlin-language-version-configured": "true",
+    "last_directory_selection": "/Users/Jay.Shah/sources/student/boca-bc24-java-core-problems/test/problems/hashmap",
+    "last_opened_file_path": "/Users/Jay.Shah/source/student/boca-bc24-java-core-problems/src/problems/jdbc/transactions/hwFinal",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.build.tools.auto.reload": "SELECTIVE",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="problems.hashmap" />
@@ -125,24 +154,30 @@
       <recent name="problems.generics.dhruv" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/problems/jdbc/transactions/hwFinal" />
+      <recent name="$PROJECT_DIR$/src/problems/jdbc/transactions/practice" />
+      <recent name="$PROJECT_DIR$/src/problems/selfPractice" />
+      <recent name="$PROJECT_DIR$/src/problems/selfPractice/isolation/Notes" />
       <recent name="$PROJECT_DIR$/test/problems" />
-      <recent name="$PROJECT_DIR$/src/problems/generics/generics_Demo/services" />
-      <recent name="$PROJECT_DIR$/src/problems/generics/generics_Demo" />
-      <recent name="$PROJECT_DIR$/src/problems/generics/generics_Demo/employee" />
-      <recent name="$PROJECT_DIR$/src/problems/generics" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/problems/jdbc/transactions/hwFinal" />
+      <recent name="$PROJECT_DIR$/src/problems/selfPractice/isolation/isoPracticeSQL" />
       <recent name="$PROJECT_DIR$/src/problems/selfPractice/isolation/isolationLEVELS" />
       <recent name="$PROJECT_DIR$/src/oldProblems" />
     </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="problems.jdbc.transactions.locking_optimistic" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="problems.jdbc.transactions.hwFinal" />
+      <recent name="problems.jdbc.transactions.practice" />
       <recent name="problems.generics.databaseCourse" />
       <recent name="problems.collection.myArrayList" />
       <recent name="problems" />
-      <recent name="problems.calculator" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ReadUncommitedExample">
+  <component name="RunManager">
     <configuration name="Generic_DB_Course_Class" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="problems.generics.databaseCourse.Generic_DB_Course_Class" />
       <module name="boca-bc24-java-core-problems" />
@@ -276,7 +311,44 @@
           <line>59</line>
           <option name="timeStamp" value="23" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/problems/jdbc/transactions/practice/DatabaseManager.java</url>
+          <line>31</line>
+          <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/problems/jdbc/transactions/practice/DatabaseManager.java</url>
+          <line>19</line>
+          <properties class="problems.jdbc.transactions.practice.DatabaseManager" method="configureHikariCP">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="45" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/problems/jdbc/transactions/practice/DatabaseManager.java</url>
+          <line>14</line>
+          <properties class="problems.jdbc.transactions.practice.DatabaseManager" method="&lt;init&gt;">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/problems/jdbc/transactions/practice/DatabaseManager.java</url>
+          <line>35</line>
+          <properties class="problems.jdbc.transactions.practice.DatabaseManager" method="getConnection">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="version" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

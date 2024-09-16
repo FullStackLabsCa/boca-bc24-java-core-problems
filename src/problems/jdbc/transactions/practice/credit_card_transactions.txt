@@ -1,0 +1,2 @@
+Credit_card_number|Card_type|Transaction_type|Amount|Balance
+8195620064853095|MasterCard|buy|21.42|1619.04
