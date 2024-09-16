@@ -29,7 +29,7 @@ public class TransactionRepoLayer {
         String insertQuery = "INSERT INTO accounts (credit_card_number, balance, version) VALUES (?, ?, 0)";
         PreparedStatement stmt = connection.prepareStatement(insertQuery);
         stmt.setString(1, creditCardTransaction.getCreditCardNumber());
-        stmt.setDouble(2, creditCardTransaction.getBalance() - creditCardTransaction.getAmount());
+        stmt.setDouble(2, creditCardTransaction.getBalance());
         stmt.executeUpdate();
         System.out.println("Inserted new account for card: " + creditCardTransaction.getCreditCardNumber());
         connection.commit();
@@ -39,9 +39,17 @@ public class TransactionRepoLayer {
     // Update the account balance using optimistic locking
     public  void updateAccountBalance(Connection connection,CreditCardTransaction creditCardTransaction, int version) throws SQLException {
         connection.setAutoCommit(false);
+        String getBalance ="SELECT balance FROM accounts WHERE credit_card_number=? ";
         String updateQuery = "UPDATE accounts SET balance = ?, version = version + 1 WHERE credit_card_number = ? AND version = ?";
         PreparedStatement stmt = connection.prepareStatement(updateQuery);
-        stmt.setDouble(1, creditCardTransaction.getBalance() - creditCardTransaction.getAmount());
+        PreparedStatement balStat = connection.prepareStatement(getBalance);
+        balStat.setString(1,creditCardTransaction.getCreditCardNumber());
+        ResultSet balSet = balStat.executeQuery();
+        double balance=0;
+        if (balSet.next()){
+            balance = balSet.getDouble("balance");
+        }
+        stmt.setDouble(1,  balance- creditCardTransaction.getAmount());
         stmt.setString(2, creditCardTransaction.getCreditCardNumber());
         stmt.setInt(3, version);
 
