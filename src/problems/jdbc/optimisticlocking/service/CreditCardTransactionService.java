@@ -26,9 +26,9 @@ public class CreditCardTransactionService {
         HikariDataSource dataSource = DatabaseConnection.configureHikariCP();
 
         // Step 2: Read file and load transactions into ArrayBlockingQueue
-        CreditCardTransactionService.readTransactionFileAndWriteToQueue("/Users/Anant.Jain/source/student/boca-bc24-java-core-problems/src/problems/jdbc/optimisticlocking/assets/credit_card_transactions.txt");
+        readTransactionFileAndWriteToQueue("/Users/Anant.Jain/source/student/boca-bc24-java-core-problems/src/problems/jdbc/optimisticlocking/assets/credit_card_transactions.txt");
 
-        CreditCardTransactionService.startMultiThreadedProcessing(dataSource);
+        startMultiThreadedProcessing(dataSource);
     }
 
     // Step 1: Read transactions from a pipe-delimited file
