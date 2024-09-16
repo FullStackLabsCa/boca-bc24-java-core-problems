@@ -4,13 +4,14 @@ import com.zaxxer.hikari.HikariDataSource;
 import jdbc.optimisticlocking.model.CreditCardTransaction;
 
 import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.LinkedBlockingDeque;
 
 public class TransactionConsumer implements Runnable {
 
-    private ArrayBlockingQueue<CreditCardTransaction> creditCardTransactionQueue;
+    private LinkedBlockingDeque<CreditCardTransaction> creditCardTransactionQueue;
     private HikariDataSource dataSource;
 
-    public TransactionConsumer(ArrayBlockingQueue<CreditCardTransaction> creditCardTransactionQueue, HikariDataSource dataSource) {
+    public TransactionConsumer(LinkedBlockingDeque<CreditCardTransaction> creditCardTransactionQueue, HikariDataSource dataSource) {
         this.creditCardTransactionQueue = creditCardTransactionQueue;
         this.dataSource = dataSource;
     }

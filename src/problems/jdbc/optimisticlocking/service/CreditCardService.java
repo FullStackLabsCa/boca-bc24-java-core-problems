@@ -14,10 +14,11 @@ import java.sql.SQLException;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingDeque;
 
 public class CreditCardService {
 
-    private static ArrayBlockingQueue<CreditCardTransaction> creditCardTransactionQueue = new ArrayBlockingQueue<>(5000);;
+    private static LinkedBlockingDeque<CreditCardTransaction> creditCardTransactionQueue = new LinkedBlockingDeque<>(5000);;
     private static HikariDataSource dataSource;
 
     public static void setupDbConnectionAndReadFile() {
@@ -83,13 +84,13 @@ public class CreditCardService {
             } catch (OptimisticLockingException e) {
                 System.err.println(e.getMessage());
                 // Put the transaction back in the queue for retry
-                creditCardTransactionQueue.put(creditCardTransaction);
+                creditCardTransactionQueue.putFirst(creditCardTransaction);
             } catch (SQLException e) {
                 if (e.getErrorCode() == 1062) { // MySQL error code for duplicate entry
                     System.err.println("Duplicate entry detected for credit card number " + creditCardTransaction.getCreditCardNumber());
                 }
                 connection.rollback();
-                creditCardTransactionQueue.put(creditCardTransaction);
+                creditCardTransactionQueue.putFirst(creditCardTransaction);
             } finally {
                 connection.setAutoCommit(true);
             }
