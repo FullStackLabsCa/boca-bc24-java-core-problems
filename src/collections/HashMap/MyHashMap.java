@@ -20,7 +20,7 @@ public class MyHashMap<K, V> {
 
     public static void main(String[] args) {
         MyHashMap<String, Integer> hm = new MyHashMap<>();
-        hm.put("Apple", 10);
+        hm.put("null", null);
         hm.containsKey("Apple");
         hm.get("NonExistentKey");
         System.out.println(hm);
