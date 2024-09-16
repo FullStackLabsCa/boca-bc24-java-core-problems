@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a728a69e-e34c-4470-8a4f-1ba09e798df3" name="Changes" comment="credit card transaction with transaction and thread">
+    <list default="true" id="a728a69e-e34c-4470-8a4f-1ba09e798df3" name="Changes" comment="name change for package">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/problems/calculator/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/calculator/Calculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/creditcard/credit_card_transactions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/creditcard/credit_card_transactions.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/creditcard/repository/CreditCardRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/creditcard/repository/CreditCardRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/creditcard/service/CreditCardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/creditcard/service/CreditCardService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/optimisticlocking/credit_card_transactions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/optimisticlocking/credit_card_transactions.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/optimisticlocking/model/CreditCardTransaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/optimisticlocking/model/CreditCardTransaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/optimisticlocking/repository/CreditCardRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/optimisticlocking/repository/CreditCardRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/optimisticlocking/service/CreditCardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/optimisticlocking/service/CreditCardService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/problems/calculator/CalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/calculator/AdvancedCalculatorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,12 +91,21 @@
       <option name="project" value="LOCAL" />
       <updated>1726501957651</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="name change for package">
+      <option name="closed" value="true" />
+      <created>1726502590261</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1726502590261</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="minor structure change" />
     <MESSAGE value="credit card transaction with transaction and thread" />
-    <option name="LAST_COMMIT_MESSAGE" value="credit card transaction with transaction and thread" />
+    <MESSAGE value="name change for package" />
+    <option name="LAST_COMMIT_MESSAGE" value="name change for package" />
   </component>
 </project>

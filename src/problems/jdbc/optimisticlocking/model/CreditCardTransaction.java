@@ -6,7 +6,7 @@ public class CreditCardTransaction {
     private double amount;
     private double balance;
 
-    public CreditCardTransaction(String creditCardNumber, double balance) {
+    public CreditCardTransaction(String creditCardNumber, double amount, double balance) {
         this.creditCardNumber = creditCardNumber;
         this.amount = amount;
         this.balance = balance;

@@ -25,7 +25,7 @@ public class CreditCardService {
         dataSource = DatabaseConnection.configureHikariCP();
 
         // Step 2: Read file and load transactions into ArrayBlockingQueue
-        readTransactionFileAndWriteToQueue("/Users/Kiran.Virani/reactivestax/source/boca-bc24-java-core-problems/src/problems/jdbc/creditcard/credit_card_transactions.txt");
+        readTransactionFileAndWriteToQueue("/Users/Kiran.Virani/reactivestax/source/boca-bc24-java-core-problems/src/problems/jdbc/optimisticlocking/credit_card_transactions.txt");
 
         startMultiThreadedProcessing();
     }
@@ -38,7 +38,7 @@ public class CreditCardService {
             while ((line = reader.readLine()) != null) {
                 counter++;
                 String[] data = line.split("\\|");
-                CreditCardTransaction creditCardTransaction = new CreditCardTransaction(data[0], Double.parseDouble(data[4]));
+                CreditCardTransaction creditCardTransaction = new CreditCardTransaction(data[0], Double.parseDouble(data[3]), Double.parseDouble(data[4]));
                 System.out.println("adding transaction #"+counter + "in the queue >> " + creditCardTransaction);
 //                Thread.sleep(100);
                 creditCardTransactionQueue.put(creditCardTransaction);  // Place transaction in the queue
@@ -77,7 +77,6 @@ public class CreditCardService {
                     CreditCardRepository.updateAccountBalance(connection, creditCardTransaction, version);
                 }
 
-
                 connection.commit();  // Commit transaction
                 System.out.println("Transaction processed for card: " + creditCardTransaction.getCreditCardNumber());
 
@@ -87,11 +86,10 @@ public class CreditCardService {
                 creditCardTransactionQueue.put(creditCardTransaction);
             } catch (SQLException e) {
                 if (e.getErrorCode() == 1062) { // MySQL error code for duplicate entry
-                    System.err.println("Duplicate entry detected: " + e.getMessage());
-                    // Handle duplicate entry error, such as logging or retrying
+                    System.err.println("Duplicate entry detected for credit card number " + creditCardTransaction.getCreditCardNumber());
                 }
                 connection.rollback();
-                e.printStackTrace();
+                creditCardTransactionQueue.put(creditCardTransaction);
             } finally {
                 connection.setAutoCommit(true);
             }
