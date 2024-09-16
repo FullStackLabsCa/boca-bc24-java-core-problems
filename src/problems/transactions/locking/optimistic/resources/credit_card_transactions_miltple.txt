@@ -1,0 +1,7 @@
+Credit_card_number|Card_type|Transaction_type|Amount|Balance
+9782029184388915|MasterCard|buy|10.00|100.00
+9782029184388915|MasterCard|buy|10.00|90.00
+9782029184388915|MasterCard|buy|10.00|80.00
+9782029184388915|MasterCard|buy|10.00|70.00
+9782029184388915|MasterCard|buy|10.00|60.00
+9782029184388915|MasterCard|buy|10.00|50.00
