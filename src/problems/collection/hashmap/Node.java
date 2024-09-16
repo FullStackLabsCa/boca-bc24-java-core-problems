@@ -1,4 +1,4 @@
-package hashmap;
+package collection.hashmap;
 
 public class Node<K, V> {
     public K key;

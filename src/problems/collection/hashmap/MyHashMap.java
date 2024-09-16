@@ -1,6 +1,5 @@
-package hashmap;
+package collection.hashmap;
 
-import java.util.NoSuchElementException;
 import java.util.Objects;
 
 public class MyHashMap<K, V> {

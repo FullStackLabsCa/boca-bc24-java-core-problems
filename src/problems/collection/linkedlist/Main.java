@@ -1,6 +1,4 @@
-package linkedlist;
-
-import arraylist.MyArrayList;
+package collection.linkedlist;
 
 public class Main {
     public static void main(String[] args) {

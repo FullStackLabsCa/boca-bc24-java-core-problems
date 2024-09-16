@@ -1,7 +1,7 @@
 package problems;
 
 
-import arraylist.MyArrayList;
+import collection.arraylist.MyArrayList;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
