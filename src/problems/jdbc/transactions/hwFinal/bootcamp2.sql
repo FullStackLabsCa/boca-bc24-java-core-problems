@@ -31,5 +31,5 @@ CREATE TABLE accounts (
     balance DECIMAL(10, 2),  -- Store balance with two decimal places
     version INT DEFAULT 0  -- Version for optimistic locking
 );
-
+SELECT * FROM accounts WHERE version >= 1;
 DELETE FROM accounts;

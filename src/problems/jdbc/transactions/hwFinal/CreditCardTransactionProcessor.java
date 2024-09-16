@@ -54,8 +54,11 @@ public class CreditCardTransactionProcessor {
                         data[0], data[1], data[2], Double.parseDouble(data[3]), Double.parseDouble(data[4])
                 );
                 System.out.println("Adding transaction #" + counter + " to the queue >> " + transaction);
+                Thread.sleep(10);
                 creditCardTransactionQueue.offer(transaction);
             }
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 }

@@ -78,6 +78,9 @@ public class TransactionConsumer implements Runnable {
             stmt.setDouble(2, transaction.getBalance() - transaction.getAmount());
             stmt.executeUpdate();
             System.out.println("Inserted new account for card: " + transaction.getCreditCardNumber());
+        } catch (Exception e) {
+            connection.rollback();
+            throw new problems.jdbc.transactions.hwFinal.OptimisticLockingException("insert error - optimistic throw error");
         }
     }
 

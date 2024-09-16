@@ -212,14 +212,22 @@ class TransactionConsumer implements Runnable {
 
     // Insert a new account for a credit card number
     private void insertAccount(Connection connection, CreditCardTransaction creditCardTransaction) throws SQLException {
-        connection.setAutoCommit(false);
-        String insertQuery = "INSERT INTO accounts (credit_card_number, balance, version) VALUES (?, ?, 0)";
-        PreparedStatement stmt = connection.prepareStatement(insertQuery);
-        stmt.setString(1, creditCardTransaction.getCreditCardNumber());
-        stmt.setDouble(2, creditCardTransaction.getBalance() - creditCardTransaction.getAmount());
-        stmt.executeUpdate();
-        System.out.println("Inserted new account for card: " + creditCardTransaction.getCreditCardNumber());
-        connection.commit();
+
+        try {
+            connection.setAutoCommit(false);
+            String insertQuery = "INSERT INTO accounts (credit_card_number, balance, version) VALUES (?, ?, 0)";
+            PreparedStatement stmt = connection.prepareStatement(insertQuery);
+            stmt.setString(1, creditCardTransaction.getCreditCardNumber());
+            stmt.setDouble(2, creditCardTransaction.getBalance() - creditCardTransaction.getAmount());
+            stmt.executeUpdate();
+            System.out.println("Inserted new account for card: " + creditCardTransaction.getCreditCardNumber());
+
+            connection.commit();
+        } catch (Exception e) {
+            connection.rollback();
+            throw new OptimisticLockingException("insert error - optimistic throw error");
+        }
+
 //        connection.setAutoCommit(true);
     }
 
