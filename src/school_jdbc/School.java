@@ -1,11 +1,14 @@
 package school_jdbc;
 import java.sql.*;
+
+import static school_jdbc.DatabaseConnectionPool.dataSource;
+
 public class School {
 
      //add course
     public void addCourse(String courseName) {
         String query = "INSERT INTO Courses (course_name) VALUES (?)";
-        try (Connection conn = DatabaseHelper.getConnection();
+        try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
              stmt.setString(1, courseName);
              stmt.executeUpdate();
@@ -23,7 +26,7 @@ public class School {
         String addStudentQuery = "INSERT INTO Students (student_id, student_name) VALUES (?, ?)";
         String enrollQuery = "INSERT INTO Enrollments (course_id, student_id) VALUES (?, ?)";
 
-        try (Connection conn = DatabaseHelper.getConnection();
+        try (Connection conn = dataSource.getConnection();
              PreparedStatement courseStmt = conn.prepareStatement(courseQuery);
              PreparedStatement studentStmt = conn.prepareStatement(studentQuery);
              PreparedStatement addStudentStmt = conn.prepareStatement(addStudentQuery);
@@ -67,7 +70,7 @@ public class School {
         String enrollmentQuery = "SELECT 1 FROM Enrollments WHERE course_id = ? AND student_id = ?";
         String gradeQuery = "INSERT INTO Grades (course_id, student_id, grade) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE grade = ?";
 
-        try (Connection conn = DatabaseHelper.getConnection();
+        try (Connection conn = dataSource.getConnection();
              PreparedStatement courseStmt = conn.prepareStatement(courseQuery);
              PreparedStatement enrollmentStmt = conn.prepareStatement(enrollmentQuery);
              PreparedStatement gradeStmt = conn.prepareStatement(gradeQuery)) {
@@ -109,7 +112,7 @@ public class School {
         // SQL query to retrieve all course IDs and names
         String sql = "SELECT course_id, course_name FROM Courses";
 
-        try (Connection conn = DatabaseHelper.getConnection();
+        try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
 
@@ -130,7 +133,7 @@ public class School {
     //list grades
     public void listGrades() {
         String courseQuery = "select Students.student_name,Grades.grade from Grades Join Students on Students.student_id=Grades.student_id;";
-        try (Connection conn = DatabaseHelper.getConnection();
+        try (Connection conn = dataSource.getConnection();
              PreparedStatement courseStmt = conn.prepareStatement(courseQuery)) {
             // Execute the query
             ResultSet gradeRs = courseStmt.executeQuery();
@@ -152,7 +155,7 @@ public class School {
         String courseQuery = "SELECT course_id FROM Courses WHERE course_name = ?";
         String gradesQuery = "SELECT grade FROM Grades WHERE course_id = ?";
 
-        try (Connection conn = DatabaseHelper.getConnection();
+        try (Connection conn = dataSource.getConnection();
              PreparedStatement courseStmt = conn.prepareStatement(courseQuery);
              PreparedStatement gradesStmt = conn.prepareStatement(gradesQuery)) {
 
