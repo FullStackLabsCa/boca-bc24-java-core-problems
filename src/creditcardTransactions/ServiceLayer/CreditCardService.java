@@ -1,16 +1,14 @@
 package creditcardTransactions.ServiceLayer;
-//Deque Implementation
-//2. Try with slow file reads and understand the flow
-//3. Versioning - reason about it (optimistic locking)
-//4. Unique Constraints to be Observed
-//5. Make the Program OOP
 import creditcardTransactions.Model.CreditCardTransaction;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import static creditcardTransactions.PresentationLayer.CreditCardTransactionProcessorRunner.creditCardTransactionQueue;
+import static creditcardTransactions.PresentationLayer.CreditCardTransactionProcessorRunner.dataSource;
 
 public class CreditCardService {
 
@@ -35,5 +33,15 @@ public class CreditCardService {
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
+    }
+    public static void startMultiThreadedProcessing() {
+        // Step 3: Start multiple consumer threads to process transactions
+        int numberOfThreads = 5;
+        ExecutorService executorService = Executors.newFixedThreadPool(numberOfThreads);
+
+        for (int i = 0; i < numberOfThreads; i++) {
+            executorService.submit(new TransactionConsumer(creditCardTransactionQueue, dataSource));
+        }
+        executorService.shutdown();
     }
 }

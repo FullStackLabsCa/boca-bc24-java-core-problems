@@ -12,12 +12,11 @@ import static creditcardTransactions.RepositoryLayer.CreditCardTransactionRepo.*
 
 // Consumer thread that processes transactions
 public class TransactionConsumer implements Runnable {
-
    // private ArrayBlockingQueue<CreditCardTransaction> creditCardTransactionQueue;
     private LinkedBlockingDeque<CreditCardTransaction> creditCardTransactionQueue;
     private HikariDataSource dataSource;
 
-    public TransactionConsumer(LinkedBlockingDeque<CreditCardTransaction> creditCardTransactionQueue, HikariDataSource dataSource) {
+    public                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  TransactionConsumer(LinkedBlockingDeque<CreditCardTransaction> creditCardTransactionQueue, HikariDataSource dataSource) {
         this.creditCardTransactionQueue = creditCardTransactionQueue;
         this.dataSource = dataSource;
     }
