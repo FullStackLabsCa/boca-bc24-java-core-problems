@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="github.tomcat.slf4j.logback.tomcat10" type="repository">
+    <properties maven-id="com.github.tomcat-slf4j-logback:tomcat10-slf4j-logback:10.1.29" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/tomcat10-slf4j-logback-10.1.29.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

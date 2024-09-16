@@ -11,5 +11,7 @@
     <orderEntry type="library" name="junit" level="project" />
     <orderEntry type="library" name="github.stefanbirkner.system.rules" level="project" />
     <orderEntry type="library" name="mysql-connector-j-9.0.0" level="project" />
+    <orderEntry type="library" name="tpolecat.doobie.hikari_2.12" level="project" />
+    <orderEntry type="library" name="github.tomcat.slf4j.logback.tomcat10" level="project" />
   </component>
 </module>

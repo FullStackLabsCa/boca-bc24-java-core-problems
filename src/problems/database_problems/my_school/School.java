@@ -151,6 +151,8 @@ public class School {
             System.out.println("Error: Message " + sqlException.getMessage());
         }
     }
+
+
 }
 
 
