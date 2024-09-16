@@ -1,4 +1,4 @@
-package jdbc.creditcard.databaseconnection;
+package jdbc.optimisticlocking.databaseconnection;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;

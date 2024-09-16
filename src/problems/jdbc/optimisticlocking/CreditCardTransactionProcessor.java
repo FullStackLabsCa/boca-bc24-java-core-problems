@@ -1,7 +1,6 @@
-package jdbc.creditcard;
+package jdbc.optimisticlocking;
 
-import jdbc.creditcard.repository.CreditCardRepository;
-import jdbc.creditcard.service.CreditCardService;
+import jdbc.optimisticlocking.service.CreditCardService;
 
 public class CreditCardTransactionProcessor {
     public static void main(String[] args) {

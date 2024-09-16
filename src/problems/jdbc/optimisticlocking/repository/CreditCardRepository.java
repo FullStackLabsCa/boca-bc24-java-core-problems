@@ -1,7 +1,7 @@
-package jdbc.creditcard.repository;
+package jdbc.optimisticlocking.repository;
 
-import jdbc.creditcard.exceptions.OptimisticLockingException;
-import jdbc.creditcard.model.CreditCardTransaction;
+import jdbc.optimisticlocking.exceptions.OptimisticLockingException;
+import jdbc.optimisticlocking.model.CreditCardTransaction;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -32,7 +32,7 @@ public class CreditCardRepository {
         stmt.setDouble(2, creditCardTransaction.getBalance() - creditCardTransaction.getAmount());
         stmt.executeUpdate();
         System.out.println("Inserted new account for card: " + creditCardTransaction.getCreditCardNumber());
-        connection.commit();
+//        connection.commit();
     }
 
     // Update the account balance using optimistic locking

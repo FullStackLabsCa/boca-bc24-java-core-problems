@@ -1,4 +1,4 @@
-package jdbc.creditcard.model;
+package jdbc.optimisticlocking.model;
 
 // Transaction POJO
 public class CreditCardTransaction {

@@ -1,7 +1,7 @@
-package jdbc.creditcard.service;
+package jdbc.optimisticlocking.service;
 
 import com.zaxxer.hikari.HikariDataSource;
-import jdbc.creditcard.model.CreditCardTransaction;
+import jdbc.optimisticlocking.model.CreditCardTransaction;
 
 import java.util.concurrent.ArrayBlockingQueue;
 

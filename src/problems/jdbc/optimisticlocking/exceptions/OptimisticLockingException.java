@@ -1,4 +1,4 @@
-package jdbc.creditcard.exceptions;
+package jdbc.optimisticlocking.exceptions;
 
 public class OptimisticLockingException extends RuntimeException {
     public OptimisticLockingException(String message) {

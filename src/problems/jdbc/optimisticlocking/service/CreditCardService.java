@@ -1,10 +1,10 @@
-package jdbc.creditcard.service;
+package jdbc.optimisticlocking.service;
 
 import com.zaxxer.hikari.HikariDataSource;
-import jdbc.creditcard.databaseconnection.DatabaseConnection;
-import jdbc.creditcard.exceptions.OptimisticLockingException;
-import jdbc.creditcard.model.CreditCardTransaction;
-import jdbc.creditcard.repository.CreditCardRepository;
+import jdbc.optimisticlocking.databaseconnection.DatabaseConnection;
+import jdbc.optimisticlocking.exceptions.OptimisticLockingException;
+import jdbc.optimisticlocking.model.CreditCardTransaction;
+import jdbc.optimisticlocking.repository.CreditCardRepository;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -86,6 +86,10 @@ public class CreditCardService {
                 // Put the transaction back in the queue for retry
                 creditCardTransactionQueue.put(creditCardTransaction);
             } catch (SQLException e) {
+                if (e.getErrorCode() == 1062) { // MySQL error code for duplicate entry
+                    System.err.println("Duplicate entry detected: " + e.getMessage());
+                    // Handle duplicate entry error, such as logging or retrying
+                }
                 connection.rollback();
                 e.printStackTrace();
             } finally {
