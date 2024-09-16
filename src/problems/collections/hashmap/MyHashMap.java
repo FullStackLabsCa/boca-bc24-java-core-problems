@@ -116,12 +116,9 @@ public class MyHashMap<K, V> {
         MyHashMap<String, Integer> stringIntegerMyHashMap = new MyHashMap<>();
         stringIntegerMyHashMap.put("Apple", 10);
         stringIntegerMyHashMap.put(null, 10);
-//        HashMap<String, Integer> stringIntegerHashMap = new HashMap<>();
-//        stringIntegerHashMap.put("Apple", 10);
-//        stringIntegerHashMap.put(null, 20);
-//        stringIntegerHashMap.put("Orange", 30);
-//        stringIntegerHashMap.put(null, 40);
-//
-//        stringIntegerHashMap.forEach((k, v) -> System.out.println("key " + k + " value " + v));
+//        stringIntegerMyHashMap.put("Orange", 10);
+//        stringIntegerMyHashMap.put("Litchi", 10);
+//        stringIntegerMyHashMap.put("Mango", 10);
+//        stringIntegerMyHashMap.put("Plum", 10);
     }
 }
