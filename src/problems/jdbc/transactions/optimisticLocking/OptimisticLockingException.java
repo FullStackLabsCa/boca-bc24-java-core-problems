@@ -1,4 +1,4 @@
-package problems.jdbc.transactions.hwFinal;
+package problems.jdbc.transactions.optimisticLocking;
 
 public class OptimisticLockingException extends RuntimeException {
     public OptimisticLockingException(String message) {

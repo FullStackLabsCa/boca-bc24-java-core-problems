@@ -1,4 +1,4 @@
-package problems.jdbc.transactions.hwFinal;
+package problems.jdbc.transactions.optimisticLocking;
 
 public class CreditCardTransaction {
     private String creditCardNumber;

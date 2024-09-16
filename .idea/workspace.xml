@@ -6,12 +6,20 @@
   <component name="ChangeListManager">
     <list default="true" id="d3c9f44b-ff0f-43a9-b850-9b801d0dc95b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/transactions/hwFinal/CreditCardTransactionProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/transactions/hwFinal/CreditCardTransactionProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/transactions/hwFinal/TransactionConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/transactions/hwFinal/TransactionConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/transactions/hwFinal/bootcamp2.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/transactions/hwFinal/bootcamp2.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/transactions/hwFinal/credit_card_transactions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/transactions/hwFinal/credit_card_transactions.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/transactions/practice/CreditCardTransactionProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/transactions/practice/CreditCardTransactionProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/transactions/practice/credit_card_transactions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/transactions/practice/credit_card_transactions.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/transactions/hwFinal/CreditCardTransaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/transactions/optimisticLocking/CreditCardTransaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/transactions/hwFinal/CreditCardTransactionProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/transactions/optimisticLocking/CreditCardTransactionProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/transactions/hwFinal/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/transactions/optimisticLocking/DatabaseManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/transactions/hwFinal/OptimisticLockingException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/transactions/optimisticLocking/OptimisticLockingException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/transactions/hwFinal/TransactionConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/transactions/optimisticLocking/TransactionConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/transactions/hwFinal/bootcamp2.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/transactions/optimisticLocking/bootcamp2.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/transactions/hwFinal/credit_card_transactions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/transactions/optimisticLocking/credit_card_transactions.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/transactions/locking_optimistic/CreditCardTransaction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/transactions/locking_optimistic/CreditCardTransactionProcessor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/transactions/locking_optimistic/DatabaseManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/transactions/locking_optimistic/TransactionConsumer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/transactions/locking_optimistic/TransactionFileReader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/transactions/locking_optimistic/TransactionProcessor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/transactions/locking_optimistic/credit_card_transactions.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

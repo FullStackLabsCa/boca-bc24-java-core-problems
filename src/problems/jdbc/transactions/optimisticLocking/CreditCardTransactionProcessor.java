@@ -1,4 +1,4 @@
-package problems.jdbc.transactions.hwFinal;
+package problems.jdbc.transactions.optimisticLocking;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

@@ -1,4 +1,4 @@
-package problems.jdbc.transactions.hwFinal;
+package problems.jdbc.transactions.optimisticLocking;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -80,7 +80,7 @@ public class TransactionConsumer implements Runnable {
             System.out.println("Inserted new account for card: " + transaction.getCreditCardNumber());
         } catch (Exception e) {
             connection.rollback();
-            throw new problems.jdbc.transactions.hwFinal.OptimisticLockingException("insert error - optimistic throw error");
+            throw new problems.jdbc.transactions.optimisticLocking.OptimisticLockingException("insert error - optimistic throw error");
         }
     }
 
