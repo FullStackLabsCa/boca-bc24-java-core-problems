@@ -33,8 +33,6 @@ public class CreditCardTransactionRepository {
         stmt.setDouble(2, creditCardTransaction.getBalance() - creditCardTransaction.getAmount());
         stmt.executeUpdate();
         System.out.println("Inserted new account for card: " + creditCardTransaction.getCreditCardNumber());
-        connection.commit();
-        connection.setAutoCommit(true);
     }
 
     // Update the account balance using optimistic locking
@@ -53,6 +51,5 @@ public class CreditCardTransactionRepository {
             connection.setAutoCommit(true);
             throw new OptimisticLockingException("Optimistic locking failed, retrying transaction...");
         }
-        connection.commit();
     }
 }

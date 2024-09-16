@@ -12,6 +12,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -25,7 +26,7 @@ public class CreditCardTransactionService {
         HikariDataSource dataSource = DatabaseConnection.configureHikariCP();
 
         // Step 2: Read file and load transactions into ArrayBlockingQueue
-        CreditCardTransactionService.readTransactionFileAndWriteToQueue("/Users/Anant.Jain/source/student/boca-bc24-java-core-problems/src/problems/jdbc/optimisticlocking/credit_card_transactions.txt");
+        CreditCardTransactionService.readTransactionFileAndWriteToQueue("/Users/Anant.Jain/source/student/boca-bc24-java-core-problems/src/problems/jdbc/optimisticlocking/assets/credit_card_transactions.txt");
 
         CreditCardTransactionService.startMultiThreadedProcessing(dataSource);
     }
@@ -51,7 +52,7 @@ public class CreditCardTransactionService {
 
     public static void startMultiThreadedProcessing(HikariDataSource dataSource) {
         // Step 3: Start multiple consumer threads to process transactions
-        int numberOfThreads = 5;
+        int numberOfThreads = 2;
         ExecutorService executorService = Executors.newFixedThreadPool(numberOfThreads);
 
         for (int i = 0; i < numberOfThreads; i++) {
@@ -74,10 +75,10 @@ public class CreditCardTransactionService {
                 if (version == -1) {
                     // Step 2: If no account exists, insert it
                     CreditCardTransactionRepository.insertAccount(connection, creditCardTransaction);
+                } else {
+                    // Step 3: Now update with optimistic locking
+                    CreditCardTransactionRepository.updateAccountBalance(connection, creditCardTransaction, version);
                 }
-
-                // Step 3: Now update with optimistic locking
-                CreditCardTransactionRepository.updateAccountBalance(connection, creditCardTransaction, version);
 
                 connection.commit();  // Commit transaction
                 System.out.println("Transaction processed for card: " + creditCardTransaction.getCreditCardNumber());
@@ -86,8 +87,12 @@ public class CreditCardTransactionService {
                 System.err.println(e.getMessage());
                 // Put the transaction back in the queue for retry
                 creditCardTransactionQueue.putFirst(creditCardTransaction);
+            } catch (SQLIntegrityConstraintViolationException e) {
+                connection.rollback();
+                creditCardTransactionQueue.putFirst(creditCardTransaction);
             } catch (SQLException e) {
                 connection.rollback();
+                creditCardTransactionQueue.putFirst(creditCardTransaction);
                 e.printStackTrace();
             } finally {
                 connection.setAutoCommit(true);

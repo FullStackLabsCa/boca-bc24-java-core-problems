@@ -1000,3 +1000,5 @@ Credit_card_number|Card_type|Transaction_type|Amount|Balance
 1488467538290279|MasterCard|buy|43.78|4780.13
 8865484378866824|MasterCard|buy|214.17|1834.21
 2266985174567867|MasterCard|buy|214.17|1834.21
+2266985174567867|MasterCard|buy|214.17|1834.21
+2266985174567867|MasterCard|buy|214.17|1834.21
