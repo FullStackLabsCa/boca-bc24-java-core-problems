@@ -1,4 +1,4 @@
-package SchoolExampleWithJdbc;
+package schoolExampleWithJdbc;
 
 import java.util.Scanner;
 

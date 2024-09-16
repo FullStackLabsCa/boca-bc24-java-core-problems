@@ -1,4 +1,4 @@
-package PropogationExamples;
+package propogationExamples;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

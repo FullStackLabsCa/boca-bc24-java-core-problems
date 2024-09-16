@@ -1,4 +1,4 @@
-package transactions;
+package creditcardTransactions.Model;
 
 // Transaction POJO
 public class CreditCardTransaction {
