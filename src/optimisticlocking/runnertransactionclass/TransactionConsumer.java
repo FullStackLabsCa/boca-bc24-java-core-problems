@@ -1,7 +1,7 @@
-package runnertransactionclass;
+package optimisticlocking.runnertransactionclass;
 
 import com.zaxxer.hikari.HikariDataSource;
-import utility.OptimisticLockingException;
+import optimisticlocking.utility.OptimisticLockingException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

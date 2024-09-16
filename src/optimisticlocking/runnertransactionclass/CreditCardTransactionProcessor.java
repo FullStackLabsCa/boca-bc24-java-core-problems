@@ -1,7 +1,7 @@
-package runnertransactionclass;
+package optimisticlocking.runnertransactionclass;
 
 import com.zaxxer.hikari.HikariDataSource;
-import datasource.DataSourceTransaction;
+import optimisticlocking.datasource.DataSourceTransaction;
 
 import java.io.*;
 import java.util.concurrent.ExecutorService;
@@ -13,7 +13,7 @@ public class CreditCardTransactionProcessor {
     private static final HikariDataSource dataSource = DataSourceTransaction.createDataSource();
 
     public static void main(String[] args) {
-        String filePath = "/Users/Sukhvir.Kaur/Source/boca-bc24-java-core-problems/src/utility/credit_card_transactions.txt";
+        String filePath = "/Users/Sukhvir.Kaur/Source/boca-bc24-java-core-problems/src/optimisticlocking/utility/credit_card_transactions.txt";
         readTransactionFileAndWriteToQueue(filePath);
         startMultiThreadedProcessing();
     }

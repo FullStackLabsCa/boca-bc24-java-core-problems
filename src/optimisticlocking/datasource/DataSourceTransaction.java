@@ -1,4 +1,4 @@
-package datasource;
+package optimisticlocking.datasource;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;

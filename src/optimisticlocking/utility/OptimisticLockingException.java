@@ -1,4 +1,4 @@
-package utility;
+package optimisticlocking.utility;
 
 public class OptimisticLockingException extends RuntimeException {
     public OptimisticLockingException(String message) {

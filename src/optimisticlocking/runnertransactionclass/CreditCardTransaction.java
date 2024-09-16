@@ -1,4 +1,4 @@
-package runnertransactionclass;
+package optimisticlocking.runnertransactionclass;
 
 public class CreditCardTransaction {
     private final String creditCardNumber;
