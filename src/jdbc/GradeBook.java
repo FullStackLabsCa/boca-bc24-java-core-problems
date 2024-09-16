@@ -21,7 +21,7 @@ public class GradeBook {
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, String.valueOf(grade));
             stmt.executeUpdate();
-            System.out.println( grade + "' added.");
+            System.out.println( grade + " added.");
         } catch (SQLException e) {
             System.out.println("Error adding grade in gradebook: " + e.getMessage());
         }
