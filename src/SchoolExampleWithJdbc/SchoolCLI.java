@@ -39,9 +39,6 @@ public class SchoolCLI {
                 case "list_grades":
                     school.listGrades();
                     break;
-                case "report_unique_students":
-                    school.uniqueStudents();
-                    break;
                 case "report_average_score":
                     school.averageGrades(command[1]);
                     break;
