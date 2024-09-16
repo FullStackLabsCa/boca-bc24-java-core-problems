@@ -10,6 +10,8 @@ public class School<S, G extends Number> {
         this.courseToStudentGradeMap = new HashMap<>();
     }
 
+
+
     public void addCourse(String course) {
         courseToStudentGradeMap.put(course, new Course<>());
         System.out.println("Course '" + course + "' added.");
@@ -145,6 +147,10 @@ public class School<S, G extends Number> {
 
     public static void main(String[] args) {
         School<Integer, Integer> school = new School<>();
+
+        Scanner scanner = new Scanner(System.in);
+
+
         school.processCommand("add_course Math101");
         school.processCommand("add_course Physics102");
         school.processCommand("enroll_student Math101 12345");
