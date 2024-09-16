@@ -1,4 +1,4 @@
-package optimistic_lock.process;
+package JDBC.optimistic_lock.process;
 
 import com.zaxxer.hikari.HikariDataSource;
 
@@ -6,8 +6,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Deque;
-import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
 
 public class TransactionConsumer implements Runnable {

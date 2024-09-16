@@ -1,4 +1,4 @@
-package optimistic_lock.launcher;
+package JDBC.optimistic_lock.launcher;
 
 import static optimistic_lock.process.CreditCardTransactionProcessor.*;
 

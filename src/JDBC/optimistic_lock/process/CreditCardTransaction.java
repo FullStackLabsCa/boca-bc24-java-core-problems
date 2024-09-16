@@ -1,4 +1,4 @@
-package optimistic_lock.process;
+package JDBC.optimistic_lock.process;
 
 // Transaction POJO
 public class CreditCardTransaction {

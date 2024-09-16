@@ -1,11 +1,11 @@
-package optimistic_lock.process;
+package JDBC.optimistic_lock.process;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
-import java.io.*;
-import java.util.Deque;
-import java.util.concurrent.ArrayBlockingQueue;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingDeque;
