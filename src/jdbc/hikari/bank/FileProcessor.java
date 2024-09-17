@@ -3,10 +3,10 @@ package jdbc.hikari.bank;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.LinkedBlockingDeque;
 
 public class FileProcessor {
-    public static ArrayBlockingQueue<CreditCardTransaction> readTransactionFileAndWriteToQueue(String filePath, ArrayBlockingQueue<CreditCardTransaction> creditCardTransactionQueue) {
+    public static LinkedBlockingDeque<CreditCardTransaction> readTransactionFileAndWriteToQueue(String filePath, LinkedBlockingDeque<CreditCardTransaction> creditCardTransactionQueue) {
         int counter = 0;
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;

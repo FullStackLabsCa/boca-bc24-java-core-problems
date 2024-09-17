@@ -38,6 +38,7 @@ public class TransactionRepository {
     // Update the account balance using optimistic locking
     public static void updateAccountBalance(Connection connection, CreditCardTransaction creditCardTransaction, int version) throws SQLException {
         connection.setAutoCommit(false);
+        String getBalanceQuery = "SELECT balance from accounts ";
         String updateQuery = "UPDATE accounts SET balance = ?, version = version + 1 WHERE credit_card_number = ? AND version = ?";
         PreparedStatement stmt = connection.prepareStatement(updateQuery);
         stmt.setDouble(1, creditCardTransaction.getBalance() - creditCardTransaction.getAmount());

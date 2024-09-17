@@ -4,13 +4,13 @@ import com.zaxxer.hikari.HikariDataSource;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.LinkedBlockingDeque;
 
 class TransactionConsumerService implements Runnable {
-    public ArrayBlockingQueue<CreditCardTransaction> creditCardTransactionQueue;
+    public static LinkedBlockingDeque<CreditCardTransaction> creditCardTransactionQueue;
     private HikariDataSource dataSource;
 
-    public TransactionConsumerService(ArrayBlockingQueue<CreditCardTransaction> creditCardTransactionQueue, HikariDataSource dataSource) {
+    public TransactionConsumerService(LinkedBlockingDeque<CreditCardTransaction> creditCardTransactionQueue, HikariDataSource dataSource) {
         this.creditCardTransactionQueue = creditCardTransactionQueue;
         this.dataSource = dataSource;
     }
@@ -52,7 +52,7 @@ class TransactionConsumerService implements Runnable {
             } catch (OptimisticLockingException e) {
                 System.err.println(e.getMessage());
                 // Put the transaction back in the queue for retry
-                creditCardTransactionQueue.put(creditCardTransaction);
+                creditCardTransactionQueue.putFirst(creditCardTransaction);
             } catch (SQLException e) {
                 connection.rollback();
                 e.printStackTrace();
