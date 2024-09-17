@@ -1,4 +1,4 @@
-package jdbc.hikari.bank;
+package problems.hikari.bank;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

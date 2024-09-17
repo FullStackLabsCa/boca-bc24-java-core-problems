@@ -1,11 +1,11 @@
-package jdbc.hikari.bank;
+package problems.hikari.bank;
 
-import jdbc.hikari.DatabaseConnectionPool;
+import problems.hikari.DatabaseConnectionPool;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import static jdbc.hikari.bank.MainRunner.creditCardTransactionQueue;
+import static problems.hikari.bank.MainRunner.creditCardTransactionQueue;
 
 public class MultiThread {
     public static void startMultiThreadedProcessing() throws Exception {

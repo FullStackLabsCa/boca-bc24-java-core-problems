@@ -1,4 +1,4 @@
-package jdbc.hikari;
+package problems.hikari;
 
 //package jdbc.transactions.locking.optimistic;
 

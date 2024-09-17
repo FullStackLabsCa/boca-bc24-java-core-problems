@@ -1,4 +1,4 @@
-package jdbc.hikari.bank;
+package problems.hikari.bank;
 
 import java.util.concurrent.LinkedBlockingDeque;
 

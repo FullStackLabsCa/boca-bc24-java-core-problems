@@ -1,4 +1,4 @@
-package jdbc.hikari.bank;
+package problems.hikari.bank;
 
 import com.zaxxer.hikari.HikariDataSource;
 
