@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a7c31fdb-21cc-4f11-a5be-d0ff7b587f29" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/arrayproblems/MergeArray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loopproblems/DuplicateInArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/loopproblems/DuplicateInArray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/FindMaximumInArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/FindMaximumInArray.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +61,7 @@
     &quot;Application.SumOfEvenNumber.executor&quot;: &quot;Run&quot;,
     &quot;Application.SumOfOddNumber.executor&quot;: &quot;Run&quot;,
     &quot;Application.WithoutSubtraction.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
     &quot;JUnit.CalculatorTest.testBasicOperations.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.CourseTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.CourseTest.testAssignGradeToNonEnrolledStudent.executor&quot;: &quot;Run&quot;,
@@ -76,12 +78,15 @@
     &quot;JUnit.MyArrayListTest.testGetElementAtOutOfBoundsIndex.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.MyArrayListTest.testRemoveElements.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.SchoolTest.executor&quot;: &quot;Run&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;feature/gaka-bc24-java-core-problems&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/Gagandeep.Kaur/source/students/boca-bc24-java-core-problems&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
@@ -97,13 +102,26 @@
       <recent name="genericsproblems" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Calculator">
+  <component name="RunManager" selected="Application.SortedArray">
     <configuration name="Calculator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="problems.Calculator" />
       <module name="boca-bc24-java-core-problems" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="problems.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SortedArray" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="arrayproblems.SortedArray" />
+      <module name="boca-bc24-java-core-problems" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="arrayproblems.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -176,10 +194,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.SortedArray" />
+        <item itemvalue="Application.Calculator" />
         <item itemvalue="JUnit.MyArrayListTest.testAddElements" />
         <item itemvalue="JUnit.MyArrayListTest.testRemoveElements" />
         <item itemvalue="JUnit.CourseTest" />
-        <item itemvalue="Application.Calculator" />
       </list>
     </recent_temporary>
   </component>
