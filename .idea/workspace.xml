@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a7c31fdb-21cc-4f11-a5be-d0ff7b587f29" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/arrayproblems/MergeArray.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/arrayproblems/MergeArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/arrayproblems/MergeArray.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/problems/FindMaximumInArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/FindMaximumInArray.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
