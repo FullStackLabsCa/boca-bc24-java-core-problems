@@ -5,5 +5,6 @@ public class ValidateFieldLength {
         if (fields.length != 5) {
             throw new IllegalArgumentException("Invalid number of fields in line");
         }
+
     }
 }

@@ -13,16 +13,16 @@ import java.util.List;
 import static problems.trading_problem.utility.ValidateFieldLength.validateFieldsInTradeLine;
 
 public class TradesRunner {
-    private static final double errorThreshold = 0.25; // 25%
-    private static final int batchSize = 2;
-
     public static void main(String[] args) {
-        String insertDataQuery = "INSERT INTO Trades (trade_id, ticker_symbol, quantity, price, trade_date) VALUES (?,?,?,?,?)";
+
+        final double errorThreshold = 0.25; // 25%
+        final int batchSize = 25;
         int errorCounter = 0;
         int totalRows = 0;
         int successfulInserts = 0;
         List<String> errorMessages = new ArrayList<>();
         int batchCounter = 0;
+        String insertDataQuery = "INSERT INTO Trades (trade_id, ticker_symbol, quantity, price, trade_date) VALUES (?,?,?,?,?)";
 
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(new File("/Users/Karan.Rana/source/student/boca-bc24-java-core-problems/src/problems/trading_problem/trade_data.csv")));
              BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("/Users/Karan.Rana/source/student/boca-bc24-java-core-problems/src/problems/trading_problem/error_log.txt", true));
@@ -45,36 +45,36 @@ public class TradesRunner {
 
                     // Extract and validate each field
                     String trade_id = fields[0];
+                    String ticker_symbol = fields[1];
+                    String quantityField = fields[2];
+                    String priceField = fields[3];
+                    String date = fields[4];
+
                     if (trade_id.isEmpty()) {
                         throw new IllegalArgumentException("Trade ID is missing");
                     }
 
-                    String ticker_symbol = fields[1];
                     if (ticker_symbol.isEmpty()) {
                         throw new IllegalArgumentException("Ticker symbol is missing");
                     }
 
-                    String quantityField = fields[2];
                     if (quantityField.isEmpty()) {
                         throw new IllegalArgumentException("Quantity is missing");
                     }
                     int quantity = Integer.parseInt(quantityField);
 
-                    String priceField = fields[3];
                     if (priceField.isEmpty()) {
                         throw new IllegalArgumentException("Price is missing");
                     }
                     double price = Double.parseDouble(priceField);
 
-                    String date = fields[4];
                     if (date.isEmpty()) {
                         throw new IllegalArgumentException("Date is missing");
                     }
                     //validate the date format
-                    if(!DateFormatValidator.isValidDate(date)){
+                    if (!DateFormatValidator.isValidDate(date)) {
                         throw new IllegalArgumentException("Date Format is not valid.");
                     }
-
 
 
                     // Prepare the statement with the data
@@ -89,9 +89,10 @@ public class TradesRunner {
                     batchCounter++;
                     success = true;
 
+
                 } catch (IllegalArgumentException e) {
                     // Log the error, original line, and exception message
-                    String errorMessage = "----> Error Log #" + (errorCounter + 1) + ": Failed to process entry: " + currentLine + "\nException: " + e.getMessage();
+                    String errorMessage = "----> Error Log #" + (errorCounter + 1) + ": Failed to process entry: " + currentLine + "  Exception: " + e.getMessage();
                     bufferedWriter.write(errorMessage);
                     bufferedWriter.newLine();
                     errorMessages.add(errorMessage);
@@ -103,7 +104,6 @@ public class TradesRunner {
                     batchCounter = 0;
                 }
             }
-
             // Execute any remaining batch
             if (batchCounter > 0) {
                 successfulInserts += executeBatch(insertDataStatement, connection, bufferedWriter, errorMessages);
@@ -130,7 +130,6 @@ public class TradesRunner {
     }
 
 
-    // Revised executeBatch method to track successful inserts and flush logs frequently
     private static int executeBatch(PreparedStatement insertDataStatement, Connection connection, BufferedWriter bufferedWriter, List<String> errorMessages) {
         int successfulInserts = 0;
         try {

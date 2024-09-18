@@ -1,12 +1,6 @@
-----> Error Log #1: Failed to process entry: T0001,AAPL,564,336.01,2024-05-
-Exception: Date Format is not valid.
-----> Error Log #2: Failed to process entry: T0002,BABA,613,,2023-12-06
-Exception: Price is missing
-----> Error Log #3: Failed to process entry: T0005,,693,298.86,2024-01-15
-Exception: Ticker symbol is missing
-----> Error Log #4: Failed to process entry: T0006,BABA,,429.01,2023-09-24
-Exception: Quantity is missing
-----> Error Log #5: Failed to process entry: T0007,GOOGL,471,,2023-11-13
-Exception: Price is missing
-----> Error Log #6: Failed to process entry: ,MSFT,477,32.13,2024-05-19
-Exception: Trade ID is missing
+----> Error Log #1: Failed to process entry: T0001,AAPL,564,336.01,2024-05-  Exception: Date Format is not valid.
+----> Error Log #2: Failed to process entry: T0002,BABA,613,,2023-12-06  Exception: Price is missing
+----> Error Log #3: Failed to process entry: T0005,,693,298.86,2024-01-15  Exception: Ticker symbol is missing
+----> Error Log #4: Failed to process entry: T0006,BABA,,429.01,2023-09-24  Exception: Quantity is missing
+----> Error Log #5: Failed to process entry: T0007,GOOGL,471,,2023-11-13  Exception: Price is missing
+----> Error Log #6: Failed to process entry: ,MSFT,477,32.13,2024-05-19  Exception: Trade ID is missing
