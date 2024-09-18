@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3c9f44b-ff0f-43a9-b850-9b801d0dc95b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeOperations/UserInputCMD.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeOperations/oldFiles/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tradeOperations/HitErrorsThresholdException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeOperations/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/TradeValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeOperations/oldFiles/TradeValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/UserInputCMD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeOperations/UserInputCMD.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,6 +129,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="problems.tradeOperations" />
       <recent name="problems.hashmap" />
       <recent name="problems" />
       <recent name="problems.generics.dhruv" />
