@@ -5,17 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3c9f44b-ff0f-43a9-b850-9b801d0dc95b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/learningMaterials/SQL/SQLNotes.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/selfPractice/fileIO/FileCreation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/selfPractice/fileIO/FileCreation2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/selfPractice/northwind/img.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/selfPractice/northwind/img_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/selfPractice/northwind/northwindSQL.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeOperations/DatabaseManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeOperations/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeOperations/TradeValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tradeOperations/UserInputCMD.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tradeOperations/oldFiles/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/transactions/practice/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/transactions/practice/DatabaseManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeOperations/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/TradeValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeOperations/oldFiles/TradeValidator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,14 +153,14 @@
       <recent name="problems.jdbc.transactions.locking_optimistic" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="problems.tradeOperations.oldFiles" />
       <recent name="problems.tradeOperations" />
       <recent name="problems.selfPractice.fileIO" />
       <recent name="problems.jdbc.transactions.hwFinal" />
       <recent name="problems.jdbc.transactions.practice" />
-      <recent name="problems.generics.databaseCourse" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Generic_DB_Course_Class">
+  <component name="RunManager">
     <configuration name="Generic_DB_Course_Class" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="problems.generics.databaseCourse.Generic_DB_Course_Class" />
       <module name="boca-bc24-java-core-problems" />

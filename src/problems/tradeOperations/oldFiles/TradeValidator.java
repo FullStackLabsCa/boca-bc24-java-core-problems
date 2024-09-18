@@ -1,4 +1,4 @@
-package problems.tradeOperations;
+package problems.tradeOperations.oldFiles;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,9 +16,9 @@ public class TradeValidator {
     }
 
     // Validation - Quantity
-    public boolean isValidQuantity (Integer quantity){
+    public boolean isValidQuantity (String quantity){
         try {
-            Integer.parseInt(String.valueOf(quantity));
+            Integer.parseInt(quantity);
             return true;
         } catch (NumberFormatException e) {
             return false;
@@ -26,9 +26,9 @@ public class TradeValidator {
     }
 
     // Validation - Price
-    public boolean isValidPrice (Double price){
+    public boolean isValidPrice (String price){
         try {
-            Double.parseDouble(String.valueOf(price));
+            Double.parseDouble(price);
             return true;
         } catch (NumberFormatException e) {
             return false;
