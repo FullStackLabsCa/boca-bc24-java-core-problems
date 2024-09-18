@@ -2,7 +2,7 @@ package problems.jdbc.transactions.practice;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-import problems.jdbc.transactions.locking_optimistic.CreditCardTransaction;
+//import problems.jdbc.transactions.locking_optimistic.CreditCardTransaction;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
