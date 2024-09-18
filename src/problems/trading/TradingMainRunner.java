@@ -11,6 +11,6 @@ public class TradingMainRunner {
         String filePath = "/Users/Gaurav.Manchanda/src/fullstack/trade_data_faulty.csv";
         tradingTransactionDeQueue = FileProcessor.readTransactionFileAndWriteToQueue(filePath, tradingTransactionDeQueue);
 
-        TradeRepository.insertQuery(tradingTransactionDeQueue);
+//        TradeRepository.insertQuery(tradingTransactionDeQueue);
     }
 }
