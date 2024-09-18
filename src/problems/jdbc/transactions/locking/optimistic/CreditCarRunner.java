@@ -1,7 +1,8 @@
-package practice.jdbc.transactions.locking.optimistic;
+package problems.jdbc.transactions.locking.optimistic;
 
 import static practice.jdbc.transactions.locking.optimistic.CreditCardTransactionHikariPool.configureHikariCP;
-import static practice.jdbc.transactions.locking.optimistic.CreditCardTransactionProcessor.*;
+import static practice.jdbc.transactions.locking.optimistic.CreditCardTransactionProcessor.startFileReadingThread;
+import static practice.jdbc.transactions.locking.optimistic.CreditCardTransactionProcessor.startMultiThreadedProcessing;
 
 public class CreditCarRunner {
     public static void main(String[] args) {
@@ -15,7 +16,6 @@ public class CreditCarRunner {
         startMultiThreadedProcessing();
 
         //step 4:
-        TransactionConsumer transactionConsumer = new TransactionConsumer();
-        transactionConsumer.run();
+
     }
 }

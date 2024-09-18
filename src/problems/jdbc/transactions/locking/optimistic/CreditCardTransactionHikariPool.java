@@ -1,4 +1,4 @@
-package practice.jdbc.transactions.locking.optimistic;
+package problems.jdbc.transactions.locking.optimistic;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;

@@ -1,4 +1,4 @@
-package practice.jdbc.transactions.locking.optimistic;
+package problems.jdbc.transactions.locking.optimistic;
 
 import com.zaxxer.hikari.HikariDataSource;
 
@@ -17,9 +17,6 @@ class TransactionConsumer implements Runnable {
     public TransactionConsumer(BlockingDeque<CreditCardTransaction> creditCardTransactionQueue, HikariDataSource dataSource) {
         this.creditCardTransactionQueue = creditCardTransactionQueue;
         this.dataSource = dataSource;
-    }
-
-    public TransactionConsumer() {
     }
 
     @Override

@@ -1,16 +1,21 @@
-package practice.jdbc.transactions.locking.optimistic;
+package problems.jdbc.transactions.locking.optimistic;
 
 import com.zaxxer.hikari.HikariDataSource;
 
-import java.io.*;
-import java.util.concurrent.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.concurrent.BlockingDeque;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingDeque;
 
 public class CreditCardTransactionProcessor {
     // Define a shared LinkedBlockingDeque with a maximum capacity
     public static BlockingDeque<CreditCardTransaction> creditCardTransactionQueue = new LinkedBlockingDeque<>(5000);
     private static HikariDataSource dataSource;
 
-    public static void startFileReadingThread(String filePath) {
+    static void startFileReadingThread(String filePath) {
         Thread fileReadingThread = new Thread(() -> {
             try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
                 String line;
@@ -32,7 +37,7 @@ public class CreditCardTransactionProcessor {
         fileReadingThread.start();
     }
 
-    public static void startMultiThreadedProcessing() {
+    static void startMultiThreadedProcessing() {
         // Step 3: Start multiple consumer threads to process transactions
         int numberOfThreads = 5;
         ExecutorService executorService = Executors.newFixedThreadPool(numberOfThreads);
