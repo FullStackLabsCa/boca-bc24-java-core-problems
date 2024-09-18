@@ -9,6 +9,5 @@ public class MainRunner {
         MultiThread.startMultiThreadedProcessing();
         //Read file and load transactions into ArrayBlockingQueue
         creditCardTransactionQueue = FileProcessor.readTransactionFileAndWriteToQueue("/Users/Gaurav.Manchanda/src/fullstack/boca-bc24-java-core-problems/src/jdbc/hikari/bank/credit_card_transactions.txt", creditCardTransactionQueue);
-
     }
 }
