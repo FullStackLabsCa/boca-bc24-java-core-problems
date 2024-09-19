@@ -12,10 +12,10 @@ public class TradeParser {
     public static void main(String[] args) throws SQLException, IOException {
 
         getThresholdFromCommandLine();
-
+//        getFileNameFromCommandLine();
         String filePath = "trades_sample_1000.csv";
         configureHikariCP();
-        Logger logger = configureLogger();
+        configureLogger();
         readTradesFileAndWriteToDatabase(filePath, logger);
     }
 

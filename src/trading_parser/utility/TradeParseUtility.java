@@ -21,11 +21,12 @@ public class TradeParseUtility {
 
     public static HikariDataSource dataSource;
 
+    public static Logger logger;
     //Utility
     public static Logger configureLogger() throws IOException {
         FileHandler fileHandler = new FileHandler("error_log.txt");
         fileHandler.setFormatter(new CustomFormatter()); // Use a simple text format
-        Logger logger = Logger.getLogger(TradeParser.class.getName());
+        logger = Logger.getLogger(TradeParser.class.getName());
         logger.addHandler(fileHandler);
         logger.setUseParentHandlers(false);
         return logger;
