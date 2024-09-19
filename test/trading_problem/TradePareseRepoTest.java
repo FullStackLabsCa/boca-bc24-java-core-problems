@@ -1,10 +1,14 @@
+package trading_problem;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import trading_parser.presentation.TradeParser;
 import trading_parser.repo.TradeParserRepo;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 import static org.junit.Assert.assertEquals;
 

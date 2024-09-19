@@ -3,7 +3,8 @@ package trading_parser.presentation;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import static trading_parser.service.TradeParserEngine.*;
+import static trading_parser.service.TradeParserEngine.getThresholdAndFilePathFromCommandLine;
+import static trading_parser.service.TradeParserEngine.readTradesFileAndWriteToDatabase;
 import static trading_parser.utility.TradeParseUtility.*;
 
 public class TradeParser {

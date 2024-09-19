@@ -7,13 +7,14 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static trading_parser.service.TradeParserEngine.*;
+import static trading_parser.service.TradeParserEngine.successfullInsertsCount;
+import static trading_parser.service.TradeParserEngine.udpateInsertionLogs;
 
 public class TradeParserRepo {
-
+    public static int batchSize = 5;
     //Repo
     public static void insertTrades(Connection connection, Logger logger, List<Trade> tradesList) throws SQLException {
-        int originalSizeOfTable = getTableSize(connection);
+        int originalSizeOfTable = getTradeTableSize(connection);
         int batchNumber=0;
         try{
             String insertionQuery = """
@@ -53,9 +54,8 @@ public class TradeParserRepo {
         }
     }
 
-
     //Repo
-    public static int getTableSize(Connection connection){
+    public static int getTradeTableSize(Connection connection){
         try{
             String query = "select count(*) as total_trades from Trades;";
             PreparedStatement psQuery = connection.prepareStatement(query);
@@ -67,6 +67,26 @@ public class TradeParserRepo {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }return 0;
+    }
+
+    public static boolean tradesBusinessValidation(Connection conn, Trade trade) {
+        try {
+            String lookupQuery = "select 1 from SecuritiesReference where symbol = ?";
+            PreparedStatement psLookUp = conn.prepareStatement(lookupQuery);
+
+            psLookUp.setString(1, trade.getTicker_symbol());
+
+            ResultSet rsLookUp = psLookUp.executeQuery();
+            if (rsLookUp.next()) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
     }
 
 }
