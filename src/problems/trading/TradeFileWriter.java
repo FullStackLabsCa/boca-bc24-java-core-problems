@@ -1,5 +1,7 @@
 package problems.trading;
 
+import problems.trading.database.DatabaseConnectionPool;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -23,27 +25,35 @@ public class TradeFileWriter {
 
             for (TradeTransaction tradeTransaction : tradingTransactionDeQueue) {
                 String symbol = "";
+                //checking the security symbol
                 ResultSet resultSet = getResultSetForLookupQuery(tradeTransaction, lookupStatement);
                 if (resultSet.next()) {
                     symbol = resultSet.getString("symbol");
                 }
 
                 if (symbol.equals(tradeTransaction.getTickerSymbol()) && tradeTransaction.getTickerSymbol() != "") {
+                    //preparing batch
                     preparingStatementForBatch(tradeTransaction, statement);
                     statement.addBatch();
                 } else {
                     try (BufferedWriter writer = new BufferedWriter(new FileWriter(logFilePath, true))) {
-                        writer.write("Error while inserting trade to DB >>>"+String.valueOf(tradeTransaction));
+                        TradeService.errorCount++;
+                        writer.write("Error while inserting trade to DB >>>" + String.valueOf(tradeTransaction));
                         writer.newLine();
                     } catch (IOException e) {
                         e.getMessage();
-//                        errorLengthInQueue++;
+                        TradeService.errorCount++;
                     }
                 }
+                //if threshold limit increases then throwing an exception
+                TradeService.checkingThreshold(tradingTransactionDeQueue);
             }
 
             statement.executeBatch();
             connection.commit();
+
+            //printing summary
+            printSummary(tradingTransactionDeQueue);
             connection.setAutoCommit(true);
         } catch (SQLException e) {
             connection.rollback();
@@ -52,6 +62,13 @@ public class TradeFileWriter {
             connection.rollback();
             throw new RuntimeException(e);
         }
+    }
+
+    private static void printSummary(LinkedBlockingDeque<TradeTransaction> tradingTransactionDeQueue) {
+        System.out.println("Total No of rows enter in the file: " + tradingTransactionDeQueue.size());
+        System.out.println("No of rows enter in the DB: " + (tradingTransactionDeQueue.size() - TradeService.errorCount));
+        System.err.println("No of rows failed to enter in the DB: " + TradeService.errorCount);
+        System.out.println("Data added to database successfully");
     }
 
     private static ResultSet getResultSetForLookupQuery(TradeTransaction tradeTransaction, PreparedStatement lookupStatement) throws SQLException {

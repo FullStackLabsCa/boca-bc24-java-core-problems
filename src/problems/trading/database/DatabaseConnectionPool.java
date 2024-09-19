@@ -1,11 +1,9 @@
-package problems.trading;
+package problems.trading.database;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
 
 public class DatabaseConnectionPool {
 

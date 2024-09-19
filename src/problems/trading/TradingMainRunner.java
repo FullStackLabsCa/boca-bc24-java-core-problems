@@ -11,6 +11,7 @@ public class TradingMainRunner {
         Scanner scanner = new Scanner(System.in);
         String fileName = "";
 
+        //checking file name from the user input
         fileName = CheckUserInputForFile.checkFileName(isFileNameValid, fileName, scanner);
 
         // read file and load data into LinkedBlockingDeque
@@ -18,6 +19,7 @@ public class TradingMainRunner {
         TradeFileReader.checkThresholdValue();
         tradingTransactionDeQueue = TradeFileReader.readTransactionFileAndWriteToQueue(filePath, tradingTransactionDeQueue);
 
+        //writing to the DB
         TradeFileWriter.insertQuery(tradingTransactionDeQueue);
     }
 }

@@ -1,5 +1,7 @@
 package problems.trading;
 
+import problems.trading.exceptions.InvalidInputException;
+
 import java.io.*;
 import java.sql.Date;
 import java.util.Scanner;
@@ -7,8 +9,6 @@ import java.util.concurrent.LinkedBlockingDeque;
 
 public class TradeFileReader {
     private static int counter = 0;
-    private static int errorLengthInQueue = 0;
-    private static double errorThreshold = 0;
     private static boolean isValid = false;
     private static String logFilePath = "/Users/Gaurav.Manchanda/Sources/Student-mode/error_log.txt";
 
@@ -19,8 +19,8 @@ public class TradeFileReader {
             try {
                 System.out.print("Enter a threshold value: ");
                 String s = scanner.nextLine();
-                errorThreshold = Double.parseDouble(s);
-                if (errorThreshold < 0 || errorThreshold > 100) {
+                TradeService.errorThreshold = Double.parseDouble(s);
+                if (TradeService.errorThreshold < 0 || TradeService.errorThreshold > 100) {
                     throw new InvalidInputException("Not valid input. Please enter a valid threshold limit in between 1 to 100");
                 }
                 inputValid = true;
@@ -56,7 +56,7 @@ public class TradeFileReader {
                     } catch (IOException ex) {
                         ex.getMessage();
                     }
-                    errorLengthInQueue++;
+                    TradeService.errorCount++;
                     continue;
                 }
 
@@ -71,9 +71,7 @@ public class TradeFileReader {
             }
 
             //if threshold limit increases then throwing an exception
-            if (errorLengthInQueue > (errorThreshold * tradingTransactionDeQueue.size()) / 100) {
-                throw new HitErrorsThresholdException("Errors exceeded threshold limit");
-            }
+            TradeService.checkingThreshold(tradingTransactionDeQueue);
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
@@ -83,8 +81,8 @@ public class TradeFileReader {
     private static boolean validateCSVFile(String[] data) {
         isValid = true;
         for (String trade : data) {
-            if (trade == null || trade.trim().isEmpty() || trade.contains("INVALID")) {
-                errorLengthInQueue++;
+            if (trade == null || trade.trim().isEmpty()) {
+                TradeService.errorCount++;
                 isValid = false;
                 System.out.println("error in the line >>" + counter);
                 return isValid;
