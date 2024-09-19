@@ -1,6 +1,7 @@
 package fileIoTradeAssignment;
 
-import java.io.IOException;
+import java.io.FileNotFoundException;
+
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -17,13 +18,16 @@ public class TradeRunner {
 
         // Process trades from the specified file
         try {
-            processor.readFile();
+            processor.readTradeFile();
             processor.tradesInsertionMaker();
-        } catch (IOException | SQLException e) {
+        } catch (FileNotFoundException | SQLException e) {
             System.err.println("An error occurred while processing the file: " + e.getMessage());
+        } catch (HitReadFileErrorsThresholdException e) {
+            System.out.println(e.getMessage());
         }
 
-        // Close the scanner at the end
         scanner.close();
     }
 }
+
+
