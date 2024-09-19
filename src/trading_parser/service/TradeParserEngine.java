@@ -3,10 +3,9 @@ package trading_parser.service;
 import trading_parser.model.Trade;
 import trading_parser.utility.InvalidThresholdValueException;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -32,9 +31,23 @@ public class TradeParserEngine {
     public static int successfullInsertsCount = 0, failedInsertsCount = 0;
     public static double threshold;
 
+    public static String getFileNameFromCommandLine(Scanner scanner){
+        boolean validFileName = false;
+        do {
+            System.out.println("Please enter the file path: ");
+            String filePath = scanner.next();
+            if (Files.exists(Paths.get(filePath))) {
+                return filePath;
+            }
+            System.out.println("Invalid File Path!!!");
+        } while (!validFileName);
+
+        return null;
+    }
+
     //Service
-    public static void getThresholdFromCommandLine() {
-        try (Scanner scanner = new Scanner(System.in);) {
+    public static String getThresholdAndFilePathFromCommandLine() {
+        try (Scanner scanner = new Scanner(System.in)) {
 
             boolean thresholdValid = false;
             do {
@@ -47,6 +60,8 @@ public class TradeParserEngine {
                     System.out.println("User Input Required Again");
                 }
             } while (!thresholdValid);
+
+            return getFileNameFromCommandLine(scanner);
         }
     }
 
