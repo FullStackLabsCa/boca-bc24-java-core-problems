@@ -4,12 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a728a69e-e34c-4470-8a4f-1ba09e798df3" name="Changes" comment="minor fix for handling duplicate entry.">
+    <list default="true" id="a728a69e-e34c-4470-8a4f-1ba09e798df3" name="Changes" comment="Minor fix">
+      <change afterPath="$PROJECT_DIR$/src/problems/ArrayBlockingQueueExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/jdbc/trademangement/TradeRunner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/jdbc/trademangement/databaseconnection/DatabaseConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/jdbc/trademangement/exceptions/HitErrorsThresholdException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/jdbc/trademangement/model/TradeData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/jdbc/trademangement/repository/TradeRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/jdbc/trademangement/service/TradeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/jdbc/trademangement/utils/Utils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/problems/calculator/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/calculator/Calculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/optimisticlocking/CreditCardTransactionProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/optimisticlocking/CreditCardTransactionProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/optimisticlocking/service/CreditCardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/optimisticlocking/service/CreditCardService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/optimisticlocking/service/TransactionConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/optimisticlocking/service/TransactionConsumer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/problems/calculator/CalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/calculator/AdvancedCalculatorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,20 +54,31 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.ArrayBlockingQueueExample.executor": "Run",
     "Application.CreditCardTransactionProcessor.executor": "Run",
+    "Application.TradeRunner.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "feature/kivi-bc24-java-core-problems",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/Kiran.Virani/reactivestax/source/boca-bc24-java-core-problems",
+    "last_opened_file_path": "/Users/Kiran.Virani/reactivestax/source/boca-bc24-java-core-problems/src/problems/jdbc/trademangement/service",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.3137931"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/problems/jdbc/trademangement/service" />
+      <recent name="$PROJECT_DIR$/src/problems/jdbc/trademangement/databaseconnection" />
+      <recent name="$PROJECT_DIR$/src/problems/jdbc/trademangement" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/problems/jdbc/trademangement/logs" />
       <recent name="$PROJECT_DIR$/src/problems/jdbc/creditcard" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="jdbc.trademangement" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -106,7 +122,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726507926452</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Minor fix">
+      <option name="closed" value="true" />
+      <created>1726517900905</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1726517900905</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -114,6 +138,17 @@
     <MESSAGE value="credit card transaction with transaction and thread" />
     <MESSAGE value="name change for package" />
     <MESSAGE value="minor fix for handling duplicate entry." />
-    <option name="LAST_COMMIT_MESSAGE" value="minor fix for handling duplicate entry." />
+    <MESSAGE value="Minor fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor fix" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NumberFormatException" package="java.lang" />
+          <option name="timeStamp" value="63" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
