@@ -14,14 +14,16 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import static problems.trading.DataValidation.checkForValidNumberOfColumns;
+import static problems.trading.DataValidation.checkForValidQuantity;
 import static problems.trading.TradingProcessor.dataSource;
 
 public class TradingService {
 
-    public static void setupDBConnectionAndRunFileReading(Connection connection) {
-//        connectToDatabase();
-        readTradingFileAndWriteToFile("/Users/Shifa.Kajal/source/student/boca-bc24-java-core-problems/src/problems/trading/trade_data1.csv");
-
+    public static void setupDBConnectionAndRunFileReading(Connection connection, String filePath) {
+       // readTradingFileAndWriteToFile("/Users/Shifa.Kajal/source/student/boca-bc24-java-core-problems/src/problems/trading/trades_sample_1000.csv");
+        //readTradingFileAndWriteToFile("/Users/Shifa.Kajal/source/student/boca-bc24-java-core-problems/src/problems/trading/trade_data1.csv");
+        readTradingFileAndWriteToFile(filePath);
     }
 
     //connecting to database
@@ -46,24 +48,30 @@ public class TradingService {
                 counter++;
                 String[] data = line.split(",");
 
-                //Validation - check for the correct number of fields
-                if(data.length != 5){
-                    System.out.println("Incorrect number of fields. Five fields are expected" + line);
-                //continue;
+
+                //validation for number of columns
+                if(!checkForValidNumberOfColumns(line)) {
+                    System.out.println("Invalid number of columns");
                 }
 
+                //validation for integer type for quantity
+                if(!checkForValidQuantity(line)){
+
+                }
+
+                //validation for decimal type for
                 //trimming to remove any white spaces
                 TradingValues tradingValues = new TradingValues(
                         data[0].trim(),
                         data[1].trim(),
-                        Integer.parseInt(data[2].trim()),
-                        Double.parseDouble(data[3].trim()),
-                        LocalDate.parse(data[4]));
+                        data[2].trim(),
+                        Integer.parseInt(data[3].trim()),
+                        Double.parseDouble(data[4].trim()),
+                        LocalDate.parse(data[5]));
 //                System.out.println(tradingValues);
                 batch.add(tradingValues);
 //                System.out.println("adding trading " + counter + " >> " + tradingValues);
 //                Thread.sleep(100);
-//                creditCardTransactionQueue.put(creditCardTransaction);  // Place transaction in the queue
             }
             TradingRepository.prepareStatements(dataSource, batch);
 

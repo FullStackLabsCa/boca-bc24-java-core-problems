@@ -6,6 +6,7 @@ import problems.trading.repository.TradingRepository;
 import problems.trading.services.TradingService;
 import problems.trading.tradingmodel.TradingValues;
 
+import java.io.File;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,12 +22,15 @@ public class TradingProcessor {
     public  static  HikariDataSource dataSource;
     public static List<TradingValues> batch = new ArrayList<>();
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the file path");
+        String filePath = scanner.nextLine();
+       // File tradingFile = new File(filePath);
         dataSource = TradingDatabaseConnection.configureHikariCP();
         Connection connection = TradingService.connectToDatabase();
-        setupDBConnectionAndRunFileReading(connection);
-//    Scanner scanner = new Scanner(System.in);
-//        System.out.println("Enter the file path");
-//        String filePath = scanner.nextLine();
+        setupDBConnectionAndRunFileReading(connection, filePath);
+
+
 
 
     }

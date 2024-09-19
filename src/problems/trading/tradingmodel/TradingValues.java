@@ -4,13 +4,15 @@ import java.time.LocalDate;
 
 public class TradingValues {
     private String trade_id;
+    private String trade_identifier;
     private String ticker_symbol;
     private int quantity;
     private Double price;
     private LocalDate trade_date;
 
-    public TradingValues(String trade_id, String ticker_symbol, int quantity, double price, LocalDate trade_date) {
+    public TradingValues(String trade_id, String trade_identifier,String ticker_symbol, int quantity, double price, LocalDate trade_date) {
         this.trade_id = trade_id;
+        this.trade_identifier = trade_identifier;
         this.ticker_symbol = ticker_symbol;
         this.quantity = quantity;
         this.price = price;
@@ -20,6 +22,10 @@ public class TradingValues {
     // Getters
     public String getTradeId() {
         return trade_id;
+    }
+
+    public String getTradeIdentifier(){
+        return trade_identifier;
     }
 
     public String getTickerSymbol() {
@@ -42,6 +48,7 @@ public class TradingValues {
     public String toString() {
         return "TradingValues{" +
                 "trade_id='" + trade_id + '\'' +
+                "trade_identifier" + trade_identifier + '\'' +
                 ", ticker_symbol='" + ticker_symbol + '\'' +
                 ", quantity=" + quantity +
                 ", price=" + price +
