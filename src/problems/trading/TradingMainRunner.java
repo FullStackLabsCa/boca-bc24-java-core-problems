@@ -8,7 +8,8 @@ public class TradingMainRunner {
 
     public static void main(String[] args) throws Exception {
         // read file and load data into LinkedBlockingDeque
-        String filePath = "/Users/Gaurav.Manchanda/src/fullstack/trade_data_faulty.csv";
+        String filePath = "/Users/Gaurav.Manchanda/Sources/Student-mode/trade_data_faulty.csv";
+        FileProcessor.checkThresholdValue();
         tradingTransactionDeQueue = FileProcessor.readTransactionFileAndWriteToQueue(filePath, tradingTransactionDeQueue);
 
 //        TradeRepository.insertQuery(tradingTransactionDeQueue);

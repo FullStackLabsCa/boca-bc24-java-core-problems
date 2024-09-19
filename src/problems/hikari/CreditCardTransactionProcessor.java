@@ -24,7 +24,7 @@ public class CreditCardTransactionProcessor {
         configureHikariCP();
 
         // Step 2: Read file and load transactions into ArrayBlockingQueue
-        readTransactionFileAndWriteToQueue("/Users/Gaurav.Manchanda/src/fullstack/boca-bc24-java-core-problems/src/jdbc/hikari/bank/credit_card_transactions.txt");
+        readTransactionFileAndWriteToQueue("/Users/Gaurav.Manchanda/Sources/Student-mode/boca-bc24-java-core-problems/src/problems/hikari/bank/credit_card_transactions.txt");
 
         startMultiThreadedProcessing();
     }
