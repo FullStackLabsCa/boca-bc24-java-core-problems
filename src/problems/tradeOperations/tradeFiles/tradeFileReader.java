@@ -1,9 +1,7 @@
-package problems.tradeOperations;
+package problems.tradeOperations.tradeFiles;
 
 
 import problems.tradeOperations.exceptionFiles.HitErrorsThresholdException;
-import problems.tradeOperations.manager.DatabaseManager;
-import problems.tradeOperations.manager.ProcessBatchInsert;
 
 import java.io.*;
 import java.text.ParseException;
@@ -12,23 +10,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class UserInputCMD {
+public class tradeFileReader {
 
-    public UserInputCMD(DatabaseManager databaseManager, double effectiveThreshold) {
+    public tradeFileReader(double effectiveThreshold) {
 
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Please give me trade file path");
         System.out.println("/Users/Jay.Shah/Downloads/tradeFile.csv");
         System.out.println("/Users/Jay.Shah/Downloads/trades_sample_1000.csv");
+        System.out.println("src/problems/tradeOperations/sourcesFiles/trades_sample.csv");
         String filePath = scanner.nextLine();
         File file = new File(filePath);
 
-        readFile(filePath, databaseManager, effectiveThreshold);
+        readFile(filePath, effectiveThreshold);
 
     }
 
-    public static void readFile(String filePath, DatabaseManager databaseManager, Double effectiveThreshold) {
+    public static void readFile(String filePath, Double effectiveThreshold) {
 
         List<String[]> validTrades = new ArrayList<>();
         int totalRows = 0;
@@ -38,7 +37,7 @@ public class UserInputCMD {
         FileWriter errorLogWriter = null;
 
         try {
-            errorLogWriter = new FileWriter("src/problems/tradeOperations/extraUsedFiles/error_log.txt", true);
+            errorLogWriter = new FileWriter("src/problems/tradeOperations/extraUsedFiles/error_read_log.txt", true);
 
             try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
                 String line;
@@ -118,9 +117,10 @@ public class UserInputCMD {
                 if (errorCount > totalRows * (effectiveThreshold/100)) {
                     throw new HitErrorsThresholdException("Error threshold exceeded: " + errorCount + " out of " + totalRows + " rows failed.");
                 }
+
                 // Pass valid trades for batch insertion
-                ProcessBatchInsert pbi = new ProcessBatchInsert();
-                int[] result = pbi.processBatchInsert(validTrades, databaseManager);
+                tradeFileWriter pbi = new tradeFileWriter();
+                int[] result = pbi.processBatchInsert(validTrades);
 //                int[] result = processBatchInsert(validTrades, databaseManager);
                 int insertedCount = result[0];
                 int failedCount = result[1];
@@ -129,7 +129,7 @@ public class UserInputCMD {
                 System.out.println("Summary:");
                 System.out.println("Total rows processed: " + totalRows);
                 System.out.println("Valid rows inserted: " + insertedCount);
-                System.out.println("Failed rows due to errors: " + errorCount);
+                System.out.println("Failed rows due to errors: " + errorCount);;
                 System.out.println("Failed rows during insertion: " + failedCount);
 
             } catch (HitErrorsThresholdException e) {

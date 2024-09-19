@@ -1,27 +1,59 @@
-package problems.tradeOperations.manager;
+package problems.tradeOperations.tradeFiles;
 
+import problems.tradeOperations.manager.DatabaseManager;
+
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
-public class ProcessBatchInsert {
+public class tradeFileWriter {
 
-     public int[] processBatchInsert(List<String[]> validTrades, DatabaseManager databaseManager) {
+    public int[] processBatchInsert(List<String[]> validTrades) {
+
+        DatabaseManager databaseManager = new DatabaseManager();
+        databaseManager.configureHikariCP();
+        // Test connection
+        try (Connection conn = databaseManager.getConnection()) {
+            if (conn != null) {
+                System.out.println("Connected to the database successfully!");
+            }
+        } catch (SQLException e) {
+            System.out.println("Failed to connect to the database: " + e.getMessage());
+        }
+
+
         String insertQuery = "INSERT INTO Trades (trade_id, trade_identifier, ticker_symbol, quantity, price, trade_date) VALUES (?, ?, ?, ?, ?,?)";
 
         Connection connection = null;
         PreparedStatement statement = null;
         int successfulInserts = 0;
         int failedInserts = 0;
+        FileWriter errorLogWriter = null;
 
         try {
             connection = databaseManager.getConnection();
             statement = connection.prepareStatement(insertQuery);
+            errorLogWriter = new FileWriter("src/problems/tradeOperations/extraUsedFiles/error_write_log.txt", true);
 
             connection.setAutoCommit(false); // Start transaction
 
             for (String[] fields : validTrades) {
+
+                String tickerSymbol = fields[2];
+                // Validate security symbol
+                if (!isValidSecurity(tickerSymbol, connection)) {
+                    // Log invalid symbol error
+                    String errorMessage = "Invalid security symbol: " + tickerSymbol;
+
+                    errorLogWriter.write(errorMessage + System.lineSeparator());
+                    errorLogWriter.flush(); // Ensure immediate write
+                    // Increment error count
+                    failedInserts++;
+                    continue;
+                }
                 statement.setString(1, fields[0]);
                 statement.setString(2, fields[1]);
                 statement.setString(3, fields[2]);
@@ -53,6 +85,8 @@ public class ProcessBatchInsert {
         } catch (SQLException e) {
 
             System.out.println("Error with database connection: " + e.getMessage());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         } finally {
             // Ensure resources are closed
             try {
@@ -67,6 +101,14 @@ public class ProcessBatchInsert {
             }
         }
         return new int[]{successfulInserts, failedInserts};
+    }
+
+    private boolean isValidSecurity(String symbol, Connection connection) throws SQLException {
+        String lookupQuery = "SELECT 1 FROM SecuritiesReference WHERE symbol = ?";
+        try (PreparedStatement lookupStmt = connection.prepareStatement(lookupQuery)) {
+            lookupStmt.setString(1, symbol);
+            return lookupStmt.executeQuery().next();
+        }
     }
 
 }

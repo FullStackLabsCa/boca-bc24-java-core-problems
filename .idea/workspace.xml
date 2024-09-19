@@ -5,38 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3c9f44b-ff0f-43a9-b850-9b801d0dc95b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/problems/selfPractice/oldPracticeTradeOperationsProgram/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeOperations/ThresholdInput.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeOperations/exceptionFiles/InvalidThresholdValueRuntimeException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeOperations/extraUsedFiles/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeOperations/extraUsedFiles/error_log.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeOperations/manager/LoadCSVToDB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeOperations/manager/ProcessBatchInsert.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeOperations/manager/ThresholdManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeOperations/sourcesFiles/CMD.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeOperations/sourcesFiles/note1.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeOperations/sourcesFiles/query.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeOperations/sourcesFiles/securities_reference.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeOperations/sourcesFiles/tradeFile.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeOperations/sourcesFiles/tradeFileN.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeOperations/sourcesFiles/trades_sample_1000.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tradeOperations/extraUsedFiles/error_read_log.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tradeOperations/sourcesFiles/trades_sample.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeOperations/manager/DatabaseManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/HitErrorsThresholdException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeOperations/exceptionFiles/HitErrorsThresholdException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/InvalidThresholdValueException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeOperations/exceptionFiles/InvalidThresholdValueException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeOperations/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/UserInputCMD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeOperations/UserInputCMD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/error_log.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/oldFiles/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/oldFiles/TradeValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/selfPractice/oldPracticeTradeOperationsProgram/TradeValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/oldFiles/UserInputCMD_old.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/selfPractice/oldPracticeTradeOperationsProgram/UserInputCMD_old.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/oldFiles/finalProgram/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/selfPractice/oldPracticeTradeOperationsProgram/finalProgram/DatabaseConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/oldFiles/finalProgram/HitErrorsThresholdException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/selfPractice/oldPracticeTradeOperationsProgram/finalProgram/HitErrorsThresholdException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/oldFiles/finalProgram/MainRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/selfPractice/oldPracticeTradeOperationsProgram/finalProgram/MainRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/oldFiles/finalProgram/TradeDatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/selfPractice/oldPracticeTradeOperationsProgram/finalProgram/TradeDatabaseManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/oldFiles/finalProgram/TradeFileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/selfPractice/oldPracticeTradeOperationsProgram/finalProgram/TradeFileReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/oldFiles/finalProgram/TradeValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/selfPractice/oldPracticeTradeOperationsProgram/finalProgram/TradeValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/oldFiles/finalProgram/UserInputCMD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/selfPractice/oldPracticeTradeOperationsProgram/finalProgram/UserInputCMD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/ThresholdInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeOperations/ThresholdInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/UserInputCMD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeOperations/tradeFiles/tradeFileReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/extraUsedFiles/error_log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeOperations/extraUsedFiles/error_log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/manager/ProcessBatchInsert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeOperations/tradeFiles/tradeFileWriter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,7 +166,7 @@
       <recent name="problems.jdbc.transactions.hwFinal" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Generic_DB_Course_Class">
+  <component name="RunManager">
     <configuration name="Generic_DB_Course_Class" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="problems.generics.databaseCourse.Generic_DB_Course_Class" />
       <module name="boca-bc24-java-core-problems" />

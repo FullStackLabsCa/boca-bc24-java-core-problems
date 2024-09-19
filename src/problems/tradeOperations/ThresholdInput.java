@@ -13,7 +13,6 @@ public class ThresholdInput {
         // Handle error threshold
         try {
             ThresholdManager thresholdManager = new ThresholdManager(args);
-//            double effectiveThreshold;
             Scanner scanner = new Scanner(System.in);
             boolean validInput = false;
 
@@ -32,14 +31,6 @@ public class ThresholdInput {
                         thresholdManager = new ThresholdManager(userThreshold);
                         effectiveThreshold = thresholdManager.getErrorThreshold();
                         validInput = true;
-//                        if (userThreshold >= 1 && userThreshold <= 100) {
-//                            // If valid, create a new ThresholdManager with the user input
-//                            thresholdManager = new ThresholdManager(userThreshold);
-//                            effectiveThreshold = thresholdManager.getErrorThreshold();
-//                            break; // Exit the loop
-//                        } else {
-//                            System.out.println("Threshold must be between 1 and 100. Please try again.");
-//                        }
                     } catch (InvalidThresholdValueException e) {
                         System.out.println(e.getMessage());
                     }catch (NumberFormatException e) {
