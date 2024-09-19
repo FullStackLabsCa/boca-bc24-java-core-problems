@@ -8,7 +8,7 @@ import java.time.LocalDate;
 
 public class TradeFaultyDataGenerator {
     public static void main(String[] args) {
-        String filePath = "trade_data_faulty.csv"; // Path to save the CSV file
+        String filePath = "trade_data.csv"; // Path to save the CSV file
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
             // Write header with the new column 'trade_identifier'
@@ -16,7 +16,7 @@ public class TradeFaultyDataGenerator {
             writer.newLine();
 
             // Generate sample trade data
-            for (int i = 1; i <= 100; i++) { // Example: generate 100 trades
+            for (int i = 1; i <= 1000; i++) { // Example: generate 100 trades
                 String tradeId = "T" + i; // trade_id as T1, T2, ...
                 String tradeIdentifier;
                 String tickerSymbol;
