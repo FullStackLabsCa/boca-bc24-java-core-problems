@@ -15,7 +15,8 @@ public class TradingMainRunner {
         fileName = CheckUserInputForFile.checkFileName(isFileNameValid, fileName, scanner);
 
         // read file and load data into LinkedBlockingDeque
-        String filePath = "/Users/Gaurav.Manchanda/Sources/Student-mode/" + fileName + ".csv";
+
+        String filePath = "/Users/Gaurav.Manchanda/src/boca-bc24-java-core-problems/" + fileName + ".csv";
         TradeFileReader.checkThresholdValue();
         tradingTransactionDeQueue = TradeFileReader.readTransactionFileAndWriteToQueue(filePath, tradingTransactionDeQueue);
 

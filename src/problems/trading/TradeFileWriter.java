@@ -13,7 +13,7 @@ import java.util.concurrent.LinkedBlockingDeque;
 
 public class TradeFileWriter {
     public static void insertQuery(LinkedBlockingDeque<TradeTransaction> tradingTransactionDeQueue) throws Exception {
-        String logFilePath = "/Users/Gaurav.Manchanda/Sources/Student-mode/error_log.txt";
+        String logFilePath = "/Users/Gaurav.Manchanda/src/boca-bc24-java-core-problems/error_log.txt";
         Connection connection = DatabaseConnectionPool.getConnection();
         try {
             connection.setAutoCommit(false);
