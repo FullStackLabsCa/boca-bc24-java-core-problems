@@ -68,7 +68,7 @@ public class TradeParserEngine {
     }
 
     //Service
-    public static void readTradesFile(String filePath, Logger logger) throws SQLException {
+    public static void readTradesFileAndWriteToDatabase(String filePath, Logger logger) throws SQLException {
 
         //Read transactions from file
         try (Scanner fileReader = new Scanner(new BufferedReader(new FileReader(filePath)));

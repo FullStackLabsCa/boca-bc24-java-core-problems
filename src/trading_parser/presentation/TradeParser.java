@@ -4,10 +4,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Logger;
 
-import static trading_parser.service.TradeParserEngine.getThresholdFromCommandLine;
-import static trading_parser.service.TradeParserEngine.readTradesFile;
-import static trading_parser.utility.TradeParseUtility.configureHikariCP;
-import static trading_parser.utility.TradeParseUtility.configureLogger;
+import static trading_parser.service.TradeParserEngine.*;
+import static trading_parser.utility.TradeParseUtility.*;
 
 public class TradeParser {
 
@@ -18,7 +16,7 @@ public class TradeParser {
         String filePath = "trades_sample_1000.csv";
         configureHikariCP();
         Logger logger = configureLogger();
-        readTradesFile(filePath, logger);
+        readTradesFileAndWriteToDatabase(filePath, logger);
     }
 
 }
