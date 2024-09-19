@@ -11,5 +11,6 @@
     <orderEntry type="library" name="junit" level="project" />
     <orderEntry type="library" name="github.stefanbirkner.system.rules" level="project" />
     <orderEntry type="library" name="mysql-connector-j-9.0.0" level="project" />
+    <orderEntry type="library" name="zaxxer.HikariCP" level="project" />
   </component>
 </module>

@@ -6,7 +6,7 @@ import java.sql.*;
 
 public class AccountService {
 private Account account;
-private Transaction transaction;
+
 private Connection connection;
 
     public AccountService(Connection connection) {
@@ -37,6 +37,20 @@ private Connection connection;
                 double newBalance = balance - amount;
                 account.updateAccountBalance( newBalance, version);
                 connection.commit();
+                try (Connection logConnection = DatabaseHelper.getConnection()) {
+                    logConnection.setAutoCommit(false);
+
+                    Transaction transaction = new Transaction();
+                    Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
+                    transaction.logTransaction(accountId, newBalance, currentTimestamp);
+
+                    // Commit the transaction log
+                    logConnection.commit();
+                } catch (SQLException logEx) {
+                    System.err.println(Thread.currentThread().getName() + ": Error logging transaction: " + logEx.getMessage());
+                    throw logEx; // Rethrow to handle the error appropriately
+                }
+
                 System.out.println(Thread.currentThread().getName() + ": Withdrawal completed successfully.");
             } catch (Exception e) {
                 try {

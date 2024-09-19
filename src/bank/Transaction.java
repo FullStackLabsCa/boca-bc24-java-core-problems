@@ -54,12 +54,12 @@ public class Transaction {
     public void setAmount(double amount) {
         this.amount = amount;
     }
-    public void logTransaction(Transaction transaction){
-        String sql = "INSERT INTO transactions (account_id, amount, transaction_timestamp) VALUES (?, ?, ?)";
+    public void logTransaction(int accountId, double amount, Timestamp timestamp){
+        String sql = "INSERT INTO transaction (account_id, timestamp, balance) VALUES (?, ?, ?)";
         try(PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-            preparedStatement.setInt(1,this.accountId);
-            preparedStatement.setDouble(2,this.amount);
-            preparedStatement.setTimestamp(3,this.timestamp);
+            preparedStatement.setInt(1,accountId);
+            preparedStatement.setTimestamp(2,timestamp);
+            preparedStatement.setDouble(3,amount);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
