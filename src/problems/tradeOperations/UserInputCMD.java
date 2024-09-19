@@ -1,10 +1,11 @@
 package problems.tradeOperations;
 
 
+import problems.tradeOperations.exceptionFiles.HitErrorsThresholdException;
+import problems.tradeOperations.manager.DatabaseManager;
+import problems.tradeOperations.manager.ProcessBatchInsert;
+
 import java.io.*;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -13,22 +14,21 @@ import java.util.Scanner;
 
 public class UserInputCMD {
 
-    public UserInputCMD(DatabaseManager databaseManager) {
+    public UserInputCMD(DatabaseManager databaseManager, double effectiveThreshold) {
 
         Scanner scanner = new Scanner(System.in);
 
-
-
         System.out.println("Please give me trade file path");
         System.out.println("/Users/Jay.Shah/Downloads/tradeFile.csv");
+        System.out.println("/Users/Jay.Shah/Downloads/trades_sample_1000.csv");
         String filePath = scanner.nextLine();
         File file = new File(filePath);
 
-        readFile(filePath, databaseManager);
+        readFile(filePath, databaseManager, effectiveThreshold);
 
     }
 
-    public static void readFile(String filePath, DatabaseManager databaseManager) {
+    public static void readFile(String filePath, DatabaseManager databaseManager, Double effectiveThreshold) {
 
         List<String[]> validTrades = new ArrayList<>();
         int totalRows = 0;
@@ -38,7 +38,7 @@ public class UserInputCMD {
         FileWriter errorLogWriter = null;
 
         try {
-            errorLogWriter = new FileWriter("src/problems/tradeOperations/error_log.txt", true);
+            errorLogWriter = new FileWriter("src/problems/tradeOperations/extraUsedFiles/error_log.txt", true);
 
             try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
                 String line;
@@ -51,7 +51,7 @@ public class UserInputCMD {
                     }
 
                     String[] fields = line.split(",");
-                    if (fields.length != 5) {
+                    if (fields.length != 6) {
                         String errorMessage = "Invalid row (Incorrect number of fields): " + line;
                         System.out.println(errorMessage);
                         if (errorLogWriter != null) {
@@ -65,9 +65,9 @@ public class UserInputCMD {
                     // validation - quantity (integer)
                     int quantity;
                     try {
-                        quantity = Integer.parseInt(fields[2]);
+                        quantity = Integer.parseInt(fields[3]);
                     } catch (NumberFormatException e) {
-                        String errorMessage = "Invalid quantity (not an integer): " + fields[2] + " in row: " + line;
+                        String errorMessage = "Invalid quantity (not an integer): " + fields[3] + " in row: " + line;
                         System.out.println(errorMessage);
                         if (errorLogWriter != null) {
                             errorLogWriter.write(errorMessage + System.lineSeparator());
@@ -80,9 +80,9 @@ public class UserInputCMD {
                     // validation - price (decimal)
                     double price;
                     try {
-                        price = Double.parseDouble(fields[3]);
+                        price = Double.parseDouble(fields[4]);
                     } catch (NumberFormatException e) {
-                        String errorMessage = "Invalid price (not a decimal): " + fields[3] + " in row: " + line;
+                        String errorMessage = "Invalid price (not a decimal): " + fields[4] + " in row: " + line;
                         System.out.println(errorMessage);
                         if (errorLogWriter != null) {
                             errorLogWriter.write(errorMessage + System.lineSeparator());
@@ -96,9 +96,9 @@ public class UserInputCMD {
                     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                     dateFormat.setLenient(false);
                     try {
-                        dateFormat.parse(fields[4]);
+                        dateFormat.parse(fields[5]);
                     } catch (ParseException e) {
-                        String errorMessage = "Invalid trade date (not in yyyy-MM-dd format): " + fields[4] + " in row: " + line;
+                        String errorMessage = "Invalid trade date (not in yyyy-MM-dd format): " + fields[5] + " in row: " + line;
                         System.out.println(errorMessage);
                         if (errorLogWriter != null) {
                             errorLogWriter.write(errorMessage + System.lineSeparator());
@@ -112,11 +112,16 @@ public class UserInputCMD {
                     validTrades.add(fields);
                     validRowCount++;
                 }
-                if (errorCount > totalRows * 0.25) {
+//                if (errorCount > totalRows * 0.25) {
+                System.out.println("********* effectiveThreshold: " + ((effectiveThreshold/100)));
+                System.out.println("********* effectiveThreshold-line: " + (totalRows * (effectiveThreshold/100)));
+                if (errorCount > totalRows * (effectiveThreshold/100)) {
                     throw new HitErrorsThresholdException("Error threshold exceeded: " + errorCount + " out of " + totalRows + " rows failed.");
                 }
                 // Pass valid trades for batch insertion
-                int[] result = processBatchInsert(validTrades, databaseManager);
+                ProcessBatchInsert pbi = new ProcessBatchInsert();
+                int[] result = pbi.processBatchInsert(validTrades, databaseManager);
+//                int[] result = processBatchInsert(validTrades, databaseManager);
                 int insertedCount = result[0];
                 int failedCount = result[1];
 
@@ -155,66 +160,4 @@ public class UserInputCMD {
             System.out.println("Error initializing error log file: " + e.getMessage());
         }
     }
-
-    public static int[] processBatchInsert(List<String[]> validTrades, DatabaseManager databaseManager) {
-        String insertQuery = "INSERT INTO Trades (trade_id, ticker_symbol, quantity, price, trade_date) VALUES (?, ?, ?, ?, ?)";
-
-        Connection connection = null;
-        PreparedStatement statement = null;
-        int successfulInserts = 0;
-        int failedInserts = 0;
-
-        try {
-            connection = databaseManager.getConnection();
-            statement = connection.prepareStatement(insertQuery);
-
-            connection.setAutoCommit(false); // Start transaction
-
-            for (String[] fields : validTrades) {
-                statement.setString(1, fields[0]);
-                statement.setString(2, fields[1]);
-                statement.setInt(3, Integer.parseInt(fields[2]));
-                statement.setDouble(4, Double.parseDouble(fields[3]));
-                statement.setString(5, fields[4]);
-
-                statement.addBatch();
-            }
-            try {
-                int[] result = statement.executeBatch();
-                connection.commit(); // Commit transaction if all statements succeed
-
-                for (int i : result) {
-                    if (i >= 0) { // Check for successful insertions
-                        successfulInserts++;
-                    } else {
-                        failedInserts++;
-                    }
-                }
-                System.out.println("Inserted valid trades into the database.");
-            } catch (SQLException batchException) {
-                // Rollback if there is an error during batch execution
-                connection.rollback();
-                System.out.println("Failed to insert trade into the database: " + batchException.getMessage());
-                failedInserts += validTrades.size();
-            }
-
-        } catch (SQLException e) {
-
-            System.out.println("Error with database connection: " + e.getMessage());
-        } finally {
-            // Ensure resources are closed
-            try {
-                if (statement != null) {
-                    statement.close();
-                }
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                System.out.println("Error closing resources: " + e.getMessage());
-            }
-        }
-        return new int[]{successfulInserts, failedInserts};
-    }
-
 }

@@ -1,0 +1,14 @@
+trade_id,trade_identifier,ticker_symbol,quantity,price,trade_date
+T1,TDB_219848,sy1,100,999.99,2024-12-01
+T2,TDB_195199,sy2,200,799.98,2024-12-02
+T3,TDB_135287,sy3,300,599.97,2024-12-03
+T4,TDB_227475,sy4,400,499.96,2024-12-04
+T5,TDB_210749,sy5,500,399.95,2024-12-05
+T6,TDB_171277,sy6,not_a_number,399.95,2024-12-06
+T7,TDB_232786,sy7,not_a_number,399.95,2024-12-07
+T8,TDB_140202,sy8,500,"incorrect_price,",2024-12-08
+T9,TDB_192224,sy9,500,"incorrect_price,",2024-12-09
+T10,TDB_182176,sy10,not_a_number,399.95,2024-12-10
+T11,TDB_220892,sy11,not_a_number,399.95,2024-12-11
+T12,TDB_205365,sy12,500,"incorrect_price,",2024-12-12
+T13,TDB_218162,sy13,500,399.95,"incorrect_date,"

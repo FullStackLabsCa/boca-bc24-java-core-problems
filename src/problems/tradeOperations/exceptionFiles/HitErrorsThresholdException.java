@@ -1,4 +1,4 @@
-package problems.tradeOperations.oldFiles.finalProgram;
+package problems.tradeOperations.exceptionFiles;
 
 public class HitErrorsThresholdException extends Throwable {
     public HitErrorsThresholdException(String message) {

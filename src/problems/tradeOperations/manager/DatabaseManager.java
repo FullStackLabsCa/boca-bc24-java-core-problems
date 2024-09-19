@@ -1,4 +1,4 @@
-package problems.tradeOperations.oldFiles.finalProgram;
+package problems.tradeOperations.manager;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -6,7 +6,7 @@ import com.zaxxer.hikari.HikariDataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class DatabaseConnection {
+public class DatabaseManager {
     private HikariDataSource dataSource;
 
     public void configureHikariCP() {

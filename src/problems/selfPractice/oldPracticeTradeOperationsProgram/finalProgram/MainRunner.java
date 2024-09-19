@@ -1,4 +1,4 @@
-package problems.tradeOperations.oldFiles.finalProgram;
+package problems.selfPractice.oldPracticeTradeOperationsProgram.finalProgram;
 
 import java.sql.Connection;
 import java.sql.SQLException;

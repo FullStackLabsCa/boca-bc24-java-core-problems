@@ -1,4 +1,4 @@
-package problems.tradeOperations.oldFiles;
+package problems.selfPractice.oldPracticeTradeOperationsProgram;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

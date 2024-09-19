@@ -1,4 +1,4 @@
-package problems.tradeOperations;
+package problems.selfPractice.oldPracticeTradeOperationsProgram.finalProgram;
 
 public class HitErrorsThresholdException extends Throwable {
     public HitErrorsThresholdException(String message) {
