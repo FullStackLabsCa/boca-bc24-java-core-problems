@@ -1,8 +1,6 @@
 package problems.trading;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.sql.Date;
 import java.util.Scanner;
 import java.util.concurrent.LinkedBlockingDeque;
@@ -12,6 +10,7 @@ public class FileProcessor {
     private static int errorLengthInQueue = 0;
     private static double errorThreshold = 0;
     private static boolean isValid = false;
+    private static String logFilePath = "/Users/Gaurav.Manchanda/Sources/Student-mode/logFile.txt";
 
     public static void checkThresholdValue() {
         boolean inputValid = false;
@@ -44,22 +43,33 @@ public class FileProcessor {
                 counter++;
                 String[] row = line.strip().split(",");
 
+                //throwing the number format Exception
                 try {
                     tradeTransaction = new TradeTransaction(row[0], row[1], Integer.parseInt(row[2]), Double.parseDouble(row[3]), Date.valueOf(row[4]));
                 } catch (NumberFormatException e) {
                     System.out.println(e.getMessage());
+                    //writing to file
+                    try (BufferedWriter writer = new BufferedWriter(new FileWriter(logFilePath, true))) {
+                        writer.write(line);
+                        writer.newLine();
+                    } catch (IOException ex) {
+                        ex.getMessage();
+                    }
                     errorLengthInQueue++;
-//                    e.printStackTrace();
                     continue;
                 }
 
+                // checking validation by null and empty values
                 isValid = validateCSVFile(row);
 
+                //if its valid then adding to the DeQueue
                 if (isValid) {
                     System.out.println("adding transaction #" + counter + " in the queue >> " + tradeTransaction);
                     tradingTransactionDeQueue.put(tradeTransaction);
                 }
             }
+
+            //if threshold limit increases then throwing an exception
             if (errorLengthInQueue > (errorThreshold * tradingTransactionDeQueue.size()) / 100) {
                 throw new HitErrorsThresholdException("Errors exceeded threshold limit");
             }
@@ -71,8 +81,8 @@ public class FileProcessor {
 
     private static boolean validateCSVFile(String[] data) {
         isValid = true;
-        for (int i = 0; i < data.length; i++) {
-            if (data[i] == null || data[i].trim().isEmpty() || data[i].contains("INVALID")) {
+        for (String trade : data) {
+            if (trade == null || trade.trim().isEmpty() || trade.contains("INVALID")) {
                 errorLengthInQueue++;
                 isValid = false;
                 System.out.println("error in the line >>" + counter);

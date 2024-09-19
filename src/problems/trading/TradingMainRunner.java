@@ -12,6 +12,6 @@ public class TradingMainRunner {
         FileProcessor.checkThresholdValue();
         tradingTransactionDeQueue = FileProcessor.readTransactionFileAndWriteToQueue(filePath, tradingTransactionDeQueue);
 
-//        TradeRepository.insertQuery(tradingTransactionDeQueue);
+        TradeRepository.insertQuery(tradingTransactionDeQueue);
     }
 }
