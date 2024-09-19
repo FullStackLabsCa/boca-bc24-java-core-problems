@@ -158,9 +158,6 @@ public class TradeParserEngine {
         }
     }
 
-    //Service
-
-
 
     //Service
     public static void udpateInsertionLogs(Connection connection, List<Trade> tradesList, int originalSizeOfTable) {
