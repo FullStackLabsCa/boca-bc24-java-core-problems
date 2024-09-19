@@ -1,7 +1,10 @@
 package trading.serviceLayer;
+
 import trading.Model.TradingValues;
 import trading.RepositoryLayer.TradingRep;
+import trading.Utility.FileNotExists;
 import trading.Utility.HitErrorsThresholdException;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -14,7 +17,7 @@ import static trading.PresentationLayer.TradingRunner.dataSource;
 import static trading.PresentationLayer.TradingRunner.thresholdValue;
 
 public class TradingService {
-    public static void readTradingFileAndWriteToQueue(String filePath) throws HitErrorsThresholdException {
+    public static void readTradingFileAndWriteToQueue(String filePath) throws HitErrorsThresholdException, IOException, FileNotExists {
         List<TradingValues> validBatch = new ArrayList<>();
         int rows = 0;
         int error = 0;
@@ -43,8 +46,6 @@ public class TradingService {
                     error++;
                 }
             }
-        } catch (IOException e) {
-            throw new RuntimeException(e.getMessage());
         }
         double percentage = ((double) error / rows) * 100;
         System.out.println("valid rows: " + rows + ",  Invalid rows: " + error);
