@@ -84,9 +84,3 @@ public class CreditCardTransactionProcessor {
 
 
 
-// Custom exception for optimistic locking failure
-class OptimisticLockingException extends RuntimeException {
-    public OptimisticLockingException(String message) {
-        super(message);
-    }
-}

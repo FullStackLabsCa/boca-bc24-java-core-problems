@@ -47,19 +47,20 @@ import java.util.concurrent.ArrayBlockingQueue;
                     if (version == -1) {
                         // Step 2: If no account exists, insert it
                         insertAccount(connection, creditCardTransaction);
+                    }else{
+                        // Step 3: Now update with optimistic locking
+                        updateAccountBalance(connection, creditCardTransaction, version);
                     }
-
-                    // Step 3: Now update with optimistic locking
-                    updateAccountBalance(connection, creditCardTransaction, version);
-
                     connection.commit();  // Commit transaction
                     System.out.println("Transaction processed for card: " + creditCardTransaction.getCreditCardNumber());
 
                 } catch (OptimisticLockingException e) {
                     System.err.println(e.getMessage());
+
+
+                } catch (SQLException e) {
                     // Put the transaction back in the queue for retry
                     creditCardTransactionQueue.put(creditCardTransaction);
-                } catch (SQLException e) {
                     connection.rollback();
                     e.printStackTrace();
                 }
@@ -94,8 +95,6 @@ import java.util.concurrent.ArrayBlockingQueue;
             stmt.setDouble(2, creditCardTransaction.getBalance() - creditCardTransaction.getAmount());
             stmt.executeUpdate();
             System.out.println("Inserted new account for card: " + creditCardTransaction.getCreditCardNumber());
-            connection.commit();
-            connection.setAutoCommit(true);
         }
 
         // Update the account balance using optimistic locking
@@ -114,8 +113,14 @@ import java.util.concurrent.ArrayBlockingQueue;
                 connection.setAutoCommit(true);
                 throw new OptimisticLockingException("Optimistic locking failed, retrying transaction...");
             }
-            connection.commit();
-
         }
     }
+
+
+// Custom exception for optimistic locking failure
+class OptimisticLockingException extends RuntimeException {
+    public OptimisticLockingException(String message) {
+        super(message);
+    }
+}
 
