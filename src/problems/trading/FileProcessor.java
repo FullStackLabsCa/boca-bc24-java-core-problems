@@ -45,7 +45,7 @@ public class FileProcessor {
 
                 //throwing the number format Exception
                 try {
-                    tradeTransaction = new TradeTransaction(row[0], row[1], Integer.parseInt(row[2]), Double.parseDouble(row[3]), Date.valueOf(row[4]));
+                    tradeTransaction = new TradeTransaction(row[0], row[1], row[2], Integer.parseInt(row[3]), Double.parseDouble(row[4]), Date.valueOf(row[5]));
                 } catch (NumberFormatException e) {
                     System.out.println(e.getMessage());
                     //writing to file
