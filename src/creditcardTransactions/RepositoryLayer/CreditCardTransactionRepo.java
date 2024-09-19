@@ -29,7 +29,8 @@ public class CreditCardTransactionRepo {
         stmt.setString(1, creditCardTransaction.getCreditCardNumber());
         stmt.setDouble(2, creditCardTransaction.getBalance() - creditCardTransaction.getAmount());
         stmt.executeUpdate();
-        System.out.println("Inserted new account for card: " + creditCardTransaction.getCreditCardNumber());connection.commit();
+        System.out.println("Inserted new account for card: " + creditCardTransaction.getCreditCardNumber());
+        connection.commit();
 //        connection.setAutoCommit(true);
     }
 

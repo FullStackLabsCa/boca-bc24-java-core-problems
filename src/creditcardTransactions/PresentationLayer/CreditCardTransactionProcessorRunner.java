@@ -11,7 +11,6 @@ public class CreditCardTransactionProcessorRunner {
     // HikariCP DataSource
    public static HikariDataSource dataSource;
     public static void main(String[] args) {
-        // Step 1: Configure HikariCP connection pool
         configureHikariCP();
         // Step 2: Read file and load transactions into ArrayBlockingQueue
         readTransactionFileAndWriteToQueue("/Users/Manpreet.Kaur/Source/fullstacklabs/student-codebase/boca-bc24-java-core-problems/src/creditcardTransactions/Utility/credit_card_transactions.txt");

@@ -32,7 +32,7 @@ public class TransactionConsumer implements Runnable {
                 break;
             }
         }
-    }
+        }
 
     // Process each transaction with optimistic locking and retry logic
     private void processTransaction(CreditCardTransaction creditCardTransaction) {
