@@ -5,12 +5,12 @@ import java.sql.Date;
 import java.util.Scanner;
 import java.util.concurrent.LinkedBlockingDeque;
 
-public class FileProcessor {
+public class TradeFileReader {
     private static int counter = 0;
     private static int errorLengthInQueue = 0;
     private static double errorThreshold = 0;
     private static boolean isValid = false;
-    private static String logFilePath = "/Users/Gaurav.Manchanda/Sources/Student-mode/logFile.txt";
+    private static String logFilePath = "/Users/Gaurav.Manchanda/Sources/Student-mode/error_log.txt";
 
     public static void checkThresholdValue() {
         boolean inputValid = false;
@@ -50,7 +50,8 @@ public class FileProcessor {
                     System.out.println(e.getMessage());
                     //writing to file
                     try (BufferedWriter writer = new BufferedWriter(new FileWriter(logFilePath, true))) {
-                        writer.write(line);
+                        int errorAtLine = counter;
+                        writer.write("Error in the row " + (errorAtLine + 1) + ">>" + line);
                         writer.newLine();
                     } catch (IOException ex) {
                         ex.getMessage();

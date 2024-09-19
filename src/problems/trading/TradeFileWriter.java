@@ -1,13 +1,17 @@
 package problems.trading;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.concurrent.LinkedBlockingDeque;
 
-public class TradeRepository {
+public class TradeFileWriter {
     public static void insertQuery(LinkedBlockingDeque<TradeTransaction> tradingTransactionDeQueue) throws Exception {
+        String logFilePath = "/Users/Gaurav.Manchanda/Sources/Student-mode/error_log.txt";
         Connection connection = DatabaseConnectionPool.getConnection();
         try {
             connection.setAutoCommit(false);
@@ -24,9 +28,17 @@ public class TradeRepository {
                     symbol = resultSet.getString("symbol");
                 }
 
-                if (symbol.equals(tradeTransaction.getTickerSymbol())) {
+                if (symbol.equals(tradeTransaction.getTickerSymbol()) && tradeTransaction.getTickerSymbol() != "") {
                     preparingStatementForBatch(tradeTransaction, statement);
                     statement.addBatch();
+                } else {
+                    try (BufferedWriter writer = new BufferedWriter(new FileWriter(logFilePath, true))) {
+                        writer.write("Error while inserting trade to DB >>>"+String.valueOf(tradeTransaction));
+                        writer.newLine();
+                    } catch (IOException e) {
+                        e.getMessage();
+//                        errorLengthInQueue++;
+                    }
                 }
             }
 
@@ -50,7 +62,7 @@ public class TradeRepository {
 
     private static void preparingStatementForBatch(TradeTransaction tradeTransaction, PreparedStatement statement) throws SQLException {
         statement.setString(1, tradeTransaction.getTradeId());
-        statement.setString(2, tradeTransaction.getTradeIndentifier());
+        statement.setString(2, tradeTransaction.getTradeIdentifier());
         statement.setString(3, tradeTransaction.getTickerSymbol());
         statement.setInt(4, tradeTransaction.getQuantity());
         statement.setDouble(5, tradeTransaction.getPrice());

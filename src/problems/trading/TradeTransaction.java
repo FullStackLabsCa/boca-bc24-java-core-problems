@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class TradeTransaction {
     private String tradeId;
-    private String tradeIndentifier;
+    private String tradeIdentifier;
     private String tickerSymbol;
     private int quantity;
     private double price;
@@ -12,7 +12,7 @@ public class TradeTransaction {
 
     public TradeTransaction(String tradeId, String tradeIndentifier, String tickerSymbol, int quantity, double price, Date tradeDate) {
         this.tradeId = tradeId;
-        this.tradeIndentifier = tradeIndentifier;
+        this.tradeIdentifier = tradeIndentifier;
         this.tickerSymbol = tickerSymbol;
         this.quantity = quantity;
         this.price = price;
@@ -43,7 +43,7 @@ public class TradeTransaction {
     public String toString() {
         return "TradeTransaction{" +
                 "tradeId='" + tradeId + '\'' +
-                ", tradeIndentifier='" + tradeIndentifier + '\'' +
+                ", tradeIdentifier='" + tradeIdentifier + '\'' +
                 ", tickerSymbol='" + tickerSymbol + '\'' +
                 ", quantity=" + quantity +
                 ", price=" + price +
@@ -51,7 +51,7 @@ public class TradeTransaction {
                 '}';
     }
 
-    public String getTradeIndentifier() {
-        return tradeIndentifier;
+    public String getTradeIdentifier() {
+        return tradeIdentifier;
     }
 }

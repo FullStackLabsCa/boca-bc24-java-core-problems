@@ -8,16 +8,16 @@ import java.time.LocalDate;
 
 public class TradeFaultyDataGenerator {
     public static void main(String[] args) {
-        String filePath = "trade_data_faulty.csv"; // Path to save the CSV file
+        String filePath = "trade_data.csv"; // Path to save the CSV file
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
             // Write header
-            writer.write("trade_id,ticker_symbol,quantity,price,trade_date");
+            writer.write("trade_id,trade_identifier, ticker_symbol,quantity,price,trade_date");
             writer.newLine();
 
             // Generate sample trade data
             for (int i = 1; i <= 100; i++) { // Example: generate 100 trades
-                String tradeId = "T" + i; // trade_id as T1, T2, ...
+                int tradeId = i; // trade_id as T1, T2, ...
                 String tickerSymbol;
                 int quantity;
                 BigDecimal price;
@@ -26,7 +26,7 @@ public class TradeFaultyDataGenerator {
                 // Randomly decide whether to generate valid or faulty data
                 if (Math.random() < 0.3) { // 10% chance to generate faulty data
                     // Generate faulty data
-                    tickerSymbol = "INVALID_SYMBOL"; // Invalid ticker symbol
+                    tickerSymbol = " "; // Invalid ticker symbol
                     quantity = -1; // Invalid quantity
                     price = null; // Missing price
                     tradeDate = LocalDate.now().plusDays(1); // Invalid future date
@@ -39,11 +39,11 @@ public class TradeFaultyDataGenerator {
                 }
 
                 // Format trade date in yyyy-MM-dd
-                String formattedDate = (tradeDate != null) ? tradeDate.toString() : "INVALID_DATE";
+                String formattedDate = (tradeDate != null) ? tradeDate.toString() : " ";
 
                 // Write the trade data
                 writer.write(String.format("%s,%s,%d,%s,%s", tradeId, tickerSymbol, quantity, 
-                    (price != null ? price.toString() : "INVALID_PRICE"), formattedDate));
+                    (price != null ? price.toString() : " "), formattedDate));
                 writer.newLine();
             }
 
