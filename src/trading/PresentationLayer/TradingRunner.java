@@ -17,7 +17,8 @@ public class TradingRunner {
     public static void main(String[] args) throws HitErrorsThresholdException {
         dataSource = DatabaseConnectivity.configureHikariCP();
         Scanner scanner = new Scanner(System.in);
-        String filePath = "/Users/Manpreet.Kaur/Source/fullstacklabs/student-codebase/boca-bc24-java-core-problems/src/trading/Utility/trades.csv";
+        System.out.println("Enter a file path");
+        String filePath = scanner.nextLine();
         System.out.println("Enter a  Threshold  value :");
         while (true) {
             try {

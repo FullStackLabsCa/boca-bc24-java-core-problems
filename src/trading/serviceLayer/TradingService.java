@@ -1,9 +1,7 @@
 package trading.serviceLayer;
-
 import trading.Model.TradingValues;
 import trading.RepositoryLayer.TradingRep;
 import trading.Utility.HitErrorsThresholdException;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -55,7 +53,8 @@ public class TradingService {
         } else {
             try {
                 TradingRep.insertdata(dataSource, validBatch);
-                System.out.println(validBatch.size());
+
+                System.out.println(validBatch.size()+" rows added in database");
             } catch (SQLException e) {
                 throw new RuntimeException(e.getMessage());
             }
