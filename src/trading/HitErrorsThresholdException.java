@@ -1,4 +1,4 @@
-package trading_processing_without_object_creation;
+package trading;
 
 public class HitErrorsThresholdException extends RuntimeException {
     public HitErrorsThresholdException(String message) {

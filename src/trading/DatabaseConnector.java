@@ -1,4 +1,4 @@
-package trading_processing_without_object_creation;
+package trading;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class DatabaseConnector {
 
-     static HikariConfig hikariConfig=new HikariConfig();
+    static HikariConfig hikariConfig = new HikariConfig();
     public static HikariDataSource dataSource;
 
     public static void configureHikariCP() {

@@ -1,4 +1,4 @@
-package trading_processing;
+package trading_processing_without_object_creation;
 
 import java.io.*;
 import java.io.FileReader;

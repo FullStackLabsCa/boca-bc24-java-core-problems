@@ -1,0 +1,11 @@
+
+Error in Line no -> 6 trade entry is empty -> 
+Error in Line no -> 6 trade entry is empty -> 
+Error in Line no -> 8 Date is Missing -> 7,TDB_232786,NKE,443,1800.6,
+Error in Line no -> 15 Date Format is Incorrect -> 14,TDB_173818,MA,135,290.09,224-08-23
+Error in Line no -> 6 trade entry is empty -> 
+Error in Line no -> 8 Date is Missing -> 7,TDB_232786,NKE,443,1800.6,
+Error in Line no -> 15 Date Format is Incorrect -> 14,TDB_173818,MA,135,290.09,224-08-23
+Error in Line no -> 6 trade entry is empty -> 
+Error in Line no -> 8 Date is Missing -> 7,TDB_232786,NKE,443,1800.6,
+Error in Line no -> 15 Date Format is Incorrect -> 14,TDB_173818,MA,135,290.09,224-08-23
