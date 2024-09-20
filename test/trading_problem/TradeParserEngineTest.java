@@ -149,7 +149,15 @@ public class TradeParserEngineTest {
 
     @Test
     public void testReadingGoodValuesMoreThanThreshold(){
-
+        try{
+            TradeParserEngine.readTradesFileAndWriteToDatabase("/Users/Akshat.Singla/Downloads/code/practice-problems/student-codebase/boca-bc24-java-core-problems/test/trading_problem/data/trade_data_fails_lessthan_Threshold.csv");
+            assertEquals(fileReadErrorCount, 246);
+            assertEquals(fileReadSuccessCount, 739);
+            assertEquals(successfullInsertsCount, 739);
+            assertEquals(failedInsertsCount, 0);
+        } catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     @Test
