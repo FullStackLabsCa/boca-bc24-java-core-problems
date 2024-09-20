@@ -22,8 +22,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static trading_parser.repo.TradeParserRepo.*;
-import static trading_parser.utility.TradeParseUtility.dataSource;
-import static trading_parser.utility.TradeParseUtility.logFileValidityForErrors;
+import static trading_parser.utility.TradeParseUtility.*;
 
 public class TradeParserEngine {
 
@@ -82,8 +81,7 @@ public class TradeParserEngine {
     }
 
     //Service
-    public static void readTradesFileAndWriteToDatabase(String filePath, Logger logger) throws SQLException {
-
+    public static void readTradesFileAndWriteToDatabase(String filePath) throws SQLException {
         //Read transactions from file
         try (Scanner fileReader = new Scanner(new BufferedReader(new FileReader(filePath)));
              Connection conn = dataSource.getConnection()) {

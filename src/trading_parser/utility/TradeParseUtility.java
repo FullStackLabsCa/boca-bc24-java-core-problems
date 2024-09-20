@@ -23,19 +23,18 @@ public class TradeParseUtility {
 
     public static Logger logger;
     //Utility
-    public static Logger configureLogger() throws IOException {
-        FileHandler fileHandler = new FileHandler("error_log.txt");
+    public static void configureLogger(String errorFileName) throws IOException {
+        FileHandler fileHandler = new FileHandler(errorFileName);
         fileHandler.setFormatter(new CustomFormatter()); // Use a simple text format
         logger = Logger.getLogger(TradeParser.class.getName());
         logger.addHandler(fileHandler);
         logger.setUseParentHandlers(false);
-        return logger;
     }
 
     //Utility
-    public static void configureHikariCP() {
+    public static void configureHikariCP(int portNum) {
         HikariConfig config = new HikariConfig();
-        config.setJdbcUrl("jdbc:mysql://localhost:3306/bootcamp");
+        config.setJdbcUrl("jdbc:mysql://localhost:"+portNum+"/bootcamp");
         config.setUsername("root");
         config.setPassword("password123");
 
@@ -84,10 +83,3 @@ public class TradeParseUtility {
 
 }
 
-//Utility
-class CustomFormatter extends SimpleFormatter {
-    @Override
-    public String format(java.util.logging.LogRecord record) {
-        return record.getMessage() + "\n"; // Log only the message
-    }
-}

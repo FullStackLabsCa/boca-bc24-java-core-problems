@@ -12,9 +12,9 @@ public class TradeParser {
     public static void main(String[] args) throws SQLException, IOException {
 
         String filePath = getThresholdAndFilePathFromCommandLine();
-        configureHikariCP();
-        configureLogger();
-        readTradesFileAndWriteToDatabase(filePath, logger);
+        configureHikariCP(3306);
+        configureLogger("error_log.txt");
+        readTradesFileAndWriteToDatabase(filePath);
     }
 
 }

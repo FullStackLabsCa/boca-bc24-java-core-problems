@@ -1,14 +1,89 @@
 package trading_problem;
 
+import com.zaxxer.hikari.HikariDataSource;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
-import trading_parser.model.Trade;
 import trading_parser.service.TradeParserEngine;
+import trading_parser.utility.HitErrorsThresholdException;
 import trading_parser.utility.InvalidThresholdValueException;
 
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Logger;
+
 import static org.junit.Assert.assertEquals;
+import static trading_parser.service.TradeParserEngine.*;
+import static trading_parser.utility.TradeParseUtility.*;
 
 public class TradeParserEngineTest {
 
+    @Before
+    public void setup() throws SQLException, IOException {
+        configureLogger("test_error_logs.txt");
+        configureHikariCP(3308);
+        createTable();
+        populateTable();
+    }
+
+    @After
+    public void cleanUp(){
+        dropAllTables();
+    }
+
+    public void createTable() throws SQLException {
+        String createTradesTable = """
+                CREATE TABLE Trades (
+                    trade_id VARCHAR(20) PRIMARY KEY,
+                    trade_identifier VARCHAR(20),
+                    ticker_symbol VARCHAR(10),
+                    quantity INT,
+                    price DECIMAL(15, 2),
+                    trade_date DATE
+                );
+                """;
+
+        String createSecuritiesTable = """
+                CREATE TABLE SecuritiesReference (
+                    symbol VARCHAR(10) PRIMARY KEY,
+                    description VARCHAR(100)
+                );
+                """;
+
+        try (Connection conn = dataSource.getConnection()) {
+            PreparedStatement psTradeTable = conn.prepareStatement(createTradesTable);
+            PreparedStatement psSecuritiesTable = conn.prepareStatement(createSecuritiesTable);
+
+            psTradeTable.executeUpdate();
+            psSecuritiesTable.executeUpdate();
+
+        } catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void populateTable(){
+
+    }
+
+    public void dropAllTables(){
+        String dropTrade = "drop table trades";
+        String dropSecurities = "drop table SecuritiesReference";
+
+        try (Connection conn = dataSource.getConnection()) {
+
+            PreparedStatement psTrades = conn.prepareStatement(dropTrade);
+            PreparedStatement psSecurities = conn.prepareStatement(dropSecurities);
+
+            psTrades.executeUpdate();
+            psSecurities.executeUpdate();
+
+        } catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+    }
 
     @Test (expected = InvalidThresholdValueException.class)
     public void testNullThreshold(){
@@ -37,9 +112,26 @@ public class TradeParserEngineTest {
         assertEquals(1, TradeParserEngine.validateThresholdInput("1"),0.001);
     }
 
-    @Test
-    public void testReadingAllWrongValues(){
+    @Test (expected = HitErrorsThresholdException.class)
+    public void testReadingAllWrongValuesAndExceptionThrown(){
+        try {
+            TradeParserEngine.readTradesFileAndWriteToDatabase("/Users/Akshat.Singla/Downloads/code/practice-problems/student-codebase/boca-bc24-java-core-problems/test/trading_problem/trade_data_all_faulty.csv");
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+    }
 
+    @Test
+    public void testReadingAllWrongValuesAndLogsChecking(){
+        try {
+            TradeParserEngine.readTradesFileAndWriteToDatabase("/Users/Akshat.Singla/Downloads/code/practice-problems/student-codebase/boca-bc24-java-core-problems/test/trading_problem/trade_data_all_faulty.csv");
+        } catch (HitErrorsThresholdException e){
+            assertEquals(failedInsertsCount, 1000);
+            assertEquals(successfullInsertsCount, 0);
+        }
+        catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     @Test
