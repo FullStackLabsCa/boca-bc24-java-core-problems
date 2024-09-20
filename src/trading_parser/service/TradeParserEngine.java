@@ -28,7 +28,7 @@ public class TradeParserEngine {
 
     public static int successfullInsertsCount = 0, failedInsertsCount = 0;
     public static int fileReadErrorCount = 0, fileReadSuccessCount = 0, fileReadTries = 0;
-    public static double threshold;
+    public static double threshold = 25;
 
     public static String getFileNameFromCommandLine(Scanner scanner){
         boolean validFileName = false;

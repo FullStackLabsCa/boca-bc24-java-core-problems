@@ -135,12 +135,12 @@ public class TradeParserEngineTest {
     }
 
     @Test
-    public void testReadingEqualToThresholdValues(){
-
+    public void testReadingValuesWhenFailsEqualToThreshold(){
+        
     }
 
     @Test
-    public void testReadingGoodMoreThanThresholdValues(){
+    public void testReadingGoodValuesMoreThanThreshold(){
 
     }
 
@@ -155,12 +155,12 @@ public class TradeParserEngineTest {
     }
 
     @Test
-    public void testWritingEqualToThreshold(){
+    public void testWritingValuesWhenFailedEqualToThreshold(){
 
     }
 
     @Test
-    public void testWritingGoodMoreThanThresholdValues(){
+    public void testWritingWhenGoodValuesMoreThanThreshold(){
 
     }
 

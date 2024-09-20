@@ -25,7 +25,7 @@ public class TradeFaultyDataGenerator {
                 LocalDate tradeDate;
 
                 // Randomly decide whether to generate valid or faulty data
-                if (Math.random() < 0.25) { // 25% chance to generate faulty data
+                if (Math.random() <= 0.25) { // 25% chance to generate faulty data
                     // Generate faulty data
                     tradeIdentifier = "INVALID_ID"; // Invalid trade identifier
                     tickerSymbol = "INVALID_SYMBOL"; // Invalid ticker symbol
