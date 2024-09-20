@@ -9,7 +9,15 @@ public class DatabaseConnection {
     private static final String USER = "root";
     private static final String PASSWORD = "password123";
 
-     public static Connection getConnection() throws SQLException{
-        return DriverManager.getConnection(URL,USER,PASSWORD);
+    private static final String TESTURL = "jdbc:mysql://localhost:3308/bootcamptest";
+
+
+     public static Connection getConnection(boolean forTest) throws SQLException{
+         if(forTest) {
+             return   DriverManager.getConnection(TESTURL, USER, PASSWORD);
+         }else{
+             return   DriverManager.getConnection(URL, USER, PASSWORD);
+         }
     }
+
 }

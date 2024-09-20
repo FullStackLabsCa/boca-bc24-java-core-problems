@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface TradeReaderInt {
 
-    List<Trade> readTradeData(String filePath, double errorThreshold);
-    Trade createTrade(String[] values, double errorThreshold);
+    List<Trade> readTradeData(String filePath);
+    Trade createTrade(String[] values,int row);
 }

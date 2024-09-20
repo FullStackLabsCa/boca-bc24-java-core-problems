@@ -9,7 +9,7 @@ import java.util.*;
 
 public class ValidationManager {
 
-    static double errorThreshold = 25;
+    static int rowVal = 0;
 //    public static List<Trade> validData(String filePath, long errorThreshold) {
 //        List<Trade> tradeList = new ArrayList<Trade>();
 //        try (Scanner scanner = new Scanner(new FileReader(filePath))) {
@@ -43,32 +43,30 @@ public class ValidationManager {
 //        return tradeList;
 //    }
 
-        public static boolean validateData(Trade trade,double errorCount)
+        public static boolean validateData(Trade trade, int row)
         {
-            errorThreshold = errorCount;
+            rowVal = row;
             if (!isEmptyVal(String.valueOf(trade.getTradeId())) || !isEmptyVal(trade.getTickerSymbol())
                     || !isEmptyVal(String.valueOf(trade.getPrice()))
                     || !isEmptyVal(String.valueOf(trade.getQuantity()))
                     || !isEmptyVal(trade.getTradeDate())) {
 
-                ErrorManager.checkForErrorThreshold(errorCount,"Value is Empty for : "+trade.getTradeId(),true);
+                ErrorManager.checkForErrorThreshold("Value is Empty for : "+trade.getTradeId(),true,row);
                 return  false;
             }
 
             if (!isValidIntValue(String.valueOf(trade.getQuantity()))) {
-                ErrorManager.checkForErrorThreshold(errorCount,"Invalid int value For : "+trade.getTradeId(),true);
+                ErrorManager.checkForErrorThreshold("Invalid int value For : "+trade.getTradeId(),true, row);
                 return false;
-
             }
             if (!isValidDoubleValue(String.valueOf(trade.getPrice()))) {
-                ErrorManager.checkForErrorThreshold(errorCount,"Invalid double value For : "+trade.getTradeId(),true);
+                ErrorManager.checkForErrorThreshold("Invalid double value For : "+trade.getTradeId(),true, row);
                 return  false;
             }
             if (!isValidDate(String.valueOf(trade.getTradeDate()))) {
-                ErrorManager.checkForErrorThreshold(errorCount,"Invalid date value For : "+trade.getTradeId(),true);
+                ErrorManager.checkForErrorThreshold("Invalid date value For : "+trade.getTradeId(),true, row);
                 return  false;
             }
-
             return  true;
         }
 
@@ -85,7 +83,7 @@ public class ValidationManager {
             Integer.parseInt(val);
             return true;
         } catch (NumberFormatException e) {
-            ErrorManager.checkForErrorThreshold(errorThreshold,"NumberFormatException For "+val,true);
+            ErrorManager.checkForErrorThreshold("NumberFormatException For "+val,true, rowVal);
             return false;
         }
     }
@@ -95,7 +93,7 @@ public class ValidationManager {
             Double.parseDouble(val);
             return true;
         } catch (NumberFormatException e) {
-            ErrorManager.checkForErrorThreshold(errorThreshold,"NumberFormatException For "+val,true);
+            ErrorManager.checkForErrorThreshold("NumberFormatException For "+val,true, rowVal);
             return false;
         }
     }
@@ -106,7 +104,7 @@ public class ValidationManager {
             Date date = sdf.parse(val);
             return true;
         } catch (ParseException e) {
-            ErrorManager.checkForErrorThreshold(errorThreshold,"NumberFormatException For "+val,true);
+            ErrorManager.checkForErrorThreshold("NumberFormatException For "+val,true, rowVal);
             return false;
         }
     }
