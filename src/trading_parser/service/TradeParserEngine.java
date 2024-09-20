@@ -1,6 +1,7 @@
 package trading_parser.service;
 
 import trading_parser.model.Trade;
+import trading_parser.utility.HitErrorsThresholdException;
 import trading_parser.utility.InvalidThresholdValueException;
 
 import java.io.BufferedReader;
