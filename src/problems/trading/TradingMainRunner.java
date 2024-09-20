@@ -2,7 +2,6 @@ package problems.trading;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.concurrent.LinkedBlockingDeque;
 
 public class TradingMainRunner {
     private static ArrayList<TradeTransaction> tradingTransactionArrayList = new ArrayList<>(5000);
@@ -15,12 +14,18 @@ public class TradingMainRunner {
         TradeFileReader.checkFileName(fileName);
 
         //IF file is valid then setting up the threshold
-        TradeFileReader.checkThresholdValue();
+        do {
+            Scanner thresholdScanner = new Scanner(System.in);
+            System.out.print("Enter a threshold value: ");
+            String str = thresholdScanner.nextLine();
+            TradeFileReader.checkThresholdValue(str);
+        } while (TradeService.isThresholdValid == false);
+
 
         //For readAndWrite to List
         TradeFileReader.readTransactionFileAndWriteToList(tradingTransactionArrayList);
 
         //writing to the DB
-        TradeFileWriter.insertQuery(tradingTransactionArrayList);
+//        TradeFileWriter.insertQuery(tradingTransactionArrayList);
     }
 }

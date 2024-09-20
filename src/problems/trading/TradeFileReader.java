@@ -12,26 +12,13 @@ public class TradeFileReader {
     private static boolean isValid = false;
     private static String filePath = "";
 
-    public static void checkThresholdValue() {
-        boolean inputValid = false;
-        while (!inputValid) {
-            Scanner scanner = new Scanner(System.in);
-            try {
-                System.out.print("Enter a threshold value: ");
-                String s = scanner.nextLine();
-                TradeService.errorThreshold = Double.parseDouble(s);
-                if (TradeService.errorThreshold < 0 || TradeService.errorThreshold > 100) {
-                    throw new InvalidInputException("Not valid input. Please enter a valid threshold limit in between 1 to 100");
-                }
-                inputValid = true;
-            } catch (NumberFormatException e) {
-                inputValid = false;
-                System.out.println("Please enter a valid threshold limit in between 1 to 100");
-            } catch (InvalidInputException e) {
-                inputValid = false;
-                System.out.println("Please enter a valid threshold limit in between 1 to 100");
-            }
+    public static void checkThresholdValue(String str) {
+        TradeService.isThresholdValid = false;
+        TradeService.errorThreshold = Double.parseDouble(str);
+        if (TradeService.errorThreshold < 0 || TradeService.errorThreshold > 100) {
+            throw new InvalidInputException("Not valid input. Please enter a valid threshold limit in between 1 to 100");
         }
+        TradeService.isThresholdValid = true;
     }
 
     public static ArrayList<TradeTransaction> readTransactionFileAndWriteToList(ArrayList<TradeTransaction> tradingTransactionArrayList) {

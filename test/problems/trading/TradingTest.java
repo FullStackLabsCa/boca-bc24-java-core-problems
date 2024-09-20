@@ -3,7 +3,7 @@ package problems.trading;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import problems.string.advanced.calculator.Calculator;
+import problems.trading.exceptions.InvalidInputException;
 
 import java.io.FileNotFoundException;
 import java.sql.Connection;
@@ -11,14 +11,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.concurrent.LinkedBlockingDeque;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class TradingTest {
     private Connection connection;
-    private TradeFileWriter tradeFileWriter;
-    private TradeFileReader tradeFileReader;
-    private TradeService tradeService;
     public static LinkedBlockingDeque<TradeTransaction> tradingTransactionDeQueue = new LinkedBlockingDeque<>(5000);
 
     @Before()
@@ -43,9 +39,21 @@ public class TradingTest {
     }
 
     @Test
-    public void  FileFound() throws FileNotFoundException {
+    public void FileFound() throws FileNotFoundException {
         String fileName = "trade_data";
         TradeFileReader.checkFileName(fileName);
         assertTrue(TradeService.isFileExist);
+    }
+
+    @Test(expected = InvalidInputException.class)
+    public void InvalidThresholdValue() {
+        String invalidThreshold = "-1";
+        TradeFileReader.checkThresholdValue(invalidThreshold);
+    }
+
+    @Test
+    public void ValidThresholdValue() {
+        String invalidThreshold = "10";
+        TradeFileReader.checkThresholdValue(invalidThreshold);
     }
 }
