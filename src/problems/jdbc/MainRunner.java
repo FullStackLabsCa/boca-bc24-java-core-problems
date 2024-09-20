@@ -8,6 +8,7 @@ import problems.jdbc.students.Student;
 import java.util.Scanner;
 
 public class MainRunner {
+
     private static final Course course = new Course();
     private static final Student student = new Student();
     private static final Enrollment enrollment = new Enrollment();
@@ -82,51 +83,22 @@ public class MainRunner {
                 String[] command = input.split(" ");
 
                 switch (command[0]) {
-                    case "add_course":
-                        course.addCourse(command[1]);
-                        break;
-                    case "remove_course":
-                        course.removeCourse(Integer.parseInt(command[1]));
-                        break;
-                    case "update_course":
-                        course.updateCourse(Integer.parseInt(command[1]), command[2]);
-                        break;
-                    case "get_course":
-                        course.getCourses();
-                        break;
-                    case "add_student":
-                        student.addStudent(command[1]);
-                        break;
-                    case "remove_student":
-                        student.removeStudent(Integer.parseInt(command[1]));
-                        break;
-                    case "update_student":
-                        student.updateStudent(Integer.parseInt(command[1]), command[2]);
-                        break;
-                    case "get_student":
-                        student.getStudents();
-                        break;
-                    case "add_enrollment":
-                        enrollment.addEnrollment(Integer.parseInt(command[1]), Integer.parseInt(command[2]));
-                        break;
-                    case "remove_enrollment":
-                        enrollment.removeEnrollment(Integer.parseInt(command[1]));
-                        break;
-                    case "get_enrollment":
-                        enrollment.getEnrollment();
-                        break;
-                    case "add_grade":
-                        grades.addGrade(Integer.parseInt(command[1]), Integer.parseInt(command[2]), Double.parseDouble(command[3]));
-                        break;
-                    case "remove_grade":
-                        grades.removeGrade(Integer.parseInt(command[1]));
-                        break;
-                    case "update_grade":
-                        grades.updateGrade(Integer.parseInt(command[1]), Integer.parseInt(command[2]), Double.parseDouble(command[3]));
-                        break;
-                    default:
+                    case "add_course" -> course.addCourse(command[1]);
+                    case "remove_course" -> course.removeCourse(Integer.parseInt(command[1]));
+                    case "update_course" -> course.updateCourse(Integer.parseInt(command[1]), command[2]);
+                    case "get_course" -> course.getCourses();
+                    case "add_student" -> student.addStudent(command[1]);
+                    case "remove_student" -> student.removeStudent(Integer.parseInt(command[1]));
+                    case "update_student" ->  student.updateStudent(Integer.parseInt(command[1]), command[2]);
+                    case "get_student" -> student.getStudents();
+                    case "add_enrollment" ->enrollment.addEnrollment(Integer.parseInt(command[1]), Integer.parseInt(command[2]));
+                    case "remove_enrollment" -> enrollment.removeEnrollment(Integer.parseInt(command[1]));
+                    case "get_enrollment" -> enrollment.getEnrollment();
+                    case "add_grade" -> grades.addGrade(Integer.parseInt(command[1]), Integer.parseInt(command[2]), Double.parseDouble(command[3]));
+                    case "remove_grade" -> grades.removeGrade(Integer.parseInt(command[1]));
+                    case "update_grade" -> grades.updateGrade(Integer.parseInt(command[1]), Integer.parseInt(command[2]), Double.parseDouble(command[3]));
+                    default ->
                         System.out.println("Unknown command");
-                        break;
                 }
             }
         }

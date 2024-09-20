@@ -36,7 +36,7 @@ public class Grades {
     }
 
     public void removeGrade(int gradeID){
-        String query= "DELETE FROM Enrollments WHERE grade_id= ?";
+        String query= "DELETE FROM Grades WHERE grade_id= ?";
         try{
             Connection conn= DatabaseHelper.getConnection();
             PreparedStatement stm= conn.prepareStatement(query);

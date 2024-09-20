@@ -5,16 +5,26 @@ import problems.jdbc.DatabaseHelper;
 import java.sql.*;
 
 public class Student {
-    private int student_id;
-    private String student_name;
 
     public void addStudent(String studentName){
         String query = "INSERT INTO Students (student_name) VALUES (?)";
+        String queryCheck= "SELECT student_name FROM Students WHERE student_name= ?";
+        String name= null;
         try (Connection conn = DatabaseHelper.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, studentName);
-            stmt.executeUpdate();
-            System.out.println("Course '" + studentName + "' added.");
+            PreparedStatement st= conn.prepareStatement(queryCheck);
+            st.setString(1, studentName);
+            ResultSet rs= st.executeQuery();
+            rs.next();
+            name= rs.getString(1);
+            if(name.equals(studentName)){
+                System.out.println("Student with same name is already present");
+            }
+            else {
+                stmt.executeUpdate();
+                System.out.println("Student '" + studentName + "' added.");
+            }
         } catch (SQLException e) {
             System.out.println("Error adding student: " + e.getMessage());
         }
@@ -52,7 +62,7 @@ public class Student {
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                System.out.println(rs.getString(2)); //or rs.getString("column name");
+                System.out.println(rs.getString(2));
             }
         }
         catch (SQLException e){
