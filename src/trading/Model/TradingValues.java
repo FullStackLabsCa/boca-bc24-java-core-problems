@@ -38,12 +38,12 @@ public class TradingValues {
 
     @Override
     public String toString() {
-        return "TradingValues{" +
-                "tradeId='" + tradeId + '\'' +
-                ", tickerSymbol='" + tickerSymbol + '\'' +
-                ", quantity=" + quantity +
-                ", price=" + price +
-                ", tradeDate=" + tradeDate +
-                '}';
+        return "TradingValues :-" +
+                "tradeId = '" + tradeId + '\'' +
+                ", tickerSymbol = '" + tickerSymbol + '\'' +
+                ", quantity = " + quantity +
+                ", price = "  + price +
+                ", tradeDate = " + tradeDate
+                ;
     }
 }

@@ -1,16 +1,13 @@
 package trading.PresentationLayer;
-
 import com.zaxxer.hikari.HikariDataSource;
 import creditcardTransactions.databaseConnection.DatabaseConnectivity;
 import trading.Utility.FileNotExists;
 import trading.Utility.HitErrorsThresholdException;
 import trading.Utility.InvalidThresholdValueException;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
 import static trading.serviceLayer.TradingService.readTradingFileAndWriteToQueue;
 
 public class TradingRunner {
@@ -21,15 +18,18 @@ public class TradingRunner {
         dataSource = DatabaseConnectivity.configureHikariCP();
         Scanner scanner = new Scanner(System.in);
         String filepath = null;
-        while (true){
+        while (true) {
             System.out.println("Enter a file path :");
             filepath = scanner.nextLine();
             File file = new File(filepath);
-            if (!file.exists()) {
-                System.out.println("Enter valid file path.");
-                continue;
+            try {
+                if (!file.exists()) {
+                    throw new FileNotExists("file not found.....");
+                }
+                break;
+            } catch (FileNotExists e) {
+                System.out.println(e.getMessage());
             }
-            break;
         }
         while (true) {
             try {

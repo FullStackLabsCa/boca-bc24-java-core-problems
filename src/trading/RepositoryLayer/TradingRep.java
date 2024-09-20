@@ -6,8 +6,11 @@ import java.util.List;
 
 public class TradingRep {
     public static void insertdata(HikariDataSource dataSource, List<TradingValues> tradingValuesList) throws SQLException {
-
-        String query = "Insert into Trades(trade_id,ticker_symbol,quantity,price,trade_date) VALUES(?,?,?,?,?)";
+        final int batchSize = 5;
+        int invalidRows=0;
+        int validRows=0;
+//trade_id,trade_identifier,ticker_symbol,quantity,price,trade_date
+        String query = "Insert into Trades(trade_identifier,ticker_symbol,quantity,price,trade_date) VALUES(?,?,?,?,?)";
         try (Connection connection = dataSource.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)
         ) {
@@ -20,13 +23,19 @@ public class TradingRep {
                     preparedStatement.setDouble(4, tradingValues.getPrice());
                     preparedStatement.setDate(5, Date.valueOf(tradingValues.gettradeDate()));
                     preparedStatement.addBatch();
+                    validRows++;
                 } else {
                     System.out.println("ticker Symbol dont exist. Enter : "+tradingValues.getTickerSymbol());
+                    invalidRows++;
                 }
             }
+            System.out.println("trade rows :"+ validRows +"Error rows : "+ invalidRows);
             preparedStatement.executeBatch();
             connection.commit();
-        } catch (SQLException e) {
+        }
+
+        catch (SQLException e) {
+
             e.printStackTrace();
         }
     }
