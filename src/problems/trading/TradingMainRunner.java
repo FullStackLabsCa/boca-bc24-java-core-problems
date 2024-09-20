@@ -11,11 +11,16 @@ public class TradingMainRunner {
         Scanner scanner = new Scanner(System.in);
         String fileName = "";
 
+        // Check if the read file exists and delete it at the start of execution
+        TradeService.checkReadLogFileExistOrNot();
+
+        // Check if the write file exists and delete it at the start of execution
+        TradeService.checkWriteLogFileExistOrNot();
+
         //checking file name from the user input
         fileName = CheckUserInputForFile.checkFileName(isFileNameValid, fileName, scanner);
 
         // read file and load data into LinkedBlockingDeque
-
         String filePath = "/Users/Gaurav.Manchanda/src/boca-bc24-java-core-problems/" + fileName + ".csv";
         TradeFileReader.checkThresholdValue();
         tradingTransactionDeQueue = TradeFileReader.readTransactionFileAndWriteToQueue(filePath, tradingTransactionDeQueue);

@@ -10,7 +10,6 @@ import java.util.concurrent.LinkedBlockingDeque;
 public class TradeFileReader {
     private static int counter = 0;
     private static boolean isValid = false;
-    private static String logFilePath = "/Users/Gaurav.Manchanda/src/boca-bc24-java-core-problems/error_log.txt";
 
     public static void checkThresholdValue() {
         boolean inputValid = false;
@@ -49,7 +48,7 @@ public class TradeFileReader {
                 } catch (NumberFormatException e) {
                     System.out.println(e.getMessage());
                     //writing to file
-                    try (BufferedWriter writer = new BufferedWriter(new FileWriter(logFilePath, true))) {
+                    try (BufferedWriter writer = new BufferedWriter(new FileWriter(TradeService.readFile, true))) {
                         int errorAtLine = counter;
                         writer.write("Error in the row while reading from file>>> line number " + (errorAtLine + 1) + " >> " + line);
                         writer.newLine();

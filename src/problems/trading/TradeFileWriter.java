@@ -3,6 +3,7 @@ package problems.trading;
 import problems.trading.database.DatabaseConnectionPool;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Connection;
@@ -15,7 +16,6 @@ public class TradeFileWriter {
     private static int counter = 0;
 
     public static void insertQuery(LinkedBlockingDeque<TradeTransaction> tradingTransactionDeQueue) throws Exception {
-        String logFilePath = "/Users/Gaurav.Manchanda/src/boca-bc24-java-core-problems/insert_error_log.txt";
         Connection connection = DatabaseConnectionPool.getConnection();
         try {
             connection.setAutoCommit(false);
@@ -39,7 +39,7 @@ public class TradeFileWriter {
                     preparingStatementForBatch(tradeTransaction, statement);
                     statement.addBatch();
                 } else {
-                    try (BufferedWriter writer = new BufferedWriter(new FileWriter(logFilePath, true))) {
+                    try (BufferedWriter writer = new BufferedWriter(new FileWriter(TradeService.writeFile, true))) {
                         int errorAtLine = counter;
                         TradeService.errorCount++;
                         writer.write("Error in the row while inserting trade to DB >>> line number " + (errorAtLine + 1) + " >> " + String.valueOf(tradeTransaction));
