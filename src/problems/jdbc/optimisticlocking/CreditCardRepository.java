@@ -1,5 +1,7 @@
 package problems.jdbc.optimisticlocking;
 
+import problems.jdbc.DatabaseHelper;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -36,20 +38,27 @@ public class CreditCardRepository {
     // Update the account balance using optimistic locking
     public static void updateAccountBalance(Connection connection, CreditCardTransaction creditCardTransaction, int version) throws SQLException {
         connection.setAutoCommit(false);
+        String balanceQuery = "SELECT balance FROM accounts where credit_card_number = ?";
         String updateQuery = "UPDATE accounts SET balance = ?, version = version + 1 WHERE credit_card_number = ? AND version = ?";
         PreparedStatement stmt = connection.prepareStatement(updateQuery);
-        stmt.setDouble(1, creditCardTransaction.getBalance() - creditCardTransaction.getAmount());
-        stmt.setString(2, creditCardTransaction.getCreditCardNumber());
-        stmt.setInt(3, version);
+        PreparedStatement balanceStmt = connection.prepareStatement(balanceQuery);
+        balanceStmt.setString(1, creditCardTransaction.getCreditCardNumber());
+        ResultSet resultSet = balanceStmt.executeQuery();
+        if(resultSet.next()) {
+            stmt.setDouble(1, resultSet.getDouble(1) - creditCardTransaction.getAmount());
+            stmt.setString(2, creditCardTransaction.getCreditCardNumber());
+            stmt.setInt(3, version);
 
-        int rowsUpdated = stmt.executeUpdate();
-        if (rowsUpdated == 0) {
-            // Optimistic locking failed, retry
-            connection.rollback();
-            throw new OptimisticLockingException("Optimistic locking failed, retrying transaction...");
+
+            int rowsUpdated = stmt.executeUpdate();
+            if (rowsUpdated == 0) {
+                // Optimistic locking failed, retry
+                connection.rollback();
+                throw new OptimisticLockingException("Optimistic locking failed, retrying transaction...");
+            }
+            connection.commit();
+            System.out.println("Transaction processed for card: " + creditCardTransaction.getCreditCardNumber());
+            connection.setAutoCommit(true);
         }
-        connection.commit();
-        System.out.println("Transaction processed for card: " + creditCardTransaction.getCreditCardNumber());
-        connection.setAutoCommit(true);
     }
 }

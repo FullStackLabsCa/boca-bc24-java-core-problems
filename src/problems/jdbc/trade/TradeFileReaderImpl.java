@@ -7,24 +7,26 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import java.util.Scanner;
 
-public class TradeFileParser {
+public class TradeFileReaderImpl implements TradeFileReader {
 
-    static int counter = 0;
-    static int errorCounter = 0;
-    static double errorThreshold = 0;
+    public static int counter = 0;
+    public static int errorCounter = 0;
+    public static double errorThreshold = 0;
     static TradeTransaction tradeTransaction;
 
-    public static void processFile(String filePath) throws IOException, InvalidInputException {
+    public List<TradeTransaction> processFile(String filePath) throws Exception {
         List<TradeTransaction> tradeTransactions = new ArrayList<>();
         boolean invalidInput = true;
         String logFilePath = "error_log.txt"; // Path to the error log file
 
-        getThresholdLimit(invalidInput);
-
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath));
-             PrintWriter errorLog = new PrintWriter(new FileWriter(logFilePath))) {
+//        getThresholdLimit(invalidInput);
+//        getThresholdLimitFromApplicationProperties();
+        BufferedReader reader = new BufferedReader(new FileReader(filePath));
+        PrintWriter errorLog = new PrintWriter(new FileWriter(logFilePath));
+        try {
             String line;
             reader.readLine(); // For reading the header of the file;
             while ((line = reader.readLine()) != null) {
@@ -54,19 +56,25 @@ public class TradeFileParser {
 //                    System.out.println("adding Trade transaction #" + counter + "in the arraylist >> " + tradeTransaction);
                 }
             }
-
-            if (errorCounter > (tradeTransactions.size() * errorThreshold) / 100) {
-                throw new HitErrorsThresholdException("The threshold limit exceeds please try with another file");
-            }
-            TradeRepository.insertTrade(tradeTransactions, errorCounter);
-        } catch (IOException | SQLException e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
+        if (errorCounter > (tradeTransactions.size() * errorThreshold) / 100) {
+            throw new HitErrorsThresholdException("The threshold limit exceeds please try with another file");
+        }
+        Error error = new Error(errorCounter, errorLog, counter, "", errorThreshold, tradeTransactions.size());
+        TradeFileWriterImpl tradeFileWriter = new TradeFileWriterImpl(error);
+        tradeFileWriter.writeTradeToDatabase(tradeTransactions);
+        return tradeTransactions;
     }
 
     private static void writeTologFile(PrintWriter errorLog, String line) {
-        errorLog.println("Error in row " + counter + ": " + line);
-        errorCounter++;
+        if(line != null) {
+            errorLog.println("Error in row " + counter + ": " + line);
+            errorCounter++;
+        }
     }
 
     private static void getThresholdLimit(boolean invalidInput) {
@@ -87,6 +95,28 @@ public class TradeFileParser {
             }
         }
     }
+
+
+    private static void getThresholdLimitFromApplicationProperties() {
+            try {
+                Properties properties = new Properties();
+                String filePath = "/Users/Suraj.Adhikari/sources/student-mode-programs/boca-bc24-java-core-problems/application.properties";
+                try(FileInputStream fileInputStream = new FileInputStream(filePath)) {
+                    properties.load(fileInputStream);
+                    String property = properties.getProperty("error.threshold");
+                    errorThreshold = Double.parseDouble(property);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            } catch (NumberFormatException e ) {
+                System.out.println("Invalid input type.Please enter the valid double value");
+                return;
+            } catch (InvalidInputException e) {
+                System.out.println(e.getMessage());
+                return;
+            }
+        }
+
 
 
     public static boolean validateCSV(String[] data) {

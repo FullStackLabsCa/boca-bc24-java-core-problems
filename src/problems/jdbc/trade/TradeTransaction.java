@@ -4,26 +4,26 @@ package problems.jdbc.trade;
 import java.util.Date;
 
 public class TradeTransaction {
-    private String tradeId;
+    private String tradeIdentifier;
     private String tickerSymbol;
     private int quantity;
     private double price;
     private Date tradeDate;
 
     public TradeTransaction(String tradeId, String tickerSymbol, int quantity, double price, Date tradeDate) {
-        this.tradeId = tradeId;
+        this.tradeIdentifier = tradeId;
         this.tickerSymbol = tickerSymbol;
         this.quantity = quantity;
         this.price = price;
         this.tradeDate = tradeDate;
     }
 
-    public String getTradeId() {
-        return tradeId;
+    public String getTradeIdentifier() {
+        return tradeIdentifier;
     }
 
-    public void setTradeId(String tradeId) {
-        this.tradeId = tradeId;
+    public void setTradeIdentifier(String tradeIdentifier) {
+        this.tradeIdentifier = tradeIdentifier;
     }
 
     public String getTickerSymbol() {
@@ -61,7 +61,7 @@ public class TradeTransaction {
     @Override
     public String toString() {
         return "TradeTransaction{" +
-                "tickerId='" + tradeId + '\'' +
+                "tickerId='" + tradeIdentifier + '\'' +
                 ", tickerSymbol='" + tickerSymbol + '\'' +
                 ", quantity=" + quantity +
                 ", price=" + price +
