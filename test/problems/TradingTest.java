@@ -21,7 +21,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 
@@ -32,6 +31,9 @@ public class TradingTest {
     String pathWithoutReadErrors;
     Map<Integer, Trade> mapWithValidSecurities = new HashMap<>();
     Map<Integer, Trade> mapWithInvalidSecurities = new HashMap<>();
+    ErrorChecking errorChecking;
+    TradeService tradeService;
+    TradeRepository tradeRepository;
 
     @Before
     public void setUp() {
@@ -59,14 +61,19 @@ public class TradingTest {
         } catch (Exception e) {
             System.out.println(e);
         }
+
+        errorChecking = new ErrorChecking();
+        tradeService = new TradeService();
+        tradeRepository = new TradeRepository();
+
     }
 
     @After
     public void cleanUp() {
         String sql = "Delete from Trades";
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql);) {
             preparedStatement.execute();
+            dataSource.close();
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -78,10 +85,8 @@ public class TradingTest {
     @Test
     public void testReadCSVFileWithCorrectPathAndWithoutReadErrors() {
         try {
-            ErrorChecking.setThreshold(15.0);
-            ErrorChecking.setRecords(0);
-            ErrorChecking.setRecordCount(0);
-            Map<Integer, Trade> trades = TradeService.readCSVFile(pathWithoutReadErrors);
+            errorChecking.setThreshold(15.0);
+            Map<Integer, Trade> trades = tradeService.readCSVFile(pathWithoutReadErrors, errorChecking);
             assertFalse(trades.isEmpty());
         } catch (Exception e) {
             System.out.println(e);
@@ -91,10 +96,8 @@ public class TradingTest {
     @Test(expected = HitErrorsThresholdException.class)
     public void testReadCSVFileWithCorrectPathAndWithReadErrorsAndLowThreshold() {
         try {
-            ErrorChecking.setThreshold(1.0);
-            ErrorChecking.setRecords(0);
-            ErrorChecking.setRecordCount(0);
-            TradeService.readCSVFile(pathWithReadErrors);
+            errorChecking.setThreshold(1.0);
+            tradeService.readCSVFile(pathWithReadErrors, errorChecking);
         } catch (IOException e) {
             System.out.println(e);
         }
@@ -103,11 +106,10 @@ public class TradingTest {
     @Test
     public void testReadCSVFileWithCorrectPathAndWithReadErrorsAndHighThreshold() {
         try {
-            ErrorChecking.setThreshold(30.0);
-            ErrorChecking.setRecords(0);
-            ErrorChecking.setRecordCount(0);
-            Map<Integer, Trade> trades = TradeService.readCSVFile(pathWithReadErrors);
-            assertFalse(trades.isEmpty());
+            errorChecking.setThreshold(30.0);
+            Map<Integer, Trade> trades = tradeService.readCSVFile(pathWithReadErrors, errorChecking);
+            assertEquals(trades.get(5), new Trade("5", "TDB_210749", "GOOGL", 470, 2361.51,
+                    LocalDate.parse("2024-07-22")));
         } catch (IOException e) {
             System.out.println(e);
         }
@@ -115,42 +117,50 @@ public class TradingTest {
 
     @Test
     public void testFetchThresholdFromApplicationProperties() {
-        ErrorChecking.setThreshold(30.0);
-        ErrorChecking.setRecords(0);
-        ErrorChecking.setRecordCount(0);
-        assertEquals(TradeService.fetchThresholdValue(), 25.0, 0.01);
+        errorChecking.setThreshold(30.0);
+        assertEquals(tradeService.fetchThresholdValue(), 25.0, 0.01);
     }
 
     @Test(expected = HitErrorsThresholdException.class)
     public void testInsertTradeListWithInvalidSecurities() {
         try {
-            ErrorChecking.setThreshold(30.0);
-            ErrorChecking.setRecords(0);
-            ErrorChecking.setRecordCount(5);
-            TradeRepository.insertTrade(mapWithInvalidSecurities, dataSource);
+            errorChecking.setThreshold(30.0);
+            tradeRepository.insertTrade(mapWithInvalidSecurities, dataSource, errorChecking);
         } catch (SQLException e) {
             System.out.println(e);
         }
     }
 
+//    @Test
+//    public void testInsertTradeListWithValidSecurities() {
+//        try {
+//            errorChecking.setThreshold(30.0);
+//            tradeRepository.insertTrade(mapWithValidSecurities, dataSource, errorChecking);
+//            Connection conn = dataSource.getConnection();
+//
+//        } catch (SQLException e) {
+//            System.out.println(e);
+//        }
+//    }
+
     @Test
     public void testCheckSecuritiesWithNonExistentSecurity() {
-        assertFalse(TradeRepository.checkSecurities(connection, "THDP"));
+        assertFalse(tradeRepository.checkSecurities(connection, "THDP"));
     }
 
     @Test
     public void testCheckSecuritiesWithExistingSecurity() {
-        assertTrue(TradeRepository.checkSecurities(connection, "AMZN"));
+        assertTrue(tradeRepository.checkSecurities(connection, "AMZN"));
     }
 
     @Test(expected = NullPointerException.class)
     public void testCheckSecuritiesWithNullConnection() {
-        TradeRepository.checkSecurities(null, "JHKH");
+        tradeRepository.checkSecurities(null, "JHKH");
     }
 
     @Test
     public void testPrintSummary() {
-        TradeService.printSummary(10, 8, 2);
+        tradeService.printSummary(10, 8, 2);
         assertTrue(systemOutRule.getLog().contains("""
                 Summary:
                 Records processed: 10

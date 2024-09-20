@@ -2,6 +2,7 @@ package problems.jdbc.trading.model;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Trade {
     private final String tradeId;
@@ -43,6 +44,19 @@ public class Trade {
 
     public Date getTradeDate() {
         return Date.valueOf(tradeDate);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Trade trade = (Trade) o;
+        return quantity == trade.quantity && Double.compare(price, trade.price) == 0 && Objects.equals(tradeId, trade.tradeId) && Objects.equals(tradeIdentifier, trade.tradeIdentifier) && Objects.equals(tickerSymbol, trade.tickerSymbol) && Objects.equals(tradeDate, trade.tradeDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(tradeId, tradeIdentifier, tickerSymbol, quantity, price, tradeDate);
     }
 
     @Override

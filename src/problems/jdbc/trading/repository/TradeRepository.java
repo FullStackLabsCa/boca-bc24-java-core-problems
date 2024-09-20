@@ -14,12 +14,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Map;
 
-public class TradeRepository {
+public class TradeRepository implements TradeRepositoryInterface {
 
-    public static void insertTrade(Map<Integer, Trade> trades, HikariDataSource dataSource) throws HitErrorsThresholdException, SQLException {
+    public void insertTrade(Map<Integer, Trade> trades, HikariDataSource dataSource, ErrorChecking errorChecking) throws HitErrorsThresholdException, SQLException {
         String query = "Insert into Trades (trade_id, trade_identifier, ticker_symbol, quantity, price, " +
                 "trade_date) values(?, ?, ?, ?, ?, ?)";
         Connection connection = null;
+        TradeService tradeService = new TradeService();
         try {
             connection = dataSource.getConnection();
             connection.setAutoCommit(false);
@@ -42,11 +43,12 @@ public class TradeRepository {
                         stmt.executeBatch();
                     }
                 } else {
-                    ErrorChecking.incrementErrorCount();
-                    TradeService.writeErrorLog("/Users/Anant.Jain/source/student/boca-bc24-java-core-problems/src" +
+                    errorChecking.incrementErrorCount();
+                    tradeService.writeErrorLog("/Users/Anant.Jain/source/student/boca-bc24-java-core-problems/src" +
                                     "/problems/jdbc/trading/logs/writerErrorLog.txt",
-                            new Date() + "Insertion error on line " + recordNumber + " -> ERROR: Invalid ticker_symbol.");
-                    if (TradeService.isThresholdExceeded()) {
+                            new Date() + " Insertion error on line " + recordNumber + " -> ERROR: Invalid " +
+                                    "ticker_symbol.");
+                    if (tradeService.isThresholdExceeded(errorChecking)) {
                         connection.rollback();
                         throw new HitErrorsThresholdException("Insertion failed...Threshold limit reached.");
                     }
@@ -61,7 +63,7 @@ public class TradeRepository {
         }
     }
 
-    public static boolean checkSecurities(Connection connection, String symbol) {
+    public boolean checkSecurities(Connection connection, String symbol) {
         boolean exists = false;
         try {
             String query = "Select 1 from SecuritiesReference where symbol = ?";

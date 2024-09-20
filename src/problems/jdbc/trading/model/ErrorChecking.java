@@ -13,39 +13,39 @@ public class ErrorChecking {
         insertions = 0;
     }
 
-    public static double getThreshold() {
+    public double getThreshold() {
         return threshold;
     }
 
-    public static void setThreshold(double thresholdValue) {
+    public void setThreshold(double thresholdValue) {
         threshold = thresholdValue;
     }
 
-    public static int getRecords() {
+    public int getRecords() {
         return records;
     }
 
-    public static void incrementRecordCount() {
+    public void incrementRecordCount() {
         records++;
     }
 
-    public static void setRecordCount(int count) {
+    public void setRecordCount(int count) {
         records = count;
     }
 
-    public static void setRecords(int recordsCount) {
-        records = recordsCount;
+    public void setErrors(int errors) {
+        errorCount = errors;
     }
 
-    public static int getErrorCount() {
+    public int getErrorCount() {
         return errorCount;
     }
 
-    public static void incrementErrorCount() {
+    public void incrementErrorCount() {
         errorCount++;
     }
 
-    public static int getInsertions() {
+    public int getInsertions() {
         return records - errorCount;
     }
 }

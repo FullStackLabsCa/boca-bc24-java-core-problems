@@ -23,7 +23,10 @@ public class TradingRunner {
                             threshold = scanner.nextDouble();
                             if (threshold < 1 || threshold > 100)
                                 throw new InvalidThresholdValueException("Enter a valid threshold value.");
-                            else TradeService.readFileAndInitializeDataSource(path, threshold);
+                            else {
+                                TradeService tradeService = new TradeService();
+                                tradeService.readFileAndInitializeDataSource(path, threshold);
+                            }
 
                         } catch (InvalidThresholdValueException e) {
                             System.out.println(e.getMessage());
@@ -36,7 +39,8 @@ public class TradingRunner {
                     }
                 } while (threshold == 0);
             } else if (caseType.equalsIgnoreCase("case2")) {
-                TradeService.readFileAndInitializeDataSource(path, 0);
+                TradeService tradeService = new TradeService();
+                tradeService.readFileAndInitializeDataSource(path, 0);
             }
         }
     }
