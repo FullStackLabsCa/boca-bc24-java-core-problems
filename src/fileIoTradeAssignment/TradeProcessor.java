@@ -21,6 +21,7 @@ public class TradeProcessor {
 
     private int errorCounter = 0;
     private final int readFileErrorThreshold = 6;
+    private final int DBInsertErrorThreshold = 6;
 
 
     public void setFilePath(String filePath) {
@@ -46,23 +47,16 @@ public class TradeProcessor {
                 if (!validateTradeDetails(tradeDetails)) {
                     errorCounter++;
                     System.err.println("Invalid data at line: " + newLine);
-
-
                     if (errorCounter >= readFileErrorThreshold) {
                         System.out.println("errorThreshold : " + readFileErrorThreshold + " errorCounter : " + errorCounter);
-
-
                         throw new HitReadFileErrorsThresholdException("threshold limit exceeded while reading file");
-
                     }
                 } else {
-
                     validLines.add(newLine);
                 }
             }
 
         } catch (FileNotFoundException e) {
-
             throw new FileNotFoundException("file doesn't exists ");
 //            throw e;
         } catch (Exception e) {
@@ -73,10 +67,7 @@ public class TradeProcessor {
 
     private boolean validateTradeDetails(String[] tradeDetails) throws Exception {
         try {
-
-
             int trade_id = Integer.parseInt(tradeDetails[0]);
-
 
             String ticker_identifier = tradeDetails[1];
             if (ticker_identifier.isEmpty()) {
@@ -105,7 +96,7 @@ public class TradeProcessor {
     }
 
 
-    public void tradesInsertionMaker() throws SQLException {
+    public void tradesInsertionMaker() throws SQLException, HitDatabaseInsertErrorsThresholdException {
         if (validLines.isEmpty()) {
             System.out.println("No valid lines to insert into the database.");
             return;
@@ -137,27 +128,24 @@ public class TradeProcessor {
                 stmt.executeBatch();
                 conn.commit();
                 System.out.println("Valid trades have been inserted into the database.");
+                if (errorCounter >= DBInsertErrorThreshold){
+                    throw  new HitDatabaseInsertErrorsThresholdException("error threshold limit reached");
+                }
+
             } catch (SQLException e) {
                 conn.rollback();
+                errorCounter++;
                 System.err.println("Error during batch insertion: " + e.getMessage());
+
             }
         }
     }
 }
 
 
-class HitReadFileErrorsThresholdException extends Exception {
-    public HitReadFileErrorsThresholdException(String str) {
-        super(str);
-    }
-}
 
 
-class HitDatabaseInsertErrorsThresholdException extends Exception {
-    public HitDatabaseInsertErrorsThresholdException(String str) {
-        super(str);
-    }
-}
+
 
 
 
