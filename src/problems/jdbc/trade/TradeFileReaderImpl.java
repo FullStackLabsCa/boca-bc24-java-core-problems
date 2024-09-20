@@ -1,8 +1,6 @@
 package problems.jdbc.trade;
 
-
 import java.io.*;
-import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -12,7 +10,7 @@ import java.util.Scanner;
 
 public class TradeFileReaderImpl implements TradeFileReader {
 
-    public static int counter = 0;
+    public static int lineCounter = 1;
     public static int errorCounter = 0;
     public static double errorThreshold = 0;
     static TradeTransaction tradeTransaction;
@@ -20,37 +18,53 @@ public class TradeFileReaderImpl implements TradeFileReader {
     public List<TradeTransaction> processFile(String filePath) throws Exception {
         List<TradeTransaction> tradeTransactions = new ArrayList<>();
         boolean invalidInput = true;
-        String logFilePath = "error_log.txt"; // Path to the error log file
+        String logFilePath = "tradeReads_error_log.txt"; // Path to the error log file
 
-//        getThresholdLimit(invalidInput);
+        getThresholdLimit(invalidInput);
 //        getThresholdLimitFromApplicationProperties();
         BufferedReader reader = new BufferedReader(new FileReader(filePath));
-        PrintWriter errorLog = new PrintWriter(new FileWriter(logFilePath));
-        try {
+
+        try(PrintWriter errorLog = new PrintWriter(new FileWriter(logFilePath))) {
             String line;
             reader.readLine(); // For reading the header of the file;
             while ((line = reader.readLine()) != null) {
-                counter++;
+                lineCounter++;
                 String[] data = line.split(",");
+                if(data.length !=5) {
+                    writeToLogFile(errorLog, line);
+                    continue;
+                }
                 try {
-                    tradeTransaction = new TradeTransaction(data[0],
-                            data[1],
-                            Integer.parseInt(data[2]),
-                            Double.parseDouble(data[3]),
-                            new SimpleDateFormat("yyyy-MM-dd").parse(data[4]));
+                    tradeTransaction =
+                            TradeTransaction.TradeTransactionBuilder.aTradeTransaction()
+                                    .withTradeIdentifier(data[0])
+                                    .withTickerSymbol(data[1])
+                                    .withQuantity(  Integer.parseInt(data[2]))
+                                    .withPrice(Double.parseDouble(data[3]))
+                                    .withTradeDate(   new SimpleDateFormat("yyyy-MM-dd").parse(data[4]))
+                                    .withLineNumber(lineCounter)
+                                    .build();
+//                new TradeTransaction(data[0],
+//                            data[1],
+//                            Integer.parseInt(data[2]),
+//                            Double.parseDouble(data[3]),
+//                            new SimpleDateFormat("yyyy-MM-dd").parse(data[4]),
+//                            counter
+//
+//                    );
                 } catch (NumberFormatException | ParseException e) {
                     if (e instanceof NumberFormatException) {
                         System.out.println("Number format exception happened while trying to parse trade with id" + data[0]);
                     } else {
                         System.out.println("Date Format exception happened while trying to parse trade with id" + data[0]);
                     }
-                    writeTologFile(errorLog, line);
+                    writeToLogFile(errorLog, line);
                     continue;
                 }
                 boolean isValid = validateCSV(data); //checking here the empty null value as number format exception is already handled in above try catch block
                 if (!isValid) {
                     System.out.println("Escaping the line with error row data " + data[0]);
-                    writeTologFile(errorLog, line);
+                    writeToLogFile(errorLog, line);
                 } else {
                     tradeTransactions.add(tradeTransaction);
 //                    System.out.println("adding Trade transaction #" + counter + "in the arraylist >> " + tradeTransaction);
@@ -64,15 +78,15 @@ public class TradeFileReaderImpl implements TradeFileReader {
         if (errorCounter > (tradeTransactions.size() * errorThreshold) / 100) {
             throw new HitErrorsThresholdException("The threshold limit exceeds please try with another file");
         }
-        Error error = new Error(errorCounter, errorLog, counter, "", errorThreshold, tradeTransactions.size());
+        Error error = new Error(errorCounter, errorThreshold, tradeTransactions.size());
         TradeFileWriterImpl tradeFileWriter = new TradeFileWriterImpl(error);
         tradeFileWriter.writeTradeToDatabase(tradeTransactions);
         return tradeTransactions;
     }
 
-    private static void writeTologFile(PrintWriter errorLog, String line) {
+    private static void writeToLogFile(PrintWriter errorLog, String line) {
         if(line != null) {
-            errorLog.println("Error in row " + counter + ": " + line);
+            errorLog.println("Error in row " + lineCounter + ": " + line);
             errorCounter++;
         }
     }

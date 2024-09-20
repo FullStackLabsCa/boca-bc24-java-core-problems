@@ -17,7 +17,6 @@ public class TradeFileReaderImplTest {
         tradeFileReaderImpl.processFile("Users/Suraj.Adhikari/NoFile.csv");
     }
 
-
     @Test
     public void processFileShouldGiveListOfTrade() throws Exception {
         TradeFileReaderImpl.errorThreshold = 25;
