@@ -40,39 +40,39 @@
 ////            //adding the column headers
 ////            //use comma as the delimiter
 ////            scanner.useDelimiter(",");
-////            writer.write("trade_id, ticker_symbol, quantity, price, trade_date");
-////            writer.newLine();
-////        } catch (IOException e) {
-////            System.err.println("Error writing in csv file");
-////            e.printStackTrace();
-////            scanner.close();
-////            //return;
-////
-////            try (Scanner fileScanner = new Scanner(new FileReader(tradingFile))) {
-////                fileScanner.useDelimiter(",");
-////
-////                while (fileScanner.hasNextLine()) {
-////                    String line = fileScanner.nextLine();
-////                    Scanner scanForLine = new Scanner(line);
-////                    scanForLine.useDelimiter(",");
-////
-////
-////                    String trade_id = scanForLine.next();
-////                    String ticker_symbol = scanForLine.next();
-////                    Integer quantity = scanForLine.nextInt();
-////                    Double price = scanForLine.nextDouble();
-////                    String trade_date = scanForLine.next(); //in the format yyyy-MM-dd
-////
-////                    scanForLine.close();
-////
-////                }
-////            } catch (IOException f) {
-////                System.err.println("Error occured in reading csv file");
-////                f.printStackTrace();
-////            }
-////
-////        }
-////        //close the thing with finally
-////    }
-////}
-////
+//            writer.write("trade_id, ticker_symbol, quantity, price, trade_date");
+//            writer.newLine();
+//        } catch (IOException e) {
+//            System.err.println("Error writing in csv file");
+//            e.printStackTrace();
+//            scanner.close();
+//            //return;
+//
+//            try (Scanner fileScanner = new Scanner(new FileReader(tradingFile))) {
+//                fileScanner.useDelimiter(",");
+//
+//                while (fileScanner.hasNextLine()) {
+//                    String line = fileScanner.nextLine();
+//                    Scanner scanForLine = new Scanner(line);
+//                    scanForLine.useDelimiter(",");
+//
+//
+//                    String trade_id = scanForLine.next();
+//                    String ticker_symbol = scanForLine.next();
+//                    Integer quantity = scanForLine.nextInt();
+//                    Double price = scanForLine.nextDouble();
+//                    String trade_date = scanForLine.next(); //in the format yyyy-MM-dd
+//
+//                    scanForLine.close();
+//
+//                }
+//            } catch (IOException f) {
+//                System.err.println("Error occured in reading csv file");
+//                f.printStackTrace();
+//            }
+//
+//        }
+//        //close the thing with finally
+//    }
+//}
+//

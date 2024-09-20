@@ -1,13 +1,13 @@
 package problems.trading.services;
 
 import com.zaxxer.hikari.HikariDataSource;
+import problems.trading.DataValidation;
+import problems.trading.customexceptions.HitErrorsThresholdException;
 import problems.trading.databaseconnection.TradingDatabaseConnection;
 import problems.trading.repository.TradingRepository;
 import problems.trading.tradingmodel.TradingValues;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -20,9 +20,9 @@ import static problems.trading.TradingProcessor.dataSource;
 
 public class TradingService {
 
+    public static final int ERROR_THRESHOLD = 25;
+
     public static void setupDBConnectionAndRunFileReading(Connection connection, String filePath) {
-       // readTradingFileAndWriteToFile("/Users/Shifa.Kajal/source/student/boca-bc24-java-core-problems/src/problems/trading/trades_sample_1000.csv");
-        //readTradingFileAndWriteToFile("/Users/Shifa.Kajal/source/student/boca-bc24-java-core-problems/src/problems/trading/trade_data1.csv");
         readTradingFileAndWriteToFile(filePath);
     }
 
@@ -30,7 +30,7 @@ public class TradingService {
     public static Connection connectToDatabase() {
         HikariDataSource dataSource = TradingDatabaseConnection.configureHikariCP();
         try {
-           return dataSource.getConnection();
+            return dataSource.getConnection();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -39,27 +39,34 @@ public class TradingService {
 
     //Step 1: Reading trading from a delimited file
     public static void readTradingFileAndWriteToFile(String filePath) {
+
         List<TradingValues> batch = new ArrayList<>();
-        int counter = 0;
+        List<String> errorLogForReading = new ArrayList<>();
+        double rowCounter = 0;
+        double errorCounter = 0;
+
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
             reader.readLine();
             while ((line = reader.readLine()) != null) {
-                counter++;
+                rowCounter++;
+
+
                 String[] data = line.split(",");
 
-
-                //validation for number of columns
-                if(!checkForValidNumberOfColumns(line)) {
-                    System.out.println("Invalid number of columns");
+                try {
+                    if (!DataValidation.checkForAllValidations(line)){
+                        errorCounter++;
+                        errorLogForReading.add("Error in row: " + rowCounter);
+                       continue;
+                    }
+                } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
+                    errorCounter++;
+                    errorLogForReading.add("Error in row: " + rowCounter + e.getMessage());
+                    continue;
                 }
 
-                //validation for integer type for quantity
-                if(!checkForValidQuantity(line)){
-
-                }
-
-                //validation for decimal type for
                 //trimming to remove any white spaces
                 TradingValues tradingValues = new TradingValues(
                         data[0].trim(),
@@ -67,19 +74,58 @@ public class TradingService {
                         data[2].trim(),
                         Integer.parseInt(data[3].trim()),
                         Double.parseDouble(data[4].trim()),
-                        LocalDate.parse(data[5]));
-//                System.out.println(tradingValues);
+                        LocalDate.parse(data[5])
+                );
+                //System.out.println(tradingValues);
                 batch.add(tradingValues);
-//                System.out.println("adding trading " + counter + " >> " + tradingValues);
-//                Thread.sleep(100);
+
             }
             TradingRepository.prepareStatements(dataSource, batch);
 
-        } catch (IOException  e) {
+        } catch (FileNotFoundException f) {
+            System.out.println("Wrong file path provided. Please provide the correct file path.");
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
+
+        double percentErrorInReadingFile = ( errorCounter/rowCounter) * 100;
+        System.out.println("Total number of rows in file: " + rowCounter + ", number of successfully added rows: " + batch.size() + ", number of rows that are failed: " + errorCounter + " , percent error in reading file: " + percentErrorInReadingFile);
+
+        if (percentErrorInReadingFile > ERROR_THRESHOLD) {
+            throw new HitErrorsThresholdException("Error threshold exceeded: " + errorCounter + " out of " + rowCounter);
+        }
+
+        logReaderErrors(errorLogForReading);
     }
 
+    public static void logReaderErrors(List<String> errorsInReading) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Trade_reading_error_log", true))) {
+           for(String errorsWhileReading : errorsInReading) {
+               writer.write(errorsWhileReading);
+               writer.newLine();
+           }// Add a new line
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
 }
+
+
+
+
+//        try (BufferedWriter writer = new BufferedWriter("/Users/Shifa.Kajal/source/student/boca-bc24-java-core-problems/src/problems/trading/Trade_reading_error_log", true)) {
+//            for (String error : errorsInReading) {
+//                writer.write(error + "\n");
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//    }
+//}
+
+
 

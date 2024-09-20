@@ -3,30 +3,45 @@ package problems.trading;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DataValidation {
-    public static boolean checkForAllValidations(String line) throws ParseException {
+    public static boolean checkForAllValidations(String line) {
         String[] data = line.split(",");
-        checkForValidNumberOfColumns(line);
-        checkForValidQuantity(line);
-        checkForValidPrice(line);
-        checkForValidTradeDate(line);
+        List<String> errorsInReading = new ArrayList<>();
+            if( checkForValidNumberOfColumns(line) &&
+            checkForValidQuantity(line) &&
+            checkForValidPrice(line) &&
+            checkForValidTradeDate(line)) {
+                return true;
+            }
+
+//            checkForValidNumberOfColumns(line);
+//            checkForValidQuantity(line);
+//            checkForValidPrice(line);
+//            checkForValidTradeDate(line);
+//            return true;
         return false;
     }
-
 
     public static boolean checkForValidNumberOfColumns(String line) {
 
         //Validation - check for the correct number of columns
         String[] data = line.split(",");
-        if (data.length != 6) {
-            System.out.println("Incorrect number of fields. Six fields are expected" + line);
-            //continue;
-            return false;
+        try{
+            if(data.length != 6);
+            return true;
+        } catch (IllegalArgumentException i){
+            System.out.println(data[0] + "Incorrect number of fields. Six fields are expected at line -- " +line);
         }
-        return true;
+//        if (data.length != 6) {
+//            throw new IllegalArgumentException("Incorrect number of fields. Six fields are expected at line -- " +line);
+        return false;
     }
+
 
     public static boolean checkForValidQuantity(String line) {
         //Validation - check if the value for quantity is always an integer
@@ -35,9 +50,10 @@ public class DataValidation {
             Integer.parseInt(data[3].trim());
             return true;
         } catch (NumberFormatException n) {
-            System.out.println(data[3].trim() + "is not a valid integer. Quantity should be an integer");
+            return false;
+//            System.out.println(data[3].trim() + "is not a valid integer. Quantity should be an integer");
         }
-        return false;
+
     }
 
     public static boolean checkForValidPrice(String line) {
@@ -53,12 +69,27 @@ public class DataValidation {
         return false;
     }
 
-    public static  boolean checkForValidTradeDate(String line) throws ParseException {
+    public static boolean checkForValidTradeDate(String line) {
         //Validation - check if the date in always in the format of "yyyy-MM-dd"
         String[] data = line.split(",");
         String datePattern = "yyyy-MM-dd";
         SimpleDateFormat dateFormat = new SimpleDateFormat(datePattern);
-        LocalDate.parse(data[5].trim());
+        try {
+            LocalDate.parse(data[5].trim());
+            return true;
+        } catch (DateTimeException d) {
+            System.out.println(data[5].trim() + "is not a valid date format. The correct date format is yyyy-MM-dd");
+        }
+
+        return false;
+    }
+
+    public static boolean isEmpty(String line){
+        //Check of there are any missing values
+        String[] data = line.split(",");
+        if(line == null){
+            System.out.println("It is empty");
+        }
         return true;
     }
 }

@@ -10,7 +10,7 @@ public class TradingValues {
     private Double price;
     private LocalDate trade_date;
 
-    public TradingValues(String trade_id, String trade_identifier,String ticker_symbol, int quantity, double price, LocalDate trade_date) {
+    public TradingValues(String trade_id,String trade_identifier,String ticker_symbol, int quantity, double price, LocalDate trade_date) {
         this.trade_id = trade_id;
         this.trade_identifier = trade_identifier;
         this.ticker_symbol = ticker_symbol;
@@ -19,7 +19,7 @@ public class TradingValues {
         this.trade_date = trade_date;
     }
 
-    // Getters
+//     Getters
     public String getTradeId() {
         return trade_id;
     }
@@ -47,7 +47,7 @@ public class TradingValues {
     @Override
     public String toString() {
         return "TradingValues{" +
-                "trade_id='" + trade_id + '\'' +
+                "trade_id" + trade_id + '\'' +
                 "trade_identifier" + trade_identifier + '\'' +
                 ", ticker_symbol='" + ticker_symbol + '\'' +
                 ", quantity=" + quantity +
