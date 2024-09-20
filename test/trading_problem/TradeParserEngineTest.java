@@ -45,19 +45,11 @@ public class TradeParserEngineTest {
                 );
                 """;
 
-        String createSecuritiesTable = """
-                CREATE TABLE SecuritiesReference (
-                    symbol VARCHAR(10) PRIMARY KEY,
-                    description VARCHAR(100)
-                );
-                """;
 
         try (Connection conn = dataSource.getConnection()) {
             PreparedStatement psTradeTable = conn.prepareStatement(createTradesTable);
-            PreparedStatement psSecuritiesTable = conn.prepareStatement(createSecuritiesTable);
 
             psTradeTable.executeUpdate();
-            psSecuritiesTable.executeUpdate();
 
         } catch (SQLException e){
             System.out.println(e.getMessage());
@@ -70,15 +62,12 @@ public class TradeParserEngineTest {
 
     public void dropAllTables(){
         String dropTrade = "drop table Trades";
-        String dropSecurities = "drop table SecuritiesReference";
 
         try (Connection conn = dataSource.getConnection()) {
 
             PreparedStatement psTrades = conn.prepareStatement(dropTrade);
-            PreparedStatement psSecurities = conn.prepareStatement(dropSecurities);
 
             psTrades.executeUpdate();
-            psSecurities.executeUpdate();
 
         } catch (SQLException e){
             System.out.println(e.getMessage());
@@ -136,7 +125,13 @@ public class TradeParserEngineTest {
 
     @Test
     public void testReadingAllGoodValues(){
-
+        try {
+            TradeParserEngine.readTradesFileAndWriteToDatabase("/Users/Akshat.Singla/Downloads/code/practice-problems/student-codebase/boca-bc24-java-core-problems/test/trading_problem/trade_data_all_correct.csv");
+            assertEquals(fileReadErrorCount, 0);
+            assertEquals(fileReadSuccessCount, 1000);
+        } catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     @Test
