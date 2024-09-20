@@ -10,6 +10,7 @@ public class TradeService {
     public static double errorThreshold = 0;
     public static File writeFile = new File("writeLogfile.txt");
     public static File readFile = new File("readLogfile.txt");
+    public  static boolean isFileExist = false;
 
 
     public static void checkingThreshold(ArrayList<TradeTransaction> tradingTransactionArrayList) {

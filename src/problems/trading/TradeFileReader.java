@@ -14,8 +14,8 @@ public class TradeFileReader {
 
     public static void checkThresholdValue() {
         boolean inputValid = false;
-        Scanner scanner = new Scanner(System.in);
         while (!inputValid) {
+            Scanner scanner = new Scanner(System.in);
             try {
                 System.out.print("Enter a threshold value: ");
                 String s = scanner.nextLine();
@@ -63,7 +63,7 @@ public class TradeFileReader {
                 // checking validation by null and empty values
                 isValid = validateCSVFile(row);
 
-                //if its valid then adding to the DeQueue
+                //if its valid then adding to the list
                 if (isValid) {
                     System.out.println("adding transaction #" + counter + " in the queue >> " + tradeTransaction);
                     tradingTransactionArrayList.add(tradeTransaction);
@@ -78,16 +78,19 @@ public class TradeFileReader {
         return tradingTransactionArrayList;
     }
 
-    public static String checkFileName() throws FileNotFoundException {
+    public static String checkFileName(String fileName) throws FileNotFoundException {
+        // Check if the read file exists and delete it at the start of execution
+        TradeService.checkReadLogFileExistOrNot();
+
+        // Check if the write file exists and delete it at the start of execution
+        TradeService.checkWriteLogFileExistOrNot();
         //checking file name from the user input
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Please enter a file name >>>");
-        String fileName = scanner.next().trim();
-        boolean isFileNameValid = false;
-        while (!isFileNameValid) {
+        TradeService.isFileExist = false;
+        while (!TradeService.isFileExist) {
             if (fileName.equals("trade_data")) {
                 filePath = "/Users/Gaurav.Manchanda/src/boca-bc24-java-core-problems/" + fileName + ".csv";
-                isFileNameValid = true;
+                TradeService.isFileExist = true;
+                System.out.println("File found in the system");
             } else {
                 throw new FileNotFoundException("Please enter a valid file name");
             }

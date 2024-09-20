@@ -3,15 +3,18 @@ package problems.trading;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import problems.string.advanced.calculator.Calculator;
 
 import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Scanner;
 import java.util.concurrent.LinkedBlockingDeque;
 
-public class CheckFileTest {
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+public class TradingTest {
     private Connection connection;
     private TradeFileWriter tradeFileWriter;
     private TradeFileReader tradeFileReader;
@@ -33,9 +36,16 @@ public class CheckFileTest {
         connection.close();
     }
 
+    @Test(expected = FileNotFoundException.class)
+    public void FileNotExistAndThrowingException() throws FileNotFoundException {
+        String fileName = "sample";
+        TradeFileReader.checkFileName(fileName);
+    }
+
     @Test
-    public void checkFileNotExistThrowingException() throws FileNotFoundException {
-        String fileName = "abc";
-        CheckUserInputForFile.checkFileName(fileName);
+    public void  FileFound() throws FileNotFoundException {
+        String fileName = "trade_data";
+        TradeFileReader.checkFileName(fileName);
+        assertTrue(TradeService.isFileExist);
     }
 }
