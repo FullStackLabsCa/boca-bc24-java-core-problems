@@ -104,7 +104,7 @@ public class TradeParserEngineTest {
     @Test (expected = HitErrorsThresholdException.class)
     public void testReadingAllWrongValuesAndExceptionThrown(){
         try {
-            TradeParserEngine.readTradesFileAndWriteToDatabase("/Users/Akshat.Singla/Downloads/code/practice-problems/student-codebase/boca-bc24-java-core-problems/test/trading_problem/trade_data_all_faulty.csv");
+            TradeParserEngine.readTradesFileAndWriteToDatabase("/Users/Akshat.Singla/Downloads/code/practice-problems/student-codebase/boca-bc24-java-core-problems/test/trading_problem/data/trade_data_all_faulty.csv");
         }catch (SQLException e){
             System.out.println(e.getMessage());
         }
@@ -113,7 +113,7 @@ public class TradeParserEngineTest {
     @Test
     public void testReadingAllWrongValuesAndLogsChecking(){
         try {
-            TradeParserEngine.readTradesFileAndWriteToDatabase("/Users/Akshat.Singla/Downloads/code/practice-problems/student-codebase/boca-bc24-java-core-problems/test/trading_problem/trade_data_all_faulty.csv");
+            TradeParserEngine.readTradesFileAndWriteToDatabase("/Users/Akshat.Singla/Downloads/code/practice-problems/student-codebase/boca-bc24-java-core-problems/test/trading_problem/data/trade_data_all_faulty.csv");
         } catch (HitErrorsThresholdException e){
             assertEquals(fileReadErrorCount, 1000);
             assertEquals(fileReadSuccessCount, 0);
@@ -126,7 +126,7 @@ public class TradeParserEngineTest {
     @Test
     public void testReadingAllGoodValues(){
         try {
-            TradeParserEngine.readTradesFileAndWriteToDatabase("/Users/Akshat.Singla/Downloads/code/practice-problems/student-codebase/boca-bc24-java-core-problems/test/trading_problem/trade_data_all_correct.csv");
+            TradeParserEngine.readTradesFileAndWriteToDatabase("/Users/Akshat.Singla/Downloads/code/practice-problems/student-codebase/boca-bc24-java-core-problems/test/trading_problem/data/trade_data_all_correct.csv");
             assertEquals(fileReadErrorCount, 0);
             assertEquals(fileReadSuccessCount, 1000);
         } catch (SQLException e){
@@ -136,7 +136,15 @@ public class TradeParserEngineTest {
 
     @Test
     public void testReadingValuesWhenFailsEqualToThreshold(){
-        
+        try{
+            TradeParserEngine.readTradesFileAndWriteToDatabase("/Users/Akshat.Singla/Downloads/code/practice-problems/student-codebase/boca-bc24-java-core-problems/test/trading_problem/data/trade_data_fails_equals_Threshold.csv");
+            assertEquals(fileReadErrorCount, 246);
+            assertEquals(fileReadSuccessCount, 738);
+            assertEquals(successfullInsertsCount, 738);
+            assertEquals(failedInsertsCount, 0);
+        } catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     @Test

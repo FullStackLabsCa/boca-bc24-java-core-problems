@@ -8,7 +8,7 @@ import java.time.LocalDate;
 
 public class TradeFaultyDataGenerator {
     public static void main(String[] args) {
-        String filePath = "trade_data.csv"; // Path to save the CSV file
+        String filePath = "trade_data_fails_equals_Threshold.csv"; // Path to save the CSV file
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
             // Write header with the new column 'trade_identifier'
