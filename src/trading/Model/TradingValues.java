@@ -3,13 +3,15 @@ import java.time.LocalDate;
 
 public class TradingValues {
     private  String tradeId;
+    private  String tradeIdentifier;
     private  String tickerSymbol;
     private int quantity;
     private  double price;
     LocalDate tradeDate;
 
-    public TradingValues(String tradeId, String tickerSymbol, int quantity, double price, LocalDate tradeDate) {
+    public TradingValues(String tradeId, String tradeIdentifier, String tickerSymbol, int quantity, double price, LocalDate tradeDate) {
         this.tradeId = tradeId;
+        this.tradeIdentifier = tradeIdentifier;
         this.tickerSymbol = tickerSymbol;
         this.quantity = quantity;
         this.price = price;
@@ -18,6 +20,10 @@ public class TradingValues {
 
     public String getTradeId() {
         return tradeId;
+    }
+
+    public String getTradeIdentifier() {
+        return tradeIdentifier;
     }
 
     public String getTickerSymbol() {
@@ -32,18 +38,22 @@ public class TradingValues {
         return price;
     }
 
-    public LocalDate gettradeDate() {
+    public LocalDate getTradeDate() {
         return tradeDate;
     }
 
+
     @Override
     public String toString() {
-        return "TradingValues :-" +
-                "tradeId = '" + tradeId + '\'' +
-                ", tickerSymbol = '" + tickerSymbol + '\'' +
-                ", quantity = " + quantity +
-                ", price = "  + price +
-                ", tradeDate = " + tradeDate
-                ;
+        return "TradingValues{" +
+                "tradeId=" + tradeId +
+                ", tradeIdentifier='" + tradeIdentifier + '\'' +
+                ", tickerSymbol='" + tickerSymbol + '\'' +
+                ", quantity=" + quantity +
+                ", price=" + price +
+                ", tradeDate=" + tradeDate +
+                '}';
     }
+
+
 }

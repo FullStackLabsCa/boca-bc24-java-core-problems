@@ -1,8 +1,7 @@
 package trading.Utility;
 
-public class FileNotExists extends  Exception{
-    public FileNotExists(String message ){
+public class FileNotExists extends  RuntimeException{
+    public FileNotExists(String message){
         super(message);
-
     }
 }
