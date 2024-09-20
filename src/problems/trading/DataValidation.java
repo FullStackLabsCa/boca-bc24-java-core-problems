@@ -1,6 +1,8 @@
 package problems.trading;
 
 
+import problems.trading.services.TradingService;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.DateTimeException;
@@ -11,7 +13,7 @@ import java.util.List;
 public class DataValidation {
     public static boolean checkForAllValidations(String line) {
         String[] data = line.split(",");
-        List<String> errorsInReading = new ArrayList<>();
+
             if( checkForValidNumberOfColumns(line) &&
             checkForValidQuantity(line) &&
             checkForValidPrice(line) &&
@@ -37,6 +39,7 @@ public class DataValidation {
         } catch (IllegalArgumentException i){
             System.out.println(data[0] + "Incorrect number of fields. Six fields are expected at line -- " +line);
         }
+        TradingService.logReaderErrors(line + " Incorrect number of fields. Six fields are expected at line -- ");
 //        if (data.length != 6) {
 //            throw new IllegalArgumentException("Incorrect number of fields. Six fields are expected at line -- " +line);
         return false;
@@ -50,8 +53,9 @@ public class DataValidation {
             Integer.parseInt(data[3].trim());
             return true;
         } catch (NumberFormatException n) {
+            TradingService.logReaderErrors(line);
+            System.out.println(data[3].trim() + "is not a valid integer. Quantity should be an integer");
             return false;
-//            System.out.println(data[3].trim() + "is not a valid integer. Quantity should be an integer");
         }
 
     }
@@ -66,6 +70,7 @@ public class DataValidation {
             System.out.println(data[4].trim() + "is not a valid decimal price. Price needs to be a decimal");
 
         }
+        TradingService.logReaderErrors(line);
         return false;
     }
 
@@ -80,7 +85,7 @@ public class DataValidation {
         } catch (DateTimeException d) {
             System.out.println(data[5].trim() + "is not a valid date format. The correct date format is yyyy-MM-dd");
         }
-
+        TradingService.logReaderErrors(line);
         return false;
     }
 
@@ -90,6 +95,8 @@ public class DataValidation {
         if(line == null){
             System.out.println("It is empty");
         }
+        TradingService.logReaderErrors(line);
         return true;
     }
+
 }

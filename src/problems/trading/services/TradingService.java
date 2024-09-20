@@ -41,7 +41,7 @@ public class TradingService {
     public static void readTradingFileAndWriteToFile(String filePath) {
 
         List<TradingValues> batch = new ArrayList<>();
-        List<String> errorLogForReading = new ArrayList<>();
+        //List<String> errorLogForReading = new ArrayList<>();
         double rowCounter = 0;
         double errorCounter = 0;
 
@@ -57,13 +57,13 @@ public class TradingService {
                 try {
                     if (!DataValidation.checkForAllValidations(line)){
                         errorCounter++;
-                        errorLogForReading.add("Error in row: " + rowCounter);
+                       // errorLogForReading.add("Error in row: " + rowCounter);
                        continue;
                     }
                 } catch (IllegalArgumentException e) {
                     System.out.println(e.getMessage());
                     errorCounter++;
-                    errorLogForReading.add("Error in row: " + rowCounter + e.getMessage());
+                  //  errorLogForReading.add("Error in row: " + rowCounter + e.getMessage());
                     continue;
                 }
 
@@ -90,22 +90,23 @@ public class TradingService {
         }
 
 
-        double percentErrorInReadingFile = ( errorCounter/rowCounter) * 100;
-        System.out.println("Total number of rows in file: " + rowCounter + ", number of successfully added rows: " + batch.size() + ", number of rows that are failed: " + errorCounter + " , percent error in reading file: " + percentErrorInReadingFile);
+      //  double percentErrorInReadingFile = 0;
+       double maxErrorPercentageAcceptableForReading=Math.ceil( rowCounter * (ERROR_THRESHOLD /100.00));
+        System.out.println("ERROR_THRESHOLD = " + ERROR_THRESHOLD);
+        System.out.println("Total number of rows in file: " + rowCounter + ", number of successfully added rows: " + batch.size() + ", number of rows that are failed: " + errorCounter + " , maximum  allowed percent error in reading file: " + maxErrorPercentageAcceptableForReading);
 
-        if (percentErrorInReadingFile > ERROR_THRESHOLD) {
+        if (maxErrorPercentageAcceptableForReading < errorCounter) {
             throw new HitErrorsThresholdException("Error threshold exceeded: " + errorCounter + " out of " + rowCounter);
         }
 
-        logReaderErrors(errorLogForReading);
+      //  logReaderErrors(errors;
     }
 
-    public static void logReaderErrors(List<String> errorsInReading) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Trade_reading_error_log", true))) {
-           for(String errorsWhileReading : errorsInReading) {
-               writer.write(errorsWhileReading);
+    public static void logReaderErrors(String errorsInReading) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("/Users/Shifa.Kajal/source/student/boca-bc24-java-core-problems/src/problems/trading/tradesutility/Trade_reading_error_log", true))) {
+               writer.write(errorsInReading);
                writer.newLine();
-           }// Add a new line
+           // Add a new line
         } catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
@@ -128,4 +129,4 @@ public class TradingService {
 //}
 
 
-
+// /Users/Shifa.Kajal/source/student/boca-bc24-java-core-problems/src/problems/trading/tradesutility/trades_sample_10.csv

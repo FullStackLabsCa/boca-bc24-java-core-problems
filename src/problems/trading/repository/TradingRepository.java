@@ -14,7 +14,7 @@ public class TradingRepository {
 
 
     public static void prepareStatements(HikariDataSource dataSource, List<TradingValues> listOfTradingValues) {
-        String query = "INSERT INTO Trades (trade_identifier, ticker_symbol, quantity, price, trade_date) VALUES (?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO Trades (trade_id, trade_identifier, ticker_symbol, quantity, price, trade_date) VALUES (?, ?, ?, ?, ?, ?)";
 
         //getting the connection
         try (Connection connection = dataSource.getConnection();
