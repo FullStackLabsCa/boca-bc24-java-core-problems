@@ -12,8 +12,10 @@ import java.sql.SQLException;
 import java.util.concurrent.LinkedBlockingDeque;
 
 public class TradeFileWriter {
+    private static int counter = 0;
+
     public static void insertQuery(LinkedBlockingDeque<TradeTransaction> tradingTransactionDeQueue) throws Exception {
-        String logFilePath = "/Users/Gaurav.Manchanda/src/boca-bc24-java-core-problems/error_log.txt";
+        String logFilePath = "/Users/Gaurav.Manchanda/src/boca-bc24-java-core-problems/insert_error_log.txt";
         Connection connection = DatabaseConnectionPool.getConnection();
         try {
             connection.setAutoCommit(false);
@@ -24,6 +26,7 @@ public class TradeFileWriter {
             PreparedStatement lookupStatement = connection.prepareStatement(lookupQuery);
 
             for (TradeTransaction tradeTransaction : tradingTransactionDeQueue) {
+                counter++;
                 String symbol = "";
                 //checking the security symbol
                 ResultSet resultSet = getResultSetForLookupQuery(tradeTransaction, lookupStatement);
@@ -37,8 +40,9 @@ public class TradeFileWriter {
                     statement.addBatch();
                 } else {
                     try (BufferedWriter writer = new BufferedWriter(new FileWriter(logFilePath, true))) {
+                        int errorAtLine = counter;
                         TradeService.errorCount++;
-                        writer.write("Error while inserting trade to DB >>>" + String.valueOf(tradeTransaction));
+                        writer.write("Error in the row while inserting trade to DB >>> line number " + (errorAtLine + 1) + " >> " + String.valueOf(tradeTransaction));
                         writer.newLine();
                     } catch (IOException e) {
                         e.getMessage();

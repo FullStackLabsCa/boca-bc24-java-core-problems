@@ -51,7 +51,7 @@ public class TradeFileReader {
                     //writing to file
                     try (BufferedWriter writer = new BufferedWriter(new FileWriter(logFilePath, true))) {
                         int errorAtLine = counter;
-                        writer.write("Error in the row " + (errorAtLine + 1) + ">>" + line);
+                        writer.write("Error in the row while reading from file>>> line number " + (errorAtLine + 1) + " >> " + line);
                         writer.newLine();
                     } catch (IOException ex) {
                         ex.getMessage();
