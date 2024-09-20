@@ -27,6 +27,7 @@ import static trading_parser.utility.TradeParseUtility.*;
 public class TradeParserEngine {
 
     public static int successfullInsertsCount = 0, failedInsertsCount = 0;
+    public static int fileReadErrorCount = 0, fileReadSuccessCount = 0, fileReadTries = 0;
     public static double threshold;
 
     public static String getFileNameFromCommandLine(Scanner scanner){
@@ -88,7 +89,6 @@ public class TradeParserEngine {
             //Propagation
             conn.setAutoCommit(false);
 
-            int errorCount = 0, success = 0, tried = 0;
             List<Trade> tradeslist = new ArrayList<>();
             fileReader.useDelimiter("[,\n]");
 
@@ -103,7 +103,7 @@ public class TradeParserEngine {
                 int quantity;
                 double price;
                 try {
-                    tried++;
+                    fileReadTries++;
                     //Process the buffer and create prepared statements from each read
                     trade_id = fileReader.next();
                     trade_identifier = fileReader.next();
@@ -116,10 +116,10 @@ public class TradeParserEngine {
                     Trade trade = new Trade(trade_id, trade_identifier, ticker_symbol, quantity, price, trade_date);
 
                     if (tradesBusinessValidation(conn, trade)) {
-                        success++;
+                        fileReadSuccessCount++;
                         tradeslist.add(trade);
                     } else {
-                        errorCount++;
+                        fileReadErrorCount++;
                         fileReader.nextLine();
                         logger.log(Level.WARNING, "Invalid security Symbol: " + trade.getTicker_symbol() + ", Trade_ID: " + trade.getTrade_id());
                     }
@@ -130,7 +130,7 @@ public class TradeParserEngine {
                     }
 
                 } catch (InputMismatchException | DateTimeParseException e) {
-                    errorCount++;
+                    fileReadErrorCount++;
                     fileReader.nextLine();
                     if (trade_id != null) {
                         logger.log(Level.WARNING, "Parser Error: Failed to process Transaction with ID: " + trade_id);
@@ -146,7 +146,7 @@ public class TradeParserEngine {
                 tradeslist.clear();
             }
 
-            logFileValidityForErrors(success, tried, errorCount, threshold);
+            logFileValidityForErrors(fileReadSuccessCount, fileReadTries, fileReadErrorCount, threshold);
 
             conn.commit();
         } catch (FileNotFoundException e) {

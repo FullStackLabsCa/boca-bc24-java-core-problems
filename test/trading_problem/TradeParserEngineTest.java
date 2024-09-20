@@ -69,7 +69,7 @@ public class TradeParserEngineTest {
     }
 
     public void dropAllTables(){
-        String dropTrade = "drop table trades";
+        String dropTrade = "drop table Trades";
         String dropSecurities = "drop table SecuritiesReference";
 
         try (Connection conn = dataSource.getConnection()) {
@@ -126,8 +126,8 @@ public class TradeParserEngineTest {
         try {
             TradeParserEngine.readTradesFileAndWriteToDatabase("/Users/Akshat.Singla/Downloads/code/practice-problems/student-codebase/boca-bc24-java-core-problems/test/trading_problem/trade_data_all_faulty.csv");
         } catch (HitErrorsThresholdException e){
-            assertEquals(failedInsertsCount, 1000);
-            assertEquals(successfullInsertsCount, 0);
+            assertEquals(fileReadErrorCount, 1000);
+            assertEquals(fileReadSuccessCount, 0);
         }
         catch (SQLException e){
             System.out.println(e.getMessage());
