@@ -3,6 +3,8 @@ package problems.tradeFileParser.controller;
 import problems.tradeFileParser.databaseConnection.HikariCP;
 import problems.tradeFileParser.exceptions.InsertThresholdException;
 import problems.tradeFileParser.model.TradeModel;
+import problems.tradeFileParser.reader.ThresholdReader;
+import problems.tradeFileParser.reader.ThresholdReaderImplementation;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -15,13 +17,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static problems.tradeFileParser.MainRunner.*;
 
-public class TradeDBController {
+public class TradeDOAImplementation implements TradeDOA {
     public static List<String> errorList = new ArrayList<>();
-    static double error = readThreshold();
+    static ThresholdReader thresholdReader = new ThresholdReaderImplementation();
+    static double error = thresholdReader.readThreshold();
 
-    public void insertTrade() throws SQLException, IOException {
+    @Override
+    public void insertTrade(List<TradeModel> tradeList) throws SQLException {
         boolean flag = true;
         String query = "INSERT INTO Trades (trade_id, trade_identifier, ticker_symbol, quantity, price, trade_date) VALUES (?, ?, ?, ?, ?, ?)";
         String getAllSymbolQuery = "SELECT symbol FROM SecuritiesReference";
@@ -40,8 +43,7 @@ public class TradeDBController {
             int totalRowsToBeInserted = 0;
             int totalRowsInserted = 0;
             int totalRowsFailedtoInsert = 0;
-            double errorPercentage;
-            int rowNum= 1;
+            double errorPercentage = 0;
 
             while (flag) {
                 for (TradeModel trade : tradeList) {
@@ -78,11 +80,15 @@ public class TradeDBController {
                 }
                 flag = false;
             }
+            
             System.out.println();
             System.out.println("------------------------While inserting to database------------------------");
             System.out.println("Failed rows: " + totalRowsFailedtoInsert);
             System.out.println("Success rows: " + totalRowsInserted);
             System.out.println("Total rows read: " + totalRowsToBeInserted);
+            System.out.println();
+            System.out.println("Error Percentage: " + errorPercentage);
+            System.out.println("Threshold: " + error);
             System.out.println("---------------------------------------------------------------------------");
 
         } catch (SQLException e) {
