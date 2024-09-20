@@ -4,12 +4,13 @@ import problems.trading.exceptions.InvalidInputException;
 
 import java.io.*;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.concurrent.LinkedBlockingDeque;
 
 public class TradeFileReader {
     private static int counter = 0;
     private static boolean isValid = false;
+    private static String filePath = "";
 
     public static void checkThresholdValue() {
         boolean inputValid = false;
@@ -33,7 +34,7 @@ public class TradeFileReader {
         }
     }
 
-    public static LinkedBlockingDeque<TradeTransaction> readTransactionFileAndWriteToQueue(String filePath, LinkedBlockingDeque<TradeTransaction> tradingTransactionDeQueue) {
+    public static ArrayList<TradeTransaction> readTransactionFileAndWriteToList(ArrayList<TradeTransaction> tradingTransactionArrayList) {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
             reader.readLine();
@@ -65,16 +66,33 @@ public class TradeFileReader {
                 //if its valid then adding to the DeQueue
                 if (isValid) {
                     System.out.println("adding transaction #" + counter + " in the queue >> " + tradeTransaction);
-                    tradingTransactionDeQueue.put(tradeTransaction);
+                    tradingTransactionArrayList.add(tradeTransaction);
                 }
             }
 
             //if threshold limit increases then throwing an exception
-            TradeService.checkingThreshold(tradingTransactionDeQueue);
-        } catch (IOException | InterruptedException e) {
+            TradeService.checkingThreshold(tradingTransactionArrayList);
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        return tradingTransactionDeQueue;
+        return tradingTransactionArrayList;
+    }
+
+    public static String checkFileName() throws FileNotFoundException {
+        //checking file name from the user input
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Please enter a file name >>>");
+        String fileName = scanner.next().trim();
+        boolean isFileNameValid = false;
+        while (!isFileNameValid) {
+            if (fileName.equals("trade_data")) {
+                filePath = "/Users/Gaurav.Manchanda/src/boca-bc24-java-core-problems/" + fileName + ".csv";
+                isFileNameValid = true;
+            } else {
+                throw new FileNotFoundException("Please enter a valid file name");
+            }
+        }
+        return filePath;
     }
 
     private static boolean validateCSVFile(String[] data) {

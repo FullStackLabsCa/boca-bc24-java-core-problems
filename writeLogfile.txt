@@ -1,0 +1,2 @@
+Error in the row while inserting trade to DB >>> line number 2 >> TradeTransaction{tradeId='1', tradeIdentifier='TDB_189234', tickerSymbol='AAP', quantity=100, price=150.75, tradeDate=2024-09-01}
+Error in the row while inserting trade to DB >>> line number 3 >> TradeTransaction{tradeId='2', tradeIdentifier='TDB_134892', tickerSymbol='GOOG', quantity=50, price=2800.55, tradeDate=2024-09-02}

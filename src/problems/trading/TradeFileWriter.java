@@ -3,19 +3,18 @@ package problems.trading;
 import problems.trading.database.DatabaseConnectionPool;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.concurrent.LinkedBlockingDeque;
+import java.util.ArrayList;
 
 public class TradeFileWriter {
     private static int counter = 0;
 
-    public static void insertQuery(LinkedBlockingDeque<TradeTransaction> tradingTransactionDeQueue) throws Exception {
+    public static void insertQuery(ArrayList<TradeTransaction> tradingTransactionArrayList) throws Exception {
         Connection connection = DatabaseConnectionPool.getConnection();
         try {
             connection.setAutoCommit(false);
@@ -25,7 +24,7 @@ public class TradeFileWriter {
             PreparedStatement statement = connection.prepareStatement(insertQuery);
             PreparedStatement lookupStatement = connection.prepareStatement(lookupQuery);
 
-            for (TradeTransaction tradeTransaction : tradingTransactionDeQueue) {
+            for (TradeTransaction tradeTransaction : tradingTransactionArrayList) {
                 counter++;
                 String symbol = "";
                 //checking the security symbol
@@ -50,14 +49,14 @@ public class TradeFileWriter {
                     }
                 }
                 //if threshold limit increases then throwing an exception
-                TradeService.checkingThreshold(tradingTransactionDeQueue);
+                TradeService.checkingThreshold(tradingTransactionArrayList);
             }
 
             statement.executeBatch();
             connection.commit();
 
             //printing summary
-            printSummary(tradingTransactionDeQueue);
+            printSummary(tradingTransactionArrayList);
             connection.setAutoCommit(true);
         } catch (SQLException e) {
             connection.rollback();
@@ -68,9 +67,9 @@ public class TradeFileWriter {
         }
     }
 
-    private static void printSummary(LinkedBlockingDeque<TradeTransaction> tradingTransactionDeQueue) {
-        System.out.println("Total No of rows enter in the file: " + tradingTransactionDeQueue.size());
-        System.out.println("No of rows enter in the DB: " + (tradingTransactionDeQueue.size() - TradeService.errorCount));
+    private static void printSummary(ArrayList<TradeTransaction> tradingTransactionArrayList) {
+        System.out.println("Total No of rows enter in the file: " + tradingTransactionArrayList.size());
+        System.out.println("No of rows enter in the DB: " + (tradingTransactionArrayList.size() - TradeService.errorCount));
         System.err.println("No of rows failed to enter in the DB: " + TradeService.errorCount);
         System.out.println("Data added to database successfully");
     }

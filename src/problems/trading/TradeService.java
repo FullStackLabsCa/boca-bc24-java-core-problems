@@ -3,7 +3,7 @@ package problems.trading;
 import problems.trading.exceptions.HitErrorsThresholdException;
 
 import java.io.File;
-import java.util.concurrent.LinkedBlockingDeque;
+import java.util.ArrayList;
 
 public class TradeService {
     public static int errorCount = 0;
@@ -12,8 +12,8 @@ public class TradeService {
     public static File readFile = new File("readLogfile.txt");
 
 
-    public static void checkingThreshold(LinkedBlockingDeque<TradeTransaction> tradingTransactionDeQueue) {
-        if (TradeService.errorCount > (TradeService.errorThreshold * tradingTransactionDeQueue.size()) / 100) {
+    public static void checkingThreshold(ArrayList<TradeTransaction> tradingTransactionArrayList) {
+        if (TradeService.errorCount > (TradeService.errorThreshold * tradingTransactionArrayList.size()) / 100) {
             throw new HitErrorsThresholdException("Errors exceeded threshold limit");
         }
     }

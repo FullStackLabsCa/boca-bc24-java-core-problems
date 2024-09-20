@@ -1,31 +1,27 @@
 package problems.trading;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.LinkedBlockingDeque;
 
 public class TradingMainRunner {
-    public static LinkedBlockingDeque<TradeTransaction> tradingTransactionDeQueue = new LinkedBlockingDeque<>(5000);
+    public static ArrayList<TradeTransaction> tradingTransactionArrayList = new ArrayList<>(5000);
 
     public static void main(String[] args) throws Exception {
-        boolean isFileNameValid = false;
-        Scanner scanner = new Scanner(System.in);
-        String fileName = "";
-
         // Check if the read file exists and delete it at the start of execution
         TradeService.checkReadLogFileExistOrNot();
 
         // Check if the write file exists and delete it at the start of execution
         TradeService.checkWriteLogFileExistOrNot();
 
-        //checking file name from the user input
-        fileName = CheckUserInputForFile.checkFileName(isFileNameValid, fileName, scanner);
-
-        // read file and load data into LinkedBlockingDeque
-        String filePath = "/Users/Gaurav.Manchanda/src/boca-bc24-java-core-problems/" + fileName + ".csv";
+        // read file and load data into the list
+        TradeFileReader.checkFileName();
+        //IF file is valid then setting up the threshold
         TradeFileReader.checkThresholdValue();
-        tradingTransactionDeQueue = TradeFileReader.readTransactionFileAndWriteToQueue(filePath, tradingTransactionDeQueue);
+        //For readAndWrite to List
+        TradeFileReader.readTransactionFileAndWriteToList(tradingTransactionArrayList);
 
         //writing to the DB
-        TradeFileWriter.insertQuery(tradingTransactionDeQueue);
+        TradeFileWriter.insertQuery(tradingTransactionArrayList);
     }
 }
