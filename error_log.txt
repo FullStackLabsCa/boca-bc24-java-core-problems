@@ -1,1 +1,52 @@
 ticker Symbol dont exist. Enter : GOOGLE
+Invalid trade date in line: 1,TDB_219848,330,178.82,2024-08-13
+Invalid trade date in line: 2,PYPL,350,2735.94,2024-01-06
+Invalid trade date in line: 1,TDB_219848,330,178.82,2024-08-13
+Invalid trade date in line: 2,PYPL,350,2735.94,2024-01-06
+Invalid trade date in line: 1,TDB_219848,330,178.82,2024-08-13
+Invalid trade date in line: 2,PYPL,350,2735.94,2024-01-06
+Invalid trade date in line: 1,TDB_219848,330,178.82,2024-08-13
+Invalid trade date in line: 2,PYPL,350,2735.94,2024-01-06
+Invalid trade date in line: 1,TDB_219848,330,178.82,2024-08-13
+Invalid trade date in line: 2,PYPL,350,2735.94,2024-01-06
+Invalid trade date in line: 1,TDB_219848,330,178.82,2024-08-13
+Invalid trade date in line: 2,PYPL,350,2735.94,2024-01-06
+34 Invalid Ticker symbol.
+Invalid trade date in line: 1,TDB_219848,330,178.82,2024-08-13
+Invalid trade date in line: 2,PYPL,350,2735.94,2024-01-06
+34 Invalid Ticker symbol.
+SQL Error while inserting data: Duplicate entry '8' for key 'trades.PRIMARY'
+Transaction rollback due to: Duplicate entry '10' for key 'trades.PRIMARY'
+Invalid trade date in line: 1,TDB_219848,330,178.82,2024-08-13
+Invalid trade date in line: 2,PYPL,350,2735.94,2024-01-06
+34 Invalid Ticker symbol.
+Invalid trade date in line: 1,TDB_219848,330,178.82,2024-08-13
+Invalid trade date in line: 2,PYPL,350,2735.94,2024-01-06
+34 Invalid Ticker symbol.
+Invalid trade date in line: 1,TDB_219848,330,178.82,2024-08-13
+Invalid trade date in line: 2,PYPL,350,2735.94,2024-01-06
+34 Invalid Ticker symbol.
+Invalid trade date in line: 1,TDB_219848,330,178.82,2024-08-13
+Invalid trade date in line: 2,PYPL,350,2735.94,2024-01-06
+34 Invalid Ticker symbol.
+Invalid trade date in line: 1,TDB_219848,330,178.82,2024-08-13
+Invalid trade date in line: 2,PYPL,350,2735.94,2024-01-06
+Invalid trade date in line: 1,TDB_219848,330,178.82,2024-08-13
+Invalid trade date in line: 2,PYPL,350,2735.94,2024-01-06
+34 Invalid Ticker symbol.
+Invalid trade date in line: 1,TDB_219848,330,178.82,2024-08-13
+Invalid trade date in line: 2,PYPL,350,2735.94,2024-01-06
+Invalid trade date in line: 1,TDB_219848,330,178.82,2024-08-13
+Invalid trade date in line: 2,PYPL,350,2735.94,2024-01-06
+Invalid trade date in line: 1,TDB_219848,330,178.82,2024-08-13
+Invalid trade date in line: 2,PYPL,350,2735.94,2024-01-06
+34 Invalid Ticker symbol.
+GOOgle Invalid Ticker symbol.
+Invalid trade date in line: 1,TDB_219848,330,178.82,2024-08-13
+Invalid trade date in line: 2,PYPL,350,2735.94,2024-01-06
+34 Invalid Ticker symbol.
+GOOgle Invalid Ticker symbol.
+Invalid trade date in line: 1,TDB_219848,330,178.82,2024-08-13
+Invalid trade date in line: 2,PYPL,350,2735.94,2024-01-06
+34 Invalid Ticker symbol.
+GOOgle Invalid Ticker symbol.

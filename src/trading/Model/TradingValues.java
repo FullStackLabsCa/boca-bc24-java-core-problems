@@ -1,14 +1,16 @@
 package trading.Model;
+
 import java.time.LocalDate;
 
 public class TradingValues {
-    private  String tradeId;
-    private  String tradeIdentifier;
-    private  String tickerSymbol;
+    private String tradeId;
+    private String tradeIdentifier;
+    private String tickerSymbol;
     private int quantity;
-    private  double price;
+    private double price;
     LocalDate tradeDate;
 
+    //constructor
     public TradingValues(String tradeId, String tradeIdentifier, String tickerSymbol, int quantity, double price, LocalDate tradeDate) {
         this.tradeId = tradeId;
         this.tradeIdentifier = tradeIdentifier;
@@ -18,6 +20,7 @@ public class TradingValues {
         this.tradeDate = tradeDate;
     }
 
+    // Getters
     public String getTradeId() {
         return tradeId;
     }
@@ -42,7 +45,7 @@ public class TradingValues {
         return tradeDate;
     }
 
-
+    // To String method
     @Override
     public String toString() {
         return "TradingValues{" +
@@ -54,6 +57,4 @@ public class TradingValues {
                 ", tradeDate=" + tradeDate +
                 '}';
     }
-
-
 }
