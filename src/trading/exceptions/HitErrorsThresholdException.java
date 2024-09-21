@@ -1,4 +1,4 @@
-package trading;
+package trading.exceptions;
 
 public class HitErrorsThresholdException extends RuntimeException {
     public HitErrorsThresholdException(String message) {

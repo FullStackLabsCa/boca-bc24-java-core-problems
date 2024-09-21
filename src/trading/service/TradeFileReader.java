@@ -1,4 +1,6 @@
-package trading;
+package trading.service;
+
+import trading.model.Trade;
 
 import java.io.File;
 import java.util.List;

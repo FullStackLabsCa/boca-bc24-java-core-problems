@@ -1,6 +1,7 @@
-package trading;
+package trading.service;
 
-import java.io.File;
+import trading.model.Trade;
+
 import java.util.List;
 
 public interface TradeFileWriter {

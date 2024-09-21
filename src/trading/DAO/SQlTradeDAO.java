@@ -1,8 +1,11 @@
-package trading;
+package trading.DAO;
 
 
-import trading_processing_without_object_creation.HitErrorsThresholdException;
-
+import trading.utility.CSVTradeFileReader;
+import trading.service.LogFileWriter;
+import trading.service.TradeFileWriter;
+import trading.exceptions.HitErrorsThresholdException;
+import trading.model.Trade;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -12,6 +15,7 @@ import java.util.List;
 public class SQlTradeDAO implements TradeFileWriter {
     static int noOFQueryActualInserted = 0, noOFQueryFailed = 0, failedBusinessCheck = 0, passsedBusinessCheck = 0;
     static ArrayList<Integer> indexArray = new ArrayList<>();
+    Connection con;
 //    static ArrayList<Trade> validTradeQue = CSVTradeFileReader.validTradeQue;
 
     @Override
@@ -24,7 +28,8 @@ public class SQlTradeDAO implements TradeFileWriter {
         double userThreshold = CSVTradeFileReader.userThreshold;
         int fileEntries = CSVTradeFileReader.totalEntries;
 
-        try (Connection con = DatabaseConnector.getConnection();
+//        try (Connection con =DatabaseConnector.getConnection();
+             try( // for testing connection passed by test class
              PreparedStatement businessCheckStat = con.prepareStatement(businessCheckQuery);
              PreparedStatement insertStat = con.prepareStatement(insertQuery);) {
             con.setAutoCommit(false);
@@ -52,7 +57,7 @@ public class SQlTradeDAO implements TradeFileWriter {
                             queryCounter(counts);
                             for (int i = 0; i < counts.length; i++) {
                                 if (counts[i] == Statement.EXECUTE_FAILED) {
-                                    LogFileWriter.writeLog("Error Encounter While executing the Batch. Line No -> " + validTradeQue.get(indexArray.get(i)).getLine_no(), "/Users/Gurpreet.Singh/source/code/student-codebase/boca-bc24-java-core-problems/Insert_error_log.txt");
+                                    LogFileWriter.writeLog("Error Encounter While executing the Batch. Line No -> " + validTradeQue.get(indexArray.get(i)).getLine_no()+" "+e.getNextException(), "/Users/Gurpreet.Singh/source/code/student-codebase/boca-bc24-java-core-problems/Insert_error_log.txt");
                                 }
                             }
                             con.rollback();
@@ -87,7 +92,7 @@ public class SQlTradeDAO implements TradeFileWriter {
                 double insertThreshold = (sqlfailureCount / fileEntries) * 100;
                 double threshold = readerThreshold + insertThreshold;
                 if (threshold >= userThreshold) {
-                    throw new HitErrorsThresholdException("Threshold Reached While Database Insertion....");
+                    throw new HitErrorsThresholdException("Threshold Reached While Writing a file....");
                 }
                 throw new RuntimeException(e);
             }
@@ -100,7 +105,6 @@ public class SQlTradeDAO implements TradeFileWriter {
     public static void queryCounter(int[] querycount) {
 
         for (int count : querycount) {
-
             switch (count) {
                 case (1):
                     noOFQueryActualInserted++;

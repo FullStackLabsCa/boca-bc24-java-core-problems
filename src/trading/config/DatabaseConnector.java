@@ -1,4 +1,4 @@
-package trading;
+package trading.config;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;

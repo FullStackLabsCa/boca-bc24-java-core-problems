@@ -1,8 +1,7 @@
-package trading;
+package trading.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Trade implements Serializable {
     private int line_no;

@@ -1,6 +1,5 @@
-package trading;
+package trading.validation;
 
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
@@ -62,6 +61,10 @@ public class TradeFieldValidator {
         } catch (ArrayIndexOutOfBoundsException e) {
             throw new IllegalArgumentException("price is Missing");
         }
+//TO check is there any field is missing
+        if (fields.length != 6) {
+            throw new IllegalArgumentException("Invalid number of fields in line");
+        }
 
         // To display message in log file for Date
         try {
@@ -75,9 +78,7 @@ public class TradeFieldValidator {
             throw new IllegalArgumentException("Date Format is Incorrect");
         }
 
-        if (fields.length != 6) {
-            throw new IllegalArgumentException("Invalid number of fields in line");
-        }
+
         return true;
     }
 }

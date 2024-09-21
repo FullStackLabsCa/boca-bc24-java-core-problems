@@ -1,6 +1,10 @@
-package trading;
+package trading.utility;
 
-import trading_processing_without_object_creation.HitErrorsThresholdException;
+import trading.service.LogFileWriter;
+import trading.service.TradeFileReader;
+import trading.exceptions.HitErrorsThresholdException;
+import trading.model.Trade;
+import trading.validation.TradeFieldValidator;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -54,7 +58,7 @@ public class CSVTradeFileReader implements TradeFileReader {
                     if (totalEntries > 0) {
                         readerThreshold = (parsingFailure / totalEntries) * 100;
                         if (readerThreshold >= userThreshold) {
-                            throw new HitErrorsThresholdException("Threshold Reached While adding to array....");
+                            throw new HitErrorsThresholdException("Threshold Reached While reading a file....");
                         }
                     } else throw new ArithmeticException("File Doesn't have any Entry");
                 }

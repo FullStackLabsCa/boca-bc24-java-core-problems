@@ -1,9 +1,6 @@
 package trading;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import trading.utility.UserInteraction;
 
 public class Runner {
     public static void main(String[] args) {
