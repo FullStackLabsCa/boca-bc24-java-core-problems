@@ -44,14 +44,6 @@ public class TradeFileReaderImpl implements TradeFileReader {
                                     .withTradeDate(   new SimpleDateFormat("yyyy-MM-dd").parse(data[4]))
                                     .withLineNumber(lineCounter)
                                     .build();
-//                new TradeTransaction(data[0],
-//                            data[1],
-//                            Integer.parseInt(data[2]),
-//                            Double.parseDouble(data[3]),
-//                            new SimpleDateFormat("yyyy-MM-dd").parse(data[4]),
-//                            counter
-//
-//                    );
                 } catch (NumberFormatException | ParseException e) {
                     if (e instanceof NumberFormatException) {
                         System.out.println("Number format exception happened while trying to parse trade with id" + data[0]);
