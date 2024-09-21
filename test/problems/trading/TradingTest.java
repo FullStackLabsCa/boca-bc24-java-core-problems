@@ -6,20 +6,19 @@ import org.junit.Test;
 import problems.trading.exceptions.InvalidInputException;
 
 import java.io.FileNotFoundException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.concurrent.LinkedBlockingDeque;
+import java.sql.*;
+import java.util.ArrayList;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class TradingTest {
     private Connection connection;
-    public static LinkedBlockingDeque<TradeTransaction> tradingTransactionDeQueue = new LinkedBlockingDeque<>(5000);
+    public static ArrayList<TradeTransaction> tradingTransactionArrayList = new ArrayList<>(5000);
 
     @Before()
     public void setup() throws SQLException {
-        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bootcamp", "root", "password123");
+        connection = DriverManager.getConnection("jdbc:mysql://localhost:3308/bootcamp", "root", "password123");
         connection.setAutoCommit(false);
         //checking and deleting the log files
         TradeService.checkReadLogFileExistOrNot();
@@ -55,5 +54,23 @@ public class TradingTest {
     public void ValidThresholdValue() {
         String invalidThreshold = "10";
         TradeFileReader.checkThresholdValue(invalidThreshold);
+    }
+
+    @Test
+    public void fetchSecuritiesReferenceTable() throws SQLException {
+        String querySecuritiesReference="SELECT * FROM SecuritiesReference";
+        PreparedStatement preparedStatement = connection.prepareStatement(querySecuritiesReference);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        int count = 0;
+        while (resultSet.next()){
+            count++;
+        }
+
+        assertEquals(25, count);
+    }
+
+    @Test
+    public void readTransactionFileAndWriteToList(){
+        TradeFileReader.readTransactionFileAndWriteToList(tradingTransactionArrayList);
     }
 }
