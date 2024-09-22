@@ -1,0 +1,4 @@
+trade_id,trade_identifier,ticker_symbol,quantity,price,trade_date
+T1,TDB_171277,sy6,not_a_number,399.95,2024-12-06
+T2,TDB_140202,sy8,500,"incorrect_price,",2024-12-08
+T3,TDB_218162,sy13,500,399.95,"incorrect_date,"

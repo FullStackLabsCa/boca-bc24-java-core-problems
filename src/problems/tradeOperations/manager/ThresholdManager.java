@@ -20,27 +20,29 @@ public class ThresholdManager {
         }
     }
 
-    // New constructor to directly set the threshold
-    public ThresholdManager(double threshold) throws InvalidThresholdValueException {
+    private void validateThreshold(double threshold) throws InvalidThresholdValueException {
         if (threshold < 1 || threshold > 100) {
             throw new InvalidThresholdValueException("Threshold must be between 1 and 100.");
         }
+    }
+
+    // New constructor to directly set the threshold
+    public ThresholdManager(double threshold) throws InvalidThresholdValueException {
+        validateThreshold(threshold);
         this.errorThreshold = threshold;
     }
 
     private double getThresholdFromCommandLine(String[] args) throws InvalidThresholdValueException {
         try {
             double threshold = Double.parseDouble(args[0]);
-            if (threshold < 1 || threshold > 100) {
-                throw new InvalidThresholdValueException("Threshold must be between 1 and 100.");
-            }
+            validateThreshold(threshold);
             return threshold;
         } catch (NumberFormatException e) {
             throw new InvalidThresholdValueException("Invalid threshold value provided.");
         }
     }
 
-    private double getThresholdFromProperties() {
+    private double getThresholdFromProperties() throws InvalidThresholdValueRuntimeException {
         Properties properties = new Properties();
         try (FileInputStream input = new FileInputStream("src/problems/tradeOperations/extraUsedFiles/application.properties")) {
             properties.load(input);

@@ -1,0 +1,5 @@
+Line: T1 | Invalid security symbol: sy1
+Line: T2 | Invalid security symbol: sy2
+Line: T3 | Invalid security symbol: sy3
+Line: T4 | Invalid security symbol: sy4
+Line: T5 | Invalid security symbol: sy5

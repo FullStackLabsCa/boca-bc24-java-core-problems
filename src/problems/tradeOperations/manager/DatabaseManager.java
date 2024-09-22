@@ -26,4 +26,11 @@ public class DatabaseManager {
     public Connection getConnection() throws SQLException {
         return dataSource.getConnection();
     }
+
+    public void closeDataSource() {
+        if (dataSource != null) {
+            dataSource.close();
+        }
+    }
+
 }

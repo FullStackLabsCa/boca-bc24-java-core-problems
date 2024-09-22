@@ -11,11 +11,11 @@ import java.io.IOException;
 public class LoadCSVToDB {
 
     public static void main(String[] args) {
-        String jdbcURL = "jdbc:mysql://localhost:3306/tradesDB"; // Update your DB info
+        String jdbcURL = "jdbc:mysql://localhost:3308/tradesDB"; // Update your DB info
         String username = "root";
         String password = "password123";
 
-        String csvFilePath = "/Users/Jay.Shah/source/student/boca-bc24-java-core-problems/src/problems/tradeOperations/extraUsedFiles/securities_reference.csv"; // Path to your CSV
+        String csvFilePath = "/Users/Jay.Shah/source/student/boca-bc24-java-core-problems/src/problems/tradeOperations/sourcesFiles/securities_reference.csv"; // Path to your CSV
 
         // MySQL insert query
         String sql = "INSERT INTO SecuritiesReference (symbol, description) VALUES (?, ?)";
