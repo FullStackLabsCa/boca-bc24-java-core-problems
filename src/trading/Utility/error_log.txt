@@ -574,3 +574,19 @@ Invalid Ticker symbol :- trade_id: 995, trade_identifier: TDB_200006, ticker_sym
 Invalid Ticker symbol :- trade_id: 996, trade_identifier: TDB_142428, ticker_symbol: Z, quantity: 316, price: 2433.04, trade_date: 2024-03-22
 Invalid Ticker symbol :- trade_id: 997, trade_identifier: TDB_164100, ticker_symbol: SBUX, quantity: 124, price: 352.11, trade_date: 2024-04-03
 Invalid Ticker symbol :- trade_id: 1000, trade_identifier: TDB_203478, ticker_symbol: UBER, quantity: 198, price: 2927.4, trade_date: 2024-12-14
+Test error message
+Test error message
+Test error message
+Test error message
+Invalid Ticker symbol :- trade_id: 2, trade_identifier: TDB_195199, ticker_symbol: SPOT, quantity: 350, price: 2735.94, trade_date: 2024-01-06
+Invalid Ticker symbol :- trade_id: 3, trade_identifier: TDB_135287, ticker_symbol: HOOD, quantity: 287, price: 717.59, trade_date: 2024-07-19
+Invalid Ticker symbol :- trade_id: 4, trade_identifier: TDB_227475, ticker_symbol: DOCU, quantity: 231, price: 2052.41, trade_date: 2024-03-03
+Invalid Ticker symbol :- trade_id: 6, trade_identifier: TDB_171277, ticker_symbol: SNAP, quantity: 11, price: 2488.77, trade_date: 2024-08-15
+Invalid Ticker symbol :- trade_id: 7, trade_identifier: TDB_232786, ticker_symbol: NKE, quantity: 443, price: 1800.6, trade_date: 2024-10-17
+Invalid Ticker symbol :- trade_id: 10, trade_identifier: TDB_182176, ticker_symbol: HOOD, quantity: 114, price: 778.68, trade_date: 2024-11-17
+SQL Error while inserting data: Duplicate entry '11' for key 'trades.PRIMARY'
+Invalid Ticker symbol :- trade_id: 12, trade_identifier: TDB_205365, ticker_symbol: BABA, quantity: 434, price: 272.08, trade_date: 2024-12-01
+Invalid Ticker symbol :- trade_id: 15, trade_identifier: TDB_149610, ticker_symbol: DOCU, quantity: 460, price: 117.28, trade_date: 2024-08-20
+Invalid Ticker symbol :- trade_id: 17, trade_identifier: TDB_227121, ticker_symbol: BABA, quantity: 351, price: 2292.21, trade_date: 2024-12-12
+SQL Error while inserting data: Duplicate entry '19' for key 'trades.PRIMARY'
+Invalid Ticker symbol :- trade_id: 20, trade_identifier: TDB_204580, ticker_symbol: SHOP, quantity: 357, price: 1248.18, trade_date: 2024-12-12
