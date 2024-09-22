@@ -1,12 +1,12 @@
-package jdbc.trademangement.databaseconnection;
+package jdbc.trade.databaseconnection;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
-public class DatabaseConnection {
-    public static HikariDataSource configureHikariCP() {
+public class MysqlDBConnection implements jdbc.trade.tradecontract.DatabaseConnection {
+    public HikariDataSource configureHikariCP(String url) {
         HikariConfig config = new HikariConfig();
-        config.setJdbcUrl("jdbc:mysql://localhost:3308/trade");
+        config.setJdbcUrl(url);
         config.setUsername("root");
         config.setPassword("password123");
 

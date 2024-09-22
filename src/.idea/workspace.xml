@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2cd5676d-cc79-49b8-879a-bcb95e143a6e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/problems/jdbc/creditcard/CreditCardTransaction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/jdbc/creditcard/CreditCardTransactionProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/jdbc/creditcard/OptimisticLockingException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/jdbc/creditcard/TransactionConsumer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/jdbc/practice/CreditCardTransactionProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/lib.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/mysql_connector_j_9_0_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../boca-bc24-java-core-problems.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/boca-bc24-java-core-problems2.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/problems/arraylist/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/problems/collection/arraylist/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/problems/arraylist/MyArrayList.java" beforeDir="false" afterPath="$PROJECT_DIR$/problems/collection/arraylist/MyArrayList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/problems/calculator/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/problems/calculator/Calculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/problems/hashmap/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/problems/collection/hashmap/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/problems/hashmap/MyHashMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/problems/collection/hashmap/MyHashMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/problems/hashmap/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/problems/collection/hashmap/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/problems/linkedlist/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/problems/collection/linkedlist/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/problems/linkedlist/MyLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/problems/collection/linkedlist/MyLinkedList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/problems/linkedlist/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/problems/collection/linkedlist/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/problems/MyArrayListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../test/problems/MyArrayListTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/problems/MyHashMapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../test/problems/MyHashMapTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/problems/MyLinkedListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../test/problems/MyLinkedListTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/problems/calculator/CalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../test/problems/calculator/AdvancedCalculatorTest.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "kiranvirani97"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/FullStackLabsCa/boca-bc24-java-core-problems.git",
+    "accountId": "7aece3c5-4c0e-4dab-ba2f-940b7bf0e267"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 0
+}]]></component>
+  <component name="ProjectId" id="2m9e7H0OthbxnxWdl4B2SjoLfjD" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "feature/kivi-bc24-java-core-problems",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/Kiran.Virani/reactivestax/source/boca-bc24-java-core-problems/src"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2cd5676d-cc79-49b8-879a-bcb95e143a6e" name="Changes" comment="" />
+      <created>1726493049462</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1726493049462</updated>
+    </task>
+    <servers />
+  </component>
+</project>

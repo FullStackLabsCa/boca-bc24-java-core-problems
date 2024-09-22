@@ -1,0 +1,4 @@
+#1 - 2024-09-22T15:50:18.777651 - [1,TDB_219848,124,350,178.82,2024-08-13] - ticker symbol should be <=5 length and only alphabets.
+#2 - 2024-09-22T15:50:18.782877 - [2,TDB_195199,SPOT,invalidquantity,2735.94,2024-01-06] - quantity is not a valid number.
+#1 - 2024-09-22T16:21:26.761171 - [1,TDB_219848,PYPL,hf,178.82,2024-08-13] - quantity is not a valid number.
+#13 - 2024-09-22T16:21:26.770829 - [13,TDB_218162,AAPL,422,1653.71,2024-12-2323] - date should in 'yyyy-MM-dd' format.

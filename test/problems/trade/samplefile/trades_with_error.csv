@@ -1,0 +1,3 @@
+trade_id,trade_identifier,ticker_symbol,quantity,price,trade_date
+1,TDB_219848,124,350,178.82,2024-08-13
+2,TDB_195199,SPOT,invalidquantity,2735.94,2024-01-06
