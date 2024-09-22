@@ -14,7 +14,7 @@ public class DataSource {
     static {
         // Configure the HikariCP connection pool
         HikariConfig config = new HikariConfig();
-        config.setJdbcUrl("jdbc:mysql://localhost:3306/bootcamp");
+        config.setJdbcUrl("jdbc:mysql://localhost:3308/bootcamp");
         config.setUsername("root");
         config.setPassword("password123");
 

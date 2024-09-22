@@ -5,6 +5,8 @@ import org.junit.Before;
 import org.junit.Test;
 import problems.jdbc.trade.*;
 import problems.jdbc.trade.Error;
+import problems.jdbc.trade.exception.HitErrorsReadingThresholdException;
+import problems.jdbc.trade.exception.HitErrorsWritingThresholdException;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -12,7 +14,6 @@ import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -31,12 +32,11 @@ public class TradeFileWriterImplTest {
         connection = DataSourceForTesting.getConnection();
         connection.setAutoCommit(false);
         statement = connection.createStatement();
-
         statement.execute("DROP TABLE IF EXISTS Trades");
 
         // Create table and insert test data
         String createTableSQL = "CREATE TABLE Trades (" +
-                "trade_id VARCHAR(20) PRIMARY KEY,\n" +
+                "trade_id BIGINT(20) AUTO_INCREMENT PRIMARY KEY,\n" +
                 "    trade_identifier VARCHAR(20),\n" +
                 "    ticker_symbol VARCHAR(10),\n" +
                 "    quantity INT,\n" +
@@ -48,68 +48,49 @@ public class TradeFileWriterImplTest {
 
     @Test
     public void returnNumberOfRowsInsertedInDatabase() throws Exception {
-//        TradeFileWriterImpl.errorCounter = 0;
-        Error error = new Error(0, null, 1, null, 5, 4);
+        List<TradeTransaction> tradeTransactionList = generateTrades();
+        Error error = new Error(0, 25, tradeTransactionList.size());
         tradeFileWriterImpl = new TradeFileWriterImpl(error);
-        List<TradeTransaction> tradeTransactionList =new ArrayList<>();
-        tradeTransactionList.add(new TradeTransaction("T0019", "DIS", 665, 305.48, new Date(2023 - 10 - 21)));
-
-
-
-        tradeTransactionList.add(new TradeTransaction("T0020", "FB", 65, 205.48, new Date(2024 - 11 - 22)));
-        tradeTransactionList.add(new TradeTransaction("T0021", "DIS", 665, 105.48, new Date(2023 - 12 - 23)));
-        tradeTransactionList.add(new TradeTransaction("T0022", "DIS", 665, 405.48, new Date(2023 - 01 - 24)));
-        assertEquals(tradeFileWriterImpl.writeTradeToDatabase(tradeTransactionList),  4);
+        assertEquals(tradeFileWriterImpl.writeTradeToDatabase(tradeTransactionList), 4);
     }
 
     @Test
-    public void shouldThrowThresholdHitException() throws Exception {
-        List<TradeTransaction> tradeTransactionList =new ArrayList<>();
-        tradeTransactionList.add(new TradeTransaction("T0019", "DIS", 665, 305.48, new Date(2023 - 10 - 21)));
-        tradeTransactionList.add(new TradeTransaction("T0020", "FB", 65, 205.48, new Date(2024 - 11 - 22)));
-        tradeTransactionList.add(new TradeTransaction("T0021", "DIS", 665, 105.48, new Date(2023 - 12 - 23)));
-        tradeTransactionList.add(new TradeTransaction("T0022", "DIS", 665, 405.48, new Date(2023 - 01 - 24)));
-        Error error = new Error(5, null, 1, null, 4, tradeTransactionList.size());
+    public void validateTradesWithSecuritiesReference() throws Exception {
+        List<TradeTransaction> tradeTransactionList = generateTrades();
+        Error error = new Error(0, 25, tradeTransactionList.size());
         tradeFileWriterImpl = new TradeFileWriterImpl(error);
-        tradeFileWriterImpl.writeTradeToDatabase(tradeTransactionList);
-        HitErrorsThresholdException thrown = assertThrows(HitErrorsThresholdException.class, () -> {
-            tradeFileWriterImpl.writeTradeToDatabase(tradeTransactionList);
-        });
-
-        assertEquals("Threshold Error exception...", thrown.getMessage());
+        assertEquals(tradeFileWriterImpl.writeTradeToDatabase(tradeTransactionList), 4);
     }
 
-    generateTrade() throws ParseException {
+    @Test(expected = HitErrorsWritingThresholdException.class)
+    public void shouldThrowHitErrorsWritingThresholdException() throws Exception {
+        List<TradeTransaction> tradeTransactionList = generateTrades();
+        Error error = new Error(8,  25,  tradeTransactionList.size());
+        tradeFileWriterImpl = new TradeFileWriterImpl(error);
+        tradeFileWriterImpl.writeTradeToDatabase(tradeTransactionList);
+    }
 
-        List<TradeTransaction> tradeTransactionList =new ArrayList<>();
-        tradeTransactionList.add(new TradeTransaction("T0019", "DIS", 665, 305.48, new Date(2023 - 10 - 21)));
+    private List<TradeTransaction> generateTrades() throws ParseException {
 
-
-
-        tradeTransactionList.add(new TradeTransaction("T0020", "FB", 65, 205.48, new Date(2024 - 11 - 22)));
-        tradeTransactionList.add(new TradeTransaction("T0021", "DIS", 665, 105.48, new Date(2023 - 12 - 23)));
-        tradeTransactionList.add(new TradeTransaction("T0022", "DIS", 665, 405.48, new Date(2023 - 01 - 24)));
-
-
-
-tradeTransactionList.add(
+        List<TradeTransaction> tradeTransactionList = new ArrayList<>();
+        tradeTransactionList.add(
                 TradeTransaction.TradeTransactionBuilder.aTradeTransaction()
                         .withTradeIdentifier("T0019")
-                        .withTickerSymbol("DIS")
+                        .withTickerSymbol("AAPL")
                         .withQuantity(665)
                         .withPrice(Double.parseDouble(String.valueOf(305.48)))
-                        .withTradeDate(   new SimpleDateFormat("yyyy-MM-dd").parse(String.valueOf(2023 - 10 - 21)))
+                        .withTradeDate(new SimpleDateFormat("yyyy-MM-dd").parse("2023-11-13"))
                         .build()
-);
+        );
 
 
         tradeTransactionList.add(
                 TradeTransaction.TradeTransactionBuilder.aTradeTransaction()
                         .withTradeIdentifier("T0020")
-                        .withTickerSymbol("FB")
+                        .withTickerSymbol("GOOGL")
                         .withQuantity(775)
                         .withPrice(Double.parseDouble(String.valueOf(315.48)))
-                        .withTradeDate(   new SimpleDateFormat("yyyy-MM-dd").parse(String.valueOf(2024 - 10 - 21)))
+                        .withTradeDate(new SimpleDateFormat("yyyy-MM-dd").parse("2022-10-21"))
                         .build()
         );
 
@@ -117,23 +98,37 @@ tradeTransactionList.add(
         tradeTransactionList.add(
                 TradeTransaction.TradeTransactionBuilder.aTradeTransaction()
                         .withTradeIdentifier("T0021")
-                        .withTickerSymbol("TESLA")
+                        .withTickerSymbol("AMZN")
                         .withQuantity(885)
                         .withPrice(Double.parseDouble(String.valueOf(220.12)))
-                        .withTradeDate(   new SimpleDateFormat("yyyy-MM-dd").parse(String.valueOf(2024 - 11 - 02)))
+                        .withTradeDate(new SimpleDateFormat("yyyy-MM-dd").parse("2024-11-02"))
                         .build()
         );
 
 
         tradeTransactionList.add(
                 TradeTransaction.TradeTransactionBuilder.aTradeTransaction()
-                        .withTradeIdentifier("T0021")
-                        .withTickerSymbol("TESLA")
-                        .withQuantity(885)
-                        .withPrice(Double.parseDouble(String.valueOf(220.12)))
-                        .withTradeDate(   new SimpleDateFormat("yyyy-MM-dd").parse(String.valueOf(2024 - 11 - 02)))
+                        .withTradeIdentifier("T0022")
+                        .withTickerSymbol("VISA")
+                        .withQuantity(1200)
+                        .withPrice(Double.parseDouble(String.valueOf(330.13)))
+                        .withTradeDate(new SimpleDateFormat("yyyy-MM-dd").parse("2021-12-05"))
                         .build()
         );
+
+        tradeTransactionList.add(
+                TradeTransaction.TradeTransactionBuilder.aTradeTransaction()
+                        .withTradeIdentifier("T0023")
+                        .withTickerSymbol("BABA")
+                        .withQuantity(1200)
+                        .withPrice(Double.parseDouble(String.valueOf(330.13)))
+                        .withTradeDate(new SimpleDateFormat("yyyy-MM-dd").parse("2021-12-05"))
+                        .build()
+        );
+
+
+
+        return tradeTransactionList;
     }
 
 
@@ -143,6 +138,5 @@ tradeTransactionList.add(
         connection.rollback();
         statement.close();
         connection.close();
-
     }
 }

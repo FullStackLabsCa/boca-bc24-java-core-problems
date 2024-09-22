@@ -12,7 +12,7 @@ public class DataSourceForTesting {
     static {
         // Configure the HikariCP connection pool
         HikariConfig config = new HikariConfig();
-        config.setJdbcUrl("jdbc:mysql://localhost:3308/bootcampTest");
+        config.setJdbcUrl("jdbc:mysql://localhost:3308/bootcamp");
         config.setUsername("root");
         config.setPassword("password123");
 
@@ -43,5 +43,4 @@ public class DataSourceForTesting {
             dataSource.close();
         }
     }
-
 }

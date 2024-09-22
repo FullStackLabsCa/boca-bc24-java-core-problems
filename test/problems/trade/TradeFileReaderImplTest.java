@@ -2,6 +2,8 @@ package problems.trade;
 
 import org.junit.Test;
 import problems.jdbc.trade.*;
+import problems.jdbc.trade.exception.HitErrorsReadingThresholdException;
+
 import java.io.FileNotFoundException;
 import java.util.List;
 import static org.junit.Assert.assertEquals;
@@ -24,11 +26,10 @@ public class TradeFileReaderImplTest {
         assertEquals(tradeTransactions.size(), 96);
     }
 
-    @Test(expected = HitErrorsThresholdException.class)
+    @Test(expected = HitErrorsReadingThresholdException.class)
     public void throwThresholdExceptionWhenThresholdReached() throws Exception {
         TradeFileReaderImpl.errorThreshold= 2;
         tradeFileReaderImpl.processFile(filePath);
-
     }
 }
 

@@ -1,4 +1,5 @@
 No Securities Matched for the record at line: 3 for TradeTransaction{tradeIdentifier='T0002', tickerSymbol='BABA', quantity=613, price=398.76, tradeDate=Wed Dec 06 00:00:00 EST 2023, lineNumber=3}
+No Securities Matched for the record at line: 7 for TradeTransaction{tradeIdentifier='T0006', tickerSymbol='BABA', quantity=26, price=429.01, tradeDate=Sun Sep 24 00:00:00 EDT 2023, lineNumber=7}
 No Securities Matched for the record at line: 22 for TradeTransaction{tradeIdentifier='T0021', tickerSymbol='BABA', quantity=787, price=82.23, tradeDate=Fri Mar 08 00:00:00 EST 2024, lineNumber=22}
 No Securities Matched for the record at line: 25 for TradeTransaction{tradeIdentifier='T0024', tickerSymbol='BABA', quantity=713, price=174.72, tradeDate=Mon Aug 19 00:00:00 EDT 2024, lineNumber=25}
 No Securities Matched for the record at line: 46 for TradeTransaction{tradeIdentifier='T0045', tickerSymbol='BABA', quantity=184, price=394.88, tradeDate=Mon Jul 01 00:00:00 EDT 2024, lineNumber=46}

@@ -1,6 +1,8 @@
 package problems.jdbc.trade;
 
 import problems.jdbc.hikari.DataSource;
+import problems.jdbc.trade.exception.HitErrorsReadingThresholdException;
+import problems.jdbc.trade.exception.HitErrorsWritingThresholdException;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -48,7 +50,7 @@ public class TradeFileWriterImpl implements TradeFileWriter {
                     writeToLogFile(errorLog, tradeTransaction.getLineNumber(), tradeTransaction.toString());
                     continue;
                 }
-                System.out.println("Inserting id" + tradeTransaction.getTradeIdentifier());
+                System.out.println("Inserting id " + tradeTransaction.getTradeIdentifier());
                 stmt.setString(1, tradeTransaction.getTradeIdentifier());
                 stmt.setString(2, tradeTransaction.getTickerSymbol());
                 stmt.setInt(3, tradeTransaction.getQuantity());
@@ -57,7 +59,7 @@ public class TradeFileWriterImpl implements TradeFileWriter {
                 stmt.addBatch();
             }
             if (errorCounter > (error.getRecordSize() * error.getErrorThreshold()) / 100) {
-                throw new HitErrorsThresholdException("Threshold Error exception...");
+                throw new HitErrorsWritingThresholdException("Threshold Error exception...");
             }
             int[] numberOfRowsInserted = stmt.executeBatch();
             System.out.println("Number of rows inserted " + numberOfRowsInserted.length);
