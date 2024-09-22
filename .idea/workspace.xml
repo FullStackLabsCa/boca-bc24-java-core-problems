@@ -5,25 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3c9f44b-ff0f-43a9-b850-9b801d0dc95b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeOperations/manager/DatabaseConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeOperations/testCasesFiles/test_tradeFileN.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeOperations/testCasesFiles/test_tradeFile_InvalidTrades.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeOperations/testCasesFiles/test_tradeFile_ValidTrades.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeOperations/testCasesFiles/test_tradeFile_empty.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeOperations/testCasesFiles/test_trades_readwrite_validle.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeOperations/tradeFiles/TEMP.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeOperations/tradeFiles/TradeValidator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeOperations/tradingInterface/TradingInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/problems/TradeOperationsTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeOperations/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/extraUsedFiles/error_write_log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeOperations/extraUsedFiles/error_write_log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/manager/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeOperations/manager/DatabaseManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/manager/LoadCSVToDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeOperations/manager/LoadCSVToDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/manager/ThresholdManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeOperations/manager/ThresholdManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/sourcesFiles/trades_sample.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeOperations/sourcesFiles/trades_sample.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/tradeFiles/tradeFileReader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/tradeFiles/tradeFileWriter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/manager/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeOperations/manager/DatabaseConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/tradeFiles/TradeRWFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeOperations/tradeFiles/TradeRWFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/problems/TradeOperationsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/TradeOperationsTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,6 +116,7 @@
     "JUnit.OddCounterTest.executor": "Run",
     "JUnit.SchoolTest.executor": "Run",
     "JUnit.TradeOperationsTest.executor": "Run",
+    "JUnit.TradeOperationsTest.testGetConnectionSuccess.executor": "Run",
     "JUnit.TradeOperationsTest.testInvalidThresholdFormatCommandLine.executor": "Run",
     "JUnit.TradeOperationsTest.testInvalidThresholdFormatFromProperties.executor": "Run",
     "JUnit.TradeOperationsTest.testReadFileEmptyFile.executor": "Run",
@@ -187,7 +174,23 @@
       <recent name="problems.jdbc.transactions.hwFinal" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TradeOperationsTest.testReadWriteFileValidTrades">
+  <component name="RunManager">
+    <configuration name="TradeOperationsTest.testGetConnectionSuccess" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="boca-bc24-java-core-problems" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="problems.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="problems" />
+      <option name="MAIN_CLASS_NAME" value="problems.TradeOperationsTest" />
+      <option name="METHOD_NAME" value="testGetConnectionSuccess" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TradeOperationsTest.testReadFileEmptyFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="boca-bc24-java-core-problems" />
       <extension name="coverage">
@@ -199,22 +202,6 @@
       <option name="PACKAGE_NAME" value="problems" />
       <option name="MAIN_CLASS_NAME" value="problems.TradeOperationsTest" />
       <option name="METHOD_NAME" value="testReadFileEmptyFile" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TradeOperationsTest.testReadFileExceedingErrorThreshold" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="boca-bc24-java-core-problems" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="problems.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="problems" />
-      <option name="MAIN_CLASS_NAME" value="problems.TradeOperationsTest" />
-      <option name="METHOD_NAME" value="testReadFileExceedingErrorThreshold" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -271,10 +258,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.TradeOperationsTest.testReadWriteFileValidTrades" />
+        <item itemvalue="JUnit.TradeOperationsTest.testGetConnectionSuccess" />
         <item itemvalue="JUnit.TradeOperationsTest.testReadFileInvalidTrades" />
         <item itemvalue="JUnit.TradeOperationsTest.testReadFileValidTrades" />
         <item itemvalue="JUnit.TradeOperationsTest.testReadFileEmptyFile" />
-        <item itemvalue="JUnit.TradeOperationsTest.testReadFileExceedingErrorThreshold" />
       </list>
     </recent_temporary>
   </component>
@@ -328,11 +315,6 @@
           <line>31</line>
           <option name="timeStamp" value="47" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/test/problems/TradeOperationsTest.java</url>
-          <line>54</line>
-          <option name="timeStamp" value="63" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/problems/jdbc/transactions/practice/DatabaseManager.java</url>
           <line>19</line>
@@ -359,15 +341,6 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="48" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/test/problems/TradeOperationsTest.java</url>
-          <line>49</line>
-          <properties class="problems.TradeOperationsTest" method="testValidThresholdFormatCommandLine">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="64" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

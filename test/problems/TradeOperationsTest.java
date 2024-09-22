@@ -1,6 +1,6 @@
 package problems;
 
-import com.zaxxer.hikari.HikariDataSource;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -12,10 +12,6 @@ import problems.tradeOperations.manager.DatabaseConnection;
 import problems.tradeOperations.manager.ThresholdManager;
 import problems.tradeOperations.tradeFiles.*;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -23,24 +19,40 @@ import static org.junit.Assert.*;
 
 public class TradeOperationsTest {
 
+    private DatabaseConnection dbManager;
     private Connection connection;
-
 
     @Rule
     public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
 
+    public TradeOperationsTest() throws SQLException {
+        // Initialize the DatabaseConnection
+        dbManager = new DatabaseConnection("3308", "tradesDB");
+        connection = dbManager.getConnection();
+    }
+
     @Before
     public void setUp() {
         try {
-            DatabaseConnection.configureHikariCP("3308", "tradesDB");
+            if (dbManager == null) {
+                dbManager = new DatabaseConnection("3308", "tradesDB");
+                connection = dbManager.getConnection();
+            }
         } catch (RuntimeException e) {
+            throw new RuntimeException(e);
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
+    @After
+    public void tearDown() {
+        DatabaseConnection.closeDataSource();
+    }
+
     @Test
     public void testGetConnectionSuccess() throws SQLException {
-        connection = DatabaseConnection.getConnection();
+        connection = dbManager.getConnection();
         //Assert
         assertNotNull(connection); //Ensure the connection is not null;
         DatabaseConnection.closeDataSource();
@@ -98,7 +110,7 @@ A delta is a small value that defines the acceptable difference between two floa
         String filePath = "src/problems/tradeOperations/testCasesFiles/test_tradeFileN.csv";
 
         // This should throw HitErrorsThresholdException
-        TradeRWFile.readFileStatic(filePath, 50.0);
+        TradeRWFile.readFileStatic(filePath, 50.0, connection);
         // Assuming more than 50% errors
     }
 
@@ -107,7 +119,7 @@ A delta is a small value that defines the acceptable difference between two floa
         // an empty trades file
         String filePath = "src/problems/tradeOperations/testCasesFiles/test_tradeFile_empty.csv";
 
-        TradeRWFile.readFileStatic(filePath, 50.0);
+        TradeRWFile.readFileStatic(filePath, 50.0, connection);
 
         // Check output for summary
         String output = systemOutRule.getLog();
@@ -121,7 +133,7 @@ A delta is a small value that defines the acceptable difference between two floa
     public void testReadFileValidTrades() throws HitErrorsThresholdException {
         String filePath = "src/problems/tradeOperations/testCasesFiles/test_tradeFile_ValidTrades.csv";
 
-        TradeRWFile.readFileStatic(filePath, 50.0);
+        TradeRWFile.readFileStatic(filePath, 50.0, connection);
 
         // Check output for summary
         String output = systemOutRule.getLog();
@@ -135,7 +147,7 @@ A delta is a small value that defines the acceptable difference between two floa
     public void testReadFileInvalidTrades() throws HitErrorsThresholdException {
         String filePath = "src/problems/tradeOperations/testCasesFiles/test_tradeFile_InvalidTrades.csv";
 
-        TradeRWFile.readFileStatic(filePath, 10.0);
+        TradeRWFile.readFileStatic(filePath, 10.0, connection);
 
         // Check output for summary
         String output = systemOutRule.getLog();
@@ -149,7 +161,7 @@ A delta is a small value that defines the acceptable difference between two floa
     public void testReadWriteFileValidTrades() throws HitErrorsThresholdException {
         String filePath = "src/problems/tradeOperations/testCasesFiles/test_trades_readwrite_validle.csv";
 
-        TradeRWFile.readFileStatic(filePath, 25.0);
+        TradeRWFile.readFileStatic(filePath, 25.0, connection);
 
         // Check output for summary
         String output = systemOutRule.getLog();

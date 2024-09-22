@@ -14,12 +14,17 @@ import java.util.List;
 
 public class TradeRWFile implements TradingInterface {
 
-    public static void readFileStatic(String filePath, Double effectiveThreshold) throws HitErrorsThresholdException {
-        TradeRWFile tradeRWFile = new TradeRWFile();
-        tradeRWFile.readFile(filePath, effectiveThreshold);
+    private final Connection connection;
+
+    // Constructor to accept Connection
+    public TradeRWFile(Connection connection) {
+        this.connection = connection;
     }
 
-
+    public static void readFileStatic(String filePath, Double effectiveThreshold, Connection connection) throws HitErrorsThresholdException {
+        TradeRWFile tradeRWFile = new TradeRWFile(connection);
+        tradeRWFile.readFile(filePath, effectiveThreshold);
+    }
 
     @Override
     public void readFile(String filePath, Double effectiveThreshold) throws HitErrorsThresholdException {
@@ -81,11 +86,11 @@ public class TradeRWFile implements TradingInterface {
 
     @Override
     public int[] processBatchInsert(List<String[]> validTrades) {
-        DatabaseManager databaseManager = new DatabaseManager();
-        databaseManager.configureHikariCP();
+//        DatabaseManager databaseManager = new DatabaseManager();
+//        databaseManager.configureHikariCP();
         String insertQuery = "INSERT INTO Trades (trade_id, trade_identifier, ticker_symbol, quantity, price, trade_date) VALUES (?, ?, ?, ?, ?, ?)";
 
-        try (Connection connection = databaseManager.getConnection();
+        try (
              PreparedStatement statement = connection.prepareStatement(insertQuery);
              FileWriter errorLogWriter = new FileWriter("src/problems/tradeOperations/extraUsedFiles/error_write_log.txt", true)) {
 

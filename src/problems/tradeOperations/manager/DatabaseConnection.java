@@ -11,6 +11,10 @@ public class DatabaseConnection {
 
     private static HikariDataSource dataSource;
 
+    public DatabaseConnection(String portal, String dbName) {
+        configureHikariCP(portal, dbName);
+    }
+
     // Configure HikariCP connection pool
     public static void configureHikariCP(String port, String databaseName) {
         HikariConfig config = new HikariConfig();
