@@ -1,0 +1,44 @@
+Error parsing line: 2,T002,GOOGL,50.899,2750.55,2023-09-16 - For input string: "50.899"Error parsing line: 4,T004,AMZN,ten,3200.80,2023-09-18 - For input string: "ten"Error parsing line: 5,T005,MS,200,280.10,2023/09/19 - nullError parsing line: 10,T010,AMD,500,95.60,invalid - nullError parsing line: 2,T002,GOOGL,50.899,2750.55,2023-09-16 - For input string: "50.899"Error parsing line: 4,T004,AMZN,ten,3200.80,2023-09-18 - For input string: "ten"Error parsing line: 5,T005,MS,200,280.10,2023/09/19 - nullError parsing line: 10,T010,AMD,500,95.60,invalid - nullError parsing line: 2,T002,GOOGL,50.899,2750.55,2023-09-16 - For input string: "50.899"
+Error parsing line: 4,T004,AMZN,ten,3200.80,2023-09-18 - For input string: "ten"
+Error parsing line: 5,T005,MS,200,280.10,2023/09/19 - null
+Error parsing line: 10,T010,AMD,500,95.60,invalid - null
+Error parsing line: 2,T002,GOOGL,50.899,2750.55,2023-09-16 - For input string: "50.899"
+Error parsing line: 4,T004,AMZN,ten,3200.80,2023-09-18 - For input string: "ten"
+Error parsing line: 5,T005,MS,200,280.10,2023/09/19 - null
+Error parsing line: 10,T010,AMD,500,95.60,invalid - null
+Error parsing line: 2,T002,GOOGL,50.899,2750.55,2023-09-16 - For input string: "50.899"
+Error parsing line: 4,T004,AMZN,ten,3200.80,2023-09-18 - For input string: "ten"
+Error parsing line: 5,T005,MS,200,280.10,2023/09/19 - null
+Error parsing line: 10,T010,AMD,500,95.60,invalid - null
+Error parsing line: 2,T002,GOOGL,50.899,2750.55,2023-09-16 - For input string: "50.899"
+Error parsing line: 4,T004,AMZN,ten,3200.80,2023-09-18 - For input string: "ten"
+Error parsing line: 5,T005,MS,200,280.10,2023/09/19 - null
+Error parsing line: 10,T010,AMD,500,95.60,invalid - null
+Error parsing line: 2,T002,GOOGL,50.899,2750.55,2023-09-16 - For input string: "50.899"
+Error parsing line: 4,T004,AMZN,ten,3200.80,2023-09-18 - For input string: "ten"
+Error parsing line: 5,T005,MS,200,280.10,2023/09/19 - null
+Error parsing line: 10,T010,AMD,500,95.60,invalid - null
+Error parsing line: 2,T002,GOOGL,50.899,2750.55,2023-09-16 - For input string: "50.899"
+Error parsing line: 4,T004,AMZN,ten,3200.80,2023-09-18 - For input string: "ten"
+Error parsing line: 5,T005,MS,200,280.10,2023/09/19 - null
+Error parsing line: 10,T010,AMD,500,95.60,invalid - null
+Error parsing line: 2,T002,GOOGL,50.899,2750.55,2023-09-16 - For input string: "50.899"
+Error parsing line: 4,T004,AMZN,ten,3200.80,2023-09-18 - For input string: "ten"
+Error parsing line: 5,T005,MS,200,280.10,2023/09/19 - null
+Error parsing line: 10,T010,AMD,500,95.60,invalid - null
+Error parsing line: 2,T002,GOOGL,50.899,2750.55,2023-09-16 - For input string: "50.899"
+Error parsing line: 4,T004,AMZN,ten,3200.80,2023-09-18 - For input string: "ten"
+Error parsing line: 5,T005,MS,200,280.10,2023/09/19 - null
+Error parsing line: 10,T010,AMD,500,95.60,invalid - null
+Error parsing line: 2,T002,GOOGL,50.899,2750.55,2023-09-16 - For input string: "50.899"
+Error parsing line: 4,T004,AMZN,ten,3200.80,2023-09-18 - For input string: "ten"
+Error parsing line: 5,T005,MS,200,280.10,2023/09/19 - null
+Error parsing line: 10,T010,AMD,500,95.60,invalid - null
+Error parsing line: 2,T002,GOOGL,50.899,2750.55,2023-09-16 - For input string: "50.899"
+Error parsing line: 4,T004,AMZN,ten,3200.80,2023-09-18 - For input string: "ten"
+Error parsing line: 5,T005,MS,200,280.10,2023/09/19 - null
+Error parsing line: 10,T010,AMD,500,95.60,invalid - null
+Error parsing line: 2,T002,GOOGL,50.899,2750.55,2023-09-16 - For input string: "50.899"
+Error parsing line: 4,T004,AMZN,ten,3200.80,2023-09-18 - For input string: "ten"
+Error parsing line: 5,T005,MS,200,280.10,2023/09/19 - null
+Error parsing line: 10,T010,AMD,500,95.60,invalid - null
