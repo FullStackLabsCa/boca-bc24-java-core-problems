@@ -1,5 +1,7 @@
 package problems.jdbc.trading;
 
+import com.zaxxer.hikari.HikariDataSource;
+import problems.jdbc.trading.database.DatabaseConnection;
 import problems.jdbc.trading.exception.InvalidThresholdValueException;
 import problems.jdbc.trading.service.TradeService;
 
@@ -13,6 +15,7 @@ public class TradingRunner {
         System.out.println("Enter which case you want to run: case1, case2, exit: ");
         caseType = scanner.nextLine();
         if (!caseType.equalsIgnoreCase("exit")) {
+            HikariDataSource dataSource = DatabaseConnection.configureHikariCP("3306", "transactions");
             System.out.println("Enter the file path: ");
             String path = "/Users/Anant.Jain/source/student/boca-bc24-java-core-problems/src/problems/jdbc/trading/assets/trades_sample_1000.csv";
             if (caseType.equalsIgnoreCase("case1")) {
@@ -25,7 +28,7 @@ public class TradingRunner {
                                 throw new InvalidThresholdValueException("Enter a valid threshold value.");
                             else {
                                 TradeService tradeService = new TradeService();
-                                tradeService.readFileAndInitializeDataSource(path, threshold);
+                                tradeService.readFileAndInitializeDataSource(path, threshold, dataSource);
                             }
 
                         } catch (InvalidThresholdValueException e) {
@@ -40,7 +43,7 @@ public class TradingRunner {
                 } while (threshold == 0);
             } else if (caseType.equalsIgnoreCase("case2")) {
                 TradeService tradeService = new TradeService();
-                tradeService.readFileAndInitializeDataSource(path, 0);
+                tradeService.readFileAndInitializeDataSource(path, 0, dataSource);
             }
         }
     }

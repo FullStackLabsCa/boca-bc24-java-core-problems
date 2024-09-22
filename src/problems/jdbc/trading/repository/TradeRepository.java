@@ -39,8 +39,9 @@ public class TradeRepository implements TradeRepositoryInterface {
                     stmt.addBatch();
                     batchNumber++;
                     if (recordNumbers.size() - 1 == recordNumbers.indexOf(recordNumber) || batchNumber == batchSize) {
-                        batchNumber = 0;
                         stmt.executeBatch();
+                        errorChecking.incrementInsertions(batchNumber);
+                        batchNumber = 0;
                     }
                 } else {
                     errorChecking.incrementErrorCount();
@@ -50,13 +51,19 @@ public class TradeRepository implements TradeRepositoryInterface {
                                     "ticker_symbol.");
                     if (tradeService.isThresholdExceeded(errorChecking)) {
                         connection.rollback();
+                        errorChecking.setInsertions(0);
                         throw new HitErrorsThresholdException("Insertion failed...Threshold limit reached.");
+                    } else if (recordNumbers.size() - 1 == recordNumbers.indexOf(recordNumber)) {
+                        stmt.executeBatch();
+                        errorChecking.incrementInsertions(batchNumber);
+                        batchNumber = 0;
                     }
                 }
             }
             connection.commit();
         } catch (SQLException e) {
             if (connection != null) connection.rollback();
+            errorChecking.setInsertions(0);
             System.out.println(e.getMessage());
         } finally {
             if (connection != null) connection.setAutoCommit(true);

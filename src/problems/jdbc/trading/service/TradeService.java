@@ -3,7 +3,6 @@ package problems.jdbc.trading.service;
 import java.io.*;
 
 import com.zaxxer.hikari.HikariDataSource;
-import problems.jdbc.trading.database.DatabaseConnection;
 import problems.jdbc.trading.exception.HitErrorsThresholdException;
 import problems.jdbc.trading.exception.InvalidThresholdValueException;
 import problems.jdbc.trading.model.ErrorChecking;
@@ -18,10 +17,10 @@ public class TradeService implements TradeServiceInterface {
     static HikariDataSource dataSource;
 
     @Override
-    public void readFileAndInitializeDataSource(String path, double thresholdValue) {
+    public void readFileAndInitializeDataSource(String path, double thresholdValue, HikariDataSource hikariDataSource) {
         ErrorChecking errorChecking = new ErrorChecking();
+        dataSource = hikariDataSource;
         errorChecking.setThreshold(thresholdValue);
-        dataSource = DatabaseConnection.configureHikariCP("3306", "transactions");
         if (errorChecking.getThreshold() == 0) errorChecking.setThreshold(fetchThresholdValue());
         try {
             Map<Integer, Trade> trades = readCSVFile(path, errorChecking);

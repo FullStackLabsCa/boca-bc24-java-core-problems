@@ -18,6 +18,7 @@ import static org.junit.Assert.*;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -83,6 +84,48 @@ public class TradingTest {
     public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
 
     @Test
+    public void testReadFileAndInitializeDataSourceWithValidDataAndHighThreshold() {
+        tradeService.readFileAndInitializeDataSource(pathWithoutReadErrors, 85, dataSource);
+        assertTrue(systemOutRule.getLog().contains("""
+                Summary:
+                Records processed: 1000
+                Successful inserts: 425
+                Error count: 575"""));
+    }
+
+    @Test
+    public void testReadFileAndInitializeDataSourceWithValidDataAndLowThreshold() {
+        tradeService.readFileAndInitializeDataSource(pathWithoutReadErrors, 25, dataSource);
+        assertTrue(systemOutRule.getLog().contains("""
+                Insertion failed...Threshold limit reached.
+                Summary:
+                Records processed: 1000
+                Successful inserts: 0
+                Error count: 251"""));
+    }
+
+    @Test
+    public void testReadFileAndInitializeDataSourceWithInvalidDataAndLowThreshold() {
+        tradeService.readFileAndInitializeDataSource(pathWithReadErrors, 1, dataSource);
+        assertTrue(systemOutRule.getLog().contains("""
+                File parsing failed...
+                Summary:
+                Records processed: 1000
+                Successful inserts: 0
+                Error count: 13"""));
+    }
+
+    @Test
+    public void testReadFileAndInitializeDataSourceWithInvalidDataAndHighThreshold() {
+        tradeService.readFileAndInitializeDataSource(pathWithReadErrors, 85, dataSource);
+        assertTrue(systemOutRule.getLog().contains("""
+                Summary:
+                Records processed: 1000
+                Successful inserts: 418
+                Error count: 582"""));
+    }
+
+    @Test
     public void testReadCSVFileWithCorrectPathAndWithoutReadErrors() {
         try {
             errorChecking.setThreshold(15.0);
@@ -131,17 +174,24 @@ public class TradingTest {
         }
     }
 
-//    @Test
-//    public void testInsertTradeListWithValidSecurities() {
-//        try {
-//            errorChecking.setThreshold(30.0);
-//            tradeRepository.insertTrade(mapWithValidSecurities, dataSource, errorChecking);
-//            Connection conn = dataSource.getConnection();
-//
-//        } catch (SQLException e) {
-//            System.out.println(e);
-//        }
-//    }
+    @Test
+    public void testInsertTradeListWithValidSecurities() {
+        try {
+            errorChecking.setThreshold(30.0);
+            tradeRepository.insertTrade(mapWithValidSecurities, dataSource, errorChecking);
+            Connection conn = dataSource.getConnection();
+            String query = "Select count(*) from Trades";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            ResultSet resultSet = stmt.executeQuery();
+            int count = 0;
+            while (resultSet.next()) {
+                count = resultSet.getInt(1);
+            }
+            assertEquals(count, 5);
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
 
     @Test
     public void testCheckSecuritiesWithNonExistentSecurity() {

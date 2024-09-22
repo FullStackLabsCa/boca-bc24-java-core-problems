@@ -29,14 +29,6 @@ public class ErrorChecking {
         records++;
     }
 
-    public void setRecordCount(int count) {
-        records = count;
-    }
-
-    public void setErrors(int errors) {
-        errorCount = errors;
-    }
-
     public int getErrorCount() {
         return errorCount;
     }
@@ -45,7 +37,15 @@ public class ErrorChecking {
         errorCount++;
     }
 
+    public void incrementInsertions(int batch) {
+        insertions += batch;
+    }
+
+    public void setInsertions(int value) {
+        insertions = value;
+    }
+
     public int getInsertions() {
-        return records - errorCount;
+        return insertions;
     }
 }

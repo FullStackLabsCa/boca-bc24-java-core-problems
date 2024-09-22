@@ -1,5 +1,6 @@
 package problems.jdbc.trading.service;
 
+import com.zaxxer.hikari.HikariDataSource;
 import problems.jdbc.trading.exception.HitErrorsThresholdException;
 import problems.jdbc.trading.model.ErrorChecking;
 import problems.jdbc.trading.model.Trade;
@@ -9,7 +10,7 @@ import java.util.Map;
 
 public interface TradeServiceInterface {
 
-    void readFileAndInitializeDataSource(String path, double thresholdValue);
+    void readFileAndInitializeDataSource(String path, double thresholdValue, HikariDataSource dataSource);
 
     double fetchThresholdValue();
 
