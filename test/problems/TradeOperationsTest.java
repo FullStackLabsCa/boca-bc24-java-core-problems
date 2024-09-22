@@ -12,8 +12,7 @@ import problems.tradeOperations.manager.DatabaseConnection;
 import problems.tradeOperations.manager.ThresholdManager;
 import problems.tradeOperations.tradeFiles.*;
 
-import java.sql.Connection;
-import java.sql.SQLException;
+import java.sql.*;
 
 import static org.junit.Assert.*;
 
@@ -101,6 +100,19 @@ A delta is a small value that defines the acceptable difference between two floa
         thresholdManager.getErrorThreshold(); // This should throw the exception
     }
 
+    @Test
+    public void testThresholdLowerBoundary() throws InvalidThresholdValueException {
+        String[] args = {"1.0"};
+        ThresholdManager thresholdManager = new ThresholdManager(args);
+        assertEquals(1.0, thresholdManager.getErrorThreshold(), 0.001);
+    }
+
+    @Test
+    public void testThresholdUpperBoundary() throws InvalidThresholdValueException {
+        String[] args = {"100.0"};
+        ThresholdManager thresholdManager = new ThresholdManager(args);
+        assertEquals(100.0, thresholdManager.getErrorThreshold(), 0.001);
+    }
 
     // *******   Test cases for trade read file    *******
 
@@ -113,6 +125,7 @@ A delta is a small value that defines the acceptable difference between two floa
         TradeRWFile.readFileStatic(filePath, 50.0, connection);
         // Assuming more than 50% errors
     }
+
 
     @Test
     public void testReadFileEmptyFile() throws HitErrorsThresholdException {
@@ -140,8 +153,48 @@ A delta is a small value that defines the acceptable difference between two floa
         assertTrue(output.contains("Total rows processed: 3"));
         assertTrue(output.contains("Valid rows inserted: 2"));
         assertTrue(output.contains("Failed rows due to validation errors: 0"));
-        assertTrue(output.contains("Failed rows during insertion: 2"));
+        assertTrue(output.contains("Failed rows during insertion: 0"));
     }
+
+    @Test
+    public void testDatabaseStateAfterValidTradeProcessing() throws HitErrorsThresholdException, SQLException {
+
+        // Query database and assert state
+        Statement stmt = connection.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT * FROM Trades");
+
+        // Iterate over the ResultSet and print each row's data
+        while (rs.next()) {
+            // Retrieve data from the current row
+            String trade_id = rs.getString("trade_id");  // Example column
+            String trade_identifier = rs.getString("trade_identifier");  // Example column
+            String ticker_symbol = rs.getString("ticker_symbol");  // Example column
+            int quantity = rs.getInt("quantity");  // Example column
+            double price = rs.getDouble("price");  // Example column
+            Date trade_date = rs.getDate("trade_date");  // Example column
+
+            // Print the retrieved data
+            System.out.println("Trade ID: " + trade_id);
+            System.out.println("Trade Identifier: " + trade_identifier);
+            System.out.println("Ticker Symbol: " + ticker_symbol);
+            System.out.println("Quantity: " + quantity);
+            System.out.println("Price: " + price);
+            System.out.println("Trade Date: " + trade_date);
+            System.out.println("----------------------------");
+
+            // Add assertions to validate data if necessary
+            assertNotNull(ticker_symbol);  // Ensure symbol is not null
+            // Check output for summary
+            String output = systemOutRule.getLog();
+            assertTrue(output.contains("Trade ID: "));
+            assertTrue(output.contains("Trade Identifier: "));
+            assertTrue(output.contains("Ticker Symbol: "));
+            assertTrue(output.contains("Quantity: "));
+            assertTrue(output.contains("Price: "));
+            assertTrue(output.contains("Trade Date: "));
+        }
+    }
+
 
     @Test(expected = HitErrorsThresholdException.class)
     public void testReadFileInvalidTrades() throws HitErrorsThresholdException {

@@ -1,3 +1,3 @@
 trade_id,trade_identifier,ticker_symbol,quantity,price,trade_date
-T1,TDB_219848,sy1,100,999.99,2024-12-01
-T2,TDB_195199,sy2,200,799.98,2024-12-02
+T1,TDB_219848,GOOGL,100,999.99,2024-12-01
+T2,TDB_195199,MSFT,200,799.98,2024-12-02
