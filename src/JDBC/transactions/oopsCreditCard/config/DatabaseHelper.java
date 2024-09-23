@@ -6,8 +6,7 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 public class DatabaseHelper {
-    DatabaseHelper databaseHelper = new DatabaseHelper();
-    HikariDataSource dataSource;
+
     public static HikariDataSource getConnection(){
         HikariConfig config = new HikariConfig();
         config.setJdbcUrl("jdbc:mysql://localhost:3306/bootcamp");
