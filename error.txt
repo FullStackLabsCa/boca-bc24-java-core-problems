@@ -1,0 +1,1 @@
+Line 2 has error and the symbol which is not present is  GOOG
