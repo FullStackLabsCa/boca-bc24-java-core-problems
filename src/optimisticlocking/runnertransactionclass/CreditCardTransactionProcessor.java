@@ -1,7 +1,7 @@
 package optimisticlocking.runnertransactionclass;
 
 import com.zaxxer.hikari.HikariDataSource;
-import optimisticlocking.datasource.DataSourceTransaction;
+import optimisticlocking.datasource.DataSourecTransaction;
 
 import java.io.*;
 import java.util.concurrent.ExecutorService;
@@ -10,7 +10,7 @@ import java.util.concurrent.LinkedBlockingDeque;
 
 public class CreditCardTransactionProcessor {
     private static final LinkedBlockingDeque<CreditCardTransaction> creditCardTransactionQueue = new LinkedBlockingDeque<>(5000);
-    private static final HikariDataSource dataSource = DataSourceTransaction.createDataSource();
+    private static final HikariDataSource dataSource = DataSourecTransaction.createDataSource();
 
     public static void main(String[] args) {
         String filePath = "/Users/Sukhvir.Kaur/Source/boca-bc24-java-core-problems/src/optimisticlocking/utility/credit_card_transactions.txt";

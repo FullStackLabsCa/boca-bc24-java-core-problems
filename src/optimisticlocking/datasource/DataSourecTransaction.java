@@ -3,7 +3,7 @@ package optimisticlocking.datasource;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
-public class DataSourceTransaction {
+public class DataSourecTransaction {
     public static HikariDataSource createDataSource() {
         HikariConfig config = new HikariConfig();
         config.setJdbcUrl("jdbc:mysql://localhost:3306/bootcamp");
@@ -17,7 +17,3 @@ public class DataSourceTransaction {
         return new HikariDataSource(config);
     }
 }
-
-
-
-
