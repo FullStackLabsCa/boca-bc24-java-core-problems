@@ -18,7 +18,7 @@ public class TradeWriter implements TradeWriterDao {
 
          PreparedStatement preparedStatement = null;
          boolean autoCommit = false;
-        String query = getQueryString(forTest);
+         String query = getQueryString(forTest);
 
 
         try {
@@ -54,7 +54,7 @@ public class TradeWriter implements TradeWriterDao {
 
     private static String getQueryString(boolean forTest) {
         String tableName;
-        if (!forTest) tableName = "Trades_Test";
+        if (forTest) tableName = "Trades_Test";
         else tableName = "Trades";
 //         String query = """
 //                INSERT INTO Trades (trade_id, trade_identifier, ticker_symbol, quantity, price, trade_date)
@@ -66,7 +66,7 @@ public class TradeWriter implements TradeWriterDao {
 //                    price = VALUES(price),
 //                    trade_date = VALUES(trade_date)""";
 
-        String query = "INSERT INTO " + tableName + " (trade_id, trade_identifier, ticker_symbol, quantity, price, trade_date) " +
+        return "INSERT INTO " + tableName + " (trade_id, trade_identifier, ticker_symbol, quantity, price, trade_date) " +
                 "VALUES (?, ?, ?, ?, ?, ?) " +
                 "ON DUPLICATE KEY UPDATE " +
                 "trade_identifier = VALUES(trade_identifier), " +
@@ -74,7 +74,6 @@ public class TradeWriter implements TradeWriterDao {
                 "quantity = VALUES(quantity), " +
                 "price = VALUES(price), " +
                 "trade_date = VALUES(trade_date)";
-        return query;
     }
 
     @Override
