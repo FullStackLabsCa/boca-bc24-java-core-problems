@@ -68,7 +68,7 @@ public class TradeRWFile implements TradingInterface {
         }
     }
 
-    private void summarizeResults(int totalRows, int validTradesSize, int errorCount, int failedCount) {
+    public static void summarizeResults(int totalRows, int validTradesSize, int errorCount, int failedCount) {
         System.out.println("Summary:");
         System.out.println("Total rows processed: " + totalRows);
         System.out.println("Valid rows inserted: " + validTradesSize);

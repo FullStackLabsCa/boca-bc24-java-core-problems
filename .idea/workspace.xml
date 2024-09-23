@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d3c9f44b-ff0f-43a9-b850-9b801d0dc95b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/testCasesFiles/test_tradeFile_ValidTrades.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeOperations/testCasesFiles/test_tradeFile_ValidTrades.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/tradeFiles/TradeRWFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeOperations/tradeFiles/TradeRWFile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/problems/TradeOperationsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/TradeOperationsTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -124,6 +124,7 @@
     "JUnit.TradeOperationsTest.testReadFileInvalidTrades.executor": "Run",
     "JUnit.TradeOperationsTest.testReadFileValidTrades.executor": "Run",
     "JUnit.TradeOperationsTest.testReadWriteFileValidTrades.executor": "Run",
+    "JUnit.TradeOperationsTest.testSummarizeResults.executor": "Run",
     "JUnit.TradeOperationsTest.testThresholdLowerBoundary.executor": "Run",
     "JUnit.TradeOperationsTest.testThresholdUpperBoundary.executor": "Run",
     "JUnit.TradeOperationsTest.testValidThresholdFormatCommandLine.executor": "Run",
@@ -176,7 +177,7 @@
       <recent name="problems.jdbc.transactions.hwFinal" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TradeOperationsTest.testDatabaseStateAfterValidTradeProcessing">
+  <component name="RunManager">
     <configuration name="TradeOperationsTest.testDatabaseStateAfterValidTradeProcessing" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="boca-bc24-java-core-problems" />
       <extension name="coverage">
@@ -225,7 +226,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TradeOperationsTest.testThresholdLowerBoundary" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TradeOperationsTest.testSummarizeResults" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="boca-bc24-java-core-problems" />
       <extension name="coverage">
         <pattern>
@@ -235,7 +236,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="problems" />
       <option name="MAIN_CLASS_NAME" value="problems.TradeOperationsTest" />
-      <option name="METHOD_NAME" value="testThresholdLowerBoundary" />
+      <option name="METHOD_NAME" value="testSummarizeResults" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -259,11 +260,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TradeOperationsTest.testSummarizeResults" />
         <item itemvalue="JUnit.TradeOperationsTest.testDatabaseStateAfterValidTradeProcessing" />
         <item itemvalue="JUnit.TradeOperationsTest.testReadFileValidTrades" />
         <item itemvalue="JUnit.TradeOperationsTest.testMissingPropertiesFile" />
         <item itemvalue="JUnit.TradeOperationsTest.testThresholdUpperBoundary" />
-        <item itemvalue="JUnit.TradeOperationsTest.testThresholdLowerBoundary" />
       </list>
     </recent_temporary>
   </component>

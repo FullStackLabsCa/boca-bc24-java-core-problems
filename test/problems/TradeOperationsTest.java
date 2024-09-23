@@ -12,6 +12,7 @@ import problems.tradeOperations.manager.DatabaseConnection;
 import problems.tradeOperations.manager.ThresholdManager;
 import problems.tradeOperations.tradeFiles.*;
 
+import java.io.ByteArrayOutputStream;
 import java.sql.*;
 
 import static org.junit.Assert.*;
@@ -20,6 +21,7 @@ public class TradeOperationsTest {
 
     private DatabaseConnection dbManager;
     private Connection connection;
+
 
     @Rule
     public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
@@ -46,7 +48,13 @@ public class TradeOperationsTest {
 
     @After
     public void tearDown() {
-        DatabaseConnection.closeDataSource();
+        String sql = "Delete from Trades";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql);) {
+            preparedStatement.execute();
+            DatabaseConnection.closeDataSource();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     @Test
@@ -224,5 +232,24 @@ A delta is a small value that defines the acceptable difference between two floa
         assertTrue(output.contains("Failed rows during insertion: 5"));
     }
 
+    @Test
+    public void testSummarizeResults() {
+        // Given
+        int totalRows = 100;
+        int validTradesSize = 80;
+        int errorCount = 15;
+        int failedCount = 5;
+
+        // When
+        TradeRWFile.summarizeResults(totalRows, validTradesSize, errorCount, failedCount);
+
+        // Check output for summary
+        String output = systemOutRule.getLog();
+        assertTrue(output.contains("Summary:"));
+        assertTrue(output.contains("Total rows processed: " + totalRows));
+        assertTrue(output.contains("Valid rows inserted: " + validTradesSize));
+        assertTrue(output.contains("Failed rows due to validation errors: " + errorCount));
+        assertTrue(output.contains("Failed rows during insertion: " + failedCount));
+    }
 
 }
