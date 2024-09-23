@@ -78,16 +78,19 @@ public class TradingService {
                 );
                 //System.out.println(tradingValues);
                 batch.add(tradingValues);
+                break;
 
             }
             TradingRepository.prepareStatements(dataSource, batch);
 
-        } catch (FileNotFoundException f) {
-            System.out.println("Wrong file path provided. Please provide the correct file path.");
+       // } //catch (FileNotFoundException f) {
+           // System.out.println("Wrong file path provided. Please provide the correct file path.");
+
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+
 
 
       //  double percentErrorInReadingFile = 0;

@@ -3,7 +3,12 @@ package problems.trading;
 
 import problems.trading.services.TradingService;
 import problems.trading.repository.TradingRepository;
+import problems.trading.TradingProcessor;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -11,6 +16,9 @@ import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import static problems.trading.TradingProcessor.userThreshold;
+import static problems.trading.TradingProcessor.filePath;
 
 public class DataValidation {
     public static boolean checkForAllValidations(String line, Connection connection) {
@@ -32,7 +40,22 @@ public class DataValidation {
         return false;
     }
 
-    public static boolean checkForValidNumberOfColumns(String line) {
+
+    public static String checkForCorrectFilePath(String filePath) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            //String file;
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Invalid file path provided");
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        return "";
+    }
+
+        public static boolean checkForValidNumberOfColumns(String line) {
 
         //Validation - check for the correct number of columns
 
@@ -119,4 +142,14 @@ public static boolean isTickerSymbolValid(Connection connection, String tickerSy
         }
         return true;
  }
+
+ public static double checkForValidThresholdFromUser(double userThreshold){
+        if(userThreshold > 1 && userThreshold < 100){
+            return userThreshold;
+        } else {
+            System.out.println(" The threshold value should be between 0 and 100. Please enter the value again.");
+        }
+     return 0;
+ }
 }
+
