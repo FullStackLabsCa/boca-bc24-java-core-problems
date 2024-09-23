@@ -1,4 +1,4 @@
-package fileIoTradeAssignment;
+package fileIoTradeAssignment.model;
 
 import java.sql.Date;
 

@@ -1,5 +1,11 @@
 package fileIoTradeAssignment;
 
+import fileIoTradeAssignment.customExceptionClasses.HitDatabaseInsertErrorsThresholdException;
+import fileIoTradeAssignment.customExceptionClasses.HitReadFileErrorsThresholdException;
+import fileIoTradeAssignment.customExceptionClasses.InvalidThresholdValueRuntimeException;
+import fileIoTradeAssignment.repository.TradeRepository;
+import fileIoTradeAssignment.service.TradeService;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
@@ -8,16 +14,17 @@ import java.util.Scanner;
 
 public class TradeRunner {
     public static void main(String[] args) {
-        TradeProcessor processor = new TradeProcessor();
+        TradeService service = new TradeService();
+        TradeRepository repo = new TradeRepository();
         Scanner scanner = new Scanner(System.in);
         double errorThreshold = getErrorThreshold(args, scanner);
 
-        processor.setErrorThreshold(errorThreshold);
-        String filePath = getFilePath(scanner, processor);
+        service.setErrorThreshold(errorThreshold);
+        String filePath = getFilePath(scanner, service);
 
         try {
-            processor.readTradeFile();
-            processor.tradesInsertionMaker();
+            service.readTradeFile();
+            repo.tradesInsertionMaker();
         } catch (FileNotFoundException e) {
             System.err.println("File not found. Please try again.");
         } catch (SQLException e) {
@@ -91,7 +98,7 @@ public class TradeRunner {
 
 
 
-    private static String getFilePath(Scanner scanner, TradeProcessor processor) {
+    private static String getFilePath(Scanner scanner, TradeService processor) {
         while (true) {
             System.out.print("Enter the file path for the trades CSV file: ");
             String filePath = scanner.nextLine();
