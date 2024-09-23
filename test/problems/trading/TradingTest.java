@@ -3,6 +3,7 @@ package problems.trading;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import problems.trading.exceptions.HitErrorsThresholdException;
 import problems.trading.exceptions.InvalidInputException;
 
 import java.io.FileNotFoundException;
@@ -58,11 +59,11 @@ public class TradingTest {
 
     @Test
     public void fetchSecuritiesReferenceTable() throws SQLException {
-        String querySecuritiesReference="SELECT * FROM SecuritiesReference";
+        String querySecuritiesReference = "SELECT * FROM SecuritiesReference";
         PreparedStatement preparedStatement = connection.prepareStatement(querySecuritiesReference);
         ResultSet resultSet = preparedStatement.executeQuery();
         int count = 0;
-        while (resultSet.next()){
+        while (resultSet.next()) {
             count++;
         }
 
@@ -70,7 +71,17 @@ public class TradingTest {
     }
 
     @Test
-    public void readTransactionFileAndWriteToList(){
-        TradeFileReader.readTransactionFileAndWriteToList(tradingTransactionArrayList);
+    public void readTransactionFileAndWriteToList() {
+        TradeService.errorThreshold = 20;
+        String filePath = "/Users/Gaurav.Manchanda/src/boca-bc24-java-core-problems/test_trade_data.csv";
+        tradingTransactionArrayList = TradeFileReader.readTransactionFileAndWriteToList(filePath);
+        assertEquals(9, tradingTransactionArrayList.size());
+    }
+
+    @Test(expected = HitErrorsThresholdException.class)
+    public void readTransactionFileAndWriteToListAndHitErrorsThresholdException() {
+        TradeService.errorThreshold = 0;
+        String filePath = "/Users/Gaurav.Manchanda/src/boca-bc24-java-core-problems/test_trade_data.csv";
+        tradingTransactionArrayList = TradeFileReader.readTransactionFileAndWriteToList(filePath);
     }
 }

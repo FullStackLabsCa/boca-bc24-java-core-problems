@@ -5,12 +5,10 @@ import problems.trading.exceptions.InvalidInputException;
 import java.io.*;
 import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class TradeFileReader {
     private static int counter = 0;
     private static boolean isValid = false;
-    private static String filePath = "";
 
     public static void checkThresholdValue(String str) {
         TradeService.isThresholdValid = false;
@@ -21,7 +19,7 @@ public class TradeFileReader {
         TradeService.isThresholdValid = true;
     }
 
-    public static ArrayList<TradeTransaction> readTransactionFileAndWriteToList(ArrayList<TradeTransaction> tradingTransactionArrayList) {
+    public static ArrayList<TradeTransaction> readTransactionFileAndWriteToList(String filePath) {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
             reader.readLine();
@@ -53,19 +51,20 @@ public class TradeFileReader {
                 //if its valid then adding to the list
                 if (isValid) {
                     System.out.println("adding transaction #" + counter + " in the queue >> " + tradeTransaction);
-                    tradingTransactionArrayList.add(tradeTransaction);
+                    TradeService.tradingTransactionArrayList.add(tradeTransaction);
                 }
             }
 
             //if threshold limit increases then throwing an exception
-            TradeService.checkingThreshold(tradingTransactionArrayList);
+            TradeService.checkingThreshold(TradeService.tradingTransactionArrayList);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return tradingTransactionArrayList;
+        return TradeService.tradingTransactionArrayList;
     }
 
     public static String checkFileName(String fileName) throws FileNotFoundException {
+        TradeService.filePath = "";
         // Check if the read file exists and delete it at the start of execution
         TradeService.checkReadLogFileExistOrNot();
 
@@ -75,14 +74,14 @@ public class TradeFileReader {
         TradeService.isFileExist = false;
         while (!TradeService.isFileExist) {
             if (fileName.equals("trade_data")) {
-                filePath = "/Users/Gaurav.Manchanda/src/boca-bc24-java-core-problems/" + fileName + ".csv";
+                TradeService.filePath = "/Users/Gaurav.Manchanda/src/boca-bc24-java-core-problems/" + fileName + ".csv";
                 TradeService.isFileExist = true;
                 System.out.println("File found in the system");
             } else {
                 throw new FileNotFoundException("Please enter a valid file name");
             }
         }
-        return filePath;
+        return TradeService.filePath;
     }
 
     private static boolean validateCSVFile(String[] data) {

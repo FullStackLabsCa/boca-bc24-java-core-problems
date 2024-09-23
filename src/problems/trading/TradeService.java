@@ -12,6 +12,9 @@ public class TradeService {
     public static File readFile = new File("readLogfile.txt");
     public static boolean isFileExist = false;
     public static boolean isThresholdValid = false;
+    public static String filePath = "";
+    public static ArrayList<TradeTransaction> tradingTransactionArrayList = new ArrayList<>(5000);
+
 
 
     public static void checkingThreshold(ArrayList<TradeTransaction> tradingTransactionArrayList) {

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TradingMainRunner {
-    private static ArrayList<TradeTransaction> tradingTransactionArrayList = new ArrayList<>(5000);
 
     public static void main(String[] args) throws Exception {
         // read file and load data into the list
@@ -23,7 +22,7 @@ public class TradingMainRunner {
 
 
         //For readAndWrite to List
-        TradeFileReader.readTransactionFileAndWriteToList(tradingTransactionArrayList);
+        TradeFileReader.readTransactionFileAndWriteToList(TradeService.filePath);
 
         //writing to the DB
 //        TradeFileWriter.insertQuery(tradingTransactionArrayList);
