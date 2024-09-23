@@ -1,10 +1,9 @@
 package Trading.presentationLayer;
 
 import Trading.databaseConnectivity.DatabaseConnectivity;
-import Trading.utility.FileNotExists;
+import Trading.utility.HitErrorsThresholdException;
 import Trading.utility.InvalidThresholdValueException;
 import com.zaxxer.hikari.HikariDataSource;
-import tradedataoperation.HitErrorsThresholdException;
 
 import java.io.File;
 import java.io.IOException;
@@ -51,7 +50,7 @@ public class TradingRunner {
         try {
             System.out.println(thresholdValue);
             readTradingFileAndWriteToQueue(filepath);
-        } catch (HitErrorsThresholdException | Trading.utility.HitErrorsThresholdException | SQLException e) {
+        } catch (SQLException | HitErrorsThresholdException e) {
             System.out.println("Error: File exceeded threshold value.");
         }
     }

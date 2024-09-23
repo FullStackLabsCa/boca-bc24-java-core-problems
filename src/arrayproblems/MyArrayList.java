@@ -61,16 +61,29 @@ public class MyArrayList<T> {
         }
         return removedElement;
     }
+
     public int size() {
-        return 0;
+
+        return size;
+    }
+
+    private void checkIndex(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index is out of bound:  " + index);
+        }
     }
 
     public void clear() {
-
+        for (int i = 0; i < size; i++) {
+            arrayElement[i] = null;
+        }
+        size = 0;
+        arrayElement = (T[]) new Object[INITIAL_VALUE];
     }
 
     public boolean isEmpty() {
-        return false;
+
+        return size == 0;
     }
 
 
@@ -86,5 +99,13 @@ public class MyArrayList<T> {
 
         list.remove(1);
         System.out.println("After Removel: " + list);
+
+        // Check the size
+        System.out.println("Size: " + list.size()); // Output: 2
+
+        // Clear the list
+        list.clear();
+        System.out.println("After clear: " + list.isEmpty()); // Output: true
     }
 }
+

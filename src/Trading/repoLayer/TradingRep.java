@@ -1,8 +1,8 @@
 package Trading.repoLayer;
 
-import com.zaxxer.hikari.HikariDataSource;
 import Trading.model.TradingValues;
-import tradedataoperation.HitErrorsThresholdException;
+import Trading.utility.HitErrorsThresholdException;
+import com.zaxxer.hikari.HikariDataSource;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -13,7 +13,7 @@ import java.util.List;
 import static Trading.presentationLayer.TradingRunner.thresholdValue;
 
 public class TradingRep {
-    public static void insertdata(HikariDataSource dataSource, List<TradingValues> tradingValuesList) throws SQLException, HitErrorsThresholdException {
+    public static void insertData(HikariDataSource dataSource, List<TradingValues> tradingValuesList) throws SQLException, HitErrorsThresholdException {
         final int Batch_Size = 5;
         int invalidRows = 0;
         int validRows = 0;
@@ -83,7 +83,7 @@ public class TradingRep {
     }
 
     public static void errorLog(String error) throws IOException {
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("/Users/Gagandeep.Kaur/source/students/tradeproject/src/Trading/utility/error_log.txt", true))) {
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("/Users/Gagandeep.Kaur/source/students/boca-bc24-java-core-problems/src/Trading/utility/error_log.txt", true))) {
             bufferedWriter.write(error);
             bufferedWriter.newLine();
         } catch (Exception e) {

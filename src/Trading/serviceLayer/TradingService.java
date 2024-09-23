@@ -78,7 +78,7 @@ public class TradingService {
         }
 
         if (!validBatch.isEmpty()) {
-            TradingRep.insertdata(dataSource, validBatch);
+            TradingRep.insertData(dataSource, validBatch);
         } else {
             System.out.println("No valid rows to insert into the database.");
         }
