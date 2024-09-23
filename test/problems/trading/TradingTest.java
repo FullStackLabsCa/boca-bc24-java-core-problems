@@ -21,6 +21,8 @@ public class TradingTest {
     public void setup() throws SQLException {
         connection = DriverManager.getConnection("jdbc:mysql://localhost:3308/bootcamp", "root", "password123");
         connection.setAutoCommit(false);
+        TradeService.tradingTransactionArrayList.clear();
+        tradingTransactionArrayList.clear();
         //checking and deleting the log files
         TradeService.checkReadLogFileExistOrNot();
         TradeService.checkWriteLogFileExistOrNot();
@@ -28,6 +30,11 @@ public class TradingTest {
 
     @After()
     public void closingResources() throws SQLException {
+        TradeService.errorCount = 0;
+        TradeService.errorThreshold = 0;
+        String truncateQuery = "TRUNCATE TABLE Trades";
+        PreparedStatement preparedStatement = connection.prepareStatement(truncateQuery);
+        preparedStatement.executeUpdate();
         connection.setAutoCommit(true);
         connection.close();
     }
@@ -79,9 +86,26 @@ public class TradingTest {
     }
 
     @Test(expected = HitErrorsThresholdException.class)
-    public void readTransactionFileAndWriteToListAndHitErrorsThresholdException() {
+    public void readTransactionHitErrorsThresholdException() {
         TradeService.errorThreshold = 0;
         String filePath = "/Users/Gaurav.Manchanda/src/boca-bc24-java-core-problems/test_trade_data.csv";
         tradingTransactionArrayList = TradeFileReader.readTransactionFileAndWriteToList(filePath);
+    }
+
+    @Test
+    public void writeTradeTransactionToDB() throws Exception {
+        TradeService.errorThreshold = 40;
+        String filePath = "/Users/Gaurav.Manchanda/src/boca-bc24-java-core-problems/test_trade_data.csv";
+        tradingTransactionArrayList = TradeFileReader.readTransactionFileAndWriteToList(filePath);
+        TradeFileWriter.insertQuery(tradingTransactionArrayList, connection);
+        assertEquals(7, (tradingTransactionArrayList.size() - TradeService.errorCount + 1));
+    }
+
+    @Test(expected = HitErrorsThresholdException.class)
+    public void writeTransactionHitErrorsThresholdException() throws Exception {
+        TradeService.errorThreshold = 0;
+        String filePath = "/Users/Gaurav.Manchanda/src/boca-bc24-java-core-problems/test_trade_data.csv";
+        tradingTransactionArrayList = TradeFileReader.readTransactionFileAndWriteToList(filePath);
+        TradeFileWriter.insertQuery(tradingTransactionArrayList, connection);
     }
 }

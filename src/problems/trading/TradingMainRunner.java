@@ -1,5 +1,7 @@
 package problems.trading;
 
+import problems.trading.database.DatabaseConnectionPool;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -25,6 +27,6 @@ public class TradingMainRunner {
         TradeFileReader.readTransactionFileAndWriteToList(TradeService.filePath);
 
         //writing to the DB
-//        TradeFileWriter.insertQuery(tradingTransactionArrayList);
+        TradeFileWriter.insertQuery(TradeService.tradingTransactionArrayList, DatabaseConnectionPool.getConnection());
     }
 }

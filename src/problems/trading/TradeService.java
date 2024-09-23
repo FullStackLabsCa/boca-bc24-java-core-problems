@@ -6,6 +6,7 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class TradeService {
+    public static int writeErrorCount = 0;
     public static int errorCount = 0;
     public static double errorThreshold = 0;
     public static File writeFile = new File("writeLogfile.txt");
@@ -14,7 +15,6 @@ public class TradeService {
     public static boolean isThresholdValid = false;
     public static String filePath = "";
     public static ArrayList<TradeTransaction> tradingTransactionArrayList = new ArrayList<>(5000);
-
 
 
     public static void checkingThreshold(ArrayList<TradeTransaction> tradingTransactionArrayList) {

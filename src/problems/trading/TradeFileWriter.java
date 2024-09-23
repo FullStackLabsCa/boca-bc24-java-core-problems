@@ -14,8 +14,7 @@ import java.util.ArrayList;
 public class TradeFileWriter {
     private static int counter = 0;
 
-    public static void insertQuery(ArrayList<TradeTransaction> tradingTransactionArrayList) throws Exception {
-        Connection connection = DatabaseConnectionPool.getConnection();
+    public static void insertQuery(ArrayList<TradeTransaction> tradingTransactionArrayList, Connection connection ) throws Exception {
         try {
             connection.setAutoCommit(false);
 
@@ -40,11 +39,13 @@ public class TradeFileWriter {
                 } else {
                     try (BufferedWriter writer = new BufferedWriter(new FileWriter(TradeService.writeFile, true))) {
                         int errorAtLine = counter;
+                        TradeService.writeErrorCount++;
                         TradeService.errorCount++;
                         writer.write("Error in the row while inserting trade to DB >>> line number " + (errorAtLine + 1) + " >> " + String.valueOf(tradeTransaction));
                         writer.newLine();
                     } catch (IOException e) {
                         e.getMessage();
+                        TradeService.writeErrorCount++;
                         TradeService.errorCount++;
                     }
                 }
@@ -69,8 +70,8 @@ public class TradeFileWriter {
 
     private static void printSummary(ArrayList<TradeTransaction> tradingTransactionArrayList) {
         System.out.println("Total No of rows enter in the file: " + tradingTransactionArrayList.size());
-        System.out.println("No of rows enter in the DB: " + (tradingTransactionArrayList.size() - TradeService.errorCount));
-        System.err.println("No of rows failed to enter in the DB: " + TradeService.errorCount);
+        System.out.println("No of rows enter in the DB: " + (tradingTransactionArrayList.size() - TradeService.writeErrorCount));
+        System.err.println("No of rows failed to enter in the DB: " + TradeService.writeErrorCount);
         System.out.println("Data added to database successfully");
     }
 
