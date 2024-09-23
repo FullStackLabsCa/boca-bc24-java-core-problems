@@ -55,7 +55,7 @@ public class TradingService {
                 String[] data = line.split(",");
 
                 try {
-                    if (!DataValidation.checkForAllValidations(line)){
+                    if (!DataValidation.checkForAllValidations(line,connectToDatabase())){ //check
                         errorCounter++;
                        // errorLogForReading.add("Error in row: " + rowCounter);
                        continue;
@@ -112,21 +112,22 @@ public class TradingService {
             e.printStackTrace();
         }
     }
+
+
+
+public static void logWritingErrors(String errorsInWriting) {
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter("/Users/Shifa.Kajal/source/student/boca-bc24-java-core-problems/src/problems/trading/tradesutility/Trade_writing_error_log", true))) {
+        writer.write(errorsInWriting);
+        writer.newLine();
+        // Add a new line
+    } catch (IOException e) {
+        System.out.println("An error occurred.");
+        e.printStackTrace();
+    }
+}
 }
 
 
-
-
-//        try (BufferedWriter writer = new BufferedWriter("/Users/Shifa.Kajal/source/student/boca-bc24-java-core-problems/src/problems/trading/Trade_reading_error_log", true)) {
-//            for (String error : errorsInReading) {
-//                writer.write(error + "\n");
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//    }
-//}
 
 
 // /Users/Shifa.Kajal/source/student/boca-bc24-java-core-problems/src/problems/trading/tradesutility/trades_sample_10.csv

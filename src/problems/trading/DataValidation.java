@@ -2,7 +2,9 @@ package problems.trading;
 
 
 import problems.trading.services.TradingService;
+import problems.trading.repository.TradingRepository;
 
+import java.sql.Connection;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.DateTimeException;
@@ -11,13 +13,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataValidation {
-    public static boolean checkForAllValidations(String line) {
+    public static boolean checkForAllValidations(String line, Connection connection) {
         String[] data = line.split(",");
 
             if( checkForValidNumberOfColumns(line) &&
             checkForValidQuantity(line) &&
+            checkForValidTickerSymbol(line,connection) &&
             checkForValidPrice(line) &&
-            checkForValidTradeDate(line)) {
+            checkForValidTradeDate(line)){
                 return true;
             }
 
@@ -32,16 +35,18 @@ public class DataValidation {
     public static boolean checkForValidNumberOfColumns(String line) {
 
         //Validation - check for the correct number of columns
+
         String[] data = line.split(",");
         try{
-            if(data.length != 6);
+            if(data.length != 6) {
+                System.out.println("data.length = " + data.length + " ? " + (data.length != 6));
+                System.out.println(data[0] + " Incorrect number of fields. Six fields are expected at line -- " + line);
+                TradingService.logReaderErrors(line + " Incorrect number of fields. Six fields are expected at line -- ");
+            }
             return true;
         } catch (IllegalArgumentException i){
-            System.out.println(data[0] + "Incorrect number of fields. Six fields are expected at line -- " +line);
+            System.out.println(data[0] + " Incorrect number of fields. Six fields are expected at line -- " + line);
         }
-        TradingService.logReaderErrors(line + " Incorrect number of fields. Six fields are expected at line -- ");
-//        if (data.length != 6) {
-//            throw new IllegalArgumentException("Incorrect number of fields. Six fields are expected at line -- " +line);
         return false;
     }
 
@@ -52,9 +57,10 @@ public class DataValidation {
         try {
             Integer.parseInt(data[3].trim());
             return true;
+
         } catch (NumberFormatException n) {
-            TradingService.logReaderErrors(line);
-            System.out.println(data[3].trim() + "is not a valid integer. Quantity should be an integer");
+            TradingService.logReaderErrors(line + " -- Quantity should be an integer.");
+            System.out.println(data[3].trim() + " -- Quantity should be an integer");
             return false;
         }
 
@@ -67,10 +73,10 @@ public class DataValidation {
             Double.parseDouble(data[4].trim());
             return true;
         } catch (NumberFormatException e) {
-            System.out.println(data[4].trim() + "is not a valid decimal price. Price needs to be a decimal");
-
+            TradingService.logReaderErrors(line + " -- Price needs to be a decimal");
+            System.out.println(data[4].trim() + " -- Price needs to be a decimal");
         }
-        TradingService.logReaderErrors(line);
+
         return false;
     }
 
@@ -83,9 +89,10 @@ public class DataValidation {
             LocalDate.parse(data[5].trim());
             return true;
         } catch (DateTimeException d) {
-            System.out.println(data[5].trim() + "is not a valid date format. The correct date format is yyyy-MM-dd");
+            TradingService.logReaderErrors(line + " -- not a valid date format. The correct date format is yyyy-MM-dd");
+            System.out.println(data[5].trim() + " -- not a valid date format. The correct date format is yyyy-MM-dd");
         }
-        TradingService.logReaderErrors(line);
+
         return false;
     }
 
@@ -99,4 +106,17 @@ public class DataValidation {
         return true;
     }
 
+public static boolean isTickerSymbolValid(Connection connection, String tickerSymbol){
+        return  TradingRepository.isTickerSymbolValid(connection,tickerSymbol);
+}
+ public static boolean checkForValidTickerSymbol(String line, Connection connection){
+        String[] data = line.split(",");
+        String tickerSymbol = data[2].trim();
+
+        if(!isTickerSymbolValid(connection, tickerSymbol)){
+            System.out.println("Invalid security ticker symbol");
+            TradingService.logWritingErrors(line + " -- Invalid ticker symbol");
+        }
+        return true;
+ }
 }
