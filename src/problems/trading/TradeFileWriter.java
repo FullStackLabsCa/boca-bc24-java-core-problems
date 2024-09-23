@@ -11,10 +11,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class TradeFileWriter {
+public class TradeFileWriter implements TradeFileWriterInterface{
     private static int counter = 0;
 
-    public static void insertQuery(ArrayList<TradeTransaction> tradingTransactionArrayList, Connection connection ) throws Exception {
+    @Override
+    public void fileWriter(ArrayList<TradeTransaction> tradingTransactionArrayList, Connection connection ) throws SQLException {
         try {
             connection.setAutoCommit(false);
 

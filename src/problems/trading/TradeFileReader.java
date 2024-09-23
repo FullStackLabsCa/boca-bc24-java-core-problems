@@ -6,7 +6,7 @@ import java.io.*;
 import java.sql.Date;
 import java.util.ArrayList;
 
-public class TradeFileReader {
+public class TradeFileReader implements TradeFileReaderInterface {
     private static int counter = 0;
     private static boolean isValid = false;
 
@@ -63,7 +63,8 @@ public class TradeFileReader {
         return TradeService.tradingTransactionArrayList;
     }
 
-    public static String checkFileName(String fileName) throws FileNotFoundException {
+    @Override
+    public String fileReader(String fileName) throws FileNotFoundException {
         TradeService.filePath = "";
         // Check if the read file exists and delete it at the start of execution
         TradeService.checkReadLogFileExistOrNot();

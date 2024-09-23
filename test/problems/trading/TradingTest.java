@@ -42,14 +42,15 @@ public class TradingTest {
     @Test(expected = FileNotFoundException.class)
     public void FileNotExistAndThrowingException() throws FileNotFoundException {
         String fileName = "sample";
-        TradeFileReader.checkFileName(fileName);
+        TradeFileReader tradeFileReader = new TradeFileReader();
+        tradeFileReader.fileReader(fileName);
     }
 
     @Test
     public void FileFound() throws FileNotFoundException {
         String fileName = "trade_data";
-        TradeFileReader.checkFileName(fileName);
-        assertTrue(TradeService.isFileExist);
+        TradeFileReader tradeFileReader = new TradeFileReader();
+        tradeFileReader.fileReader(fileName);
     }
 
     @Test(expected = InvalidInputException.class)
@@ -97,7 +98,8 @@ public class TradingTest {
         TradeService.errorThreshold = 40;
         String filePath = "/Users/Gaurav.Manchanda/src/boca-bc24-java-core-problems/test_trade_data.csv";
         tradingTransactionArrayList = TradeFileReader.readTransactionFileAndWriteToList(filePath);
-        TradeFileWriter.insertQuery(tradingTransactionArrayList, connection);
+        TradeFileWriter tradeFileWriter = new TradeFileWriter();
+        tradeFileWriter.fileWriter(tradingTransactionArrayList, connection);
         assertEquals(7, (tradingTransactionArrayList.size() - TradeService.errorCount + 1));
     }
 
@@ -106,6 +108,7 @@ public class TradingTest {
         TradeService.errorThreshold = 0;
         String filePath = "/Users/Gaurav.Manchanda/src/boca-bc24-java-core-problems/test_trade_data.csv";
         tradingTransactionArrayList = TradeFileReader.readTransactionFileAndWriteToList(filePath);
-        TradeFileWriter.insertQuery(tradingTransactionArrayList, connection);
+        TradeFileWriter tradeFileWriter = new TradeFileWriter();
+        tradeFileWriter.fileWriter(tradingTransactionArrayList, connection);
     }
 }
