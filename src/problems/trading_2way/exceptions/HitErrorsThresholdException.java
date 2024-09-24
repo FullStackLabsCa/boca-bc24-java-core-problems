@@ -1,4 +1,4 @@
-package problems.trading_problem;
+package problems.trading_2way.exceptions;
 
 public class HitErrorsThresholdException extends Exception {
     public HitErrorsThresholdException(String message) {

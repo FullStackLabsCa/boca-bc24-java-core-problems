@@ -1,6 +1,6 @@
-package problems.trading_problem;
+package problems.trading_1way_without_object;
 
-import problems.trading_problem.utility.DateFormatValidator;
+import problems.trading_1way_without_object.utility.DateFormatValidator;
 
 import java.io.*;
 import java.sql.Connection;
@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static problems.trading_problem.utility.ValidateFieldLength.validateFieldsInTradeLine;
+import static problems.trading_1way_without_object.utility.ValidateFieldLength.validateFieldsInTradeLine;
 
 public class TradesRunner {
     public static void main(String[] args) {
@@ -24,11 +24,11 @@ public class TradesRunner {
         int batchCounter = 0;
         String insertDataQuery = "INSERT INTO Trades (trade_id, ticker_symbol, quantity, price, trade_date) VALUES (?,?,?,?,?)";
 
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(new File("/Users/Karan.Rana/source/student/boca-bc24-java-core-problems/src/problems/trading_problem/trade_data.csv")));
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(new File("/Users/Karan.Rana/source/student/boca-bc24-java-core-problems/src/problems/trading_problem/trades_Sample.csv")));
              BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("/Users/Karan.Rana/source/student/boca-bc24-java-core-problems/src/problems/trading_problem/error_log.txt", true));
              Connection connection = DataBaseManager.getConnection();
-             PreparedStatement insertDataStatement = connection.prepareStatement(insertDataQuery)
-        ) {
+             PreparedStatement insertDataStatement = connection.prepareStatement(insertDataQuery))
+        {
             // Set auto-commit to false for transaction management
             connection.setAutoCommit(false);
             String currentLine;

@@ -1,4 +1,4 @@
-package problems.trading_problem.utility;
+package problems.trading_1way_without_object.utility;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

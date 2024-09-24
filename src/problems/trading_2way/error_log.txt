@@ -1,0 +1,4 @@
+trade_identifier is missing Error in Line # 1 || Log# 1: 7,,NKE,443,1800.6,2024-10-17
+Invalid Trade Entry Error in Line # 2 || Log# 2: TDB_140202,T,2,1168.74,2024-04-24
+Trade line absent in the File Error in Line # 4 || Log# 3: 
+Date format is invalid Error in Line # 11 || Log# 4: 17,TDB_227121,BABA,351,2292.21,2024--12
