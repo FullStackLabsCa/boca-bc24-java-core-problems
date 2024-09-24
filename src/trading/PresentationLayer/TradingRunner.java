@@ -15,7 +15,7 @@ import static trading.serviceLayer.TradingService.readTradingFileAndWriteToQueue
 
 public class TradingRunner {
     public static HikariDataSource dataSource;
-    public static Double thresholdValue ;
+    public static Double thresholdValue =0.0 ;
 
     public static void main(String[] args) throws HitErrorsThresholdException, FileNotExists {
         dataSource = DatabaseConnectivity.configureHikariCP();
@@ -64,14 +64,14 @@ public class TradingRunner {
             try {
                 System.out.println("Enter threshold value (1-100): ");
                  thresholdValue = scanner.nextDouble();
-                if (thresholdValue < 1 || thresholdValue > 100) {
+                if (thresholdValue >= 1 || thresholdValue <= 100) {
                     throw new InvalidThresholdValueException("Value must be between 1 and 100.");
                 }
                 TradingRunner.thresholdValue = thresholdValue; // Update the static variable
                 break;
             } catch (InvalidThresholdValueException | InputMismatchException e) {
-                System.out.println("\"Value must be between 1 and 100.\"");
-                scanner.next();
+                System.out.println("\"Value must be between 1 and 100.\"Enter again");
+                break;
             }
         }
                 try {
