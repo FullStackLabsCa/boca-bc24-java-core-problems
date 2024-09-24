@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class UserInteraction {
-    static double userThreshold = 0;
+    public static double userThreshold = 0;
 
     public static boolean isValidThreshold(String inputThreshold) throws InvalidThresholdValueException {
         try {

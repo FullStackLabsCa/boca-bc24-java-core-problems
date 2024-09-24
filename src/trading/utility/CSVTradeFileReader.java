@@ -13,9 +13,9 @@ import java.util.*;
 public class CSVTradeFileReader implements TradeFileReader {
 
     public static ArrayList<Trade> validTradeQue = new ArrayList<>();
-    static double readerThreshold = 0;
-    static double userThreshold = UserInteraction.userThreshold;
-    static int totalEntries;
+    public static double readerThreshold = 0;
+    public static double userThreshold = UserInteraction.userThreshold;
+    public static int totalEntries;
 
     @Override
     public List<Trade> tradeFileReader(File file) {

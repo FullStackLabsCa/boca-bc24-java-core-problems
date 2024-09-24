@@ -1,11 +1,14 @@
 package trading.DAO;
 
 
+import trading.config.DatabaseConnector;
 import trading.utility.CSVTradeFileReader;
 import trading.service.LogFileWriter;
 import trading.service.TradeFileWriter;
 import trading.exceptions.HitErrorsThresholdException;
 import trading.model.Trade;
+
+
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -13,9 +16,12 @@ import java.util.List;
 
 
 public class SQlTradeDAO implements TradeFileWriter {
-    static int noOFQueryActualInserted = 0, noOFQueryFailed = 0, failedBusinessCheck = 0, passsedBusinessCheck = 0;
+    static int noOFQueryActualInserted = 0;
+    static int noOFQueryFailed = 0;
+    static int failedBusinessCheck = 0;
+    public static int passsedBusinessCheck = 0;
     static ArrayList<Integer> indexArray = new ArrayList<>();
-    Connection con;
+    public Connection con;
 //    static ArrayList<Trade> validTradeQue = CSVTradeFileReader.validTradeQue;
 
     @Override
@@ -28,8 +34,8 @@ public class SQlTradeDAO implements TradeFileWriter {
         double userThreshold = CSVTradeFileReader.userThreshold;
         int fileEntries = CSVTradeFileReader.totalEntries;
 
-//        try (Connection con =DatabaseConnector.getConnection();
-             try( // for testing connection passed by test class
+        try (Connection con = DatabaseConnector.getConnection();
+//             try( // for testing connection passed by test class
              PreparedStatement businessCheckStat = con.prepareStatement(businessCheckQuery);
              PreparedStatement insertStat = con.prepareStatement(insertQuery);) {
             con.setAutoCommit(false);

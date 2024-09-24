@@ -7,7 +7,8 @@ public class Runner {
         DatabaseConnection.configureHikariCP();
 
         // Step 2: Read file and load transactions into ArrayBlockingQueue
-        FileReader.readTransactionFileAndWriteToQueue("/Users/Gurpreet.Singh/source/credit_card_transactions.txt");
-        MultiThreading.startMultiThreadedProcessing();
+        FileReader.readTransactionFileAndWriteToQueue("/Users/Gurpreet.Singh/source/code/student-codebase/boca-bc24-java-core-problems/credit_card_transactions.txt");
+            MultiThreading.startMultiThreadedProcessing();
+
     }
 }
