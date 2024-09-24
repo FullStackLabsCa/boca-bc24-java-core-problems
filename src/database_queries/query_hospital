@@ -1,4 +1,231 @@
 -------------------------easy---------------------------------
+SELECT first_name,last_name,gender FROM patients where gender='M';
+select first_name from patients where first_name like 'C%'
+SELECT first_name,last_name FROM patients where allergies is null;
+SELECT first_name,last_name FROM patients where weight between 100 and 120;
+update patients set allergies='NKA' where allergies is null
+select concat(first_name," ",last_name) from patients
+select patients.first_name, patients.last_name,province_names.province_name from patients
+join province_names on patients.province_id=province_names.province_id group by patient_id
 
-select round(avg(unit_price),2),sum(units_in_stock),
+select count(patient_id)from patients where year(birth_date)=2010
+select first_name,last_name, max(height) from patients
+select * from patients where patient_id in (1,45,534,879,1000);
+select count(*) from admissions
+select * from admissions where admission_date=discharge_date;
+select count (patient_id),patient_id from admissions where patient_id = 579;
+select distinct city from patients where province_id ='NS';
+select first_name,last_name,birth_date from patients where height >160 and weight >70;
+select first_name,last_name,allergies from patients where allergies is not null and city ='Hamilton';
 
+-------------------------medium---------------------------------
+select distinct year(birth_date) from patients order by year(birth_date);
+select first_name from patients group by first_name having count(first_name) = 1
+select patient_id,first_name from patients where first_name like 's%' and first_name like'%s'and len(first_name)>=6
+select patients.patient_id,patients.first_name,patients.last_name from patients
+join admissions on patients.patient_id = admissions.patient_id
+where diagnosis='Dementia'
+
+select first_name from patients order by len(first_name), first_name asc;
+
+select count (case when gender = 'M' then 1 end),
+Count( case when gender = 'F'  then 1 end)
+from patients
+
+select first_name,last_name,allergies from patients
+where allergies ='Morphine' or allergies ='Penicillin'
+order by allergies,first_name,last_name asc
+
+select patient_id, diagnosis from admissions
+group by patient_id,diagnosis having count(diagnosis)>1
+
+select  city, count(*) from patients
+group by city
+order by count(patient_id) desc,city;
+
+select doctors.first_name, doctors.last_name,
+'Doctor' as role
+from doctors
+union all
+select patients.first_name,patients.last_name,
+'Patient' as role
+from patients
+
+SELECT allergies, Count(allergies) as total_diagnosis
+FROM patients where allergies not null
+group by allergies order by count(allergies) desc;
+
+SELECT first_name,last_name,birth_date FROM patients
+where year(birth_date) between 1970 and 1979 order by birth_date asc
+
+select concat (upper (last_name),",",lower(first_name))
+ from patients
+order by first_name desc
+
+select province_id, Sum(height) as sum_height from patients
+group by province_id having sum_height>=7000
+
+select max(weight)-min(weight) from patients
+where last_name='Maroni'
+
+select day(admission_date) as date,count(patient_id)
+as number from admissions
+group by date
+order by number desc
+
+select * from admissions where patient_id =542
+group by patient_id
+having max(admission_date)
+
+select patient_id,attending_doctor_id,diagnosis from
+admissions where
+(patient_id % 2 =1 and attending_doctor_id in (1,5,19))
+ or
+(attending_doctor_id like '%2%' and len(patient_id)=3)
+
+select doctors.first_name, doctors.last_name,
+count(admissions.attending_doctor_id) as total from doctors
+join admissions on doctors.doctor_id=admissions.attending_doctor_id
+group by doctors.doctor_id
+order by total desc
+
+select doctors.doctor_id,
+concat(doctors.first_name," ",doctors.last_name),
+Min(admissions.admission_date),
+Max(admissions.admission_date)
+from doctors
+join admissions on
+doctors.doctor_id=admissions.attending_doctor_id
+group by doctor_id
+order by doctor_id
+
+select province_names.province_name,
+count(patients.patient_id) from province_names
+join patients on
+patients.province_id=province_names.province_id
+group by province_names.province_name
+order by count(patients.patient_id)desc
+
+select concat(patients.first_name," ",patients.last_name),
+admissions.diagnosis, concat(doctors.first_name," ",doctors.last_name)
+from patients join admissions on patients.patient_id=
+admissions.patient_id join doctors on admissions.attending_doctor_id
+=doctors.doctor_id
+
+select first_name,last_name, count(first_name and last_name)as num
+from patients group by first_name,last_name having num>1
+
+select concat(first_name," ",last_name) as patient_name,
+round (height/30.48,1) as height,
+round (weight*2.205,0)as weight,
+birth_date,
+case
+when gender ='M' then 'Male'
+when gender ='F' then 'Female'
+else 'unknown'
+end
+from patients
+
+select patients.patient_id,patients.first_name,patients.last_name from
+patients left join admissions on patients.patient_id=admissions.patient_id
+where admissions.patient_id is null
+
+-------------------------easy---------------------------------
+select
+count (patient_id) as total_patients,
+case
+when weight between 140 and 149 then 140
+when weight between 130 and 139 then 130
+when weight between 120 and 129 then 120
+when weight between 110 and 119 then 110
+when weight between 100 and 109 then 100
+when weight between 90 and 99 then 90
+when weight between 80 and 89 then 80
+when weight between 70 and 79 then 70
+when weight between 60 and 69 then 60
+when weight between 50 and 59 then 50
+when weight between 40 and 49 then 40
+when weight between 30 and 39 then 30
+when weight between 20 and 29 then 20
+when weight between 10 and 19 then 10
+when weight between 0 and 9 then 0
+else 'other'
+end as weight_group
+from patients
+group by weight_group
+order by (weight_group) desc
+
+SELECT patient_id, weight, height,
+  (CASE
+      WHEN weight/(POWER(height/100.0,2)) >= 30 THEN
+          1
+      ELSE
+          0
+      END) AS isObese
+FROM patients;
+
+select patients.patient_id,patients.first_name,patients.last_name,
+doctors.specialty
+from patients
+join admissions on admissions.patient_id
+=patients.patient_id
+join doctors on admissions.attending_doctor_id=
+doctors.doctor_id where admissions.diagnosis ='Epilepsy' and
+doctors.first_name='Lisa'
+
+select patients.patient_id,concat(patients.patient_id,len(patients.last_name),
+year(birth_date)) as temp_password from patients join admissions on
+admissions.patient_id=patients.patient_id group by patients.patient_id
+having Count(admission_date)>=1
+
+select
+case
+when patient_id % 2=0 then 'Yes'
+else 'No'
+End as has_insurance,
+sum(case
+    when patient_id%2=0 then 10
+    else 50
+   end) as cost
+from admissions
+group by has_insurance
+
+select province_names.province_name from province_names join patients on
+province_names.province_id=patients.province_id
+group by province_names.province_name
+having
+sum(case when patients.gender='M' then 1 else 0 end)>
+sum(case when patients.gender='F' then 1 else 0 end)
+
+SELECT *
+FROM patients
+WHERE first_name LIKE '__r%'
+  AND gender = 'F'
+  AND MONTH(birth_date) IN (2, 5, 12)
+  AND weight BETWEEN 60 AND 80
+  AND patient_id % 2 = 1
+  AND city = 'Kingston';
+
+  select
+  concat(round ((count(case
+                when gender = 'M' then 1 end)*100.0)/(select count(*)
+                                                       from patients),2),'%')
+  from patients
+
+  select admission_date,
+  count(admission_date),
+  count(admission_date)-lag(count(admission_date))
+  over (order by admission_date)from admissions
+  group by admission_date
+
+  select province_name from province_names
+  order by
+  case
+  when province_name ='Ontario' then 0
+  else 1
+  end,
+  province_name asc
+
+  select doctors.doctor_id,concat(doctors.first_name," ",doctors.last_name),doctors.specialty,Year(admissions.admission_date) as
+  selected_year, count(admissions.admission_date) from admissions join doctors on admissions.attending_doctor_id=doctors.doctor_id
+  group by (doctors.doctor_id), year(admissions.admission_date)
