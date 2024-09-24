@@ -6,6 +6,7 @@ import problems.creditcard.entity.CreditCardTransaction;
 import problems.creditcard.service.TransactionService;
 import problems.creditcard.util.TransactionFileReader;
 
+import java.awt.*;
 import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -35,8 +36,11 @@ public class CreditCardProcessor {
             int numberOfThreads = 5;
             ExecutorService executorService = Executors.newFixedThreadPool(numberOfThreads);
             for (int i = 0; i < numberOfThreads; i++) {
-                executorService.submit(new TransactionService(creditCardTransactionQueue, dataSource));
+                if (!creditCardTransactionQueue.isEmpty()) {
+                    executorService.submit(new TransactionService(creditCardTransactionQueue, dataSource));
+                }
             }
+
             executorService.shutdown();
            /* try {
                 if (!executorService.awaitTermination(10, TimeUnit.SECONDS)) {
