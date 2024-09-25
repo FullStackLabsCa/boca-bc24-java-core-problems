@@ -1,0 +1,40 @@
+Prob-1: Show the ProductName, CompanyName, CategoryName from the products, suppliers, and categories table
+SELECT products.product_name, suppliers.company_name, categories.category_name from products
+join suppliers
+On products.supplier_id = suppliers.supplier_id
+join categories
+ON products.category_id = categories.category_id;
+
+Prob-2: Show the category_name and the average product unit price for each category rounded to 2 decimal places.
+select categories.category_name, ROUND(avg(unit_price),2) AS average_unit_price from categories
+join products
+ON products.category_id = categories.category_id
+group by categories.category_name;
+
+Prob-3: Show the city, company_name, contact_name from the customers and suppliers table merged together.
+        Create a column which contains 'customers' or 'suppliers' depending on the table it came from.
+select city,company_name, contact_name,'customers' as relationship from customers
+union
+select city,company_name, contact_name,'suppliers' as relationship  from suppliers
+order by city
+
+HARD Prob-1: Show the employee's first_name and last_name, a "num_orders" column with a count of the orders taken, and a column called "Shipped" that displays "On Time" if the order shipped_date is less or equal to the required_date, "Late" if the order shipped late.
+Order by employee last_name, then by first_name, and then descending by number of orders.
+select employees.first_name, employees.last_name, count(orders.order_id) as num_orders,
+case WHEN orders.shipped_date <= orders.required_date THEN 'On Time' ELSE 'Late' END as 'Shipped'
+from employees
+Left join orders
+on employees.employee_id = orders.employee_id
+group by employees.first_name, Shipped
+order by employees.last_name, employees.first_name,count(orders.order_id) desc;
+
+HARD Prob-2: Show how much money the company lost due to giving discounts each year, order the years from most recent to least recent. Round to 2 decimal places
+select year(orders.order_date) AS order_year,
+ROUND(Sum((products.unit_price * order_details.quantity)* order_details.discount), 2) As discount_amount
+from orders
+join order_details
+on orders.order_id = order_details.order_id
+JOIN products
+ON products.product_id = order_details.product_id
+group by year(orders.order_date)
+order by year(orders.order_date) desc;
