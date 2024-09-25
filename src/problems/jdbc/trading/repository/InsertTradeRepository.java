@@ -14,8 +14,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Map;
 
-public class TradeRepository implements TradeRepositoryInterface {
+public class InsertTradeRepository implements TradeRepositoryInterface, MatchSecuritiesInterface {
 
+    @Override
     public void insertTrade(Map<Integer, Trade> trades, HikariDataSource dataSource, ErrorChecking errorChecking) throws HitErrorsThresholdException, SQLException {
         String query = "Insert into Trades (trade_id, trade_identifier, ticker_symbol, quantity, price, " +
                 "trade_date) values(?, ?, ?, ?, ?, ?)";
@@ -29,7 +30,7 @@ public class TradeRepository implements TradeRepositoryInterface {
             int batchNumber = 0;
             ArrayList<Integer> recordNumbers = new ArrayList<>(trades.keySet());
             for (Integer recordNumber : recordNumbers) {
-                if (checkSecurities(connection, trades.get(recordNumber).getTickerSymbol())) {
+                if (matchSecurities(connection, trades.get(recordNumber).getTickerSymbol())) {
                     stmt.setString(1, trades.get(recordNumber).getTradeId());
                     stmt.setString(2, trades.get(recordNumber).getTradeIdentifier());
                     stmt.setString(3, trades.get(recordNumber).getTickerSymbol());
@@ -70,7 +71,8 @@ public class TradeRepository implements TradeRepositoryInterface {
         }
     }
 
-    public boolean checkSecurities(Connection connection, String symbol) {
+    @Override
+    public boolean matchSecurities(Connection connection, String symbol) {
         boolean exists = false;
         try {
             String query = "Select 1 from SecuritiesReference where symbol = ?";

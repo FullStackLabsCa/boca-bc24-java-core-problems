@@ -7,13 +7,13 @@ import problems.jdbc.trading.exception.HitErrorsThresholdException;
 import problems.jdbc.trading.exception.InvalidThresholdValueException;
 import problems.jdbc.trading.model.ErrorChecking;
 import problems.jdbc.trading.model.Trade;
-import problems.jdbc.trading.repository.TradeRepository;
+import problems.jdbc.trading.repository.InsertTradeRepository;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.*;
 
-public class TradeService implements TradeServiceInterface {
+public class TradeService implements ReadFileInterface, ThresholdInterface, ReadAndWriteErrorLog, PrintSummaryInterface {
     static HikariDataSource dataSource;
 
     @Override
@@ -24,8 +24,8 @@ public class TradeService implements TradeServiceInterface {
         if (errorChecking.getThreshold() == 0) errorChecking.setThreshold(fetchThresholdValue());
         try {
             Map<Integer, Trade> trades = readCSVFile(path, errorChecking);
-            TradeRepository tradeRepository = new TradeRepository();
-            if (!trades.isEmpty()) tradeRepository.insertTrade(trades, dataSource, errorChecking);
+            InsertTradeRepository insertTradeRepository = new InsertTradeRepository();
+            if (!trades.isEmpty()) insertTradeRepository.insertTrade(trades, dataSource, errorChecking);
         } catch (HitErrorsThresholdException | IOException e) {
             System.out.println(e.getMessage());
         } catch (SQLException e) {

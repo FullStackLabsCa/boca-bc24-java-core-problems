@@ -10,7 +10,7 @@ import problems.jdbc.trading.database.DatabaseConnection;
 import problems.jdbc.trading.exception.HitErrorsThresholdException;
 import problems.jdbc.trading.model.ErrorChecking;
 import problems.jdbc.trading.model.Trade;
-import problems.jdbc.trading.repository.TradeRepository;
+import problems.jdbc.trading.repository.InsertTradeRepository;
 import problems.jdbc.trading.service.TradeService;
 
 import static org.junit.Assert.*;
@@ -34,7 +34,7 @@ public class TradingTest {
     Map<Integer, Trade> mapWithInvalidSecurities = new HashMap<>();
     ErrorChecking errorChecking;
     TradeService tradeService;
-    TradeRepository tradeRepository;
+    InsertTradeRepository insertTradeRepository;
 
     @Before
     public void setUp() {
@@ -65,7 +65,7 @@ public class TradingTest {
 
         errorChecking = new ErrorChecking();
         tradeService = new TradeService();
-        tradeRepository = new TradeRepository();
+        insertTradeRepository = new InsertTradeRepository();
 
     }
 
@@ -168,7 +168,7 @@ public class TradingTest {
     public void testInsertTradeListWithInvalidSecurities() {
         try {
             errorChecking.setThreshold(30.0);
-            tradeRepository.insertTrade(mapWithInvalidSecurities, dataSource, errorChecking);
+            insertTradeRepository.insertTrade(mapWithInvalidSecurities, dataSource, errorChecking);
         } catch (SQLException e) {
             System.out.println(e);
         }
@@ -178,7 +178,7 @@ public class TradingTest {
     public void testInsertTradeListWithValidSecurities() {
         try {
             errorChecking.setThreshold(30.0);
-            tradeRepository.insertTrade(mapWithValidSecurities, dataSource, errorChecking);
+            insertTradeRepository.insertTrade(mapWithValidSecurities, dataSource, errorChecking);
             Connection conn = dataSource.getConnection();
             String query = "Select count(*) from Trades";
             PreparedStatement stmt = conn.prepareStatement(query);
@@ -195,17 +195,17 @@ public class TradingTest {
 
     @Test
     public void testCheckSecuritiesWithNonExistentSecurity() {
-        assertFalse(tradeRepository.checkSecurities(connection, "THDP"));
+        assertFalse(insertTradeRepository.matchSecurities(connection, "THDP"));
     }
 
     @Test
     public void testCheckSecuritiesWithExistingSecurity() {
-        assertTrue(tradeRepository.checkSecurities(connection, "AMZN"));
+        assertTrue(insertTradeRepository.matchSecurities(connection, "AMZN"));
     }
 
     @Test(expected = NullPointerException.class)
     public void testCheckSecuritiesWithNullConnection() {
-        tradeRepository.checkSecurities(null, "JHKH");
+        insertTradeRepository.matchSecurities(null, "JHKH");
     }
 
     @Test
