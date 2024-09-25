@@ -1,2 +1,55 @@
-3,TDB_135287,34q,287,717,2024-07-19 -- Invalid ticker symbol
-3,TDB_135287,34q,287,717,2024-07-19 -- Invalid ticker symbol
+#2.0 -- Error line -- {2,TDB_195199, sd, 45, 745.90, 23t} -- Place of error: [sd] -- Invalid ticker symbol
+#3.0 -- Error line -- {3,TDB_135287,HOOD,287,717.59,2024-07-19} -- Place of error: [HOOD] -- Invalid ticker symbol
+#4.0 -- Error line -- {4,TDB_227475,DOCU,231,2052.41,2024-03-03} -- Place of error: [DOCU] -- Invalid ticker symbol
+#6.0 -- Error line -- {6,TDB_171277,SNAP,11,2488.77,2024-08-15} -- Place of error: [SNAP] -- Invalid ticker symbol
+#7.0 -- Error line -- {7,TDB_232786,NKE,443,1800.6,2024-10-17} -- Place of error: [NKE] -- Invalid ticker symbol
+#10.0 -- Error line -- {10,TDB_182176,HOOD,114,778.68,2024-11-17} -- Place of error: [HOOD] -- Invalid ticker symbol
+#12.0 -- Error line -- {12,TDB_205365,BABA,434,272.08,2024-12-01} -- Place of error: [BABA] -- Invalid ticker symbol
+#15.0 -- Error line -- {15,TDB_149610,DOCU,460,117.28,2024-08-20} -- Place of error: [DOCU] -- Invalid ticker symbol
+#17.0 -- Error line -- {17,TDB_227121,BABA,351,2292.21,2024-12-12} -- Place of error: [BABA] -- Invalid ticker symbol
+#20.0 -- Error line -- {20,TDB_204580,SHOP,357,1248.18,2024-12-12} -- Place of error: [SHOP] -- Invalid ticker symbol
+#22.0 -- Error line -- {22,TDB_220347,BIDU,430,1297.05,2024-09-08} -- Place of error: [BIDU] -- Invalid ticker symbol
+#23.0 -- Error line -- {23,TDB_235202,SQ,142,2234.86,2024-07-03} -- Place of error: [SQ] -- Invalid ticker symbol
+#24.0 -- Error line -- {24,TDB_226617,SHOP,285,927.69,2024-03-31} -- Place of error: [SHOP] -- Invalid ticker symbol
+#25.0 -- Error line -- {25,TDB_168022,SHOP,121,1917.15,2024-11-29} -- Place of error: [SHOP] -- Invalid ticker symbol
+#26.0 -- Error line -- {26,TDB_187341,BABA,355,2397.79,2024-03-09} -- Place of error: [BABA] -- Invalid ticker symbol
+#29.0 -- Error line -- {29,TDB_168087,HOOD,378,1067.0,2024-08-23} -- Place of error: [HOOD] -- Invalid ticker symbol
+#30.0 -- Error line -- {30,TDB_131649,ROKU,278,2453.12,2024-07-11} -- Place of error: [ROKU] -- Invalid ticker symbol
+#31.0 -- Error line -- {31,TDB_191939,SPOT,318,1395.88,2024-04-11} -- Place of error: [SPOT] -- Invalid ticker symbol
+#32.0 -- Error line -- {32,TDB_208670,ZM,231,2842.94,2024-11-22} -- Place of error: [ZM] -- Invalid ticker symbol
+#33.0 -- Error line -- {33,TDB_137818,TSM,48,1246.25,2024-09-02} -- Place of error: [TSM] -- Invalid ticker symbol
+#35.0 -- Error line -- {35,TDB_167242,TWTR,276,466.4,2024-04-08} -- Place of error: [TWTR] -- Invalid ticker symbol
+#36.0 -- Error line -- {36,TDB_214374,BIDU,160,435.39,2024-02-26} -- Place of error: [BIDU] -- Invalid ticker symbol
+#37.0 -- Error line -- {37,TDB_200209,NET,458,2192.71,2024-02-29} -- Place of error: [NET] -- Invalid ticker symbol
+#40.0 -- Error line -- {40,TDB_199586,SBUX,114,1073.98,2024-12-24} -- Place of error: [SBUX] -- Invalid ticker symbol
+#41.0 -- Error line -- {41,TDB_150735,TEAM,45,327.3,2024-07-23} -- Place of error: [TEAM] -- Invalid ticker symbol
+#42.0 -- Error line -- {42,TDB_229197,TSM,500,124.7,2024-09-19} -- Place of error: [TSM] -- Invalid ticker symbol
+#44.0 -- Error line -- {44,TDB_227909,TWTR,42,747.07,2024-07-16} -- Place of error: [TWTR] -- Invalid ticker symbol
+#47.0 -- Error line -- {47,TDB_131233,BABA,271,1786.21,2024-05-05} -- Place of error: [BABA] -- Invalid ticker symbol
+#2.0 -- Error line -- {2,TDB_195199, sd, 45, 745.90, 23t} -- Place of error: [sd] -- Invalid ticker symbol
+#3.0 -- Error line -- {3,TDB_135287,HOOD,287,717.59,2024-07-19} -- Place of error: [HOOD] -- Invalid ticker symbol
+#4.0 -- Error line -- {4,TDB_227475,DOCU,231,2052.41,2024-03-03} -- Place of error: [DOCU] -- Invalid ticker symbol
+#6.0 -- Error line -- {6,TDB_171277,SNAP,11,2488.77,2024-08-15} -- Place of error: [SNAP] -- Invalid ticker symbol
+#7.0 -- Error line -- {7,TDB_232786,NKE,443,1800.6,2024-10-17} -- Place of error: [NKE] -- Invalid ticker symbol
+#10.0 -- Error line -- {10,TDB_182176,HOOD,114,778.68,2024-11-17} -- Place of error: [HOOD] -- Invalid ticker symbol
+#12.0 -- Error line -- {12,TDB_205365,BABA,434,272.08,2024-12-01} -- Place of error: [BABA] -- Invalid ticker symbol
+#15.0 -- Error line -- {15,TDB_149610,DOCU,460,117.28,2024-08-20} -- Place of error: [DOCU] -- Invalid ticker symbol
+#17.0 -- Error line -- {17,TDB_227121,BABA,351,2292.21,2024-12-12} -- Place of error: [BABA] -- Invalid ticker symbol
+#20.0 -- Error line -- {20,TDB_204580,SHOP,357,1248.18,2024-12-12} -- Place of error: [SHOP] -- Invalid ticker symbol
+#22.0 -- Error line -- {22,TDB_220347,BIDU,430,1297.05,2024-09-08} -- Place of error: [BIDU] -- Invalid ticker symbol
+#23.0 -- Error line -- {23,TDB_235202,SQ,142,2234.86,2024-07-03} -- Place of error: [SQ] -- Invalid ticker symbol
+#24.0 -- Error line -- {24,TDB_226617,SHOP,285,927.69,2024-03-31} -- Place of error: [SHOP] -- Invalid ticker symbol
+#25.0 -- Error line -- {25,TDB_168022,SHOP,121,1917.15,2024-11-29} -- Place of error: [SHOP] -- Invalid ticker symbol
+#26.0 -- Error line -- {26,TDB_187341,BABA,355,2397.79,2024-03-09} -- Place of error: [BABA] -- Invalid ticker symbol
+#29.0 -- Error line -- {29,TDB_168087,HOOD,378,1067.0,2024-08-23} -- Place of error: [HOOD] -- Invalid ticker symbol
+#30.0 -- Error line -- {30,TDB_131649,ROKU,278,2453.12,2024-07-11} -- Place of error: [ROKU] -- Invalid ticker symbol
+#31.0 -- Error line -- {31,TDB_191939,SPOT,318,1395.88,2024-04-11} -- Place of error: [SPOT] -- Invalid ticker symbol
+#32.0 -- Error line -- {32,TDB_208670,ZM,231,2842.94,2024-11-22} -- Place of error: [ZM] -- Invalid ticker symbol
+#33.0 -- Error line -- {33,TDB_137818,TSM,48,1246.25,2024-09-02} -- Place of error: [TSM] -- Invalid ticker symbol
+#35.0 -- Error line -- {35,TDB_167242,TWTR,276,466.4,2024-04-08} -- Place of error: [TWTR] -- Invalid ticker symbol
+#36.0 -- Error line -- {36,TDB_214374,BIDU,160,435.39,2024-02-26} -- Place of error: [BIDU] -- Invalid ticker symbol
+#37.0 -- Error line -- {37,TDB_200209,NET,458,2192.71,2024-02-29} -- Place of error: [NET] -- Invalid ticker symbol
+#40.0 -- Error line -- {40,TDB_199586,SBUX,114,1073.98,2024-12-24} -- Place of error: [SBUX] -- Invalid ticker symbol
+#41.0 -- Error line -- {41,TDB_150735,TEAM,45,327.3,2024-07-23} -- Place of error: [TEAM] -- Invalid ticker symbol
+#42.0 -- Error line -- {42,TDB_229197,TSM,500,124.7,2024-09-19} -- Place of error: [TSM] -- Invalid ticker symbol
+#44.0 -- Error line -- {44,TDB_227909,TWTR,42,747.07,2024-07-16} -- Place of error: [TWTR] -- Invalid ticker symbol

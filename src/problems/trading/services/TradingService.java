@@ -6,6 +6,8 @@ import problems.trading.customexceptions.HitErrorsThresholdException;
 import problems.trading.databaseconnection.TradingDatabaseConnection;
 import problems.trading.repository.TradingRepository;
 import problems.trading.tradingmodel.TradingValues;
+import static problems.trading.TradingProcessor.filePath;
+import static problems.trading.TradingProcessor.dataSource;
 
 import java.io.*;
 import java.sql.Connection;
@@ -14,16 +16,14 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static problems.trading.DataValidation.checkForValidNumberOfColumns;
-import static problems.trading.DataValidation.checkForValidQuantity;
-import static problems.trading.TradingProcessor.dataSource;
+
 
 public class TradingService {
 
-    public static final int ERROR_THRESHOLD = 25;
+    public static int errorThreshold = 25;
 
-    public static void setupDBConnectionAndRunFileReading(Connection connection, String filePath) {
-        readTradingFileAndWriteToFile(filePath);
+    public static void setupDBConnectionAndRunFileReading(Connection connection, String filePath, double errorThreshold) {
+        readTradingFileAndWriteToFile(filePath, errorThreshold);
     }
 
     //connecting to database
@@ -38,7 +38,7 @@ public class TradingService {
 
 
     //Step 1: Reading trading from a delimited file
-    public static void readTradingFileAndWriteToFile(String filePath) {
+    public static void readTradingFileAndWriteToFile(String filePath, double errorThreshold) {
 
         List<TradingValues> batch = new ArrayList<>();
         //List<String> errorLogForReading = new ArrayList<>();
@@ -48,22 +48,24 @@ public class TradingService {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
             reader.readLine();
+
             while ((line = reader.readLine()) != null) {
                 rowCounter++;
+                double lineNumber = rowCounter;
 
 
                 String[] data = line.split(",");
 
                 try {
-                    if (!DataValidation.checkForAllValidations(line,connectToDatabase())){ //check
+                    if (!DataValidation.checkForAllValidations(line, connectToDatabase(), lineNumber)) { //check
                         errorCounter++;
-                       // errorLogForReading.add("Error in row: " + rowCounter);
+                        // errorLogForReading.add("Error in row: " + rowCounter);
                        continue;
                     }
                 } catch (IllegalArgumentException e) {
                     System.out.println(e.getMessage());
                     errorCounter++;
-                  //  errorLogForReading.add("Error in row: " + rowCounter + e.getMessage());
+                    //  errorLogForReading.add("Error in row: " + rowCounter + e.getMessage());
                     continue;
                 }
 
@@ -78,38 +80,34 @@ public class TradingService {
                 );
                 //System.out.println(tradingValues);
                 batch.add(tradingValues);
-                break;
+               // break;
 
             }
             TradingRepository.prepareStatements(dataSource, batch);
-
-       // } //catch (FileNotFoundException f) {
-           // System.out.println("Wrong file path provided. Please provide the correct file path.");
 
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-
-
-      //  double percentErrorInReadingFile = 0;
-       double maxErrorPercentageAcceptableForReading=Math.ceil( rowCounter * (ERROR_THRESHOLD /100.00));
-        System.out.println("ERROR_THRESHOLD = " + ERROR_THRESHOLD);
+        //  double percentErrorInReadingFile = 0;
+        double maxErrorPercentageAcceptableForReading = Math.ceil(rowCounter * (errorThreshold / 100.00));
+        System.out.println("ERROR_THRESHOLD = " + errorThreshold);
         System.out.println("Total number of rows in file: " + rowCounter + ", number of successfully added rows: " + batch.size() + ", number of rows that are failed: " + errorCounter + " , maximum  allowed percent error in reading file: " + maxErrorPercentageAcceptableForReading);
 
         if (maxErrorPercentageAcceptableForReading < errorCounter) {
             throw new HitErrorsThresholdException("Error threshold exceeded: " + errorCounter + " out of " + rowCounter);
         }
 
-      //  logReaderErrors(errors;
+        //  logReaderErrors(errors);
     }
+
 
     public static void logReaderErrors(String errorsInReading) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("/Users/Shifa.Kajal/source/student/boca-bc24-java-core-problems/src/problems/trading/tradesutility/Trade_reading_error_log", true))) {
-               writer.write(errorsInReading);
-               writer.newLine();
-           // Add a new line
+            writer.write(errorsInReading);
+            writer.newLine();
+            // Add a new line
         } catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
@@ -117,20 +115,17 @@ public class TradingService {
     }
 
 
+    public static void logWritingErrors(String errorsInWriting) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("/Users/Shifa.Kajal/source/student/boca-bc24-java-core-problems/src/problems/trading/tradesutility/Trade_writing_error_log", true))) {
+            writer.write(errorsInWriting);
+            writer.newLine();
 
-public static void logWritingErrors(String errorsInWriting) {
-    try (BufferedWriter writer = new BufferedWriter(new FileWriter("/Users/Shifa.Kajal/source/student/boca-bc24-java-core-problems/src/problems/trading/tradesutility/Trade_writing_error_log", true))) {
-        writer.write(errorsInWriting);
-        writer.newLine();
-        // Add a new line
-    } catch (IOException e) {
-        System.out.println("An error occurred.");
-        e.printStackTrace();
+            // Add a new line
+        } catch (IOException e) {
+            System.out.println("An error occurred while loading errors in Writing log.");
+            e.printStackTrace();
+        }
     }
 }
-}
 
 
-
-
-// /Users/Shifa.Kajal/source/student/boca-bc24-java-core-problems/src/problems/trading/tradesutility/trades_sample_10.csv
