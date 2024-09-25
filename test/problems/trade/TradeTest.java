@@ -171,7 +171,7 @@ public class TradeTest {
         TradeData trade1 = new TradeData("1", "identifier1", "AAPL", 10, 150.00, "2023-09-01", 1);
         TradeData trade2 = new TradeData("2", "identifier2", "GOOGL", 5, 200.00, "2023-09-02", 2);
         tradeDataList = Arrays.asList(trade1, trade2);
-        tradeDatabaseWriter.writeRecordsToDB(dataSource, tradeDataList, 50);
+        tradeDatabaseWriter.writeRecordsToDB(dataSource, tradeDataList, 100);
     }
 
     @Test
