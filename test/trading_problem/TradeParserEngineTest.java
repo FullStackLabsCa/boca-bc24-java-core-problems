@@ -22,7 +22,7 @@ import static trading_parser.utility.TradeParseUtility.*;
 public class TradeParserEngineTest {
 
     @Before
-    public void setup() throws SQLException, IOException {
+    public void setup() throws IOException {
         configureLogger("test_error_logs.txt");
         configureHikariCP(3308);
         createTable();
