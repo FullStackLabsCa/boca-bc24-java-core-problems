@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-public class TradeService {
+public class TradeService implements TradeServiceInterface {
     private static HikariDataSource dataSource;
 
     //read the file
@@ -42,7 +42,7 @@ public class TradeService {
     }
 
 //fetch the threshold value
-    private double fetchThresholdValue() throws InvalidThresholdValueException {
+    public double fetchThresholdValue() throws InvalidThresholdValueException {
         Properties properties = new Properties();
         double localThreshold;
         try (InputStream input = TradeService.class.getClassLoader().getResourceAsStream("application.properties")) {
@@ -62,7 +62,7 @@ public class TradeService {
         return localThreshold;
     }
 
-    private Map<Integer, TradeTransaction> readCSVFile(String filePath, ErrorChecker errorChecker) throws IOException {
+    public Map<Integer, TradeTransaction> readCSVFile(String filePath, ErrorChecker errorChecker) throws IOException {
         BufferedReader reader=new BufferedReader(new FileReader(filePath));
         String line;
         reader.readLine(); //skip the header line
@@ -84,14 +84,16 @@ public class TradeService {
     }
 
     //print the summary
-    private void printSummary(int records, int insertion, int errorCount) {
+    public  void printSummary(int records, int insertion, int errorCount) {
         System.out.println("Summary: ");
         System.out.println("Successful processed: "+records);
         System.out.println("Successful inserts: "+insertion);
         System.out.println("Error count: "+errorCount);
     }
 
-private void readFromFileErrorLog(String line) {
+
+
+    private void readFromFileErrorLog(String line) {
         try(BufferedWriter writer=new BufferedWriter(new BufferedWriter(new FileWriter("/Users/Sukhvir.Kaur/Source/boca-bc24-java-core-problems/src/tradingExample/utilityTrading/readerErrorLog.txt",true)))){
             writer.write(line);
             writer.newLine(); // add a new line

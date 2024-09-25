@@ -8,7 +8,7 @@ import java.util.Map;
 
 public interface TradeServiceInterface {
 
-    void readFileAndInitializeDataSource(String filepath, double errorThreshold) throws tradingExample.exceptionTrading.HitErrorsThresholdException;
+    void readFileAndInitializeDataSource(String filepath, double errorThreshold) throws InvalidThresholdValueException,tradingExample.exceptionTrading.HitErrorsThresholdException;
 
     double fetchThresholdValue() throws InvalidThresholdValueException;
 
@@ -16,9 +16,9 @@ public interface TradeServiceInterface {
 
     void printSummary(int records, int insertions, int errors);
 
-    void readFromFileErrorLog(String fileName, String line);
+    //void readFromFileErrorLog(String fileName, String line);
 
-    void writeErrorLog(String fileName, String line);
+    void writerErrorLog(String fileName, String line);
 
     boolean isThresholdExceeded(ErrorChecker errorChecker);
 }

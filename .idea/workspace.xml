@@ -5,28 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24a3aacc-2f29-4911-9f6d-f0908ebfbc18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/optimisticlocking/datasource/DataSourecTransaction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tradingExample/TradeRunner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tradingExample/databaseTrading/LoadCSVToDB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tradingExample/exceptionTrading/HitErrorsThresholdException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tradingExample/exceptionTrading/InvalidThresholdValueException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tradingExample/modelTrading/ErrorChecker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tradingExample/modelTrading/SecuritiesReference.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tradingExample/modelTrading/TradeTransaction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tradingExample/repositoryTrading/TradeRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tradingExample/repositoryTrading/TradeRepositoryInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tradingExample/serviceTrading/TradeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tradingExample/serviceTrading/TradeServiceInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tradingExample/utilityTrading/convertcsv.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tradingExample/utilityTrading/readerErrorLog.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tradingExample/utilityTrading/trades_sample_1000.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tradingExample/utilityTrading/writerErrorLog.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/optimisticlocking/datasource/DataSourceTransaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tradingExample/databaseTrading/DataSourceTrading.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/optimisticlocking/runnertransactionclass/CreditCardTransactionProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/optimisticlocking/runnertransactionclass/CreditCardTransactionProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/optimisticlocking/utility/credit_card_transactions.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hashmap/MyHashMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hashmap/MyHashMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tradingExample/serviceTrading/TradeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tradingExample/serviceTrading/TradeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tradingExample/serviceTrading/TradeServiceInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tradingExample/serviceTrading/TradeServiceInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tradingExample/utilityTrading/writerErrorLog.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/tradingExample/utilityTrading/writerErrorLog.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/problems/hashmap/MyHashMapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/hashmap/MyHashMapTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,9 +43,10 @@
     "Application.CreditCardTransactionProcessor (3).executor": "Run",
     "Application.CreditCardTransactionProcessor.executor": "Run",
     "Application.LoadCSVToDB.executor": "Run",
-    "Application.TradeRunner.executor": "Debug",
+    "Application.TradeRunner.executor": "Run",
     "Application.runnertransactionclass.CreditCardTransactionProcessor.executor": "Run",
     "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.MyHashMapTest.executor": "Run",
     "JUnit.tradingExample.serviceTrading in boca-bc24-java-core-problems.executor": "Run",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
@@ -94,7 +79,7 @@
       <recent name="tradingExample.serviceTrading" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TradeRunner">
+  <component name="RunManager" selected="JUnit.MyHashMapTest">
     <configuration name="LoadCSVToDB" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="tradingExample.databaseTrading.LoadCSVToDB" />
       <module name="boca-bc24-java-core-problems" />
@@ -121,6 +106,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MyHashMapTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="boca-bc24-java-core-problems" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="problems.hashmap.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="problems.hashmap" />
+      <option name="MAIN_CLASS_NAME" value="problems.hashmap.MyHashMapTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="tradingExample.serviceTrading in boca-bc24-java-core-problems" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="boca-bc24-java-core-problems" />
       <extension name="coverage">
@@ -137,6 +137,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MyHashMapTest" />
         <item itemvalue="Application.TradeRunner" />
         <item itemvalue="Application.LoadCSVToDB" />
         <item itemvalue="JUnit.tradingExample.serviceTrading in boca-bc24-java-core-problems" />
@@ -156,26 +157,5 @@
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.csv" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/tradingExample/serviceTrading/TradeService.java</url>
-          <line>45</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/tradingExample/serviceTrading/TradeService.java</url>
-          <line>46</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/tradingExample/repositoryTrading/TradeRepository.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
