@@ -22,8 +22,8 @@ public class CreditCardTransactionProcessor {
                         System.out.println("Adding transaction to queue: " + creditCardTransaction);
                         creditCardTransactionQueue.putLast(creditCardTransaction);  // Place transaction in the end of the queue
                     }
-                    // Sleep for a bit before checking the file again
-//                    Thread.sleep(5000);
+//                     Sleep for a bit before checking the file again
+                    Thread.sleep(5000);
                 }
             } catch (IOException | InterruptedException e) {
                 e.printStackTrace();
@@ -34,7 +34,7 @@ public class CreditCardTransactionProcessor {
 
     public static void startMultiThreadedProcessing() {
         // Step 3: Start multiple consumer threads to process transactions
-        int numberOfThreads = 5;
+        int numberOfThreads = 1;
         ExecutorService executorService = Executors.newFixedThreadPool(numberOfThreads);
 
         for (int i = 0; i < numberOfThreads; i++) {

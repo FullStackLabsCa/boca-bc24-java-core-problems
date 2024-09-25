@@ -2,14 +2,11 @@ package practice.jdbc.transactions.locking.optimistic;
 
 import com.zaxxer.hikari.HikariDataSource;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.concurrent.BlockingDeque;
 
 // Consumer thread that processes transactions
-class TransactionConsumer implements Runnable {
+public class TransactionConsumer implements Runnable {
 
     private BlockingDeque<CreditCardTransaction> creditCardTransactionQueue;
     private HikariDataSource dataSource;
@@ -28,7 +25,7 @@ class TransactionConsumer implements Runnable {
             try {
                 CreditCardTransaction creditCardTransaction = creditCardTransactionQueue.takeFirst();  // Get transaction from queue
                 processTransaction(creditCardTransaction);  // Process transaction
-            } catch (InterruptedException e) {
+            } catch (InterruptedException | NullPointerException e) {
                 Thread.currentThread().interrupt();
                 break;
             }
@@ -81,14 +78,21 @@ class TransactionConsumer implements Runnable {
         }
     }
 
+    // Insert a new account for a credit card number
     private void insertAccount(Connection connection, CreditCardTransaction creditCardTransaction) throws SQLException {
-        String insertQuery = "INSERT INTO accounts (credit_card_number, balance, version) VALUES (?, ?, 0)";
-        PreparedStatement stmt = connection.prepareStatement(insertQuery);
-        stmt.setString(1, creditCardTransaction.getCreditCardNumber());
-        stmt.setDouble(2, creditCardTransaction.getBalance());
-        stmt.executeUpdate();
-        System.out.println("Inserted new account for card: " + creditCardTransaction.getCreditCardNumber());
-        connection.commit();
+        try{
+            String insertQuery = "INSERT INTO accounts (credit_card_number, balance, version) VALUES (?, ?, 0)";
+            PreparedStatement stmt = connection.prepareStatement(insertQuery);
+            stmt.setString(1, creditCardTransaction.getCreditCardNumber());
+            stmt.setDouble(2, creditCardTransaction.getBalance() - creditCardTransaction.getAmount());
+            stmt.executeUpdate();
+            System.out.println("Inserted new account for card: " + creditCardTransaction.getCreditCardNumber());
+//            connection.commit();
+        } catch (SQLIntegrityConstraintViolationException e) {
+            throw new SQLIntegrityConstraintViolationException("Duplicate Entry");
+        }
+
+//        connection.setAutoCommit(true);
     }
 
     private void updateAccountBalance(Connection connection, CreditCardTransaction creditCardTransaction, int version) throws SQLException {
