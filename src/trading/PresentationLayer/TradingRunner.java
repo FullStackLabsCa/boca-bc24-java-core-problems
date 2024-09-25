@@ -83,23 +83,23 @@ public class TradingRunner {
             throw new RuntimeException(e);
         }
     }
- //for user input file and taking threshold value from application properties
-    private static void case2(Scanner scanner) throws InvalidThresholdValueException {
+
+    private static void case2(Scanner scanner) throws InvalidThresholdValueException, SQLException, HitErrorsThresholdException, IOException {
         String filepath = "";
+
         while (true) {
-            System.out.println("Enter a file path :");
+            System.out.println("Enter a file path:");
             filepath = scanner.nextLine();
             File file = new File(filepath);
-            try {
-                if (!file.exists()) {
-                    throw new FileNotExists("file not found.....");
-                }
+            if (!file.exists()) {
+                System.out.println("File not found. Please try again.");
                 break;
-            } catch (FileNotExists e) {
-                System.out.println(e.getMessage());
+            } else {
+                break;
             }
         }
-        fetchThresholdValue();
-        scanner.close();
+        fetchThresholdValue(); // Fetch the threshold value after confirming the file path
+        System.out.println("Threshold value fetched: " + thresholdValue);
+        readTradingFileAndWriteToQueue(filepath);
     }
 }

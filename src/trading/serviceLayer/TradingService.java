@@ -1,18 +1,15 @@
 package trading.serviceLayer;
+
 import trading.Model.TradingValues;
 import trading.RepositoryLayer.TradingRep;
 import trading.Utility.FileNotExists;
 import trading.Utility.HitErrorsThresholdException;
 import trading.Utility.InvalidThresholdValueException;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
+
+import java.io.*;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.List;
 import java.util.Properties;
 
@@ -89,24 +86,22 @@ public class TradingService {
 
     }
 
-    public static void fetchThresholdValue() throws InvalidThresholdValueException {
-        Properties properties = new Properties();
-//        String classpath = System.getProperty("/Users/Manpreet.Kaur/Source/fullstacklabs/student-codebase/boca-bc24-java-core-problems/src/trading/serviceLayer/application.properties");
-//        System.out.println("Classpath: " + classpath);
-        try (InputStream input = TradingService.class.getClassLoader().getResourceAsStream("application.properties")) {
-            if (input == null) {
-                System.out.println("Sorry, unable to find application.properties");
-                System.exit(1);
-            }
-            properties.load(input);
-            thresholdValue = Double.parseDouble(properties.getProperty("error.threshold"));
-            if (thresholdValue < 1 || thresholdValue > 100) {
-                throw new InvalidThresholdValueException("Enter valid value");
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (NumberFormatException e) {
-            throw new InvalidThresholdValueException("Enter valid value "+e.getMessage());
+public static void fetchThresholdValue() throws InvalidThresholdValueException {
+    Properties properties = new Properties();
+    try (InputStream input = new FileInputStream("/Users/Manpreet.Kaur/Source/fullstacklabs/student-codebase/boca-bc24-java-core-problems/src/trading/serviceLayer/application.properties")) {
+        if (input == null) {
+            System.out.println("Sorry, unable to find application.properties");
+            System.exit(1);
         }
+        properties.load(input);
+        thresholdValue = Double.parseDouble(properties.getProperty("error.threshold"));
+        if (thresholdValue < 1 || thresholdValue > 100) {
+            throw new InvalidThresholdValueException("Enter valid value between 1 and 100.");
+        }
+    } catch (IOException e) {
+        throw new RuntimeException("Error reading properties file: " + e.getMessage(), e);
+    } catch (NumberFormatException e) {
+        throw new InvalidThresholdValueException("Invalid threshold value: " + e.getMessage());
     }
+}
 }
