@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Scanner;
 
-public class TradesService {
+public class TradesService implements TradeServiceInterface {
     private static final Logger log = LoggerFactory.getLogger(TradesMain.class);
     static List<TradePOJO> trades = new ArrayList<>();
     public static int threshold = 0;
@@ -26,16 +26,15 @@ public class TradesService {
     public static int insertions;
     String[] inputs;
     static String portNumber = "3306";
+    static TradeRepo repo = new TradeRepo();
 
-    ///Users/Ankit.Joshi/Desktop/Reactive/boca-bc24-java-core-problems/src/JDBC/trades/resources/trades_sample.csv
-    public static void userInput() {
+    public void userInput() {
         boolean validInput = false;
         String[] inputs = new String[1];
         Scanner sc = new Scanner(System.in);
 
         while (!validInput) {
             System.out.println("\nMENU:\nEnter 'case1': Console Read \nEnter 'case2': File Read");
-            Scanner scanner = new Scanner(System.in);
             String path = "";
             String inputCase = sc.nextLine().toLowerCase();
             switch (inputCase) {
@@ -53,22 +52,17 @@ public class TradesService {
                 case "case2":
                     System.out.println("Enter The File Path");
                     path = sc.nextLine();
-                    if (inputs.length != 1) {
-                        System.out.println("Invalid input. Please provide both file path and error threshold.");
-                        continue;
-                    }
                     readThresholdLimitFromProperties();
                     break;
             }
             try {
                 validateThresholdIsValid();
                 validInput = readCSV(path);
-//                System.out.println("Count of Current Line is " + currentLine);
                 calculateThresholdPercent();
                 System.out.println(thresholdPercent);
                 validateThresholdLimitReached();
                 if (validInput) {
-                    int value = TradeRepo.processBatch(trades, DatabaseHelper.getConnection(portNumber));
+                    int value = repo.processBatch(trades, DatabaseHelper.getConnection(portNumber));
                     if (value == 0) {
                         insertions = 0;
                         printSummary();
@@ -88,37 +82,37 @@ public class TradesService {
         }
     }
 
-    public static void validateThresholdIsValid() {
+    public void validateThresholdIsValid() {
         if (errorThreshold > 100 || errorThreshold < 1) {
             throw new InvalidThresholdValueException("Wrong Value of threshold, Please Try Again!");
         }
     }
 
-    private static void readThresholdLimitFromProperties() {
+    public void readThresholdLimitFromProperties() {
         try {
             FileReader reader = new FileReader("/Users/Ankit.Joshi/Desktop/Reactive/boca-bc24-java-core-problems/src/JDBC/trades/resources/application.properties");
             Properties properties = new Properties();
             properties.load(reader);
             errorThreshold = Double.parseDouble((String) properties.get("error.threshold"));
-            System.out.println("errorThreshold" + errorThreshold);
+            System.out.println("errorThreshold: " + errorThreshold);
         } catch (IOException e) {
             System.out.println(e);
         }
     }
 
-    private static void validateThresholdLimitReached() {
+    public void validateThresholdLimitReached() {
         if (threshold > thresholdPercent) {
             throw new HitErrorsThresholdException("Threshold Reached, Try Again!");
         }
     }
 
-    public static void calculateThresholdPercent() {
+    public void calculateThresholdPercent() {
         thresholdPercent = (errorThreshold / 100) * currentLine;
     }
 
-    public static boolean readCSV(String path) {
+    public boolean readCSV(String path) {
         try (BufferedReader reader = new BufferedReader(new FileReader(path));
-             BufferedWriter writer = new BufferedWriter(new FileWriter("/Users/Ankit.Joshi/Desktop/Reactive/boca-bc24-java-core-problems/src/JDBC/trades/resources/error_log.txt",true))) {
+             BufferedWriter writer = new BufferedWriter(new FileWriter("/Users/Ankit.Joshi/Desktop/Reactive/boca-bc24-java-core-problems/src/JDBC/trades/resources/error_log.txt", true))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 currentLine++;
@@ -138,7 +132,7 @@ public class TradesService {
         return true;
     }
 
-    public static void printSummary() {
+    public void printSummary() {
         System.out.println("Summary:");
         System.out.println("Records processed: " + currentLine);
         System.out.println("Successful inserts: " + insertions);

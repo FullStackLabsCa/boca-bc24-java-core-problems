@@ -1,0 +1,22 @@
+Easy Level
+
+List of Products
+Write a query to retrieve the ProductName and UnitPrice of all products from the Products table.
+Customers in Specific Countries
+> select product_name, list_price from products;
+
+Retrieve the names of all customers (CustomerID, CompanyName) located in the USA from the Customers table.
+Order Details for a Specific Order
+> select id, company from customers where country_region like 'USA';
+
+Write a query to fetch the ProductID, Quantity, and UnitPrice for a specific order (OrderID: 10248) from the Order Details table.
+Count of Employees
+>select product_id, quantity, unit_price from order_details where order_id=10248;
+Write a query to count the total number of employees in the Employees table.
+List of Categories
+
+Display all the categories (CategoryID, CategoryName) from the Categories table.
+Products with Stock Less Than 10
+
+List all products (ProductName) that have a stock quantity (UnitsInStock) of less than 10 in the Products table.
+

@@ -1,7 +1,6 @@
 package JDBC.trades.repo;
 
 import JDBC.trades.exceptions.HitErrorsThresholdException;
-import JDBC.trades.main.TradesMain;
 import JDBC.trades.model.TradePOJO;
 import JDBC.trades.services.TradesService;
 import com.zaxxer.hikari.HikariDataSource;
@@ -15,7 +14,7 @@ import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class TradeRepo {
+public class TradeRepo implements TradeRepoInterface{
     private static final Logger log = LoggerFactory.getLogger(TradeRepo.class);
     static int batchSize = 250;
     public static int batchElement = 0;
@@ -29,7 +28,8 @@ public class TradeRepo {
         }
     }
 
-    public static int processBatch(List<TradePOJO> datas, HikariDataSource dataSource) {
+    @Override
+    public int processBatch(List<TradePOJO> datas, HikariDataSource dataSource) {
         String query = "INSERT INTO Trades (trade_id, trade_identifier, ticker_symbol, quantity, price, trade_date) VALUES (?,?,?,?,?,?)";
         try (Connection connection = dataSource.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             connection.setAutoCommit(false);
@@ -39,7 +39,7 @@ public class TradeRepo {
                     errorLineNumber++;
                     currentValue = tradePOJO.toString();
                     boolean correct = checkTickerSymbol(tradePOJO.getTicker_symbol(), connection, tradePOJO);
-                    Integer x = processBatch(datas, tradePOJO, preparedStatement, correct);
+                    Integer x = addtoBatch(datas, tradePOJO, preparedStatement, correct);
                     if (x != null) return x;
                 }
                 System.out.println("Adding all the Values to the DB");
@@ -57,7 +57,7 @@ public class TradeRepo {
         return 1;
     }
 
-    private static Integer processBatch(List<TradePOJO> datas, TradePOJO tradePOJO, PreparedStatement preparedStatement, boolean correct){
+    private static Integer addtoBatch(List<TradePOJO> datas, TradePOJO tradePOJO, PreparedStatement preparedStatement, boolean correct){
         System.out.println(TradesService.threshold +""+ TradesService.thresholdPercent);
         if (TradesService.threshold == TradesService.thresholdPercent) {
             batchElement = 0;

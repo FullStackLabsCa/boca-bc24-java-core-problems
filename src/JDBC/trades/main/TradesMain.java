@@ -1,10 +1,11 @@
 package JDBC.trades.main;
 
-import static JDBC.trades.services.TradesService.userInput;
+import JDBC.trades.services.TradesService;
 
 public class TradesMain {
 
     public static void main(String[] args) {
-        userInput();
+        TradesService tradesService = new TradesService();
+        tradesService.userInput();
     }
 }
