@@ -28,21 +28,24 @@ public class TradingService {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
             reader.readLine(); // Skip header line
+            int lineIndex = 1;
             while ((line = reader.readLine()) != null) {
                 rows++;
                 line = line.trim();
 
                 // Validate trade date
                 if (DataValidation.checkForValidTradeDate(line)) {
-                    TradingRep.errorLog("Invalid trade date in line: " + line);
+                    TradingRep.errorLog("Invalid trade date in line: " + line, lineIndex);
                     errorCount++;
+                    lineIndex++;
                     continue;
                 }
                 try {
                     String[] data = line.split(",");
                     if (data.length < 6) {
-                        TradingRep.errorLog("Insufficient data fields in line: " + line);
+                        TradingRep.errorLog("Insufficient data fields in line: " + line, lineIndex);
                         errorCount++;
+                        lineIndex++;
                         continue;
                     }
 
@@ -55,13 +58,13 @@ public class TradingService {
                     System.out.println(tradingValues);
                     validBatch.add(tradingValues);
                 } catch (NumberFormatException e) {
-                    TradingRep.errorLog("Number format error in line: " + line + " - " + e.getMessage());
+                    TradingRep.errorLog("Number format error in line: " + line + " - " + e.getMessage() , lineIndex);
                     errorCount++;
                 } catch (IllegalArgumentException e) {
-                    TradingRep.errorLog("Illegal argument in line: " + line + " - " + e.getMessage());
+                    TradingRep.errorLog("Illegal argument in line: " + line + " - " + e.getMessage(), lineIndex);
                     errorCount++;
                 } catch (Exception e) {
-                    TradingRep.errorLog("Unexpected error in line: " + line + " - " + e.getMessage());
+                    TradingRep.errorLog("Unexpected error in line: " + line + " - " + e.getMessage() , lineIndex);
                     errorCount++;
                 }
             }
@@ -82,13 +85,15 @@ public class TradingService {
         } else {
             System.out.println("No valid rows to insert into the database.");
         }
-        System.out.println((errorCount + rows- validBatch.size())+ "rows are having invalid data.");
+      //  System.out.println((errorCount + rows- validBatch.size())+ "  rows are having invalid data.");
 
     }
 
     public static void fetchThresholdValue() throws InvalidThresholdValueException {
         Properties properties = new Properties();
-        try (InputStream input = TradingService.class.getClassLoader().getResourceAsStream("/Users/Manpreet.Kaur/Source/fullstacklabs/student-codebase/boca-bc24-java-core-problems/src/trading/Utility/application.properties")) {
+//        String classpath = System.getProperty("/Users/Manpreet.Kaur/Source/fullstacklabs/student-codebase/boca-bc24-java-core-problems/src/trading/serviceLayer/application.properties");
+//        System.out.println("Classpath: " + classpath);
+        try (InputStream input = TradingService.class.getClassLoader().getResourceAsStream("application.properties")) {
             if (input == null) {
                 System.out.println("Sorry, unable to find application.properties");
                 System.exit(1);
@@ -101,7 +106,7 @@ public class TradingService {
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (NumberFormatException e) {
-            throw new InvalidThresholdValueException("Enter valid value"+e.getMessage());
+            throw new InvalidThresholdValueException("Enter valid value "+e.getMessage());
         }
     }
 }

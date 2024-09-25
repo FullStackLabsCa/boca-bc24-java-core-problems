@@ -1,7 +1,9 @@
 package trading.RepositoryLayer;
+
 import com.zaxxer.hikari.HikariDataSource;
 import trading.Model.TradingValues;
 import trading.Utility.HitErrorsThresholdException;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -15,6 +17,7 @@ public class TradingRep {
         final int Batch_Size = 5;
         int invalidRows = 0;
         int validRows = 0;
+        int errorIndex = 1;
 
         try (Connection connection = dataSource.getConnection()) {
             String query = "INSERT INTO Trades(trade_id, trade_identifier, ticker_symbol, quantity, price, trade_date) VALUES (?, ?, ?, ?, ?, ?)";
@@ -23,6 +26,7 @@ public class TradingRep {
 
                 for (TradingValues tradingValues : tradingValuesList) {
                     String tickerSymbol = tradingValues.getTickerSymbol();
+                    int currentIndex = tradingValuesList.indexOf(tradingValues) + 1;
                     if (!selectData(connection, tickerSymbol)) {
                         String errorMessage = "Invalid Ticker symbol :- " +
                                 "trade_id: " + tradingValues.getTradeId() + ", " +
@@ -33,8 +37,9 @@ public class TradingRep {
                                 "trade_date: " + tradingValues.getTradeDate();
 
                         invalidRows++;
-                        errorLog(errorMessage);
+                        errorLog(errorMessage, currentIndex);
                         System.out.println(errorMessage);
+                        errorIndex++;
                         continue;
                     }
 
@@ -52,26 +57,27 @@ public class TradingRep {
                             preparedStatement.executeBatch();
                         }
                     } catch (SQLException e) {
-                        errorLog("SQL Error while inserting data: " + e.getMessage());
+                        errorLog("SQL Error while inserting data: " + e.getMessage(), currentIndex);
                         System.out.println("SQL Error: " + e.getMessage());
                         invalidRows++;
+                        errorIndex++;
                     }
                 }
                 if (validRows % Batch_Size != 0) {
                     preparedStatement.executeBatch();
                 }
 
-                double percentage = (double) invalidRows / ( validRows) * 100.00;
+                double percentage = (double) invalidRows / (validRows) * 100.00;
                 if (percentage < thresholdValue) {
                     throw new HitErrorsThresholdException("Error threshold exceeded: " + invalidRows + " rows.");
                 }
                 connection.commit();
                 System.out.println(validRows + " rows inserted successfully.");
-                System.out.println(invalidRows +" rows are having invalid ticker Symbol");
+                System.out.println(invalidRows + " rows are having invalid ticker Symbol");
 
             } catch (SQLException e) {
                 connection.rollback();
-                errorLog("Transaction rollback due to: " + e.getMessage());
+                errorLog("Transaction rollback due to: " + e.getMessage(), -1);
                 System.out.println("Transaction rollback due to: " + e.getMessage());
 
             }
@@ -79,39 +85,6 @@ public class TradingRep {
             throw new RuntimeException(" error during database operation: " + e.getMessage());
         }
     }
-
-//    public static void errorLog(String error) throws IOException {
-//        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("/Users/Manpreet.Kaur/Source/fullstacklabs/student-codebase/boca-bc24-java-core-problems/src/trading/Utility/error_log.txt", true))) {
-//            bufferedWriter.write(error);
-//            bufferedWriter.newLine();
-//        } catch (Exception e) {
-//            System.out.println("Error writing into log: " + e.getMessage());
-//        }
-//    }
-
-
-//    public static void errorLog(String error) throws IOException {
-//        String logFilePath = "/Users/Manpreet.Kaur/Source/fullstacklabs/student-codebase/boca-bc24-java-core-problems/src/trading/Utility/error_log.txt";
-//
-//        int index = 1;
-//        try {
-//            List<String> lines = java.nio.file.Files.readAllLines(java.nio.file.Paths.get(logFilePath));
-//            index = lines.size() + 1;
-//        } catch (IOException e) {
-//
-//            System.out.println("Could not read log file, starting index from 1.");
-//        }
-//
-//        String timestamp = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date());
-//        String logEntry = String.format("[%s] Error #%d: %s", timestamp, index, error);
-//
-//        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(logFilePath, true))) {
-//            bufferedWriter.write(logEntry);
-//            bufferedWriter.newLine();
-//        } catch (Exception e) {
-//            System.out.println("Error writing into log: " + e.getMessage());
-//        }
-//    }
 
     private static int errorIndex = 1; // Default starting index
 
@@ -144,12 +117,10 @@ public class TradingRep {
         }
     }
 
-    public static void errorLog(String error) throws IOException {
+    public static void errorLog(String error, int errorIndex) throws IOException {
         String logFilePath = "/Users/Manpreet.Kaur/Source/fullstacklabs/student-codebase/boca-bc24-java-core-problems/src/trading/Utility/error_log.txt";
-
-        // Format timestamp to match the desired output
         String timestamp = new java.text.SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy").format(new java.util.Date());
-        String logEntry = String.format("%s Insertion error on line %d-->ERROR: %s", timestamp, errorIndex++, error); // Increment index
+        String logEntry = String.format("%s Insertion error on line %d --> ERROR: %s", timestamp, errorIndex, error);
 
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(logFilePath, true))) {
             bufferedWriter.write(logEntry);

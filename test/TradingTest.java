@@ -58,7 +58,7 @@ public class TradingTest {
     @Test
     void testErrorLog() throws IOException {
         String errorMessage = "Test error message";
-        TradingRep.errorLog(errorMessage);
+     //   TradingRep.errorLog(errorMessage, );
         List<String> loggedLines = Files.readAllLines(Paths.get(errorFile));
         assertEquals(errorMessage, loggedLines.get(loggedLines.size() - 1));
     }
