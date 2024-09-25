@@ -66,6 +66,10 @@ public class CSVTradeFileReader implements TradeFileReader {
         } catch (IOException e) {
             System.err.println("IOException>>> " + e.getMessage());
         }
+        catch (HitErrorsThresholdException e) {
+            System.err.println("HitErrorsThresholdException>>> " + readErrorCount);
+        }
+
         return tradeDataList;
     }
 }

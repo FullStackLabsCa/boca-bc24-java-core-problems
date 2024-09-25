@@ -1,6 +1,7 @@
 package jdbc.trade.service;
 
 import com.zaxxer.hikari.HikariDataSource;
+import jdbc.trade.exceptions.HitErrorsThresholdException;
 import jdbc.trade.exceptions.HitInsertErrorsThresholdException;
 import jdbc.trade.model.TradeData;
 import jdbc.trade.repository.TradeRepository;
@@ -101,6 +102,8 @@ public class TradeDBWriterImpl implements TradeDatabaseWriter {
                 e.printStackTrace();
             } catch (ParseException e) {
                 throw new RuntimeException("ParseException>>> " + e);
+            } catch (HitInsertErrorsThresholdException e) {
+                System.err.println("HitInsertErrorsThresholdException>>> " + insertErrorCount);
             } finally {
                 connection.setAutoCommit(true);
             }

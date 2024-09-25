@@ -99,3 +99,5 @@ public class TradeRunner {
         TradeService.setupDbConnectionAndReadFile(filePath, ERROR_THRESHOLD);
     }
 }
+
+// /Users/Kiran.Virani/reactivestax/source/boca-bc24-java-core-problems/src/problems/jdbc/trade/trades.csv

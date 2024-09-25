@@ -7,7 +7,7 @@ import java.time.format.DateTimeParseException;
 public class ValidateFileData {
 
     public static boolean isValidDateFormat(String dateString) {
-        String regex = "^\\d{4}-\\d{2}-\\d{2}$";
+        String regex = "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])$";
 
         if (!dateString.matches(regex)) {
             return false;
@@ -15,8 +15,8 @@ public class ValidateFileData {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         try {
-            LocalDate.parse(dateString, formatter);
-            return true;
+            LocalDate date = LocalDate.parse(dateString, formatter);
+            return dateString.equals(formatter.format(date));
         } catch (DateTimeParseException e) {
             return false;
         }
