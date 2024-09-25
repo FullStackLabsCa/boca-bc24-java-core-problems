@@ -86,7 +86,7 @@ group by o.employee_id;
 select concat(id, ' ', product_name) as product, list_price
 from products p1
 where list_price > (select avg(list_price) 
-                        from products p2 where p1.category = p2.category)
+                        from products p2 group by p1.category);
                         
 #5
 select round(sum(od.quantity * od.unit_price),2) as sales
