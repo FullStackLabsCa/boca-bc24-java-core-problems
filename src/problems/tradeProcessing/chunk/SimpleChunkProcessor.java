@@ -1,6 +1,8 @@
 package problems.tradeProcessing.chunk;
 
-import problems.tradeProcessing.interfaceFiles.ChunkProcessor;
+import problems.tradeProcessing.customeinterface.files.ChunkFilesDataInserterToDatabase;
+import problems.tradeProcessing.customeinterface.files.ChunkProcessorInterface;
+import problems.tradeProcessing.trades.TradeQueueDistributor;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -12,10 +14,11 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class SimpleChunkProcessor implements ChunkProcessor {
+public class SimpleChunkProcessor implements ChunkProcessorInterface, ChunkFilesDataInserterToDatabase {
 
     private ExecutorService executorService;
     private Connection connection;
+    private TradeQueueDistributor tradeQueueDistributor = new TradeQueueDistributor();
 
     public SimpleChunkProcessor(int numberOfChunks, Connection connection) {
         // Initialize a fixed thread pool based on the number of chunks
@@ -31,12 +34,15 @@ public class SimpleChunkProcessor implements ChunkProcessor {
             executorService.submit(() -> {
                 try {
                     processSingleChunk(chunkFilePath);
+                    // Call to print the queue contents -
+                    tradeQueueDistributor.printQueueContents();
                 } catch (Exception e) {
                     // Handle any exceptions that occur during processing
                     System.err.println("Error processing file " + chunkFilePath + ": " + e.getMessage());
                 }
             });
         }
+
         // Shutdown the executor service
         executorService.shutdown();
     }
@@ -53,12 +59,25 @@ public class SimpleChunkProcessor implements ChunkProcessor {
                     continue; // Skip header
                 }
 
+                // split the line and getting account number
+                String[] fields = line.split(",");
+                String accountNumber = fields[2];
+
+                // assign a queue for the account number
+                tradeQueueDistributor.assignQueue(accountNumber);
+                int queueNumber = tradeQueueDistributor.getQueue(accountNumber);
+
                 // Validate and insert data into the database
                 if (validateData(line)) {
                     insertIntoDatabase(line, "valid"); // Insert as valid
+                    // write trade Id to appropriate queue
+                    tradeQueueDistributor.writeTradeToQueue(fields[0], queueNumber);
                 } else {
                     insertIntoDatabase(line, "notvalid"); // Insert as not valid
                 }
+
+//                // Call to print the queue contents -
+//                tradeQueueDistributor.printQueueContents();
 
             }
         } catch (IOException e) {
@@ -89,7 +108,8 @@ public class SimpleChunkProcessor implements ChunkProcessor {
         return true;
     }
 
-    private void insertIntoDatabase(String validatedData, String status) throws Exception{
+    @Override
+    public void insertIntoDatabase(String validatedData, String status) throws Exception{
 
         // Split the validated data into fields (assuming the same CSV structure)
         String[] fields = validatedData.split(",");

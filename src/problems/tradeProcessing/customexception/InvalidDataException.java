@@ -1,4 +1,4 @@
-package problems.tradeProcessing.customException;
+package problems.tradeProcessing.customexception;
 
 public class InvalidDataException extends Exception{
     public InvalidDataException(String message) {

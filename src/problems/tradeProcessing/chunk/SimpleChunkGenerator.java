@@ -1,7 +1,7 @@
 package problems.tradeProcessing.chunk;
 
-import problems.tradeProcessing.interfaceFiles.ChunkGenerator;
-import problems.tradeProcessing.interfaceFiles.ChunkProcessor;
+import problems.tradeProcessing.customeinterface.files.ChunkGeneratorInterface;
+import problems.tradeProcessing.customeinterface.files.ChunkProcessorInterface;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -15,7 +15,7 @@ import java.util.Properties;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class SimpleChunkGenerator implements ChunkGenerator {
+public class SimpleChunkGenerator implements ChunkGeneratorInterface {
 
     private int chunkSize;
     private String outputDirectory, propertiesFilePath, rawCSV_filePath;
@@ -101,7 +101,7 @@ public class SimpleChunkGenerator implements ChunkGenerator {
                 int finalChunkNumber = chunkNumber;
                 String finalChunkFilePath = chunkFilePath;
                 executorService.submit(() -> {
-                    ChunkProcessor chunkProcessor = new SimpleChunkProcessor(finalChunkNumber, connection);
+                    ChunkProcessorInterface chunkProcessor = new SimpleChunkProcessor(finalChunkNumber, connection);
                     chunkProcessor.processChunk(Collections.singletonList(finalChunkFilePath));
                 });
             }
