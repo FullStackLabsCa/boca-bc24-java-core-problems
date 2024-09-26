@@ -5,12 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24a3aacc-2f29-4911-9f6d-f0908ebfbc18" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/upgraded/trade/processor/TradeRunner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/upgraded/trade/processor/service/TradeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/upgraded/trade/processor/utility/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/upgraded/trade/processor/utility/trade_records.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hashmap/MyHashMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hashmap/MyHashMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tradingExample/serviceTrading/TradeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tradingExample/serviceTrading/TradeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tradingExample/serviceTrading/TradeServiceInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tradingExample/serviceTrading/TradeServiceInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tradingExample/utilityTrading/writerErrorLog.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/tradingExample/utilityTrading/writerErrorLog.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/problems/hashmap/MyHashMapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/hashmap/MyHashMapTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sql/northwind-github-problem.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/sql/northwind-github-problem.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +46,7 @@
     "Application.LoadCSVToDB.executor": "Run",
     "Application.TradeRunner.executor": "Run",
     "Application.runnertransactionclass.CreditCardTransactionProcessor.executor": "Run",
+    "Application.upgraded.trade.processor.TradeRunner.executor": "Run",
     "Downloaded.Files.Path.Enabled": "false",
     "JUnit.MyHashMapTest.executor": "Run",
     "JUnit.tradingExample.serviceTrading in boca-bc24-java-core-problems.executor": "Run",
@@ -55,7 +57,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "feature/suka-bc24-java-core-problems",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/Sukhvir.Kaur/Source/boca-bc24-java-core-problems",
+    "last_opened_file_path": "/Users/Sukhvir.Kaur/Source/boca-bc24-java-core-problems/src/upgraded/trade/processor/utility",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
@@ -67,11 +69,14 @@
       <recent name="runnertransactionclass" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/upgraded/trade/processor/utility" />
+      <recent name="$PROJECT_DIR$/src/sql" />
       <recent name="$PROJECT_DIR$/src/tradingExample/utilityTrading" />
       <recent name="$PROJECT_DIR$/src/tradingExample" />
       <recent name="$PROJECT_DIR$/src/utility/tading" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/upgraded/trade/processor/utility" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/utility" />
     </key>
@@ -79,7 +84,7 @@
       <recent name="tradingExample.serviceTrading" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.MyHashMapTest">
+  <component name="RunManager" selected="JUnit.MyHashMapTest.testRemoveNonExistentKey">
     <configuration name="LoadCSVToDB" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="tradingExample.databaseTrading.LoadCSVToDB" />
       <module name="boca-bc24-java-core-problems" />
@@ -106,6 +111,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="upgraded.trade.processor.TradeRunner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="upgraded.trade.processor.TradeRunner" />
+      <module name="boca-bc24-java-core-problems" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="upgraded.trade.processor.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MyHashMapTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="boca-bc24-java-core-problems" />
       <extension name="coverage">
@@ -121,26 +139,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="tradingExample.serviceTrading in boca-bc24-java-core-problems" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MyHashMapTest.testRemoveNonExistentKey" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="boca-bc24-java-core-problems" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="tradingExample.serviceTrading.*" />
+          <option name="PATTERN" value="problems.hashmap.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="tradingExample.serviceTrading" />
-      <option name="TEST_OBJECT" value="package" />
+      <option name="PACKAGE_NAME" value="problems.hashmap" />
+      <option name="MAIN_CLASS_NAME" value="problems.hashmap.MyHashMapTest" />
+      <option name="METHOD_NAME" value="testRemoveNonExistentKey" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MyHashMapTest.testRemoveNonExistentKey" />
         <item itemvalue="JUnit.MyHashMapTest" />
+        <item itemvalue="Application.upgraded.trade.processor.TradeRunner" />
         <item itemvalue="Application.TradeRunner" />
         <item itemvalue="Application.LoadCSVToDB" />
-        <item itemvalue="JUnit.tradingExample.serviceTrading in boca-bc24-java-core-problems" />
       </list>
     </recent_temporary>
   </component>
