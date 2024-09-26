@@ -6,6 +6,7 @@ import org.junit.Test;
 import problems.tradefileparser.controller.TradeDOAImplementation;
 import problems.tradefileparser.model.TradeModel;
 import problems.tradefileparser.reader.ThresholdReaderImplementation;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,10 +25,9 @@ public class TradeTest {
         final String URL = "jdbc:mysql://localhost:3308/bootcamp";
         final String USER = "root";
         final String PASSWORD = "password123";
-         connection = DriverManager.getConnection(URL, USER, PASSWORD);
+        connection = DriverManager.getConnection(URL, USER, PASSWORD);
 
-         listModel = new ArrayList<>();
-
+        listModel = new ArrayList<>();
     }
 
     @After
@@ -35,10 +35,10 @@ public class TradeTest {
         dropAllTables();
     }
 
-    public void dropAllTables()  {
-        String dropQuery= "TRUNCATE TABLE Trades";
+    public void dropAllTables() {
+        String dropQuery = "TRUNCATE TABLE Trades";
         try {
-            PreparedStatement dropStatement= connection.prepareStatement(dropQuery);
+            PreparedStatement dropStatement = connection.prepareStatement(dropQuery);
             dropStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -47,16 +47,16 @@ public class TradeTest {
 
     @Test
     public void testFilePath() {
-        String path= "trades.csv";
+        String path = "trades.csv";
         assertEquals("trades.csv", path);
     }
 
     @Test
-    public void testThresholdValue(){
+    public void testThresholdValue() {
         ThresholdReaderImplementation thresholdReaderImplementation = new ThresholdReaderImplementation();
 
-        double thresholdValue= thresholdReaderImplementation.readThreshold();
-        assertTrue("Value should be between 1 to 100", thresholdValue>=1 && thresholdValue<=100);
+        double thresholdValue = thresholdReaderImplementation.readThreshold();
+        assertTrue("Value should be between 1 to 100", thresholdValue >= 1 && thresholdValue <= 100);
     }
 
     @Test
@@ -65,13 +65,13 @@ public class TradeTest {
         TradeModel validTrade2 = new TradeModel("T002", "ID002", "AAPL", 100, 150.00, "2024-09-20");
         listModel.add(validTrade1);
         listModel.add(validTrade2);
-        TradeDOAImplementation tradeDOAImplementation = new TradeDOAImplementation(listModel,connection);
+        TradeDOAImplementation tradeDOAImplementation = new TradeDOAImplementation(listModel, connection);
         tradeDOAImplementation.insertTrade();
         String query = "SELECT * FROM Trades";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query);
              ResultSet resultSet = preparedStatement.executeQuery()) {
             while (resultSet.next()) {
-                count ++;
+                count++;
             }
         }
         assertEquals(2, count);

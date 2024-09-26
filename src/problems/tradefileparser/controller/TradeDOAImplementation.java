@@ -51,8 +51,8 @@ public class TradeDOAImplementation implements TradeDOA {
             int totalRowsInserted = 0;
             int totalRowsFailedtoInsert = 0;
             double errorPercentage = 0;
-            int totalBatchCount= 0;
-            int batchCount= 0;
+            int totalBatchCount = 0;
+            int batchCount = 0;
 
             while (flag) {
                 for (TradeModel trade : tradeModels) {
@@ -69,10 +69,10 @@ public class TradeDOAImplementation implements TradeDOA {
                         totalRowsInserted++;
 
                         batchCount++;
-                        if (batchCount == 100){
+                        if (batchCount == 100) {
                             preparedStatement.executeBatch();
                             totalBatchCount++;
-                            batchCount= 0;
+                            batchCount = 0;
                         }
                     } else {
                         errorList.add(trade.getTradeId());

@@ -10,7 +10,6 @@ public class ThresholdReaderImplementation implements ThresholdReader {
     public double readThreshold() {
 
 
-
         Properties properties = new Properties();
         double threshold = 0.0;
         try (FileInputStream input = new FileInputStream("/Users/Dhruv.Desai/source/Student/boca-bc24-java-core-problems/src/problems/tradeFileParser/application.properties")) {

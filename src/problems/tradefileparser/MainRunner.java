@@ -24,7 +24,6 @@ public class MainRunner {
     public static void main(String[] args) throws SQLException, IOException {
         Scanner scanner = new Scanner(System.in);
 
-        // Read threshold value first
         ThresholdReader thresholdReader = new ThresholdReaderImplementation();
         threshold = thresholdReader.readThreshold();
 
@@ -33,14 +32,14 @@ public class MainRunner {
 
         TradeFileReader tradeFileParser = new TradeFileReaderImplementation();
         List<TradeModel> tradeList = tradeFileParser.parseTradeFile(filePath);
-try(Connection connection = HikariCP.getConnection()) {
-    TradeDOA tradeDAO = new TradeDOAImplementation(tradeList,connection);
-    tradeDAO.insertTrade();
 
-    scanner.close();
-} catch (Exception e) {
-    throw new RuntimeException(e);
-}
+        try (Connection connection = HikariCP.getConnection()) {
+            TradeDOA tradeDAO = new TradeDOAImplementation(tradeList, connection);
+            tradeDAO.insertTrade();
 
+            scanner.close();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }
