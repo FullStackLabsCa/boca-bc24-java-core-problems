@@ -1,6 +1,5 @@
 package problems.tradefileparser.controller;
 
-import problems.tradefileparser.databaseConnection.HikariCP;
 import problems.tradefileparser.exceptions.InsertThresholdException;
 import problems.tradefileparser.model.TradeModel;
 import problems.tradefileparser.reader.ThresholdReader;
@@ -13,6 +12,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,19 +21,26 @@ public class TradeDOAImplementation implements TradeDOA {
     private static final List<String> errorList = new ArrayList<>();
     static ThresholdReader thresholdReader = new ThresholdReaderImplementation();
     static double error = thresholdReader.readThreshold();
+    private List<TradeModel> tradeModels;
+    private Connection connection;
+
+    public TradeDOAImplementation(List<TradeModel> tradeModels, Connection connection) {
+        this.tradeModels = tradeModels;
+        this.connection = connection;
+    }
 
     @Override
-    public void insertTrade(List<TradeModel> tradeList){
+    public void insertTrade() throws SQLException {
         boolean flag = true;
         String query = "INSERT INTO Trades (trade_id, trade_identifier, ticker_symbol, quantity, price, trade_date) VALUES (?, ?, ?, ?, ?, ?)";
         String getAllSymbolQuery = "SELECT symbol FROM SecuritiesReference";
 
-        try (Connection conn = HikariCP.getConnection();
-             PreparedStatement preparedStatement = conn.prepareStatement(query)) {
-            conn.setAutoCommit(false);
+        try
+                (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            connection.setAutoCommit(false);
 
             List<String> allSymbolList = new ArrayList<>();
-            try (PreparedStatement prepareStatementSecuritiesReferenceColumn = conn.prepareStatement(getAllSymbolQuery);
+            try (PreparedStatement prepareStatementSecuritiesReferenceColumn = connection.prepareStatement(getAllSymbolQuery);
                  ResultSet rs = prepareStatementSecuritiesReferenceColumn.executeQuery()) {
                 while (rs.next()) {
                     allSymbolList.add(rs.getString("symbol"));
@@ -48,8 +55,8 @@ public class TradeDOAImplementation implements TradeDOA {
             int batchCount= 0;
 
             while (flag) {
-                for (TradeModel trade : tradeList) {
-                    conn.setAutoCommit(false);
+                for (TradeModel trade : tradeModels) {
+                    connection.setAutoCommit(false);
                     totalRowsToBeInserted++;
                     if (allSymbolList.contains(trade.getTicker_symbol())) {
                         preparedStatement.setString(1, trade.getTrade_id());
@@ -85,9 +92,9 @@ public class TradeDOAImplementation implements TradeDOA {
 
                 errorPercentage = ((double) totalRowsFailedtoInsert / totalRowsToBeInserted) * 100;
                 if (errorPercentage < error) {
-                    conn.commit();
+                    connection.commit();
                 } else {
-                    conn.rollback();
+                    connection.rollback();
                     throw new InsertThresholdException("Threshold reached...rolling back");
                 }
                 flag = false;

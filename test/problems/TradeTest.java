@@ -7,102 +7,41 @@ import problems.tradefileparser.controller.TradeDOAImplementation;
 import problems.tradefileparser.model.TradeModel;
 import problems.tradefileparser.reader.ThresholdReaderImplementation;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class TradeTest {
-    private TradeDOAImplementation tradeDOAImplementation;
-    private ThresholdReaderImplementation thresholdReaderImplementation;
 
-    final String URL = "jdbc:mysql://localhost:3308/bootcamp";
-    final String USER = "root";
-    final String PASSWORD = "password123";
-
-    public Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(URL, USER, PASSWORD);
-    }
+    private List<TradeModel> listModel;
+    private Connection connection;
+    private int count = 0;
 
     @Before
     public void setUp() throws SQLException {
-        tradeDOAImplementation= new TradeDOAImplementation();
-        thresholdReaderImplementation= new ThresholdReaderImplementation();
+        final String URL = "jdbc:mysql://localhost:3308/bootcamp";
+        final String USER = "root";
+        final String PASSWORD = "password123";
+         connection = DriverManager.getConnection(URL, USER, PASSWORD);
 
-        getConnection();
+         listModel = new ArrayList<>();
 
-        createTable();
-
-        insertIntoSecurity();
     }
 
     @After
-    public void cleanUp() throws SQLException {
+    public void cleanUp() {
         dropAllTables();
     }
 
-    public void createTable() throws SQLException {
-        String TradeTableQuery = "CREATE TABLE Trades (\n" +
-                "    trade_id VARCHAR(20) PRIMARY KEY,\n" +
-                "    trade_identifier VARCHAR(20),\n" +
-                "    ticker_symbol VARCHAR(10),\n" +
-                "    quantity INT,\n" +
-                "    price DECIMAL(15, 2),\n" +
-                "    trade_date DATE\n" +
-                ")";
-        String SecurityTableQuery = "CREATE TABLE SecuritiesReference (\n" +
-                "    symbol VARCHAR(10) PRIMARY KEY,\n" +
-                "    description VARCHAR(100)\n" +
-                ")";
-        try (Connection connection = getConnection()) {
-            PreparedStatement TradeTableStatement = connection.prepareStatement(TradeTableQuery);
-            TradeTableStatement.executeUpdate();
-
-            PreparedStatement SecurityTableStatement = connection.prepareStatement(SecurityTableQuery);
-            SecurityTableStatement.executeUpdate();
-        }
-    }
-
-    public void insertIntoSecurity() throws SQLException {
-        String securityInsertQuery = "INSERT INTO SecuritiesReference (symbol, description) VALUES " +
-                "('AAPL', 'Apple Inc.'), " +
-                "('GOOGL', 'Alphabet Inc.'), " +
-                "('AMZN', 'Amazon.com Inc.'), " +
-                "('MSFT', 'Microsoft Corporation'), " +
-                "('TSLA', 'Tesla Inc.'), " +
-                "('NFLX', 'Netflix Inc.'), " +
-                "('FB', 'Meta Platforms Inc.'), " +
-                "('NVDA', 'NVIDIA Corporation'), " +
-                "('JPM', 'JP Morgan Chase & Co.'), " +
-                "('VISA', 'Visa Inc.'), " +
-                "('MA', 'Mastercard Inc.'), " +
-                "('BAC', 'Bank of America Corp.'), " +
-                "('DIS', 'The Walt Disney Company'), " +
-                "('INTC', 'Intel Corporation'), " +
-                "('CSCO', 'Cisco Systems Inc.'), " +
-                "('ORCL', 'Oracle Corporation'), " +
-                "('WMT', 'Walmart Inc.'), " +
-                "('T', 'AT&T Inc.'), " +
-                "('VZ', 'Verizon Communications Inc.'), " +
-                "('ADBE', 'Adobe Inc.'), " +
-                "('CRM', 'Salesforce Inc.'), " +
-                "('PYPL', 'PayPal Holdings Inc.'), " +
-                "('PFE', 'Pfizer Inc.'), " +
-                "('XOM', 'Exxon Mobil Corporation'), " +
-                "('UNH', 'UnitedHealth Group Inc.');";
-
-        try (
-                Connection connection = getConnection()) {
-            PreparedStatement InsertSecurityStatement = connection.prepareStatement(securityInsertQuery);
-            InsertSecurityStatement.executeUpdate();
-        }
-    }
-
-    public void dropAllTables() throws SQLException {
-        String dropQuery= "DROP TABLE Trades, SecuritiesReference";
-        try (Connection connection= getConnection()){
+    public void dropAllTables()  {
+        String dropQuery= "TRUNCATE TABLE Trades";
+        try {
             PreparedStatement dropStatement= connection.prepareStatement(dropQuery);
             dropStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -114,29 +53,28 @@ public class TradeTest {
 
     @Test
     public void testThresholdValue(){
+        ThresholdReaderImplementation thresholdReaderImplementation = new ThresholdReaderImplementation();
+
         double thresholdValue= thresholdReaderImplementation.readThreshold();
         assertTrue("Value should be between 1 to 100", thresholdValue>=1 && thresholdValue<=100);
     }
 
     @Test
     public void testInsertValidTrade() throws SQLException {
-        // Prepare a valid trade
-        TradeModel validTrade = new TradeModel("T001", "ID001", "AAPL", 100, 150.00, "2024-09-20");
-
-        // Insert the trade
-        tradeDOAImplementation.insertTrade(List.of(validTrade));
-
-        // Check if the trade was inserted correctly
-        String query = "SELECT COUNT(*) FROM Trades WHERE trade_id = 'T001'";
-        try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query);
+        TradeModel validTrade1 = new TradeModel("T001", "ID001", "AAPL", 100, 150.00, "2024-09-20");
+        TradeModel validTrade2 = new TradeModel("T002", "ID002", "AAPL", 100, 150.00, "2024-09-20");
+        listModel.add(validTrade1);
+        listModel.add(validTrade2);
+        TradeDOAImplementation tradeDOAImplementation = new TradeDOAImplementation(listModel,connection);
+        tradeDOAImplementation.insertTrade();
+        String query = "SELECT * FROM Trades";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query);
              ResultSet resultSet = preparedStatement.executeQuery()) {
-            if (resultSet.next()) {
-                int count = resultSet.getInt(1);
-                System.out.println("Trade Count: " + count); // Debug output
-                assertEquals(1, count); // There should be one valid trade
+            while (resultSet.next()) {
+                count ++;
             }
         }
+        assertEquals(2, count);
     }
 
 }

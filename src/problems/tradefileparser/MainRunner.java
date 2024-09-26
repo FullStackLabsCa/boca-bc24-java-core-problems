@@ -2,6 +2,7 @@ package problems.tradefileparser;
 
 import problems.tradefileparser.controller.TradeDOAImplementation;
 import problems.tradefileparser.controller.TradeDOA;
+import problems.tradefileparser.databaseConnection.HikariCP;
 import problems.tradefileparser.model.TradeModel;
 import problems.tradefileparser.reader.ThresholdReader;
 import problems.tradefileparser.reader.ThresholdReaderImplementation;
@@ -9,6 +10,7 @@ import problems.tradefileparser.reader.TradeFileReader;
 import problems.tradefileparser.reader.TradeFileReaderImplementation;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,10 +33,14 @@ public class MainRunner {
 
         TradeFileReader tradeFileParser = new TradeFileReaderImplementation();
         List<TradeModel> tradeList = tradeFileParser.parseTradeFile(filePath);
+try(Connection connection = HikariCP.getConnection()) {
+    TradeDOA tradeDAO = new TradeDOAImplementation(tradeList,connection);
+    tradeDAO.insertTrade();
 
-        TradeDOA tradeDAO = new TradeDOAImplementation();
-        tradeDAO.insertTrade(tradeList);
+    scanner.close();
+} catch (Exception e) {
+    throw new RuntimeException(e);
+}
 
-        scanner.close();
     }
 }
