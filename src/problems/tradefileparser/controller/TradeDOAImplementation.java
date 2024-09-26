@@ -70,6 +70,7 @@ public class TradeDOAImplementation implements TradeDOA {
                 }
                 errorPercentage = ((double) totalRowsFailedtoInsert / totalRowsToBeInserted) * 100;
                 if (errorPercentage < error) {
+                    preparedStatement.executeBatch();
                     conn.commit();
                 } else {
                     conn.rollback();
