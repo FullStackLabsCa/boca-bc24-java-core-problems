@@ -1,7 +1,7 @@
-package problems.tradeFileParser.reader;
+package problems.tradefileparser.reader;
 
-import problems.tradeFileParser.exceptions.ParseingThresholdException;
-import problems.tradeFileParser.model.TradeModel;
+import problems.tradefileparser.exceptions.ParseingThresholdException;
+import problems.tradefileparser.model.TradeModel;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -9,8 +9,8 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-import static problems.tradeFileParser.MainRunner.threshold;
-import static problems.tradeFileParser.MainRunner.tradeList;
+import static problems.tradefileparser.MainRunner.threshold;
+import static problems.tradefileparser.MainRunner.tradeList;
 
 
 public class TradeFileReaderImplementation implements TradeFileReader {

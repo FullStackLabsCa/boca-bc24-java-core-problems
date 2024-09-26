@@ -1,4 +1,4 @@
-package problems.tradeFileParser.model;
+package problems.tradefileparser.model;
 
 public class TradeModel {
     private String trade_id;

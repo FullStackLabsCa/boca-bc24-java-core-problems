@@ -1,4 +1,4 @@
-package problems.tradeFileParser.exceptions;
+package problems.tradefileparser.exceptions;
 
 public class ParseingThresholdException extends Exception {
     public ParseingThresholdException(String s) {

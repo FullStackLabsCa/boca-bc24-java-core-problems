@@ -1,4 +1,4 @@
-package problems.tradeFileParser.databaseConnection;
+package problems.tradeUsingThread.databaseConnection;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;

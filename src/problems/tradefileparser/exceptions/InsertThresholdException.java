@@ -1,4 +1,4 @@
-package problems.tradeFileParser.exceptions;
+package problems.tradefileparser.exceptions;
 
 public class InsertThresholdException extends Exception {
     public InsertThresholdException(String s) {

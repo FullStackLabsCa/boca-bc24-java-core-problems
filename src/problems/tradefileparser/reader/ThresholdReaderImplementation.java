@@ -1,13 +1,8 @@
-package problems.tradeFileParser.reader;
+package problems.tradefileparser.reader;
 
 import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.InputMismatchException;
 import java.util.Properties;
-import java.util.Scanner;
-
-import static problems.tradeFileParser.MainRunner.threshold;
 
 public class ThresholdReaderImplementation implements ThresholdReader {
 

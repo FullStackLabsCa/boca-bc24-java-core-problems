@@ -1,12 +1,12 @@
-package problems.tradeFileParser;
+package problems.tradefileparser;
 
-import problems.tradeFileParser.controller.TradeDOAImplementation;
-import problems.tradeFileParser.controller.TradeDOA;
-import problems.tradeFileParser.model.TradeModel;
-import problems.tradeFileParser.reader.ThresholdReader;
-import problems.tradeFileParser.reader.ThresholdReaderImplementation;
-import problems.tradeFileParser.reader.TradeFileReader;
-import problems.tradeFileParser.reader.TradeFileReaderImplementation;
+import problems.tradefileparser.controller.TradeDOAImplementation;
+import problems.tradefileparser.controller.TradeDOA;
+import problems.tradefileparser.model.TradeModel;
+import problems.tradefileparser.reader.ThresholdReader;
+import problems.tradefileparser.reader.ThresholdReaderImplementation;
+import problems.tradefileparser.reader.TradeFileReader;
+import problems.tradefileparser.reader.TradeFileReaderImplementation;
 
 import java.io.IOException;
 import java.sql.SQLException;

@@ -1,6 +1,6 @@
-package problems.tradeFileParser.reader;
+package problems.tradefileparser.reader;
 
-import problems.tradeFileParser.model.TradeModel;
+import problems.tradefileparser.model.TradeModel;
 
 import java.io.IOException;
 import java.util.List;
