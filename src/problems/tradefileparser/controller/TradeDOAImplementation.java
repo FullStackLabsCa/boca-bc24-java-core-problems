@@ -31,6 +31,7 @@ public class TradeDOAImplementation implements TradeDOA {
         try (Connection conn = HikariCP.getConnection();
              PreparedStatement preparedStatement = conn.prepareStatement(query)) {
             conn.setAutoCommit(false);
+
             List<String> allSymbolList = new ArrayList<>();
             try (PreparedStatement prepareStatementSecuritiesReferenceColumn = conn.prepareStatement(getAllSymbolQuery);
                  ResultSet rs = prepareStatementSecuritiesReferenceColumn.executeQuery()) {
@@ -43,6 +44,8 @@ public class TradeDOAImplementation implements TradeDOA {
             int totalRowsInserted = 0;
             int totalRowsFailedtoInsert = 0;
             double errorPercentage = 0;
+            int totalBatchCount= 0;
+            int batchCount= 0;
 
             while (flag) {
                 for (TradeModel trade : tradeList) {
@@ -57,6 +60,13 @@ public class TradeDOAImplementation implements TradeDOA {
                         preparedStatement.setString(6, trade.getTrade_date());
                         preparedStatement.addBatch();
                         totalRowsInserted++;
+
+                        batchCount++;
+                        if (batchCount == 100){
+                            preparedStatement.executeBatch();
+                            totalBatchCount++;
+                            batchCount= 0;
+                        }
                     } else {
                         errorList.add(trade.getTrade_id());
                         errorList.add(trade.getTrade_identifier());
@@ -68,9 +78,13 @@ public class TradeDOAImplementation implements TradeDOA {
                         logError(trade);
                     }
                 }
+                if (batchCount > 0) {
+                    preparedStatement.executeBatch();
+                    totalBatchCount++;
+                }
+
                 errorPercentage = ((double) totalRowsFailedtoInsert / totalRowsToBeInserted) * 100;
                 if (errorPercentage < error) {
-                    preparedStatement.executeBatch();
                     conn.commit();
                 } else {
                     conn.rollback();
@@ -85,6 +99,7 @@ public class TradeDOAImplementation implements TradeDOA {
             System.out.println("Success rows: " + totalRowsInserted);
             System.out.println("Total rows read: " + totalRowsToBeInserted);
             System.out.println();
+            System.out.println("Total batches created: " + totalBatchCount);
             System.out.println("Error Percentage: " + errorPercentage);
             System.out.println("Threshold: " + error);
             System.out.println("---------------------------------------------------------------------------");

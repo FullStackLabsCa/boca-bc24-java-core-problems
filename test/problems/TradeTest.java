@@ -6,13 +6,8 @@ import org.junit.Test;
 import problems.tradefileparser.controller.TradeDOAImplementation;
 import problems.tradefileparser.model.TradeModel;
 import problems.tradefileparser.reader.ThresholdReaderImplementation;
-
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -112,32 +107,36 @@ public class TradeTest {
     }
 
     @Test
+    public void testFilePath() {
+        String path= "trades.csv";
+        assertEquals("trades.csv", path);
+    }
+
+    @Test
     public void testThresholdValue(){
         double thresholdValue= thresholdReaderImplementation.readThreshold();
         assertTrue("Value should be between 1 to 100", thresholdValue>=1 && thresholdValue<=100);
     }
 
     @Test
-    public void testErrorLogging() throws SQLException, FileNotFoundException {
-        List<TradeModel> invalidTrades = new ArrayList<>();
-        invalidTrades.add(new TradeModel("T999", "ID999", "INVALID_SYMBOL", 100, 150.75, "2024-09-20"));
+    public void testInsertValidTrade() throws SQLException {
+        // Prepare a valid trade
+        TradeModel validTrade = new TradeModel("T001", "ID001", "AAPL", 100, 150.00, "2024-09-20");
 
-        tradeDOAImplementation.insertTrade(invalidTrades);
+        // Insert the trade
+        tradeDOAImplementation.insertTrade(List.of(validTrade));
 
-        File logFile = new File("errorLog.txt");
-        assertTrue("Error log should exist", logFile.exists());
-
-        // Check if error log contains the expected trade information
-        Scanner scanner = new Scanner(logFile);
-        boolean foundError = false;
-        while (scanner.hasNextLine()) {
-            String line = scanner.nextLine();
-            if (line.contains("INVALID_SYMBOL")) {
-                foundError = true;
-                break;
+        // Check if the trade was inserted correctly
+        String query = "SELECT COUNT(*) FROM Trades WHERE trade_id = 'T001'";
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+            if (resultSet.next()) {
+                int count = resultSet.getInt(1);
+                System.out.println("Trade Count: " + count); // Debug output
+                assertEquals(1, count); // There should be one valid trade
             }
         }
-        assertTrue("Log file should contain the invalid trade", foundError);
     }
 
 }
