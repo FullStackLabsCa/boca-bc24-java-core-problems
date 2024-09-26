@@ -1,5 +1,5 @@
 package trading.service;
-import trading.Model.TradingValues;
+import trading.model.TradingValues;
 import trading.repository.TradingRep;
 import trading.utility.FileNotExists;
 import trading.utility.HitErrorsThresholdException;

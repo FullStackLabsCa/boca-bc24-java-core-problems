@@ -1,7 +1,7 @@
 package trading.repository;
 
 import com.zaxxer.hikari.HikariDataSource;
-import trading.Model.TradingValues;
+import trading.model.TradingValues;
 import trading.utility.HitErrorsThresholdException;
 
 import java.io.BufferedWriter;
