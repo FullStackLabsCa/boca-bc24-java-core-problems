@@ -3,55 +3,6 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
-        <entry key="/chunk_1.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/chunk_2.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/chunk_3.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/chunk_4.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/chunk_5.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/chunkfile_1.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/chunkfile_2.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
         <entry key="/src/trading/Utility/convertcsv.csv">
           <value>
             <Attribute>
@@ -59,7 +10,7 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="/src/trading/Utility/trades.csv">
+        <entry key="/src/trading/Utility/test.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
@@ -73,14 +24,56 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="/src/trading/Utility/trades_sample_10.csv">
+        <entry key="/src/trading/Utility/trades_sample_1000.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="/src/trading/Utility/trades_sample_1000.csv">
+        <entry key="/src/trading/chunkproblem/NewChunkFiles/chunk_1.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/src/trading/chunkproblem/NewChunkFiles/chunk_2.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/src/trading/chunkproblem/Utility/trade_records.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/src/trading/chunkproblem/Utility/trade_records10.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/src/trading/chunkproblem/Utility/trade_records_with_cusip.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/src/tradingChunks/NewChunkFiles/chunk_1.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/src/tradingChunks/NewChunkFiles/chunk_2.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
@@ -94,14 +87,7 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="/src/tradingChunks/Utility/trades10.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/src/tradingChunks/trade_records_with_cusip.csv">
+        <entry key="/src/tradingChunks/Utility/trade_records10.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />

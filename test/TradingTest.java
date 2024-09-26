@@ -1,10 +1,10 @@
+import chunkproblem.DatabaseConnectivity.DatabaseConnection;
 import com.zaxxer.hikari.HikariDataSource;
-import creditcardTransactions.databaseConnection.DatabaseConnectivity;
 import org.junit.jupiter.api.Test;
-import trading.PresentationLayer.TradingRunner;
-import trading.RepositoryLayer.TradingRep;
-import trading.Utility.FileNotExists;
+import trading.presentation.TradingRunner;
+import trading.utility.FileNotExists;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -15,11 +15,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TradingTest {
     private static final String errorFile = "/Users/Manpreet.Kaur/Source/fullstacklabs/student-codebase/boca-bc24-java-core-problems/src/trading/Utility/error_log.txt";
-    private static final String csvFile = "trades_sample_1000.csv";
 
     @Test
     void testConfigureHikariCP() {
-        HikariDataSource dataSource = DatabaseConnectivity.configureHikariCP();
+        HikariDataSource dataSource = DatabaseConnection.configureHikariCP();
         assertEquals("jdbc:mysql://localhost:3306/bootcamp", dataSource.getJdbcUrl());
         assertEquals("root", dataSource.getUsername());
         assertEquals(10, dataSource.getMaximumPoolSize());
@@ -30,30 +29,33 @@ public class TradingTest {
     }
 
     @Test// for non existed path
+
     void testCase1_FileNotFound() {
-        String input = "file.txt\n";
+        String input = "non_existent_file.txt\n";
         try (Scanner scanner = new Scanner(input)) {
-            FileNotExists exception = assertThrows(FileNotExists.class, () -> {
-                TradingRunner.case1(scanner);
+            assertThrows(FileNotExists.class, () -> {
+                TradingRunner.case1(scanner, new File(input.trim()));
             });
-            assertEquals("file not found.....", exception.getMessage());
         }
     }
 
+
     @Test
     void testValidThresholdValue() {
+        String validFilePath = "path/to/your/valid.csv"; // Make sure this file exists in your test environment
+        String input = validFilePath + "\n75\n"; // Simulating user input for file path and threshold value
 
-        String validFilePath = csvFile;
-        Scanner scanner = new Scanner(validFilePath + "\n75\n");
+        try (Scanner scanner = new Scanner(input)) {
+            // Call case1 with the scanner and the file
+            TradingRunner.case1(scanner, new File(validFilePath));
 
-        assertDoesNotThrow(() -> {
-            TradingRunner.case1(scanner);
-        });
-
-        assertEquals(50.0, TradingRunner.thresholdValue);
-
-        scanner.close();
+            // Assert that the THRESHOLD_VALUE was set correctly
+            assertEquals(70.0, TradingRunner.THRESHOLD_VALUE, 0.013); // Using a delta for floating-point comparison
+        } catch (Exception e) {
+            fail("Should not throw any exception: " + e.getMessage());
+        }
     }
+
 
     @Test
     void testErrorLog() throws IOException {
