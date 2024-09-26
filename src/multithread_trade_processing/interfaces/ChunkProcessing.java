@@ -2,8 +2,11 @@ package multithread_trade_processing.interfaces;
 
 public interface ChunkProcessing {
 
-    void writePayloadToRawDatabase(String payload);
-    void getQueueMapping(String accountNumber);
-    void writeToQueue(String tradeID);
+    String readPayloadFromChunk(String filePath);
+    String checkPayloadValidity(String payload);
+    tradeIdAndAccNum getIdentifierFromPayload(String payload);
+    void writePayloadToRawDatabase(String tradeID, String tradeStatus, String payload);
+    int getQueueMapping(String accountNumber);
+    void writeToQueue(String tradeID, int queueID);
 
 }
