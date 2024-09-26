@@ -1,4 +1,5 @@
 package creditcardTransactions.ServiceLayer;
+
 import creditcardTransactions.Model.CreditCardTransaction;
 
 import java.io.BufferedReader;
@@ -6,6 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import static creditcardTransactions.PresentationLayer.CreditCardTransactionProcessorRunner.creditCardTransactionQueue;
 import static creditcardTransactions.PresentationLayer.CreditCardTransactionProcessorRunner.dataSource;
@@ -43,5 +45,13 @@ public class CreditCardService {
             executorService.submit(new TransactionConsumer(creditCardTransactionQueue, dataSource));
         }
         executorService.shutdown();
+
+        try {
+            if (!executorService.awaitTermination(100, TimeUnit.SECONDS)) {
+                executorService.shutdownNow();
+            }
+        } catch (InterruptedException e) {
+            executorService.shutdownNow();
+        }
     }
 }

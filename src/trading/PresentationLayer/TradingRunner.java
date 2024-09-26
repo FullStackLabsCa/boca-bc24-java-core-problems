@@ -4,6 +4,8 @@ import creditcardTransactions.databaseConnection.DatabaseConnectivity;
 import trading.Utility.FileNotExists;
 import trading.Utility.HitErrorsThresholdException;
 import trading.Utility.InvalidThresholdValueException;
+import trading.serviceLayer.TradingService;
+
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -20,8 +22,8 @@ public class TradingRunner {
     public static void main(String[] args) throws HitErrorsThresholdException, FileNotExists {
         dataSource = DatabaseConnectivity.configureHikariCP();
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Trading File with Case1, Case2");
-
+        System.out.println("Trading File with:- Case1, Case2");
+        System.out.println("Type '1' for case1 or Type '2' for  Case2");
             try{
                 int input = scanner.nextInt();
                 scanner.nextLine();
@@ -64,7 +66,7 @@ public class TradingRunner {
             try {
                 System.out.println("Enter threshold value (1-100): ");
                  thresholdValue = scanner.nextDouble();
-                if (thresholdValue >= 1 || thresholdValue <= 100) {
+                if (thresholdValue < 1 && thresholdValue > 100) {
                     throw new InvalidThresholdValueException("Value must be between 1 and 100.");
                 }
                 TradingRunner.thresholdValue = thresholdValue; // Update the static variable

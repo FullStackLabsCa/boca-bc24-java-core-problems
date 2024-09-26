@@ -3,13 +3,11 @@ package trading.RepositoryLayer;
 import com.zaxxer.hikari.HikariDataSource;
 import trading.Model.TradingValues;
 import trading.Utility.HitErrorsThresholdException;
-
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.*;
 import java.util.List;
-
 import static trading.PresentationLayer.TradingRunner.thresholdValue;
 
 public class TradingRep {
@@ -37,7 +35,7 @@ public class TradingRep {
                                 "trade_date: " + tradingValues.getTradeDate();
 
                         invalidRows++;
-                        errorLog(errorMessage, currentIndex);
+                        errorLogWriter(errorMessage, currentIndex);
                         System.out.println(errorMessage);
                         errorIndex++;
                         continue;
@@ -57,7 +55,7 @@ public class TradingRep {
                             preparedStatement.executeBatch();
                         }
                     } catch (SQLException e) {
-                        errorLog("SQL Error while inserting data: " + e.getMessage(), currentIndex);
+                        errorLogWriter("SQL Error while inserting data: " + e.getMessage(), currentIndex);
                         System.out.println("SQL Error: " + e.getMessage());
                         invalidRows++;
                         errorIndex++;
@@ -77,7 +75,7 @@ public class TradingRep {
 
             } catch (SQLException e) {
                 connection.rollback();
-                errorLog("Transaction rollback due to: " + e.getMessage(), -1);
+                errorLogWriter("Transaction rollback due to: " + e.getMessage(), -1);
                 System.out.println("Transaction rollback due to: " + e.getMessage());
 
             }
@@ -117,8 +115,8 @@ public class TradingRep {
         }
     }
 
-    public static void errorLog(String error, int errorIndex) throws IOException {
-        String logFilePath = "/Users/Manpreet.Kaur/Source/fullstacklabs/student-codebase/boca-bc24-java-core-problems/src/trading/Utility/error_log.txt";
+    public static void errorLogWriter(String error, int errorIndex) throws IOException {
+        String logFilePath = "/Users/Manpreet.Kaur/Source/fullstacklabs/student-codebase/boca-bc24-java-core-problems/src/trading/Utility/Writer_Error.txt";
         String timestamp = new java.text.SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy").format(new java.util.Date());
         String logEntry = String.format("%s Insertion error on line %d --> ERROR: %s", timestamp, errorIndex, error);
 
