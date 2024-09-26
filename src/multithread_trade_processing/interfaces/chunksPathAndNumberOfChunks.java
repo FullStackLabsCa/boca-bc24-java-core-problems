@@ -9,4 +9,14 @@ public record chunksPathAndNumberOfChunks(String folderPath, int numberOfFiles) 
                 ", numberOfFiles=" + numberOfFiles +
                 '}';
     }
+
+    @Override
+    public String folderPath() {
+        return folderPath;
+    }
+
+    @Override
+    public int numberOfFiles() {
+        return numberOfFiles;
+    }
 }

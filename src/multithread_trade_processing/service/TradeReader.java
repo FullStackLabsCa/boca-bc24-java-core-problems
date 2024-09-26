@@ -56,5 +56,9 @@ public class TradeReader implements TradeReading {
 
         chunksPathAndNumberOfChunks result =  reader.readFileAndCreateChunks("/Users/Akshat.Singla/Downloads/code/practice-problems/student-codebase/boca-bc24-java-core-problems/src/multithread_trade_processing/trades.csv", null);
         System.out.println("result = " + result);
+
+        ChunkProcessor chunkProcessor = new ChunkProcessor();
+
+        chunkProcessor.startChunkProcessorPool(result.folderPath(), result.numberOfFiles());
     }
 }

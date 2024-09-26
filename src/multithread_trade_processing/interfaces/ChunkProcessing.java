@@ -2,7 +2,8 @@ package multithread_trade_processing.interfaces;
 
 public interface ChunkProcessing {
 
-    void processPayload(String filePath);
+    void processChunk(String filePath);
+    void processPayload(String payload);
     String checkPayloadValidity(String payload);
     tradeIdAndAccNum getIdentifierFromPayload(String payload);
     void writePayloadToPayloadDatabase(String tradeID, String tradeStatus, String payload);
