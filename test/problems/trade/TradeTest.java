@@ -155,7 +155,7 @@ public class TradeTest {
         TradeData trade1 = new TradeData("1", "identifier1", "AAPL", 10, 150.00, "2023-09-01", 1);
         TradeData trade2 = new TradeData("2", "identifier2", "INVALID", 5, 200.00, "2023-09-02", 2);
         tradeDataList = Arrays.asList(trade1, trade2);
-        tradeDatabaseWriter.writeRecordsToDB(dataSource, tradeDataList, 50);
+        tradeDatabaseWriter.writeRecordsToDB(dataSource, tradeDataList, 10);
     }
 
     @Test(expected = HitInsertErrorsThresholdException.class)
@@ -176,11 +176,7 @@ public class TradeTest {
 
     @Test
     public void testWriteToDbPrintSummary() {
-
-        TradeDBWriterImpl.insertErrorCount = 2;
-        TradeDBWriterImpl.insertSuccessCount = 5;
-        TradeDBWriterImpl.duplicateRecords = 1;
-        TradeDBWriterImpl.printSummary(8);
+        TradeDBWriterImpl.printSummary(8, 2, 5, 1);
 
         String expectedOutput = "=================Reports of the trade system - writing data in DB==================\n" +
                 "Total record in file = 8\n" +
