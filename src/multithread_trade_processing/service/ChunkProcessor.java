@@ -3,6 +3,10 @@ package multithread_trade_processing.service;
 import multithread_trade_processing.interfaces.ChunkProcessing;
 import multithread_trade_processing.interfaces.tradeIdAndAccNum;
 
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+
 public class ChunkProcessor implements ChunkProcessing {
 
     //ThreadPool
@@ -25,20 +29,30 @@ public class ChunkProcessor implements ChunkProcessing {
 
     @Override
     public String readPayloadFromChunk(String filePath){
-
+        try(Scanner chunkReader = new Scanner(new FileReader(filePath))){
+            if(chunkReader.hasNextLine()){
+                return chunkReader.nextLine();
+            } else {
+                System.out.println("End Of Chunk Reached.");
+            }
+        } catch (IOException e){
+            System.out.println(e.getMessage());
+        }
         return null;
     }
 
     @Override
     public String checkPayloadValidity(String payload){
-
-        return null;
+        String[] fieldsOfTrade = payload.split(",");
+        if(fieldsOfTrade.length != 7){
+            return "Invalid";
+        } else return "Valid";
     }
 
     @Override
     public tradeIdAndAccNum getIdentifierFromPayload(String payload){
-
-        return null;
+        String[] fieldsOfTrade = payload.split(",");
+        return new tradeIdAndAccNum(fieldsOfTrade[0], fieldsOfTrade[2]);
     }
 
     @Override

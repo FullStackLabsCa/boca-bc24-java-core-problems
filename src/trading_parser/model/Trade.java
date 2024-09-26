@@ -4,46 +4,46 @@ import java.time.LocalDate;
 
 public class Trade {
 
-    private String trade_id;
-    private String trade_identifier;
-    private String ticker_symbol;
+    private String tradeId;
+    private String tradeIdentifier;
+    private String tickerSymbol;
     private int quantity;
     private double price;
 
-    public String getTrade_identifier() {
-        return trade_identifier;
+    public String getTradeIdentifier() {
+        return tradeIdentifier;
     }
 
-    public void setTrade_identifier(String trade_identifier) {
-        this.trade_identifier = trade_identifier;
+    public void setTradeIdentifier(String tradeIdentifier) {
+        this.tradeIdentifier = tradeIdentifier;
     }
 
-    private LocalDate trade_date;
+    private LocalDate tradeDate;
 
-    public Trade(String trade_id, String trade_identifier, String ticker_symbol, int quantity, double price, LocalDate trade_date) {
-        this.trade_id = trade_id;
-        this.trade_identifier = trade_identifier;
-        this.ticker_symbol = ticker_symbol;
+    public Trade(String tradeId, String tradeIdentifier, String tickerSymbol, int quantity, double price, LocalDate tradeDate) {
+        this.tradeId = tradeId;
+        this.tradeIdentifier = tradeIdentifier;
+        this.tickerSymbol = tickerSymbol;
         this.quantity = quantity;
         this.price = price;
-        this.trade_date = trade_date;
+        this.tradeDate = tradeDate;
     }
 
 
-    public String getTrade_id() {
-        return trade_id;
+    public String getTradeId() {
+        return tradeId;
     }
 
-    public void setTrade_id(String trade_id) {
-        this.trade_id = trade_id;
+    public void setTradeId(String tradeId) {
+        this.tradeId = tradeId;
     }
 
-    public String getTicker_symbol() {
-        return ticker_symbol;
+    public String getTickerSymbol() {
+        return tickerSymbol;
     }
 
-    public void setTicker_symbol(String ticker_symbol) {
-        this.ticker_symbol = ticker_symbol;
+    public void setTickerSymbol(String tickerSymbol) {
+        this.tickerSymbol = tickerSymbol;
     }
 
     public int getQuantity() {
@@ -62,23 +62,23 @@ public class Trade {
         this.price = price;
     }
 
-    public LocalDate getTrade_date() {
-        return trade_date;
+    public LocalDate getTradeDate() {
+        return tradeDate;
     }
 
-    public void setTrade_date(LocalDate trade_date) {
-        this.trade_date = trade_date;
+    public void setTradeDate(LocalDate tradeDate) {
+        this.tradeDate = tradeDate;
     }
 
     @Override
     public String toString() {
         return "Trade{" +
-                "trade_id='" + trade_id + '\'' +
-                ", trade_identifier='" + trade_identifier + '\'' +
-                ", ticker_symbol='" + ticker_symbol + '\'' +
+                "trade_id='" + tradeId + '\'' +
+                ", trade_identifier='" + tradeIdentifier + '\'' +
+                ", ticker_symbol='" + tickerSymbol + '\'' +
                 ", quantity=" + quantity +
                 ", price=" + price +
-                ", trade_date=" + trade_date +
+                ", trade_date=" + tradeDate +
                 '}';
     }
 }

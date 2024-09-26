@@ -11,7 +11,11 @@ import static trading_parser.service.TradeParserEngine.successfullInsertsCount;
 import static trading_parser.service.TradeParserEngine.udpateInsertionLogs;
 
 public class TradeParserRepo {
-    public static int batchSize = 5;
+    public static final int batchSize = 5;
+
+    private TradeParserRepo(){
+
+    }
     //Repo
     public static void insertTrades(Connection connection, Logger logger, List<Trade> tradesList) throws SQLException {
         int originalSizeOfTable = getTradeTableSize(connection);
@@ -22,14 +26,15 @@ public class TradeParserRepo {
                     values (?, ?, ?, ?, ?, ?)
                     """;
             PreparedStatement psInsertQuery = connection.prepareStatement(insertionQuery);
-            int counter = 0, tradesBatched = 0;
+            int counter = 0;
+            int tradesBatched = 0;
             for (Trade trade : tradesList) {
-                psInsertQuery.setString(1, trade.getTrade_id());
-                psInsertQuery.setString(2, trade.getTrade_identifier());
-                psInsertQuery.setString(3, trade.getTicker_symbol());
+                psInsertQuery.setString(1, trade.getTradeId());
+                psInsertQuery.setString(2, trade.getTradeIdentifier());
+                psInsertQuery.setString(3, trade.getTickerSymbol());
                 psInsertQuery.setInt(4, trade.getQuantity());
                 psInsertQuery.setDouble(5, trade.getPrice());
-                psInsertQuery.setDate(6, Date.valueOf(trade.getTrade_date()));
+                psInsertQuery.setDate(6, Date.valueOf(trade.getTradeDate()));
                 psInsertQuery.addBatch();
                 counter++;
                 tradesBatched++;
@@ -44,7 +49,7 @@ public class TradeParserRepo {
             int[] failureLog = e.getUpdateCounts();
             for(int i = 0 ; i < failureLog.length; i++){
                 if(failureLog[i] < 0){
-                    logger.log(Level.WARNING, "Insertion Error: Failed to insert -> " + tradesList.get(batchNumber*batchSize + i));
+                    logger.log(Level.WARNING, "Insertion Error: Failed to insert -> " + tradesList.get(batchNumber* batchSize + i));
                 }
             }
             udpateInsertionLogs(connection, tradesList, originalSizeOfTable);
@@ -56,10 +61,8 @@ public class TradeParserRepo {
 
     //Repo
     public static int getTradeTableSize(Connection connection){
-        try{
-            String query = "select count(*) as total_trades from Trades;";
-            PreparedStatement psQuery = connection.prepareStatement(query);
-
+        String query = "select count(*) as total_trades from Trades;";
+        try(PreparedStatement psQuery = connection.prepareStatement(query)){
             ResultSet rsQuery = psQuery.executeQuery();
             if(rsQuery.next()) {
                 return rsQuery.getInt("total_trades");
@@ -74,15 +77,11 @@ public class TradeParserRepo {
             String lookupQuery = "select 1 from SecuritiesReference where symbol = ?";
             PreparedStatement psLookUp = conn.prepareStatement(lookupQuery);
 
-            psLookUp.setString(1, trade.getTicker_symbol());
+            psLookUp.setString(1, trade.getTickerSymbol());
 
             ResultSet rsLookUp = psLookUp.executeQuery();
-            if (rsLookUp.next()) {
-                return true;
-            } else {
-                return false;
-            }
 
+            return rsLookUp.next();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             return false;

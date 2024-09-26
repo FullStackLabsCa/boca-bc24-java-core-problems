@@ -12,7 +12,6 @@ import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
 
 import static trading_parser.service.TradeParserEngine.failedInsertsCount;
 import static trading_parser.service.TradeParserEngine.successfullInsertsCount;

@@ -1,7 +1,6 @@
 package trading_parser.service;
 
 import trading_parser.model.Trade;
-import trading_parser.utility.HitErrorsThresholdException;
 import trading_parser.utility.InvalidThresholdValueException;
 
 import java.io.BufferedReader;
@@ -20,7 +19,6 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import static trading_parser.repo.TradeParserRepo.*;
 import static trading_parser.utility.TradeParseUtility.*;
@@ -28,7 +26,7 @@ import static trading_parser.utility.TradeParseUtility.*;
 public class TradeParserEngine {
 
     public static int successfullInsertsCount = 0, failedInsertsCount = 0;
-    public static int fileReadErrorCount = 0, fileReadSuccessCount = 0, fileReadTries = 0;
+    public static int fileReadErrorCount = 0, fileReadSuccessCount = 0,fileReadTries = 0;
     public static double threshold = 25;
 
     public static String getFileNameFromCommandLine(Scanner scanner){
@@ -122,7 +120,7 @@ public class TradeParserEngine {
                     } else {
                         fileReadErrorCount++;
                         fileReader.nextLine();
-                        logger.log(Level.WARNING, "Invalid security Symbol: " + trade.getTicker_symbol() + ", Trade_ID: " + trade.getTrade_id());
+                        logger.log(Level.WARNING, "Invalid security Symbol: " + trade.getTickerSymbol() + ", Trade_ID: " + trade.getTradeId());
                     }
                     //Execute insertion
                     if ((tradeslist.size() >= batchSize)) {

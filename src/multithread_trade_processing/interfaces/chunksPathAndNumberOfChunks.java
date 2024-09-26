@@ -1,11 +1,11 @@
 package multithread_trade_processing.interfaces;
 
-public record chunksPathAndNumberOfChunks(String filePath, int numberOfFiles) {
+public record chunksPathAndNumberOfChunks(String folderPath, int numberOfFiles) {
 
     @Override
     public String toString() {
         return "chunksPathAndNumberOfChunks{" +
-                "filePath=" + filePath +
+                "filePath=" + folderPath +
                 ", numberOfFiles=" + numberOfFiles +
                 '}';
     }
