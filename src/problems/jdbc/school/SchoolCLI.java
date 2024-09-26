@@ -1,4 +1,4 @@
-package problems.jdbc;
+package problems.jdbc.school;
 
 import java.util.Scanner;
 

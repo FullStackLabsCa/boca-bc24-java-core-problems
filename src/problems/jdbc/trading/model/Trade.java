@@ -58,16 +58,4 @@ public class Trade {
     public int hashCode() {
         return Objects.hash(tradeId, tradeIdentifier, tickerSymbol, quantity, price, tradeDate);
     }
-
-    @Override
-    public String toString() {
-        return "Trade{" +
-                "tradeId='" + tradeId + '\'' +
-                ", tradeIdentifier='" + tradeIdentifier + '\'' +
-                ", tickerSymbol='" + tickerSymbol + '\'' +
-                ", quantity=" + quantity +
-                ", price=" + price +
-                ", tradeDate=" + tradeDate +
-                '}';
-    }
 }

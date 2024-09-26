@@ -4,12 +4,16 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 public class DatabaseConnection {
+    private DatabaseConnection() {
+
+    }
+
     // Configure HikariCP connection pool
-    public static HikariDataSource configureHikariCP(String port, String databaseName) {
+    public static HikariDataSource configureHikariCP(String port, String databaseName, String password) {
         HikariConfig config = new HikariConfig();
         config.setJdbcUrl("jdbc:mysql://localhost:" + port + "/" + databaseName);
         config.setUsername("root");
-        config.setPassword("password123");
+        config.setPassword(password);
 
         // Optional HikariCP settings
         config.setMaximumPoolSize(10); // Max 10 connections in the pool

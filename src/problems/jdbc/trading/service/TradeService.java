@@ -14,31 +14,30 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class TradeService implements ReadFileInterface, ThresholdInterface, ReadAndWriteErrorLog, PrintSummaryInterface {
-    static HikariDataSource dataSource;
+    HikariDataSource dataSource;
 
     @Override
     public void readFileAndInitializeDataSource(String path, double thresholdValue, HikariDataSource hikariDataSource) {
-        ErrorChecking errorChecking = new ErrorChecking();
         dataSource = hikariDataSource;
-        errorChecking.setThreshold(thresholdValue);
-        if (errorChecking.getThreshold() == 0) errorChecking.setThreshold(fetchThresholdValue());
+        ErrorChecking.setThreshold(thresholdValue);
+        if (ErrorChecking.getThreshold() == 0) ErrorChecking.setThreshold(fetchThresholdValue());
         try {
-            Map<Integer, Trade> trades = readCSVFile(path, errorChecking);
+            Map<Integer, Trade> trades = readCSVFile(path);
             InsertTradeRepository insertTradeRepository = new InsertTradeRepository();
-            if (!trades.isEmpty()) insertTradeRepository.insertTrade(trades, dataSource, errorChecking);
+            if (!trades.isEmpty()) insertTradeRepository.insertTrade(trades, dataSource);
         } catch (HitErrorsThresholdException | IOException e) {
             System.out.println(e.getMessage());
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println("SQL Exception");
         } finally {
-            printSummary(errorChecking.getRecords(), errorChecking.getInsertions(), errorChecking.getErrorCount());
+            printSummary(ErrorChecking.getRecords(), ErrorChecking.getInsertions(), ErrorChecking.getErrorCount());
         }
     }
 
     @Override
     public double fetchThresholdValue() {
         Properties properties = new Properties();
-        double localThreshold;
+        double localThreshold = 0;
         try (InputStream input = TradeService.class.getClassLoader().getResourceAsStream("application.properties")) {
             if (input == null) {
                 System.out.println("Sorry, unable to find application.properties");
@@ -49,7 +48,7 @@ public class TradeService implements ReadFileInterface, ThresholdInterface, Read
             if (localThreshold < 1 || localThreshold > 100)
                 throw new InvalidThresholdValueException("Enter valid value");
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("File not found Exception.");
         } catch (NumberFormatException e) {
             throw new InvalidThresholdValueException("Enter valid value");
         }
@@ -57,28 +56,28 @@ public class TradeService implements ReadFileInterface, ThresholdInterface, Read
     }
 
     @Override
-    public Map<Integer, Trade> readCSVFile(String path, ErrorChecking errorChecking) throws IOException,
+    public Map<Integer, Trade> readCSVFile(String path) throws IOException,
             HitErrorsThresholdException {
-        BufferedReader reader = new BufferedReader(new FileReader(path));
-        String line;
-        reader.readLine();
-        Map<Integer, Trade> trades = new HashMap<>();
-        while ((line = reader.readLine()) != null) {
-            errorChecking.incrementRecordCount();
-            Trade trade = createTradeRecord(line);
-            if (trade != null) {
-                trades.put(errorChecking.getRecords(), trade);
-            } else {
-                errorChecking.incrementErrorCount();
-                readFromFileErrorLog("/Users/Anant.Jain/source/student/boca-bc24-java-core-problems/src/problems/jdbc" +
-                                "/trading/logs/readerErrorLog.txt",
-                        new Date() + " - parsing failed at line number -> " + errorChecking.getErrorCount());
+        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
+            String line = reader.readLine();
+            Map<Integer, Trade> trades = new HashMap<>();
+            while ((line = reader.readLine()) != null) {
+                ErrorChecking.incrementRecordCount();
+                Trade trade = createTradeRecord(line);
+                if (trade != null) {
+                    trades.put(ErrorChecking.getRecords(), trade);
+                } else {
+                    ErrorChecking.incrementErrorCount();
+                    readFromFileErrorLog("/Users/Anant.Jain/source/student/boca-bc24-java-core-problems/src/problems/jdbc" +
+                                    "/trading/logs/readerErrorLog.txt",
+                            new Date() + " - parsing failed at line number -> " + ErrorChecking.getErrorCount());
+                }
             }
+            if (isThresholdExceeded()) {
+                throw new HitErrorsThresholdException("File parsing failed...");
+            }
+            return trades;
         }
-        if (isThresholdExceeded(errorChecking)) {
-            throw new HitErrorsThresholdException("File parsing failed...");
-        }
-        return trades;
     }
 
     @Override
@@ -105,8 +104,7 @@ public class TradeService implements ReadFileInterface, ThresholdInterface, Read
             writer.write(line);
             writer.newLine();  // Add a new line
         } catch (IOException e) {
-            System.out.println("An error occurred.");
-            System.out.println(e);
+            System.out.println("An error occurred while writing read file error log.");
         }
     }
 
@@ -116,14 +114,27 @@ public class TradeService implements ReadFileInterface, ThresholdInterface, Read
             writer.write(line);
             writer.newLine();  // Add a new line
         } catch (IOException e) {
-            System.out.println("An error occurred.");
-            System.out.println(e);
+            System.out.println("An error occurred while writing insertion error log.");
         }
     }
 
     @Override
-    public boolean isThresholdExceeded(ErrorChecking errorChecking) {
-        double errorRate = ((double) errorChecking.getErrorCount() / errorChecking.getRecords()) * 100;
-        return errorRate > errorChecking.getThreshold();
+    public boolean isThresholdExceeded() {
+        double errorRate = ((double) ErrorChecking.getErrorCount() / ErrorChecking.getRecords()) * 100;
+        return errorRate > ErrorChecking.getThreshold();
+    }
+
+    @Override
+    public double validateThreshold(String thresholdString) throws InvalidThresholdValueException {
+        double threshold = 0;
+        try {
+            threshold = Double.parseDouble(thresholdString);
+            if (threshold < 1 || threshold > 100)
+                throw new InvalidThresholdValueException("Enter a valid threshold value" +
+                        ".");
+        } catch (NumberFormatException e) {
+            throw new InvalidThresholdValueException("Enter a valid threshold value.");
+        }
+        return threshold;
     }
 }

@@ -9,5 +9,5 @@ import java.sql.SQLException;
 import java.util.Map;
 
 public interface TradeRepositoryInterface {
-    void insertTrade(Map<Integer, Trade> trades, HikariDataSource dataSource, ErrorChecking errorChecking) throws HitErrorsThresholdException, SQLException;
+    void insertTrade(Map<Integer, Trade> trades, HikariDataSource dataSource) throws HitErrorsThresholdException, SQLException;
 }

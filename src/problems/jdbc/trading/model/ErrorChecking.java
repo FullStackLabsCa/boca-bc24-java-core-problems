@@ -1,51 +1,55 @@
 package problems.jdbc.trading.model;
 
 public class ErrorChecking {
-    static double threshold;
-    static int records;
-    static int errorCount;
-    static int insertions;
+    static double threshold = 0;
+    static int records = 0;
+    static int errorCount = 0;
+    static int insertions = 0;
 
-    public ErrorChecking() {
-        threshold = 0;
-        records = 0;
-        errorCount = 0;
-        insertions = 0;
+    private ErrorChecking() {
     }
 
-    public double getThreshold() {
+    public static double getThreshold() {
         return threshold;
     }
 
-    public void setThreshold(double thresholdValue) {
+    public static void setThreshold(double thresholdValue) {
         threshold = thresholdValue;
     }
 
-    public int getRecords() {
+    public static void setRecords(int recordsCount) {
+        records = recordsCount;
+    }
+
+    public static int getRecords() {
         return records;
     }
 
-    public void incrementRecordCount() {
+    public static void incrementRecordCount() {
         records++;
     }
 
-    public int getErrorCount() {
+    public static void setErrorCount(int error) {
+        errorCount = error;
+    }
+
+    public static int getErrorCount() {
         return errorCount;
     }
 
-    public void incrementErrorCount() {
+    public static void incrementErrorCount() {
         errorCount++;
     }
 
-    public void incrementInsertions(int batch) {
+    public static void incrementInsertions(int batch) {
         insertions += batch;
     }
 
-    public void setInsertions(int value) {
+    public static void setInsertions(int value) {
         insertions = value;
     }
 
-    public int getInsertions() {
+    public static int getInsertions() {
         return insertions;
     }
 }

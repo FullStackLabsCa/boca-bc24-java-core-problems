@@ -9,42 +9,29 @@ import java.util.Scanner;
 
 public class TradingRunner {
     public static void main(String[] args) {
+        HikariDataSource dataSource = DatabaseConnection.configureHikariCP("3306", "transactions", "password123");
         Scanner scanner = new Scanner(System.in);
-        String caseType;
-        double threshold = 0;
         System.out.println("Enter which case you want to run: case1, case2, exit: ");
-        caseType = scanner.nextLine();
-        if (!caseType.equalsIgnoreCase("exit")) {
-            HikariDataSource dataSource = DatabaseConnection.configureHikariCP("3306", "transactions");
-            System.out.println("Enter the file path: ");
-            String path = "/Users/Anant.Jain/source/student/boca-bc24-java-core-problems/src/problems/jdbc/trading/assets/trades_sample_1000.csv";
-            if (caseType.equalsIgnoreCase("case1")) {
+        String caseType = scanner.nextLine();
+        System.out.println("Enter the file path: ");
+        String path = scanner.nextLine();
+        TradeService tradeService = new TradeService();
+        if (caseType.equalsIgnoreCase("case1")) {
+            double threshold = 0;
+            while (threshold == 0) {
                 System.out.println("Enter threshold value: ");
-                do {
-                    try {
-                        try {
-                            threshold = scanner.nextDouble();
-                            if (threshold < 1 || threshold > 100)
-                                throw new InvalidThresholdValueException("Enter a valid threshold value.");
-                            else {
-                                TradeService tradeService = new TradeService();
-                                tradeService.readFileAndInitializeDataSource(path, threshold, dataSource);
-                            }
-
-                        } catch (InvalidThresholdValueException e) {
-                            System.out.println(e.getMessage());
-                        } catch (Exception e) {
-                            throw new InvalidThresholdValueException("Enter a valid threshold value.");
-                        }
-                    } catch (InvalidThresholdValueException e) {
-                        System.out.println(e.getMessage());
-                        scanner.nextLine();
-                    }
-                } while (threshold == 0);
-            } else if (caseType.equalsIgnoreCase("case2")) {
-                TradeService tradeService = new TradeService();
-                tradeService.readFileAndInitializeDataSource(path, 0, dataSource);
+                String thresholdString = scanner.nextLine();
+                try {
+                    threshold = tradeService.validateThreshold(thresholdString);
+                } catch (InvalidThresholdValueException e) {
+                    System.out.println(e.getMessage());
+                }
             }
+            tradeService.readFileAndInitializeDataSource(path, threshold, dataSource);
+        } else if (caseType.equalsIgnoreCase("case2")) {
+            tradeService.readFileAndInitializeDataSource(path, 0, dataSource);
         }
     }
+
+
 }

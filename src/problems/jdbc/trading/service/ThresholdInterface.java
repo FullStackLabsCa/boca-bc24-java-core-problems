@@ -1,6 +1,6 @@
 package problems.jdbc.trading.service;
 
-import problems.jdbc.trading.model.ErrorChecking;
+import problems.jdbc.trading.exception.InvalidThresholdValueException;
 import problems.jdbc.trading.model.Trade;
 
 public interface ThresholdInterface {
@@ -8,5 +8,7 @@ public interface ThresholdInterface {
 
     double fetchThresholdValue();
 
-    boolean isThresholdExceeded(ErrorChecking errorChecking);
+    boolean isThresholdExceeded();
+
+    double validateThreshold(String thresholdString) throws InvalidThresholdValueException;
 }

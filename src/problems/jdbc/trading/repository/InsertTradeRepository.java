@@ -17,15 +17,14 @@ import java.util.Map;
 public class InsertTradeRepository implements TradeRepositoryInterface, MatchSecuritiesInterface {
 
     @Override
-    public void insertTrade(Map<Integer, Trade> trades, HikariDataSource dataSource, ErrorChecking errorChecking) throws HitErrorsThresholdException, SQLException {
+    public void insertTrade(Map<Integer, Trade> trades, HikariDataSource dataSource) throws HitErrorsThresholdException, SQLException {
         String query = "Insert into Trades (trade_id, trade_identifier, ticker_symbol, quantity, price, " +
                 "trade_date) values(?, ?, ?, ?, ?, ?)";
-        Connection connection = null;
+        Connection connection = dataSource.getConnection();
         TradeService tradeService = new TradeService();
-        try {
-            connection = dataSource.getConnection();
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
             connection.setAutoCommit(false);
-            PreparedStatement stmt = connection.prepareStatement(query);
+
             int batchSize = 50;
             int batchNumber = 0;
             ArrayList<Integer> recordNumbers = new ArrayList<>(trades.keySet());
@@ -41,30 +40,30 @@ public class InsertTradeRepository implements TradeRepositoryInterface, MatchSec
                     batchNumber++;
                     if (recordNumbers.size() - 1 == recordNumbers.indexOf(recordNumber) || batchNumber == batchSize) {
                         stmt.executeBatch();
-                        errorChecking.incrementInsertions(batchNumber);
+                        ErrorChecking.incrementInsertions(batchNumber);
                         batchNumber = 0;
                     }
                 } else {
-                    errorChecking.incrementErrorCount();
+                    ErrorChecking.incrementErrorCount();
                     tradeService.writeErrorLog("/Users/Anant.Jain/source/student/boca-bc24-java-core-problems/src" +
                                     "/problems/jdbc/trading/logs/writerErrorLog.txt",
                             new Date() + " Insertion error on line " + recordNumber + " -> ERROR: Invalid " +
                                     "ticker_symbol.");
-                    if (tradeService.isThresholdExceeded(errorChecking)) {
+                    if (tradeService.isThresholdExceeded()) {
                         connection.rollback();
-                        errorChecking.setInsertions(0);
+                        ErrorChecking.setInsertions(0);
                         throw new HitErrorsThresholdException("Insertion failed...Threshold limit reached.");
                     } else if (recordNumbers.size() - 1 == recordNumbers.indexOf(recordNumber)) {
                         stmt.executeBatch();
-                        errorChecking.incrementInsertions(batchNumber);
+                        ErrorChecking.incrementInsertions(batchNumber);
                         batchNumber = 0;
                     }
                 }
             }
             connection.commit();
         } catch (SQLException e) {
-            if (connection != null) connection.rollback();
-            errorChecking.setInsertions(0);
+            connection.rollback();
+            ErrorChecking.setInsertions(0);
             System.out.println(e.getMessage());
         } finally {
             if (connection != null) connection.setAutoCommit(true);
@@ -74,9 +73,8 @@ public class InsertTradeRepository implements TradeRepositoryInterface, MatchSec
     @Override
     public boolean matchSecurities(Connection connection, String symbol) {
         boolean exists = false;
-        try {
-            String query = "Select 1 from SecuritiesReference where symbol = ?";
-            PreparedStatement stmt = connection.prepareStatement(query);
+        String query = "Select 1 from SecuritiesReference where symbol = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, symbol);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
