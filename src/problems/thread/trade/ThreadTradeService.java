@@ -14,6 +14,8 @@ public class ThreadTradeService {
     public static boolean isFileExist = false;
     public static boolean isThresholdValid = false;
     public static String filePath = "";
+    // ANSI escape codes for colors
+    public static final String ANSI_GREEN = "\u001B[32m";
 
     public static void checkWriteLogFileExistOrNot() {
         if (writeFile.exists()) {

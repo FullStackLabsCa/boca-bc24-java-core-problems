@@ -13,5 +13,6 @@
     <orderEntry type="library" name="ch.qos.logback.classic" level="project" />
     <orderEntry type="library" name="mysql-connector-j-9.0.0" level="project" />
     <orderEntry type="library" name="zaxxer.HikariCP" level="project" />
+    <orderEntry type="library" name="name.remal.gradle.plugins.sonarlint" level="project" />
   </component>
 </module>

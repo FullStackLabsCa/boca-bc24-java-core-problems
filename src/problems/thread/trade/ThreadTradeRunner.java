@@ -4,6 +4,7 @@ package problems.thread.trade;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+@SuppressWarnings("java:S106")
 public class ThreadTradeRunner {
     public static void main(String[] args) throws FileNotFoundException {
         // read file and load data into the list
@@ -14,6 +15,6 @@ public class ThreadTradeRunner {
         tradeFileReader.fileReader(fileName);
 
         //generating chunk files
-        ChunkFileGenerator.chunkGenerator(ThreadTradeService.filePath);
+        new ChunkFileGenerator();
     }
 }

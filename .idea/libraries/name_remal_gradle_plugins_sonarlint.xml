@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="name.remal.gradle.plugins.sonarlint" type="repository">
+    <properties maven-id="name.remal.gradle-plugins.sonarlint:sonarlint:4.2.6" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/name/remal/gradle-plugins/sonarlint/sonarlint/4.2.6/sonarlint-4.2.6.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
