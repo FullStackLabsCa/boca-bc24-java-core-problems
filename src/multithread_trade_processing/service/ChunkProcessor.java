@@ -20,10 +20,14 @@ public class ChunkProcessor{
         List<String> filePaths = getFilesFromFolder(folderPath);
 
         int numberOfThreads = 10;
+        int filesSubmitted = 0;
         ExecutorService executorService = Executors.newFixedThreadPool(numberOfThreads);
 
         for (int i = 0; i < numberOfThreads; i++) {
-            executorService.submit(new ChunkProcessorTask(filePaths));
+            if(filesSubmitted <= numberOfFiles) {
+                executorService.submit(new ChunkProcessorTask(filePaths.get(filesSubmitted)));
+                filesSubmitted++;
+            }
         }
 
         executorService.shutdown();

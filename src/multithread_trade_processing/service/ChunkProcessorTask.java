@@ -6,24 +6,21 @@ import multithread_trade_processing.repo.PayloadDatabaseRepo;
 
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.List;
 import java.util.Scanner;
 
 import static multithread_trade_processing.service.ChunkProcessor.*;
 
 public class ChunkProcessorTask implements Runnable, ChunkProcessing {
 
-    List<String> filePaths;
+    String filePath;
 
-    public ChunkProcessorTask(List<String> filePaths) {
-        this.filePaths = filePaths;
+    public ChunkProcessorTask(String filePath) {
+        this.filePath = filePath;
     }
 
     @Override
     public void run() {
-        for(String filePath : filePaths){
             processChunk(filePath);
-        }
     }
 
     @Override

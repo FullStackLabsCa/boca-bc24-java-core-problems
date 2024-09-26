@@ -52,13 +52,12 @@ public class TradeReader implements TradeReading {
     }
 
     public static void main(String[] args) {
-        TradeReader reader = new TradeReader();
+        String folderPath = "/Users/Akshat.Singla/Downloads/code/practice-problems/student-codebase/boca-bc24-java-core-problems/src/multithread_trade_processing";
 
-        chunksPathAndNumberOfChunks result =  reader.readFileAndCreateChunks("/Users/Akshat.Singla/Downloads/code/practice-problems/student-codebase/boca-bc24-java-core-problems/src/multithread_trade_processing/trades.csv", null);
-        System.out.println("result = " + result);
+        TradeReader reader = new TradeReader();
+        chunksPathAndNumberOfChunks result =  reader.readFileAndCreateChunks(folderPath+"/trades.csv", null);
 
         ChunkProcessor chunkProcessor = new ChunkProcessor();
-
         chunkProcessor.startChunkProcessorPool(result.folderPath(), result.numberOfFiles());
     }
 }

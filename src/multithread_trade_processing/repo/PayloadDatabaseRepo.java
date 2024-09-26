@@ -3,7 +3,7 @@ package multithread_trade_processing.repo;
 import java.sql.*;
 
 public class PayloadDatabaseRepo {
-    String URL = "";
+    String URL = "jdbc:mysql://localhost:3306/bootcamp";
     String USER = "root";
     String PASS = "password123";
 
@@ -19,7 +19,7 @@ public class PayloadDatabaseRepo {
             psQuery.executeUpdate();
 
         } catch (SQLException e){
-            throw new RuntimeException();
+            System.out.println(e.getMessage());
         }
     }
 }
