@@ -2,7 +2,7 @@ package problems.tradefileparser;
 
 import problems.tradefileparser.controller.TradeDOAImplementation;
 import problems.tradefileparser.controller.TradeDOA;
-import problems.tradefileparser.databaseConnection.HikariCP;
+import problems.tradefileparser.databaseconnection.HikariCP;
 import problems.tradefileparser.model.TradeModel;
 import problems.tradefileparser.reader.ThresholdReader;
 import problems.tradefileparser.reader.ThresholdReaderImplementation;

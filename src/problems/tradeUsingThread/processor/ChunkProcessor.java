@@ -2,16 +2,22 @@ package problems.tradeUsingThread.processor;
 
 import problems.tradeUsingThread.databaseConnection.HikariCP;
 
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.Scanner;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class ChunkProcessor implements Runnable{
     static String filePath;
+    LinkedBlockingQueue queue1= new LinkedBlockingQueue<>();
+    LinkedBlockingQueue queue2= new LinkedBlockingQueue<>();
+    LinkedBlockingQueue queue3= new LinkedBlockingQueue<>();
+
+    ConcurrentHashMap<String, String> tradeQueueMap = new ConcurrentHashMap<>();
 
     public ChunkProcessor(String filePath) {
         this.filePath= filePath;

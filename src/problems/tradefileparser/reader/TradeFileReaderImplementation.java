@@ -26,20 +26,19 @@ public class TradeFileReaderImplementation implements TradeFileReader {
             while (scanner.hasNext()) {
                 try {
                     totalrows++;
-                    String trade_id = scanner.next();
-                    String trade_identifier = scanner.next();
-                    String ticker_symbol = scanner.next();
+                    String tradeId = scanner.next();
+                    String tradeIdentifier = scanner.next();
+                    String tickerSymbol = scanner.next();
                     int quantity = scanner.nextInt();
                     double price = scanner.nextDouble();
-                    String trade_date = scanner.next();
+                    String tradeDate = scanner.next();
 
-                    TradeModel tradeModel = new TradeModel(trade_id, trade_identifier, ticker_symbol, quantity, price, trade_date);
+                    TradeModel tradeModel = new TradeModel(tradeId, tradeIdentifier, tickerSymbol, quantity, price, tradeDate);
                     tradeList.add(tradeModel);
                     countSuccess++;
                 } catch (InputMismatchException e) {
                     countTry++;
                     System.err.println("Error at line: " + totalrows + " >>> " + scanner.next());
-                    e.printStackTrace();
                     if (scanner.hasNext()) {
                         scanner.nextLine();
                     }

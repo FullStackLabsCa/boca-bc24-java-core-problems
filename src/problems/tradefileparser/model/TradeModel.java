@@ -1,32 +1,32 @@
 package problems.tradefileparser.model;
 
 public class TradeModel {
-    private String trade_id;
-    private String trade_identifier;
-    private String ticker_symbol;
+    private String tradeId;
+    private String tradeIdentifier;
+    private String tickerSymbol;
     private int quantity;
     private double price;
-    private String trade_date;
+    private String tradeDate;
 
-    public TradeModel(String trade_id, String trade_identifier, String ticker_symbol, int quantity, double price, String trade_date) {
-        this.trade_id = trade_id;
-        this.trade_identifier = trade_identifier;
-        this.ticker_symbol = ticker_symbol;
+    public TradeModel(String tradeId, String tradeIdentifier, String tickerSymbol, int quantity, double price, String tradeDate) {
+        this.tradeId = tradeId;
+        this.tradeIdentifier = tradeIdentifier;
+        this.tickerSymbol = tickerSymbol;
         this.quantity = quantity;
         this.price = price;
-        this.trade_date = trade_date;
+        this.tradeDate = tradeDate;
     }
 
-    public String getTrade_id() {
-        return trade_id;
+    public String getTradeId() {
+        return tradeId;
     }
 
-    public String getTrade_identifier() {
-        return trade_identifier;
+    public String getTradeIdentifier() {
+        return tradeIdentifier;
     }
 
-    public String getTicker_symbol() {
-        return ticker_symbol;
+    public String getTickerSymbol() {
+        return tickerSymbol;
     }
 
     public int getQuantity() {
@@ -37,19 +37,19 @@ public class TradeModel {
         return price;
     }
 
-    public String getTrade_date() {
-        return trade_date;
+    public String getTradeDate() {
+        return tradeDate;
     }
 
     @Override
     public String toString() {
         return "model{" +
-                "trade_id='" + trade_id + '\'' +
-                "trade_identifier='" + trade_identifier + '\'' +
-                ", ticker_symbol='" + ticker_symbol + '\'' +
+                "trade_id='" + tradeId + '\'' +
+                "trade_identifier='" + tradeIdentifier + '\'' +
+                ", ticker_symbol='" + tickerSymbol + '\'' +
                 ", quantity=" + quantity +
                 ", price=" + price +
-                ", trade_date='" + trade_date + '\'' +
+                ", trade_date='" + tradeDate + '\'' +
                 '}';
     }
 }

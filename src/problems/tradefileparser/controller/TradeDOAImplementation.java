@@ -58,13 +58,13 @@ public class TradeDOAImplementation implements TradeDOA {
                 for (TradeModel trade : tradeModels) {
                     connection.setAutoCommit(false);
                     totalRowsToBeInserted++;
-                    if (allSymbolList.contains(trade.getTicker_symbol())) {
-                        preparedStatement.setString(1, trade.getTrade_id());
-                        preparedStatement.setString(2, trade.getTrade_identifier());
-                        preparedStatement.setString(3, trade.getTicker_symbol());
+                    if (allSymbolList.contains(trade.getTickerSymbol())) {
+                        preparedStatement.setString(1, trade.getTradeId());
+                        preparedStatement.setString(2, trade.getTradeIdentifier());
+                        preparedStatement.setString(3, trade.getTickerSymbol());
                         preparedStatement.setInt(4, trade.getQuantity());
                         preparedStatement.setDouble(5, trade.getPrice());
-                        preparedStatement.setString(6, trade.getTrade_date());
+                        preparedStatement.setString(6, trade.getTradeDate());
                         preparedStatement.addBatch();
                         totalRowsInserted++;
 
@@ -75,9 +75,9 @@ public class TradeDOAImplementation implements TradeDOA {
                             batchCount= 0;
                         }
                     } else {
-                        errorList.add(trade.getTrade_id());
-                        errorList.add(trade.getTrade_identifier());
-                        errorList.add(trade.getTicker_symbol());
+                        errorList.add(trade.getTradeId());
+                        errorList.add(trade.getTradeIdentifier());
+                        errorList.add(trade.getTickerSymbol());
                         errorList.add(String.valueOf(trade.getQuantity()));
                         errorList.add(String.valueOf(trade.getPrice()));
                         totalRowsFailedtoInsert++;
@@ -122,12 +122,12 @@ public class TradeDOAImplementation implements TradeDOA {
         File logFile = new File("errorLog.txt");
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(logFile, true))) {
             writer.write("Error inserting trade: ");
-            writer.write("Trade ID: " + trade.getTrade_id() + ", ");
-            writer.write("Trade Identifier: " + trade.getTrade_identifier() + ", ");
-            writer.write("Ticker Symbol: " + trade.getTicker_symbol() + ", ");
+            writer.write("Trade ID: " + trade.getTradeId() + ", ");
+            writer.write("Trade Identifier: " + trade.getTradeIdentifier() + ", ");
+            writer.write("Ticker Symbol: " + trade.getTickerSymbol() + ", ");
             writer.write("Quantity: " + trade.getQuantity() + ", ");
             writer.write("Price: " + trade.getPrice() + ", ");
-            writer.write("Trade Date: " + trade.getTrade_date());
+            writer.write("Trade Date: " + trade.getTradeDate());
             writer.newLine();
         } catch (IOException e) {
             System.err.println("Error writing to log file: " + e.getMessage());

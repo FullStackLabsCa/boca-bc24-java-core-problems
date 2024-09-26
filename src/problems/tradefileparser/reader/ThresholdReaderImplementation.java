@@ -6,9 +6,6 @@ import java.util.Properties;
 
 public class ThresholdReaderImplementation implements ThresholdReader {
 
-    public ThresholdReaderImplementation() {
-    }
-
     @Override
     public double readThreshold() {
 

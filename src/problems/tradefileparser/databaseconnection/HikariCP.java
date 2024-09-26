@@ -1,9 +1,10 @@
-package problems.tradefileparser.databaseConnection;
+package problems.tradefileparser.databaseconnection;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 
 public class HikariCP {
     static final HikariDataSource dataSource;
@@ -20,7 +21,7 @@ public class HikariCP {
         dataSource = new HikariDataSource(config);
     }
 
-    public static Connection getConnection() throws Exception {
+    public static Connection getConnection() throws SQLException {
         return dataSource.getConnection();
     }
 
