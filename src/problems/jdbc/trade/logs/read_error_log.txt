@@ -1,46 +1,29 @@
-#2 - 2024-09-25T09:34:55.248767 - [2,TDB_195199,SPOT,350,2735.94,2023-02-29] - date should in 'yyyy-MM-dd' format.
-#2 - 2024-09-25T09:40:42.399941 - [2,TDB_195199,SPOT,350,2735.94,2023-02-29] - date should in 'yyyy-MM-dd' format.
-#4 - 2024-09-25T09:40:42.402463 - [4,TDB_227475,DOCU,231,2052.41,2024-03-033] - date should in 'yyyy-MM-dd' format.
-#5 - 2024-09-25T09:40:42.402588 - [5,TDB_210749,GOOGL,470,2361.51,2024-07-223] - date should in 'yyyy-MM-dd' format.
-#6 - 2024-09-25T09:40:42.402690 - [6,TDB_171277,SNAP,11,2488.77,2024-08-153] - date should in 'yyyy-MM-dd' format.
-#7 - 2024-09-25T09:40:42.402794 - [7,TDB_232786,NKE,443,1800.6,2024-10-173] - date should in 'yyyy-MM-dd' format.
-#8 - 2024-09-25T09:40:42.402901 - [8,TDB_140202,T,2,1168.74,2024-04-243] - date should in 'yyyy-MM-dd' format.
-#9 - 2024-09-25T09:40:42.403004 - [9,TDB_192224,INTC,322,790.6,2024-09-323] - date should in 'yyyy-MM-dd' format.
-#10 - 2024-09-25T09:40:42.403106 - [10,TDB_182176,HOOD,114,778.68,2024-113-17] - date should in 'yyyy-MM-dd' format.
-#11 - 2024-09-25T09:40:42.403204 - [11,TDB_220892,WMT,23,1719.88,2024-02-234] - date should in 'yyyy-MM-dd' format.
-#12 - 2024-09-25T09:40:42.403297 - [12,TDB_205365,BABA,434,272.08,2024-12-031] - date should in 'yyyy-MM-dd' format.
-#13 - 2024-09-25T09:40:42.403395 - [13,TDB_218162,AAPL,422,1653.71,2024-12-233] - date should in 'yyyy-MM-dd' format.
-#2 - 2024-09-25T09:42:06.546281 - [2,TDB_195199,SPOT,350,2735.94,2023-02-29] - date should in 'yyyy-MM-dd' format.
-#4 - 2024-09-25T09:42:06.549214 - [4,TDB_227475,DOCU,231,2052.41,2024-03-033] - date should in 'yyyy-MM-dd' format.
-#5 - 2024-09-25T09:42:06.549386 - [5,TDB_210749,GOOGL,470,2361.51,2024-07-223] - date should in 'yyyy-MM-dd' format.
-#6 - 2024-09-25T09:42:06.549497 - [6,TDB_171277,SNAP,11,2488.77,2024-08-153] - date should in 'yyyy-MM-dd' format.
-#7 - 2024-09-25T09:42:06.549605 - [7,TDB_232786,NKE,443,1800.6,2024-10-173] - date should in 'yyyy-MM-dd' format.
-#8 - 2024-09-25T09:42:06.549712 - [8,TDB_140202,T,2,1168.74,2024-04-243] - date should in 'yyyy-MM-dd' format.
-#9 - 2024-09-25T09:42:06.549847 - [9,TDB_192224,INTC,322,790.6,2024-09-323] - date should in 'yyyy-MM-dd' format.
-#10 - 2024-09-25T09:42:06.549971 - [10,TDB_182176,HOOD,114,778.68,2024-113-17] - date should in 'yyyy-MM-dd' format.
-#11 - 2024-09-25T09:42:06.550078 - [11,TDB_220892,WMT,23,1719.88,2024-02-234] - date should in 'yyyy-MM-dd' format.
-#12 - 2024-09-25T09:42:06.550196 - [12,TDB_205365,BABA,434,272.08,2024-12-031] - date should in 'yyyy-MM-dd' format.
-#13 - 2024-09-25T09:42:06.550303 - [13,TDB_218162,AAPL,422,1653.71,2024-12-233] - date should in 'yyyy-MM-dd' format.
-#1 - 2024-09-25T09:42:26.155168 - [1,TDB_219848,124,350,178.82,2024-08-13] - ticker symbol should be <=5 length and only alphabets.
-#2 - 2024-09-25T09:42:26.155572 - [2,TDB_195199,SPOT,invalidquantity,2735.94,2024-01-06] - quantity is not a valid number.
-#1 - 2024-09-25T09:42:51.887396 - [1,TDB_219848,124,350,178.82,2024-08-13] - ticker symbol should be <=5 length and only alphabets.
-#2 - 2024-09-25T09:42:51.891641 - [2,TDB_195199,SPOT,invalidquantity,2735.94,2024-01-06] - quantity is not a valid number.
-#1 - 2024-09-25T09:42:58.998136 - [1,TDB_219848,124,350,178.82,2024-08-13] - ticker symbol should be <=5 length and only alphabets.
-#2 - 2024-09-25T09:42:59.003015 - [2,TDB_195199,SPOT,invalidquantity,2735.94,2024-01-06] - quantity is not a valid number.
-#1 - 2024-09-25T09:43:20.711671 - [1,TDB_219848,124,350,178.82,2024-08-13] - ticker symbol should be <=5 length and only alphabets.
-#2 - 2024-09-25T09:43:20.715996 - [2,TDB_195199,SPOT,invalidquantity,2735.94,2024-01-06] - quantity is not a valid number.
-#1 - 2024-09-25T09:44:41.156312 - [1,TDB_219848,124,350,178.82,2024-08-13] - ticker symbol should be <=5 length and only alphabets.
-#2 - 2024-09-25T09:44:41.160938 - [2,TDB_195199,SPOT,invalidquantity,2735.94,2024-01-06] - quantity is not a valid number.
-#2 - 2024-09-25T09:44:52.197643 - [2,TDB_195199,SPOT,350,2735.94,2023-02-29] - date should in 'yyyy-MM-dd' format.
-#4 - 2024-09-25T09:44:52.200360 - [4,TDB_227475,DOCU,231,2052.41,2024-03-033] - date should in 'yyyy-MM-dd' format.
-#5 - 2024-09-25T09:44:52.200550 - [5,TDB_210749,GOOGL,470,2361.51,2024-07-223] - date should in 'yyyy-MM-dd' format.
-#6 - 2024-09-25T09:44:52.200669 - [6,TDB_171277,SNAP,11,2488.77,2024-08-153] - date should in 'yyyy-MM-dd' format.
-#7 - 2024-09-25T09:44:52.200781 - [7,TDB_232786,NKE,443,1800.6,2024-10-173] - date should in 'yyyy-MM-dd' format.
-#8 - 2024-09-25T09:44:52.200883 - [8,TDB_140202,T,2,1168.74,2024-04-243] - date should in 'yyyy-MM-dd' format.
-#9 - 2024-09-25T09:44:52.200986 - [9,TDB_192224,INTC,322,790.6,2024-09-323] - date should in 'yyyy-MM-dd' format.
-#10 - 2024-09-25T09:44:52.201089 - [10,TDB_182176,HOOD,114,778.68,2024-113-17] - date should in 'yyyy-MM-dd' format.
-#11 - 2024-09-25T09:44:52.201197 - [11,TDB_220892,WMT,23,1719.88,2024-02-234] - date should in 'yyyy-MM-dd' format.
-#12 - 2024-09-25T09:44:52.201297 - [12,TDB_205365,BABA,434,272.08,2024-12-031] - date should in 'yyyy-MM-dd' format.
-#13 - 2024-09-25T09:44:52.201395 - [13,TDB_218162,AAPL,422,1653.71,2024-12-233] - date should in 'yyyy-MM-dd' format.
-#1 - 2024-09-25T09:45:28.265434 - [1,TDB_219848,124,350,178.82,2024-08-13] - ticker symbol should be <=5 length and only alphabets.
-#2 - 2024-09-25T09:45:28.265728 - [2,TDB_195199,SPOT,invalidquantity,2735.94,2024-01-06] - quantity is not a valid number.
+#1 - 2024-09-26T14:09:23.941874 - [1,TDB_219848,PYPL,hf,178.82,2024-08-13] - quantity is not a valid number.
+#2 - 2024-09-26T14:09:23.946275 - [1,TDB_219848,PYPL,hf,178.82,2024-08-13] - quantity is not a valid number.
+#3 - 2024-09-26T14:09:23.946488 - [1,TDB_219848,PYPL,hf,178.82,2024-08-13] - quantity is not a valid number.
+#4 - 2024-09-26T14:09:23.946605 - [,TDB_195199,SPOT,350,2735.94,2024-01-06] - trade data should not be empty.
+#5 - 2024-09-26T14:09:23.946690 - [3,TADB_135287,HOOD,287,717.59,2024-07-19] - trade identifier should start with prefix TDB.
+#6 - 2024-09-26T14:09:23.946773 - [4,TDB_227475,DOCU23,231,2052.41,2024-03-03] - ticker symbol should be <=5 length and only alphabets.
+#7 - 2024-09-26T14:09:23.946931 - [5,TDB_210749,GOOGL,470df,2361.51,2024-07-22] - quantity is not a valid number.
+#8 - 2024-09-26T14:09:23.947108 - [6,TDB_171277,SNAP,11,2488.77dfg,2024-08-15] - price is not a valid number.
+#15 - 2024-09-26T14:09:23.952049 - [13,TDB_218162,AAPL,422,1653.71,2024-12-2323] - date should be in 'yyyy-MM-dd' format.
+#1 - 2024-09-26T14:09:39.737120 - [1,TDB_219848,PYPL,hf,178.82,2024-08-13] - quantity is not a valid number.
+#2 - 2024-09-26T14:09:39.741456 - [1,TDB_219848,PYPL,hf,178.82,2024-08-13] - quantity is not a valid number.
+#3 - 2024-09-26T14:09:39.741719 - [1,TDB_219848,PYPL,hf,178.82,2024-08-13] - quantity is not a valid number.
+#4 - 2024-09-26T14:09:39.741839 - [,TDB_195199,SPOT,350,2735.94,2024-01-06] - trade data should not be empty.
+#5 - 2024-09-26T14:09:39.741924 - [3,TADB_135287,HOOD,287,717.59,2024-07-19] - trade identifier should start with prefix TDB.
+#6 - 2024-09-26T14:09:39.742007 - [4,TDB_227475,DOCU23,231,2052.41,2024-03-03] - ticker symbol should be <=5 length and only alphabets.
+#7 - 2024-09-26T14:09:39.742186 - [5,TDB_210749,GOOGL,470df,2361.51,2024-07-22] - quantity is not a valid number.
+#8 - 2024-09-26T14:09:39.742348 - [6,TDB_171277,SNAP,11,2488.77dfg,2024-08-15] - price is not a valid number.
+#15 - 2024-09-26T14:09:39.746997 - [13,TDB_218162,AAPL,422,1653.71,2024-12-2323] - date should be in 'yyyy-MM-dd' format.
+#1 - 2024-09-26T14:10:32.506521 - [1,TDB_219848,PYPL,hf,178.82,2024-08-13] - quantity is not a valid number.
+#2 - 2024-09-26T14:10:32.511119 - [1,TDB_219848,PYPL,hf,178.82,2024-08-13] - quantity is not a valid number.
+#3 - 2024-09-26T14:10:32.511344 - [1,TDB_219848,PYPL,hf,178.82,2024-08-13] - quantity is not a valid number.
+#4 - 2024-09-26T14:10:32.511469 - [,TDB_195199,SPOT,350,2735.94,2024-01-06] - trade data should not be empty.
+#5 - 2024-09-26T14:10:32.511567 - [3,TADB_135287,HOOD,287,717.59,2024-07-19] - trade identifier should start with prefix TDB.
+#6 - 2024-09-26T14:10:32.511643 - [4,TDB_227475,DOCU23,231,2052.41,2024-03-03] - ticker symbol should be <=5 length and only alphabets.
+#7 - 2024-09-26T14:10:32.511837 - [5,TDB_210749,GOOGL,470df,2361.51,2024-07-22] - quantity is not a valid number.
+#8 - 2024-09-26T14:10:32.512079 - [6,TDB_171277,SNAP,11,2488.77dfg,2024-08-15] - price is not a valid number.
+#15 - 2024-09-26T14:10:32.516943 - [13,TDB_218162,AAPL,422,1653.71,2024-12-2323] - date should be in 'yyyy-MM-dd' format.
+#1 - 2024-09-26T14:11:48.662497 - [1,TDB_219848,124,350,178.82,2024-08-13] - ticker symbol should be <=5 length and only alphabets.
+#2 - 2024-09-26T14:11:48.662757 - [2,TDB_195199,SPOT,invalidquantity,2735.94,2024-01-06] - quantity is not a valid number.

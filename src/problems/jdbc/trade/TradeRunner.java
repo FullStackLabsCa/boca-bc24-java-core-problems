@@ -7,6 +7,7 @@ import jdbc.trade.service.TradeService;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Properties;
 import java.util.Scanner;
 
@@ -57,46 +58,49 @@ public class TradeRunner {
 
     // Get threshold value from application properties
     public static double getThresholdFromApplicationProperties () {
-        double errorThreshold;
+        double errorThreshold = 0;
         Properties properties = new Properties();
-        try {
-            properties.load(new FileReader("/Users/Kiran.Virani/reactivestax/source/boca-bc24-java-core-problems/src/problems/jdbc/trade/resources/application.properties"));
+        try (FileReader reader = new FileReader("/Users/Kiran.Virani/reactivestax/source/boca-bc24-java-core-problems/src/problems/jdbc/trade/resources/application.properties")) {
+            properties.load(reader);
 
             errorThreshold = Double.parseDouble(properties.getProperty("error.threshold"));
             if (errorThreshold < 1 || errorThreshold > 100) {
                 throw new InvalidThresholdValueRuntimeException("Please fix the application properties it should be double and within a range 1-100");
             }
-            return errorThreshold;
         } catch (IOException e) {
-            throw new RuntimeException("Error loading properties file", e);
+            System.out.println("Error loading properties file." + e.getMessage());
         } catch (NumberFormatException e) {
-            throw new RuntimeException("Invalid input. Please try again with a valid decimal value.", e);
+            System.out.println("Invalid input. Please try again with a valid decimal value." + e.getMessage());
         }
+        return errorThreshold;
     }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String filePath;
-        double ERROR_THRESHOLD = 25;
+        double errorThreshold = 25;
 
        filePath = getFilePathFromUser();
 
-        System.out.println("How you wanna determine threshold::\n " +
-                "1. User Input\n 2. Application Properties \n default. 25%");
-        int option = scanner.nextInt();
-        switch (option) {
-            case 1:
-                ERROR_THRESHOLD = getThresholdValueFromUser();
-                break;
-            case 2:
-                ERROR_THRESHOLD = getThresholdFromApplicationProperties();
-                break;
-            default:
-                System.out.println("Processing with default threshold " + ERROR_THRESHOLD);
-                break;
-        }
+        System.out.println("How you wanna take error threshold::\n1. User Input\n2. Application Properties \ndefault. 25%");
 
-        TradeService.setupDbConnectionAndReadFile(filePath, ERROR_THRESHOLD);
+        try {
+            int option = scanner.nextInt();
+            switch (option) {
+                case 1:
+                    errorThreshold = getThresholdValueFromUser();
+                    break;
+                case 2:
+                    errorThreshold = getThresholdFromApplicationProperties();
+                    break;
+                default:
+                    System.out.println("Processing with default threshold " + errorThreshold);
+                    break;
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Please enter a valid number input");
+        }
+        TradeService.setupDbConnectionAndReadFile(filePath, errorThreshold);
     }
 }
 

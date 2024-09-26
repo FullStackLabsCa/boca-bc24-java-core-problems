@@ -10,9 +10,11 @@ import jdbc.trade.tradecontract.TradeFileReader;
 import java.util.List;
 
 public class TradeService {
-    private static HikariDataSource dataSource;
+
+    private TradeService() {}
 
     public static void setupDbConnectionAndReadFile(String filePath, double errorThreshold) {
+        HikariDataSource dataSource;
         DatabaseConnection mysqlDbConnection = new MysqlDBConnection();
         dataSource = mysqlDbConnection.configureHikariCP("jdbc:mysql://localhost:3306/bootcamp");
 

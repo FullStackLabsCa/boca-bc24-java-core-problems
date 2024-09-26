@@ -4,15 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a728a69e-e34c-4470-8a4f-1ba09e798df3" name="Changes" comment="Trade data problem">
+    <list default="true" id="a728a69e-e34c-4470-8a4f-1ba09e798df3" name="Changes" comment="fix sonarlint">
+      <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/TradeProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/databaseconnection/MysqlDBConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/exceptions/InvalidNumberOfChunkValueRuntimeException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/queries.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/service/TradeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/tradecontract/DatabaseConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/tradecontract/TradeFileReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/trades1.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/problems/jdbc/trade/TradeRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/trade/TradeRunner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/problems/jdbc/trade/logs/read_error_log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/trade/logs/read_error_log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/problems/jdbc/trade/logs/write_error_log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/trade/logs/write_error_log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/trade/model/TradeData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/trade/model/TradeData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/trade/repository/TradeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/trade/repository/TradeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/trade/securityreference.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/problems/jdbc/trade/service/CSVTradeFileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/trade/service/CSVTradeFileReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/problems/jdbc/trade/service/TradeDBWriterImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/trade/service/TradeDBWriterImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/trade/service/TradeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/trade/service/TradeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/trade/tradecontract/TradeFileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/trade/tradecontract/TradeFileReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/problems/jdbc/trade/trades.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/trade/trades.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/problems/jdbc/trade/utils/ValidateFileData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/trade/utils/ValidateFileData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/trade/utils/WriteErrorLogs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/trade/utils/WriteErrorLogs.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/problems/trade/TradeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/trade/TradeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,8 +38,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -43,6 +58,9 @@
     &quot;accountId&quot;: &quot;7aece3c5-4c0e-4dab-ba2f-940b7bf0e267&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -51,57 +69,63 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.ArrayBlockingQueueExample.executor&quot;: &quot;Run&quot;,
-    &quot;Application.CreditCardTransactionProcessor.executor&quot;: &quot;Run&quot;,
-    &quot;Application.TradeRunner.executor&quot;: &quot;Run&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
-    &quot;JUnit.TradeTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TradeTest.testGetInValidOutOfRangeThresholdFromApplicationProperties.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TradeTest.testGetInValidOutOfRangeThresholdFromUser.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TradeTest.testGetInValidStringThresholdFromApplicationProperties.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TradeTest.testGetInValidThresholdFromApplicationProperties.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TradeTest.testGetInvalidFilePathFromUser.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TradeTest.testGetInvalidNegativeThresholdFromUser.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TradeTest.testGetInvalidStringThresholdFromUser.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TradeTest.testGetValidFilePathFromUser.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TradeTest.testGetValidOutOfRangeThresholdFromUser.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TradeTest.testGetValidThresholdFromApplicationProperties.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TradeTest.testReadCsvFileWihMaxErrorThreshold.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TradeTest.testReadCsvFileWihMaxThresholdHits.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TradeTest.testReadCsvFileWihNoMaxThresholdHits.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TradeTest.testValidateFileUrl.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TradeTest.testWriteToDbPrintSummary.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TradeTest.testWriteToDbWihMaxThresholdHits.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TradeTest.testWriteToDbWihNoMaxThresholdHits.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TradeTest.testWriteToDbWihNotMatchingSecurity.executor&quot;: &quot;Run&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/kivi-bc24-java-core-problems&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/Kiran.Virani/reactivestax/source/boca-bc24-java-core-problems/test/problems/trade/samplefile&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.3137931&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.ArrayBlockingQueueExample.executor": "Run",
+    "Application.CreditCardTransactionProcessor.executor": "Run",
+    "Application.TradeProcessor.executor": "Run",
+    "Application.TradeRunner.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "true",
+    "JUnit.TradeTest.executor": "Run",
+    "JUnit.TradeTest.testGetInValidOutOfRangeThresholdFromApplicationProperties.executor": "Run",
+    "JUnit.TradeTest.testGetInValidOutOfRangeThresholdFromUser.executor": "Run",
+    "JUnit.TradeTest.testGetInValidStringThresholdFromApplicationProperties.executor": "Run",
+    "JUnit.TradeTest.testGetInValidThresholdFromApplicationProperties.executor": "Run",
+    "JUnit.TradeTest.testGetInvalidFilePathFromUser.executor": "Run",
+    "JUnit.TradeTest.testGetInvalidNegativeThresholdFromUser.executor": "Run",
+    "JUnit.TradeTest.testGetInvalidStringThresholdFromUser.executor": "Run",
+    "JUnit.TradeTest.testGetValidFilePathFromUser.executor": "Run",
+    "JUnit.TradeTest.testGetValidOutOfRangeThresholdFromUser.executor": "Run",
+    "JUnit.TradeTest.testGetValidThresholdFromApplicationProperties.executor": "Run",
+    "JUnit.TradeTest.testReadCsvFileWihMaxErrorThreshold.executor": "Run",
+    "JUnit.TradeTest.testReadCsvFileWihMaxThresholdHits.executor": "Run",
+    "JUnit.TradeTest.testReadCsvFileWihNoMaxThresholdHits.executor": "Run",
+    "JUnit.TradeTest.testValidateFileUrl.executor": "Run",
+    "JUnit.TradeTest.testWriteToDbPrintSummary.executor": "Run",
+    "JUnit.TradeTest.testWriteToDbWihMaxThresholdHits.executor": "Run",
+    "JUnit.TradeTest.testWriteToDbWihNoMaxThresholdHits.executor": "Run",
+    "JUnit.TradeTest.testWriteToDbWihNotMatchingSecurity.executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "git-widget-placeholder": "feature/kivi-bc24-java-core-problems",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/Kiran.Virani/reactivestax/source/boca-bc24-java-core-problems/src/problems/thread/tradeprocess",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.3137931",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/problems/thread/tradeprocess" />
+      <recent name="$PROJECT_DIR$/src/problems/thread/tradeprocess/resources" />
+      <recent name="$PROJECT_DIR$/src/problems/sql" />
       <recent name="$PROJECT_DIR$/test/problems/trade/samplefile" />
       <recent name="$PROJECT_DIR$/src/problems/jdbc/trademangement" />
-      <recent name="$PROJECT_DIR$/src/problems/jdbc/trademangement/service" />
-      <recent name="$PROJECT_DIR$/src/problems/jdbc/trademangement/databaseconnection" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/problems/sql" />
       <recent name="$PROJECT_DIR$/src/problems/jdbc/trademangement/logs" />
       <recent name="$PROJECT_DIR$/src/problems/jdbc/creditcard" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="thread.tradeprocess.exceptions" />
+      <recent name="thread.tradeprocess.databaseconnection" />
       <recent name="jdbc.trademangement.exceptions" />
       <recent name="jdbc.trademangement" />
     </key>
@@ -171,7 +195,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TradeTest.testWriteToDbWihNoMaxThresholdHits" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TradeTest.testWriteToDbWihMaxThresholdHits" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="boca-bc24-java-core-problems" />
       <extension name="coverage">
         <pattern>
@@ -181,7 +205,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="problems.trade" />
       <option name="MAIN_CLASS_NAME" value="problems.trade.TradeTest" />
-      <option name="METHOD_NAME" value="testWriteToDbWihNoMaxThresholdHits" />
+      <option name="METHOD_NAME" value="testWriteToDbWihMaxThresholdHits" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -189,11 +213,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TradeTest.testWriteToDbPrintSummary" />
+        <item itemvalue="JUnit.TradeTest.testWriteToDbWihMaxThresholdHits" />
+        <item itemvalue="JUnit.TradeTest.testGetInValidOutOfRangeThresholdFromApplicationProperties" />
         <item itemvalue="JUnit.TradeTest.testReadCsvFileWihMaxThresholdHits" />
         <item itemvalue="JUnit.TradeTest.testGetInValidStringThresholdFromApplicationProperties" />
-        <item itemvalue="JUnit.TradeTest.testWriteToDbWihNoMaxThresholdHits" />
-        <item itemvalue="JUnit.TradeTest.testGetInValidOutOfRangeThresholdFromApplicationProperties" />
-        <item itemvalue="JUnit.TradeTest.testWriteToDbPrintSummary" />
       </list>
     </recent_temporary>
   </component>
@@ -262,7 +286,31 @@
       <option name="project" value="LOCAL" />
       <updated>1727036696333</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="fix minor issue">
+      <option name="closed" value="true" />
+      <created>1727271988627</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1727271988627</updated>
+    </task>
+    <task id="LOCAL-00009" summary="fix minor issue in test">
+      <option name="closed" value="true" />
+      <created>1727272011639</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1727272011639</updated>
+    </task>
+    <task id="LOCAL-00010" summary="sql practices for hospital and northwind db">
+      <option name="closed" value="true" />
+      <created>1727285857966</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1727285857966</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -276,7 +324,11 @@
     <MESSAGE value="minor fix for handling duplicate entry." />
     <MESSAGE value="Minor fix" />
     <MESSAGE value="Trade data problem" />
-    <option name="LAST_COMMIT_MESSAGE" value="Trade data problem" />
+    <MESSAGE value="fix minor issue" />
+    <MESSAGE value="fix minor issue in test" />
+    <MESSAGE value="sql practices for hospital and northwind db" />
+    <MESSAGE value="fix sonarlint" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix sonarlint" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

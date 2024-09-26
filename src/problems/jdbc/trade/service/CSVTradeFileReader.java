@@ -11,25 +11,23 @@ import java.util.List;
 
 public class CSVTradeFileReader implements TradeFileReader {
 
-    private static final List<TradeData> tradeDataList = new ArrayList<>(1000);;
-    private static int readErrorCount = 0, maxExpectedErrors = 0;
+    private static final List<TradeData> tradeDataList = new ArrayList<>(1000);
+    private int readErrorCount = 0;
 
     public static int calculateFileLines(String filePath)  {
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(filePath));
-
-            int lineCount = 0;
+        int lineCount = 0;
+        try(BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             while (reader.readLine() != null) {
                 lineCount++;
             }
-            return lineCount;
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("IOException>>>" + e.getMessage());
         }
+        return lineCount;
     }
 
     public void printSummary(int totalRecords, int totalSuccessfulRecords) {
-        System.out.println("=================Reports of the trade system - file reading==================");
+        System.out.println("\n=================Reports of the trade system - file reading==================");
         System.out.println("Total record in file = " + totalRecords);
         System.out.println("Total records processed = " + totalRecords + ", Number of errors = " +  readErrorCount +
                 ", Number of successful insert = " + totalSuccessfulRecords);
@@ -39,9 +37,8 @@ public class CSVTradeFileReader implements TradeFileReader {
     public List<TradeData> readDataFromCsvFile(String filePath, double errorThreshold) throws HitErrorsThresholdException {
         int counter = 0;
         int lineCount = calculateFileLines(filePath);
-        maxExpectedErrors = (int) Math.ceil(lineCount * (errorThreshold / 100));
+        int maxExpectedErrors = (int) Math.ceil(lineCount * (errorThreshold / 100));
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-            //skip header line
             reader.readLine();
             String line;
             while ((line = reader.readLine()) != null) {

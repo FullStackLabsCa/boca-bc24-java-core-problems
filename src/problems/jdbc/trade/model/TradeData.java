@@ -1,30 +1,34 @@
 package jdbc.trade.model;
 
 public class TradeData {
-    String trade_id, ticker_symbol, trade_identifier, trade_date;
-    int quantity, line_no;
+    String tradeId;
+    String tickerSymbol;
+    String tradeIdentifier;
+    String tradeDate;
+    int quantity;
+    int lineNo;
     double price;
 
-    public TradeData(String trade_id, String trade_identifier, String ticker_symbol, int quantity, double price, String trade_date, int line_no) {
-        this.trade_id = trade_id;
-        this.trade_identifier = trade_identifier;
-        this.ticker_symbol = ticker_symbol;
+    public TradeData(String tradeId, String tradeIdentifier, String tickerSymbol, int quantity, double price, String tradeDate, int lineNo) {
+        this.tradeId = tradeId;
+        this.tradeIdentifier = tradeIdentifier;
+        this.tickerSymbol = tickerSymbol;
         this.quantity = quantity;
         this.price = price;
-        this.trade_date = trade_date;
-        this.line_no = line_no;
+        this.tradeDate = tradeDate;
+        this.lineNo = lineNo;
     }
 
-    public String getTrade_id() {
-        return trade_id;
+    public String getTradeId() {
+        return tradeId;
     }
 
-    public String getTrade_identifier() {
-        return trade_identifier;
+    public String getTradeIdentifier() {
+        return tradeIdentifier;
     }
 
-    public String getTicker_symbol() {
-        return ticker_symbol;
+    public String getTickerSymbol() {
+        return tickerSymbol;
     }
 
     public int getQuantity() {
@@ -35,25 +39,21 @@ public class TradeData {
         return price;
     }
 
-    public String getTrade_date() {
-        return trade_date;
+    public String getTradeDate() {
+        return tradeDate;
     }
 
-    public int getLine_no() {
-        return line_no;
-    }
-
-    public void setLine_no(int line_no) {
-        this.line_no = line_no;
+    public int getLineNo() {
+        return lineNo;
     }
 
     @Override
     public String toString() {
         return "TradeData{" +
-                "trade_id='" + trade_id + '\'' +
-                ", ticker_symbol='" + ticker_symbol + '\'' +
-                ", trade_identifier='" + trade_identifier + '\'' +
-                ", trade_date='" + trade_date + '\'' +
+                "tradeId='" + tradeId + '\'' +
+                ", tickerSymbol='" + tickerSymbol + '\'' +
+                ", tradeIdentifier='" + tradeIdentifier + '\'' +
+                ", tradeDate='" + tradeDate + '\'' +
                 ", quantity=" + quantity +
                 ", price=" + price +
                 '}';
