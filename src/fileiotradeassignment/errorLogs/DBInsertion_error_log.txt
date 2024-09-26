@@ -1,0 +1,2 @@
+
+Thu Sep 26 14:05:59 EDT 2024: Error during batch insertion: Duplicate entry '9' for key 'Trades.PRIMARY'

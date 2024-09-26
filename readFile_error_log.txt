@@ -58,3 +58,65 @@ Mon Sep 23 14:19:25 EDT 2024: Error parsing line: 2,T002,GOOGL,50.899,2750.55,20
 Mon Sep 23 14:19:25 EDT 2024: Error parsing line: 4,T004,AMZN,ten,3200.80,2023-09-18 - For input string: "ten"
 Mon Sep 23 14:19:25 EDT 2024: Error parsing line: 5,T005,MS,200,280.10,2023/09/19 - null
 Mon Sep 23 14:19:25 EDT 2024: Error parsing line: 10,T010,AMD,500,95.60,invalid - null
+Thu Sep 26 09:00:11 EDT 2024: Error parsing line: 2,T002,GOOGL,50.899,2750.55,2023-09-16 - For input string: "50.899"
+Thu Sep 26 09:00:11 EDT 2024: Error parsing line: 4,T004,AMZN,ten,3200.80,2023-09-18 - For input string: "ten"
+Thu Sep 26 09:00:11 EDT 2024: Error parsing line: 5,T005,MS,200,280.10,2023/09/19 - null
+Thu Sep 26 09:00:11 EDT 2024: Error parsing line: 10,T010,AMD,500,95.60,invalid - null
+Thu Sep 26 09:00:11 EDT 2024: Error parsing line: 2,T002,GOOGL,50.899,2750.55,2023-09-16 - For input string: "50.899"
+Thu Sep 26 09:00:11 EDT 2024: Error parsing line: 4,T004,AMZN,ten,3200.80,2023-09-18 - For input string: "ten"
+Thu Sep 26 09:00:11 EDT 2024: Error parsing line: 5,T005,MS,200,280.10,2023/09/19 - null
+Thu Sep 26 09:00:11 EDT 2024: Error parsing line: 10,T010,AMD,500,95.60,invalid - null
+Thu Sep 26 09:02:14 EDT 2024: Error parsing line: 2,T002,GOOGL,50.899,2750.55,2023-09-16 - For input string: "50.899"
+Thu Sep 26 09:02:14 EDT 2024: Error parsing line: 4,T004,AMZN,ten,3200.80,2023-09-18 - For input string: "ten"
+Thu Sep 26 09:02:14 EDT 2024: Error parsing line: 5,T005,MS,200,280.10,2023/09/19 - null
+Thu Sep 26 09:02:14 EDT 2024: Error parsing line: 10,T010,AMD,500,95.60,invalid - null
+Thu Sep 26 09:02:14 EDT 2024: Error parsing line: 2,T002,GOOGL,50.899,2750.55,2023-09-16 - For input string: "50.899"
+Thu Sep 26 09:02:14 EDT 2024: Error parsing line: 4,T004,AMZN,ten,3200.80,2023-09-18 - For input string: "ten"
+Thu Sep 26 09:02:14 EDT 2024: Error parsing line: 5,T005,MS,200,280.10,2023/09/19 - null
+Thu Sep 26 09:02:14 EDT 2024: Error parsing line: 10,T010,AMD,500,95.60,invalid - null
+Thu Sep 26 09:02:27 EDT 2024: Error parsing line: 2,T002,GOOGL,50.899,2750.55,2023-09-16 - For input string: "50.899"
+Thu Sep 26 09:02:27 EDT 2024: Error parsing line: 4,T004,AMZN,ten,3200.80,2023-09-18 - For input string: "ten"
+Thu Sep 26 09:02:27 EDT 2024: Error parsing line: 5,T005,MS,200,280.10,2023/09/19 - null
+Thu Sep 26 09:02:27 EDT 2024: Error parsing line: 10,T010,AMD,500,95.60,invalid - null
+Thu Sep 26 09:02:27 EDT 2024: Error parsing line: 2,T002,GOOGL,50.899,2750.55,2023-09-16 - For input string: "50.899"
+Thu Sep 26 09:02:27 EDT 2024: Error parsing line: 4,T004,AMZN,ten,3200.80,2023-09-18 - For input string: "ten"
+Thu Sep 26 09:02:27 EDT 2024: Error parsing line: 5,T005,MS,200,280.10,2023/09/19 - null
+Thu Sep 26 09:02:27 EDT 2024: Error parsing line: 10,T010,AMD,500,95.60,invalid - null
+Thu Sep 26 10:18:54 EDT 2024: Error parsing line: 2,T002,GOOGL,50.899,2750.55,2023-09-16 - For input string: "50.899"
+Thu Sep 26 10:18:54 EDT 2024: Error parsing line: 4,T004,AMZN,ten,3200.80,2023-09-18 - For input string: "ten"
+Thu Sep 26 10:18:54 EDT 2024: Error parsing line: 5,T005,MS,200,280.10,2023/09/19 - null
+Thu Sep 26 10:18:54 EDT 2024: Error parsing line: 10,T010,AMD,500,95.60,invalid - null
+Thu Sep 26 10:18:54 EDT 2024: Error parsing line: 2,T002,GOOGL,50.899,2750.55,2023-09-16 - For input string: "50.899"
+Thu Sep 26 10:18:54 EDT 2024: Error parsing line: 4,T004,AMZN,ten,3200.80,2023-09-18 - For input string: "ten"
+Thu Sep 26 10:18:54 EDT 2024: Error parsing line: 5,T005,MS,200,280.10,2023/09/19 - null
+Thu Sep 26 10:18:54 EDT 2024: Error parsing line: 10,T010,AMD,500,95.60,invalid - null
+Thu Sep 26 10:19:14 EDT 2024: Error parsing line: 2,T002,GOOGL,50.899,2750.55,2023-09-16 - For input string: "50.899"
+Thu Sep 26 10:19:14 EDT 2024: Error parsing line: 4,T004,AMZN,ten,3200.80,2023-09-18 - For input string: "ten"
+Thu Sep 26 10:19:14 EDT 2024: Error parsing line: 5,T005,MS,200,280.10,2023/09/19 - null
+Thu Sep 26 10:19:14 EDT 2024: Error parsing line: 10,T010,AMD,500,95.60,invalid - null
+Thu Sep 26 10:19:14 EDT 2024: Error parsing line: 2,T002,GOOGL,50.899,2750.55,2023-09-16 - For input string: "50.899"
+Thu Sep 26 10:19:14 EDT 2024: Error parsing line: 4,T004,AMZN,ten,3200.80,2023-09-18 - For input string: "ten"
+Thu Sep 26 10:19:14 EDT 2024: Error parsing line: 5,T005,MS,200,280.10,2023/09/19 - null
+Thu Sep 26 10:19:14 EDT 2024: Error parsing line: 10,T010,AMD,500,95.60,invalid - null
+Thu Sep 26 10:47:39 EDT 2024: Error parsing line: 2,T002,GOOGL,50.899,2750.55,2023-09-16 - For input string: "50.899"
+Thu Sep 26 10:47:39 EDT 2024: Error parsing line: 4,T004,AMZN,ten,3200.80,2023-09-18 - For input string: "ten"
+Thu Sep 26 10:47:39 EDT 2024: Error parsing line: 5,T005,MS,200,280.10,2023/09/19 - null
+Thu Sep 26 10:47:39 EDT 2024: Error parsing line: 10,T010,AMD,500,95.60,invalid - null
+Thu Sep 26 10:54:04 EDT 2024: Error parsing line: 1,T001,AAPL,100,150.25,2023-09-15 - Threshold limit exceeded while reading file
+Thu Sep 26 10:54:04 EDT 2024: Error parsing line: 2,T002,GOOGL,50.899,2750.55,2023-09-16 - For input string: "50.899"
+Thu Sep 26 10:54:04 EDT 2024: Error parsing line: 3,T003,TSLA,25,700.45,2023-09-17 - Threshold limit exceeded while reading file
+Thu Sep 26 10:54:04 EDT 2024: Error parsing line: 4,T004,AMZN,ten,3200.80,2023-09-18 - For input string: "ten"
+Thu Sep 26 10:54:04 EDT 2024: Error parsing line: 5,T005,MS,200,280.10,2023/09/19 - null
+Thu Sep 26 10:54:04 EDT 2024: Error parsing line: 6,T006,NF,150,590.90,2023-09-20 - Threshold limit exceeded while reading file
+Thu Sep 26 10:54:04 EDT 2024: Error parsing line: 7,T007,FB,300,673.95,2023-09-21 - Threshold limit exceeded while reading file
+Thu Sep 26 10:54:04 EDT 2024: Error parsing line: 8,T008,BABA,200,180.30,2023-09-22 - Threshold limit exceeded while reading file
+Thu Sep 26 10:54:04 EDT 2024: Error parsing line: 9,T009,INTC,230,54.25,2023-09-23 - Threshold limit exceeded while reading file
+Thu Sep 26 10:54:04 EDT 2024: Error parsing line: 10,T010,AMD,500,95.60,invalid - null
+Thu Sep 26 13:58:03 EDT 2024: Error parsing line: 2,T002,GOOGL,50.899,2750.55,2023-09-16 - For input string: "50.899"
+Thu Sep 26 13:58:03 EDT 2024: Error parsing line: 4,T004,AMZN,ten,3200.80,2023-09-18 - For input string: "ten"
+Thu Sep 26 13:58:03 EDT 2024: Error parsing line: 5,T005,MS,200,280.10,2023/09/19 - null
+Thu Sep 26 13:58:03 EDT 2024: Error parsing line: 10,T010,AMD,500,95.60,invalid - null
+Thu Sep 26 13:58:55 EDT 2024: Error parsing line: 2,T002,GOOGL,50.899,2750.55,2023-09-16 - For input string: "50.899"
+Thu Sep 26 13:58:55 EDT 2024: Error parsing line: 4,T004,AMZN,ten,3200.80,2023-09-18 - For input string: "ten"
+Thu Sep 26 13:58:55 EDT 2024: Error parsing line: 5,T005,MS,200,280.10,2023/09/19 - null
+Thu Sep 26 13:58:55 EDT 2024: Error parsing line: 10,T010,AMD,500,95.60,invalid - null

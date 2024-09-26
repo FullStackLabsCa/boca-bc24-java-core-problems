@@ -1,4 +1,4 @@
-package fileIoTradeAssignment.customExceptionClasses;
+package fileiotradeassignment.customExceptionClasses;
 
 class InvalidThresholdValueException extends Exception {
     public InvalidThresholdValueException(String message) {

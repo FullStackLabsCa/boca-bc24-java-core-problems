@@ -2,18 +2,18 @@ package TradeProcessingMultiThreadingAssignment.Service;
 
 import java.io.*;
 
-public class TradeChunkGeneratorService {
+public class TradeChunkGeneratorService implements ChunkGeneratorInterface {
     int lineCount = 0;
 
-
-    public int fileLineCounter() throws IOException {
+@Override
+public int fileLineCounter() throws IOException {
         try (BufferedReader br = new BufferedReader(new FileReader("/Users/akshitabajaj/Documents/reactiveStax/boca-bc24-java-core-problems/src/TradeProcessingMultiThreadingAssignment/Files/trade_records_with_cusip.csv"))) {
             String newLine;
             boolean isFirstLine = true;
 
             while ((newLine = br.readLine()) != null) {
                 if (isFirstLine) {
-                    isFirstLine = false;  // Skip the header
+                    isFirstLine = false;
                     continue;
                 }
                 lineCount++;
@@ -24,14 +24,13 @@ public class TradeChunkGeneratorService {
         return lineCount;
     }
 
-
-    public void chunkFileGenerator() throws IOException {
+@Override
+public void chunkFileGenerator() throws IOException {
         int totalLineCount = fileLineCounter();
         if (totalLineCount == 0) {
             System.out.println("No data to process in the file.");
             return;
         }
-
         int numberOfChunks = 10;
         int linesPerChunk = totalLineCount / numberOfChunks;
         int remainingLines = totalLineCount % numberOfChunks;
@@ -42,19 +41,16 @@ public class TradeChunkGeneratorService {
         try (BufferedReader br = new BufferedReader(new FileReader("/Users/akshitabajaj/Documents/reactiveStax/boca-bc24-java-core-problems/src/TradeProcessingMultiThreadingAssignment/Files/trade_records_with_cusip.csv"))) {
             String line;
             boolean isFirstLine = true;
-
             while ((line = br.readLine()) != null) {
                 if (isFirstLine) {
-                    isFirstLine = false;  // Skip header line
+                    isFirstLine = false;
                     continue;
                 }
 
                 if (writer == null) {
-                    // Create a new chunk file
+
                     writer = new BufferedWriter(new FileWriter(String.format("src/TradeProcessingMultiThreadingAssignment/chunks/file_chunk_%02d.csv", chunkCount)));
                 }
-
-
                 writer.write(line);
                 writer.newLine();
                 currentLine++;
@@ -66,8 +62,6 @@ public class TradeChunkGeneratorService {
                     writer = null;
                 }
             }
-
-
             if (remainingLines > 0 && currentLine % linesPerChunk != 0) {
                 writer.close();
             }

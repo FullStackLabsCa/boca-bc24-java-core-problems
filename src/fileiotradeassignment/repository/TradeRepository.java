@@ -1,20 +1,20 @@
-package fileIoTradeAssignment.repository;
+package fileiotradeassignment.repository;
 
-import fileIoTradeAssignment.customExceptionClasses.HitDatabaseInsertErrorsThresholdException;
-import fileIoTradeAssignment.model.TradePOJO;
-import fileIoTradeAssignment.service.TradeService;
+import fileiotradeassignment.customExceptionClasses.HitDatabaseInsertErrorsThresholdException;
+import fileiotradeassignment.model.TradePOJO;
+import fileiotradeassignment.service.TradeService;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static fileIoTradeAssignment.service.TradeService.dataSource;
+import static fileiotradeassignment.service.TradeService.dataSource;
 
 public class TradeRepository implements TradeRepositoryInterface {
 
-    TradeService service = new TradeService();
-    private final int BATCH_SIZE = 50;
+   TradeService service = new TradeService();
+    private static final int BATCH_SIZE = 50;
 
 
 @Override
@@ -35,7 +35,7 @@ public class TradeRepository implements TradeRepositoryInterface {
             String errorMessage = "Error checking ticker symbol: " + e.getMessage();
             System.err.println(errorMessage);
             service.logError(errorMessage, "DBInsertion_error_log.txt");
-            throw e; // Propagate exception for further handling
+
         }
 
         return false; // If no match found
@@ -43,7 +43,7 @@ public class TradeRepository implements TradeRepositoryInterface {
 
 
 @Override
-    public void tradesInsertionMaker() throws SQLException, HitDatabaseInsertErrorsThresholdException {
+    public void tradesInsertionMaker(TradeService service ) throws SQLException, HitDatabaseInsertErrorsThresholdException {
         if (service.validLines.isEmpty()) {
             System.out.println("No valid trades to insert into the database.");
             return;
@@ -65,7 +65,7 @@ public class TradeRepository implements TradeRepositoryInterface {
                         if (service.errorCounter >= service.DBInsertErrorThreshold) {
                             throw new HitDatabaseInsertErrorsThresholdException("Error threshold limit reached during database insertion.");
                         }
-                        continue; // Skip invalid trade
+                        continue;
                     }
 
                     stmt.setInt(1, tradePOJO.getTrade_id());
@@ -77,7 +77,7 @@ public class TradeRepository implements TradeRepositoryInterface {
 
                     stmt.addBatch(); // Add only valid trades to batch
 
-                    // Execute batch if it reaches the BATCH_SIZE
+                    // Execute batch if it reaches the batch size
                     if (stmt.getUpdateCount() % BATCH_SIZE == 0) {
                         stmt.executeBatch();
                         conn.commit();

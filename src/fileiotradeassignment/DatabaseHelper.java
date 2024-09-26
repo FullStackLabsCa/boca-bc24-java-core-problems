@@ -1,4 +1,4 @@
-package fileIoTradeAssignment;
+package fileiotradeassignment;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;

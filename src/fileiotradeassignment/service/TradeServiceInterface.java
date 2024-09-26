@@ -1,7 +1,7 @@
-package fileIoTradeAssignment.service;
+package fileiotradeassignment.service;
 
-import fileIoTradeAssignment.customExceptionClasses.HitReadFileErrorsThresholdException;
-import fileIoTradeAssignment.model.TradePOJO;
+import fileiotradeassignment.customExceptionClasses.HitReadFileErrorsThresholdException;
+import fileiotradeassignment.model.TradePOJO;
 
 import java.io.FileNotFoundException;
 
