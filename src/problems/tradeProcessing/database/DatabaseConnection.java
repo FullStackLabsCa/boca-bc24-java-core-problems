@@ -1,4 +1,4 @@
-package problems.tradeOperations.manager;
+package problems.tradeProcessing.database;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -27,7 +27,6 @@ public class DatabaseConnection {
         config.setMinimumIdle(5); // Minimum idle connections
         config.setConnectionTimeout(30000); // 30 seconds timeout for obtaining a connection
         config.setIdleTimeout(600000); // 10 minutes idle timeout
-        config.setConnectionTestQuery("SELECT 1"); // Optional: Validate connections are valid before use
 
         dataSource = new HikariDataSource(config);
     }
@@ -42,7 +41,7 @@ public class DatabaseConnection {
         }
     }
 
-    // Optional: Add a method to check if the data source is initialized
+    // Add a method to check if the data source is initialized
     public static boolean isInitialized() {
         return dataSource != null;
     }

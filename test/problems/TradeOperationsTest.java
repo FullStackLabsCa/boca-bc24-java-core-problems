@@ -12,7 +12,6 @@ import problems.tradeOperations.manager.DatabaseConnection;
 import problems.tradeOperations.manager.ThresholdManager;
 import problems.tradeOperations.tradeFiles.*;
 
-import java.io.ByteArrayOutputStream;
 import java.sql.*;
 
 import static org.junit.Assert.*;
@@ -88,7 +87,7 @@ A delta is a small value that defines the acceptable difference between two floa
     public void testInvalidThresholdFormatCommandLine() throws InvalidThresholdValueException {
         String[] args = {"invalid"};
         ThresholdManager thresholdManager = new ThresholdManager(args);
-        thresholdManager.getErrorThreshold(); // This should throw the exception
+        thresholdManager.getErrorThreshold();
     }
 
     @Test
@@ -97,7 +96,7 @@ A delta is a small value that defines the acceptable difference between two floa
         ThresholdManager thresholdManager = new ThresholdManager(args);
         double expectedThreshold = 50.00;
         double actualThreshold = thresholdManager.getErrorThreshold();
-        assertEquals(expectedThreshold, actualThreshold, 0.001); // assertEquals(expected, actual, delta);
+        assertEquals(expectedThreshold, actualThreshold, 0.001);
 
     }
 
@@ -105,7 +104,7 @@ A delta is a small value that defines the acceptable difference between two floa
     public void testInvalidThresholdFormatFromProperties() throws InvalidThresholdValueException {
         String[] args = {"999"};
         ThresholdManager thresholdManager = new ThresholdManager(args);
-        thresholdManager.getErrorThreshold(); // This should throw the exception
+        thresholdManager.getErrorThreshold();
     }
 
     @Test

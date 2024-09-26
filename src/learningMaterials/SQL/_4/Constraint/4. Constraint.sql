@@ -1,0 +1,50 @@
+-- CHECK CONSTRAINT
+
+CREATE TABLE COMPETITION (
+    COMP_CODE VARCHAR(10) PRIMARY KEY CHECK (COMP_CODE LIKE 'C____%'),
+    COMP_NAME VARCHAR(30) NOT NULL
+);
+
+INSERT INTO COMPETITION (COMP_CODE, COMP_NAME) VALUES ('CABCD', 'PROGRAMMING');
+
+-- so here it will take any input - no matter whatever you insert - it must stats with C and then it will take any input. That's why we need to put CNSTRAINT and let's see what we can get.
+
+DROP TABLE COMPETITION PURGE;
+
+CREATE TABLE COMPETITION (
+    COMP_CODE VARCHAR(10) PRIMARY KEY CHECK (REGEXP_LIKE(COMP_CODE LIKE 'C[0-9]{4}%')),
+    COMP_NAME VARCHAR(30) NOT NULL
+);
+
+-- now it will take only 4 digits.
+
+CREATE TABLE TEST (
+ID INT PRIMARY KEY,
+MOBILE NUMBER(10) CHECK(REGEXP_LIKE(MOBILE LIKE(MOBILE,'[6-9][0-9]{9}')))
+);
+
+-- number will take only number but with constraint - 1st: 6-9 and 2ndto10th: 0-9
+
+
+-- put constraints on Dates
+
+--- ADMISSION MUST BE ONLY IN JULY
+CREATE TABLE Test (
+    ID INT PRIMARY KEY,
+    ADMISSION_DATE DATE CHECK(ADMISSION_DATE LIKE '%JULY%')
+);
+-- allow only july date not any date
+
+INSERT INTO Test(ID, ADMISSION_DATE) VALUES (1, '11-JULY-2024');
+
+--- ADMISSION MUST BE ONLY IN 2024
+CREATE TABLE Test (
+    ID INT PRIMARY KEY,
+    ADMISSION_DATE DATE CHECK(ADMISSION_DATE LIKE '%2024%')
+);
+
+--- ADMISSION MUST BE ONLY IN JULY
+CREATE TABLE Test (
+    ID INT PRIMARY KEY,
+    ADMISSION_DATE DATE CHECK(ADMISSION_DATE BETWEEN '01-JAN-2024' AND '31-DEC-2024')
+);

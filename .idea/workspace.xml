@@ -5,8 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3c9f44b-ff0f-43a9-b850-9b801d0dc95b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/learningMaterials/SQL/_4/Constraint/4. Constraint.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/chunk/SimpleChunkGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/chunk/SimpleChunkProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/customException/DatabaseInsertException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/customException/InvalidDataException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/database/DatabaseConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/interfaceFiles/ChunkGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/interfaceFiles/ChunkProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/rawFiles/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/rawFiles/trades.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/trade_system.SQL" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/tradeFiles/TradeRWFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeOperations/tradeFiles/TradeRWFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeOperations/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/manager/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeOperations/manager/DatabaseConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/problems/TradeOperationsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/TradeOperationsTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -137,7 +151,7 @@
     "git-widget-placeholder": "feature/jash-bc24-java-core-problems",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "/Users/Jay.Shah/sources/student/boca-bc24-java-core-problems/test/problems/hashmap",
-    "last_opened_file_path": "/Users/Jay.Shah/source/student/boca-bc24-java-core-problems/src/problems/tradeOperations/testCasesFiles",
+    "last_opened_file_path": "/Users/Jay.Shah/source/student/boca-bc24-java-core-problems/src/problems/tradeProcessing/rawFiles",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -153,28 +167,28 @@
       <recent name="problems.generics.dhruv" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/problems/tradeProcessing/rawFiles" />
       <recent name="$PROJECT_DIR$/src/problems/tradeOperations/testCasesFiles" />
       <recent name="$PROJECT_DIR$/src/problems/tradeOperations/sourcesFiles" />
       <recent name="$PROJECT_DIR$/src/problems/jdbc/transactions/hwFinal" />
       <recent name="$PROJECT_DIR$/src/problems/jdbc/transactions/practice" />
-      <recent name="$PROJECT_DIR$/src/problems/selfPractice" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/problems/tradeProcessing/chunk" />
+      <recent name="$PROJECT_DIR$/src/problems/tradeProcessing/rawCSVfile" />
       <recent name="$PROJECT_DIR$/src/problems/tradeOperations/sourcesFiles" />
       <recent name="$PROJECT_DIR$/src/problems/tradeOperations/sourcesFiles/" />
       <recent name="$PROJECT_DIR$/src/problems/tradeOperations/extraUsedFiles" />
-      <recent name="$PROJECT_DIR$/src/problems/selfPractice/fileIO" />
-      <recent name="$PROJECT_DIR$/src/problems/jdbc/transactions/hwFinal" />
     </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="problems.jdbc.transactions.locking_optimistic" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="problems.tradeProcessing.database" />
       <recent name="problems.tradeOperations.finalProgram" />
       <recent name="problems.tradeOperations.oldFiles" />
       <recent name="problems.tradeOperations" />
       <recent name="problems.selfPractice.fileIO" />
-      <recent name="problems.jdbc.transactions.hwFinal" />
     </key>
   </component>
   <component name="RunManager">

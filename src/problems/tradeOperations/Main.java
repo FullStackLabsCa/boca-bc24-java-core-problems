@@ -4,7 +4,6 @@ import problems.tradeOperations.exceptionFiles.HitErrorsThresholdException;
 import problems.tradeOperations.manager.DatabaseConnection;
 import problems.tradeOperations.tradeFiles.TradeRWFile;
 
-import java.io.File;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Scanner;
