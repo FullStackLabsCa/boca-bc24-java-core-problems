@@ -1,4 +1,4 @@
-package problems.tradeOperations.tradeFiles;
+package problems.tradeoperations.tradefiles;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 public class TradeValidator {
 
     private final FileWriter errorLogWriter;
+    private String cons = " in row: ";
 
     public TradeValidator(FileWriter errorLogWriter) {
         this.errorLogWriter = errorLogWriter;
@@ -18,17 +19,18 @@ public class TradeValidator {
             logError("Invalid row (Incorrect number of fields): " + line);
             return false;
         }
-        if (!isInteger(fields[3], line, "quantity")) return false;
-        if (!isDouble(fields[4], line, "price")) return false;
-        if (!isValidDate(fields[5], line)) return false;
-        return true;
+
+        return isInteger(fields[3], line, "quantity")
+                && isDouble(fields[4], line, "price")
+                && isValidDate(fields[5], line);
+
     }
 
     private boolean isInteger(String value, String line, String fieldName) {
         try {
             Integer.parseInt(value);
         } catch (NumberFormatException e) {
-            logError("Invalid " + fieldName + " (not an integer): " + value + " in row: " + line);
+            logError("Invalid " + fieldName + " (not an integer): " + value + cons + line);
             return false;
         }
         return true;
@@ -38,7 +40,7 @@ public class TradeValidator {
         try {
             Double.parseDouble(value);
         } catch (NumberFormatException e) {
-            logError("Invalid " + fieldName + " (not a decimal): " + value + " in row: " + line);
+            logError("Invalid " + fieldName + " (not a decimal): " + value + cons + line);
             return false;
         }
         return true;
@@ -50,7 +52,7 @@ public class TradeValidator {
         try {
             dateFormat.parse(date);
         } catch (ParseException e) {
-            logError("Invalid trade date (not in yyyy-MM-dd format): " + date + " in row: " + line);
+            logError("Invalid trade date (not in yyyy-MM-dd format): " + date + cons + line);
             return false;
         }
         return true;

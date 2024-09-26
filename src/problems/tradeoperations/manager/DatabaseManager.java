@@ -1,4 +1,4 @@
-package problems.tradeOperations.manager;
+package problems.tradeoperations.manager;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;

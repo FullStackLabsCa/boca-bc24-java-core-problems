@@ -1,4 +1,4 @@
-package problems.tradeOperations.manager;
+package problems.tradeoperations.manager;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -11,8 +11,12 @@ public class DatabaseConnection {
 
     private static HikariDataSource dataSource;
 
-    public DatabaseConnection(String portal, String dbName) {
+    private DatabaseConnection(String portal, String dbName) {
         configureHikariCP(portal, dbName);
+    }
+
+    public static DatabaseConnection create(String portal, String dbName) {
+        return new DatabaseConnection(portal, dbName);
     }
 
     // Configure HikariCP connection pool

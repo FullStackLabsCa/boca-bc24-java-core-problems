@@ -1,7 +1,7 @@
-package problems.tradeOperations.manager;
+package problems.tradeoperations.manager;
 
-import problems.tradeOperations.exceptionFiles.InvalidThresholdValueException;
-import problems.tradeOperations.exceptionFiles.InvalidThresholdValueRuntimeException;
+import problems.tradeoperations.exception_files.InvalidThresholdValueException;
+import problems.tradeoperations.exception_files.InvalidThresholdValueRuntimeException;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -44,7 +44,7 @@ public class ThresholdManager {
 
     private double getThresholdFromProperties() throws InvalidThresholdValueRuntimeException {
         Properties properties = new Properties();
-        try (FileInputStream input = new FileInputStream("src/problems/tradeOperations/extraUsedFiles/application.properties")) {
+        try (FileInputStream input = new FileInputStream("src/problems/tradeoperations/extrausedfiles/application.properties")) {
             properties.load(input);
             String thresholdValue = properties.getProperty("error.threshold");
             double threshold = Double.parseDouble(thresholdValue);

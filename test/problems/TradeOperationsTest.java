@@ -5,12 +5,11 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.contrib.java.lang.system.SystemOutRule;
-import problems.tradeOperations.exceptionFiles.HitErrorsThresholdException;
-import problems.tradeOperations.exceptionFiles.InvalidThresholdValueException;
-import problems.tradeOperations.exceptionFiles.InvalidThresholdValueRuntimeException;
-import problems.tradeOperations.manager.DatabaseConnection;
-import problems.tradeOperations.manager.ThresholdManager;
-import problems.tradeOperations.tradeFiles.*;
+import problems.tradeoperations.exception_files.HitErrorsThresholdException;
+import problems.tradeoperations.exception_files.InvalidThresholdValueException;
+import problems.tradeoperations.manager.DatabaseConnection;
+import problems.tradeoperations.manager.ThresholdManager;
+import problems.tradeoperations.tradefiles.*;
 
 import java.sql.*;
 
@@ -27,7 +26,8 @@ public class TradeOperationsTest {
 
     public TradeOperationsTest() throws SQLException {
         // Initialize the DatabaseConnection
-        dbManager = new DatabaseConnection("3308", "tradesDB");
+//        dbManager = new DatabaseConnection("3308", "tradesDB");
+        dbManager = DatabaseConnection.create("3306","tradesDB");
         connection = dbManager.getConnection();
     }
 
@@ -35,7 +35,8 @@ public class TradeOperationsTest {
     public void setUp() {
         try {
             if (dbManager == null) {
-                dbManager = new DatabaseConnection("3308", "tradesDB");
+//                dbManager = new DatabaseConnection("3308", "tradesDB");
+                dbManager = DatabaseConnection.create("3306","tradesDB");
                 connection = dbManager.getConnection();
             }
         } catch (RuntimeException e) {
@@ -126,7 +127,7 @@ A delta is a small value that defines the acceptable difference between two floa
     @Test(expected = HitErrorsThresholdException.class)
     public void testReadFileExceedingErrorThreshold() throws HitErrorsThresholdException {
         // Prepare a trades file with invalid data
-        String filePath = "src/problems/tradeOperations/testCasesFiles/test_tradeFileN.csv";
+        String filePath = "src/problems/tradeoperations/testcasesfiles/test_tradeFileN.csv";
 
         // This should throw HitErrorsThresholdException
         TradeRWFile.readFileStatic(filePath, 50.0, connection);
@@ -137,7 +138,7 @@ A delta is a small value that defines the acceptable difference between two floa
     @Test
     public void testReadFileEmptyFile() throws HitErrorsThresholdException {
         // an empty trades file
-        String filePath = "src/problems/tradeOperations/testCasesFiles/test_tradeFile_empty.csv";
+        String filePath = "src/problems/tradeoperations/testcasesfiles/test_tradeFile_empty.csv";
 
         TradeRWFile.readFileStatic(filePath, 50.0, connection);
 
@@ -151,7 +152,7 @@ A delta is a small value that defines the acceptable difference between two floa
 
     @Test
     public void testReadFileValidTrades() throws HitErrorsThresholdException {
-        String filePath = "src/problems/tradeOperations/testCasesFiles/test_tradeFile_ValidTrades.csv";
+        String filePath = "src/problems/tradeoperations/testcasesfiles/test_tradeFile_ValidTrades.csv";
 
         TradeRWFile.readFileStatic(filePath, 50.0, connection);
 
@@ -205,7 +206,7 @@ A delta is a small value that defines the acceptable difference between two floa
 
     @Test(expected = HitErrorsThresholdException.class)
     public void testReadFileInvalidTrades() throws HitErrorsThresholdException {
-        String filePath = "src/problems/tradeOperations/testCasesFiles/test_tradeFile_InvalidTrades.csv";
+        String filePath = "src/problems/tradeoperations/testcasesfiles/test_tradeFile_InvalidTrades.csv";
 
         TradeRWFile.readFileStatic(filePath, 10.0, connection);
 
@@ -219,7 +220,7 @@ A delta is a small value that defines the acceptable difference between two floa
 
     @Test
     public void testReadWriteFileValidTrades() throws HitErrorsThresholdException {
-        String filePath = "src/problems/tradeOperations/testCasesFiles/test_trades_readwrite_validle.csv";
+        String filePath = "src/problems/tradeoperations/testcasesfiles/test_trades_readwrite_validle.csv";
 
         TradeRWFile.readFileStatic(filePath, 25.0, connection);
 

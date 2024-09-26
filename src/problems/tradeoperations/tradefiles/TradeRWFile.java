@@ -1,9 +1,8 @@
-package problems.tradeOperations.tradeFiles;
+package problems.tradeoperations.tradefiles;
 
 
-import problems.tradeOperations.exceptionFiles.HitErrorsThresholdException;
-import problems.tradeOperations.manager.DatabaseManager;
-import problems.tradeOperations.tradingInterface.TradingInterface;
+import problems.tradeoperations.exception_files.HitErrorsThresholdException;
+import problems.tradeoperations.tradinginterface.TradingInterface;
 
 import java.io.*;
 import java.sql.Connection;
@@ -32,7 +31,7 @@ public class TradeRWFile implements TradingInterface {
         int totalRows = 0;
         int errorCount = 0;
 
-        try (FileWriter errorLogWriter = new FileWriter("src/problems/tradeOperations/extraUsedFiles/error_read_log.txt", true);
+        try (FileWriter errorLogWriter = new FileWriter("src/problems/tradeoperations/extrausedfiles/error_read_log.txt", true);
              BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             TradeValidator validator = new TradeValidator(errorLogWriter);
             String line;
@@ -92,7 +91,7 @@ public class TradeRWFile implements TradingInterface {
 
         try (
              PreparedStatement statement = connection.prepareStatement(insertQuery);
-             FileWriter errorLogWriter = new FileWriter("src/problems/tradeOperations/extraUsedFiles/error_write_log.txt", true)) {
+             FileWriter errorLogWriter = new FileWriter("src/problems/tradeoperations/extrausedfiles/error_write_log.txt", true)) {
 
             connection.setAutoCommit(false); // Start transaction
 

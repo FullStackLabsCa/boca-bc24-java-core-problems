@@ -1,6 +1,6 @@
-package problems.tradeOperations.tradingInterface;
+package problems.tradeoperations.tradinginterface;
 
-import problems.tradeOperations.exceptionFiles.HitErrorsThresholdException;
+import problems.tradeoperations.exception_files.HitErrorsThresholdException;
 
 import java.util.List;
 

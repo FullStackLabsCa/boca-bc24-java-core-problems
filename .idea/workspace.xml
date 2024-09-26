@@ -5,22 +5,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3c9f44b-ff0f-43a9-b850-9b801d0dc95b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/learningMaterials/SQL/_4/Constraint/4. Constraint.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/chunk/SimpleChunkGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/chunk/SimpleChunkProcessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/customException/DatabaseInsertException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/customException/InvalidDataException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/database/DatabaseConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/interfaceFiles/ChunkGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/interfaceFiles/ChunkProcessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/rawFiles/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/rawFiles/trades.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/trade_system.SQL" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tradeoperations/extrausedfiles/error_read_log.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tradeoperations/extrausedfiles/error_write_log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeOperations/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/manager/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeOperations/manager/DatabaseConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeoperations/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/ThresholdInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeoperations/ThresholdInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/exceptionFiles/HitErrorsThresholdException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeoperations/exception_files/HitErrorsThresholdException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/exceptionFiles/InvalidThresholdValueException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeoperations/exception_files/InvalidThresholdValueException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/exceptionFiles/InvalidThresholdValueRuntimeException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeoperations/exception_files/InvalidThresholdValueRuntimeException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/extraUsedFiles/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeoperations/extrausedfiles/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/extraUsedFiles/error_log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeoperations/extrausedfiles/error_log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/extraUsedFiles/error_read_log.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/extraUsedFiles/error_write_log.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/manager/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeoperations/manager/DatabaseConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/manager/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeoperations/manager/DatabaseManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/manager/LoadCSVToDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeoperations/manager/LoadCSVToDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/manager/ThresholdManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeoperations/manager/ThresholdManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/sourcesFiles/CMD.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeoperations/sourcesfiles/CMD.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/sourcesFiles/note1.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeoperations/sourcesfiles/note1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/sourcesFiles/query.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeoperations/sourcesfiles/query.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/sourcesFiles/securities_reference.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeoperations/sourcesfiles/securities_reference.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/sourcesFiles/tradeFile.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeoperations/sourcesfiles/tradeFile.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/sourcesFiles/tradeFileN.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeoperations/sourcesfiles/tradeFileN.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/sourcesFiles/trades_sample.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeoperations/sourcesfiles/trades_sample.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/sourcesFiles/trades_sample_1000.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeoperations/sourcesfiles/trades_sample_1000.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/testCasesFiles/test_tradeFileN.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeoperations/testcasesfiles/test_tradeFileN.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/testCasesFiles/test_tradeFile_InvalidTrades.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeoperations/testcasesfiles/test_tradeFile_InvalidTrades.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/testCasesFiles/test_tradeFile_ValidTrades.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeoperations/testcasesfiles/test_tradeFile_ValidTrades.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/testCasesFiles/test_tradeFile_empty.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeoperations/testcasesfiles/test_tradeFile_empty.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/testCasesFiles/test_trades_readwrite_validle.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeoperations/testcasesfiles/test_trades_readwrite_validle.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/tradeFiles/TEMP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeoperations/tradefiles/TEMP.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/tradeFiles/TradeRWFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeoperations/tradefiles/TradeRWFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/tradeFiles/TradeValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeoperations/tradefiles/TradeValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeOperations/tradingInterface/TradingInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeoperations/tradinginterface/TradingInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeProcessing/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/problems/TradeOperationsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/TradeOperationsTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -224,6 +242,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TradeOperationsTest.testReadFileExceedingErrorThreshold" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="boca-bc24-java-core-problems" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="problems.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="problems" />
+      <option name="MAIN_CLASS_NAME" value="problems.TradeOperationsTest" />
+      <option name="METHOD_NAME" value="testReadFileExceedingErrorThreshold" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TradeOperationsTest.testReadFileValidTrades" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="boca-bc24-java-core-problems" />
       <extension name="coverage">
@@ -256,29 +290,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TradeOperationsTest.testThresholdUpperBoundary" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="boca-bc24-java-core-problems" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="problems.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="problems" />
-      <option name="MAIN_CLASS_NAME" value="problems.TradeOperationsTest" />
-      <option name="METHOD_NAME" value="testThresholdUpperBoundary" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TradeOperationsTest.testReadFileExceedingErrorThreshold" />
         <item itemvalue="JUnit.TradeOperationsTest.testSummarizeResults" />
         <item itemvalue="JUnit.TradeOperationsTest.testDatabaseStateAfterValidTradeProcessing" />
         <item itemvalue="JUnit.TradeOperationsTest.testReadFileValidTrades" />
         <item itemvalue="JUnit.TradeOperationsTest.testMissingPropertiesFile" />
-        <item itemvalue="JUnit.TradeOperationsTest.testThresholdUpperBoundary" />
       </list>
     </recent_temporary>
   </component>
