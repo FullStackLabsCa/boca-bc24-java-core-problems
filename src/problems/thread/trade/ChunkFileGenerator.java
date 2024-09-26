@@ -19,7 +19,6 @@ public class ChunkFileGenerator {
 
             // Simulate reading from a file
             singleThreadExecutor.submit(() -> {
-                int numberOfChunksFiles = 10;
                 long startLine = 0;
                 int numberOfRowsInPerChunk;
                 try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
@@ -31,10 +30,10 @@ public class ChunkFileGenerator {
                         tradeChunkArrayList.add(line);
                     }
 
-                    numberOfRowsInPerChunk = (int) Math.round(Double.parseDouble(String.valueOf(tradeChunkArrayList.size())) / numberOfChunksFiles);
+                    numberOfRowsInPerChunk = (int) Math.round(Double.parseDouble(String.valueOf(tradeChunkArrayList.size())) / ThreadTradeService.numberOfChunksFiles);
 
                     //creating chunkFiles
-                    for (int i = 0; i < numberOfChunksFiles; i++) {
+                    for (int i = 0; i < ThreadTradeService.numberOfChunksFiles; i++) {
                         String fileName = "/Users/Gaurav.Manchanda/src/boca-bc24-java-core-problems/src/problems/thread/trade/rawdata/trade_chunk_" + (i + 1) + ".csv";
                         //writing to file
                         startLine = writeToChunkFiles(fileName, headingRow, startLine, numberOfRowsInPerChunk, tradeChunkArrayList);

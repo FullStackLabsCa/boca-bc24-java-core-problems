@@ -14,6 +14,7 @@ public class ThreadTradeService {
     public static boolean isFileExist = false;
     public static boolean isThresholdValid = false;
     public static String filePath = "";
+    public  static int numberOfChunksFiles = 10;
     // ANSI escape codes for colors
     public static final String ANSI_GREEN = "\u001B[32m";
 
