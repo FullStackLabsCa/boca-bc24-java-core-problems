@@ -11,19 +11,20 @@ public class ThreadPoolManager {
 
     private final ExecutorService executorService;
     private final HikariCPDataSource dataSource;
+    private final QueueDistributor queueDistributor;
 
-    public ThreadPoolManager(int numberOfThreads, HikariCPDataSource dataSource) {
+    public ThreadPoolManager(int numberOfThreads, HikariCPDataSource dataSource, QueueDistributor queueDistributor) {
         this.executorService = Executors.newFixedThreadPool(numberOfThreads);
         this.dataSource = dataSource;
+        this.queueDistributor = queueDistributor;
     }
 
     // Method to assign chunks to threads
-    public void processChunks(List <String> listOfChunkFileNames , int numberOfChunks)
-            throws IOException {
-        for (int i = 0; i < numberOfChunks; i++) {
+    public void processChunks(List<String> listOfChunkFileNames) throws IOException {
+        for (String chunkFileName : listOfChunkFileNames) {
             // Submit the chunk to the thread pool
-            ChunkProcessor chunkProcessor = new ChunkProcessor(listOfChunkFileNames.get(i), dataSource);
-            executorService.submit(chunkProcessor);
+            ChunkProcessorUtil chunkProcessorUtil = new ChunkProcessorUtil(chunkFileName, dataSource, queueDistributor);
+            executorService.submit(chunkProcessorUtil);
         }
     }
 

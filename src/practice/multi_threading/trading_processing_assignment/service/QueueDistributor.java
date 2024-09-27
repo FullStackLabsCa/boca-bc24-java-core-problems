@@ -36,17 +36,13 @@ public class QueueDistributor {
         System.out.println("Trade " + tradeId + " added to " + queueId);
     }
 
-    // Additional methods to retrieve or process the queues could be added here
+    // Retrieve a specific queue by its ID
     public LinkedBlockingQueue<String> getQueue(String queueId) {
-        switch (queueId) {
-            case "tradesQueue-0":
-                return tradesQueue0;
-            case "tradesQueue-1":
-                return tradesQueue1;
-            case "tradesQueue-2":
-                return tradesQueue2;
-            default:
-                throw new IllegalArgumentException("Invalid queue ID");
-        }
+        return switch (queueId) {
+            case "tradesQueue-0" -> tradesQueue0;
+            case "tradesQueue-1" -> tradesQueue1;
+            case "tradesQueue-2" -> tradesQueue2;
+            default -> throw new IllegalArgumentException("Invalid queue ID");
+        };
     }
 }
