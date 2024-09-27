@@ -3,6 +3,7 @@ package problems.trading;
 import com.zaxxer.hikari.HikariDataSource;
 import problems.trading.customexceptions.InvalidThresholdRuntimeException;
 import problems.trading.customexceptions.InvalidThresholdValueException;
+import problems.trading.repository.TradingRepository;
 import problems.trading.services.TradingService;
 import problems.trading.tradingmodel.TradingValues;
 
@@ -43,6 +44,8 @@ public class TradingProcessor {
                         throw new InvalidThresholdValueException("Please enter a value between 1 and 100 only.");
                     }
                     break;
+
+
 
                 } catch (NumberFormatException e) {
                     System.out.println("Invalid threshold value. Value should be a number");
@@ -114,6 +117,7 @@ public class TradingProcessor {
             dataSource = configureHikariCP();
             Connection connection = TradingService.connectToDatabase();
             setupDBConnectionAndRunFileReading(connection, filePath, defaultErrorThreshold);
+            TradingRepository.prepareStatements(dataSource,batch);
 
         }
     }

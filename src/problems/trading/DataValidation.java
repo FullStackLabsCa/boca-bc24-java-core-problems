@@ -8,21 +8,23 @@ import java.sql.Connection;
 import java.text.SimpleDateFormat;
 import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 public class DataValidation {
     public static boolean checkForAllValidations(String line, Connection connection, double lineNumber) {
         String[] data = line.split(",");
+        boolean validation = false;
 
-        if (checkForValidNumberOfColumns(line, lineNumber) &&
-                checkForValidQuantity(line, lineNumber) &&
-                checkForValidTickerSymbol(line, connection, lineNumber) &&
-                checkForValidPrice(line, lineNumber) &&
+        if (checkForValidNumberOfColumns(line, lineNumber) ||
+                checkForValidQuantity(line, lineNumber) ||
+            //    checkForValidTickerSymbol(line, connection, lineNumber) &&
+                checkForValidPrice(line, lineNumber) ||
                 checkForValidTradeDate(line, lineNumber)) {
             return true;
         }
 
-        return false;
+        return validation;
     }
 
 
@@ -77,38 +79,37 @@ public class DataValidation {
     public static boolean checkForValidTradeDate(String line, double lineNumber) {
         //Validation - check if the date in always in the format of "yyyy-MM-dd"
         String[] data = line.split(",");
-        String datePattern = "yyyy-MM-dd";
-        String regex = "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])$";
-        if (!line.matches(regex)) {
-            return false;
-        }
-        SimpleDateFormat dateFormat = new SimpleDateFormat(datePattern);
+    //    String datePattern = "yyyy-MM-dd";
+        String date = data[5].trim();
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+      //  SimpleDateFormat dateFormat = new SimpleDateFormat(datePattern);
         try {
-            LocalDate.parse(data[5].trim());
+            LocalDate.parse(date, dateFormat);
             return true;
         } catch (DateTimeParseException d) {
-            TradingService.logReaderErrors("#" + lineNumber + " -- Error line -- {" + line + "} --Place of error: [" + data[5].trim() + "] --- not a valid date format. The correct date format is yyyy-MM-dd");
-            System.out.println(data[5].trim() + " -- not a valid date format. The correct date format is yyyy-MM-dd");
+            TradingService.logReaderErrors("#" + lineNumber + " -- Error line -- {" + line + "} --Place of error: [" + data[5] + "] --- not a valid date format. The correct date format is yyyy-MM-dd");
+            System.out.println(data[5] + " -- not a valid date format. The correct date format is yyyy-MM-dd");
         }
 
         return false;
     }
 
 
-    public static boolean isTickerSymbolValid(Connection connection, String tickerSymbol) {
-        return TradingRepository.isTickerSymbolValid(connection, tickerSymbol);
-    }
+//    public static boolean isTickerSymbolValid(Connection connection, String tickerSymbol) {
+//        return TradingRepository.isTickerSymbolValid(connection, tickerSymbol);
+//    }
 
-    public static boolean checkForValidTickerSymbol(String line, Connection connection, double lineNumber) {
-        String[] data = line.split(",");
-        String tickerSymbol = data[2].trim();
-
-
-
-        if (!isTickerSymbolValid(connection, tickerSymbol)) {
-            System.out.println("Invalid security ticker symbol");
-            TradingService.logWritingErrors("#" + lineNumber + " -- Error line -- {" + line + "} -- Place of error: [" + data[2].trim() + "] -- Invalid ticker symbol");
-        }
-        return true;
-    }
+//    public static boolean checkForValidTickerSymbol(String line, Connection connection, double lineNumber) {
+//        String[] data = line.split(",");
+//        String tickerSymbol = data[2].trim();
+//
+//
+//
+//        if (!isTickerSymbolValid(connection, tickerSymbol)) {
+//            System.out.println("Invalid security ticker symbol");
+//            TradingService.logWritingErrors("#" + lineNumber + " -- Error line -- {" + line + "} -- Place of error: [" + data[2].trim() + "] -- Invalid ticker symbol");
+//        }
+//        return true;
+//    }
 }
