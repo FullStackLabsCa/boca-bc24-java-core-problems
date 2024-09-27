@@ -17,7 +17,7 @@ public class ReadWriteCounter {
         writeLock.lock();
         try {
             count++;
-            Thread.sleep(500);
+            Thread.sleep(1000);
             //CPU will think that this thread is now in sleep so lets give the chance to another threads to read this.
         }
         catch (InterruptedException e) {
@@ -62,14 +62,17 @@ public class ReadWriteCounter {
         Thread writeThread = new Thread(writeTask);
         Thread readThread1 = new Thread(readTask);
         Thread readThread2 = new Thread(readTask);
+        Thread writeThread2 = new Thread(writeTask);
 
         writeThread.start();
         readThread1.start();
         readThread2.start();
+        writeThread2.start();
 
         writeThread.join();
         readThread1.join();
         readThread2.join();
+        writeThread2.join();
 
         System.out.println("Final count: " + readWriteCounter.getCount());
     }

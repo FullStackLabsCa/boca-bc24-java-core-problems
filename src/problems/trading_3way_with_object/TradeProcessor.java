@@ -4,14 +4,12 @@ import problems.trading_3way_with_object.contract.TradeReader;
 import problems.trading_3way_with_object.contract.TradeWriter;
 import problems.trading_3way_with_object.utility.*;
 
-import java.io.FileNotFoundException;
-import java.util.Scanner;
 import java.util.List;
 
 public class TradeProcessor {
 
     public static void main(String[] args) {
-        String filePath = FilePath.filePath();
+        String filePath = FilePath.filePathValidator();
         double thresholdValue = ThresholdValidation.thresholdValue();
         // Create a Scanner object for getting user input from the command line
 //        Scanner scanner = new Scanner(System.in);

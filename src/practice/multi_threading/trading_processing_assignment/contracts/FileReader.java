@@ -1,5 +1,9 @@
 package practice.multi_threading.trading_processing_assignment.contracts;
 
-public interface FileReader {
+import problems.trading_3way_with_object.Trade;
 
+import java.util.List;
+
+public interface FileReader {
+    List<Trade> readTrades(String inputFilePath) throws Exception;
 }

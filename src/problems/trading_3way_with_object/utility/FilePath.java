@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class FilePath {
-    public static String filePath() {
+    public static String filePathValidator() {
         // Create a Scanner object for getting user input from the command line
         Scanner scanner = new Scanner(System.in);
         // Loop to get valid file path
