@@ -8,9 +8,11 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ChunkFileProcessor implements Runnable {
     private String chunkPath;
+    static final ConcurrentHashMap<String, Integer> queueDistributorConcurrentHashMap = new ConcurrentHashMap<>();
 
     public static Connection connection;
 
@@ -34,6 +36,7 @@ public class ChunkFileProcessor implements Runnable {
     public static void insertInRawTable(String fileName) {
         String insertQuery = "INSERT INTO trade_payloads (trade_id, status, payload) VALUES (?, ?, ?)";
         String line;
+        int queueNumber = 0;
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName));
              PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
             reader.readLine();
@@ -41,12 +44,31 @@ public class ChunkFileProcessor implements Runnable {
                 String[] payload = line.split(",");
                 //insert to trade_payloads table
                 insertIntoTradePayloadsTable(preparedStatement, payload, line);
+                //insert into queue Distributor Map
+                queueNumber = getUniqueQueueNumber();
+                queueDistributorConcurrentHashMap.put(payload[2], queueNumber);
+                //writes to queue
+                writesToQueues(queueNumber, payload);
             }
-        } catch (IOException e) {
+        } catch (IOException | SQLException | InterruptedException e) {
             e.printStackTrace();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
         }
+    }
+
+    private static void writesToQueues(int queueNumber, String[] payload) throws InterruptedException {
+        if (queueNumber == 1) {
+            ThreadTradeService.queue1.put(payload[0]);
+        }
+        if (queueNumber == 2) {
+            ThreadTradeService.queue2.put(payload[0]);
+        }
+        if (queueNumber == 3) {
+            ThreadTradeService.queue3.put(payload[0]);
+        }
+    }
+
+    public static int getUniqueQueueNumber() {
+        return (int) (Math.random() * 3) + 1;
     }
 
     private static void insertIntoTradePayloadsTable(PreparedStatement preparedStatement, String[] payload, String line) throws SQLException {

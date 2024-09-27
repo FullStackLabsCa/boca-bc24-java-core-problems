@@ -4,6 +4,7 @@ import problems.trading.exceptions.HitErrorsThresholdException;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class ThreadTradeService {
     public static int writeErrorCount = 0;
@@ -17,6 +18,9 @@ public class ThreadTradeService {
     public  static int numberOfChunksFiles = 10;
     // ANSI escape codes for colors
     public static final String ANSI_GREEN = "\u001B[32m";
+    public static LinkedBlockingQueue<String> queue1 = new LinkedBlockingQueue<>();
+    public static LinkedBlockingQueue<String> queue2 = new LinkedBlockingQueue<>();
+    public static LinkedBlockingQueue<String> queue3 = new LinkedBlockingQueue<>();
 
     public static void checkWriteLogFileExistOrNot() {
         if (writeFile.exists()) {
