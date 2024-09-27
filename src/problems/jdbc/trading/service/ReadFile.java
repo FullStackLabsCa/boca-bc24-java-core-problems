@@ -7,7 +7,7 @@ import problems.jdbc.trading.model.Trade;
 import java.io.IOException;
 import java.util.Map;
 
-public interface ReadFileInterface {
+public interface ReadFile {
 
     void readFileAndInitializeDataSource(String path, double thresholdValue, HikariDataSource dataSource);
 

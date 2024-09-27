@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Map;
 
-public class InsertTradeRepository implements TradeRepositoryInterface, MatchSecuritiesInterface {
+public class InsertTradeRepository implements TradeRepository, MatchSecurities {
 
     @Override
     public void insertTrade(Map<Integer, Trade> trades, HikariDataSource dataSource) throws HitErrorsThresholdException, SQLException {

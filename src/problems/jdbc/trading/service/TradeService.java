@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.*;
 
-public class TradeService implements ReadFileInterface, ThresholdInterface, ReadAndWriteErrorLog, PrintSummaryInterface {
+public class TradeService implements ReadFile, Threshold, ReadAndWriteErrorLog, PrintSummary {
     HikariDataSource dataSource;
 
     @Override
@@ -80,7 +80,6 @@ public class TradeService implements ReadFileInterface, ThresholdInterface, Read
         }
     }
 
-    @Override
     public Trade createTradeRecord(String line) {
         try {
             String[] tradeArray = line.split(",");

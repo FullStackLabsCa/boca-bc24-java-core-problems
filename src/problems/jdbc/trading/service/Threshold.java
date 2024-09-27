@@ -1,11 +1,8 @@
 package problems.jdbc.trading.service;
 
 import problems.jdbc.trading.exception.InvalidThresholdValueException;
-import problems.jdbc.trading.model.Trade;
 
-public interface ThresholdInterface {
-    Trade createTradeRecord(String line);
-
+public interface Threshold {
     double fetchThresholdValue();
 
     boolean isThresholdExceeded();
