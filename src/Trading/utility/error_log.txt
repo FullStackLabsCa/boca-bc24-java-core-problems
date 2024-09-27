@@ -1,8 +1,0 @@
-Invalid Ticker symbol :- trade_id: 2, trade_identifier: TDB_195199, ticker_symbol: SPOT, quantity: 350, price: 2735.94, trade_date: 2024-01-06
-Invalid Ticker symbol :- trade_id: 3, trade_identifier: TDB_135287, ticker_symbol: HOD, quantity: 287, price: 717.59, trade_date: 2024-07-19
-Invalid Ticker symbol :- trade_id: 4, trade_identifier: TDB_227475, ticker_symbol: DOCU, quantity: 231, price: 2052.41, trade_date: 2024-03-03
-Invalid Ticker symbol :- trade_id: 5, trade_identifier: TDB_210749, ticker_symbol: GOGL, quantity: 470, price: 2361.51, trade_date: 2024-07-22
-Invalid Ticker symbol :- trade_id: 6, trade_identifier: TDB_171277, ticker_symbol: SNAP, quantity: 11, price: 2488.77, trade_date: 2024-08-15
-Invalid Ticker symbol :- trade_id: 7, trade_identifier: TDB_232786, ticker_symbol: NKE, quantity: 443, price: 1800.6, trade_date: 2024-10-17
-Invalid Ticker symbol :- trade_id: 10, trade_identifier: TDB_182176, ticker_symbol: HOD, quantity: 114, price: 778.68, trade_date: 2024-11-17
-Transaction rollback due to: Duplicate entry '9' for key 'Trades.PRIMARY'
