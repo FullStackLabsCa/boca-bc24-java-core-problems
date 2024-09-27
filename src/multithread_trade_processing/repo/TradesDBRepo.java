@@ -33,7 +33,7 @@ public class TradesDBRepo {
 
     public void writeTradeToJournalTable(Trade trade){
         String writeToJournalQuery = """
-                insert into journal_entry (account_number, security_id, direction, quantity, price, posted_status)
+                insert into journal_entry (account_number, security_id, direction, quantity, posted_status)
                 values (?,?,?,?,?)
                 """;
 
@@ -44,8 +44,9 @@ public class TradesDBRepo {
             insertionQuery.setInt(2,getSecurityIdForCusip(trade.getCusip()));
             insertionQuery.setString(3,trade.getActivity());
             insertionQuery.setInt(4,trade.getQuantity());
-            insertionQuery.setDouble(5,trade.getPrice());
-            insertionQuery.setString(6,"Not Posted");
+            insertionQuery.setString(5,"Not Posted");
+
+            insertionQuery.executeUpdate();
 
         } catch (SQLException e){
             System.out.println(e.getMessage());
@@ -61,7 +62,7 @@ public class TradesDBRepo {
 
             ps.setString(1, cusip);
             ResultSet resultSet = ps.executeQuery();
-
+            resultSet.next();
             return resultSet.getInt("security_id");
 
         }catch (SQLException e){

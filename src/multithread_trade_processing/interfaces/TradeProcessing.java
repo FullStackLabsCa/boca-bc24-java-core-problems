@@ -4,7 +4,7 @@ import multithread_trade_processing.model.Trade;
 
 public interface TradeProcessing {
 
-    String readTradeIdFromQueue();
+    String readTradeIdFromQueue() throws InterruptedException;
     String readPayloadFromRawDatabase(String tradeID);
     Trade validatePayloadAndCreateTrade(String payload);
     String validateBusinessLogic(Trade trade);

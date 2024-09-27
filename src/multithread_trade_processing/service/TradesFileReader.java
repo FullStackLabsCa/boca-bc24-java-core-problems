@@ -53,14 +53,4 @@ public class TradesFileReader implements TradesFileReading {
 
         return 2000;
     }
-
-    public static void main(String[] args) {
-        String folderPath = "/Users/Akshat.Singla/Downloads/code/practice-problems/student-codebase/boca-bc24-java-core-problems/src/multithread_trade_processing";
-
-        TradesFileReader reader = new TradesFileReader();
-        chunksPathAndNumberOfChunks result =  reader.readFileAndCreateChunks(folderPath+"/trades.csv", null);
-
-        ChunkProcessor chunkProcessor = new ChunkProcessor();
-        chunkProcessor.startChunkProcessorPool(result.folderPath(), result.numberOfFiles());
-    }
 }

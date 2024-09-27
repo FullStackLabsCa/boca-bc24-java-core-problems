@@ -20,20 +20,27 @@ public class TradeProcessorTask implements Runnable, TradeProcessing {
 
     @Override
     public void run(){
-        String tradeID = readTradeIdFromQueue();
-        String payload = readPayloadFromRawDatabase(tradeID);
-        Trade trade = validatePayloadAndCreateTrade(payload);
-        if(trade != null){
-            if(validateBusinessLogic(trade).equals("Valid")){
-                writeToJournalTable(trade);
-                writeToPositionsTable(trade);
+        while(true){
+            String tradeID = null;
+            try {
+                tradeID = readTradeIdFromQueue();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            String payload = readPayloadFromRawDatabase(tradeID);
+            Trade trade = validatePayloadAndCreateTrade(payload);
+            if (trade != null) {
+                if (validateBusinessLogic(trade).equals("Valid")) {
+                    writeToJournalTable(trade);
+                    writeToPositionsTable(trade);
+                }
             }
         }
     }
 
     @Override
-    public String readTradeIdFromQueue() {
-        return tradeIdQueue.getFirst();
+    public String readTradeIdFromQueue() throws InterruptedException {
+        return tradeIdQueue.takeFirst();
     }
 
     @Override
@@ -96,16 +103,4 @@ public class TradeProcessorTask implements Runnable, TradeProcessing {
         tradeDbAccess.updatePositionsTable(trade);
     }
 
-    public static void main(String[] args) {
-        TradeProcessorTask test = new TradeProcessorTask(new LinkedBlockingDeque<>());
-
-        String payload = test.readPayloadFromRawDatabase("TDB_00000025");
-        Trade trade = test.validatePayloadAndCreateTrade(payload);
-        if(trade != null){
-            if(test.validateBusinessLogic(trade).equals("Valid")){
-                test.writeToJournalTable(trade);
-                test.writeToPositionsTable(trade);
-            }
-        }
-    }
 }
