@@ -19,6 +19,9 @@ public class TradeReader implements TradeReading {
               int linesRead = 0;
               String folderPath = "/Users/Akshat.Singla/Downloads/code/practice-problems/student-codebase/boca-bc24-java-core-problems/src/multithread_trade_processing/data/";
 
+              if(fileReader.hasNextLine()) {
+                  fileReader.nextLine();
+              } // Skipping the first line which contains the headers of the columns
               while(fileReader.hasNextLine()) {
 
                   if(newFileCreationNeeded){
