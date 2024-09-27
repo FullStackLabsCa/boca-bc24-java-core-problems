@@ -22,4 +22,22 @@ public class PayloadDatabaseRepo {
             System.out.println(e.getMessage());
         }
     }
+
+    public String readPayloadFromDB(String tradeID){
+        String query = "Select payload from trades_payload where trade_id=?";
+
+        try(Connection connection = DriverManager.getConnection(URL, USER, PASS);
+            PreparedStatement psQuery = connection.prepareStatement(query)){
+
+            psQuery.setString(1, tradeID);
+            ResultSet rsQuery = psQuery.executeQuery();
+
+            return rsQuery.getString("payload");
+
+        } catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+
+        return null;
+    }
 }

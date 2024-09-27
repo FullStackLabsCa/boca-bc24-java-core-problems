@@ -1,6 +1,6 @@
 package multithread_trade_processing.interfaces;
 
-public interface TradeReading {
+public interface TradesFileReading {
 
     chunksPathAndNumberOfChunks readFileAndCreateChunks(String filePath, String fileType);
 

@@ -89,13 +89,13 @@ public class ChunkProcessorTask implements Runnable, ChunkProcessing {
         try {
             switch (queueID) {
                 case 1:
-                    tradesIdQueue1.putFirst(tradeID);
+                    tradeIdQueue1.putFirst(tradeID);
                     break;
                 case 2:
-                    tradesIdQueue2.putFirst(tradeID);
+                    tradeIdQueue2.putFirst(tradeID);
                     break;
                 case 3:
-                    tradesIdQueue3.putFirst(tradeID);
+                    tradeIdQueue3.putFirst(tradeID);
                     break;
                 default:
                     System.out.println("Unable to add to Queue. Please Debug the Issue.");

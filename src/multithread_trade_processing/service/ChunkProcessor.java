@@ -12,9 +12,9 @@ public class ChunkProcessor{
 
     public static ConcurrentHashMap<String, Integer> accToQueueMap = new ConcurrentHashMap<>();
 
-    public static final LinkedBlockingDeque<String> tradesIdQueue1 = new LinkedBlockingDeque<>();
-    public static final LinkedBlockingDeque<String> tradesIdQueue2 = new LinkedBlockingDeque<>();
-    public static final LinkedBlockingDeque<String> tradesIdQueue3 = new LinkedBlockingDeque<>();
+    public static final LinkedBlockingDeque<String> tradeIdQueue1 = new LinkedBlockingDeque<>();
+    public static final LinkedBlockingDeque<String> tradeIdQueue2 = new LinkedBlockingDeque<>();
+    public static final LinkedBlockingDeque<String> tradeIdQueue3 = new LinkedBlockingDeque<>();
 
     public void startChunkProcessorPool(String folderPath, int numberOfFiles) {
         List<String> filePaths = getFilesFromFolder(folderPath);
