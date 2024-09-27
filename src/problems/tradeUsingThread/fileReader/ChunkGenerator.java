@@ -7,19 +7,18 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChunkGenerator implements Runnable{
+public class ChunkGenerator implements Runnable {
     static String filePath = "";
     public static List<String> fileList;
 
     public ChunkGenerator(String filePath) {
-        this.filePath= filePath;
+        this.filePath = filePath;
     }
 
     @Override
-    public void run(){
-        chunkGenerator();
-        fileList = chunkGenerator();
+    public void run() {
 
+        chunkGenerator();
 //        for (String file : fileList) {
 //            System.out.println(file);
 //        }
@@ -42,7 +41,7 @@ public class ChunkGenerator implements Runnable{
             String line = "";
             int count = 0;
             int part = 1;
-            String filename= "";
+            String filename = "";
 
             while ((line = br.readLine()) != null) {
 
@@ -56,7 +55,7 @@ public class ChunkGenerator implements Runnable{
 
                 if (count >= linesPerFile) {
                     bw.close();
-                    filename= "trade_" + part + ".csv";
+                    filename = "trade_" + part + ".csv";
                     fileList.add(filename);
                     part++;
                     count = 0;
