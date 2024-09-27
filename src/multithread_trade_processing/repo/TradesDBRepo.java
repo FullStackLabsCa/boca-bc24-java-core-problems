@@ -59,6 +59,7 @@ public class TradesDBRepo {
         try(Connection connection = DriverManager.getConnection(URL, USER, PASS);
             PreparedStatement ps = connection.prepareStatement(lookUpSecurityQuery)){
 
+            ps.setString(1, cusip);
             ResultSet resultSet = ps.executeQuery();
 
             return resultSet.getInt("security_id");

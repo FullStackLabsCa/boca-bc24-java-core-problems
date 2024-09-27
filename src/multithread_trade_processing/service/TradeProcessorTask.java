@@ -95,4 +95,17 @@ public class TradeProcessorTask implements Runnable, TradeProcessing {
         TradesDBRepo tradeDbAccess = new TradesDBRepo();
         tradeDbAccess.updatePositionsTable(trade);
     }
+
+    public static void main(String[] args) {
+        TradeProcessorTask test = new TradeProcessorTask(new LinkedBlockingDeque<>());
+
+        String payload = test.readPayloadFromRawDatabase("TDB_00000025");
+        Trade trade = test.validatePayloadAndCreateTrade(payload);
+        if(trade != null){
+            if(test.validateBusinessLogic(trade).equals("Valid")){
+                test.writeToJournalTable(trade);
+                test.writeToPositionsTable(trade);
+            }
+        }
+    }
 }

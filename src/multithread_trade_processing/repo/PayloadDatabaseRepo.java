@@ -31,7 +31,7 @@ public class PayloadDatabaseRepo {
 
             psQuery.setString(1, tradeID);
             ResultSet rsQuery = psQuery.executeQuery();
-
+            rsQuery.next();
             return rsQuery.getString("payload");
 
         } catch (SQLException e){
