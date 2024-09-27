@@ -35,6 +35,7 @@ public class CreateChunks implements ChunkGenerator {
                 writer.newLine();
                 lineCount++;
                 if (lineCount >= chunkFileSize) {
+
                     writer.close();
                     chunk++;
                     filecount++;

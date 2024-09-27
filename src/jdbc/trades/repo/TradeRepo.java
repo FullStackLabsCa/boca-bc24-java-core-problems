@@ -53,7 +53,7 @@ public class TradeRepo implements TradeRepoInterface {
               batchElement = 0;
             }
         } catch (SQLException e) {
-            log.error("Caught Exception", e);
+            System.out.println("Exception: "+ e);
         }
 
         return null;
@@ -70,7 +70,7 @@ public class TradeRepo implements TradeRepoInterface {
         } catch (SQLException e) {
             TradesService.setThreshold(TradesService.getThreshold() +1);
              writerErrorLogs(e.toString(), tradePOJO.toString());
-            log.error("e: ", e);
+            System.out.println("Exception: "+ e);
         }
         return status;
     }
@@ -91,7 +91,7 @@ public class TradeRepo implements TradeRepoInterface {
 
         } catch (Exception e) {
           writerErrorLogs(e.toString(), tradePOJO.toString());
-            log.error("e", e);
+            System.out.println("Exception: "+ e);
         }
         return status;
     }
@@ -105,7 +105,7 @@ public class TradeRepo implements TradeRepoInterface {
             Integer x = commitOrRollbackBatch(datas, currentValue, connection, preparedStatement);
             if (x != null) return x;
         } catch (Exception e) {
-            log.error("Exception: ", e);
+            System.out.println("Exception: "+ e);
         }
         return 1;
     }
@@ -123,7 +123,7 @@ public class TradeRepo implements TradeRepoInterface {
             connection.commit();
         } catch (BatchUpdateException e) {
             writerErrorLogs(e.toString(), currentValue);
-            log.error("e: ", e);
+            System.out.println("Exception: "+ e);
             connection.rollback();
             return 0;
         }
