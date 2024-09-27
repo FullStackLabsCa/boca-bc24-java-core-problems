@@ -14,11 +14,12 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class ChunkProcessor implements Runnable {
     private String filePath;
-    LinkedBlockingQueue queue1 = new LinkedBlockingQueue<>();
-    LinkedBlockingQueue queue2 = new LinkedBlockingQueue<>();
-    LinkedBlockingQueue queue3 = new LinkedBlockingQueue<>();
 
-    ConcurrentHashMap<String, String> tradeQueueMap = new ConcurrentHashMap<>();
+    public static LinkedBlockingQueue queue1 = new LinkedBlockingQueue<>();
+    public static LinkedBlockingQueue queue2 = new LinkedBlockingQueue<>();
+    public static LinkedBlockingQueue queue3 = new LinkedBlockingQueue<>();
+
+    public static ConcurrentHashMap<String, String> tradeQueueMap = new ConcurrentHashMap<>();
 
     public ChunkProcessor(String filePath) {
         this.filePath = filePath;
@@ -39,8 +40,25 @@ public class ChunkProcessor implements Runnable {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-//                line= bufferedReader.readLine();
                 insertTradePayloadData(line);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                addToTradeQueueMap(line);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                hashMapToBlockingQueue(line);
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -61,6 +79,29 @@ public class ChunkProcessor implements Runnable {
             }
             preparedStatement.setString(3, line);
             preparedStatement.executeUpdate();
+        }
+    }
+
+    public void addToTradeQueueMap(String line) {
+        int min = 1;
+        int max = 4;
+        String[] fields = line.split(",");
+        while (!tradeQueueMap.containsKey(fields[2])) {
+            tradeQueueMap.put(fields[2], String.valueOf((int) (Math.random() * (max - min) + min)));
+        }
+    }
+
+    public void hashMapToBlockingQueue(String line) {
+        String[] fields = line.split(",");
+
+        if ("1".equals(tradeQueueMap.get(fields[2]))) {
+            queue1.add(fields[0]);
+        }
+        if ("2".equals(tradeQueueMap.get(fields[2]))) {
+            queue2.add(fields[0]);
+        }
+        if ("3".equals(tradeQueueMap.get(fields[2]))) {
+            queue3.add(fields[0]);
         }
     }
 }
