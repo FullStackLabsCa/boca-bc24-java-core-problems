@@ -6,22 +6,47 @@ import multithread_trade_processing.repo.PayloadDatabaseRepo;
 import multithread_trade_processing.repo.TradesDBRepo;
 
 import javax.management.RuntimeErrorException;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.LinkedBlockingDeque;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 public class TradeProcessorTask implements Runnable, TradeProcessing {
     LinkedBlockingDeque<String> tradeIdQueue;
+
+    private static final Logger logger = Logger.getLogger(TradeProcessorTask.class.getName());
+    FileHandler fileHandler;
 
     public TradeProcessorTask(LinkedBlockingDeque<String> tradeIdQueue) {
         this.tradeIdQueue = tradeIdQueue;
     }
 
+    public void configureLogger(){
+        {
+            try {
+                fileHandler = new FileHandler("error.txt", true);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        SimpleFormatter formatter = new SimpleFormatter();
+        fileHandler.setFormatter(formatter);
+        logger.addHandler(fileHandler);
+        logger.setUseParentHandlers(false);
+        logger.setLevel(Level.INFO);
+    }
+
     @Override
     public void run(){
+//        configureLogger();
         while(true){
-            String tradeID = null;
+            String tradeID;
             try {
                 tradeID = readTradeIdFromQueue();
             } catch (InterruptedException e) {
@@ -33,6 +58,8 @@ public class TradeProcessorTask implements Runnable, TradeProcessing {
                 if (validateBusinessLogic(trade).equals("Valid")) {
                     writeToJournalTable(trade);
                     writeToPositionsTable(trade);
+                } else {
+                    logger.info(trade.toString());
                 }
             }
         }
