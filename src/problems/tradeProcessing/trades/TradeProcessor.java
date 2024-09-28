@@ -54,21 +54,27 @@ public class TradeProcessor implements TradeProcessorInterface, Runnable, TradeP
     // TradeProcessorInterface
     @Override
     public void processTrade(String tradeId) throws Exception {
-        // 1. fetch payload
-        String payload = fetchTradePayload(tradeId);
-        if(payload != null){
-            // 2. parse payload - extarct fields - use cusip
-            String[] fields = parsePayload(payload);
-            String cusip = fields[3]; // cusip - 3rd position
-            // 3. find security id - using cusip
-            String securityId = getSecurityIdByCusip(cusip);
-            if (securityId != null){
-                // 4. insert into journal_entry
-                insertJournalEntry(fields, securityId);
-            } else {
-                System.out.println("CUSIP not found" + cusip);
+        String status = fetchTradeStatus(tradeId);
+        if("valid".equals(status)){
+            // 1. fetch payload
+            String payload = fetchTradePayload(tradeId);
+            if(payload != null){
+                // 2. parse payload - extarct fields - use cusip
+                String[] fields = parsePayload(payload);
+                String cusip = fields[3]; // cusip - 3rd position
+                // 3. find security id - using cusip
+                String securityId = getSecurityIdByCusip(cusip);
+                if (securityId != null){
+                    // 4. insert into journal_entry
+                    insertJournalEntry(fields, securityId);
+                } else {
+                    System.out.println("CUSIP not found" + cusip);
+                }
             }
+        } else {
+            System.out.println("Trade id '" + tradeId + "' can not be proceed further due to status is '" + status +"'");
         }
+
     }
 
     private String[] parsePayload(String payload) {
@@ -76,12 +82,29 @@ public class TradeProcessor implements TradeProcessorInterface, Runnable, TradeP
     }
 
 
+    private String fetchTradeStatus(String tradeId) throws SQLException{
+        String status = null;
+        // prepare & execute query
+        String query = "SELECT status FROM trade_payloads WHERE trade_id = ?";
+        try(PreparedStatement stmt = connection.prepareStatement(query)){
+            stmt.setString(1, tradeId);
+            ResultSet rs = stmt.executeQuery();
+            // retrive status
+            if (rs.next()){
+                status = rs.getString("status");
+            }
+        }
+        return status;
+    }
+
     @Override
     public String fetchTradePayload(String tradeId) throws SQLException {
+        // prepare & execute query
         String query = "SELECT payload FROM trade_payloads WHERE trade_id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(query)){
             stmt.setString(1, tradeId);
             ResultSet rs = stmt.executeQuery();
+            // retrive status
             if (rs.next()){
                 return rs.getString("payload");
             }

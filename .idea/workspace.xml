@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3c9f44b-ff0f-43a9-b850-9b801d0dc95b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/raw/files/tradesnew.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeProcessing/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/problems/tradeProcessing/trades/TradeProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/trades/TradeProcessor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

@@ -14,7 +14,7 @@ public class Main {
 //        DatabaseConnection dbManager = DatabaseConnection.create("3306","trade_system");
         Connection connection = dbManager.getConnection();
         System.out.println("Connection to database established successfully.");
-        String rawCSV_filePath = "src/problems/tradeProcessing/raw/files/trades.csv";
+        String rawCSV_filePath = "src/problems/tradeProcessing/raw/files/tradesnew.csv";
         String propertiesFilePath = "src/problems/tradeProcessing/raw/files/application.properties";
         String outputDirectory = "src/problems/tradeProcessing/generated/chunk/files";
 
