@@ -5,21 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3c9f44b-ff0f-43a9-b850-9b801d0dc95b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/custom/LoadSecurityToDB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/custom/SecurityCodeGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/customeinterface/files/JournalEntryServiceInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/customeinterface/files/SecuritiesReferenceService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/customeinterface/files/TradePayloadServiceInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/customeinterface/files/TradeProcessorInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/customeinterface/files/TradeQueueReaderInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/raw/files/securities_reference.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/trades/TradeProcessingPool.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/trades/TradeProcessor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeProcessing/chunk/SimpleChunkProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/chunk/SimpleChunkProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeProcessing/sql/query/files/trade_system.SQL" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/sql/query/files/trade_system.SQL" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeProcessing/trades/TradeQueueDistributor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/trades/TradeQueueDistributor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeProcessing/trades/TradeQueueDistributorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/trades/TradeQueueDistributorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeProcessing/trades/TradeProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/trades/TradeProcessor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,7 +179,20 @@
       <recent name="problems.tradeOperations" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TradeOperationsTest.testDatabaseStateAfterValidTradeProcessing">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="problems.tradeProcessing.Main" />
+      <module name="boca-bc24-java-core-problems" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="problems.tradeProcessing.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TradeOperationsTest.testDatabaseStateAfterValidTradeProcessing" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="boca-bc24-java-core-problems" />
       <extension name="coverage">
@@ -204,22 +204,6 @@
       <option name="PACKAGE_NAME" value="problems" />
       <option name="MAIN_CLASS_NAME" value="problems.TradeOperationsTest" />
       <option name="METHOD_NAME" value="testDatabaseStateAfterValidTradeProcessing" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TradeOperationsTest.testMissingPropertiesFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="boca-bc24-java-core-problems" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="problems.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="problems" />
-      <option name="MAIN_CLASS_NAME" value="problems.TradeOperationsTest" />
-      <option name="METHOD_NAME" value="testMissingPropertiesFile" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -275,11 +259,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.TradeOperationsTest.testReadFileExceedingErrorThreshold" />
         <item itemvalue="JUnit.TradeOperationsTest.testSummarizeResults" />
         <item itemvalue="JUnit.TradeOperationsTest.testDatabaseStateAfterValidTradeProcessing" />
         <item itemvalue="JUnit.TradeOperationsTest.testReadFileValidTrades" />
-        <item itemvalue="JUnit.TradeOperationsTest.testMissingPropertiesFile" />
       </list>
     </recent_temporary>
   </component>

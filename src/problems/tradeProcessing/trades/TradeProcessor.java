@@ -65,6 +65,8 @@ public class TradeProcessor implements TradeProcessorInterface, Runnable, TradeP
             if (securityId != null){
                 // 4. insert into journal_entry
                 insertJournalEntry(fields, securityId);
+            } else {
+                System.out.println("CUSIP not found" + cusip);
             }
         }
     }
@@ -105,11 +107,11 @@ public class TradeProcessor implements TradeProcessorInterface, Runnable, TradeP
         String insertQuery = "INSERT INTO journal_entry (account_id, security_id, direction, quantity, posted_status) " +
                 "VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(insertQuery)) {
-            stmt.setString(1, fields[2]); // Account number from parsed data
-            stmt.setString(2, securityId); // Security ID from lookup
-            stmt.setString(3, fields[4]); // Direction/activity from parsed data
-            stmt.setString(4, fields[5]); // Quantity from parsed data
-            stmt.setString(5, "posted");  // Assume a default posted status
+            stmt.setString(1, fields[2]); // account number - parsed data
+            stmt.setString(2, securityId); // security ID - securityReference table
+            stmt.setString(3, fields[4]); // direction/activity - parsed data
+            stmt.setString(4, fields[5]); // quantity - parsed data
+            stmt.setString(5, "posted");  // default posted status
             stmt.executeUpdate();
             journalEntryCount++;
             System.out.println("Journal entry inserted for trade ID: " + fields[0]);
