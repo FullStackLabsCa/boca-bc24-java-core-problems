@@ -18,7 +18,7 @@ public class SimpleChunkProcessor implements ChunkProcessorInterface, ChunkFiles
 
     private ExecutorService executorService;
     private Connection connection;
-    private TradeQueueDistributor tradeQueueDistributor = new TradeQueueDistributor();
+    private TradeQueueDistributor tradeQueueDistributor = new TradeQueueDistributor(connection);
 
     public SimpleChunkProcessor(int numberOfChunks, Connection connection) {
         // Initialize a fixed thread pool based on the number of chunks
@@ -36,6 +36,7 @@ public class SimpleChunkProcessor implements ChunkProcessorInterface, ChunkFiles
                     processSingleChunk(chunkFilePath);
                     // Call to print the queue contents -
                     tradeQueueDistributor.printQueueContents();
+                    tradeQueueDistributor.startProcessing(connection);
                 } catch (Exception e) {
                     // Handle any exceptions that occur during processing
                     System.err.println("Error processing file " + chunkFilePath + ": " + e.getMessage());
@@ -74,6 +75,7 @@ public class SimpleChunkProcessor implements ChunkProcessorInterface, ChunkFiles
                     tradeQueueDistributor.writeTradeToQueue(fields[0], queueNumber);
                 } else {
                     insertIntoDatabase(line, "notvalid"); // Insert as not valid
+                    tradeQueueDistributor.writeTradeToQueue(fields[0], queueNumber);
                 }
 
 //                // Call to print the queue contents -

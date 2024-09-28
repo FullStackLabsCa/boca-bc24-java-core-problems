@@ -11,3 +11,20 @@ CREATE TABLE trade_payloads (
         ON UPDATE CURRENT_TIMESTAMP                   -- Automatically updated on record change
 );
 
+CREATE TABLE securitiesReference (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    cusip VARCHAR(10) NOT NULL,
+    security_id CHAR(9) NOT NULL,
+    UNIQUE (security_id)  -- Ensures that each security_id is unique
+);
+
+CREATE TABLE journal_entry (
+    account_id VARCHAR(30) PRIMARY KEY,
+    security_id CHAR(9) NOT NULL,
+    direction VARCHAR(10) NOT NULL,
+    quantity DOUBLE(10, 2) NOT NULL,
+    posted_status VARCHAR(20) NOT NULL DEFAULT 'statusPosted',
+    created_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP,   -- Timestamp for record creation
+    updated_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP    -- Timestamp for record updates
+        ON UPDATE CURRENT_TIMESTAMP                   -- Automatically updated on record change
+);

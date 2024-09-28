@@ -1,14 +1,21 @@
 package problems.tradeProcessing.trades;
 
+import problems.tradeProcessing.database.DatabaseConnection;
+
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.concurrent.LinkedBlockingDeque;
 
 public class TradeQueueDistributorTest {
-    public static void main(String[] args) {
-        TradeQueueDistributor distributor = new TradeQueueDistributor();
+    public static void main(String[] args) throws SQLException {
+        DatabaseConnection dbManager = new DatabaseConnection("3306","trade_system");
+//        DatabaseConnection dbManager = DatabaseConnection.create("3306","trade_system");
+        Connection connection = dbManager.getConnection();
+        TradeQueueDistributor distributor = new TradeQueueDistributor(connection);
 
         // Simulate some trades
-        String[] tradeIds = {"trade1", "trade2", "trade3", "trade4", "trade5"};
-        String[] accountNumbers = {"accountA", "accountB", "accountA", "accountC", "accountB"};
+        String[] tradeIds = {"TDB_00000001", "TDB_00000002", "TDB_00000003", "TDB_00000004", "TDB_00000005"};
+        String[] accountNumbers = {"TDB_CUST_2517563", "TDB_CUST_8009136", "TDB_CUST_8009136", "TDB_CUST_7788605", "TDB_CUST_9491926", "TDB_CUST_6880935"};
 
         // Process trades and assign to queues
         for (int i = 0; i < tradeIds.length; i++) {

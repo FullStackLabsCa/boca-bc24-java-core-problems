@@ -3,20 +3,24 @@ package problems.tradeProcessing.trades;
 import problems.tradeProcessing.customeinterface.files.QueueDistributorConcurrentMapInterface;
 import problems.tradeProcessing.customeinterface.files.TradeQueueWriterInterface;
 
+import java.sql.Connection;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingDeque;
 
 public class TradeQueueDistributor implements QueueDistributorConcurrentMapInterface, TradeQueueWriterInterface {
 
     private ConcurrentMap<String, Integer> accountQueueMap;
     LinkedBlockingDeque<String>[] tradeQueues;
+    private Connection connection;
     private Random random = new Random();
 
-    public TradeQueueDistributor() {
+    public TradeQueueDistributor(Connection connection) {
+        this.connection = connection;
         this.accountQueueMap = new ConcurrentHashMap<>();
 
         // initialize three LinkedBlockingDeque queues
@@ -71,6 +75,17 @@ public class TradeQueueDistributor implements QueueDistributorConcurrentMapInter
         for (int i = 0; i < accountCounts.length; i++) {
             System.out.println("Total accounts in queue " + i + ": " + accountCounts[i]);
         }
+
+//        startProcessing(connection);
+
     }
+
+    public void startProcessing(Connection connection) {
+        TradeProcessingPool tradeProcessingPool = new TradeProcessingPool(Executors.newFixedThreadPool(3), tradeQueues, connection);
+        tradeProcessingPool.startProcessing();
+
+    }
+
+
 
 }

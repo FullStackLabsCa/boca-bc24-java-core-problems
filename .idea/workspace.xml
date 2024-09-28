@@ -5,33 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3c9f44b-ff0f-43a9-b850-9b801d0dc95b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/customeinterface/files/ChunkFilesDataInserterToDatabase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/customeinterface/files/QueueDistributorConcurrentMapInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/customeinterface/files/TradeQueueWriterInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/notes/SeveralTypesOfQueues.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/trades/TradeQueueDistributor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/trades/TradeQueueDistributorTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/custom/LoadSecurityToDB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/custom/SecurityCodeGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/customeinterface/files/JournalEntryServiceInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/customeinterface/files/SecuritiesReferenceService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/customeinterface/files/TradePayloadServiceInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/customeinterface/files/TradeProcessorInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/customeinterface/files/TradeQueueReaderInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/raw/files/securities_reference.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/trades/TradeProcessingPool.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/trades/TradeProcessor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeProcessing/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeProcessing/chunk/SimpleChunkGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/chunk/SimpleChunkGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/problems/tradeProcessing/chunk/SimpleChunkProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/chunk/SimpleChunkProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeProcessing/customException/DatabaseInsertException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/customexception/DatabaseInsertException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeProcessing/customException/InvalidDataException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/customexception/InvalidDataException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeProcessing/generatedChunkFiles/trade_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/generated/chunk/files/trade_1.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeProcessing/generatedChunkFiles/trade_10.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/generated/chunk/files/trade_10.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeProcessing/generatedChunkFiles/trade_2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/generated/chunk/files/trade_2.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeProcessing/generatedChunkFiles/trade_3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/generated/chunk/files/trade_3.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeProcessing/generatedChunkFiles/trade_4.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/generated/chunk/files/trade_4.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeProcessing/generatedChunkFiles/trade_5.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/generated/chunk/files/trade_5.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeProcessing/generatedChunkFiles/trade_6.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/generated/chunk/files/trade_6.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeProcessing/generatedChunkFiles/trade_7.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/generated/chunk/files/trade_7.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeProcessing/generatedChunkFiles/trade_8.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/generated/chunk/files/trade_8.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeProcessing/generatedChunkFiles/trade_9.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/generated/chunk/files/trade_9.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeProcessing/interfaceFiles/ChunkGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/customeinterface/files/ChunkGeneratorInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeProcessing/interfaceFiles/ChunkProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/customeinterface/files/ChunkProcessorInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeProcessing/rawFiles/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/raw/files/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeProcessing/rawFiles/trades.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/raw/files/trades.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/tradeProcessing/trade_system.SQL" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/sql/query/files/trade_system.SQL" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeProcessing/sql/query/files/trade_system.SQL" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/sql/query/files/trade_system.SQL" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeProcessing/trades/TradeQueueDistributor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/trades/TradeQueueDistributor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/tradeProcessing/trades/TradeQueueDistributorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/tradeProcessing/trades/TradeQueueDistributorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,6 +76,7 @@
     "Application.Generics_Demo.executor": "Debug",
     "Application.LinkedList.executor": "Run",
     "Application.LoadCSVToDB.executor": "Run",
+    "Application.LoadSecurityToDB.executor": "Run",
     "Application.LongestWordString.executor": "Run",
     "Application.Main.executor": "Run",
     "Application.MainRunner.executor": "Run",
@@ -112,6 +101,7 @@
     "Application.ReadUncommitedExample.executor": "Run",
     "Application.RemoveVowels.executor": "Run",
     "Application.School.executor": "Run",
+    "Application.SecurityCodeGenerator.executor": "Run",
     "Application.ShiftElementsArray.executor": "Run",
     "Application.SmallestLargestElementInAraay.executor": "Run",
     "Application.TradeQueueDistributorTest.executor": "Run",
@@ -162,12 +152,12 @@
     "git-widget-placeholder": "feature/jash-bc24-java-core-problems",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "/Users/Jay.Shah/sources/student/boca-bc24-java-core-problems/test/problems/hashmap",
-    "last_opened_file_path": "/Users/Jay.Shah/source/student/boca-bc24-java-core-problems/src/problems/tradeProcessing/rawFiles",
+    "last_opened_file_path": "/Users/Jay.Shah/source/student/boca-bc24-java-core-problems/src/problems/tradeProcessing/raw/files",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.build.tools.auto.reload": "SELECTIVE",
-    "settings.editor.selected.configurable": "preferences.keymap"
+    "settings.editor.selected.configurable": "settings.sync"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -178,11 +168,11 @@
       <recent name="problems.generics.dhruv" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/problems/tradeProcessing/raw/files" />
       <recent name="$PROJECT_DIR$/src/problems/tradeProcessing/rawFiles" />
       <recent name="$PROJECT_DIR$/src/problems/tradeOperations/testCasesFiles" />
       <recent name="$PROJECT_DIR$/src/problems/tradeOperations/sourcesFiles" />
       <recent name="$PROJECT_DIR$/src/problems/jdbc/transactions/hwFinal" />
-      <recent name="$PROJECT_DIR$/src/problems/jdbc/transactions/practice" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/problems/tradeProcessing/sql/query/files" />
@@ -195,14 +185,14 @@
       <recent name="problems.jdbc.transactions.locking_optimistic" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="problems.tradeProcessing.custom" />
       <recent name="problems.tradeProcessing.database" />
       <recent name="problems.tradeOperations.finalProgram" />
       <recent name="problems.tradeOperations.oldFiles" />
       <recent name="problems.tradeOperations" />
-      <recent name="problems.selfPractice.fileIO" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.TradeOperationsTest.testDatabaseStateAfterValidTradeProcessing">
     <configuration name="TradeOperationsTest.testDatabaseStateAfterValidTradeProcessing" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="boca-bc24-java-core-problems" />
       <extension name="coverage">
