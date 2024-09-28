@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChunkGenerator implements Runnable {
-    static String filePath = "";
+    public static String filePath = "";
     public static List<String> fileList;
 
     public ChunkGenerator(String filePath) {

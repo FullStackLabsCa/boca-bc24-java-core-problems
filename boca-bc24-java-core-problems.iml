@@ -15,5 +15,7 @@
     <orderEntry type="library" name="avast.sst.doobie.hikari_2.13" level="project" />
     <orderEntry type="library" name="github.tomcat.slf4j.logback.tomcat85" level="project" />
     <orderEntry type="library" name="ch.qos.logback.db.classic" level="project" />
+    <orderEntry type="library" name="mysql.connector.j" level="project" />
+    <orderEntry type="library" name="avast.sst.doobie.hikari_2.14" level="project" />
   </component>
 </module>

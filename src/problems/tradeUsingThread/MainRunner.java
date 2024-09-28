@@ -2,6 +2,7 @@ package problems.tradeUsingThread;
 
 import problems.tradeUsingThread.fileReader.ChunkGenerator;
 import problems.tradeUsingThread.processor.ChunkProcessor;
+import problems.tradeUsingThread.processor.TradeProcessor;
 
 import java.security.KeyStore;
 import java.util.List;
@@ -47,5 +48,14 @@ public class MainRunner {
         System.out.println("Queue 2 size: " + queue2.size());
         System.out.println("Queue 3 size: " + queue3.size());
         System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------");
+
+        TradeProcessor tradeProcessor1= new TradeProcessor(queue1);
+        TradeProcessor tradeProcessor2= new TradeProcessor(queue2);
+        TradeProcessor tradeProcessor3= new TradeProcessor(queue3);
+        ExecutorService tradeProcessorEexecutorService = Executors.newFixedThreadPool(3);
+        tradeProcessorEexecutorService.submit(tradeProcessor1);
+        tradeProcessorEexecutorService.submit(tradeProcessor2);
+        tradeProcessorEexecutorService.submit(tradeProcessor3);
+        tradeProcessorEexecutorService.shutdown();
     }
 }
