@@ -10,18 +10,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class TradeProcessor implements Runnable{
+public class TradeProcessor implements Runnable {
 
     String lines;
+    String symbol;
+    public int totalrowsInsertedInJournalTable= 0;
     LinkedBlockingQueue<String> queue;
-    List<String> payload= new ArrayList<>();
+    List<String> payload = new ArrayList<>();
 
     public TradeProcessor(LinkedBlockingQueue<String> queue) {
         this.queue = queue;
     }
 
     @Override
-    public void run(){
+    public void run() {
         try {
             processQueue(queue);
         } catch (Exception e) {
@@ -30,8 +32,8 @@ public class TradeProcessor implements Runnable{
     }
 
     public void processQueue(LinkedBlockingQueue<String> queue) throws Exception {
-        while (!queue.isEmpty()){
-            String trade_id= queue.take();
+        while (!queue.isEmpty()) {
+            String trade_id = queue.take();
             getPayload(trade_id);
         }
     }
@@ -45,14 +47,34 @@ public class TradeProcessor implements Runnable{
 
             while (rs.next()) {
                 lines = rs.getString("payload");
-                insertToJournalTable(lines);
+                lookSecurityTable(lines);
+//                insertToJournalTable(lines, symbol);
+
             }
         }
     }
 
-        public void insertToJournalTable(String lines){
-            String insertToJournalQuery = "INSERT INTO journal_entry (account_no, direction, quantity) VALUES (?, ?, ?)";
-            String[] fields = lines.split(",");
+    public void lookSecurityTable(String lines) {
+        String[] fields = lines.split(",");
+        String query = "SELECT cusip FROM securities_reference WHERE cusip= ?";
+        try (Connection connection = HikariCP.getConnection()) {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, fields[3]);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                symbol = rs.getString("cusip");
+                insertToJournalTable(lines, symbol);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void insertToJournalTable(String lines, String symbol) {
+        String insertToJournalQuery = "INSERT INTO journal_entry (account_no, direction, quantity) VALUES (?, ?, ?)";
+        String[] fields = lines.split(",");
+        if (symbol != null) {
             try (Connection connection = HikariCP.getConnection()) {
                 PreparedStatement preparedStatement = connection.prepareStatement(insertToJournalQuery);
                 preparedStatement.setString(1, fields[2]);
@@ -60,10 +82,11 @@ public class TradeProcessor implements Runnable{
                 preparedStatement.setInt(3, Integer.parseInt(fields[5]));
 
                 preparedStatement.executeUpdate();
-        } catch (SQLException e) {
+            } catch (SQLException e) {
                 throw new RuntimeException(e);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         }
+    }
 }
