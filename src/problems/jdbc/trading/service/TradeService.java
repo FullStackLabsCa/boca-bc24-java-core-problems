@@ -38,7 +38,7 @@ public class TradeService implements ReadFile, Threshold, ReadAndWriteErrorLog, 
     public double fetchThresholdValue() {
         Properties properties = new Properties();
         double localThreshold = 0;
-        try (InputStream input = TradeService.class.getClassLoader().getResourceAsStream("application.properties")) {
+        try (InputStream input = TradeService.class.getClassLoader().getResourceAsStream("problems/application.properties")) {
             if (input == null) {
                 System.out.println("Sorry, unable to find application.properties");
                 System.exit(1);

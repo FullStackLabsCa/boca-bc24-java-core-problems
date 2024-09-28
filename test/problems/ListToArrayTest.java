@@ -35,14 +35,14 @@ public class ListToArrayTest {
     @Test
     public void testListToArrayWithNullList() {
         List<String> nullList = null;
-        assertNull(ListToArray.listToArray(nullList,new String[0]));
+        assertNull(ListToArray.listToArray(nullList, new String[0]));
     }
 
     @Test
     public void testListToArrayWithMixedElements() {
         List<Object> mixedList = Arrays.asList(1, "banana", 3.14);
         Object[] expectedArray = {1, "banana", 3.14};
-        Object[] resultArray = ListToArray.listToArray(mixedList,new Object[mixedList.size()]);
+        Object[] resultArray = ListToArray.listToArray(mixedList, new Object[mixedList.size()]);
         assertArrayEquals(expectedArray, resultArray);
     }
 }

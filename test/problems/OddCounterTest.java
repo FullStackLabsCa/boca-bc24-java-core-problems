@@ -9,7 +9,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
+
 import problems.generics.OddCounter;
+
 /*
  * Test for the following problem
  * Design and implement a generic method that can count the number of elements in a collection that satisfy

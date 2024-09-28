@@ -1,25 +1,50 @@
 package problems.jdbc.tradeprocessor.service;
 
-import problems.jdbc.tradeprocessor.repository.TradeRepository;
 
+import com.zaxxer.hikari.HikariDataSource;
+import problems.jdbc.tradeprocessor.repository.TradeRepository;
+import problems.jdbc.tradeprocessor.utility.MaintainStaticCounts;
+
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class TradeProcessor implements Runnable {
 
     LinkedBlockingQueue<String> tradeQueue;
+    int count = 0;
+    HikariDataSource hikariDataSource;
 
-    public TradeProcessor(LinkedBlockingQueue<String> tradeQueue) {
+    public TradeProcessor(LinkedBlockingQueue<String> tradeQueue, HikariDataSource hikariDataSource) {
         this.tradeQueue = tradeQueue;
+        this.hikariDataSource = hikariDataSource;
     }
 
     @Override
     public void run() {
+        count++;
+        while (count < MaintainStaticCounts.getRowsPerFile() + MaintainStaticCounts.getNumberOfChunks()) {
+            try {
+                processTrade(this.tradeQueue.take());
+            } catch (InterruptedException | SQLException e) {
+                Thread.currentThread().interrupt();
+                System.out.println("Thread was interrupted");
+            }
+        }
+    }
+
+    public void processTrade(String tradeId) throws SQLException {
         TradeRepository tradeRepository = new TradeRepository();
+        Connection connection = hikariDataSource.getConnection();
         try {
-            tradeRepository.insertTradeRawPayload(tradeQueue.take(), "");
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            System.out.println("Thread was interrupted");
+            String payload = tradeRepository.readRawPayload(tradeId, connection);
+            String[] payloadArr = payload.split(",");
+            System.out.println(payloadArr);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            connection.rollback();
+        } finally {
+            connection.setAutoCommit(true);
         }
     }
 }

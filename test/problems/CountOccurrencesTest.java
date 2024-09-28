@@ -1,7 +1,9 @@
 package problems;
 
 import org.junit.Test;
+
 import static org.junit.Assert.*;
+
 import problems.generics.CountOccurrences;
 
 public class CountOccurrencesTest {

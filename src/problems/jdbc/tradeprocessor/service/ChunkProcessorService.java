@@ -1,5 +1,9 @@
 package problems.jdbc.tradeprocessor.service;
 
+import com.zaxxer.hikari.HikariDataSource;
+import problems.jdbc.tradeprocessor.database.DatabaseConnection;
+import problems.jdbc.tradeprocessor.utility.MaintainStaticCounts;
+
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -10,13 +14,16 @@ import java.util.stream.Stream;
 
 public class ChunkProcessorService implements ChunkGeneratorInterface, SubmitTaskInterface<ChunkProcessor> {
     private final ExecutorService chunkGeneratorExecutorService = Executors.newFixedThreadPool(10);
+    private HikariDataSource hikariDataSource;
 
     public void processTrade(String path) {
         try {
             long numOfLines = fileLineCounter(path);
+            MaintainStaticCounts.setRowsPerFile(numOfLines);
+            hikariDataSource = DatabaseConnection.configureHikariCP("3306", "trade_processor", "password123");
             chunkGenerator(numOfLines, path);
             TradeProcessorService tradeProcessorService = new TradeProcessorService();
-            tradeProcessorService.tradeProcessor();
+            tradeProcessorService.submitTrade(hikariDataSource);
         } catch (IOException e) {
             System.out.println("File parsing failed...");
         }
@@ -35,6 +42,7 @@ public class ChunkProcessorService implements ChunkGeneratorInterface, SubmitTas
         int chunksCount = 10;
         int tempChunkCount = 1;
         long tempLineCount = 0;
+        MaintainStaticCounts.setNumberOfChunks(chunksCount);
         long linesCountPerFile = numOfLines / chunksCount;
         String chunkFilePath = buildFilePath(tempChunkCount);
         BufferedWriter writer = new BufferedWriter(new FileWriter(chunkFilePath, true));
@@ -48,12 +56,12 @@ public class ChunkProcessorService implements ChunkGeneratorInterface, SubmitTas
                     tempChunkCount++;
                     tempLineCount = 0;
                     writer.close();
-                    submitTask(new ChunkProcessor(chunkFilePath));
+                    submitTask(new ChunkProcessor(chunkFilePath, hikariDataSource));
                     chunkFilePath = buildFilePath(tempChunkCount);
                     writer = new BufferedWriter(new FileWriter(chunkFilePath, true));
                 }
             }
-            submitTask(new ChunkProcessor(chunkFilePath));
+            submitTask(new ChunkProcessor(chunkFilePath, hikariDataSource));
         } finally {
             writer.close();
             chunkGeneratorExecutorService.shutdown();
