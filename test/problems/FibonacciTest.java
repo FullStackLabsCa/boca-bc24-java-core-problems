@@ -1,11 +1,22 @@
 package problems;
 
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.contrib.java.lang.system.ExpectedSystemExit;
+import org.junit.contrib.java.lang.system.SystemErrRule;
+import org.junit.contrib.java.lang.system.SystemOutRule;
+import org.junit.contrib.java.lang.system.TextFromStandardInputStream;
+
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.contrib.java.lang.system.TextFromStandardInputStream.emptyStandardInputStream;
 
 public class FibonacciTest {
 
-   /* @Rule
+    @Rule
     public final TextFromStandardInputStream systemInMock = emptyStandardInputStream();
     @Rule
     public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
@@ -66,6 +77,6 @@ public class FibonacciTest {
         systemInMock.provideLines("-5");
         Fibonacci.main(null);
         assertTrue(systemOutRule.getLog().contains("Invalid input. Please enter a valid number between 4 and 47."));
-    }*/
+    }
 
 }

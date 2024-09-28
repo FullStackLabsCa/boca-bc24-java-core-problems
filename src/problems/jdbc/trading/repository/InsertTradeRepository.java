@@ -46,7 +46,7 @@ public class InsertTradeRepository implements TradeRepository, MatchSecurities {
                 } else {
                     ErrorChecking.incrementErrorCount();
                     tradeService.writeErrorLog("/Users/Anant.Jain/source/student/boca-bc24-java-core-problems/src" +
-                                    "/io/reactivestax/problems/jdbc/trading/logs/writerErrorLog.txt",
+                                    "/problems/jdbc/trading/logs/writerErrorLog.txt",
                             new Date() + " Insertion error on line " + recordNumber + " -> ERROR: Invalid " +
                                     "ticker_symbol.");
                     if (tradeService.isThresholdExceeded()) {

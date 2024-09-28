@@ -1,7 +1,5 @@
 package problems.jdbc.trading.service;
 
-import java.io.*;
-
 import com.zaxxer.hikari.HikariDataSource;
 import problems.jdbc.trading.exception.HitErrorsThresholdException;
 import problems.jdbc.trading.exception.InvalidThresholdValueException;
@@ -9,9 +7,13 @@ import problems.jdbc.trading.model.ErrorChecking;
 import problems.jdbc.trading.model.Trade;
 import problems.jdbc.trading.repository.InsertTradeRepository;
 
+import java.io.*;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
 
 public class TradeService implements ReadFile, Threshold, ReadAndWriteErrorLog, PrintSummary {
     HikariDataSource dataSource;
@@ -38,7 +40,7 @@ public class TradeService implements ReadFile, Threshold, ReadAndWriteErrorLog, 
     public double fetchThresholdValue() {
         Properties properties = new Properties();
         double localThreshold = 0;
-        try (InputStream input = TradeService.class.getClassLoader().getResourceAsStream("problems/application.properties")) {
+        try (InputStream input = TradeService.class.getClassLoader().getResourceAsStream("application.properties")) {
             if (input == null) {
                 System.out.println("Sorry, unable to find application.properties");
                 System.exit(1);
