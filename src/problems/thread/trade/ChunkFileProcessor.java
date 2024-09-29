@@ -27,7 +27,7 @@ public class ChunkFileProcessor implements Runnable {
         try {
             connection = DatabaseConnectionPool.getConnection();
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 
@@ -48,12 +48,12 @@ public class ChunkFileProcessor implements Runnable {
                 //writes to queue
                 writesToQueues(queueNumber, payload);
             }
-        } catch (IOException | SQLException | InterruptedException e) {
+        } catch (IOException | SQLException e) {
             e.printStackTrace();
         }
     }
 
-    private static void writesToQueues(int queueNumber, String[] payload) throws InterruptedException {
+    private static void writesToQueues(int queueNumber, String[] payload) {
         if (queueNumber == 1) {
             ThreadTradeService.queue1.add(payload[0]);
         }

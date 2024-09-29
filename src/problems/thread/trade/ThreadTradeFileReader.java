@@ -13,7 +13,7 @@ public class ThreadTradeFileReader {
         //checking file name from the user input
         ThreadTradeService.isFileExist = false;
         while (!ThreadTradeService.isFileExist) {
-            if (fileName.equals("trades")) {
+            if (fileName.equals("trades_100")) {
                 ThreadTradeService.filePath = "/Users/Gaurav.Manchanda/src/boca-bc24-java-core-problems/src/problems/thread/trade/rawdata/" + fileName + ".csv";
                 ThreadTradeService.isFileExist = true;
                 System.out.println("File found in the system");

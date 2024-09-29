@@ -1,7 +1,6 @@
 package problems.thread.trade;
 
-
-import java.io.FileNotFoundException;
+import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -22,8 +21,8 @@ public class ThreadTradeRunner {
         int numOfThreadForChunkPool = 10;
         ExecutorService executorServiceChunkProcessor = Executors.newFixedThreadPool(numOfThreadForChunkPool);
         for (int i = 0; i < numOfThreadForChunkPool; i++) {
-            String fileName = "/Users/Gaurav.Manchanda/src/boca-bc24-java-core-problems/src/problems/thread/trade/rawdata/trade_chunk_" + (i + 1) + ".csv";
-            executorServiceChunkProcessor.submit(new ChunkFileProcessor(fileName));
+            String filePath = "/Users/Gaurav.Manchanda/src/boca-bc24-java-core-problems/src/problems/thread/trade/rawdata/trade_chunk_" + (i + 1) + ".csv";
+            executorServiceChunkProcessor.submit(new ChunkFileProcessor(filePath));
         }
         executorServiceChunkProcessor.shutdown();
 

@@ -1,6 +1,5 @@
 package problems.thread.trade;
 
-import com.mysql.cj.jdbc.exceptions.CommunicationsException;
 import problems.thread.trade.database.DatabaseConnectionPool;
 
 import java.sql.Connection;
@@ -22,7 +21,7 @@ public class ThreadTradeProcessor implements Runnable {
         try {
             getTradeIdFromQueue();
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 
@@ -66,7 +65,7 @@ public class ThreadTradeProcessor implements Runnable {
 
                 //inserting to the journal entry table
                 insertStatement.setString(1, array[2]);
-                insertStatement.setString(2, array[3]);
+                insertStatement.setString(2, symbol);
                 insertStatement.setString(3, array[4]);
                 insertStatement.setString(4, array[5]);
                 insertStatement.setString(5, array[6]);

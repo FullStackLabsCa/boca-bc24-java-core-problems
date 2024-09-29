@@ -11,7 +11,7 @@ public class TradeFileGenerator {
 
     public static void main(String[] args) throws IOException {
         // Output file path
-        String filePath = "trades.csv";
+        String filePath = "trades_100.csv";
 
         // Define constants for file size and record generation
 //        long targetFileSize = 100L * 1024L * 1024L; // 100 MB in bytes
