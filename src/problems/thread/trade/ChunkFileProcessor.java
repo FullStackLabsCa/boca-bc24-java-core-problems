@@ -12,7 +12,7 @@ import java.sql.SQLException;
 public class ChunkFileProcessor implements Runnable {
     private String chunkPath;
 
-    public static Connection connection;
+    private static Connection connection;
 
     public ChunkFileProcessor(String chunkPath) {
         this.chunkPath = chunkPath;
