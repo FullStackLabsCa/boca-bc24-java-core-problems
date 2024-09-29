@@ -28,3 +28,15 @@ CREATE TABLE journal_entry (
     updated_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP    -- Timestamp for record updates
         ON UPDATE CURRENT_TIMESTAMP                   -- Automatically updated on record change
 );
+
+CREATE TABLE positions (
+    position_id INT AUTO_INCREMENT PRIMARY KEY,
+    account_id VARCHAR(255),
+    security_id VARCHAR(255),
+    position DOUBLE,
+    version INT DEFAULT 0,  -- Version for optimistic locking
+    created_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP,   -- Timestamp for record creation
+    updated_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP    -- Timestamp for record updates
+        ON UPDATE CURRENT_TIMESTAMP,                   -- Automatically updated on record change
+    UNIQUE(account_id, security_id)
+);
