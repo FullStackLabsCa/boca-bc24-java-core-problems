@@ -7,7 +7,6 @@ import java.util.concurrent.Executors;
 
 @SuppressWarnings("java:S106")
 public class ChunkFileGenerator {
-
     public ChunkFileGenerator() {
         chunkGenerator(ThreadTradeService.filePath);
     }
@@ -16,7 +15,6 @@ public class ChunkFileGenerator {
         ArrayList<String> tradeChunkArrayList = new ArrayList<>();
         // Create a single-threaded executor to read the transactions
         try (ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor()) {
-
             // Simulate reading from a file
             singleThreadExecutor.submit(() -> {
                 long startLine = 0;

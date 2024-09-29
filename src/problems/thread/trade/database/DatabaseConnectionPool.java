@@ -16,7 +16,7 @@ public class DatabaseConnectionPool {
         config.setPassword("password123");
 
         // Optional HikariCP settings
-        config.setMaximumPoolSize(100); // Max 10 connections in the pool
+        config.setMaximumPoolSize(1000); // Max 10 connections in the pool
         config.setMinimumIdle(5); // Minimum idle connections
         config.setConnectionTimeout(30000); // 30 seconds timeout for obtaining a connection
         config.setIdleTimeout(600000); // 10 minutes idle timeout

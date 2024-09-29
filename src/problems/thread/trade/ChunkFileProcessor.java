@@ -8,11 +8,9 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class ChunkFileProcessor implements Runnable {
     private String chunkPath;
-    static final ConcurrentHashMap<String, Integer> queueDistributorConcurrentHashMap = new ConcurrentHashMap<>();
 
     public static Connection connection;
 
@@ -46,7 +44,7 @@ public class ChunkFileProcessor implements Runnable {
                 insertIntoTradePayloadsTable(preparedStatement, payload, line);
                 //insert into queue Distributor Map
                 queueNumber = getUniqueQueueNumber();
-                queueDistributorConcurrentHashMap.put(payload[2], queueNumber);
+                ThreadTradeService.queueDistributorConcurrentHashMap.put(payload[2], queueNumber);
                 //writes to queue
                 writesToQueues(queueNumber, payload);
             }
@@ -57,13 +55,13 @@ public class ChunkFileProcessor implements Runnable {
 
     private static void writesToQueues(int queueNumber, String[] payload) throws InterruptedException {
         if (queueNumber == 1) {
-            ThreadTradeService.queue1.put(payload[0]);
+            ThreadTradeService.queue1.add(payload[0]);
         }
         if (queueNumber == 2) {
-            ThreadTradeService.queue2.put(payload[0]);
+            ThreadTradeService.queue2.add(payload[0]);
         }
         if (queueNumber == 3) {
-            ThreadTradeService.queue3.put(payload[0]);
+            ThreadTradeService.queue3.add(payload[0]);
         }
     }
 

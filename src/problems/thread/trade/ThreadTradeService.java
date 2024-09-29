@@ -4,6 +4,7 @@ import problems.trading.exceptions.HitErrorsThresholdException;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class ThreadTradeService {
@@ -21,6 +22,8 @@ public class ThreadTradeService {
     public static LinkedBlockingQueue<String> queue1 = new LinkedBlockingQueue<>();
     public static LinkedBlockingQueue<String> queue2 = new LinkedBlockingQueue<>();
     public static LinkedBlockingQueue<String> queue3 = new LinkedBlockingQueue<>();
+    public static final ConcurrentHashMap<String, Integer> queueDistributorConcurrentHashMap = new ConcurrentHashMap<>();
+
 
     public static void checkWriteLogFileExistOrNot() {
         if (writeFile.exists()) {
