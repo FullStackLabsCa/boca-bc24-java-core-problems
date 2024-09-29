@@ -74,8 +74,7 @@ public class ThreadTradeProcessor implements Runnable {
                 insertStatement.executeUpdate();
 
                 //write to the positions table
-
-
+                writeToPositionsTable(array);
             }
             connection.setAutoCommit(true);
         } catch (Exception e) {
@@ -83,7 +82,21 @@ public class ThreadTradeProcessor implements Runnable {
         }
     }
 
-    public static void writeToPositionsTable(String[] array){
+    public static void writeToPositionsTable(String[] array) {
+        String insertQuery = "INSERT INTO positions (account_number, cusip, position) VALUES (?,?,?)";
+        try (Connection connection = DatabaseConnectionPool.getConnection();
+             PreparedStatement insertStatement = connection.prepareStatement(insertQuery);) {
+            connection.setAutoCommit(false);
 
+            //inserting to the journal entry table
+            insertStatement.setString(1, array[2]);
+            insertStatement.setString(2, array[3]);
+            insertStatement.setString(3, array[5]);
+
+            insertStatement.executeUpdate();
+            connection.setAutoCommit(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
