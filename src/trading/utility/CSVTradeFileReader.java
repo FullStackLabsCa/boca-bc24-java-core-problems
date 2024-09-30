@@ -20,7 +20,7 @@ public class CSVTradeFileReader implements TradeFileReader {
     @Override
     public List<Trade> tradeFileReader(File file) {
 
-        int parsingSuccess = 0, parsingFailure = 0, line_no = 0;
+        int parsingSuccess = 0, parsingFailure = 0, line_no = 1;
         Trade trade = null;
         Trade tradeForLine = null;
 

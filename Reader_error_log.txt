@@ -1,0 +1,17 @@
+Error in Line no -> 2 Error in quantitiy ->  -> 2,TDB_195199,SPOT,,2735.94,2024-01-06
+Error in Line no -> 3 Error in price ->  -> 17,TDB_227121,BABA,351,,2024-12-12
+Error in Line no -> 4 For input string: "asd" -> 4,TDB_227475,DOCU,asd,2052.41,2024-03-03
+Error in Line no -> 7 Invalid number of fields in line -> 7,TDB_232786,NKE,443,1800.6
+Error in Line no -> 9 Error in trade_symbol ->  -> 1110,TDB_182176,,114,778.68,2024-11-17
+Error in Line no -> 24 Error in quantitiy ->  -> 25,TDB_168022,SHOP,,1917.15,2024-11-29
+Error in Line no -> 26 Date Format is Incorrect -> 27,TDB_166889,BAC,63,1241.49,2024--21
+Error in Line no -> 27 Error in trade_symbol ->  -> 28,TDB_159645,,278,2401.12,2024-05-19
+Error in Line no -> 29 trade entry is empty -> ,TDB_131649,ROKU,278,2453.12,-07-11
+Error in Line no -> 32 Error in price ->  -> 33,TDB_137818,TSM,48,,2024-09-02
+Error in Line no -> 33 Error in trade_identifier ->  -> 34,,MA,78,174.0,2024-01-27
+Error in Line no -> 37 Error in trade_symbol ->  -> 38,TDB_155324,,339,2514.47,2024-11-17
+Error in Line no -> 40 Date Format is Incorrect -> 41,TDB_150735,TEAM,45,327.3,-07-23
+Error in Line no -> 44 Date Format is Incorrect -> 45,TDB_218501,BAC,75,1270.98,2024-07
+Error in Line no -> 47 For input string: "rgf" -> 48,TDB_210078,Z,362,rgf,2024-08-03
+Error in Line no -> 49 Error in trade_identifier ->  -> 50,,JPM,110,2543.47,2024-11-25
+Error in Line no -> 52 Error in price ->  -> 53,TDB_132570,FB,157,,2024-09-22

@@ -28,7 +28,7 @@ public class UserInteraction {
     }
 
     public static double thresholdFromApplicationFile() throws InvalidThresholdValueRuntimeException {
-        File file = new File("application.properties");
+        File file = new File("chunk_application.properties");
         Scanner scanner =new Scanner(System.in);
         scanner.useDelimiter("error.threshold=");
         userThreshold = scanner.nextDouble();

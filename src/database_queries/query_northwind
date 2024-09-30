@@ -60,3 +60,8 @@ order by employees.last_name,employees.first_name,cout desc
  group by year(orders.order_date)
  order by year(orders.order_date) desc
 
+--------------------CommandLine--------------------------------------
+--------------------Easy--------------------------------------
+select products.product_name, order_details.unit_price from products join order_details on products.id=order_details.id;
+select id,concat(first_name,' ',last_name) from customers where country_region = 'USA';
+

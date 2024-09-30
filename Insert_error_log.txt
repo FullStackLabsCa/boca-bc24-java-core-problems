@@ -1,0 +1,26 @@
+Error in Line no -> 6  Ticker Symbol doesn't match Trade{trade_id=6, trade_identify='TDB_171277', ticker_symbol='SNAP', quantity=11, price=2488.77, date=2024-08-15}
+Error in Line no -> 11  Ticker Symbol doesn't match Trade{trade_id=12, trade_identify='TDB_205365', ticker_symbol='BABA', quantity=434, price=272.08, date=2024-12-01}
+Error in Line no -> 14  Ticker Symbol doesn't match Trade{trade_id=15, trade_identify='TDB_149610', ticker_symbol='DOCU', quantity=460, price=117.28, date=2024-08-20}
+Error in Line no -> 16  Ticker Symbol doesn't match Trade{trade_id=1111, trade_identify='TDB_227121', ticker_symbol='BABA', quantity=351, price=2292.21, date=2024-12-12}
+Error in Line no -> 19  Ticker Symbol doesn't match Trade{trade_id=20, trade_identify='TDB_204580', ticker_symbol='SHOP', quantity=357, price=1248.18, date=2024-12-12}
+Error in Line no -> 21  Ticker Symbol doesn't match Trade{trade_id=22, trade_identify='TDB_220347', ticker_symbol='BIDU', quantity=430, price=1297.05, date=2024-09-08}
+Error in Line no -> 22  Ticker Symbol doesn't match Trade{trade_id=23, trade_identify='TDB_235202', ticker_symbol='SQ', quantity=142, price=2234.86, date=2024-07-03}
+Error in Line no -> 23  Ticker Symbol doesn't match Trade{trade_id=24, trade_identify='TDB_226617', ticker_symbol='SHOP', quantity=285, price=927.69, date=2024-03-31}
+Error in Line no -> 25  Ticker Symbol doesn't match Trade{trade_id=26, trade_identify='TDB_187341', ticker_symbol='BABA', quantity=355, price=2397.79, date=2024-03-09}
+Error in Line no -> 28  Ticker Symbol doesn't match Trade{trade_id=29, trade_identify='TDB_168087', ticker_symbol='HOOD', quantity=378, price=1067.0, date=2024-08-23}
+Error in Line no -> 30  Ticker Symbol doesn't match Trade{trade_id=31, trade_identify='TDB_191939', ticker_symbol='SPOT', quantity=318, price=1395.88, date=2024-04-11}
+Error in Line no -> 31  Ticker Symbol doesn't match Trade{trade_id=32, trade_identify='TDB_208670', ticker_symbol='ZM', quantity=231, price=2842.94, date=2024-11-22}
+Error in Line no -> 34  Ticker Symbol doesn't match Trade{trade_id=35, trade_identify='TDB_167242', ticker_symbol='TWTR', quantity=276, price=466.4, date=2024-04-08}
+Error in Line no -> 35  Ticker Symbol doesn't match Trade{trade_id=36, trade_identify='TDB_214374', ticker_symbol='BIDU', quantity=160, price=435.39, date=2024-02-26}
+Error in Line no -> 36  Ticker Symbol doesn't match Trade{trade_id=37, trade_identify='TDB_200209', ticker_symbol='NET', quantity=458, price=2192.71, date=2024-02-29}
+Error in Line no -> 39  Ticker Symbol doesn't match Trade{trade_id=40, trade_identify='TDB_199586', ticker_symbol='SBUX', quantity=114, price=1073.98, date=2024-12-24}
+Error in Line no -> 41  Ticker Symbol doesn't match Trade{trade_id=42, trade_identify='TDB_229197', ticker_symbol='TSM', quantity=500, price=124.7, date=2024-09-19}
+Error in Line no -> 43  Ticker Symbol doesn't match Trade{trade_id=44, trade_identify='TDB_227909', ticker_symbol='TWTR', quantity=42, price=747.07, date=2024-07-16}
+Error in Line no -> 46  Ticker Symbol doesn't match Trade{trade_id=47, trade_identify='TDB_131233', ticker_symbol='BABA', quantity=271, price=1786.21, date=2024-05-05}
+Error in Line no -> 48  Ticker Symbol doesn't match Trade{trade_id=49, trade_identify='TDB_179741', ticker_symbol='LYFT', quantity=117, price=1706.54, date=2024-03-07}
+Error in Line no -> 50  Ticker Symbol doesn't match Trade{trade_id=51, trade_identify='TDB_143927', ticker_symbol='BA', quantity=327, price=698.31, date=2024-11-15}
+Error in Line no -> 51  Ticker Symbol doesn't match Trade{trade_id=52, trade_identify='TDB_134479', ticker_symbol='COIN', quantity=442, price=2935.35, date=2024-03-24}
+Error Encounter While executing the Batch. Line No -> 1
+Error Encounter While executing the Batch. Line No -> 8
+Error Encounter While executing the Batch. Line No -> 10
+Error Encounter While executing the Batch. Line No -> 12
