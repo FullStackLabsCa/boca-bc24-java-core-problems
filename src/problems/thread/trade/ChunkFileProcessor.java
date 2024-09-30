@@ -37,7 +37,7 @@ public class ChunkFileProcessor implements Runnable {
         int queueNumber = 0;
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName));
              PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
-            reader.readLine();
+            String coulmnsName = reader.readLine();
             while ((line = reader.readLine()) != null) {
                 String[] payload = line.split(",");
                 //insert to trade_payloads table
