@@ -4,26 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a728a69e-e34c-4470-8a4f-1ba09e798df3" name="Changes" comment="fix sonarlint">
-      <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/TradeProcessRunner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/exceptions/InvalidNumberOfChunkValueRuntimeException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/model/TradeProcessData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/queries.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/repository/TradeRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/service/ChunkProcessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/service/GenerateChunks.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/service/TradeDistributors.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/service/TradeProcessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/service/TradeRetry.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/service/TradeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/tradecontract/DatabaseConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/trades1.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/utils/ValidateFileData1.java" afterDir="false" />
+    <list default="true" id="a728a69e-e34c-4470-8a4f-1ba09e798df3" name="Changes" comment="Trade processing problem">
+      <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/databaseconnection/MysqlDBConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/utils/WriteErrorLogs.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/trade/databaseconnection/MysqlDBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/databaseconnection/MysqlDBConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/trade/utils/ValidateFileData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/utils/ValidateFileData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/trade/utils/WriteErrorLogs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/utils/WriteErrorLogs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/thread/tradeprocess/service/ChunkProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/service/ChunkProcessor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -307,7 +292,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727285857966</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Trade processing problem">
+      <option name="closed" value="true" />
+      <created>1727695380348</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1727695380348</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -325,7 +318,8 @@
     <MESSAGE value="fix minor issue in test" />
     <MESSAGE value="sql practices for hospital and northwind db" />
     <MESSAGE value="fix sonarlint" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix sonarlint" />
+    <MESSAGE value="Trade processing problem" />
+    <option name="LAST_COMMIT_MESSAGE" value="Trade processing problem" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -334,11 +328,6 @@
           <properties class="java.lang.NumberFormatException" package="java.lang" />
           <option name="timeStamp" value="63" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/problems/thread/tradeprocess/TradeProcessRunner.java</url>
-          <line>32</line>
-          <option name="timeStamp" value="154" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/problems/thread/tradeprocess/utils/WriteErrorLogs.java</url>
           <line>12</line>

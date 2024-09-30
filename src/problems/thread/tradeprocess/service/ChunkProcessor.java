@@ -53,7 +53,6 @@ public class ChunkProcessor implements Runnable {
             System.out.println("IOEXCEPTION>>>>>>>>" + e.getMessage());
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-//            e.printStackTrace();
         }
     }
 
