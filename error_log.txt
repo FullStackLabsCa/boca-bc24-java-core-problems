@@ -1,0 +1,4 @@
+Read_Err | Row 1:  | Error: Invalid quantity | [1, T123, AAPL, INVALID_QUANTITY, 150.50, 2023-09-01]
+Read_Err | Row 1:  | Error: Invalid row format or data type. | [1, T123, AAPL, INVALID_QUANTITY, 150.50, 2023-09-01]
+Read_Err | Row 2:  | Error: Invalid quantity | [2, T124, GOOG, INVALID_QUANTITY, INVALID_PRICE, 2023-09-02]
+Read_Err | Row 2:  | Error: Invalid row format or data type. | [2, T124, GOOG, INVALID_QUANTITY, INVALID_PRICE, 2023-09-02]

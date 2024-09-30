@@ -1,4 +1,4 @@
-package oldproblems.Palindrome_check;
+package problems.previous_problems.Palindrome_check;
 
 import java.util.Scanner;
 

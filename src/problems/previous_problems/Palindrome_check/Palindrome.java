@@ -1,4 +1,4 @@
-package oldproblems.Palindrome_check;
+package problems.previous_problems.Palindrome_check;
 
 public class Palindrome {
     String inputStr;
