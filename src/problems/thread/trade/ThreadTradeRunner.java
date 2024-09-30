@@ -18,28 +18,24 @@ public class ThreadTradeRunner {
 //        new ChunkFileGenerator();
 
         // creating chunkProcessor ThreadPool
-//        int numOfThreadForChunkPool = 10;
-//        try (ExecutorService executorServiceChunkProcessor = Executors.newFixedThreadPool(numOfThreadForChunkPool)) {
-//            for (int i = 0; i < numOfThreadForChunkPool; i++) {
-//                String filePath = "/Users/Gaurav.Manchanda/src/boca-bc24-java-core-problems/src/problems/thread/trade/rawdata/trade_chunk_" + (i + 1) + ".csv";
-//                executorServiceChunkProcessor.submit(new ChunkFileProcessor(filePath));
-//            }
-//            executorServiceChunkProcessor.shutdown();
+        int numOfThreadForChunkPool = 10;
+        try (ExecutorService executorServiceChunkProcessor = Executors.newFixedThreadPool(numOfThreadForChunkPool)) {
+            for (int i = 0; i < numOfThreadForChunkPool; i++) {
+                String filePath = "/Users/Gaurav.Manchanda/src/boca-bc24-java-core-problems/src/problems/thread/trade/rawdata/trade_chunk_" + (i + 1) + ".csv";
+                executorServiceChunkProcessor.submit(new ChunkFileProcessor(filePath));
+            }
+            executorServiceChunkProcessor.shutdown();
 //            Thread.sleep(1000);
-//        }
-//        System.out.println(">>>>>>>>>>Data inserted in the trade payloads table<<<<<<<<<<");
+        }
+        System.out.println(">>>>>>>>>>Data inserted in the trade payloads table<<<<<<<<<<");
 
 //       working on trade processor
-//        int numberOfThreadsForTradeProcessor = 3;
-//        try (ExecutorService executorServiceForTradeProcessor = Executors.newFixedThreadPool(numberOfThreadsForTradeProcessor)) {
-//            executorServiceForTradeProcessor.submit(new ThreadTradeProcessor(ThreadTradeService.queue1));
-//            Thread.sleep(1000);
-//            executorServiceForTradeProcessor.submit(new ThreadTradeProcessor(ThreadTradeService.queue2));
-//            Thread.sleep(1000);
-//            executorServiceForTradeProcessor.submit(new ThreadTradeProcessor(ThreadTradeService.queue3));
-//            Thread.sleep(1000);
-//        }
-//
-//        System.out.println(">>>>>>>>>>Data inserted in the journal entry table<<<<<<<<<<");
+        int numberOfThreadsForTradeProcessor = 3;
+        try (ExecutorService executorServiceForTradeProcessor = Executors.newFixedThreadPool(numberOfThreadsForTradeProcessor)) {
+            executorServiceForTradeProcessor.submit(new ThreadTradeProcessor(ThreadTradeService.queue1));
+            executorServiceForTradeProcessor.submit(new ThreadTradeProcessor(ThreadTradeService.queue2));
+            executorServiceForTradeProcessor.submit(new ThreadTradeProcessor(ThreadTradeService.queue3));
+        }
+        System.out.println(">>>>>>>>>>Data inserted in the journal entry table<<<<<<<<<<");
     }
 }

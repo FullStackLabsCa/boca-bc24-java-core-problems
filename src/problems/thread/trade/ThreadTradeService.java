@@ -11,8 +11,6 @@ public class ThreadTradeService {
     public static boolean isFileExist = false;
     public static String filePath = "";
     public  static int numberOfChunksFiles = 10;
-    // ANSI escape codes for colors
-    public static final String ANSI_GREEN = "\u001B[32m";
     public static final LinkedBlockingQueue<String> queue1 = new LinkedBlockingQueue<>();
     public static final LinkedBlockingQueue<String> queue2 = new LinkedBlockingQueue<>();
     public static final LinkedBlockingQueue<String> queue3 = new LinkedBlockingQueue<>();

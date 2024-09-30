@@ -37,7 +37,7 @@ public class ChunkFileGenerator {
                         startLine = writeToChunkFiles(fileName, headingRow, startLine, numberOfRowsInPerChunk, tradeChunkArrayList);
                     }
 
-                    System.out.println(ThreadTradeService.ANSI_GREEN + ">>>>>>Data are written in the chunk file successfully<<<<<");
+                    System.out.println(">>>>>>Data are written in the chunk file successfully<<<<<");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

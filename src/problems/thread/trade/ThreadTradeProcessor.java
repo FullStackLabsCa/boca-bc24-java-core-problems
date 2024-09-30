@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.concurrent.LinkedBlockingQueue;
 
 @SuppressWarnings("java:S106")
@@ -43,6 +44,7 @@ public class ThreadTradeProcessor implements Runnable {
             if (resultSet.next()) {
                 fetchData = resultSet.getString("payload");
                 String[] payloadArray = fetchData.split(",");
+                // write to the journal table
                 writeToJournalTable(payloadArray);
             }
         }
@@ -71,9 +73,10 @@ public class ThreadTradeProcessor implements Runnable {
                 insertStatement.setString(5, array[6]);
                 insertStatement.setString(6, array[1]);
                 insertStatement.executeUpdate();
-
                 //write to the positions table
                 writeToPositionsTable(array);
+            } else {
+                System.out.println("Entry not inserted to the Database>>>" + Arrays.toString(array));
             }
             connection.setAutoCommit(true);
         } catch (Exception e) {

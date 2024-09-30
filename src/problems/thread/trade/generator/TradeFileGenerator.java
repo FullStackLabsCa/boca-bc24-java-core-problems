@@ -1,4 +1,4 @@
-package problems.thread.trade;
+package problems.thread.trade.generator;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
