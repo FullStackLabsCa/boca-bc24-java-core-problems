@@ -4,15 +4,12 @@ import multithread_trade_processing.model.Trade;
 
 import java.sql.*;
 
-import static multithread_trade_processing.MultithreadTradeProcessorUtility.dataSource;
-
 public class TradesDBRepo {
 
-    public String checkIfValidCUSIP(Trade trade){
+    public String checkIfValidCUSIP(Trade trade, Connection connection){
         String lookupQuery = "select 1 from SecuritiesReferenceV2 where cusip = ?";
 
-        try(Connection connection = dataSource.getConnection();
-            PreparedStatement psLookUp = connection.prepareStatement(lookupQuery)){
+        try(PreparedStatement psLookUp = connection.prepareStatement(lookupQuery)){
 
             psLookUp.setString(1, trade.getCusip());
             ResultSet rsLookUp = psLookUp.executeQuery();
@@ -27,17 +24,15 @@ public class TradesDBRepo {
         return "Unable to Check CUSIP.";
     }
 
-    public void writeTradeToJournalTable(Trade trade){
+    public void writeTradeToJournalTable(Trade trade, Connection connection){
         String writeToJournalQuery = """
                 insert into journal_entry (account_number, security_id, direction, quantity, posted_status)
                 values (?,?,?,?,?)
                 """;
 
-        try(Connection connection = dataSource.getConnection();
-            PreparedStatement insertionQuery = connection.prepareStatement(writeToJournalQuery)){
-
+        try(PreparedStatement insertionQuery = connection.prepareStatement(writeToJournalQuery)){
             insertionQuery.setString(1,trade.getAccountNumber());
-            insertionQuery.setInt(2,getSecurityIdForCusip(trade.getCusip()));
+            insertionQuery.setInt(2,getSecurityIdForCusip(trade.getCusip(),connection));
             insertionQuery.setString(3,trade.getActivity());
             insertionQuery.setInt(4,trade.getQuantity());
             insertionQuery.setString(5,"Not Posted");
@@ -49,12 +44,11 @@ public class TradesDBRepo {
         }
     }
 
-    public int getSecurityIdForCusip(String cusip){
+    public int getSecurityIdForCusip(String cusip, Connection connection){
 
         String lookUpSecurityQuery = "Select security_id from SecuritiesReferenceV2 where cusip = ?";
 
-        try(Connection connection = dataSource.getConnection();
-            PreparedStatement ps = connection.prepareStatement(lookUpSecurityQuery)){
+        try(PreparedStatement ps = connection.prepareStatement(lookUpSecurityQuery)){
 
             ps.setString(1, cusip);
             ResultSet resultSet = ps.executeQuery();
@@ -68,14 +62,13 @@ public class TradesDBRepo {
         return 0;
     }
 
-    public void updatePositionsTable(Trade trade){
-        int securityID = getSecurityIdForCusip(trade.getCusip());
+    public void updatePositionsTable(Trade trade, Connection connection){
+        int securityID = getSecurityIdForCusip(trade.getCusip(), connection);
 
         String smartInsertionAndUpdateQueryCredit = "Insert into positions (account_number, security_id, position) values (?,?,?) on duplicate key update position = (position - ?)";
         String smartInsertionAndUpdateQueryDebit = "Insert into positions (account_number, security_id, position) values (?,?,?) on duplicate key update position = (position + ?)";
 
-        try(Connection connection = dataSource.getConnection();
-        PreparedStatement psSmartQueryCredit  = connection.prepareStatement(smartInsertionAndUpdateQueryCredit);
+        try(PreparedStatement psSmartQueryCredit  = connection.prepareStatement(smartInsertionAndUpdateQueryCredit);
         PreparedStatement psSmartQueryDebit = connection.prepareStatement(smartInsertionAndUpdateQueryDebit)){
 
             if(trade.getActivity().equals("BUY")){

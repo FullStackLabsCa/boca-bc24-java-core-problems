@@ -5,12 +5,16 @@ import multithread_trade_processing.model.Trade;
 import multithread_trade_processing.repo.PayloadDatabaseRepo;
 import multithread_trade_processing.repo.TradesDBRepo;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.LinkedBlockingDeque;
+
 import static multithread_trade_processing.MultithreadTradeProcessorUtility.*;
 
+@SuppressWarnings("java:S2189")
 public class TradeProcessorTask implements Runnable, TradeProcessing {
     LinkedBlockingDeque<String> tradeIdQueue;
 
@@ -20,8 +24,8 @@ public class TradeProcessorTask implements Runnable, TradeProcessing {
     }
 
     @Override
-    public void run(){
-        while(true){
+    public void run() {
+        while (true) {
             String tradeID;
             try {
                 tradeID = readTradeIdFromQueue();
@@ -31,11 +35,22 @@ public class TradeProcessorTask implements Runnable, TradeProcessing {
             String payload = readPayloadFromRawDatabase(tradeID);
             Trade trade = validatePayloadAndCreateTrade(payload);
             if (trade != null) {
-                if (validateBusinessLogic(trade).equals("Valid")) {
-                    writeToJournalTable(trade);
-                    writeToPositionsTable(trade);
-                } else {
-                    logger.info(trade.toString());
+                try (Connection connection = dataSource.getConnection()) {
+                    if (validateBusinessLogic(trade, connection).equals("Valid")) {
+                        try {
+                            connection.setAutoCommit(false);
+                            writeToJournalTable(trade, connection);
+                            writeToPositionsTable(trade, connection);
+                            connection.commit();
+                        } catch (SQLException e){
+                            System.out.println(e.getMessage());
+                            connection.rollback();
+                        }
+                    } else {
+                        logger.info(trade.toString());
+                    }
+                } catch (SQLException e) {
+                    System.out.println(e.getMessage());
                 }
             }
         }
@@ -54,7 +69,7 @@ public class TradeProcessorTask implements Runnable, TradeProcessing {
 
     @Override
     public Trade validatePayloadAndCreateTrade(String payload) {
-        if(payload == null){
+        if (payload == null) {
             throw new RuntimeException("Payload Validation Failed. Payload NULL!");
         }
         try {
@@ -74,7 +89,7 @@ public class TradeProcessorTask implements Runnable, TradeProcessing {
         }
     }
 
-    public Date parseStringToDate(String dateString){
+    public Date parseStringToDate(String dateString) {
         String format = "yyyy-MM-dd HH:mm:ss";
 
         SimpleDateFormat formatter = new SimpleDateFormat(format);
@@ -88,22 +103,22 @@ public class TradeProcessorTask implements Runnable, TradeProcessing {
     }
 
     @Override
-    public String validateBusinessLogic(Trade trade) {
+    public String validateBusinessLogic(Trade trade, Connection connection) {
         TradesDBRepo tradeDbAccess = new TradesDBRepo();
 
-        return tradeDbAccess.checkIfValidCUSIP(trade);
+        return tradeDbAccess.checkIfValidCUSIP(trade, connection);
     }
 
     @Override
-    public void writeToJournalTable(Trade trade) {
+    public void writeToJournalTable(Trade trade, Connection connection) {
         TradesDBRepo tradeDbAccess = new TradesDBRepo();
-        tradeDbAccess.writeTradeToJournalTable(trade);
+        tradeDbAccess.writeTradeToJournalTable(trade, connection);
     }
 
     @Override
-    public void writeToPositionsTable(Trade trade) {
+    public void writeToPositionsTable(Trade trade, Connection connection) {
         TradesDBRepo tradeDbAccess = new TradesDBRepo();
-        tradeDbAccess.updatePositionsTable(trade);
+        tradeDbAccess.updatePositionsTable(trade, connection);
     }
 
 }
