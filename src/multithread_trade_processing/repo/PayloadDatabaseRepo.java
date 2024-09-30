@@ -2,7 +2,7 @@ package multithread_trade_processing.repo;
 
 import java.sql.*;
 
-import static multithread_trade_processing.MultithreadTradeProcessorUtility.dataSource;
+import static multithread_trade_processing.utility.MultithreadTradeProcessorUtility.dataSource;
 
 public class PayloadDatabaseRepo {
 

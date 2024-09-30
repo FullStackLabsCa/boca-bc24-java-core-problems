@@ -2,13 +2,13 @@ package multithread_trade_processing.service;
 
 import multithread_trade_processing.interfaces.chunksPathAndNumberOfChunks;
 
-import static multithread_trade_processing.MultithreadTradeProcessorUtility.configureHikariCP;
-import static multithread_trade_processing.MultithreadTradeProcessorUtility.configureLogger;
+import static multithread_trade_processing.utility.MultithreadTradeProcessorUtility.configureHikariCP;
+import static multithread_trade_processing.utility.MultithreadTradeProcessorUtility.configureLogger;
 
 public class TradeProcessingAppRunner {
 
     public static void main(String[] args) {
-        String folderPath = "/Users/Akshat.Singla/Downloads/code/practice-problems/student-codebase/boca-bc24-java-core-problems/src/multithread_trade_processing";
+        String folderPath = "boca-bc24-java-core-problems/src/multithread_trade_processing";
 
         configureLogger();
         configureHikariCP(3306);

@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.LinkedBlockingDeque;
 
-import static multithread_trade_processing.MultithreadTradeProcessorUtility.*;
+import static multithread_trade_processing.utility.MultithreadTradeProcessorUtility.*;
 
 @SuppressWarnings("java:S2189")
 public class TradeProcessorTask implements Runnable, TradeProcessing {

@@ -1,4 +1,4 @@
-package multithread_trade_processing;
+package multithread_trade_processing.utility;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;

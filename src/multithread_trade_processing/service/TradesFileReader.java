@@ -4,10 +4,10 @@ import multithread_trade_processing.interfaces.TradesFileReading;
 import multithread_trade_processing.interfaces.chunksPathAndNumberOfChunks;
 
 import java.io.*;
+import java.util.Properties;
 import java.util.Scanner;
 
 public class TradesFileReader implements TradesFileReading {
-
     @Override
     public chunksPathAndNumberOfChunks readFileAndCreateChunks(String filePath, String fileType) {
           try(Scanner fileReader = new Scanner(new FileReader(filePath))){
@@ -17,7 +17,7 @@ public class TradesFileReader implements TradesFileReading {
               boolean newFileCreationNeeded = true;
               String fileNameUnderProcessing = null;
               int linesRead = 0;
-              String folderPath = "/Users/Akshat.Singla/Downloads/code/practice-problems/student-codebase/boca-bc24-java-core-problems/src/multithread_trade_processing/data/";
+              String folderPath = "boca-bc24-java-core-problems/src/multithread_trade_processing/data/";
 
               if(fileReader.hasNextLine()) {
                   fileReader.nextLine();
@@ -50,7 +50,19 @@ public class TradesFileReader implements TradesFileReading {
     }
 
     public int getChunkSizeFromPropertiesFile(){
-
-        return 2000;
+        Integer chunkSize = Integer.valueOf(propertyReader());
+        return chunkSize;
     }
+
+    public String propertyReader(){
+            Properties properties = new Properties();
+
+            try (FileInputStream fis = new FileInputStream("boca-bc24-java-core-problems/src/multithread_trade_processing/application.properties")) {
+                properties.load(fis);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return properties.getProperty("chunkSize");
+        }
 }
