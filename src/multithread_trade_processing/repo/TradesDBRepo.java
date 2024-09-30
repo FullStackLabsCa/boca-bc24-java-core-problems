@@ -2,8 +2,6 @@ package multithread_trade_processing.repo;
 
 import multithread_trade_processing.model.Trade;
 
-import javax.xml.transform.Result;
-import java.net.UnknownServiceException;
 import java.sql.*;
 
 public class TradesDBRepo {
@@ -72,6 +70,38 @@ public class TradesDBRepo {
         return 0;
     }
 
-    public void updatePositionsTable(Trade trade){}
+    public void updatePositionsTable(Trade trade){
+        int securityID = getSecurityIdForCusip(trade.getCusip());
+
+        String smartInsertionAndUpdateQueryCredit = "Insert into positions (account_number, security_id, position) values (?,?,?) on duplicate key update position = (position - ?)";
+        String smartInsertionAndUpdateQueryDebit = "Insert into positions (account_number, security_id, position) values (?,?,?) on duplicate key update position = (position + ?)";
+
+        try(Connection connection = DriverManager.getConnection(URL, USER, PASS);
+        PreparedStatement psSmartQueryCredit  = connection.prepareStatement(smartInsertionAndUpdateQueryCredit);
+        PreparedStatement psSmartQueryDebit = connection.prepareStatement(smartInsertionAndUpdateQueryDebit)){
+
+            if(trade.getActivity().equals("BUY")){
+                psSmartQueryDebit.setString(1,trade.getAccountNumber());
+                psSmartQueryDebit.setInt(2, securityID);
+                psSmartQueryDebit.setInt(3, trade.getQuantity());
+                psSmartQueryDebit.setInt(4, trade.getQuantity());
+
+                psSmartQueryDebit.executeUpdate();
+            }else if(trade.getActivity().equals("SELL")){
+                psSmartQueryCredit.setString(1,trade.getAccountNumber());
+                psSmartQueryCredit.setInt(2, securityID);
+                psSmartQueryCredit.setInt(3, -trade.getQuantity());
+                psSmartQueryCredit.setInt(4, trade.getQuantity());
+
+                psSmartQueryCredit.executeUpdate();
+            } else {
+//                throw new UnrecognisedActivityOperationException();
+                System.out.println("UnrecognisedActivityOperationException");
+            }
+
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+    }
 
 }
