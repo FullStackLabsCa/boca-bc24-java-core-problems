@@ -5,30 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a728a69e-e34c-4470-8a4f-1ba09e798df3" name="Changes" comment="fix sonarlint">
-      <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/TradeProcessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/databaseconnection/MysqlDBConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/TradeProcessRunner.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/exceptions/InvalidNumberOfChunkValueRuntimeException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/model/TradeProcessData.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/queries.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/repository/TradeRepository.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/service/ChunkProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/service/GenerateChunks.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/service/TradeDistributors.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/service/TradeProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/service/TradeRetry.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/service/TradeService.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/tradecontract/DatabaseConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/tradecontract/TradeFileReader.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/trades1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/utils/ValidateFileData1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/trade/TradeRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/trade/TradeRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/trade/logs/read_error_log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/trade/logs/read_error_log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/trade/logs/write_error_log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/trade/logs/write_error_log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/trade/model/TradeData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/trade/model/TradeData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/trade/repository/TradeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/trade/repository/TradeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/trade/securityreference.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/trade/service/CSVTradeFileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/trade/service/CSVTradeFileReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/trade/service/TradeDBWriterImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/trade/service/TradeDBWriterImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/trade/service/TradeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/trade/service/TradeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/trade/tradecontract/TradeFileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/trade/tradecontract/TradeFileReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/trade/trades.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/trade/trades.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/trade/utils/ValidateFileData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/trade/utils/ValidateFileData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/trade/utils/WriteErrorLogs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/jdbc/trade/utils/WriteErrorLogs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/problems/trade/TradeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/trade/TradeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/trade/databaseconnection/MysqlDBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/databaseconnection/MysqlDBConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/trade/utils/ValidateFileData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/utils/ValidateFileData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/jdbc/trade/utils/WriteErrorLogs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/thread/tradeprocess/utils/WriteErrorLogs.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,8 +33,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -73,6 +68,7 @@
   "keyToString": {
     "Application.ArrayBlockingQueueExample.executor": "Run",
     "Application.CreditCardTransactionProcessor.executor": "Run",
+    "Application.TradeProcessRunner.executor": "Run",
     "Application.TradeProcessor.executor": "Run",
     "Application.TradeRunner.executor": "Run",
     "Downloaded.Files.Path.Enabled": "true",
@@ -124,6 +120,7 @@
       <recent name="$PROJECT_DIR$/src/problems/jdbc/creditcard" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="thread.tradeprocess.utils" />
       <recent name="thread.tradeprocess.exceptions" />
       <recent name="thread.tradeprocess.databaseconnection" />
       <recent name="jdbc.trademangement.exceptions" />
@@ -213,9 +210,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TradeTest.testGetInValidOutOfRangeThresholdFromApplicationProperties" />
         <item itemvalue="JUnit.TradeTest.testWriteToDbPrintSummary" />
         <item itemvalue="JUnit.TradeTest.testWriteToDbWihMaxThresholdHits" />
-        <item itemvalue="JUnit.TradeTest.testGetInValidOutOfRangeThresholdFromApplicationProperties" />
         <item itemvalue="JUnit.TradeTest.testReadCsvFileWihMaxThresholdHits" />
         <item itemvalue="JUnit.TradeTest.testGetInValidStringThresholdFromApplicationProperties" />
       </list>
@@ -337,6 +334,79 @@
           <properties class="java.lang.NumberFormatException" package="java.lang" />
           <option name="timeStamp" value="63" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/problems/thread/tradeprocess/TradeProcessRunner.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="154" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/problems/thread/tradeprocess/utils/WriteErrorLogs.java</url>
+          <line>12</line>
+          <option name="timeStamp" value="187" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/problems/thread/tradeprocess/utils/WriteErrorLogs.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="188" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/problems/thread/tradeprocess/utils/WriteErrorLogs.java</url>
+          <line>14</line>
+          <option name="timeStamp" value="190" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/problems/thread/tradeprocess/utils/WriteErrorLogs.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="191" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/problems/thread/tradeprocess/utils/WriteErrorLogs.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="192" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/problems/thread/tradeprocess/utils/WriteErrorLogs.java</url>
+          <line>16</line>
+          <option name="timeStamp" value="193" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/problems/thread/tradeprocess/repository/TradeRepository.java</url>
+          <line>69</line>
+          <option name="timeStamp" value="263" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/problems/thread/tradeprocess/repository/TradeRepository.java</url>
+          <line>74</line>
+          <option name="timeStamp" value="264" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/problems/thread/tradeprocess/repository/TradeRepository.java</url>
+          <line>77</line>
+          <option name="timeStamp" value="265" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/problems/thread/tradeprocess/repository/TradeRepository.java</url>
+          <line>75</line>
+          <option name="timeStamp" value="266" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/problems/thread/tradeprocess/service/ChunkProcessor.java</url>
+          <line>17</line>
+          <properties class="thread.tradeprocess.service.ChunkProcessor" method="&lt;init&gt;">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="157" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/problems/thread/tradeprocess/utils/WriteErrorLogs.java</url>
+          <line>11</line>
+          <properties class="thread.tradeprocess.utils.WriteErrorLogs" method="writeErrorLogsToFile">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="186" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
