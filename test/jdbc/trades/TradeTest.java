@@ -1,10 +1,10 @@
 package jdbc.trades;
 
-import jdbc.trades.config.DatabaseHelper;
-import jdbc.trades.exceptions.InvalidThresholdValueException;
-import jdbc.trades.model.TradePOJO;
-import jdbc.trades.repo.TradeRepo;
-import jdbc.trades.services.TradesService;
+import io.reactivestax.jdbc.trades.config.DatabaseHelper;
+import io.reactivestax.jdbc.trades.exceptions.InvalidThresholdValueException;
+import io.reactivestax.jdbc.trades.model.TradePOJO;
+import io.reactivestax.jdbc.trades.repo.TradeRepo;
+import io.reactivestax.jdbc.trades.services.TradesService;
 import com.zaxxer.hikari.HikariDataSource;
 import org.junit.*;
 import org.junit.contrib.java.lang.system.SystemOutRule;

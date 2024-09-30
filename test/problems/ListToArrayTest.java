@@ -1,6 +1,6 @@
 package problems;
 
-import generics.ListToArray;
+import io.reactivestax.generics.ListToArray;
 import org.junit.Test;
 
 import java.util.Arrays;

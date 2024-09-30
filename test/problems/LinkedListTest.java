@@ -1,6 +1,6 @@
 package problems;
 
-import collections.LinkedList.LinkedList;
+import io.reactivestax.collections.LinkedList.LinkedList;
 import org.junit.Before;
 import org.junit.Test;
 

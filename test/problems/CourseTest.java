@@ -1,6 +1,6 @@
 package problems;
 
-import generics.Course;
+import io.reactivestax.generics.Course;
 import org.junit.Before;
 import org.junit.Test;
 

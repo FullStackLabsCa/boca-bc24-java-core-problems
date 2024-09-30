@@ -1,6 +1,6 @@
 package problems;
 
-import generics.OddCounter;
+import io.reactivestax.generics.OddCounter;
 import org.junit.Test;
 
 import java.util.*;

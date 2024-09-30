@@ -1,6 +1,6 @@
 package problems;
 
-import collections.HashMap.MyHashMap;
+import io.reactivestax.collections.HashMap.MyHashMap;
 import org.junit.Before;
 import org.junit.Test;
 

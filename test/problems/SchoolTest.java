@@ -1,7 +1,7 @@
 package problems;
 
 
-import generics.school.School;
+import io.reactivestax.generics.school.School;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;

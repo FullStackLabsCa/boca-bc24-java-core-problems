@@ -2,7 +2,7 @@ package problems;
 
 import org.junit.Before;
 import org.junit.Test;
-import arrays.Calculator;
+import io.reactivestax.arrays.Calculator;
 
 import static org.junit.Assert.assertEquals;
 

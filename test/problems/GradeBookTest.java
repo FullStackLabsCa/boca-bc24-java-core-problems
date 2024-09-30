@@ -1,6 +1,6 @@
 package problems;
 
-import generics.GradeBook;
+import io.reactivestax.generics.GradeBook;
 import org.junit.Before;
 import org.junit.Test;
 

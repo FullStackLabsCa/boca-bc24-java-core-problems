@@ -38,6 +38,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/src/io/reactivestax/multithreading/tradesprocessor/resources/chunkFile0.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/src/multithreading/Trades/resources/ chunkFile0.csv">
           <value>
             <Attribute>
@@ -67,6 +74,13 @@
           </value>
         </entry>
         <entry key="/src/multithreading/Trades/resources/ chunkFile4.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/src/multithreading/Trades/resources/ chunkFile9.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
