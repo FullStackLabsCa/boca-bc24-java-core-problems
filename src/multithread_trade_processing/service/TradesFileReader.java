@@ -37,7 +37,7 @@ public class TradesFileReader implements TradesFileReading {
                       } else {
                           String data = fileReader.nextLine();
                           linesRead++;
-                          writer.append(data);
+                          writer.write(data);
                           writer.newLine();
                       }
                   }
@@ -49,12 +49,7 @@ public class TradesFileReader implements TradesFileReading {
           }
     }
 
-    public int getChunkSizeFromPropertiesFile(){
-        Integer chunkSize = Integer.valueOf(propertyReader());
-        return chunkSize;
-    }
-
-    public String propertyReader(){
+    public Integer getChunkSizeFromPropertiesFile(){
             Properties properties = new Properties();
 
             try (FileInputStream fis = new FileInputStream("boca-bc24-java-core-problems/src/multithread_trade_processing/application.properties")) {
@@ -63,6 +58,6 @@ public class TradesFileReader implements TradesFileReading {
                 e.printStackTrace();
             }
 
-            return properties.getProperty("chunkSize");
+            return Integer.valueOf(properties.getProperty("chunkSize"));
         }
 }
