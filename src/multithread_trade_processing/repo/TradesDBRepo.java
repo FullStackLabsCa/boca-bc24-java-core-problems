@@ -4,16 +4,14 @@ import multithread_trade_processing.model.Trade;
 
 import java.sql.*;
 
-public class TradesDBRepo {
-    String URL = "jdbc:mysql://localhost:3306/bootcamp";
-    String USER = "root";
-    String PASS = "password123";
+import static multithread_trade_processing.MultithreadTradeProcessorUtility.dataSource;
 
+public class TradesDBRepo {
 
     public String checkIfValidCUSIP(Trade trade){
         String lookupQuery = "select 1 from SecuritiesReferenceV2 where cusip = ?";
 
-        try(Connection connection = DriverManager.getConnection(URL, USER, PASS);
+        try(Connection connection = dataSource.getConnection();
             PreparedStatement psLookUp = connection.prepareStatement(lookupQuery)){
 
             psLookUp.setString(1, trade.getCusip());
@@ -35,7 +33,7 @@ public class TradesDBRepo {
                 values (?,?,?,?,?)
                 """;
 
-        try(Connection connection = DriverManager.getConnection(URL, USER, PASS);
+        try(Connection connection = dataSource.getConnection();
             PreparedStatement insertionQuery = connection.prepareStatement(writeToJournalQuery)){
 
             insertionQuery.setString(1,trade.getAccountNumber());
@@ -55,7 +53,7 @@ public class TradesDBRepo {
 
         String lookUpSecurityQuery = "Select security_id from SecuritiesReferenceV2 where cusip = ?";
 
-        try(Connection connection = DriverManager.getConnection(URL, USER, PASS);
+        try(Connection connection = dataSource.getConnection();
             PreparedStatement ps = connection.prepareStatement(lookUpSecurityQuery)){
 
             ps.setString(1, cusip);
@@ -76,7 +74,7 @@ public class TradesDBRepo {
         String smartInsertionAndUpdateQueryCredit = "Insert into positions (account_number, security_id, position) values (?,?,?) on duplicate key update position = (position - ?)";
         String smartInsertionAndUpdateQueryDebit = "Insert into positions (account_number, security_id, position) values (?,?,?) on duplicate key update position = (position + ?)";
 
-        try(Connection connection = DriverManager.getConnection(URL, USER, PASS);
+        try(Connection connection = dataSource.getConnection();
         PreparedStatement psSmartQueryCredit  = connection.prepareStatement(smartInsertionAndUpdateQueryCredit);
         PreparedStatement psSmartQueryDebit = connection.prepareStatement(smartInsertionAndUpdateQueryDebit)){
 
