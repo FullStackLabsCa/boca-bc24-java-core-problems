@@ -90,7 +90,6 @@ public class ThreadTradeProcessor implements Runnable {
              PreparedStatement insertStatement = connection.prepareStatement(insertQuery);) {
             connection.setAutoCommit(false);
 
-            //inserting to the journal entry table
             insertStatement.setString(1, array[2]);
             insertStatement.setString(2, array[3]);
             insertStatement.setString(3, array[5]);
