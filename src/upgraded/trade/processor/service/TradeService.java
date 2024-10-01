@@ -1,5 +1,8 @@
 package upgraded.trade.processor.service;
 
+import com.zaxxer.hikari.HikariDataSource;
+import upgraded.trade.processor.database.DataSourceTrading;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,9 +12,14 @@ import java.util.concurrent.Executors;
 
 public class TradeService {
     private int numberOfChunks;
-
+    ExecutorService chunkProcessorThreadPool = Executors.newFixedThreadPool(10);
+    HikariDataSource dataSource= DataSourceTrading.createDataSource();
+    public void startTradeProcessor(){
+        TradeExecutor tradeExecutor = new TradeExecutor();
+        tradeExecutor.submitTrade(dataSource);
+    }
     // Configure the number of chunks based on properties file
-    public void configureChunks(String filePath) throws IOException {
+    public void configureChunks(String s) throws IOException {
         Properties properties = new Properties();
         try (FileInputStream input = new FileInputStream("/Users/Sukhvir.Kaur/Source/boca-bc24-java-core-problems/src/upgraded/trade/processor/utility/application.properties")) {
             properties.load(input);
@@ -20,15 +28,11 @@ public class TradeService {
         }
     }
 
-    public int getNumberOfChunks() {
-        return numberOfChunks;
-    }
-
     // Chunk the trades file into specified number of chunks
     public List<String> chunkTrade(String filePath) {
         List<String> chunks = new ArrayList<>();
         StringBuilder currentChunk = new StringBuilder();
-        int lineCount = 0;
+        long lineCount = 0;
 
         // First, count total lines
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
@@ -41,7 +45,7 @@ public class TradeService {
         }
 
         // Calculate the lines per chunk
-        int linesPerChunk = (int) Math.ceil((double) lineCount / numberOfChunks);
+        long linesPerChunk = (long) Math.ceil((double) lineCount / numberOfChunks);
 
         // Chunk the trades file
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
@@ -66,31 +70,17 @@ public class TradeService {
         } catch (IOException e) {
             System.err.println("Error reading file: " + e.getMessage());
         }
-
         return chunks;
     }
 
-    // Process each chunk using a single-threaded executor
-    public void executeChunkProcessing(List<String> chunks) {
-        ExecutorService executor = Executors.newSingleThreadExecutor();
-        for (String chunk : chunks) {
-            executor.submit(() -> processChunk(chunk)); // Process each chunk
-        }
-        executor.shutdown();
-    }
-
-    // Process an individual chunk
-    private void processChunk(String chunk) {
-        System.out.println("Processing chunk: \n" + chunk);
-    }
     // Write each chunk to a separate CSV file
     public void writeChunksToFiles(List<String> chunks, String outputDir) {
+
         // Ensure the output directory exists
         File dir = new File(outputDir);
         if (!dir.exists()) {
             dir.mkdirs(); // Create the directory if it does not exist
         }
-
         for (int i = 0; i < chunks.size(); i++) {
             String chunk = chunks.get(i);
             String filePath = String.format("%s/chunk_%d.csv", outputDir, i + 1); // Change .txt to .csv
@@ -100,10 +90,8 @@ public class TradeService {
             } catch (IOException e) {
                 System.err.println("Error writing to file " + filePath + ": " + e.getMessage());
             }
+
+            chunkProcessorThreadPool.submit(new ChunkProcessor(filePath,dataSource));
         }
     }
-
-
-
-
 }
