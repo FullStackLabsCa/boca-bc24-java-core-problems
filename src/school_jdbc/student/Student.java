@@ -1,6 +1,6 @@
 package school_jdbc.student;
 
-import school_jdbc.dbconnection.DatabaseHelper;
+import dbconnection.DatabaseHelper;
 
 import java.sql.*;
 

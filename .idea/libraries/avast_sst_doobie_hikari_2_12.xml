@@ -1,0 +1,46 @@
+<component name="libraryTable">
+  <library name="avast.sst.doobie.hikari_2.12" type="repository">
+    <properties maven-id="com.avast:sst-doobie-hikari_2.12:0.18.6" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/avast/sst-doobie-hikari_2.12/0.18.6/sst-doobie-hikari_2.12-0.18.6.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.12.19/scala-library-2.12.19.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/typelevel/cats-effect_2.12/2.5.5/cats-effect_2.12-2.5.5.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/typelevel/cats-core_2.12/2.7.0/cats-core_2.12-2.7.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/typelevel/cats-kernel_2.12/2.7.0/cats-kernel_2.12-2.7.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/typelevel/simulacrum-scalafix-annotations_2.12/0.5.4/simulacrum-scalafix-annotations_2.12-0.5.4.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/modules/scala-collection-compat_2.12/2.9.0/scala-collection-compat_2.12-2.9.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/tpolecat/doobie-core_2.12/0.13.4/doobie-core_2.12-0.13.4.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/tpolecat/doobie-free_2.12/0.13.4/doobie-free_2.12-0.13.4.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/co/fs2/fs2-core_2.12/2.5.6/fs2-core_2.12-2.5.6.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/scodec/scodec-bits_2.12/1.1.27/scodec-bits_2.12-1.1.27.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/typelevel/cats-free_2.12/2.6.1/cats-free_2.12-2.6.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-reflect/2.12.12/scala-reflect-2.12.12.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/chuusai/shapeless_2.12/2.3.7/shapeless_2.12-2.3.7.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/tpolecat/typename_2.12/1.0.0/typename_2.12-1.0.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/tpolecat/doobie-hikari_2.12/0.13.4/doobie-hikari_2.12-0.13.4.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/zaxxer/HikariCP/4.0.3/HikariCP-4.0.3.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/avast/sst-doobie-hikari_2.12/0.18.6/sst-doobie-hikari_2.12-0.18.6-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.12.19/scala-library-2.12.19-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/typelevel/cats-effect_2.12/2.5.5/cats-effect_2.12-2.5.5-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/typelevel/cats-core_2.12/2.7.0/cats-core_2.12-2.7.0-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/typelevel/cats-kernel_2.12/2.7.0/cats-kernel_2.12-2.7.0-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/typelevel/simulacrum-scalafix-annotations_2.12/0.5.4/simulacrum-scalafix-annotations_2.12-0.5.4-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/modules/scala-collection-compat_2.12/2.9.0/scala-collection-compat_2.12-2.9.0-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/tpolecat/doobie-core_2.12/0.13.4/doobie-core_2.12-0.13.4-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/tpolecat/doobie-free_2.12/0.13.4/doobie-free_2.12-0.13.4-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/co/fs2/fs2-core_2.12/2.5.6/fs2-core_2.12-2.5.6-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/scodec/scodec-bits_2.12/1.1.27/scodec-bits_2.12-1.1.27-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/typelevel/cats-free_2.12/2.6.1/cats-free_2.12-2.6.1-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-reflect/2.12.12/scala-reflect-2.12.12-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/chuusai/shapeless_2.12/2.3.7/shapeless_2.12-2.3.7-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/tpolecat/typename_2.12/1.0.0/typename_2.12-1.0.0-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/tpolecat/doobie-hikari_2.12/0.13.4/doobie-hikari_2.12-0.13.4-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/zaxxer/HikariCP/4.0.3/HikariCP-4.0.3-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

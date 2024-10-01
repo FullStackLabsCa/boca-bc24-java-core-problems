@@ -1,6 +1,6 @@
 package school_jdbc.enrollment;
 
-import school_jdbc.dbconnection.DatabaseHelper;
+import dbconnection.DatabaseHelper;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
