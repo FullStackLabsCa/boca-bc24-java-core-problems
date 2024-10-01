@@ -38,5 +38,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="zaxxer.HikariCP1" level="project" />
   </component>
 </module>

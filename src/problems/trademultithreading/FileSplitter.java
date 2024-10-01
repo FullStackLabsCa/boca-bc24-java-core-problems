@@ -13,6 +13,7 @@ public class FileSplitter {
     private static final String CSV_EXTENSION = ".csv";
     private final ExecutorService singleThreadSplitter;
     int numberOfChunks;
+
     public FileSplitter(int numberOfChunks) throws FileSplitterException {
         singleThreadSplitter = Executors.newSingleThreadExecutor();
         this.numberOfChunks = numberOfChunks;
@@ -84,16 +85,4 @@ public class FileSplitter {
             throw new FileSplitterException("Invalid input file provided: " + inputFile.getAbsolutePath());
         }
     }
-
-//    private Path prepareOutputDirectory(String outputDir) throws FileSplitterException {
-//        try {
-//            Path outputDirectory = Paths.get(outputDir);
-//            if (!Files.exists(outputDirectory)) {
-//                Files.createDirectories(outputDirectory);
-//            }
-//            return outputDirectory;
-//        } catch (IOException e) {
-//            throw new FileSplitterException("Failed to create output directory: " + outputDir, e);
-//        }
-//    }
 }

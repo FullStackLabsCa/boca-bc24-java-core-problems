@@ -28,7 +28,6 @@ public class MainRunner {
         String outputDir = "/Users/Rushikumar.Patel/source/problems/src/problems/trademultithreading/csvfiles/chunkfiles";
 
         try {
-            // Load the number of chunks from properties file
             numberOfChunks = loadProperties();
             System.out.println("Loaded number of chunks: " + numberOfChunks);
 
@@ -42,8 +41,6 @@ public class MainRunner {
             // Step 3: Process chunks and assign trades to queues
             DatabaseProcessor processor = new DatabaseProcessor(numberOfChunks, queueDistributorMap);
             processor.processChunks(outputDir);
-
-            // Trade processing will be managed by the DatabaseProcessor itself, including starting trade processors.
 
         } catch (FileSplitterException e) {
             System.err.println("FileSplitterException: " + e.getMessage());

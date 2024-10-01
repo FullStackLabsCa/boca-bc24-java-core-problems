@@ -1,7 +1,6 @@
 package problems.trademultithreading;
 
 import problems.trademultithreading.databasehelpers.DatabaseHelper;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.*;
@@ -10,6 +9,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.concurrent.*;
+
+import static problems.trademultithreading.databasehelpers.DatabaseHelper.dataSource;
 
 public class DatabaseProcessor {
     private final ExecutorService chunkProcessorPool;
@@ -38,9 +39,10 @@ public class DatabaseProcessor {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
             }
+            showSizeOfQueues();    // For checking the size of the Queue (Queue 1 to Queue 3)
             chunkProcessorPool.shutdown();
+
             try {
                 chunkProcessorPool.awaitTermination(Long.MAX_VALUE, TimeUnit.MILLISECONDS);
                 chunkProcessorPool.shutdownNow();
@@ -49,11 +51,16 @@ public class DatabaseProcessor {
             }
             // Step 3: Add data into journal_entry table
             startTradeProcessors();
+
+            // Step 4: Processing further for the Position table
+            // startInsertingPosition();
+
         } catch (IOException e) {
             throw new IOException("Failed to process chunk files: " + e.getMessage());
         }
 
     }
+
 
     private void processChunk(File chunkFile) {
         try {
@@ -89,12 +96,11 @@ public class DatabaseProcessor {
 
         // Step 2: After successful insertion, assign trade to the appropriate queue
         assignToQueue(accountNumber, tradeId);
-        showSizeOfQueues();
     }
 
     private void insertTradeIntoDatabase(String tradeId, String tradeData, String statusOfPayload, String createdTimeStamp) {
         System.out.println("Inserting trade into database with ID: " + tradeId);
-        try (Connection conn = DatabaseHelper.getConnection()) {
+          try (Connection conn = dataSource.getConnection()) {
 
             if (conn == null) {
                 System.out.println("Database connection is null. Check your connection settings.");
@@ -157,9 +163,7 @@ public class DatabaseProcessor {
     }
 
     public void showSizeOfQueues() {
-        tradeQueues.forEach((queueName, queue) -> {
-            System.out.println("Size of " + queueName + " = " + queue.size());
-        });
+        tradeQueues.forEach((queueName, queue) -> System.out.println("Size of " + queueName + " = " + queue.size()));
     }
 
     public static String getCurrentTimestamp() {
@@ -167,24 +171,19 @@ public class DatabaseProcessor {
         return LocalDateTime.now().format(formatter);
     }
 
+    // Implementing Step 3
     public void startTradeProcessors() {
         ExecutorService tradeProcessorPool = Executors.newFixedThreadPool(tradeQueues.size());
         for (Map.Entry<String, BlockingQueue<String>> entry : tradeQueues.entrySet()) {
             String queueName = entry.getKey();
             BlockingQueue<String> queueHoldingValue = entry.getValue();
 
-            // Create a TradeProcessor for each queue
             tradeProcessorPool.execute(new TradeProcessor(queueHoldingValue, queueName));
-
-//            // Start the processor in a new thread
-//            Thread processorThread = new Thread(processor);
-//            processorThread.start();
-
         }
         tradeProcessorPool.shutdown();
 //        int numberOfThreads = tradeQueues.size();
 //        System.out.println("Number of threads - "+numberOfThreads);
-    }
 
+    }
 }
 
