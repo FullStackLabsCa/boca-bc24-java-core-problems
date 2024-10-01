@@ -8,6 +8,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import static problems.trademultithreading.databasehelpers.DatabaseHelper.dataSource;
+
 public class LoadSecurityToDB {
     public static void main(String[] args) {
         String csvFilePath = "/Users/Rushikumar.Patel/source/problems/src/problems/trademultithreading/csvfiles/securities_custom_reference.csv";
@@ -17,7 +19,7 @@ public class LoadSecurityToDB {
 
         try {
             // Establish database connection
-            connection = DatabaseHelper.getConnection();
+            connection = dataSource.getConnection();
             connection.setAutoCommit(false);  //
 
             try (PreparedStatement statement = connection.prepareStatement(sql);

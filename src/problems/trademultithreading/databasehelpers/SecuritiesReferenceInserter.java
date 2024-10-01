@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import static problems.trademultithreading.databasehelpers.DatabaseHelper.dataSource;
+
 public class SecuritiesReferenceInserter {
     public static void main(String[] args) {
         String csvFilePath = "/Users/Rushikumar.Patel/source/problems/src/problems/tradingplatform/csvfiles/services.csv";
@@ -19,7 +21,7 @@ public class SecuritiesReferenceInserter {
 
     public static void loadCsvDataIntoDatabase(String csvFilePath) {
         String insertQuery = "INSERT INTO SecuritiesReference (symbol, description) VALUES (?, ?)";
-        try (Connection connection = DatabaseHelper.getConnection();
+        try (Connection connection = dataSource.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
              BufferedReader br = new BufferedReader(new FileReader(csvFilePath))) {
 

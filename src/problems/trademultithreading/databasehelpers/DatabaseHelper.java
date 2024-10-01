@@ -11,7 +11,7 @@ public class DatabaseHelper {
 
     static {
         HikariConfig config = new HikariConfig();
-        config.setJdbcUrl("jdbc:mysql://localhost:3306/studentDB");
+        config.setJdbcUrl("jdbc:mysql://localhost:3306/bootcamp");
         config.setUsername("root");
         config.setPassword("password123");
         config.setMaximumPoolSize(10); // Set max connections in pool

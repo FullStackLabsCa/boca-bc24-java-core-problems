@@ -29,11 +29,11 @@ public class TradeProcessor implements Runnable {
                 String tradeData = fetchTradeFromDatabase(tradeId);
 
                 // Step 2: Validate the trade (check CUSIP in the securities_reference table)
-                String securityId = validateTrade(tradeData);
+                String securityIdCusip = validateTrade(tradeData);
 
-                if (securityId != null) {
+                if (securityIdCusip != null) {
                     // Step 3: Insert into journal_entry table if valid
-                    insertIntoJournalEntry(tradeData, securityId);
+                    insertIntoJournalEntry(tradeData, securityIdCusip);
                 } else {
                     System.out.println("Trade " + tradeId + " failed validation.");
                 }
@@ -96,9 +96,9 @@ public class TradeProcessor implements Runnable {
                 ResultSet rs = pstmt.executeQuery();
 
                 if (rs.next()) {
-                    String security__id = rs.getString("security_id");
-                    System.out.println("Security id for cusip :- " + security__id);
-                    return rs.getString("security_id");
+//                    String security_id_cusip = rs.getString("cusip");
+//                    System.out.println("Security id for cusip :- " + security_id_cusip);
+                    return rs.getString("cusip");
                 }
             }
         } catch (SQLException e) {
@@ -108,7 +108,7 @@ public class TradeProcessor implements Runnable {
         return null;
     }
 
-    private void insertIntoJournalEntry(String tradeData, String securityId) throws SQLException {
+    private void insertIntoJournalEntry(String tradeData, String securityIdCusip) throws SQLException {
         String[] tradeFields = tradeData.split(",");
         if (tradeFields.length >= 6) {
             String accountNumber = tradeFields[2];
@@ -122,7 +122,7 @@ public class TradeProcessor implements Runnable {
                             "VALUES (?, ?, ?, ?, ?) ";
                     try (PreparedStatement pstmt = conn.prepareStatement(insertQuery)) {
                         pstmt.setString(1, accountNumber);
-                        pstmt.setString(2, securityId);
+                        pstmt.setString(2, securityIdCusip);
                         pstmt.setString(3, direction);
                         pstmt.setInt(4, quantity);
                         pstmt.setString(5, "posted");
@@ -133,11 +133,10 @@ public class TradeProcessor implements Runnable {
                     }
                 }
             } catch (SQLException e) {
-                System.out.println("Error inserting trade into journal_entry: " + e.getMessage());
-                e.printStackTrace();
+                System.out.println("Error inserting trade into journal_entry:- Duplicate entry to the Journal entry table ");
             }
             // Step 4 : Insert into Positions Table
-            startInsertingPosition(tradeData, securityId);
+            startInsertingPosition(tradeData, securityIdCusip);
         } else {
             System.out.println("Trade data does not contain enough fields to insert into journal_entry.");
         }
