@@ -62,7 +62,7 @@ public class ChunkGenerator {
                 writer.newLine();
                 rowNumber++;
 
-                if (rowNumber >= linesPerChunk) {
+                if (rowNumber >= linesPerChunk || chunkFiles.indexOf(chunkFiles.get(i)) == chunkFiles.size()-1) {
                     writer.close();
 
                     String chunkedFileName = chunkedFilePath + "/Trade_" + currentChunk + ".csv";
@@ -71,11 +71,10 @@ public class ChunkGenerator {
                     currentChunk++;
                     rowNumber = 0;
 
-                    if (currentChunk > getChunkSize()) {
-                        break;
-                    }
-                    writer = new BufferedWriter(new FileWriter(chunkedFilePath + "/Trade_" + currentChunk + ".csv"));
+                    if(currentChunk <= getChunkSize()) {
+                        writer = new BufferedWriter(new FileWriter(chunkedFilePath + "/Trade_" + currentChunk + ".csv"));
 
+                    }
                     executorService.submit(new ChunkProcessor(chunkedFileName, dataSource));
                 }
             }

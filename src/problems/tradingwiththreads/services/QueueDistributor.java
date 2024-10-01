@@ -46,16 +46,16 @@ public class QueueDistributor {
             default:
                 break;
         }
+
+//        printMapAndQueue();
     }
 
     public static void printMapAndQueue() {
-//        System.out.println("tradeConcurrentHashMap = " + distributorMap);
-//        System.out.println("tradesQueue1 = " + queueOne);
-//        System.out.println("tradesQueue2 = " + queueTwo);
-//        System.out.println("tradesQueue3 = " + queueThree);
+
         System.out.println("queueOne.size() = " + queueOne.size());
         System.out.println("queueTwo = " + queueTwo.size());
         System.out.println("queueThree = " + queueThree.size());
+        System.out.println("Total queue size --- " + (queueOne.size() + queueTwo.size() + queueThree.size()));
     }
 }
 

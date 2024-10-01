@@ -43,9 +43,10 @@ public class ChunkProcessor implements Runnable {
 
 
     public void processChunks(String chunkFileName) throws SQLException {
+//        System.out.println("called====");
         try (Connection connection = dataSource.getConnection();
             BufferedReader reader = new BufferedReader(new FileReader(chunkFileName))) {
-            System.out.println("Processing file: " + chunkFileName);
+//            System.out.println("Processing file: " + chunkFileName);
             RawPayloadPOJO rawPayload = new RawPayloadPOJO();
             TradesRepository repository = new TradesRepository();
             String payloadData;
@@ -58,16 +59,21 @@ public class ChunkProcessor implements Runnable {
                     rawPayload.setStatus("Invalid");
                     rawPayload.setStatusReason("Fields are missing data");
                 }
-                System.out.println("inserting data");
+//                System.out.println("inserting data");
                 repository.insertInRawTable(rawPayload, connection);
-                System.out.println("---------------xxxxxxxx------------------------------------");
+//                System.out.println("---------------xxxxxxxx------------------------------------");
 
                 if (rawPayload.getStatus().equals("Valid")) {
                     int queueNumberForAccount = getQueueNumber(columnInPayloads[2]);
                     //assign queue
                     assignQueueToAccountID(rawPayload.getTradeId(), queueNumberForAccount);
+//                    System.out.println("1 -"+queueOne.size());
+//                    System.out.println("2 -"+queueTwo.size());
+//                    System.out.println("3 -"+queueThree.size());
                 }
             }
+
+
             QueueDistributor.printMapAndQueue();
         } catch (IOException e) {
             e.printStackTrace();
