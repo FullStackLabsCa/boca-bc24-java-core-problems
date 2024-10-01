@@ -1,4 +1,4 @@
-package trade_processing_multithreading;
+package trade.processing.multithreading.config;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -9,7 +9,8 @@ import java.sql.SQLException;
 public class DatabaseConnector {
 
     static HikariConfig hikariConfig = new HikariConfig();
-    public static HikariDataSource dataSource;
+    static HikariDataSource dataSource;
+
 
     public  static void configureHikariCP() {
 
@@ -33,7 +34,9 @@ public class DatabaseConnector {
                 throw new SQLException();
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
+        return null;
     }
+
 }

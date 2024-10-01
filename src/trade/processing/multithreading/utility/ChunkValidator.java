@@ -1,4 +1,4 @@
-package trade_processing_multithreading;
+package trade.processing.multithreading.utility;
 
 public interface ChunkValidator {
     boolean quickValidator (String[] payload);
