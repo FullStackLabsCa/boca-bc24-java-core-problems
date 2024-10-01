@@ -1,6 +1,5 @@
-package problems.trademultithreading;
+package problems.trademultithreading.services;
 
-import problems.trademultithreading.databasehelpers.DatabaseHelper;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.*;

@@ -1,6 +1,4 @@
-package problems.trademultithreading;
-
-import problems.trademultithreading.databasehelpers.DatabaseHelper;
+package problems.trademultithreading.services;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

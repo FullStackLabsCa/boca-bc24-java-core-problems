@@ -1,4 +1,4 @@
-package problems.trademultithreading;
+package problems.trademultithreading.services;
 
 import problems.trademultithreading.customexception.FileSplitterException;
 
