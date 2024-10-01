@@ -1,4 +1,4 @@
-package problems.tradingwiththreads;
+package problems.tradingwiththreads.databaseconnector;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;

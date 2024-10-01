@@ -1,19 +1,14 @@
 package problems.tradingwiththreads.services;
 
 import com.zaxxer.hikari.HikariDataSource;
-import problems.tradingwiththreads.DatabaseConnector;
 import problems.tradingwiththreads.model.RawPayloadPOJO;
-import problems.tradingwiththreads.model.TradePOJO;
 import problems.tradingwiththreads.repository.TradesRepository;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.security.Key;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.concurrent.ConcurrentHashMap;
 
 import static problems.tradingwiththreads.services.QueueDistributor.*;
 
@@ -67,9 +62,6 @@ public class ChunkProcessor implements Runnable {
                     int queueNumberForAccount = getQueueNumber(columnInPayloads[2]);
                     //assign queue
                     assignQueueToAccountID(rawPayload.getTradeId(), queueNumberForAccount);
-//                    System.out.println("1 -"+queueOne.size());
-//                    System.out.println("2 -"+queueTwo.size());
-//                    System.out.println("3 -"+queueThree.size());
                 }
             }
 

@@ -2,8 +2,12 @@ package problems.tradingwiththreads;
 
 
 import com.zaxxer.hikari.HikariDataSource;
+import problems.tradingwiththreads.model.JournalEntryPOJO;
+import problems.tradingwiththreads.repository.TradesRepository;
 import problems.tradingwiththreads.services.ChunkProcessor;
 import problems.tradingwiththreads.services.QueueDistributor;
+import problems.tradingwiththreads.services.TradeProcessor;
+import problems.tradingwiththreads.services.TradeProcessorRunnable;
 
 import java.io.IOException;
 
@@ -17,5 +21,8 @@ public class TradeMain {
 //        HikariDataSource dataSource = DatabaseConnector.configureHikariCP();
 //        String chunkFileName = "";
         generateChunksAndSubmitTask();
+//        TradeProcessor.submitTaskToThreads();
+//        TradesRepository.insertIntoJournalTable();
+
     }
 }

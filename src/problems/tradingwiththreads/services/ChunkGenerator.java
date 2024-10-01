@@ -2,7 +2,7 @@ package problems.tradingwiththreads.services;
 
 
 import com.zaxxer.hikari.HikariDataSource;
-import problems.tradingwiththreads.DatabaseConnector;
+import problems.tradingwiththreads.databaseconnector.DatabaseConnector;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -55,7 +55,7 @@ public class ChunkGenerator {
 
             BufferedWriter writer = new BufferedWriter(new FileWriter(chunkedFilePath + "/Trade_" + currentChunk + ".csv"));
 
-            //as the chunked files are getting created, submit task to thread --
+
             double linesPerChunk = (double) numberOfRowsInFile / getChunkSize();
             for (int i = 0; i < chunkFiles.size(); i++) {
                 writer.write(chunkFiles.get(i));
@@ -67,7 +67,7 @@ public class ChunkGenerator {
 
                     String chunkedFileName = chunkedFilePath + "/Trade_" + currentChunk + ".csv";
                     System.out.println(chunkedFileName);
-                    //check connection here --
+
                     currentChunk++;
                     rowNumber = 0;
 
