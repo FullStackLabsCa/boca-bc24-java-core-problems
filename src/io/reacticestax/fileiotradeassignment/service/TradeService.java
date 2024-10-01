@@ -15,7 +15,7 @@ public class TradeService implements TradeServiceInterface {
 
     private String filePath;
     public ArrayList<TradePOJO> validLines;
-    public static HikariDataSource dataSource = getConnection();
+    public static final HikariDataSource dataSource = getConnection();
 
     public int errorCounter = 0;
     private double readFileErrorThreshold;

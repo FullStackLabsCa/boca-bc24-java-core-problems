@@ -1,26 +1,40 @@
 package io.reacticestax.tradeprocessingmultithreadingassignment;
 
 import io.reacticestax.tradeprocessingmultithreadingassignment.implementation.ChunkGeneratorImpl;
+import io.reacticestax.tradeprocessingmultithreadingassignment.implementation.TradeProcessingServiceImpl;
 
 import java.io.File;
 import java.io.IOException;
 
+import static io.reacticestax.tradeprocessingmultithreadingassignment.implementation.ChunkGeneratorImpl.file;
 
 public class MainRunner {
-    public static File file = new File("/Users/akshitabajaj/Documents/reactiveStax/boca-bc24-java-core-problems/src/io/reacticestax/tradeprocessingmultithreadingassignment/files/trade_records_with_cusip.csv");
     public static void main(String[] args) {
-        // Initialize the ChunkGenerator implementation
-        ChunkGeneratorImpl chunkGenerator = new ChunkGeneratorImpl();
+        ChunkGeneratorImpl buildChunk = new ChunkGeneratorImpl(new ConfigLoader(file.getPath()));
+        TradeProcessingServiceImpl tradeProcessingService = new TradeProcessingServiceImpl();
 
         try {
-            // Count the lines in the file (optional - for display purposes)
-            chunkGenerator.countLines(file);
-            // Generate and submit chunks for processing
-            chunkGenerator.generateChunkAndSubmit(file);
+            // Count lines and generate chunks
+            buildChunk.countLines(ChunkGeneratorImpl.file);
+            buildChunk.generateChunkAndSubmit(ChunkGeneratorImpl.file);
 
+            // Assuming you know the chunk directory and it has been created
+            String chunkDirectory = "/Users/akshitabajaj/Documents/reactiveStax/boca-bc24-java-core-problems/src/io/reacticestax/tradeprocessingmultithreadingassignment/files/chunks/";
+
+            // Process each chunk file
+            for (int i = 1; i <= 10; i++) {
+                String chunkFilePath = chunkDirectory + "file_chunk_0" + i + ".csv"; // Construct file path
+                File chunkFile = new File(chunkFilePath);
+
+                // Check if the chunk file exists before processing
+                if (chunkFile.exists()) {
+                    tradeProcessingService.saveToRawTableInDB(chunkFilePath);
+                } else {
+                    System.out.println("Chunk file " + chunkFilePath + " does not exist.");
+                }
+            }
         } catch (IOException e) {
-            System.err.println("Error while generating chunks: " + e.getMessage());
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 }

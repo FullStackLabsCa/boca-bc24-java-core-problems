@@ -1,17 +1,23 @@
 package io.reacticestax.tradeprocessingmultithreadingassignment.implementation;
 
+import io.reacticestax.tradeprocessingmultithreadingassignment.ConfigLoader;
 import io.reacticestax.tradeprocessingmultithreadingassignment.projectinterfaces.ChunkGenerator;
+
 
 import java.io.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class ChunkGeneratorImpl implements ChunkGenerator {
+    ConfigLoader configLoader;
+    public ChunkGeneratorImpl(ConfigLoader configLoader) {
+        this.configLoader = configLoader;
+    }
 
-    ExecutorService executorService = Executors.newFixedThreadPool(10);
+    public int numberOfChunks = configLoader.getIntProperty("number.of.chunks");
+    public static final File file = new File("/Users/akshitabajaj/Documents/reactiveStax/boca-bc24-java-core-problems/src/io/reacticestax/tradeprocessingmultithreadingassignment/files/trade_records_with_cusip.csv");
+    public ExecutorService executorService = Executors.newFixedThreadPool(numberOfChunks);
     private int lineCount = 0;
-
-    // Define the directory for storing chunk files
     public static final String CHUNK_DIR = "/Users/akshitabajaj/Documents/reactiveStax/boca-bc24-java-core-problems/src/io/reacticestax/tradeprocessingmultithreadingassignment/files/chunks/";
 
     @Override
@@ -20,8 +26,7 @@ public class ChunkGeneratorImpl implements ChunkGenerator {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
             boolean isFirstLine = true;
-            String line;
-            while ((line = reader.readLine()) != null) {
+            while (reader.readLine() != null) {
                 if (isFirstLine) {
                     isFirstLine = false;  // Skip header line
                 } else {
@@ -42,13 +47,13 @@ public class ChunkGeneratorImpl implements ChunkGenerator {
             return;
         }
 
-        int numberOfChunks = 10;
+
         int linesPerChunk = totalLineCount / numberOfChunks;
         int remainingLines = totalLineCount % numberOfChunks;
 
         // Add remaining lines to last chunk
         int chunkCount = 1;
-        int currentLine = 0;
+        //int currentLine = 0;
 
         BufferedWriter writer = null;
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
@@ -63,7 +68,6 @@ public class ChunkGeneratorImpl implements ChunkGenerator {
                 }
 
                 if (writer == null) {
-                    // Create a new chunk file with proper naming format
                     String chunkFileName = String.format("file_chunk_%02d.csv", chunkCount);
                     File chunkFile = new File(CHUNK_DIR + chunkFileName);
                     writer = new BufferedWriter(new FileWriter(chunkFile));
@@ -72,10 +76,10 @@ public class ChunkGeneratorImpl implements ChunkGenerator {
 
                 writer.write(line);
                 writer.newLine();
-                currentLine++;
+               // currentLine++;
                 linesInCurrentChunk++;
 
-                // Handle chunk size and switch to a new chunk after reaching `linesPerChunk`
+                // Handle chunk size and switch to a new chunk after reaching linesPerChunk
                 if (linesInCurrentChunk == linesPerChunk || (chunkCount == numberOfChunks && remainingLines > 0)) {
                     // For the last chunk, handle remaining lines
                     if (chunkCount == numberOfChunks) {
@@ -83,12 +87,12 @@ public class ChunkGeneratorImpl implements ChunkGenerator {
                     }
 
                     writer.close();
-                    executorService.submit(new ChunkProcessorImpl(CHUNK_DIR + String.format("file_chunk_%02d.csv", chunkCount)));
+                    executorService.submit(new ChunkProcessorImpl(new File(CHUNK_DIR + String.format("file_chunk_%02d.csv", chunkCount))));
                     chunkCount++;
                     linesInCurrentChunk = 0;
                     writer = null;
 
-                    // Stop creating more chunks if we've reached the number of chunks
+
                     if (chunkCount > numberOfChunks) {
                         break;
                     }
