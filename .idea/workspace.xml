@@ -5,32 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a7c31fdb-21cc-4f11-a5be-d0ff7b587f29" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_j_9_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/zaxxer_HikariCP.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Trading/databaseConnectivity/DatabaseConnectivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Trading/model/TradingValues.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Trading/presentationLayer/TradingRunner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Trading/repoLayer/TradingRep.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Trading/serviceLayer/DataValidation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Trading/serviceLayer/TradingService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Trading/serviceLayer/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Trading/utility/FileNotExists.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Trading/utility/HitErrorsThresholdException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Trading/utility/InvalidDateFormat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Trading/utility/InvalidThresholdValueException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Trading/utility/InvalidThresholdValueRuntimeException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Trading/utility/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Trading/utility/error_log.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Trading/utility/sample___" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Trading/utility/securities_reference.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Trading/utility/trades_sample_1000.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/loopproblems/FactorsOfNumber.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/multithreadingtrade/databaseconnectivity/DatabaseConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/multithreadingtrade/repo/TradeRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/multithreadingtrade/services/ChunkProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/multithreadingtrade/services/FileReadService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/multithreadingtrade/trademodel/RawPayLoad.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boca-bc24-java-core-problems.iml" beforeDir="false" afterPath="$PROJECT_DIR$/boca-bc24-java-core-problems.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/arrayproblems/MyArrayList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/arrayproblems/MyArrayList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/genericsproblems/ListToArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/genericsproblems/ListToArray.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/genericsproblems/School.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/genericsproblems/School.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/multithreadingtrade/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/multithreadingtrade/Runner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/multithreadingtrade/services/CreateChunks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/multithreadingtrade/services/CreateChunks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/multithreadingtrade/tradeinterfaces/ChunkGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/multithreadingtrade/tradeinterfaces/ChunkGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/multithreadingtrade/trademodel/TradeValues.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/problems/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/Calculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problems/CalculatorOld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/CalculatorOld.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/trading/databaseConnectivity/DatabaseConnectivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/trading/databaseConnectivity/DatabaseConnectivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/trading/model/TradingValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/trading/model/TradingValues.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/trading/presentationLayer/TradingRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/trading/presentationLayer/TradingRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/trading/repolayer/TradingRep.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/trading/repolayer/TradingRep.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/trading/servicelayer/DataValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/trading/servicelayer/DataValidation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/trading/servicelayer/TradingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/trading/servicelayer/TradingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/trading/utility/FileNotExists.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/trading/utility/FileNotExists.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/trading/utility/HitErrorsThresholdException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/trading/utility/HitErrorsThresholdException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/trading/utility/InvalidDateFormat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/trading/utility/InvalidDateFormat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/trading/utility/InvalidThresholdValueException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/trading/utility/InvalidThresholdValueException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/trading/utility/InvalidThresholdValueRuntimeException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/trading/utility/InvalidThresholdValueRuntimeException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/trading/utility/sample1" beforeDir="false" afterPath="$PROJECT_DIR$/src/trading/utility/sample1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/trading/utility/write_error.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/trading/utility/write_error.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/problems/CalculatorOldTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/CalculatorOldTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/problems/CalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/CalculatorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +42,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -70,6 +72,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Calculator.executor": "Run",
+    "Application.CalculatorOld.executor": "Run",
     "Application.CountAlphabet.executor": "Run",
     "Application.Course.executor": "Run",
     "Application.EvenNumber.executor": "Run",
@@ -78,6 +81,7 @@
     "Application.ListToArray.executor": "Run",
     "Application.MyArrayList.executor": "Run",
     "Application.PalindromeChecker.executor": "Run",
+    "Application.Runner.executor": "Run",
     "Application.School.executor": "Run",
     "Application.SortedArray.executor": "Run",
     "Application.SumArray.executor": "Run",
@@ -87,6 +91,10 @@
     "Application.TradingRunner.executor": "Run",
     "Application.WithoutSubtraction.executor": "Run",
     "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.CalculatorOldTest.executor": "Run",
+    "JUnit.CalculatorOldTest.testAddition.executor": "Run",
+    "JUnit.CalculatorOldTest.testInvalidNumberFormat.executor": "Run",
+    "JUnit.CalculatorOldTest.testSubtraction.executor": "Run",
     "JUnit.CalculatorTest.testBasicOperations.executor": "Run",
     "JUnit.CalculatorTest.testParentheses.executor": "Run",
     "JUnit.CourseTest.executor": "Run",
@@ -112,8 +120,8 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "feature/gaka-bc24-java-core-problems",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/Gagandeep.Kaur/source/students/boca-bc24-java-core-problems/src",
-    "project.structure.last.edited": "Libraries",
+    "last_opened_file_path": "/Users/Gagandeep.Kaur/source/students/boca-bc24-java-core-problems/src/multithreadingtrade/utility",
+    "project.structure.last.edited": "SDKs",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.lookFeel"
@@ -121,21 +129,27 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="problems" />
       <recent name="genericsproblems" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/multithreadingtrade/utility" />
       <recent name="$PROJECT_DIR$/src" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/multithreadingtrade/utility/chunks" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="multithreadingtrade.databaseconnectivity" />
+      <recent name="multithreadingtrade" />
+      <recent name="multithreadingtrade.utility" />
       <recent name="loopproblems" />
       <recent name="problems" />
-      <recent name="arrayproblems" />
-      <recent name="genericsproblems" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="Calculator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="problems.Calculator" />
+  <component name="RunManager" selected="Application.Runner">
+    <configuration name="CalculatorOld" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="problems.CalculatorOld" />
       <module name="boca-bc24-java-core-problems" />
       <extension name="coverage">
         <pattern>
@@ -147,12 +161,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SortedArray" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="arrayproblems.SortedArray" />
+    <configuration name="Runner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="multithreadingtrade.Runner" />
       <module name="boca-bc24-java-core-problems" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="arrayproblems.*" />
+          <option name="PATTERN" value="multithreadingtrade.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -160,7 +174,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CalculatorTest.testParentheses" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CalculatorOldTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="boca-bc24-java-core-problems" />
       <extension name="coverage">
         <pattern>
@@ -169,14 +183,29 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="problems" />
-      <option name="MAIN_CLASS_NAME" value="problems.CalculatorTest" />
-      <option name="METHOD_NAME" value="testParentheses" />
+      <option name="MAIN_CLASS_NAME" value="problems.CalculatorOldTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CalculatorOldTest.testInvalidNumberFormat" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="boca-bc24-java-core-problems" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="problems.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="problems" />
+      <option name="MAIN_CLASS_NAME" value="problems.CalculatorOldTest" />
+      <option name="METHOD_NAME" value="testInvalidNumberFormat" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ListToArrayTest.testListToArrayWithMixedElements" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CalculatorOldTest.testSubtraction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="boca-bc24-java-core-problems" />
       <extension name="coverage">
         <pattern>
@@ -185,24 +214,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="problems" />
-      <option name="MAIN_CLASS_NAME" value="problems.ListToArrayTest" />
-      <option name="METHOD_NAME" value="testListToArrayWithMixedElements" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MyArrayListTest.testAddElements" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="boca-bc24-java-core-problems" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="problems.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="problems" />
-      <option name="MAIN_CLASS_NAME" value="problems.MyArrayListTest" />
-      <option name="METHOD_NAME" value="testAddElements" />
+      <option name="MAIN_CLASS_NAME" value="problems.CalculatorOldTest" />
+      <option name="METHOD_NAME" value="testSubtraction" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -226,11 +239,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CalculatorTest.testParentheses" />
-        <item itemvalue="JUnit.ListToArrayTest.testListToArrayWithMixedElements" />
-        <item itemvalue="Application.SortedArray" />
-        <item itemvalue="Application.Calculator" />
-        <item itemvalue="JUnit.MyArrayListTest.testAddElements" />
+        <item itemvalue="Application.Runner" />
+        <item itemvalue="Application.CalculatorOld" />
+        <item itemvalue="JUnit.CalculatorOldTest" />
+        <item itemvalue="JUnit.CalculatorOldTest.testInvalidNumberFormat" />
+        <item itemvalue="JUnit.CalculatorOldTest.testSubtraction" />
       </list>
     </recent_temporary>
   </component>
@@ -249,49 +262,168 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/problems/Calculator.java</url>
-          <line>72</line>
+          <url>file://$PROJECT_DIR$/src/problems/CalculatorOld.java</url>
+          <line>52</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/problems/Calculator.java</url>
-          <line>43</line>
+          <url>file://$PROJECT_DIR$/src/problems/CalculatorOld.java</url>
+          <line>35</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/problems/Calculator.java</url>
-          <line>34</line>
+          <url>file://$PROJECT_DIR$/src/problems/CalculatorOld.java</url>
+          <line>26</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/problems/Calculator.java</url>
-          <line>35</line>
+          <url>file://$PROJECT_DIR$/src/problems/CalculatorOld.java</url>
+          <line>27</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/problems/Calculator.java</url>
-          <line>36</line>
+          <url>file://$PROJECT_DIR$/src/problems/CalculatorOld.java</url>
+          <line>28</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/problems/Calculator.java</url>
-          <line>17</line>
+          <url>file://$PROJECT_DIR$/src/problems/CalculatorOld.java</url>
+          <line>9</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/problems/Calculator.java</url>
-          <line>20</line>
+          <url>file://$PROJECT_DIR$/src/problems/CalculatorOld.java</url>
+          <line>12</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/problems/Calculator.java</url>
-          <line>21</line>
+          <url>file://$PROJECT_DIR$/src/problems/CalculatorOld.java</url>
+          <line>13</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/problems/Calculator.java</url>
-          <line>22</line>
+          <url>file://$PROJECT_DIR$/src/problems/CalculatorOld.java</url>
+          <line>14</line>
           <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/multithreadingtrade/services/ChunkProcessor.java</url>
+          <line>46</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/multithreadingtrade/services/FileReadService.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/multithreadingtrade/services/ChunkProcessor.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/multithreadingtrade/repo/TradeRepo.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="55" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/trading/presentationLayer/TradingRunner.java</url>
+          <line>21</line>
+          <properties class="trading.presentationLayer.TradingRunner" method="main">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/trading/presentationLayer/TradingRunner.java</url>
+          <line>43</line>
+          <properties class="trading.presentationLayer.TradingRunner" method="handleFileInput">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/trading/presentationLayer/TradingRunner.java</url>
+          <line>55</line>
+          <properties class="trading.presentationLayer.TradingRunner" method="handleConfiguredThreshold">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/trading/presentationLayer/TradingRunner.java</url>
+          <line>60</line>
+          <properties class="trading.presentationLayer.TradingRunner" method="getFilePath">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/trading/presentationLayer/TradingRunner.java</url>
+          <line>73</line>
+          <properties class="trading.presentationLayer.TradingRunner" method="getThresholdValue">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/trading/repolayer/TradingRep.java</url>
+          <line>17</line>
+          <properties class="trading.repolayer.TradingRep">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/trading/repolayer/TradingRep.java</url>
+          <line>89</line>
+          <properties class="trading.repolayer.TradingRep" method="errorLog">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/trading/repolayer/TradingRep.java</url>
+          <line>98</line>
+          <properties class="trading.repolayer.TradingRep" method="selectData">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/trading/servicelayer/DataValidation.java</url>
+          <line>7</line>
+          <properties class="trading.servicelayer.DataValidation">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/trading/servicelayer/TradingService.java</url>
+          <line>24</line>
+          <properties class="trading.servicelayer.TradingService" method="&lt;init&gt;">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/trading/servicelayer/TradingService.java</url>
+          <line>99</line>
+          <properties class="trading.servicelayer.TradingService">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="30" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

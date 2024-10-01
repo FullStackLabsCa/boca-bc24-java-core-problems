@@ -1,7 +1,8 @@
-package Trading.model;
+package trading.model;
 
 import java.time.LocalDate;
 
+@SuppressWarnings({"java:S116", "java:S100" , "java:S117"})
 public class TradingValues {
     private String trade_id;
     private String trade_identifier;

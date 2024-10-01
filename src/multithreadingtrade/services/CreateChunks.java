@@ -1,19 +1,27 @@
-package multithreadingtrade.repo;
+package multithreadingtrade.services;
+import com.zaxxer.hikari.HikariDataSource;
+import multithreadingtrade.databaseconnectivity.DatabaseConnection;
 import multithreadingtrade.tradeinterfaces.ChunkGenerator;
 
 import java.io.*;
 import java.util.Properties;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 @SuppressWarnings("java-S106")
 public class CreateChunks implements ChunkGenerator {
+    private final ExecutorService chunkGeneratorExecutorService = Executors.newFixedThreadPool(10);
+    private HikariDataSource hikariDataSource;
     static int chunkFileSize;
     int totalLines;
+
 
     @Override
     public void generateChunks(String filePath, int numberOfChunks) {
         try {
             totalLines = countLinesInFile(filePath);
             chunkFileSize = totalLines / numberOfChunks;
+            hikariDataSource = DatabaseConnection.configureHikariCP();
             createChunkFiles(filePath, numberOfChunks);
         } catch (IOException e) {
             throw new RuntimeException("Error generating chunks: " + e.getMessage(), e);
@@ -21,7 +29,7 @@ public class CreateChunks implements ChunkGenerator {
     }
 
     private void createChunkFiles(String filePath, int numberOfChunks) {
-        String outputDirectory = "/Users/Gagandeep.Kaur/source/students/boca-bc24-java-core-problems/src/multithreadingtrade/utility/"; //  destination path
+        String outputDirectory = "/Users/Gagandeep.Kaur/source/students/boca-bc24-java-core-problems/src/multithreadingtrade/utility/chunks/"; //  destination path
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             // Skip the header line

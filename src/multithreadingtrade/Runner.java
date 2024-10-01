@@ -1,18 +1,36 @@
-package tradeproject;
+package multithreadingtrade;
 
-import tradeproject.service.CreateChunks;
 
-import java.io.IOException;
+import com.zaxxer.hikari.HikariDataSource;
+import multithreadingtrade.services.ChunkProcessor;
+import multithreadingtrade.services.CreateChunks;
+import multithreadingtrade.services.FileReadService;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Runner {
+
+
+
     public static void main(String[] args) {
+
         try {
-            String propertiesFilePath = "/Users/Gagandeep.Kaur/source/students/tradingprocess/src/tradeproject/utility/appilcation.properties"; // properties file path
+            String filePath = "/Users/Gagandeep.Kaur/source/students/boca-bc24-java-core-problems/src/multithreadingtrade/utility/chunks/";
+            String propertiesFilePath = "/Users/Gagandeep.Kaur/source/students/boca-bc24-java-core-problems/src/multithreadingtrade/utility/appilcation.properties"; // properties file path
             int numberOfChunks = CreateChunks.getNumberOfChunks(propertiesFilePath);
 
             CreateChunks chunkCreator = new CreateChunks();
-            chunkCreator.generateChunks("/Users/Gagandeep.Kaur/source/students/tradingprocess/src/tradeproject/utility/trades.csv", numberOfChunks); // the input file path
-        } catch (IOException e) {
+            chunkCreator.generateChunks("/Users/Gagandeep.Kaur/source/students/boca-bc24-java-core-problems/src/multithreadingtrade/utility/trades.csv", numberOfChunks); // the input(trade) file path
+
+            ExecutorService executorService = Executors.newFixedThreadPool(10);
+            for (int i = 0; i < 10; i++) {
+                if (!filePath.isEmpty()) {
+                    executorService.submit(new ChunkProcessor(filePath +  "trades" + i + ".csv"));
+                }
+            }
+
+        } catch ( Exception e) {
             e.printStackTrace();
         }
     }

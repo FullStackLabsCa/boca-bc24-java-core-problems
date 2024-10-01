@@ -1,10 +1,10 @@
-package Trading.serviceLayer;
+package trading.servicelayer;
 
-import Trading.model.TradingValues;
-import Trading.repoLayer.TradingRep;
-import Trading.utility.FileNotExists;
-import Trading.utility.HitErrorsThresholdException;
-import Trading.utility.InvalidThresholdValueException;
+import trading.model.TradingValues;
+import trading.repolayer.TradingRep;
+import trading.utility.FileNotExists;
+import trading.utility.HitErrorsThresholdException;
+import trading.utility.InvalidThresholdValueException;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -16,73 +16,86 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import static Trading.presentationLayer.TradingRunner.dataSource;
-import static Trading.presentationLayer.TradingRunner.thresholdValue;
 
+import static trading.presentationLayer.TradingRunner.dataSource;
+import static trading.presentationLayer.TradingRunner.thresholdValue;
+
+@SuppressWarnings("squid:S106")
 public class TradingService {
+    private TradingService() {
+    }
+
     public static void readTradingFileAndWriteToQueue(String filePath) throws HitErrorsThresholdException, IOException, FileNotExists, SQLException {
         List<TradingValues> validBatch = new ArrayList<>();
-        int rows = 0;
+        int tryCount = 0;
         int errorCount = 0;
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
-            reader.readLine(); // Skip header line
-            while ((line = reader.readLine()) != null) {
-                rows++;
+            String string = reader.readLine();// Skip header line
+            while ((line = string) != null) {
                 line = line.trim();
-
                 // Validate trade date
-                if (DataValidation.checkForValidTradeDate(line)) {
-                    TradingRep.errorLog("Invalid trade date in line: " + line);
-                    errorCount++;
-                    continue;
-                }
                 try {
-                    String[] data = line.split(",");
-                    if (data.length < 6) {
-                        TradingRep.errorLog("Insufficient data fields in line: " + line);
+                    tryCount++;
+
+                    if (DataValidation.checkForValidTradeDate(line)) {
+                        TradingRep.errorLog("Invalid trade date in line: " + line);
                         errorCount++;
                         continue;
                     }
-
-                    TradingValues tradingValues = new TradingValues(
-                            data[0], data[1], data[2],
-                            Integer.parseInt(data[3]),
-                            Double.parseDouble(data[4]),
-                            LocalDate.parse(data[5])
-                    );
-                    System.out.println(tradingValues);
-                    validBatch.add(tradingValues);
-                } catch (NumberFormatException e) {
-                    TradingRep.errorLog("Number format error in line: " + line + " - " + e.getMessage());
-                    errorCount++;
-                } catch (IllegalArgumentException e) {
-                    TradingRep.errorLog("Illegal argument in line: " + line + " - " + e.getMessage());
-                    errorCount++;
-                } catch (Exception e) {
-                    TradingRep.errorLog("Unexpected error in line: " + line + " - " + e.getMessage());
-                    errorCount++;
-                }
-            }
+                    if ((double) errorCount / tryCount > 0.25) {
+                      throw new HitErrorsThresholdException("More than 25% of the rows have errors. Total Errors: " + errorCount);
+                    }
+                } catch (IOException e) {
+            System.err.println("Error reading file: " + e.getMessage());
         }
-        double percentage = ((double) errorCount / rows) * 100;
+                    try {
+                        String[] fields = line.split(",");
+                        if (fields.length < 6) {
+                            TradingRep.errorLog("Insufficient fields fields in line: " + line);
+                            errorCount++;
+                            continue;
+                        }
+
+                        TradingValues tradingValues = new TradingValues(
+                                fields[0], fields[1], fields[2],
+                                Integer.parseInt(fields[3]),
+                                Double.parseDouble(fields[4]),
+                                LocalDate.parse(fields[5])
+                        );
+                        System.out.println(tradingValues);
+                        validBatch.add(tradingValues);
+                    } catch (NumberFormatException e) {
+                        TradingRep.errorLog("Number format error in line: " + line + " - " + e.getMessage());
+                        errorCount++;
+                    } catch (IllegalArgumentException e) {
+                        TradingRep.errorLog("Illegal argument in line: " + line + " - " + e.getMessage());
+                        errorCount++;
+                    } catch (Exception e) {
+                        TradingRep.errorLog("Unexpected error in line: " + line + " - " + e.getMessage());
+                        errorCount++;
+                    }
+                }
+
+        }
+        double percentage = ((double) errorCount / tryCount) * 100;
 
         // Print summary of errors
-        System.out.println("Total rows : " + rows);
+        System.out.println("Total tryCount : " + tryCount);
         System.out.println("Total errors: " + errorCount);
         System.out.println("Error percentage in file : " + percentage + "%");
 
         if (percentage > thresholdValue) {
-            throw new HitErrorsThresholdException("Error threshold exceeded: " + errorCount + " errors out of " + rows + " rows.");
+            throw new HitErrorsThresholdException("Error threshold exceeded: " + errorCount + " errors out of " + tryCount + " tryCount.");
         }
 
         if (!validBatch.isEmpty()) {
             TradingRep.insertData(dataSource, validBatch);
         } else {
-            System.out.println("No valid rows to insert into the database.");
+            System.out.println("No valid tryCount to insert into the database.");
         }
-        System.out.println((errorCount + rows- validBatch.size())+ "rows are having invalid data.");
+        System.out.println((errorCount + tryCount- validBatch.size())+ " tryCount are having invalid data.");
 
     }
     public static void fetchThresholdValue() throws InvalidThresholdValueException {

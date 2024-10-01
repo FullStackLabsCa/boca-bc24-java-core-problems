@@ -1,7 +1,7 @@
-package Trading.repoLayer;
+package trading.repolayer;
 
-import Trading.model.TradingValues;
-import Trading.utility.HitErrorsThresholdException;
+import trading.model.TradingValues;
+import trading.utility.HitErrorsThresholdException;
 import com.zaxxer.hikari.HikariDataSource;
 
 import java.io.BufferedWriter;
@@ -10,9 +10,13 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.List;
 
-import static Trading.presentationLayer.TradingRunner.thresholdValue;
+import static trading.presentationLayer.TradingRunner.thresholdValue;
 
+@SuppressWarnings("squid:S106")
 public class TradingRep {
+    private TradingRep() {
+    }
+
     public static void insertData(HikariDataSource dataSource, List<TradingValues> tradingValuesList) throws SQLException, HitErrorsThresholdException {
         final int Batch_Size = 5;
         int invalidRows = 0;
@@ -63,7 +67,8 @@ public class TradingRep {
                     preparedStatement.executeBatch();
                 }
 
-                double percentage = (double) invalidRows / ( validRows) * 100.00;
+                double percentage = ((double) invalidRows / (validRows)) * 100.00;
+
                 if (percentage < thresholdValue) {
                     throw new HitErrorsThresholdException("Error threshold exceeded: " + invalidRows + " rows.");
                 }
@@ -78,12 +83,12 @@ public class TradingRep {
 
             }
         } catch (IOException e) {
-            throw new RuntimeException(" error during database operation: " + e.getMessage());
+            System.out.println(" error during database operation: " + e.getMessage());
         }
     }
 
     public static void errorLog(String error) throws IOException {
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("/Users/Gagandeep.Kaur/source/students/boca-bc24-java-core-problems/src/Trading/utility/error_log.txt", true))) {
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("/Users/Gagandeep.Kaur/source/students/boca-bc24-java-core-problems/src/Trading/utility/write_error.txt", true))) {
             bufferedWriter.write(error);
             bufferedWriter.newLine();
         } catch (Exception e) {
@@ -96,10 +101,12 @@ public class TradingRep {
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, tickerSymbol);
             ResultSet rs = preparedStatement.executeQuery();
-            boolean exists = rs.next();
+            boolean exists;
+            exists = rs.next();
             return exists;
         } catch (SQLException e) {
-            throw new RuntimeException("SQL error during data selection: " + e.getMessage());
+            System.out.println("SQL error during data selection: " + e.getMessage());
         }
+        return false;
     }
 }

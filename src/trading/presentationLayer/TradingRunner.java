@@ -1,8 +1,8 @@
-package Trading.presentationLayer;
+package trading.presentationLayer;
 
-import Trading.databaseConnectivity.DatabaseConnectivity;
-import Trading.utility.HitErrorsThresholdException;
-import Trading.utility.InvalidThresholdValueException;
+import trading.databaseConnectivity.DatabaseConnectivity;
+import trading.utility.HitErrorsThresholdException;
+import trading.utility.InvalidThresholdValueException;
 import com.zaxxer.hikari.HikariDataSource;
 
 import java.io.File;
@@ -11,19 +11,19 @@ import java.sql.SQLException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import static Trading.serviceLayer.TradingService.fetchThresholdValue;
-import static Trading.serviceLayer.TradingService.readTradingFileAndWriteToQueue;
+import static trading.servicelayer.TradingService.fetchThresholdValue;
+import static trading.servicelayer.TradingService.readTradingFileAndWriteToQueue;
 
+@SuppressWarnings("squid:S106")
 public class TradingRunner {
     public static HikariDataSource dataSource;
-    public static Double thresholdValue;
+    public static  Double thresholdValue;
 
     public static void main(String[] args) {
         dataSource = DatabaseConnectivity.configureHikariCP();
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Choose case: 1 for File Input, 2 for Configured Threshold");
 
-        try {
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.println("Choose case: 1 for File Input, 2 for Configured Threshold");
             int input = scanner.nextInt();
             scanner.nextLine(); // Consume newline
 
@@ -37,9 +37,7 @@ public class TradingRunner {
         } catch (InputMismatchException e) {
             System.out.println("Enter only 1 or 2");
         } catch (IOException | InvalidThresholdValueException e) {
-            throw new RuntimeException(e);
-        } finally {
-            scanner.close();
+            System.out.println("File not found");
         }
     }
 
@@ -56,7 +54,7 @@ public class TradingRunner {
     }
 
     private static void handleConfiguredThreshold(Scanner scanner) throws InvalidThresholdValueException {
-        String filepath = getFilePath(scanner);
+         getFilePath(scanner);
         fetchThresholdValue();
     }
 
@@ -76,7 +74,7 @@ public class TradingRunner {
     private static double getThresholdValue(Scanner scanner) {
         double value;
         while (true) {
-            System.out.println("Enter threshold value (1-100):");
+            System.out.println("Enter threshold value between 1 and 100:");
             try {
                 value = scanner.nextDouble();
                 if (value < 1 || value > 100) {

@@ -1,4 +1,4 @@
-package Trading.databaseConnectivity;
+package trading.databaseConnectivity;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
