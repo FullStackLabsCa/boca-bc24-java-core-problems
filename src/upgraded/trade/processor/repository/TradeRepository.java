@@ -40,7 +40,7 @@ public class TradeRepository {
 
     public boolean lookupSecurities(String cusipId, Connection connection) throws SQLException {
         boolean securityValidation=false;
-        String query="Select 1 from security_reference where cusip = ?";
+        String query="Select 1 from SecuritiesReference where cusip = ?";
         try(PreparedStatement preparedStatement=connection.prepareStatement(query)){
             preparedStatement.setString(1,cusipId);
             ResultSet resultSet= preparedStatement.executeQuery();

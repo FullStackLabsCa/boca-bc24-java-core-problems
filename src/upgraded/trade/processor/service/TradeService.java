@@ -19,9 +19,9 @@ public class TradeService {
         tradeExecutor.submitTrade(dataSource);
     }
     // Configure the number of chunks based on properties file
-    public void configureChunks(String s) throws IOException {
+    public void configureChunks(String filePath) throws IOException {
         Properties properties = new Properties();
-        try (FileInputStream input = new FileInputStream("/Users/Sukhvir.Kaur/Source/boca-bc24-java-core-problems/src/upgraded/trade/processor/utility/application.properties")) {
+        try (FileInputStream input = new FileInputStream(STR."/Users/Sukhvir.Kaur/Source/boca-bc24-java-core-problems/src/upgraded/trade/processor/utility/\{filePath}")) {
             properties.load(input);
             numberOfChunks = Integer.parseInt(properties.getProperty("numberOfChunks", "1"));
             System.out.println(numberOfChunks);

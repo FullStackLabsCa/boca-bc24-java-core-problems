@@ -1,0 +1,80 @@
+CREATE DATABASE my_database_trade;
+Use my_database_trade;
+
+CREATE TABLE Trades (
+    trade_id VARCHAR(20) PRIMARY KEY,
+    trade_identifier VARCHAR(20),
+    ticker_symbol VARCHAR(10),
+    quantity INT,
+    price DECIMAL(15, 2),
+    trade_date DATE
+);
+
+CREATE TABLE trade_payloads (
+  id INT NOT NULL AUTO_INCREMENT,
+    trade_id VARCHAR(20) NOT NULL UNIQUE,
+    status ENUM('valid', 'invalid') NOT NULL,
+    payload TEXT NOT NULL,
+    status_reason VARCHAR(255) NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE SecuritiesReference (
+    cusip VARCHAR(10) PRIMARY KEY,
+    security_id VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE journal_entry (
+    entry_id INT NOT NULL AUTO_INCREMENT,
+    account_number VARCHAR(20) NOT NULL,
+    security_cusip VARCHAR(20) NOT NULL,
+    direction ENUM('buy', 'sell') NOT NULL,
+    quantity INT NOT NULL,
+    posted_status ENUM('posted', 'not_posted') NOT NULL,
+    transaction_time DATETIME NOT NULL,
+    created_date_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    trade_id VARCHAR(255) NOT NULL UNIQUE,
+    PRIMARY KEY (entry_id)
+);
+
+CREATE TABLE positions (
+    account_number VARCHAR(20) NOT NULL,
+    security_cusip VARCHAR(20) NOT NULL,
+    positions INT NOT NULL,
+    created_date_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    version INT NOT NULL,
+    PRIMARY KEY (account_number, security_cusip)
+);
+
+select  * from trade_payloads;
+select * from SecuritiesReference;
+select * from journal_entry;
+select * from positions;
+
+INSERT INTO SecuritiesReference (cusip, security_id)
+VALUES
+('AAPL', 995774194),
+('GOOGL', 449596286),
+('AMZN', 341358185),
+('MSFT', 932383759),
+('TSLA', 157001093),
+('NFLX', 895759245),
+('FB', 683959001),
+('NVDA', 984113294),
+('JPM', 937948261),
+('VISA', 583402983),
+('MA', 478598300),
+('BAC', 117349592),
+('DIS', 732858946),
+('INTC', 583745728),
+('CSCO', 198346485),
+('ORCL', 732489576),
+('WMT', 832578945),
+('T', 205984274),
+('VZ', 149348579),
+('ADBE', 567284930),
+('CRM', 958374605),
+('PYPL', 563948720),
+('PFE', 740238567),
+('XOM', 902374856),
+('UNH', 582739840);

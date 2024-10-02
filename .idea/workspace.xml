@@ -5,60 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24a3aacc-2f29-4911-9f6d-f0908ebfbc18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_j_8_0_31.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tradingexample/TradeRunner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tradingexample/servicetrading/TradeServiceInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/upgraded/trade/processor/database/DataSourceTrading.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/upgraded/trade/processor/interfaces/ChunkGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/upgraded/trade/processor/interfaces/ProcessChunks.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/upgraded/trade/processor/interfaces/ProcessTradeTransaction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/upgraded/trade/processor/interfaces/RetryTransaction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/upgraded/trade/processor/interfaces/TradeProcess.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/upgraded/trade/processor/model/JournalEntry.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/upgraded/trade/processor/model/Positions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/upgraded/trade/processor/repository/TradeQueueManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/upgraded/trade/processor/repository/TradeRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/upgraded/trade/processor/service/ChunkProcessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/upgraded/trade/processor/service/TradeExecutor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/upgraded/trade/processor/service/TradeProcessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/upgraded/trade/processor/utility/trades-2.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/mysql_connector_j_9_0_0.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/upgraded/trade/processor/sql/queriessql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boca-bc24-java-core-problems.iml" beforeDir="false" afterPath="$PROJECT_DIR$/boca-bc24-java-core-problems.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/school_jdbc/DatabaseConnectionPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/reactivestax/school_jdbc/DatabaseConnectionPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/school_jdbc/School.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/reactivestax/school_jdbc/School.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/school_jdbc/SchoolCLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/reactivestax/school_jdbc/SchoolCLI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sql/hospital.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tradingExample/TradeRunner.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tradingExample/databaseTrading/DataSourceTrading.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tradingexample/databasetrading/DataSourceTrading.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tradingExample/databaseTrading/LoadCSVToDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tradingexample/databasetrading/LoadCSVToDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tradingExample/exceptionTrading/HitErrorsThresholdException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tradingexample/exceptiontrading/HitErrorsThresholdException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tradingExample/exceptionTrading/InvalidThresholdValueException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tradingexample/exceptiontrading/InvalidThresholdValueException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tradingExample/modelTrading/ErrorChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tradingexample/modeltrading/ErrorChecker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tradingExample/modelTrading/SecuritiesReference.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tradingexample/modeltrading/SecuritiesReference.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tradingExample/modelTrading/TradeTransaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tradingexample/modeltrading/TradeTransaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tradingExample/repositoryTrading/TradeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tradingexample/repositorytrading/TradeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tradingExample/repositoryTrading/TradeRepositoryInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tradingexample/repositorytrading/TradeRepositoryInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tradingExample/serviceTrading/TradeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tradingexample/servicetrading/TradeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tradingExample/serviceTrading/TradeServiceInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tradingExample/utilityTrading/convertcsv.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/tradingexample/utilitytrading/convertcsv.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tradingExample/utilityTrading/readerErrorLog.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/tradingexample/utilitytrading/readerErrorLog.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tradingExample/utilityTrading/trades_sample_1000.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/tradingexample/utilitytrading/trades_sample_1000.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tradingExample/utilityTrading/writerErrorLog.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/tradingexample/utilitytrading/writerErrorLog.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/upgraded/trade/processor/TradeRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/upgraded/trade/processor/TradeRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/upgraded/trade/processor/interfaces/ChunkGenerator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/upgraded/trade/processor/interfaces/ProcessChunks.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/upgraded/trade/processor/interfaces/ProcessTradeTransaction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/upgraded/trade/processor/interfaces/RetryTransaction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/upgraded/trade/processor/interfaces/TradeProcess.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/upgraded/trade/processor/repository/TradeQueueManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/upgraded/trade/processor/repository/TradeQueueManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/upgraded/trade/processor/repository/TradeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/upgraded/trade/processor/repository/TradeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/upgraded/trade/processor/service/ChunkProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/upgraded/trade/processor/service/ChunkProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/upgraded/trade/processor/service/TradeExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/upgraded/trade/processor/service/TradeExecutor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/upgraded/trade/processor/service/TradeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/upgraded/trade/processor/service/TradeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/upgraded/trade/processor/utility/chunk_1.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/upgraded/trade/processor/utility/chunk_10.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/upgraded/trade/processor/utility/chunk_2.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/upgraded/trade/processor/utility/chunk_3.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/upgraded/trade/processor/utility/chunk_4.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/upgraded/trade/processor/utility/chunk_5.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/upgraded/trade/processor/utility/chunk_6.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/upgraded/trade/processor/utility/chunk_7.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/upgraded/trade/processor/utility/chunk_8.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/upgraded/trade/processor/utility/chunk_9.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/upgraded/trade/processor/utility/trade_records.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/problems/SchoolTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/reactivestax/SchoolTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,6 +62,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "feature/suka-bc24-java-core-problems",
+    "ignore.preview.features.used": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/Sukhvir.Kaur/Source/boca-bc24-java-core-problems/src/upgraded/trade/processor/utility",
     "project.structure.last.edited": "Libraries",

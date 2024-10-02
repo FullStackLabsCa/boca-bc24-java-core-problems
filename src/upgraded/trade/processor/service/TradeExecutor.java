@@ -15,8 +15,8 @@ public class TradeExecutor {
     public void submitTrade(HikariDataSource hikariDataSource){
         this.hikariDataSource=hikariDataSource;
         tradeProcessorService.submit(new TradeProcessor(TradeQueueManager.getQueueOne(), hikariDataSource));
-        tradeProcessorService.submit(new TradeProcessor(TradeQueueManager.getQueueOne(), hikariDataSource));
-        tradeProcessorService.submit(new TradeProcessor(TradeQueueManager.getQueueOne(), hikariDataSource));
+        tradeProcessorService.submit(new TradeProcessor(TradeQueueManager.getQueueTwo(), hikariDataSource));
+        tradeProcessorService.submit(new TradeProcessor(TradeQueueManager.getQueueThree(), hikariDataSource));
         tradeProcessorService.shutdown();
     }
 

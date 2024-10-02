@@ -24,8 +24,7 @@ public class ChunkProcessor implements Runnable {
     public void run() {
         TradeRepository tradeRepository=new TradeRepository();
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath))) {
-            String line;
-            bufferedReader.readLine();
+            String line = bufferedReader.readLine(); //skip the header
             while ((line = bufferedReader.readLine()) != null) {
                 String status = "valid";
                 String tradeId = "";
