@@ -1,6 +1,7 @@
 package tradeprocessor.tradereader;
 
 import tradeprocessor.dbconnection.TradingDatabseConnectionPool;
+import tradeprocessor.exceptions.ChunkProcessingException;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -13,6 +14,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.LinkedBlockingDeque;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ChunkProcessor implements Runnable {
     Connection conn;
@@ -20,12 +23,9 @@ public class ChunkProcessor implements Runnable {
     static LinkedBlockingDeque<String> queue2 = new LinkedBlockingDeque<>();
     static LinkedBlockingDeque<String> queue3 = new LinkedBlockingDeque<>();
     List<LinkedBlockingDeque<String>> queues = new ArrayList<>();
+    private static final Logger LOGGER = Logger.getLogger(ChunkProcessor.class.getName());
     Random rand = new Random();
-    static ConcurrentHashMap<String, String> queueDistributerMap = new ConcurrentHashMap<>();
-
-    public static ConcurrentHashMap<String, String> getQueueDistributerMap() {
-        return queueDistributerMap;
-    }
+    static ConcurrentHashMap<String, String> queueDistributeMap = new ConcurrentHashMap<>();
 
     public static LinkedBlockingDeque<String> getQueue1() {
         return queue1;
@@ -39,7 +39,7 @@ public class ChunkProcessor implements Runnable {
         return queue3;
     }
 
-    static String filePath;
+    private final String filePath;
 
 
     public ChunkProcessor(String filePath) throws Exception {
@@ -55,22 +55,19 @@ public class ChunkProcessor implements Runnable {
     public void run() {
         try {
             processChunk();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            throw new ChunkProcessingException("Error Processing chunk",e);
         }
     }
 
-    public void processChunk() throws InterruptedException {
+    public void processChunk() {
 
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = br.readLine()) != null) {
-                RawTradePayLoad rawTradePayLoad = createRawTradePayload(line);
+//                RawTradePayLoad rawTradePayLoad = createRawTradePayload(line);
                 String[] columns = line.split(",");
-                boolean isValid = true;
-                if (columns.length != 7) {
-                    isValid = false;
-                }
+                boolean isValid = columns.length == 7;
                 String status = isValid ? "VALID" : "INVALID";
                 insertIntoDataBase(columns[0], line, status);
                 insertIntoHashMap(columns[2]);
@@ -79,7 +76,7 @@ public class ChunkProcessor implements Runnable {
 
 
         } catch (IOException | SQLException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, "Error processing chunk", e);
         }
 
 
@@ -90,7 +87,6 @@ public class ChunkProcessor implements Runnable {
                 " ON DUPLICATE KEY UPDATE " +
                 " status = VALUES(status), " +
                 " payload = VALUES(payload)";
-//        String query = "INSERT INTO trade_payload (trade_id,status,payload) VALUES (?, ?, ?)";
         try (PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setString(1, tradeId);
             ps.setString(2, payload);
@@ -103,21 +99,21 @@ public class ChunkProcessor implements Runnable {
 
     public void insertIntoHashMap(String accountNumber) {
         String randomNumber = String.valueOf(rand.nextInt(3) + 1);
-        while (!queueDistributerMap.containsKey(accountNumber)) {
-            queueDistributerMap.put(accountNumber, randomNumber);
+        while (!queueDistributeMap.containsKey(accountNumber)) {
+            queueDistributeMap.put(accountNumber, randomNumber);
 
         }
 
     }
 
     public void insertIntoQueue(String accountNumber, String tradeId) {
-        if ("1".equals(queueDistributerMap.get(accountNumber))) {
+        if ("1".equals(queueDistributeMap.get(accountNumber))) {
             queue1.add(tradeId);
         }
-        if ("2".equals(queueDistributerMap.get(accountNumber))) {
+        if ("2".equals(queueDistributeMap.get(accountNumber))) {
             queue2.add(tradeId);
         }
-        if ("3".equals(queueDistributerMap.get(accountNumber))) {
+        if ("3".equals(queueDistributeMap.get(accountNumber))) {
             queue3.add(tradeId);
         }
     }

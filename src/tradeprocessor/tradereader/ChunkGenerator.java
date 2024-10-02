@@ -6,36 +6,44 @@ import java.util.List;
 
 public class ChunkGenerator {
 
+    private ChunkGenerator() {
+        throw new UnsupportedOperationException("Utility class cannot be instantiated");
+    }
+
     public static List<String> splitFile(File file, int numberOfChunks) throws IOException {
         List<String> chunkFiles = new ArrayList<>();
         int totalLine = 0;
-        File directory = new File("src/tradeprocessor/files/chunks/");
-        if (!directory.exists()) {
-            directory.mkdirs();
+        String reader;
+
+        if (numberOfChunks <= 0) {
+            throw new IllegalArgumentException("Number of chunks must be greater than 0");
         }
+        
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-            while (br.readLine() != null) {
+
+            while ((reader = br.readLine()) != null) {
                 totalLine++;
             }
         }
         int chunkSize = totalLine / numberOfChunks;
-        int remaningLines = totalLine % numberOfChunks;
+        int remainingLines = totalLine % numberOfChunks;
+
             try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-                br.readLine();
+                reader = br.readLine();
                 String line;
-                int currentFileReadCount = 0;
+
                 for(int fileNumber = 1; fileNumber <= numberOfChunks;fileNumber++){
                     String chunkFileName = "src/tradeprocessor/files/chunks/chunk" + fileNumber + ".csv";
                     File chunkFile = new File(chunkFileName);
                     chunkFiles.add(chunkFileName);
                     try (BufferedWriter bw = new BufferedWriter(new FileWriter(chunkFile))) {
                         int currentLineCount = 0;
-                        int currentChunkSize = chunkSize + (fileNumber <= remaningLines ? 1 : 0);
-                        while (currentLineCount < currentChunkSize && (line = br.readLine()) != null) {
+                        int currentChunkSize = chunkSize + (fileNumber <= remainingLines ? 1 : 0);
+                        while (currentLineCount < currentChunkSize && (line = reader) != null) {
                             bw.write(line);
                             bw.newLine();
                             currentLineCount++;
-                            currentFileReadCount++;
+
                         }
                     }
                 }

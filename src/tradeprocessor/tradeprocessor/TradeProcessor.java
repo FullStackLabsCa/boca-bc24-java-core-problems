@@ -1,7 +1,7 @@
 package tradeprocessor.tradeprocessor;
 
-import shapeless.record;
 import tradeprocessor.dbconnection.TradingDatabseConnectionPool;
+import tradeprocessor.exceptions.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,145 +12,119 @@ import java.util.concurrent.LinkedBlockingDeque;
 
 public class TradeProcessor {
 
-
-    private String lines;
-    String cusip;
-
-    LinkedBlockingDeque<String> tradeProcessorQueue;
-
-
     public TradeProcessor(LinkedBlockingDeque<String> tradeProcessorQueue) {
         System.out.println("reaching inside tradeProcessor");
         try {
             processQueue(tradeProcessorQueue);
 
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new TradeProcessingException("Error processing tradeQueue",e);
         }
     }
 
     public void processQueue(LinkedBlockingDeque<String> tradeProcessorQueue) throws Exception {
-        int processQueueCount = 0;
         System.out.println("reached inside processQueue");
         while (!tradeProcessorQueue.isEmpty()) {
-            processQueueCount++;
             String tradeId = tradeProcessorQueue.take();
             getPayload(tradeId);
         }
-        System.out.println("+====================!!!!!!!!!!!!!!!!!!!!!!!!!" + processQueueCount);
     }
 
     public void getPayload(String tradeId) throws Exception {
 
         System.out.println("reached inside getPayload");
-        String payloadQuerry = "SELECT payload FROM trade_payload WHERE trade_id = ? AND status = 'VALID'";
+        String payloadQuery = "SELECT payload FROM trade_payload WHERE trade_id = ? AND status = 'VALID'";
         try (Connection connection = TradingDatabseConnectionPool.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(payloadQuerry)) {
+             PreparedStatement preparedStatement = connection.prepareStatement(payloadQuery)) {
 
             preparedStatement.setString(1, tradeId);
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
-                lines = rs.getString("payload");
-                System.out.println("line retrived = " + lines);
-
+                String lines = rs.getString("payload");
                 if (lookupSecurityTable(lines)) {
-                    isertIntoJournalTable(lines);
+                    insertIntoJournalTable(lines);
 
                 }
 
             }
-            String[] strarray = lines.split(",");
-            System.out.println("ACCOUNT ID => " + strarray[2]);
-
         }
     }
 
     public boolean lookupSecurityTable(String lines) throws Exception {
         System.out.println("reached inside lookupSecurityTable");
         String[] columns = lines.split(",");
-        String securityLookupQuerry = "SELECT cusip FROM SecuritiesReference WHERE cusip = ?";
+        String securityLookupQuery = "SELECT cusip FROM SecuritiesReference WHERE cusip = ?";
         try (Connection connection = TradingDatabseConnectionPool.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(securityLookupQuerry)) {
+             PreparedStatement preparedStatement = connection.prepareStatement(securityLookupQuery)) {
 
             preparedStatement.setString(1, columns[3]);
             ResultSet rs = preparedStatement.executeQuery();
-            if (rs.next()) {
-//                cusip = rs.getString("cusip"));
-                return true;
-            } else {
-                return false;
-            }
+            return rs.next();
         }
 
     }
 
 
-    public void isertIntoJournalTable(String lines) {
-        System.out.println("reached inside insertinto Journal");
-        String journalQuerry = "INSERT INTO journal_entry (account_id, direction, quantity, cusip) VALUES(?,?,?,?) ";
-//                "SELECT ?, ?, ?, sr.cusip " +
-//                "FROM SecuritiesReference sr " +
-//                "WHERE sr.cusip = ?";
+    public void insertIntoJournalTable(String lines) throws JournalEntryException {
+        System.out.println("reached inside insertion Journal");
+        String journalQuery = "INSERT INTO journal_entry (account_id, direction, quantity, cusip) VALUES(?,?,?,?) ";
         String[] columns = lines.split(",");
-        String account_id = columns[2];
+        String accountId = columns[2];
         try (Connection connection = TradingDatabseConnectionPool.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(journalQuerry)) {
+             PreparedStatement preparedStatement = connection.prepareStatement(journalQuery)) {
 
-            preparedStatement.setString(1, account_id);
+            preparedStatement.setString(1, accountId);
             preparedStatement.setString(2, columns[4]);
             preparedStatement.setInt(3, Integer.parseInt(columns[5]));
             preparedStatement.setString(4, columns[3]);
             preparedStatement.executeUpdate();
 
-            processTradeintoPositions(columns[2], columns[3], columns[4], Integer.parseInt(columns[5]));
+            processTraditionPositions(columns[2], columns[3], columns[4], Integer.parseInt(columns[5]));
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new JournalEntryException("Failed to insert into journal table",e);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new JournalEntryException("Failed to process journal entry",e);
         }
     }
 
-    public void processTradeintoPositions(String accountId, String cusip, String direction, int quantity) throws Exception {
+    public void processTraditionPositions(String accountId, String cusip, String direction, int quantity) {
         try (Connection connection = TradingDatabseConnectionPool.getConnection()) {
             connection.setAutoCommit(false);
             connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
-
-            try {
-                int verison = getAccountVersion(connection, accountId,cusip);
-
-                if (verison == -1) {
-                    insertIntoPosition(connection, accountId, cusip, quantity);
-                } else {
-
-                    //TODO - get position here as version and do operations BUY/SELL
-
-                    updatePosition(connection, accountId, cusip, direction, quantity, verison);
-
-                }
-                connection.commit();
-            } catch (Exception e) {
-                System.out.println("Exception during position adding : " + e.getMessage());
-                throw new RuntimeException(e);
-            }
+            processTransaction(connection, accountId, cusip, direction, quantity);
+            connection.commit();
         } catch (SQLException e) {
-            System.out.println("Exception during position adding : " + e.getMessage());
-            throw new RuntimeException(e);
+            throw new PositionProcessingException("Database error while processing trade position", e);
+        }
+    }
+
+    private void processTransaction(Connection connection, String accountId, String cusip, String direction, int quantity) {
+        try {
+            int version = getAccountVersion(connection, accountId, cusip);
+
+            if (version == -1) {
+                insertIntoPosition(connection, accountId, cusip, quantity);
+            } else {
+                updatePosition(connection, accountId, cusip, direction, quantity, version);
+            }
+        } catch (Exception e) {
+            throw new PositionProcessingException("Failed to process trade position", e);
         }
     }
 
     private void updatePosition(Connection connection, String accountId, String cusip, String direction, int quantity, int version) throws Exception {
         int position;
-        String selectQuerry = "SELECT position,version FROM position WHERE account_id = ? AND cusip = ?";
-        String updateQuerry = "UPDATE position SET position = ? and version = ? WHERE account_id = ? AND cusip =?";
-        try (PreparedStatement selectstmt = connection.prepareStatement(selectQuerry);
-             PreparedStatement stmt = connection.prepareStatement(updateQuerry)) {
+        String selectQuery = "SELECT position,version FROM position WHERE account_id = ? AND cusip = ?";
+        String updateQuery = "UPDATE position SET position = ? and version = ? WHERE account_id = ? AND cusip =?";
+        try (PreparedStatement selectstmt = connection.prepareStatement(selectQuery);
+             PreparedStatement stmt = connection.prepareStatement(updateQuery)) {
             selectstmt.setString(1, accountId);
             selectstmt.setString(2, cusip);
             ResultSet rs = selectstmt.executeQuery();
             if (rs.next()) {
-                System.out.println("Reached updatePosition : " + accountId + " , cusip : " + cusip + " , ver : " + version + " , quantitty : " + quantity);
+                System.out.println("Reached updatePosition : " + accountId + " , cusip : " + cusip + " , ver : " + version + " , quantity : " + quantity);
 
                 position = rs.getInt("position");
                 System.out.println("position :"+position);
@@ -169,35 +143,37 @@ public class TradeProcessor {
                 int rowsUpdated = stmt.executeUpdate();
 
                 if (rowsUpdated == 0) {
-                    System.out.println("Update position :  exeception");
+                    System.out.println("Update position :  exception");
                     connection.rollback();
-                    throw new OptimisticLockingException("Optimistic locking failed,retrying transactin....");
+                    throw new OptimisticLockingException("Optimistic locking failed,retrying transaction....");
                 }
             }
         }
     }
 
-    private void insertIntoPosition(Connection connection, String account_id, String cusip, int quantity) throws Exception {
+    private void insertIntoPosition(Connection connection, String accountId, String cusip, int quantity) throws PositionInsertionException {
         System.out.println("Reached insertIntoPosition");
-        Integer position = 0;
+        int position = 0;
         String insertQuery = "INSERT INTO position (account_id, cusip, position) VALUES (?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(insertQuery)) {
-            stmt.setString(1, account_id);
+            stmt.setString(1, accountId);
             stmt.setString(2, cusip);
             stmt.setInt(3, position + quantity);
             stmt.executeUpdate();
-            System.out.println("Inserted new position for account_id " + account_id);
+            System.out.println("Inserted new position for account_id " + accountId);
 
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        }catch (SQLException e) {
+            throw new PositionInsertionException("Failed to insert into position for account_id " + accountId, e);
+        }catch (Exception e) {
+            throw new PositionInsertionException("Unexpected error while inserting into position",e);
         }
     }
 
-    public int getAccountVersion(Connection connection, String account_Id, String cusip) throws Exception {
+    public int getAccountVersion(Connection connection, String accountId, String cusip) throws AccountVersionException {
         System.out.println("Reached getAccountVersion");
         String query = "SELECT version FROM position WHERE account_id = ? AND cusip =?";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
-            stmt.setString(1, account_Id);
+            stmt.setString(1, accountId);
             stmt.setString(2, cusip);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
@@ -205,14 +181,14 @@ public class TradeProcessor {
             } else {
                 return -1;
             }
+        }catch (SQLException e){
+            throw new AccountVersionException("Failed to retrieve account version for accountId: " + accountId + " and cusip: " + cusip, e);
+        }catch (Exception e) {
+            throw new AccountVersionException("Unexpected error while retrieving account version", e);
         }
     }
 
-    class OptimisticLockingException extends RuntimeException {
-        public OptimisticLockingException(String message) {
-            super(message);
-        }
-    }
+
 }
 
 
