@@ -11,7 +11,7 @@ public class JournalEntryPOJO {
     private String accountNumber;
     private String securityId;
     private String direction;
-    private String quantity;
+    private int quantity;
 
     public String getTradeId() {
         return tradeId;
@@ -61,15 +61,17 @@ public class JournalEntryPOJO {
         return direction;
     }
 
-    public String getQuantity() {
-        return quantity;
-    }
+
 
     public String getPostedStatus() {
         return postedStatus;
     }
 
-    public void setQuantity(String quantity) {
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 

@@ -33,15 +33,16 @@ public class ChunkGenerator {
     }
 
 
-    public static void generateChunksAndSubmitTask() throws IOException {
+    public static void generateChunksAndSubmitTask(HikariDataSource dataSourceInitialized) throws IOException {
+
         mainFilePath = "/Users/Shifa.Kajal/source/student/boca-bc24-java-core-problems/src/problems/tradingwiththreads/utility/trades (1).csv";
         chunkedFilePath = "/Users/Shifa.Kajal/source/student/boca-bc24-java-core-problems/src/problems/tradingwiththreads/filechunks";
         int numberOfRowsInFile = 0;
         List<String> chunkFiles = new ArrayList<>();
         String line;
-        dataSource = DatabaseConnector.configureHikariCP();
+        dataSource = dataSourceInitialized;
         //creating thread pool
-        ExecutorService executorService = Executors.newFixedThreadPool(10);
+        ExecutorService executorService = Executors.newFixedThreadPool(1);
 
         //reading file
         try (BufferedReader reader = new BufferedReader(new FileReader(mainFilePath))) {
@@ -58,6 +59,7 @@ public class ChunkGenerator {
 
             double linesPerChunk = (double) numberOfRowsInFile / getChunkSize();
             for (int i = 0; i < chunkFiles.size(); i++) {
+
                 writer.write(chunkFiles.get(i));
                 writer.newLine();
                 rowNumber++;
@@ -66,7 +68,7 @@ public class ChunkGenerator {
                     writer.close();
 
                     String chunkedFileName = chunkedFilePath + "/Trade_" + currentChunk + ".csv";
-                    System.out.println(chunkedFileName);
+                    //System.out.println(chunkedFileName);
 
                     currentChunk++;
                     rowNumber = 0;
@@ -75,6 +77,7 @@ public class ChunkGenerator {
                         writer = new BufferedWriter(new FileWriter(chunkedFilePath + "/Trade_" + currentChunk + ".csv"));
 
                     }
+                    System.out.println("submitting the file to next ChunkProcessor:: " + chunkedFileName);
                     executorService.submit(new ChunkProcessor(chunkedFileName, dataSource));
                 }
             }

@@ -7,10 +7,9 @@ public class QueueDistributor {
 
     static ConcurrentHashMap<String, Integer> distributorMap = new ConcurrentHashMap<>();
     static int queueNumber = 0;
-
-    static LinkedBlockingDeque<String> queueOne = new LinkedBlockingDeque<>();
-    static LinkedBlockingDeque<String> queueTwo = new LinkedBlockingDeque<>();
-    static LinkedBlockingDeque<String> queueThree = new LinkedBlockingDeque<>();
+    public static LinkedBlockingDeque<String> queueOne = new LinkedBlockingDeque<>();
+    public static LinkedBlockingDeque<String> queueTwo = new LinkedBlockingDeque<>();
+    public static LinkedBlockingDeque<String> queueThree = new LinkedBlockingDeque<>();
 
     private QueueDistributor() {
 
@@ -19,16 +18,16 @@ public class QueueDistributor {
     public static int getQueueNumber(String accountNumber) {
         int queue = 1;
 
-        if (distributorMap.containsKey(accountNumber)) {
-            queue = distributorMap.get(accountNumber);
-        } else {
-            queue = queueNumber;
-            distributorMap.put(accountNumber, queueNumber);
-            queueNumber++;
-            if (queueNumber > 3) {
-                queueNumber = 1;
-            }
-        }
+//        if (distributorMap.containsKey(accountNumber)) {
+//            queue = distributorMap.get(accountNumber);
+//        } else {
+//            queue = queueNumber;
+//            distributorMap.put(accountNumber, queueNumber);
+//            queueNumber++;
+//            if (queueNumber > 3) {
+//                queueNumber = 1;
+//            }
+//        }
         return queue;
     }
 

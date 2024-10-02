@@ -9,15 +9,12 @@ import java.util.concurrent.LinkedBlockingDeque;
 
 public class TradeProcessor {
 
+    static ExecutorService threadsForTradeProcessor = Executors.newFixedThreadPool(1);
 
-    static ExecutorService threadsForTradeProcessor = Executors.newFixedThreadPool(3);
+    public static  void submitTaskToThreads(LinkedBlockingDeque<String> queueOne, LinkedBlockingDeque<String> queueTwo, LinkedBlockingDeque<String> queueThree, HikariDataSource dataSource){
 
-    public static  void submitTaskToThreads(LinkedBlockingDeque<String> queueOne, LinkedBlockingDeque<String> queueTwo, LinkedBlockingDeque<String> queueThree){
-
-
-
-        threadsForTradeProcessor.submit(new TradeProcessorRunnable(queueOne, "One"));
-        threadsForTradeProcessor.submit(new TradeProcessorRunnable(queueTwo, "Two"));
-        threadsForTradeProcessor.submit(new TradeProcessorRunnable(queueThree, "Three"));
+        threadsForTradeProcessor.submit(new TradeProcessorRunnable(queueOne, dataSource));
+//        threadsForTradeProcessor.submit(new TradeProcessorRunnable(queueTwo, "Two"));
+//        threadsForTradeProcessor.submit(new TradeProcessorRunnable(queueThree, "Three"));
     }
 }

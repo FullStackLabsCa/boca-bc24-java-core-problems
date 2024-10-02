@@ -38,9 +38,9 @@ public class ChunkProcessor implements Runnable {
 
 
     public static void processChunks(String chunkFileName) throws SQLException {
-//        System.out.println("called====");
+        System.out.println("processing chunkFileName = " + chunkFileName);
         try (Connection connection = dataSource.getConnection();
-            BufferedReader reader = new BufferedReader(new FileReader(chunkFileName))) {
+             BufferedReader reader = new BufferedReader(new FileReader(chunkFileName))) {
 //            System.out.println("Processing file: " + chunkFileName);
             RawPayloadPOJO rawPayload = new RawPayloadPOJO();
             TradesRepository repository = new TradesRepository();
@@ -54,31 +54,33 @@ public class ChunkProcessor implements Runnable {
                     rawPayload.setStatus("Invalid");
                     rawPayload.setStatusReason("Fields are missing data");
                 }
-//                System.out.println("inserting data");
+                System.out.println("inserting data into rawPayload table");
                 repository.insertInRawTable(rawPayload, connection);
 //                System.out.println("---------------xxxxxxxx------------------------------------");
 
-//                Thread.sleep(5000);
+                System.out.println("done inserting...into raw payloads table " + columnInPayloads[0]);
                 if (rawPayload.getStatus().equals("Valid")) {
                     int queueNumberForAccount = getQueueNumber(columnInPayloads[2]);
+                    System.out.println("assigning trade_id " + columnInPayloads[0] + "  to queue number "+
+                             + queueNumberForAccount);
                     //assign queue
-                    assignQueueToAccountID(rawPayload.getTradeId(), queueNumberForAccount);
+                   assignQueueToAccountID(rawPayload.getTradeId(), queueNumberForAccount);
 
 
 //                    System.out.println("------checking if queue is taking-------");
                 }
             }
-            TradeProcessor.submitTaskToThreads(queueOne, queueTwo, queueThree);
+
+            //Thread.sleep(1000);
+//            TradeProcessor.submitTaskToThreads(queueOne, queueTwo, queueThree);
 
             QueueDistributor.printMapAndQueue();
-        } catch (IOException e) {
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
         }
     }
 
-    public static void startTradeProcessor(){
+    public static void startTradeProcessor() {
 
     }
 }
