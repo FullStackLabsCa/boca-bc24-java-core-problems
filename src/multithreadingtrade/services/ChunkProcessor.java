@@ -9,10 +9,12 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.concurrent.LinkedBlockingDeque;
+
 
 public class ChunkProcessor implements Runnable {
     private final String filePath;
-    static HikariDataSource  hikariDataSource = DatabaseConnection.getDataSource();
+    static HikariDataSource hikariDataSource = DatabaseConnection.getDataSource();
 
     public ChunkProcessor(String filePath) {
         this.filePath = filePath;
@@ -44,12 +46,22 @@ public class ChunkProcessor implements Runnable {
                     rawPayload.setStatusReason("column does not exist.");
                 }
                 TradeRepo tradeRepo = new TradeRepo();
-                tradeRepo.insertIntoRawPayLoad(rawPayload, connection);
+                //  add the account to the queue
+                Integer queueNumber = QueueDistributor.getRandomNumber();
+//                System.out.println(queueNumber);
+                QueueDistributor.accountQueueMap.put(fields[2], queueNumber);
+                //making a queue
 
+                QueueDistributor.writesToQueues(queueNumber, fields);
+                //inserting to raw table
+                tradeRepo.insertIntoRawPayLoad(rawPayload);
 
             }
+//            QueueDistributor.printTotalNumberOfQueue();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
+
 }
+

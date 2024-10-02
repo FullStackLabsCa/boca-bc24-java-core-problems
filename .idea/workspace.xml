@@ -5,33 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a7c31fdb-21cc-4f11-a5be-d0ff7b587f29" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/multithreadingtrade/databaseconnectivity/DatabaseConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/multithreadingtrade/repo/TradeRepo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/multithreadingtrade/services/ChunkProcessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/multithreadingtrade/services/FileReadService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/multithreadingtrade/trademodel/RawPayLoad.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/multithreadingtrade/services/QueueDistributor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/multithreadingtrade/services/TradeProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/multithreadingtrade/services/TradeProcessorRunnable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/multithreadingtrade/trademodel/JournalEntry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/multithreadingtrade/trademodel/Positions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/multithreadingtrade/utility/securities_reference.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/multithreadingtrade/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/multithreadingtrade/Runner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/multithreadingtrade/repo/TradeRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/multithreadingtrade/repo/TradeRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/multithreadingtrade/services/ChunkProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/multithreadingtrade/services/ChunkProcessor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/multithreadingtrade/services/CreateChunks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/multithreadingtrade/services/CreateChunks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/multithreadingtrade/tradeinterfaces/ChunkGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/multithreadingtrade/tradeinterfaces/ChunkGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/multithreadingtrade/trademodel/TradeValues.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/Calculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/problems/CalculatorOld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/problems/CalculatorOld.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/trading/databaseConnectivity/DatabaseConnectivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/trading/databaseConnectivity/DatabaseConnectivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/trading/model/TradingValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/trading/model/TradingValues.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/trading/presentationLayer/TradingRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/trading/presentationLayer/TradingRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/trading/repolayer/TradingRep.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/trading/repolayer/TradingRep.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/trading/servicelayer/DataValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/trading/servicelayer/DataValidation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/trading/servicelayer/TradingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/trading/servicelayer/TradingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/trading/utility/FileNotExists.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/trading/utility/FileNotExists.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/trading/utility/HitErrorsThresholdException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/trading/utility/HitErrorsThresholdException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/trading/utility/InvalidDateFormat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/trading/utility/InvalidDateFormat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/trading/utility/InvalidThresholdValueException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/trading/utility/InvalidThresholdValueException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/trading/utility/InvalidThresholdValueRuntimeException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/trading/utility/InvalidThresholdValueRuntimeException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/trading/utility/sample1" beforeDir="false" afterPath="$PROJECT_DIR$/src/trading/utility/sample1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/trading/utility/write_error.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/trading/utility/write_error.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/problems/CalculatorOldTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/CalculatorOldTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/problems/CalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/problems/CalculatorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/multithreadingtrade/services/FileReadService.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,8 +26,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -81,7 +66,7 @@
     "Application.ListToArray.executor": "Run",
     "Application.MyArrayList.executor": "Run",
     "Application.PalindromeChecker.executor": "Run",
-    "Application.Runner.executor": "Run",
+    "Application.Runner.executor": "Debug",
     "Application.School.executor": "Run",
     "Application.SortedArray.executor": "Run",
     "Application.SumArray.executor": "Run",
@@ -124,7 +109,7 @@
     "project.structure.last.edited": "SDKs",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+    "settings.editor.selected.configurable": "editor.preferences.import"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -307,24 +292,34 @@
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/multithreadingtrade/services/ChunkProcessor.java</url>
-          <line>46</line>
-          <option name="timeStamp" value="31" />
+          <url>file://$PROJECT_DIR$/src/multithreadingtrade/databaseconnectivity/DatabaseConnection.java</url>
+          <line>6</line>
+          <option name="timeStamp" value="61" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/multithreadingtrade/services/FileReadService.java</url>
-          <line>15</line>
-          <option name="timeStamp" value="33" />
+          <url>file://$PROJECT_DIR$/src/multithreadingtrade/services/TradeProcessorRunnable.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="71" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/multithreadingtrade/services/ChunkProcessor.java</url>
-          <line>51</line>
-          <option name="timeStamp" value="47" />
+          <url>file://$PROJECT_DIR$/src/multithreadingtrade/services/TradeProcessorRunnable.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="72" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/multithreadingtrade/services/TradeProcessorRunnable.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="92" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/multithreadingtrade/repo/TradeRepo.java</url>
-          <line>20</line>
-          <option name="timeStamp" value="55" />
+          <line>64</line>
+          <option name="timeStamp" value="104" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/multithreadingtrade/repo/TradeRepo.java</url>
+          <line>63</line>
+          <option name="timeStamp" value="105" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/trading/presentationLayer/TradingRunner.java</url>

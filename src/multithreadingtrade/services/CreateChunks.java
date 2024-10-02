@@ -5,12 +5,11 @@ import multithreadingtrade.tradeinterfaces.ChunkGenerator;
 
 import java.io.*;
 import java.util.Properties;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+
 
 @SuppressWarnings("java-S106")
 public class CreateChunks implements ChunkGenerator {
-    private final ExecutorService chunkGeneratorExecutorService = Executors.newFixedThreadPool(10);
+
     private HikariDataSource hikariDataSource;
     static int chunkFileSize;
     int totalLines;

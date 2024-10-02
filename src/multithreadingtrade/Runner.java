@@ -1,16 +1,14 @@
 package multithreadingtrade;
 
-
-import com.zaxxer.hikari.HikariDataSource;
 import multithreadingtrade.services.ChunkProcessor;
 import multithreadingtrade.services.CreateChunks;
-import multithreadingtrade.services.FileReadService;
+import multithreadingtrade.services.QueueDistributor;
+import multithreadingtrade.services.TradeProcessor;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class Runner {
-
 
 
     public static void main(String[] args) {
@@ -29,6 +27,13 @@ public class Runner {
                     executorService.submit(new ChunkProcessor(filePath +  "trades" + i + ".csv"));
                 }
             }
+
+            Thread.sleep(5000);
+            QueueDistributor.printTotalNumberOfQueue();
+
+            TradeProcessor.putTradesIntoQueue();
+
+
 
         } catch ( Exception e) {
             e.printStackTrace();
