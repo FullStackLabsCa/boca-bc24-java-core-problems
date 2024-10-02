@@ -18,7 +18,7 @@ public class ChunkProcessor implements Runnable {
     //ChunkProcessor will do these tasks - 1) read the file 2) insert into raw table 3) consult Hashmap 4) Add to Queue
 
     public String chunkFileName;
-    HikariDataSource dataSource;
+    static HikariDataSource dataSource;
 
     public ChunkProcessor(String chunkFileName, HikariDataSource dataSource) {
         this.chunkFileName = chunkFileName;
@@ -37,7 +37,7 @@ public class ChunkProcessor implements Runnable {
     }
 
 
-    public void processChunks(String chunkFileName) throws SQLException {
+    public static void processChunks(String chunkFileName) throws SQLException {
 //        System.out.println("called====");
         try (Connection connection = dataSource.getConnection();
             BufferedReader reader = new BufferedReader(new FileReader(chunkFileName))) {
@@ -58,13 +58,17 @@ public class ChunkProcessor implements Runnable {
                 repository.insertInRawTable(rawPayload, connection);
 //                System.out.println("---------------xxxxxxxx------------------------------------");
 
+//                Thread.sleep(5000);
                 if (rawPayload.getStatus().equals("Valid")) {
                     int queueNumberForAccount = getQueueNumber(columnInPayloads[2]);
                     //assign queue
                     assignQueueToAccountID(rawPayload.getTradeId(), queueNumberForAccount);
+
+
+//                    System.out.println("------checking if queue is taking-------");
                 }
             }
-
+            TradeProcessor.submitTaskToThreads(queueOne, queueTwo, queueThree);
 
             QueueDistributor.printMapAndQueue();
         } catch (IOException e) {
@@ -72,6 +76,10 @@ public class ChunkProcessor implements Runnable {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static void startTradeProcessor(){
+
     }
 }
 

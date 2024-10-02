@@ -1,6 +1,7 @@
 package problems.tradingwiththreads.repository;
 
 import problems.tradingwiththreads.model.JournalEntryPOJO;
+import problems.tradingwiththreads.model.PositionsPOJO;
 import problems.tradingwiththreads.model.RawPayloadPOJO;
 
 import java.sql.Connection;
@@ -47,7 +48,7 @@ public class TradesRepository {
 
 
     public static boolean lookupInSecuritiesTable(Connection connection, String cusip){
-        String lookupQuery = "SELECT 1 from securities_reference WHERE security_id = ?";
+        String lookupQuery = "SELECT 1 from securities_reference WHERE cusip = ?";
         try (PreparedStatement stmt = connection.prepareStatement(lookupQuery)) {
 
             stmt.setString(1, cusip);
@@ -81,10 +82,30 @@ public class TradesRepository {
 //            preparedStatement.setString(7, journalEntry.getPostedStatus());
 
                 preparedStatement.executeUpdate();
+                PositionsPOJO positions = new PositionsPOJO();
+                insertIntoPositionsTable(positions, connection);
                 connection.commit();
             } else {
                 connection.rollback();
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+
+    public static void insertIntoPositionsTable(PositionsPOJO positionsPOJO, Connection connection){
+        String positionTableInsertion = "INSERT into positions (account_number, cusip, position) VALUES (?,?,?)";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(positionTableInsertion)) {
+            connection.setAutoCommit(false);
+
+                preparedStatement.setString(1, positionsPOJO.getAccountNumber());
+                preparedStatement.setString(2, positionsPOJO.getCusip());
+                preparedStatement.setString(3, positionsPOJO.getPosition());
+                preparedStatement.executeUpdate();
+                connection.commit();
+//                connection.rollback();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

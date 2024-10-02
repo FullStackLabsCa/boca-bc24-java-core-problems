@@ -77,7 +77,7 @@ public class JournalEntryPOJO {
         this.postedStatus = postedStatus;
     }
 
-    public void setDirection(String s){
+    public void setDirection(String direction){
         this.direction= direction;
     }
 
