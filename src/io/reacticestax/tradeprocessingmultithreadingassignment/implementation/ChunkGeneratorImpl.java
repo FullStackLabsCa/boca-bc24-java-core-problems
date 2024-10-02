@@ -2,27 +2,24 @@ package io.reacticestax.tradeprocessingmultithreadingassignment.implementation;
 
 import io.reacticestax.tradeprocessingmultithreadingassignment.ConfigLoader;
 import io.reacticestax.tradeprocessingmultithreadingassignment.projectinterfaces.ChunkGenerator;
-
-
 import java.io.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class ChunkGeneratorImpl implements ChunkGenerator {
-    ConfigLoader configLoader;
-    public ChunkGeneratorImpl(ConfigLoader configLoader) {
-        this.configLoader = configLoader;
-    }
+    ConfigLoader configLoader = new ConfigLoader("/Users/akshitabajaj/Documents/reactiveStax/boca-bc24-java-core-problems/src/io/reacticestax/tradeprocessingmultithreadingassignment/Application.properties");
 
-    public int numberOfChunks = configLoader.getIntProperty("number.of.chunks");
-    public static final File file = new File("/Users/akshitabajaj/Documents/reactiveStax/boca-bc24-java-core-problems/src/io/reacticestax/tradeprocessingmultithreadingassignment/files/trade_records_with_cusip.csv");
+    public Integer numberOfChunks = configLoader.getIntProperty("number.of.chunks");
+    public static final File file = new File("/Users/akshitabajaj/Documents/reactiveStax/boca-bc24-java-core-problems/src/io/reacticestax/tradeprocessingmultithreadingassignment/files/trades.csv");
+
     public ExecutorService executorService = Executors.newFixedThreadPool(numberOfChunks);
+
     private int lineCount = 0;
     public static final String CHUNK_DIR = "/Users/akshitabajaj/Documents/reactiveStax/boca-bc24-java-core-problems/src/io/reacticestax/tradeprocessingmultithreadingassignment/files/chunks/";
 
     @Override
     public int countLines(File file) throws FileNotFoundException {
-        lineCount = 0;
+         lineCount = 0;
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
             boolean isFirstLine = true;
@@ -51,9 +48,8 @@ public class ChunkGeneratorImpl implements ChunkGenerator {
         int linesPerChunk = totalLineCount / numberOfChunks;
         int remainingLines = totalLineCount % numberOfChunks;
 
-        // Add remaining lines to last chunk
+
         int chunkCount = 1;
-        //int currentLine = 0;
 
         BufferedWriter writer = null;
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
@@ -64,7 +60,7 @@ public class ChunkGeneratorImpl implements ChunkGenerator {
             while ((line = br.readLine()) != null) {
                 if (isFirstLine) {
                     isFirstLine = false;
-                    continue;  // Skip the header line
+                    continue;
                 }
 
                 if (writer == null) {
@@ -76,7 +72,6 @@ public class ChunkGeneratorImpl implements ChunkGenerator {
 
                 writer.write(line);
                 writer.newLine();
-               // currentLine++;
                 linesInCurrentChunk++;
 
                 // Handle chunk size and switch to a new chunk after reaching linesPerChunk
@@ -87,7 +82,7 @@ public class ChunkGeneratorImpl implements ChunkGenerator {
                     }
 
                     writer.close();
-                    executorService.submit(new ChunkProcessorImpl(new File(CHUNK_DIR + String.format("file_chunk_%02d.csv", chunkCount))));
+                    executorService.submit(new ChunkProcessorImpl(CHUNK_DIR + String.format("file_chunk_%02d.csv", chunkCount)));
                     chunkCount++;
                     linesInCurrentChunk = 0;
                     writer = null;

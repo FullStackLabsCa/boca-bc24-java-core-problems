@@ -10,7 +10,6 @@ public interface ChunkGenerator {
 
     void generateChunkAndSubmit(File file) throws IOException;
 
-    // boolean generateNextChunkAndSubmit(File file) throws FileNotFoundException;
 }
 
 
