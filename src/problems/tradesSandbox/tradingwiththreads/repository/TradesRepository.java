@@ -1,4 +1,4 @@
-package problems.tradingwiththreads.repository;
+package problems.tradesSandbox.tradingwiththreads.repository;
 
 import com.zaxxer.hikari.HikariDataSource;
 import problems.tradingwiththreads.model.JournalEntry;

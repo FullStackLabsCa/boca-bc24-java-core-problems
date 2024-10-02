@@ -1,6 +1,6 @@
 package problems.tradingwiththreads.model;
 
-public class RawPayloadPOJO {
+public class RawPayload {
 
     private String tradeId;
     private String status = "Valid";

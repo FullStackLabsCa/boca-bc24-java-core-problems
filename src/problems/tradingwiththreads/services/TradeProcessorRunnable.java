@@ -1,8 +1,8 @@
 package problems.tradingwiththreads.services;
 
 import com.zaxxer.hikari.HikariDataSource;
-import problems.tradingwiththreads.model.JournalEntryPOJO;
-import problems.tradingwiththreads.model.PositionsPOJO;
+import problems.tradingwiththreads.model.JournalEntry;
+import problems.tradingwiththreads.model.Positions;
 import problems.tradingwiththreads.repository.TradesRepository;
 
 import java.sql.SQLException;
@@ -78,7 +78,7 @@ public class TradeProcessorRunnable implements Runnable {
         TradesRepository repositoryForRepository = new TradesRepository();
         String rawTablePayload = repositoryForRepository.getPayloadFromRawTable(columnsInPayload[0], dataSource.getConnection());
         String[] columns = rawTablePayload.split(",");
-        PositionsPOJO positionsPOJO = new PositionsPOJO();
+        Positions positionsPOJO = new Positions();
 
         positionsPOJO.setAccountNumber(columns[2]);
         positionsPOJO.setCusip(columns[3]);
@@ -100,7 +100,7 @@ public class TradeProcessorRunnable implements Runnable {
         TradesRepository repositoryForGettingPayload = new TradesRepository();
         String payloadFromRawTable = repositoryForGettingPayload.getPayloadFromRawTable(tradeIdFromQueue, dataSource.getConnection());
         String[] columnsInPayload = payloadFromRawTable.split(",");
-        JournalEntryPOJO journalEntryPOJO = new JournalEntryPOJO();
+        JournalEntry journalEntryPOJO = new JournalEntry();
 
         journalEntryPOJO.setAccountNumber(columnsInPayload[2]);
         journalEntryPOJO.setCusip(columnsInPayload[3]);

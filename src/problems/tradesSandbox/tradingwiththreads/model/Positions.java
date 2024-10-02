@@ -1,6 +1,6 @@
-package problems.tradingwiththreads.model;
+package problems.tradesSandbox.tradingwiththreads.model;
 
-public class PositionsPOJO {
+public class Positions {
 
     private String accountNumber;
     private String quantity;

@@ -1,4 +1,4 @@
-package problems.tradingwiththreads;
+package problems.tradesSandbox.tradingwiththreads;
 
 
 import com.zaxxer.hikari.HikariDataSource;
@@ -16,21 +16,10 @@ public class TradeMain {
 
     public static void main(String[] args) throws IOException, InterruptedException {
         HikariDataSource dataSource = DatabaseConnector.configureHikariCP();
-//        String chunkFileName = "";
         generateChunksAndSubmitTask(dataSource);
-//        try {
-//            Thread.sleep(5000);
-//        } catch (InterruptedException e) {
-//            throw new RuntimeException(e);
-//        }
-        System.out.println(queueOne.size()+queueTwo.size()+queueThree.size());
-
         TradeProcessor.submitTaskToThreads(queueOne, queueTwo,queueThree, dataSource);
-
-
         Thread.sleep(5000);
-   //     TradeProcessor.submitTaskToThreads();
-//        TradesRepository.insertIntoJournalTable();
+
 
     }
 }

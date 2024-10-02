@@ -1,9 +1,8 @@
 package problems.tradingwiththreads.model;
 
 import java.sql.Timestamp;
-import java.time.format.DateTimeFormatter;
 
-public class JournalEntryPOJO {
+public class JournalEntry {
 
     private String tradeId;
     private String cusip;
