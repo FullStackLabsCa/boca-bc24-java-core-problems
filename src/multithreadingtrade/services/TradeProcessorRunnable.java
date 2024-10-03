@@ -10,9 +10,7 @@ import java.util.concurrent.LinkedBlockingDeque;
 
 
 public class TradeProcessorRunnable implements Runnable {
-    static String tradeIdFromQueue;
     static LinkedBlockingDeque<String> tradeQueue;
-    HikariDataSource dataSource = DatabaseConnection.getDataSource();
 
     public TradeProcessorRunnable(LinkedBlockingDeque<String> tradeQueue) {
         this.tradeQueue = tradeQueue;
@@ -24,7 +22,9 @@ public class TradeProcessorRunnable implements Runnable {
         try {
             getTradeIdFromQueue();
         } catch (SQLException | InterruptedException e) {
+            Thread.currentThread().interrupt();
             e.printStackTrace();
+            System.out.println("e.getMessage() = " + e.getMessage());
         }
     }
 
@@ -40,27 +40,52 @@ public class TradeProcessorRunnable implements Runnable {
         try {
             TradeRepo tradeRepo = new TradeRepo();
             String payload = tradeRepo.readPayloadFromRawTable(tradeIdFromQueue);
-            if(payload.isEmpty()) {
+            if (payload.isEmpty()) {
                 System.out.println("No payload");
             }
             String[] readFromPayload = payload.split(",");
 
-            //   boolean securityValidate = tradeRepo.
-            //  System.out.println("Data: " + readFromPayload);
+//
+//            JournalEntry journalEntry = new JournalEntry();
+//            journalEntry.setAccountNumber(readFromPayload[2]);
+//            journalEntry.setCusip(readFromPayload[3]);
+//            journalEntry.setDirection(readFromPayload[4]);
+//            journalEntry.setQuantity(Integer.parseInt(readFromPayload[5]));
+//            journalEntry.setPostedStatus("Posted");
+//
+//            TradeRepo.insertIntoJournalTable(journalEntry);
 
-            JournalEntry journalEntry = new JournalEntry();
-            journalEntry.setAccountNumber(readFromPayload[2]);
-            journalEntry.setCusip(readFromPayload[3]);
-            journalEntry.setDirection(readFromPayload[4]);
-            journalEntry.setQuantity(Integer.parseInt(readFromPayload[5]));
-            journalEntry.setPostedStatus("Posted");
+//            Positions positions = new Positions();
+//            positions.setAccountNumber(readFromPayload[2]);
+//            positions.setCusip(readFromPayload[3]);
+//            positions.setPosition(readFromPayload[4]);
+//            positions.setQuantity(Integer.parseInt(readFromPayload[5]));
 
-            TradeRepo.insertIntoJournalTable(journalEntry);
+//            writePositionToDB(positions);
+
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+
+            System.out.println("e.getMessage(getDataFromTradePayloadsTable) = " + e.getMessage());
+//            Thread.currentThread().interrupt();
+//            throw new RuntimeException(e);
         }
+
+
     }
 
-
+//    public static void writePositionToDB(Positions positions) throws SQLException {
+//        int version = TradeRepo.getPositionVersion(positions);
+//        try {
+//            if (version == -1) {
+//                TradeRepo.writeToPositionTable(positions);
+//            }
+//            TradeRepo.updatePositionTable(positions);
+//        } catch (SQLException e) {
+//            System.out.println("e.getMessage(writePositionToDB) = " + e.getMessage());
+//            throw new RuntimeException(e);
+//        }
+//    }
 }
+
+

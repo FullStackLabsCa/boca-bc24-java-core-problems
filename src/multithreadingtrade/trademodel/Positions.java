@@ -5,6 +5,24 @@ public class Positions {
     private String Cusip;
     private int position_id;
     private String position;
+    private int quantity;
+    private int version;
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
     public String getAccountNumber() {
         return accountNumber;

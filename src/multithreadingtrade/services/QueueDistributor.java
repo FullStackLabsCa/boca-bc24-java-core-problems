@@ -1,25 +1,18 @@
 package multithreadingtrade.services;
 
-import java.util.Queue;
+
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.LinkedBlockingDeque;
-import java.util.concurrent.ThreadLocalRandom;
+
 
 public class QueueDistributor {
-    private static Random random = new Random();
+    private static final Random random = new Random();
     static ConcurrentHashMap<String, Integer> accountQueueMap = new ConcurrentHashMap<>();
     public static LinkedBlockingDeque<String> tradeQueueOne = new LinkedBlockingDeque<>();
     public static LinkedBlockingDeque<String> tradeQueueSecond = new LinkedBlockingDeque<>();
     public static LinkedBlockingDeque<String> tradeQueueThird = new LinkedBlockingDeque<>();
 
-    public static void assigningAccountToMap(String account, Integer queueNumber) {
-        if (accountQueueMap.containsKey(account)) {
-//            Integer queue;
-//            queue = accountQueueMap.get(account);
-            accountQueueMap.put(account, queueNumber);
-        }
-    }
 
     public static void writesToQueues(int queueNumber, String[] payload) {
         if (queueNumber == 1) {

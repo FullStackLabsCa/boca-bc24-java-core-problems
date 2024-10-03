@@ -2,7 +2,6 @@ package multithreadingtrade;
 
 import multithreadingtrade.services.ChunkProcessor;
 import multithreadingtrade.services.CreateChunks;
-import multithreadingtrade.services.QueueDistributor;
 import multithreadingtrade.services.TradeProcessor;
 
 import java.util.concurrent.ExecutorService;
@@ -27,13 +26,9 @@ public class Runner {
                     executorService.submit(new ChunkProcessor(filePath +  "trades" + i + ".csv"));
                 }
             }
-
-            Thread.sleep(5000);
-            QueueDistributor.printTotalNumberOfQueue();
-
-            TradeProcessor.putTradesIntoQueue();
-
-
+//
+////            Thread.sleep(1000);
+//            TradeProcessor.putTradesIntoQueue();
 
         } catch ( Exception e) {
             e.printStackTrace();

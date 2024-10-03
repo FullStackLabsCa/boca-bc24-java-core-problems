@@ -9,7 +9,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.concurrent.LinkedBlockingDeque;
+
 
 
 public class ChunkProcessor implements Runnable {
@@ -25,12 +25,11 @@ public class ChunkProcessor implements Runnable {
         try {
             processChunk();
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("e.getMessage(ChunkProcessor Run) = " + e.getMessage());
         }
     }
 
     public void processChunk() throws SQLException {
-        Connection connection = hikariDataSource.getConnection();
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             RawPayLoad rawPayload = new RawPayLoad();
             String payload;
@@ -43,21 +42,21 @@ public class ChunkProcessor implements Runnable {
 
                 if (fields.length != 7) {
                     rawPayload.setStatus("invalid");
-                    rawPayload.setStatusReason("column does not exist.");
+                    rawPayload.setStatusReason("Field does not exist.");
                 }
                 TradeRepo tradeRepo = new TradeRepo();
                 //  add the account to the queue
-                Integer queueNumber = QueueDistributor.getRandomNumber();
-//                System.out.println(queueNumber);
+                int queueNumber = QueueDistributor.getRandomNumber();
+
                 QueueDistributor.accountQueueMap.put(fields[2], queueNumber);
-                //making a queue
+                // making a queue
 
                 QueueDistributor.writesToQueues(queueNumber, fields);
-                //inserting to raw table
+                // inserting to raw table
                 tradeRepo.insertIntoRawPayLoad(rawPayload);
 
             }
-//            QueueDistributor.printTotalNumberOfQueue();
+            QueueDistributor.printTotalNumberOfQueue();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
