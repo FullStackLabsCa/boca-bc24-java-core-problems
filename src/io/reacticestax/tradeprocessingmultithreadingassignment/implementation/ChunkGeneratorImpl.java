@@ -10,7 +10,7 @@ public class ChunkGeneratorImpl implements ChunkGenerator {
     ConfigLoader configLoader = new ConfigLoader("/Users/akshitabajaj/Documents/reactiveStax/boca-bc24-java-core-problems/src/io/reacticestax/tradeprocessingmultithreadingassignment/Application.properties");
 
     public Integer numberOfChunks = configLoader.getIntProperty("number.of.chunks");
-    public static final File file = new File("/Users/akshitabajaj/Documents/reactiveStax/boca-bc24-java-core-problems/src/io/reacticestax/tradeprocessingmultithreadingassignment/files/trades.csv");
+    public static final File file = new File("/Users/akshitabajaj/Documents/reactiveStax/boca-bc24-java-core-problems/src/io/reacticestax/tradeprocessingmultithreadingassignment/files/trades_original.csv");
 
     public ExecutorService executorService = Executors.newFixedThreadPool(numberOfChunks);
 

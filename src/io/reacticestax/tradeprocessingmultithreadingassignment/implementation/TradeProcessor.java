@@ -10,12 +10,12 @@ import java.util.concurrent.Executors;
 
 public class TradeProcessor implements Runnable {
 
-    private final String DB_URL = "jdbc:mysql://localhost:3306/bootcamp";
-    private final String DB_USER = "root";
-    private final String DB_PASSWORD = "password123";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/bootcamp";
+    private static final String DB_USER = "root";
+    private static final String DB_PASSWORD = "password123";
     static ConfigLoader configLoader = new ConfigLoader("/Users/akshitabajaj/Documents/reactiveStax/boca-bc24-java-core-problems/src/io/reacticestax/tradeprocessingmultithreadingassignment/Application.properties");
-    public static Integer tradeProcessorThreadsCount = configLoader.getIntProperty("number.of.trade.processor.threads");
-    public static ExecutorService tradeProcessorThreadPool = Executors.newFixedThreadPool(tradeProcessorThreadsCount);
+    public static final Integer tradeProcessorThreadsCount = configLoader.getIntProperty("number.of.trade.processor.threads");
+    public static final ExecutorService tradeProcessorThreadPool = Executors.newFixedThreadPool(tradeProcessorThreadsCount);
     TradeDistributor tradeDistributor;
     String tradePayload;
 
@@ -31,19 +31,15 @@ public class TradeProcessor implements Runnable {
 //            TradeDistributor.getTradeQueue1()tradeDistributor.tradeQueue2.take();
 //            TradeDistributor.getTradeQueue1().take();
         } catch (InterruptedException e) {
-            Thread.currentThread().interrupt(); // Restore interrupted status
+            Thread.currentThread().interrupt();
         }
-
-        //String[] payloadData =tradePayload.split(",");
-
-
     }
 
     private void processTradeForTradeId(String tradeId) {
         try {
             assert !tradeId.isBlank();
-            String tradePayload = selectPayloadFromTradePayloads(tradeId);
-            String[] payloadData = tradePayload.split(",");
+            String trade_Payload = selectPayloadFromTradePayloads(tradeId);
+            String[] payloadData = trade_Payload.split(",");
             lookupSecurityReference(payloadData[3]);
             insertToJournalEntry(payloadData[2], payloadData[3], payloadData[4], Integer.parseInt(payloadData[5]), "not_posted", LocalDateTime.parse(payloadData[1] , DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")), payloadData[0]);
             updatePositionInPositions(payloadData[2], payloadData[3],payloadData[4],Integer.parseInt(payloadData[5]),LocalDateTime.parse(payloadData[1],DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
@@ -53,11 +49,7 @@ public class TradeProcessor implements Runnable {
         }
     }
 
-//    public void extractTradeIdFromTradeQueue() {
-//
-//
-//
-//    }
+
 
     public String selectPayloadFromTradePayloads(String tradeId) throws SQLException {
         String query = "Select payload from trade_payloads where trade_id = ?";
@@ -145,7 +137,7 @@ public class TradeProcessor implements Runnable {
                     throw new IllegalArgumentException("Invalid trade direction: " + direction);
                 }
 
-                // Step 3: Update the existing position
+
                 updateStmt.setInt(1, newPosition);
                 updateStmt.setTimestamp(2, Timestamp.valueOf(posted_time));
                 updateStmt.setString(3, account_number);
