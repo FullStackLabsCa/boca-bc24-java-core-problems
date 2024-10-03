@@ -1,50 +1,42 @@
 package problems.tradesSandbox.tradingwiththreads.services;
 
 import com.zaxxer.hikari.HikariDataSource;
-import problems.tradingwiththreads.model.RawPayload;
-import problems.tradingwiththreads.repository.TradesRepository;
-import problems.tradingwiththreads.services.QueueDistributor;
+import problems.tradesSandbox.tradingwiththreads.model.RawPayloadSandbox;
+import problems.tradesSandbox.tradingwiththreads.repository.TradesRepositorySandbox;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.sql.Connection;
 import java.sql.SQLException;
 
-import static problems.tradingwiththreads.services.QueueDistributor.*;
+import static problems.tradesSandbox.tradingwiththreads.services.QueueDistributorSandbox.*;
 
-public class ChunkProcessor implements Runnable {
-
-
-    //ChunkProcessor will do these tasks - 1) read the file 2) insert into raw table 3) consult Hashmap 4) Add to Queue
+public class ChunkProcessorSandbox implements Runnable {
 
     public String chunkFileName;
     static HikariDataSource dataSource;
 
-    public ChunkProcessor(String chunkFileName, HikariDataSource dataSource) {
+    public ChunkProcessorSandbox(String chunkFileName, HikariDataSource dataSource) {
         this.chunkFileName = chunkFileName;
         this.dataSource = dataSource;
     }
-
 
     @Override
     public void run() {
         try {
             processChunks(chunkFileName);
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new RuntimeException(e);
         }
-
     }
-
 
     public static void processChunks(String chunkFileName) throws SQLException {
         System.out.println("processing chunkFileName = " + chunkFileName);
-        try (Connection connection = dataSource.getConnection();
-             BufferedReader reader = new BufferedReader(new FileReader(chunkFileName))) {
-//            System.out.println("Processing file: " + chunkFileName);
-            RawPayload rawPayload = new RawPayload();
-            TradesRepository repository = new TradesRepository();
+        try (BufferedReader reader = new BufferedReader(new FileReader(chunkFileName))) {
+
+            RawPayloadSandbox rawPayload = new RawPayloadSandbox();
+            TradesRepositorySandbox repository = new TradesRepositorySandbox();
             String payloadData;
             while ((payloadData = reader.readLine()) != null) {
                 rawPayload.setPayload(payloadData);
@@ -56,34 +48,26 @@ public class ChunkProcessor implements Runnable {
                     rawPayload.setStatusReason("Fields are missing data");
                 }
                 System.out.println("inserting data into rawPayload table");
-                repository.insertInRawTable(rawPayload, connection);
-//                System.out.println("---------------xxxxxxxx------------------------------------");
+                repository.insertInRawTable(rawPayload, dataSource);
 
                 System.out.println("done inserting...into raw payloads table " + columnInPayloads[0]);
                 if (rawPayload.getStatus().equals("Valid")) {
                     int queueNumberForAccount = getQueueNumber(columnInPayloads[2]);
-                    System.out.println("assigning trade_id " + columnInPayloads[0] + "  to queue number "+
-                             + queueNumberForAccount);
-                    //assign queue
-                   assignQueueToAccountID(rawPayload.getTradeId(), queueNumberForAccount);
+                    System.out.println("assigning trade_id " + columnInPayloads[0] + "  to queue number " + +queueNumberForAccount);
 
-
-//                    System.out.println("------checking if queue is taking-------");
+                    assignQueueToAccountID(rawPayload.getTradeId(), queueNumberForAccount);
+                    System.out.println("========================== assignQueueToAccountId =====================");
                 }
             }
 
-            //Thread.sleep(1000);
-//            TradeProcessor.submitTaskToThreads(queueOne, queueTwo, queueThree);
+            QueueDistributorSandbox.printMapAndQueue();
 
-            QueueDistributor.printMapAndQueue();
         } catch (IOException | InterruptedException e) {
+            System.err.println("Thread was interrupted while adding to the queue - " + e.getMessage());
             e.printStackTrace();
         }
     }
 
-    public static void startTradeProcessor() {
-
-    }
 }
 
 

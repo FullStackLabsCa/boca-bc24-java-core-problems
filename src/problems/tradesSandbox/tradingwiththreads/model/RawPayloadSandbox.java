@@ -1,6 +1,6 @@
 package problems.tradesSandbox.tradingwiththreads.model;
 
-public class RawPayload {
+public class RawPayloadSandbox {
 
     private String tradeId;
     private String status = "Valid";
