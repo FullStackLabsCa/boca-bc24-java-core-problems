@@ -23,7 +23,7 @@ public class TradeProcessorSandbox implements Runnable {
 
     @Override
     public void run() {
-        while(true) {
+        while (true) {
             try {
                 getTradeIdFromQueue();
             } catch (InterruptedException e) {
@@ -35,72 +35,68 @@ public class TradeProcessorSandbox implements Runnable {
     }
 
     public void getTradeIdFromQueue() throws InterruptedException, SQLException {
-        try (Connection connection = dataSource.getConnection()) {
-            String tradeIdFromQueue = "";
+        while (!linkedBlockingQueue.isEmpty()) {
             System.out.println("linkedBlockingQueue size===" + linkedBlockingQueue.size());
-            while (!linkedBlockingQueue.isEmpty()) {
-                tradeIdFromQueue = this.linkedBlockingQueue.take();
-                System.out.println("===== Taking tradeId from Queue ==== " + tradeIdFromQueue);
+            String tradeIdFromQueue = this.linkedBlockingQueue.take();
+            System.out.println("===== Taking tradeId from Queue ==== " + tradeIdFromQueue);
+            //////
+            Connection connection = null;
+            try {
+                connection = dataSource.getConnection();
                 processTrades(tradeIdFromQueue, connection);
+            } catch (Throwable throwable) {
+                throwable.printStackTrace();
+
+                if(connection!=null){
+                    System.out.println(" rolling back the trasaction for tradeId" + tradeIdFromQueue);
+                    connection.rollback();
+                }
+                throw throwable;
             }
         }
     }
 
-    public void processTrades(String tradeIdFromQueue, Connection connections) throws InterruptedException, SQLException {
-        try (Connection connection = dataSource.getConnection()) {
-            connection.setAutoCommit(false);
-            //step1
-            processJournalEntries(tradeIdFromQueue);
-            //step2
-            processPositions(tradeIdFromQueue);
-            connection.commit();
-            connection.setAutoCommit(true);
-        } catch (SQLException e) {
-            connections.rollback();
-            e.printStackTrace();
-        }
-
-//        trade_id,transaction_time,account_number,cusip,activity,quantity,price
-//TDB_00000000,2024-09-19 22:16:18,TDB_CUST_5214938,V,SELL,683,638.02
+    public void processTrades(String tradeIdFromQueue, Connection connection) throws InterruptedException, SQLException {
+        connection.setAutoCommit(false);
+        //step1
+        processJournalEntries(tradeIdFromQueue, connection);
+        //step2
+        processPositions(tradeIdFromQueue, connection);
+        connection.commit();
+        connection.setAutoCommit(true);
     }
 
-    private void processJournalEntries(String tradeIdFromQueue) {
+    private void processJournalEntries(String tradeIdFromQueue, Connection connection) throws SQLException {
         TradesRepositorySandbox repositoryForRepository = new TradesRepositorySandbox();
-        try (Connection connection = dataSource.getConnection()) {
-            String rawTablePayload = repositoryForRepository.getPayloadFromRawTableSandbox(tradeIdFromQueue, connection);
-            String[] columns = rawTablePayload.split(",");
-            JournalEntrySandbox journalEntryPOJO = new JournalEntrySandbox();
 
-            journalEntryPOJO.setJournalAccountID(columns[2]);
-            journalEntryPOJO.setJournalCusip(columns[3]);
-            journalEntryPOJO.setJournalDirection(columns[4]);
-            journalEntryPOJO.setJournalQuantity(Integer.parseInt(columns[5]));
-            repositoryForRepository.insertIntoJournalTable(journalEntryPOJO, connection);
-             //isnert journal entry is done here
-            System.out.println("_____________UPDATING POSITIONS TABLE_________");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        String rawTablePayload = repositoryForRepository.getPayloadFromRawTableSandbox(tradeIdFromQueue, connection);
+        String[] columns = rawTablePayload.split(",");
+        JournalEntrySandbox journalEntryPOJO = new JournalEntrySandbox();
+
+        journalEntryPOJO.setJournalAccountID(columns[2]);
+        journalEntryPOJO.setJournalCusip(columns[3]);
+        journalEntryPOJO.setJournalDirection(columns[4]);
+        journalEntryPOJO.setJournalQuantity(Integer.parseInt(columns[5]));
+        repositoryForRepository.insertIntoJournalTable(journalEntryPOJO, connection);
+        //isnert journal entry is done here
+        System.out.println("_____________UPDATING POSITIONS TABLE_________");
+
     }
 
-    private void processPositions(String tradeIdFromQueue) {
-        TradesRepositorySandbox repositoryForRepository = new TradesRepositorySandbox();
+    private void processPositions(String tradeIdFromQueue, Connection connection) throws SQLException {
+        TradesRepositorySandbox tradesRepositorySandbox = new TradesRepositorySandbox();
         JournalEntrySandbox journalEntrySandbox = new JournalEntrySandbox();
-        try (Connection connection = dataSource.getConnection()) {
-            //positions work starts here
-            PositionsSandbox positionsSandbox = new PositionsSandbox();
-            positionsSandbox.setPositionAccountId(journalEntrySandbox.getJournalAccountID());
-            positionsSandbox.setPositionCusip(journalEntrySandbox.getJournalCusip());
-            positionsSandbox.setPositionPosition(journalEntrySandbox.getJournalDirection());
-            System.out.println("called before insert statement");
+        //positions work starts here
+        PositionsSandbox positionsSandbox = new PositionsSandbox();
+        positionsSandbox.setPositionAccountId(journalEntrySandbox.getJournalAccountID());
+        positionsSandbox.setPositionCusip(journalEntrySandbox.getJournalCusip());
+        positionsSandbox.setPositionPosition(journalEntrySandbox.getJournalDirection());
+        System.out.println("called before insert statement");
+        System.out.println("_________INSERTED IN JOURNAL ENTRY TABLE_______");
 
-            System.out.println("_________INSERTED IN JOURNAL ENTRY TABLE_______");
+        tradesRepositorySandbox.doUpdateOrInsert(connection, positionsSandbox, journalEntrySandbox);
+        System.out.println("_____________UPDATING POSITIONS TABLE_________");
 
-            repositoryForRepository.doUpdateOrInsert(connection, positionsSandbox, journalEntrySandbox);
-            System.out.println("_____________UPDATING POSITIONS TABLE_________");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 }
 

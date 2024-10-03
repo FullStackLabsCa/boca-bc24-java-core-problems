@@ -66,8 +66,10 @@ public class TradesRepositorySandbox {
             ResultSet resultSet = stmt.executeQuery();
 
             if (resultSet.next()) {
+                System.out.println("lookupInSecuritiesTable succeeded for "+ cusip);
                 return true;
             } else {
+                System.out.println("lookupInSecuritiesTable failed for "+ cusip);
                 return false;
             }
         } catch (SQLException e) {
@@ -88,10 +90,10 @@ public class TradesRepositorySandbox {
                 preparedStatementjournal.setString(3, journalEntry.getJournalDirection());
                 preparedStatementjournal.setString(4, String.valueOf(journalEntry.getJournalQuantity()));
                 preparedStatementjournal.executeUpdate();
-                PositionsSandbox positionsInsertion = new PositionsSandbox();
-                positionsInsertion.setPositionAccountId(journalEntry.getJournalAccountID());
-                positionsInsertion.setPositionCusip(journalEntry.getJournalCusip());
-                positionsInsertion.setPositionPosition(String.valueOf(journalEntry.getJournalQuantity()));
+//                PositionsSandbox positionsInsertion = new PositionsSandbox();
+//                positionsInsertion.setPositionAccountId(journalEntry.getJournalAccountID());
+//                positionsInsertion.setPositionCusip(journalEntry.getJournalCusip());
+//                positionsInsertion.setPositionPosition(String.valueOf(journalEntry.getJournalQuantity()));
                 //calling position table
                 //cannot do this call in a nested way
                 //insertIntoPositionsTable(positionsInsertion, connection);
@@ -151,28 +153,19 @@ public class TradesRepositorySandbox {
 
     public void insertIntoPositionsTable(PositionsSandbox positionsPOJO, Connection connection) throws SQLException {
         String positionTableInsertion = "INSERT into positions (account_number, cusip, position, version) VALUES (?,?,?,0)";
-        connection.setAutoCommit(false);
         try (PreparedStatement preparedStatement = connection.prepareStatement(positionTableInsertion)) {
             if (lookupInSecuritiesTable(connection, positionsPOJO.getPositionCusip())) {
                 preparedStatement.setString(1, positionsPOJO.getPositionAccountId());
                 preparedStatement.setString(2, positionsPOJO.getPositionCusip());
                 preparedStatement.setInt(3, Integer.parseInt(positionsPOJO.getPositionPosition()));
                 preparedStatement.executeUpdate();
-                connection.commit();
                 System.out.println("Inserting in the table from insertionQuery");
             }
-            connection.setAutoCommit(true);
-        } catch (SQLException e) {
-            connection.rollback();
-            e.printStackTrace();
-            throw new RuntimeException(e);
         }
     }
 
     public void updatePosition(Connection connection, PositionsSandbox positionsSandbox, JournalEntrySandbox journalEntrySandbox) throws SQLException {
-        connection.setAutoCommit(false);
         String updateQuery;
-
         if (journalEntrySandbox.getJournalDirection().equals("BUY")) {
             updateQuery = "UPDATE positions SET position = position + ?, version = version + 1 where account_number = ? and cusip = ? and version = ?";
         } else {
@@ -186,11 +179,9 @@ public class TradesRepositorySandbox {
             int rowsUpdate = preparedStatement.executeUpdate();
             if (rowsUpdate == 0) {
                 connection.rollback();
-                throw new OptimisticLockingException("Optimistic blocking failed");
+                throw new OptimisticLockingException("OptimisticLockingException, rolling back the transaction");
             }
-            connection.commit();
             System.out.println("Updated Query for positions from position table");
-            connection.setAutoCommit(true);
         }
     }
 
