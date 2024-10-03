@@ -5,6 +5,7 @@ import com.zaxxer.hikari.HikariDataSource;
 import problems.tradesSandbox.tradingwiththreads.model.JournalEntrySandbox;
 import problems.tradesSandbox.tradingwiththreads.model.PositionsSandbox;
 import problems.tradesSandbox.tradingwiththreads.repository.TradesRepositorySandbox;
+import problems.tradingwiththreads.repository.TradesRepository;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -47,7 +48,7 @@ public class TradeProcessorSandbox implements Runnable {
             } catch (Throwable throwable) {
                 throwable.printStackTrace();
 
-                if(connection!=null){
+                if (connection != null) {
                     System.out.println(" rolling back the trasaction for tradeId" + tradeIdFromQueue);
                     connection.rollback();
                 }
@@ -58,15 +59,21 @@ public class TradeProcessorSandbox implements Runnable {
 
     public void processTrades(String tradeIdFromQueue, Connection connection) throws InterruptedException, SQLException {
         connection.setAutoCommit(false);
-        //step1
-        processJournalEntries(tradeIdFromQueue, connection);
-        //step2
-        processPositions(tradeIdFromQueue, connection);
+        TradesRepositorySandbox tradesRepositorySandbox = new TradesRepositorySandbox();
+        String rawTablePayload = tradesRepositorySandbox.getPayloadFromRawTableSandbox(tradeIdFromQueue, connection);
+        String[] splittedTrade = rawTablePayload.split(",");
+        if (TradesRepositorySandbox.lookupInSecuritiesTable(connection, splittedTrade[3])) {
+            //step1
+            JournalEntrySandbox journalEntrySandbox = processJournalEntries(tradeIdFromQueue, connection);
+            //step2
+            processPositions(journalEntrySandbox, connection);
+        }
         connection.commit();
         connection.setAutoCommit(true);
+        connection.close();
     }
 
-    private void processJournalEntries(String tradeIdFromQueue, Connection connection) throws SQLException {
+    private JournalEntrySandbox processJournalEntries(String tradeIdFromQueue, Connection connection) throws SQLException {
         TradesRepositorySandbox repositoryForRepository = new TradesRepositorySandbox();
 
         String rawTablePayload = repositoryForRepository.getPayloadFromRawTableSandbox(tradeIdFromQueue, connection);
@@ -80,17 +87,16 @@ public class TradeProcessorSandbox implements Runnable {
         repositoryForRepository.insertIntoJournalTable(journalEntryPOJO, connection);
         //isnert journal entry is done here
         System.out.println("_____________UPDATING POSITIONS TABLE_________");
-
+        return journalEntryPOJO;
     }
 
-    private void processPositions(String tradeIdFromQueue, Connection connection) throws SQLException {
+    private void processPositions(JournalEntrySandbox journalEntrySandbox, Connection connection) throws SQLException {
         TradesRepositorySandbox tradesRepositorySandbox = new TradesRepositorySandbox();
-        JournalEntrySandbox journalEntrySandbox = new JournalEntrySandbox();
         //positions work starts here
         PositionsSandbox positionsSandbox = new PositionsSandbox();
         positionsSandbox.setPositionAccountId(journalEntrySandbox.getJournalAccountID());
         positionsSandbox.setPositionCusip(journalEntrySandbox.getJournalCusip());
-        positionsSandbox.setPositionPosition(journalEntrySandbox.getJournalDirection());
+        positionsSandbox.setPositionPosition(journalEntrySandbox.getJournalQuantity());
         System.out.println("called before insert statement");
         System.out.println("_________INSERTED IN JOURNAL ENTRY TABLE_______");
 

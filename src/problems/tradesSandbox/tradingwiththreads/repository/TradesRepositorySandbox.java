@@ -83,25 +83,16 @@ public class TradesRepositorySandbox {
 
         try (PreparedStatement preparedStatementjournal = connection.prepareStatement(journalTableInsertion);) {
 
-            System.out.println("lookupInSecuritiesTable(connection, journalEntry.getJournalCusip()) = " + lookupInSecuritiesTable(connection, journalEntry.getJournalCusip()));
-            if (lookupInSecuritiesTable(connection, journalEntry.getJournalCusip())) {
+//            System.out.println("lookupInSecuritiesTable(connection, journalEntry.getJournalCusip()) = " + lookupInSecuritiesTable(connection, journalEntry.getJournalCusip()));
+
                 preparedStatementjournal.setString(1, journalEntry.getJournalAccountID());
                 preparedStatementjournal.setString(2, journalEntry.getJournalCusip());
                 preparedStatementjournal.setString(3, journalEntry.getJournalDirection());
                 preparedStatementjournal.setString(4, String.valueOf(journalEntry.getJournalQuantity()));
                 preparedStatementjournal.executeUpdate();
-//                PositionsSandbox positionsInsertion = new PositionsSandbox();
-//                positionsInsertion.setPositionAccountId(journalEntry.getJournalAccountID());
-//                positionsInsertion.setPositionCusip(journalEntry.getJournalCusip());
-//                positionsInsertion.setPositionPosition(String.valueOf(journalEntry.getJournalQuantity()));
-                //calling position table
-                //cannot do this call in a nested way
-                //insertIntoPositionsTable(positionsInsertion, connection);
 
                 System.out.println("Row inserted successfully in database.");
 //                System.out.println("inserting in journal table");
-            }
-
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
@@ -129,7 +120,6 @@ public class TradesRepositorySandbox {
 
 
     public void doUpdateOrInsert(Connection connection, PositionsSandbox positionsSandbox, JournalEntrySandbox journalEntrySandbox) throws SQLException {
-        while (true)
             if (getVersion(connection, positionsSandbox) == -1) {
                 insertIntoPositionsTable(positionsSandbox, connection);
             } else {
@@ -154,13 +144,11 @@ public class TradesRepositorySandbox {
     public void insertIntoPositionsTable(PositionsSandbox positionsPOJO, Connection connection) throws SQLException {
         String positionTableInsertion = "INSERT into positions (account_number, cusip, position, version) VALUES (?,?,?,0)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(positionTableInsertion)) {
-            if (lookupInSecuritiesTable(connection, positionsPOJO.getPositionCusip())) {
                 preparedStatement.setString(1, positionsPOJO.getPositionAccountId());
                 preparedStatement.setString(2, positionsPOJO.getPositionCusip());
-                preparedStatement.setInt(3, Integer.parseInt(positionsPOJO.getPositionPosition()));
+                preparedStatement.setInt(3, positionsPOJO.getPositionPosition());
                 preparedStatement.executeUpdate();
                 System.out.println("Inserting in the table from insertionQuery");
-            }
         }
     }
 
@@ -172,9 +160,9 @@ public class TradesRepositorySandbox {
             updateQuery = "UPDATE positions SET position = position - ?, version = version + 1 where account_number = ? and cusip = ? and version = ?";
         }
         try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
-            preparedStatement.setString(1, positionsSandbox.getPositionAccountId());
-            preparedStatement.setString(2, positionsSandbox.getPositionCusip());
-            preparedStatement.setString(3, positionsSandbox.getPositionPosition());
+            preparedStatement.setInt(1, positionsSandbox.getPositionPosition());
+            preparedStatement.setString(2, positionsSandbox.getPositionAccountId());
+            preparedStatement.setString(3, positionsSandbox.getPositionCusip());
             preparedStatement.setInt(4, positionsSandbox.getPositionVersion());
             int rowsUpdate = preparedStatement.executeUpdate();
             if (rowsUpdate == 0) {

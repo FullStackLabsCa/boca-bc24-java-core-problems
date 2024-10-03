@@ -3,7 +3,7 @@ package problems.tradesSandbox.tradingwiththreads.model;
 public class PositionsSandbox {
     String positionAccountId;
     String positionCusip;
-    String positionPosition;
+    int positionPosition;
     int positionVersion;
 
     public String getPositionAccountId() {
@@ -22,11 +22,11 @@ public class PositionsSandbox {
         this.positionCusip = positionCusip;
     }
 
-    public String getPositionPosition() {
+    public int getPositionPosition() {
         return positionPosition;
     }
 
-    public void setPositionPosition(String positionPosition) {
+    public void setPositionPosition(int positionPosition) {
         this.positionPosition = positionPosition;
     }
 
