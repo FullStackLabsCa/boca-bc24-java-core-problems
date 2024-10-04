@@ -31,6 +31,7 @@ public class QueueDistributor {
 
 
     public static void writesToQueues(String[] payload, int queueNumber) {
+        System.out.println("sending the tradeId"+ payload[0] + " to QueueNumber "+queueNumber);
         if (queueNumber == 1) {
             tradeQueueOne.add(payload[0]);
         }

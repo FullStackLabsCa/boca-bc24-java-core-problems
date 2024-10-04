@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a7c31fdb-21cc-4f11-a5be-d0ff7b587f29" name="Changes" comment="gagan committing before working with instructor" />
+    <list default="true" id="a7c31fdb-21cc-4f11-a5be-d0ff7b587f29" name="Changes" comment="gagan committing before working with instructor">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/multithreadingtrade/TradeRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/multithreadingtrade/TradeRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/multithreadingtrade/repo/TradeRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/multithreadingtrade/repo/TradeRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/multithreadingtrade/services/ChunkProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/multithreadingtrade/services/ChunkProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/multithreadingtrade/services/QueueDistributor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/multithreadingtrade/services/QueueDistributor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/multithreadingtrade/services/TradeProcessorThreadPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/multithreadingtrade/services/TradeProcessorThreadPool.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -238,6 +245,17 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="gagan committing before working with instructor" />
     <option name="LAST_COMMIT_MESSAGE" value="gagan committing before working with instructor" />
@@ -292,12 +310,12 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/multithreadingtrade/repo/TradeRepo.java</url>
-          <line>91</line>
+          <line>96</line>
           <option name="timeStamp" value="180" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/multithreadingtrade/services/TradeProcessorThreadPool.java</url>
-          <line>17</line>
+          <line>19</line>
           <option name="timeStamp" value="181" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
@@ -307,18 +325,8 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/multithreadingtrade/services/ChunkProcessor.java</url>
-          <line>62</line>
-          <option name="timeStamp" value="186" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/multithreadingtrade/services/ChunkProcessor.java</url>
           <line>63</line>
           <option name="timeStamp" value="187" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/multithreadingtrade/TradeRunner.java</url>
-          <line>22</line>
-          <option name="timeStamp" value="188" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/multithreadingtrade/services/TradeProcessorRunnable.java</url>
@@ -330,7 +338,67 @@
           <line>38</line>
           <option name="timeStamp" value="193" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/multithreadingtrade/services/TradeProcessorRunnable.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="194" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/multithreadingtrade/TradeRunner.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="195" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/multithreadingtrade/TradeRunner.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="196" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/multithreadingtrade/services/QueueDistributor.java</url>
+          <line>52</line>
+          <option name="timeStamp" value="197" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/multithreadingtrade/services/ChunkProcessor.java</url>
+          <line>62</line>
+          <option name="timeStamp" value="198" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/multithreadingtrade/services/ChunkProcessor.java</url>
+          <line>77</line>
+          <option name="timeStamp" value="199" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/multithreadingtrade/services/ChunkProcessor.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="200" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/multithreadingtrade/services/QueueDistributor.java</url>
+          <line>35</line>
+          <option name="timeStamp" value="202" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/multithreadingtrade/services/QueueDistributor.java</url>
+          <line>38</line>
+          <option name="timeStamp" value="203" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/multithreadingtrade/services/QueueDistributor.java</url>
+          <line>41</line>
+          <option name="timeStamp" value="204" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/multithreadingtrade/services/TradeProcessorThreadPool.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="206" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/multithreadingtrade/TradeRunner.java</url>
+          <line>35</line>
+          <option name="timeStamp" value="207" />
+        </line-breakpoint>
+        <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/trading/presentationLayer/TradingRunner.java</url>
           <line>21</line>
           <properties class="trading.presentationLayer.TradingRunner" method="main">
@@ -339,7 +407,7 @@
           </properties>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
+        <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/trading/presentationLayer/TradingRunner.java</url>
           <line>43</line>
           <properties class="trading.presentationLayer.TradingRunner" method="handleFileInput">
@@ -348,7 +416,7 @@
           </properties>
           <option name="timeStamp" value="18" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
+        <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/trading/presentationLayer/TradingRunner.java</url>
           <line>55</line>
           <properties class="trading.presentationLayer.TradingRunner" method="handleConfiguredThreshold">
@@ -357,7 +425,7 @@
           </properties>
           <option name="timeStamp" value="19" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
+        <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/trading/presentationLayer/TradingRunner.java</url>
           <line>60</line>
           <properties class="trading.presentationLayer.TradingRunner" method="getFilePath">
@@ -366,7 +434,7 @@
           </properties>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
+        <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/trading/presentationLayer/TradingRunner.java</url>
           <line>73</line>
           <properties class="trading.presentationLayer.TradingRunner" method="getThresholdValue">
@@ -375,7 +443,7 @@
           </properties>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
+        <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/trading/repolayer/TradingRep.java</url>
           <line>17</line>
           <properties class="trading.repolayer.TradingRep">
@@ -384,7 +452,7 @@
           </properties>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
+        <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/trading/repolayer/TradingRep.java</url>
           <line>89</line>
           <properties class="trading.repolayer.TradingRep" method="errorLog">
@@ -393,7 +461,7 @@
           </properties>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
+        <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/trading/repolayer/TradingRep.java</url>
           <line>98</line>
           <properties class="trading.repolayer.TradingRep" method="selectData">
@@ -402,7 +470,7 @@
           </properties>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
+        <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/trading/servicelayer/DataValidation.java</url>
           <line>7</line>
           <properties class="trading.servicelayer.DataValidation">
@@ -411,7 +479,7 @@
           </properties>
           <option name="timeStamp" value="27" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
+        <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/trading/servicelayer/TradingService.java</url>
           <line>24</line>
           <properties class="trading.servicelayer.TradingService" method="&lt;init&gt;">
@@ -420,7 +488,7 @@
           </properties>
           <option name="timeStamp" value="29" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
+        <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/trading/servicelayer/TradingService.java</url>
           <line>99</line>
           <properties class="trading.servicelayer.TradingService">
@@ -429,16 +497,16 @@
           </properties>
           <option name="timeStamp" value="30" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
+        <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/multithreadingtrade/repo/TradeRepo.java</url>
-          <line>73</line>
+          <line>76</line>
           <properties class="multithreadingtrade.repo.TradeRepo" method="insertIntoJournalTable">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="178" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
+        <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/multithreadingtrade/services/TradeProcessorRunnable.java</url>
           <line>12</line>
           <properties class="multithreadingtrade.services.TradeProcessorRunnable" method="&lt;init&gt;">
@@ -447,7 +515,7 @@
           </properties>
           <option name="timeStamp" value="182" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
+        <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/multithreadingtrade/services/ChunkProcessor.java</url>
           <line>43</line>
           <properties class="multithreadingtrade.services.ChunkProcessor" method="processChunk">
@@ -456,7 +524,7 @@
           </properties>
           <option name="timeStamp" value="184" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
+        <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/multithreadingtrade/services/QueueDistributor.java</url>
           <line>21</line>
           <properties class="multithreadingtrade.services.QueueDistributor" method="validateAccountNumberIntoTheQueue">
@@ -465,7 +533,7 @@
           </properties>
           <option name="timeStamp" value="190" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
+        <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/multithreadingtrade/services/QueueDistributor.java</url>
           <line>32</line>
           <properties class="multithreadingtrade.services.QueueDistributor" method="writesToQueues">

@@ -2,6 +2,7 @@ package multithreadingtrade;
 
 import multithreadingtrade.services.ChunkProcessor;
 import multithreadingtrade.services.CreateChunks;
+import multithreadingtrade.services.QueueDistributor;
 import multithreadingtrade.services.TradeProcessorThreadPool;
 
 import java.util.concurrent.ExecutorService;
@@ -26,13 +27,18 @@ public class TradeRunner {
                     executorService.submit(new ChunkProcessor(filePath + "trades" + i + ".csv"));
                 }
             }
-         //  executorService.shutdown();
+            //
+            QueueDistributor.printTotalNumberOfQueue();
+         //
 
             Thread.sleep(5000);
 
             TradeProcessorThreadPool tradeProcessorThreadPool = new TradeProcessorThreadPool();
-            tradeProcessorThreadPool.putTradesIntoQueue(3);
-          //  tradeProcessorThreadPool.shutDown();
+            tradeProcessorThreadPool.processTradesFromQueue(3);
+            ///
+            executorService.shutdown();
+            tradeProcessorThreadPool.shutDown();
+            //
 
         } catch (Exception e) {
             System.out.println("e.getMessage(MAIN) = " + e.getMessage());

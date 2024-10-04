@@ -73,7 +73,9 @@ public class ChunkProcessor implements Runnable {
                 // inserting to raw table
             }
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
+            throw new RuntimeException(e);
+            //System.out.println(e.getMessage());
         }
     //    System.out.println("No of chunks published "+totalChunksPublished+", by thread "+Thread.currentThread().getName()+", filePath "+filePath);
     }

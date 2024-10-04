@@ -26,9 +26,12 @@ public class TradeRepo {
             preparedStatement.setString(3, rawPayLoad.getStatusReason());
             preparedStatement.setString(4, rawPayLoad.getPayLoads());
             preparedStatement.execute();
+            System.out.println("trade inserted successfully for tradeId :"+rawPayLoad.getTradeID());
 //            System.out.println("File inserted successfully for: " + rawPayLoad.getTradeID());
         } catch (SQLException e) {
-            System.out.println("Error inserting raw payload: " + e.getMessage());
+            e.printStackTrace();
+            throw new RuntimeException(e);
+//            System.out.println("Error inserting raw payload: " + e.getMessage());
         }
     }
 
@@ -65,9 +68,9 @@ public class TradeRepo {
                 }
             }
         } catch (SQLException e) {
-            System.out.println("Error looking up CUSIP: " + e.getMessage());
+            e.printStackTrace();
+            throw new RuntimeException(e);
         }
-        return false;
     }
 
     // Insert into journal table
@@ -88,11 +91,17 @@ public class TradeRepo {
        //     System.out.println("Journal entry inserted for trade: " + journalEntry.getTradeId());
 
         } catch (SQLException e) {
+
+
             // Handle SQL exceptions
             System.out.println("SQL exception for trade: " + journalEntry.getTradeId() + " - " + e.getMessage());
+            e.printStackTrace();
+            throw new RuntimeException(e);
 
         } catch (RuntimeException e) {
             System.out.println("Journal entry invalid for trade: " + journalEntry.getTradeId() + " - " + e.getMessage());
+            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
