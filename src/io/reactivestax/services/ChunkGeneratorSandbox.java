@@ -1,4 +1,4 @@
-package problems.tradesSandbox.tradingwiththreads.services;
+package io.reactivestax.services;
 
 import com.zaxxer.hikari.HikariDataSource;
 
@@ -18,7 +18,7 @@ public class ChunkGeneratorSandbox {
     public static int getChunkSize() {
         Properties properties = new Properties();
         try {
-            properties.load(new FileReader("/Users/Shifa.Kajal/source/student/boca-bc24-java-core-problems/src/problems/tradesSandbox/tradingwiththreads/utility/application.properties"));
+            properties.load(new FileReader("/Users/Shifa.Kajal/source/student/boca-bc24-java-core-problems/src/io/reactivestax/utility/application.properties"));
             chunkSize = Integer.parseInt(properties.getProperty("numberOfChunks"));
 
         } catch (FileNotFoundException e) {
@@ -32,8 +32,8 @@ public class ChunkGeneratorSandbox {
 
     public static void generateChunksAndSubmitTask(HikariDataSource dataSourceInitialized) throws IOException {
 
-        mainTradesFile = "/Users/Shifa.Kajal/source/student/boca-bc24-java-core-problems/src/problems/tradesSandbox/tradingwiththreads/utility/trades (1).csv";
-        chunkedFilePath = "/Users/Shifa.Kajal/source/student/boca-bc24-java-core-problems/src/problems/tradesSandbox/tradingwiththreads/filechunks";
+        mainTradesFile = "/Users/Shifa.Kajal/source/student/boca-bc24-java-core-problems/src/io/reactivestax/utility/trades (1).csv";
+        chunkedFilePath = "/Users/Shifa.Kajal/source/student/boca-bc24-java-core-problems/src/io/reactivestax/filechunks";
         int numberOfRowsInFile = 0;
         List<String> allTradeRecords = new ArrayList<>();
         String tradeRecord;

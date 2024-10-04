@@ -1,11 +1,10 @@
-package problems.tradesSandbox.tradingwiththreads.services;
+package io.reactivestax.services;
 
 import com.zaxxer.hikari.HikariDataSource;
 
-import problems.tradesSandbox.tradingwiththreads.model.JournalEntrySandbox;
-import problems.tradesSandbox.tradingwiththreads.model.PositionsSandbox;
-import problems.tradesSandbox.tradingwiththreads.repository.TradesRepositorySandbox;
-import problems.tradingwiththreads.repository.TradesRepository;
+import io.reactivestax.model.JournalEntrySandbox;
+import io.reactivestax.model.PositionsSandbox;
+import io.reactivestax.repository.TradesRepositorySandbox;
 
 import java.sql.Connection;
 import java.sql.SQLException;

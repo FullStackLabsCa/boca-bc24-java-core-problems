@@ -1,7 +1,6 @@
-package problems.tradesSandbox.tradingwiththreads.services;
+package io.reactivestax.services;
 
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class QueueDistributorSandbox {

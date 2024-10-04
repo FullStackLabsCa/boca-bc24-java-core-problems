@@ -1,15 +1,15 @@
-package problems.tradesSandbox.tradingwiththreads.services;
+package io.reactivestax.services;
 
 import com.zaxxer.hikari.HikariDataSource;
-import problems.tradesSandbox.tradingwiththreads.model.RawPayloadSandbox;
-import problems.tradesSandbox.tradingwiththreads.repository.TradesRepositorySandbox;
+import io.reactivestax.model.RawPayloadSandbox;
+import io.reactivestax.repository.TradesRepositorySandbox;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import static problems.tradesSandbox.tradingwiththreads.services.QueueDistributorSandbox.*;
+import static io.reactivestax.services.QueueDistributorSandbox.*;
 
 public class ChunkProcessorSandbox implements Runnable {
 

@@ -1,4 +1,4 @@
-package problems.tradesSandbox.tradingwiththreads.model;
+package io.reactivestax.model;
 
 public class PositionsSandbox {
     String positionAccountId;

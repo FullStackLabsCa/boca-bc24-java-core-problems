@@ -1,9 +1,9 @@
-package problems.tradesSandbox.tradingwiththreads;
+package io.reactivestax;
 
 
 import com.zaxxer.hikari.HikariDataSource;
-import problems.tradesSandbox.tradingwiththreads.services.QueueDistributorSandbox;
-import problems.tradesSandbox.tradingwiththreads.services.TradeProcessorSandbox;
+import io.reactivestax.services.QueueDistributorSandbox;
+import io.reactivestax.services.TradeProcessorSandbox;
 import problems.tradingwiththreads.databaseconnector.DatabaseConnector;
 
 
@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import static problems.tradesSandbox.tradingwiththreads.services.ChunkGeneratorSandbox.generateChunksAndSubmitTask;
+import static io.reactivestax.services.ChunkGeneratorSandbox.generateChunksAndSubmitTask;
 
 
 

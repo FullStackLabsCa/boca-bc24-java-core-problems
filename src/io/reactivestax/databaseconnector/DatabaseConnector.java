@@ -1,4 +1,4 @@
-package problems.tradesSandbox.tradingwiththreads.databaseconnector;
+package io.reactivestax.databaseconnector;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
