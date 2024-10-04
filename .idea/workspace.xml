@@ -5,13 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a7c31fdb-21cc-4f11-a5be-d0ff7b587f29" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/multithreadingtrade/databaseconnectivity/DBUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/multithreadingtrade/utility/chunks1/trades0.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/multithreadingtrade/utility/chunks1/trades1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/multithreadingtrade/utility/chunks1/trades2.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/multithreadingtrade/utility/chunks1/trades3.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/multithreadingtrade/utility/chunks1/trades4.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/multithreadingtrade/utility/chunks1/trades5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/multithreadingtrade/utility/chunks1/trades6.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/multithreadingtrade/utility/chunks1/trades7.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/multithreadingtrade/utility/chunks1/trades8.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/multithreadingtrade/utility/chunks1/trades9.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/multithreadingtrade/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/multithreadingtrade/Runner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/multithreadingtrade/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/multithreadingtrade/TradeRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/multithreadingtrade/databaseconnectivity/DatabaseConnection.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/multithreadingtrade/repo/TradeRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/multithreadingtrade/repo/TradeRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/multithreadingtrade/services/ChunkProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/multithreadingtrade/services/ChunkProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/multithreadingtrade/services/CreateChunks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/multithreadingtrade/services/CreateChunks.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/multithreadingtrade/services/QueueDistributor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/multithreadingtrade/services/QueueDistributor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/multithreadingtrade/services/TradeProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/multithreadingtrade/services/TradeProcessorThreadPool.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/multithreadingtrade/services/TradeProcessorRunnable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/multithreadingtrade/services/TradeProcessorRunnable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/multithreadingtrade/trademodel/Positions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/multithreadingtrade/trademodel/Positions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/multithreadingtrade/utility/chunks/trades0.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/multithreadingtrade/utility/chunks/trades1.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/multithreadingtrade/utility/chunks/trades2.csv" beforeDir="false" />
@@ -22,6 +35,7 @@
       <change beforePath="$PROJECT_DIR$/src/multithreadingtrade/utility/chunks/trades7.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/multithreadingtrade/utility/chunks/trades8.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/multithreadingtrade/utility/chunks/trades9.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/multithreadingtrade/utility/trades.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/multithreadingtrade/utility/trades.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,8 +69,14 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2lG5RoH6yoAT4ryKez0S9NOJeWY" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="openDirectoriesWithSingleClick" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
@@ -78,6 +98,7 @@
     "Application.SumArrayEven.executor": "Run",
     "Application.SumOfEvenNumber.executor": "Run",
     "Application.SumOfOddNumber.executor": "Run",
+    "Application.TradeRunner.executor": "Debug",
     "Application.TradingRunner.executor": "Run",
     "Application.WithoutSubtraction.executor": "Run",
     "Downloaded.Files.Path.Enabled": "false",
@@ -137,7 +158,7 @@
       <recent name="problems" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Runner">
+  <component name="RunManager" selected="Application.TradeRunner">
     <configuration name="CalculatorOld" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="problems.CalculatorOld" />
       <module name="boca-bc24-java-core-problems" />
@@ -151,8 +172,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Runner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="multithreadingtrade.Runner" />
+    <configuration name="TradeRunner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="multithreadingtrade.TradeRunner" />
       <module name="boca-bc24-java-core-problems" />
       <extension name="coverage">
         <pattern>
@@ -229,7 +250,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Runner" />
+        <item itemvalue="Application.TradeRunner" />
         <item itemvalue="Application.CalculatorOld" />
         <item itemvalue="JUnit.CalculatorOldTest" />
         <item itemvalue="JUnit.CalculatorOldTest.testInvalidNumberFormat" />
@@ -251,70 +272,90 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/problems/CalculatorOld.java</url>
           <line>52</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/problems/CalculatorOld.java</url>
           <line>35</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/problems/CalculatorOld.java</url>
           <line>26</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/problems/CalculatorOld.java</url>
           <line>27</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/problems/CalculatorOld.java</url>
           <line>28</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/problems/CalculatorOld.java</url>
           <line>9</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/problems/CalculatorOld.java</url>
           <line>12</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/problems/CalculatorOld.java</url>
           <line>13</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/problems/CalculatorOld.java</url>
           <line>14</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/multithreadingtrade/databaseconnectivity/DatabaseConnection.java</url>
-          <line>6</line>
-          <option name="timeStamp" value="61" />
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/multithreadingtrade/repo/TradeRepo.java</url>
+          <line>91</line>
+          <option name="timeStamp" value="180" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/multithreadingtrade/services/TradeProcessorRunnable.java</url>
-          <line>11</line>
-          <option name="timeStamp" value="115" />
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/multithreadingtrade/services/TradeProcessorThreadPool.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="181" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/multithreadingtrade/services/TradeProcessorRunnable.java</url>
-          <line>48</line>
-          <option name="timeStamp" value="117" />
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/multithreadingtrade/services/ChunkProcessor.java</url>
+          <line>49</line>
+          <option name="timeStamp" value="185" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/multithreadingtrade/services/ChunkProcessor.java</url>
+          <line>62</line>
+          <option name="timeStamp" value="186" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/multithreadingtrade/services/ChunkProcessor.java</url>
+          <line>63</line>
+          <option name="timeStamp" value="187" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/multithreadingtrade/TradeRunner.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="188" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/multithreadingtrade/services/TradeProcessorRunnable.java</url>
-          <line>55</line>
-          <option name="timeStamp" value="123" />
+          <line>39</line>
+          <option name="timeStamp" value="192" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/multithreadingtrade/services/TradeProcessorRunnable.java</url>
+          <line>38</line>
+          <option name="timeStamp" value="193" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/trading/presentationLayer/TradingRunner.java</url>
@@ -417,39 +458,48 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/multithreadingtrade/repo/TradeRepo.java</url>
-          <line>119</line>
-          <properties class="multithreadingtrade.repo.TradeRepo" method="updatePositionTable">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="110" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/multithreadingtrade/repo/TradeRepo.java</url>
-          <line>106</line>
-          <properties class="multithreadingtrade.repo.TradeRepo" method="writeToPositionTable">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="111" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/multithreadingtrade/repo/TradeRepo.java</url>
-          <line>53</line>
+          <line>73</line>
           <properties class="multithreadingtrade.repo.TradeRepo" method="insertIntoJournalTable">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
-          <option name="timeStamp" value="121" />
+          <option name="timeStamp" value="178" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/multithreadingtrade/repo/TradeRepo.java</url>
-          <line>39</line>
-          <properties class="multithreadingtrade.repo.TradeRepo" method="lookUpInSecuritiesTable">
+          <url>file://$PROJECT_DIR$/src/multithreadingtrade/services/TradeProcessorRunnable.java</url>
+          <line>12</line>
+          <properties class="multithreadingtrade.services.TradeProcessorRunnable" method="&lt;init&gt;">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
-          <option name="timeStamp" value="122" />
+          <option name="timeStamp" value="182" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/multithreadingtrade/services/ChunkProcessor.java</url>
+          <line>43</line>
+          <properties class="multithreadingtrade.services.ChunkProcessor" method="processChunk">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="184" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/multithreadingtrade/services/QueueDistributor.java</url>
+          <line>21</line>
+          <properties class="multithreadingtrade.services.QueueDistributor" method="validateAccountNumberIntoTheQueue">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="190" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/multithreadingtrade/services/QueueDistributor.java</url>
+          <line>32</line>
+          <properties class="multithreadingtrade.services.QueueDistributor" method="writesToQueues">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="191" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

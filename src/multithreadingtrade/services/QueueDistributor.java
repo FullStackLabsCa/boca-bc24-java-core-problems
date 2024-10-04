@@ -8,13 +8,29 @@ import java.util.concurrent.LinkedBlockingDeque;
 
 public class QueueDistributor {
     private static final Random random = new Random();
+
     static ConcurrentHashMap<String, Integer> accountQueueMap = new ConcurrentHashMap<>();
+
+
     public static LinkedBlockingDeque<String> tradeQueueOne = new LinkedBlockingDeque<>();
     public static LinkedBlockingDeque<String> tradeQueueSecond = new LinkedBlockingDeque<>();
     public static LinkedBlockingDeque<String> tradeQueueThird = new LinkedBlockingDeque<>();
 
 
-    public static void writesToQueues(int queueNumber, String[] payload) {
+
+
+    public static int validateAccountNumberIntoTheQueue(String accountNumber){
+        int randomNumber = getRandomNumber();
+        if(accountQueueMap.contains(accountNumber)){
+            randomNumber = accountQueueMap.get(accountNumber);
+        } else {
+            accountQueueMap.put(accountNumber,randomNumber);
+        }
+        return  randomNumber;
+    }
+
+
+    public static void writesToQueues(String[] payload, int queueNumber) {
         if (queueNumber == 1) {
             tradeQueueOne.add(payload[0]);
         }
