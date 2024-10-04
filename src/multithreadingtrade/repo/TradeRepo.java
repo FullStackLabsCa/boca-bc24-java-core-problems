@@ -26,7 +26,8 @@ public class TradeRepo {
             preparedStatement.setString(3, rawPayLoad.getStatusReason());
             preparedStatement.setString(4, rawPayLoad.getPayLoads());
             preparedStatement.execute();
-            System.out.println("trade inserted successfully for tradeId :"+rawPayLoad.getTradeID());
+            System.out.println("trd insrt" + rawPayLoad.getTradeID());
+            //System.out.println("trade inserted successfully for tradeId :"+rawPayLoad.getTradeID());
 //            System.out.println("File inserted successfully for: " + rawPayLoad.getTradeID());
         } catch (SQLException e) {
             e.printStackTrace();
@@ -88,11 +89,10 @@ public class TradeRepo {
             preparedStatement.setString(5, journalEntry.getPostedStatus());
             preparedStatement.executeUpdate();
 
-       //     System.out.println("Journal entry inserted for trade: " + journalEntry.getTradeId());
+//            System.out.println("Journal entry inserted for trade: " + journalEntry.getTradeId());
+            System.out.print("je" + journalEntry.getTradeId());
 
         } catch (SQLException e) {
-
-
             // Handle SQL exceptions
             System.out.println("SQL exception for trade: " + journalEntry.getTradeId() + " - " + e.getMessage());
             e.printStackTrace();

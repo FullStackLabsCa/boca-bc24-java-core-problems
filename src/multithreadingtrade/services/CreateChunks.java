@@ -22,6 +22,7 @@ public class CreateChunks implements ChunkGenerator {
             chunkFileSize = totalLines / numberOfChunks;
             createChunkFiles(filePath, numberOfChunks);
         } catch (IOException e) {
+
             throw new RuntimeException("Error generating chunks: " + e.getMessage(), e);
         }
     }
@@ -42,6 +43,7 @@ public class CreateChunks implements ChunkGenerator {
             }
             System.out.println("Chunks created successfully!");
         } catch (IOException e) {
+
             throw new RuntimeException("Error creating chunk files: " + e.getMessage(), e);
         }
     }

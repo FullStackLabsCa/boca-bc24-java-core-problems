@@ -28,17 +28,22 @@ public class TradeRunner {
                 }
             }
             //
-            QueueDistributor.printTotalNumberOfQueue();
+            QueueDistributor.printAllQueueStats();
          //
 
             Thread.sleep(5000);
 
             TradeProcessorThreadPool tradeProcessorThreadPool = new TradeProcessorThreadPool();
             tradeProcessorThreadPool.processTradesFromQueue(3);
+
+            QueueDistributor.printAllQueueStats();
             ///
-            executorService.shutdown();
-            tradeProcessorThreadPool.shutDown();
+//            executorService.shutdown();
+//            tradeProcessorThreadPool.shutDown();
             //
+            Thread.sleep(30000);
+
+            QueueDistributor.printAllQueueStats();
 
         } catch (Exception e) {
             System.out.println("e.getMessage(MAIN) = " + e.getMessage());

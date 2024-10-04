@@ -8,17 +8,21 @@ import java.util.concurrent.LinkedBlockingDeque;
 
 
 public class TradeProcessorRunnable implements Runnable {
-    static LinkedBlockingDeque<String> tradeQueue;
+    LinkedBlockingDeque<String> tradeQueue;
+    private final String threadName;
+    private final String tradeQueueName;
 
-    public TradeProcessorRunnable(LinkedBlockingDeque<String> tradeQueue) {
+    public TradeProcessorRunnable(LinkedBlockingDeque<String> tradeQueue, String threadName, String tradeQueueName) {
         this.tradeQueue = tradeQueue;
+        this.threadName = threadName;
+        this.tradeQueueName = tradeQueueName;
     }
 
 
     @Override
     public void run() {
         int tradeCounter = 0;
-        while (!tradeQueue.isEmpty()) {
+        while (true) {
             try {
                 processTrade();
                 tradeCounter++;
@@ -27,16 +31,19 @@ public class TradeProcessorRunnable implements Runnable {
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
                 System.out.println("Thread Interrupted: " + e.getMessage());
-                break; // Stop the thread when it's interrupted.
+//                break; // Stop the thread when it's interrupted.
             } catch (Exception e) {
                 System.out.println("General Exception: " + e.getMessage());
             }
         }
-        System.out.println(Thread.currentThread().getName()+",  tradeCounter :: "+tradeCounter);
+//        System.out.println(Thread.currentThread().getName()+",  tradeCounter :: "+tradeCounter);
     }
 
     private void processTrade() throws SQLException, InterruptedException {
-        String tradeIdStoredInQueue = tradeQueue.take();
+        QueueDistributor.printAllQueueStats();
+        System.out.println("thread: "+threadName + " is going to call tradeQueue.take() from tradeQueue"+tradeQueueName);
+        String tradeIdStoredInQueue = tradeQueue.takeFirst();
+        System.out.println("thread: "+threadName + " is done with tradeQueue.take() with tradeId" + tradeIdStoredInQueue + "from tradeQueue"+tradeQueueName);
         try {
             insertDataToJournalAndPositionTable(tradeIdStoredInQueue);
         } catch (RuntimeException e) {
@@ -54,8 +61,8 @@ public class TradeProcessorRunnable implements Runnable {
 //                System.out.println("No payload");
 //            }
             String[] readFromPayload = payload.split(",");
-            boolean securityResult = tradeRepo.lookUpInSecuritiesTable(readFromPayload[3]);
-            if (securityResult) {
+            boolean isSecurityFound = tradeRepo.lookUpInSecuritiesTable(readFromPayload[3]);
+            if (isSecurityFound) {
                 JournalEntry journalEntry = new JournalEntry();
                 journalEntry.setTradeId(readFromPayload[0]);
                 journalEntry.setAccountNumber(readFromPayload[2]);
@@ -69,7 +76,9 @@ public class TradeProcessorRunnable implements Runnable {
               throw new RuntimeException("CUSIP not found: " + readFromPayload[3]);
             }
         } catch (SQLException e) {
-            System.out.println("SQL Exception: " + e.getMessage());
+            e.printStackTrace();
+            throw new RuntimeException(e);
+//            System.out.println("SQL Exception: " + e.getMessage());
 //            throw new RuntimeException(e);
         }
     }

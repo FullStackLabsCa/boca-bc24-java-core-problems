@@ -47,7 +47,7 @@ public class QueueDistributor {
         return random.nextInt(3) + 1;
     }
 
-    public static void printTotalNumberOfQueue() {
+    public static void printAllQueueStats() {
         int totalSize = QueueDistributor.tradeQueueOne.size() + QueueDistributor.tradeQueueSecond.size() + QueueDistributor.tradeQueueThird.size();
         System.out.println("Size of Queue1: " + QueueDistributor.tradeQueueOne.size());
         System.out.println("Size of Queue2: " + QueueDistributor.tradeQueueSecond.size());

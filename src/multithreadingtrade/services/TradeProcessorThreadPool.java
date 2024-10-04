@@ -19,9 +19,9 @@ public class TradeProcessorThreadPool {
     public void processTradesFromQueue(int tradeProcessorThreadPoolSize) throws ExecutionException, InterruptedException {
         executorService = Executors.newFixedThreadPool(tradeProcessorThreadPoolSize);
 
-        Future<?> future1 = executorService.submit(new TradeProcessorRunnable(QueueDistributor.tradeQueueOne));
-        Future<?> future2 = executorService.submit(new TradeProcessorRunnable(QueueDistributor.tradeQueueSecond));
-        Future<?> future3 = executorService.submit(new TradeProcessorRunnable(QueueDistributor.tradeQueueThird));
+        Future<?> future1 = executorService.submit(new TradeProcessorRunnable(QueueDistributor.tradeQueueOne,"tradeProcessorThreadOne", "tradeQueueOne"));
+        Future<?> future2 = executorService.submit(new TradeProcessorRunnable(QueueDistributor.tradeQueueSecond,"tradeProcessorThreadTwo","tradeQueueSecond"));
+        Future<?> future3 = executorService.submit(new TradeProcessorRunnable(QueueDistributor.tradeQueueThird,"tradeProcessorThreadThree","tradeQueueThree"));
 
         System.out.println("waiting for all tradeProcessorThreads to get done ");
         future1.get();
