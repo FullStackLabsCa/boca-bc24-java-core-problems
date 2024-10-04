@@ -28,7 +28,7 @@ public class TradeRunner {
             }
          //  executorService.shutdown();
 
-            //Thread.sleep(5000);
+            Thread.sleep(5000);
 
             TradeProcessorThreadPool tradeProcessorThreadPool = new TradeProcessorThreadPool();
             tradeProcessorThreadPool.putTradesIntoQueue(3);

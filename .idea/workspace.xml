@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a7c31fdb-21cc-4f11-a5be-d0ff7b587f29" name="Changes" comment="gagan committing before working with instructor">
-      <change beforePath="$PROJECT_DIR$/src/multithreadingtrade/TradeRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/multithreadingtrade/TradeRunner.java" afterDir="false" />
-    </list>
+    <list default="true" id="a7c31fdb-21cc-4f11-a5be-d0ff7b587f29" name="Changes" comment="gagan committing before working with instructor" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
