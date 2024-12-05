@@ -5,12 +5,30 @@ import lombok.*;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Set;
+import java.util.concurrent.LinkedBlockingDeque;
 
 public class JavaCache<K,V> implements CacheLibrary<K, V> {
     private final HashMap<K, V> dataStorage = new HashMap<>();
     private final HashMap<K, TTL> ttlManagement = new HashMap<>();
 
+    private final LinkedBlockingDeque<K> keysToRemove = new LinkedBlockingDeque<>();
+
     private JavaCache() {
+        Thread daemonThread = new Thread(() -> {
+            while (true) {
+                System.out.println("My Daemon thread running...");
+                try {
+                    K keyToRemove = keysToRemove.take();
+                    dataStorage.remove(keyToRemove);
+                    ttlManagement.remove(keyToRemove);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        daemonThread.setDaemon(true);
+        daemonThread.start();
     }
 
     @Override
