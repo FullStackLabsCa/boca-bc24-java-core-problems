@@ -56,7 +56,7 @@ public class ChunkProcessorSandbox implements Runnable {
                     System.out.println("assigning trade_id " + columnInPayloads[0] + "  to queue number " + +queueNumberForAccount);
 
                     assignQueueToAccountID(rawPayload.getTradeId(), queueNumberForAccount);
-                    System.out.println("========================== assignQueueToAccountId =====================");
+                    System.out.println("========================== assignedQueueToAccountId =====================");
                 }
             }
 

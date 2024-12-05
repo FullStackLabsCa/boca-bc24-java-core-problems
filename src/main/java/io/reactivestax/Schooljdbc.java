@@ -1,16 +1,15 @@
 package io.reactivestax;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 
+import com.mysql.cj.Session;
+import com.mysql.cj.xdevapi.SessionFactory;
 
 public class Schooljdbc {
 
     // Add course
     public void addCourse(String courseName) {
 
-        SessionFactory factory = HibernateUtilClass.getSessionFactory();
+        SessionFactory factory = io.reactivestax.HibernateUtilClass.getSessionFactory();
         Session session = factory.openSession();
         Transaction transaction = session.beginTransaction();
         Course course = new Course();
@@ -23,7 +22,7 @@ public class Schooljdbc {
 
     public void enrollStudent(int studentId, String studentName, String courseName) {
 
-        SessionFactory factory = HibernateUtilClass.getSessionFactory();
+        SessionFactory factory = io.reactivestax.HibernateUtilClass.getSessionFactory();
         Session session = factory.openSession();
         Transaction transaction = session.beginTransaction();
 
@@ -36,16 +35,16 @@ public class Schooljdbc {
                 session.save(course);
             }
 
-            Student student = (Student) session.createQuery("FROM Student WHERE name = :name").setParameter("name", studentName).uniqueResult();
+            io.reactivestax.Student student = (io.reactivestax.Student) session.createQuery("FROM Student WHERE name = :name").setParameter("name", studentName).uniqueResult();
             if (student == null) {
-                student = new Student();
+                student = new io.reactivestax.Student();
                 student.setName(studentName);
                 session.save(student);
             }
 
-            Enrollment enrollment = (Enrollment) session.createQuery("FROM Enrollment where student.id = :Id and course.id = :Id").setParameter("Id", student.getId()).setParameter("Id", course.getCourseId()).uniqueResult();
+            io.reactivestax.Enrollment enrollment = (io.reactivestax.Enrollment) session.createQuery("FROM Enrollment where student.id = :Id and course.id = :Id").setParameter("Id", student.getId()).setParameter("Id", course.getCourseId()).uniqueResult();
             if (enrollment == null) {
-                enrollment = new Enrollment();
+                enrollment = new io.reactivestax.Enrollment();
                 enrollment.setStudent(student);
                 enrollment.setCourse(course);
                 enrollment.setId(studentId);
@@ -61,7 +60,7 @@ public class Schooljdbc {
 
     //    // Assign grade
     public void assignGrade(int studentId, String courseName, double gradeValue) {
-        SessionFactory factory = HibernateUtilClass.getSessionFactory();
+        SessionFactory factory = io.reactivestax.HibernateUtilClass.getSessionFactory();
         Session session = factory.openSession();
         Transaction transaction = session.beginTransaction();
 
@@ -73,7 +72,7 @@ public class Schooljdbc {
                 session.save(course);
             }
 
-            Student student = (Student) session.createQuery("FROM Student WHERE id = :Id").setParameter("Id", studentId).uniqueResult();
+            io.reactivestax.Student student = (io.reactivestax.Student) session.createQuery("FROM Student WHERE id = :Id").setParameter("Id", studentId).uniqueResult();
             if (student == null) {
                 //      student = new Student();
                 System.out.println("Student does not exist");
@@ -82,14 +81,14 @@ public class Schooljdbc {
             }
 
 
-            Enrollment enrollment = (Enrollment) session.createQuery("FROM Enrollment where id = :Id and id = :Id").setParameter("Id", student.getId()).setParameter("Id", course.getCourseId()).uniqueResult();
+            io.reactivestax.Enrollment enrollment = (io.reactivestax.Enrollment) session.createQuery("FROM Enrollment where id = :Id and id = :Id").setParameter("Id", student.getId()).setParameter("Id", course.getCourseId()).uniqueResult();
             if (enrollment == null) {
                 System.out.println("Can't enroll in this course");
             } else {
                 session.save(enrollment);
             }
 
-            Grades grade = new Grades();
+            io.reactivestax.Grades grade = new io.reactivestax.Grades();
             grade.setCourse(course);
             grade.setStudent(student);
             grade.setGradeValue(gradeValue);

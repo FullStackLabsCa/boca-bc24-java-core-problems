@@ -25,7 +25,7 @@ public class ChunkGeneratorSandbox {
             e.printStackTrace();
             throw new RuntimeException(e);
         } catch (IOException e) {
-            throw new RuntimeException("Some error occured: " + e);
+            throw new RuntimeException("Some error occurred: " + e);
         }
         return chunkSize;
     }
@@ -39,7 +39,7 @@ public class ChunkGeneratorSandbox {
         String tradeRecord;
         dataSource = dataSourceInitialized;
 
-        ExecutorService executorService = Executors.newFixedThreadPool(1);
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
 
         //reading file
         try (BufferedReader reader = new BufferedReader(new FileReader(mainTradesFile))) {
@@ -72,13 +72,12 @@ public class ChunkGeneratorSandbox {
 
                     }
                     System.out.println("submitting the file to next ChunkProcessor :: " + chunkedFileName);
+//                    put into the queue - linked blocking queue wherever you have defined trade queues
                     executorService.submit(new ChunkProcessorSandbox(chunkedFileName, dataSource));
-                    Thread.sleep(500);
+//                    Thread.sleep(500);
                 }
             }
             executorService.shutdown();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
         }
     }
 }
