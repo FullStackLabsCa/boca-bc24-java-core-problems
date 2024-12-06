@@ -9,27 +9,27 @@ public class CacheFactory {
     * */
 
     private void initTTLMonitoringForCaches(Collection<JavaCache<?,?>> cacheCollection){
-        DaemonFactory.getInstance().ttlPolicyMonitorProvider(cacheCollection);
+        DaemonFactory.getInstance().startTTLPolicyMonitoring(cacheCollection);
     }
 
     private void initLRUMonitoringForCaches(Collection<JavaCache<?,?>> cacheCollection){
-        DaemonFactory.getInstance().LRUPolicyMonitorProvider(cacheCollection);
+        DaemonFactory.getInstance().startLRUPolicyMonitoring(cacheCollection);
     }
 
     private void initFIFOMonitoringForCaches(Collection<JavaCache<?,?>> cacheCollection){
-        DaemonFactory.getInstance().FIFOPolicyMonitorProvider(cacheCollection);
+        DaemonFactory.getInstance().startFIFOPolicyMonitoring(cacheCollection);
     }
 
     private void initLFUMonitoringForCaches(Collection<JavaCache<?,?>> cacheCollection){
-        DaemonFactory.getInstance().LFUPolicyMonitorProvider(cacheCollection);
+        DaemonFactory.getInstance().startLFUPolicyMonitoring(cacheCollection);
     }
 
     private void initRRMonitoringForCaches(Collection<JavaCache<?,?>> cacheCollection){
-        DaemonFactory.getInstance().RRPolicyMonitorProvider(cacheCollection);
+        DaemonFactory.getInstance().startRRPolicyMonitoring(cacheCollection);
     }
 
     private void initSizeBasedEvictionMonitoringForCaches(Collection<JavaCache<?,?>> cacheCollection){
-        DaemonFactory.getInstance().sizeBasedEvictionPolicyMonitorProvider(cacheCollection);
+        DaemonFactory.getInstance().startSizeBasedEvictionPolicyMonitoring(cacheCollection);
     }
 
 }
