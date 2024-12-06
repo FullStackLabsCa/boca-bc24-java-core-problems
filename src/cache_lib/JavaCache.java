@@ -5,21 +5,22 @@ import java.util.Set;
 import java.util.concurrent.*;
 
 public class JavaCache<K,V> implements CacheLibrary<K, V> {
-    private final ConcurrentHashMap<K, V> cache = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<K, V> dataStorage = new ConcurrentHashMap<>();
     private final ConcurrentHashMap<K, TTL> ttlManagement = new ConcurrentHashMap<>();
+    private static final long DEFAULT_TTL_DURATION = 60;
 
     public JavaCache() {
         DaemonFactory<K, V> daemonFactory = new DaemonFactory<>();
-        Thread ttlDaemonThread = daemonFactory.ttlDaemonPolicy(ttlManagement, cache);
+        Thread ttlDaemonThread = daemonFactory.ttlDaemonPolicy(ttlManagement, dataStorage);
 
         ttlDaemonThread.start();
     }
 
     @Override
     public void put(K key, V value){
-        cache.put(key, value);
+        dataStorage.put(key, value);
         TTL ttl = TTL.builder()
-                .ttlDuration(60)
+                .ttlDuration(DEFAULT_TTL_DURATION)
                 .creationTime(LocalDateTime.now())
                 .lastAccessTime(LocalDateTime.now())
                 .build();
@@ -28,7 +29,7 @@ public class JavaCache<K,V> implements CacheLibrary<K, V> {
 
     @Override
     public void put(K key, V value, long ttlDuration){
-        cache.put(key, value);
+        dataStorage.put(key, value);
         TTL ttl = TTL.builder()
                 .ttlDuration(ttlDuration)
                 .creationTime(LocalDateTime.now())
@@ -39,7 +40,7 @@ public class JavaCache<K,V> implements CacheLibrary<K, V> {
 
     @Override
     public V get(K key){
-        V value = cache.get(key);
+        V value = dataStorage.get(key);
 
         TTL ttl = ttlManagement.get(key);
         ttl.setLastAccessTime(LocalDateTime.now());
@@ -52,8 +53,8 @@ public class JavaCache<K,V> implements CacheLibrary<K, V> {
     public boolean remove(K key){
         boolean successState = false;
 
-        if(cache.containsKey(key)){
-            cache.remove(key);
+        if(dataStorage.containsKey(key)){
+            dataStorage.remove(key);
             ttlManagement.remove(key);
             successState = true;
         }
@@ -63,17 +64,17 @@ public class JavaCache<K,V> implements CacheLibrary<K, V> {
 
     @Override
     public int size(){
-        return cache.size();
+        return dataStorage.size();
     }
 
     @Override
     public void clear(){
-        cache.clear();
+        dataStorage.clear();
         ttlManagement.clear();
     }
 
     @Override
     public Set<K> keys(){
-        return cache.keySet();
+        return dataStorage.keySet();
     }
 }
