@@ -1,5 +1,7 @@
 package cache_lib;
 
+import lombok.Getter;
+
 import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.concurrent.*;
@@ -8,12 +10,11 @@ public class JavaCache<K,V> implements CacheLibrary<K, V> {
     private final ConcurrentHashMap<K, V> dataStorage = new ConcurrentHashMap<>();
     private final ConcurrentHashMap<K, TTL> ttlManagement = new ConcurrentHashMap<>();
     private static final long DEFAULT_TTL_DURATION = 60;
+    @Getter
+    private final String evictionPolicy;
 
-    public JavaCache() {
-        DaemonFactory<K, V> daemonFactory = new DaemonFactory<>();
-        Thread ttlDaemonThread = daemonFactory.ttlDaemonPolicy(ttlManagement, dataStorage);
-
-        ttlDaemonThread.start();
+    public JavaCache(String evictionPolicy) {
+        this.evictionPolicy = evictionPolicy;
     }
 
     @Override
