@@ -20,6 +20,8 @@ public class JavaCache<K extends Serializable,V> implements CacheLibrary<K, V> {
     @Override
     public void put(K key, V value){
         DataEntry<K, V> entry = DataEntry.<K,V>builder()
+                .key(key)
+                .value(value)
                 .creationTime(LocalDateTime.now())
                 .lastAccessTime(LocalDateTime.now())
                 .build();
@@ -30,6 +32,8 @@ public class JavaCache<K extends Serializable,V> implements CacheLibrary<K, V> {
     @Override
     public void put(K key, V value, long ttlDuration){
         DataEntry<K,V> entry = DataEntry.<K,V>builder()
+                .key(key)
+                .value(value)
                 .ttlDuration(ttlDuration)
                 .creationTime(LocalDateTime.now())
                 .lastAccessTime(LocalDateTime.now())
@@ -39,12 +43,14 @@ public class JavaCache<K extends Serializable,V> implements CacheLibrary<K, V> {
 
     @Override
     public V get(K key){
+        V value = null;
         DataEntry<K, V> dataEntry = dataStorage.get(key);
-        V value = dataEntry.getValue();
 
-        dataEntry.setLastAccessTime(LocalDateTime.now());
-        dataStorage.put(key, dataEntry);
-
+        if(dataEntry != null) {
+            value = dataEntry.getValue();
+            dataEntry.setLastAccessTime(LocalDateTime.now());
+            dataStorage.put(key, dataEntry);
+        }
         return value;
     }
 
