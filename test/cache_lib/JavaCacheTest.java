@@ -4,6 +4,8 @@ package cache_lib;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.sql.PreparedStatement;
+
 import static org.junit.Assert.assertEquals;
 
 public class JavaCacheTest {
@@ -45,6 +47,36 @@ public class JavaCacheTest {
     }
 
     @Test
+    public void putNullKeyTest(){
+
+    }
+
+    @Test
+    public void putNullValueTest(){
+
+    }
+
+    @Test
+    public void putNullKeyAndValueTest(){
+
+    }
+
+    @Test
+    public void putNullKeyMultipleTimesTest(){
+
+    }
+
+    @Test
+    public void putNullValueMultipleTimesTest(){
+
+    }
+
+    @Test
+    public void putSameKeyMultipleTimesTest(){
+
+    }
+
+    @Test
     public void getNonExistentKeyTest(){
 
     }
@@ -55,12 +87,22 @@ public class JavaCacheTest {
     }
 
     @Test
+    public void getNullKeyTest(){
+
+    }
+
+    @Test
     public void getResetTTLTest(){
 
     }
 
     @Test
     public void removeNonExistingKeyTest(){
+
+    }
+
+    @Test
+    public void removeNullKeyTest(){
 
     }
 
