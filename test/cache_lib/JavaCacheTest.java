@@ -7,7 +7,7 @@ import static org.junit.Assert.assertEquals;
 
 public class JavaCacheTest {
 
-    JavaCache<String, String> cache = new JavaCache<>();
+    JavaCache<String, String> cache = new JavaCache<>("ttl");
 
     @Before
     public void setUp(){
