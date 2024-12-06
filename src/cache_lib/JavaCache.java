@@ -2,12 +2,13 @@ package cache_lib;
 
 import lombok.Getter;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Set;
 import java.util.concurrent.*;
 
-public class JavaCache<K,V> implements CacheLibrary<K, V> {
+public class JavaCache<K extends Serializable,V> implements CacheLibrary<K, V> {
     private final ConcurrentHashMap<K, DataEntry<K,V>> dataStorage = new ConcurrentHashMap<>();
     @Getter
     private final String evictionPolicy;

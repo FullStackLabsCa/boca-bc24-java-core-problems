@@ -1,5 +1,6 @@
 package cache_lib;
 
+import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Collection;
@@ -13,7 +14,9 @@ public class DaemonFactory {
         return instance;
     }
 
-    public void startTTLPolicyMonitoring(Collection<JavaCache<?,?>> cacheCollection) {
+    // every cache key is serialize
+    // ? implements Serializable
+    public void startTTLPolicyMonitoring(Collection<JavaCache<? super Serializable,?>> cacheCollection) {
         Thread ttlDaemonThread = new Thread(() -> {
             while (true) {
                 System.out.println("TTL Daemon thread running...");
@@ -35,23 +38,23 @@ public class DaemonFactory {
         ttlDaemonThread.start();
     }
 
-    public void startLRUPolicyMonitoring(Collection<JavaCache<?, ?>> cacheCollection) {
+    public void startLRUPolicyMonitoring(Collection<JavaCache<? super Serializable, ?>> cacheCollection) {
 
     }
 
-    public void startFIFOPolicyMonitoring(Collection<JavaCache<?, ?>> cacheCollection) {
+    public void startFIFOPolicyMonitoring(Collection<JavaCache<? super Serializable, ?>> cacheCollection) {
 
     }
 
-    public void startLFUPolicyMonitoring(Collection<JavaCache<?, ?>> cacheCollection) {
+    public void startLFUPolicyMonitoring(Collection<JavaCache<? super Serializable, ?>> cacheCollection) {
 
     }
 
-    public void startRRPolicyMonitoring(Collection<JavaCache<?, ?>> cacheCollection) {
+    public void startRRPolicyMonitoring(Collection<JavaCache<? super Serializable, ?>> cacheCollection) {
 
     }
 
-    public void startSizeBasedEvictionPolicyMonitoring(Collection<JavaCache<?, ?>> cacheCollection) {
+    public void startSizeBasedEvictionPolicyMonitoring(Collection<JavaCache<? super Serializable, ?>> cacheCollection) {
 
     }
 }
