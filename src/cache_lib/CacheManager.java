@@ -1,6 +1,7 @@
 package cache_lib;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class CacheManager {
@@ -36,32 +37,80 @@ public class CacheManager {
      *
      */
     public void initCacheManagement(JavaCache<?, ?> javaCache){
-        //TODO
+        /**
+         * Check the Policy of the Cache
+         * Based on the Policy: check if the policy is initiated
+         * If initiated: add the cache object to the policy collection
+         * If not: initiate the policy's collection and add the cache object to it
+         */
+        String policy = javaCache.getEvictionPolicy();
+        Collection<JavaCache<? super Serializable,?>> cacheCollection = checkIfInitialized(policy);
+        if(cacheCollection != null) cacheCollection.add(javaCache);
+        else {
+            Collection<JavaCache<? super Serializable, ?>> javaCaches = initPolicy(policy);
+            javaCaches.add(javaCache);
+        }
+    }
+
+    private Collection<JavaCache<? super Serializable,?>> initPolicy(String policy) {
+        switch (policy){
+            case "ttl":
+                return initTTLMonitoringForCaches();
+                break;
+            case "lru":
+                initLRUMonitoringForCaches();
+                break;
+            case "lfu":
+                initLFUMonitoringForCaches();
+                break;
+            case "fifo":
+                initFIFOMonitoringForCaches();
+                break;
+            case "rr":
+                initRRMonitoringForCaches();
+                break;
+            case "sizeBased":
+                initSizeBasedEvictionMonitoringForCaches();
+                break;
+            default:
+                throw new RuntimeException("Invalid Eviction Policy Mentioned!!!");
+        }
+    }
+
+    private Collection<JavaCache<? super Serializable, ?>> checkIfInitialized(String policy) {
+        return null;
     }
 
 
-    private void initTTLMonitoringForCaches(Collection<JavaCache<? super Serializable,?>> cacheCollection){
-        DaemonFactory.getInstance().startTTLPolicyMonitoring(cacheCollection);
+    private static Collection<JavaCache<? super Serializable,?>> initTTLMonitoringForCaches(){
+        ttlCaches = new ArrayList<>();
+        DaemonFactory.getInstance().startTTLPolicyMonitoring(ttlCaches);
+        return ttlCaches;
     }
 
-    private void initLRUMonitoringForCaches(Collection<JavaCache<? super Serializable,?>> cacheCollection){
-        DaemonFactory.getInstance().startLRUPolicyMonitoring(cacheCollection);
+    private static void initLRUMonitoringForCaches(){
+        lruCaches = new ArrayList<>();
+        DaemonFactory.getInstance().startLRUPolicyMonitoring(lruCaches);
     }
 
-    private void initFIFOMonitoringForCaches(Collection<JavaCache<? super Serializable,?>> cacheCollection){
-        DaemonFactory.getInstance().startFIFOPolicyMonitoring(cacheCollection);
+    private static void initFIFOMonitoringForCaches(){
+        fifoCaches = new ArrayList<>();
+        DaemonFactory.getInstance().startFIFOPolicyMonitoring(fifoCaches);
     }
 
-    private void initLFUMonitoringForCaches(Collection<JavaCache<? super Serializable,?>> cacheCollection){
-        DaemonFactory.getInstance().startLFUPolicyMonitoring(cacheCollection);
+    private static void initLFUMonitoringForCaches(){
+        lfuCaches = new ArrayList<>();
+        DaemonFactory.getInstance().startLFUPolicyMonitoring(lfuCaches);
     }
 
-    private void initRRMonitoringForCaches(Collection<JavaCache<? super Serializable,?>> cacheCollection){
-        DaemonFactory.getInstance().startRRPolicyMonitoring(cacheCollection);
+    private static void initRRMonitoringForCaches(){
+        rrCaches = new ArrayList<>();
+        DaemonFactory.getInstance().startRRPolicyMonitoring(rrCaches);
     }
 
-    private void initSizeBasedEvictionMonitoringForCaches(Collection<JavaCache<? super Serializable,?>> cacheCollection){
-        DaemonFactory.getInstance().startSizeBasedEvictionPolicyMonitoring(cacheCollection);
+    private static void initSizeBasedEvictionMonitoringForCaches(){
+        sizeBasedEvictionCaches = new ArrayList<>();
+        DaemonFactory.getInstance().startSizeBasedEvictionPolicyMonitoring(sizeBasedEvictionCaches);
     }
 
 }
