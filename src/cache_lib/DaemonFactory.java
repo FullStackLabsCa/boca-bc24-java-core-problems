@@ -2,23 +2,25 @@ package cache_lib;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.concurrent.ConcurrentMap;
+import java.util.Collection;
+import java.util.HashMap;
 
-public class DaemonFactory<K,V> {
+public class DaemonFactory {
 
-    public Thread ttlDaemonPolicy(ConcurrentMap<K,TTL> ttlManagement, ConcurrentMap<K,V> cache){
+    public Thread ttlPolicyMonitorProvider(Collection<HashMap<?, DataEntry<?, ?>>> cacheCollection) {
         Thread daemonThread = new Thread(() -> {
             while (true) {
-                System.out.println("My Daemon thread running...");
-                ttlManagement.keySet().iterator().forEachRemaining(
-                        key -> {
-                            TTL ttl = ttlManagement.get(key);
-                            Duration duration = Duration.between(ttl.getLastAccessTime(), LocalDateTime.now());
-                            if (duration.getSeconds() > ttl.getTtlDuration()) {
-                                cache.remove(key);
-                                ttlManagement.remove(key);
-                            }
-                        }
+                System.out.println("TTL Daemon thread running...");
+                cacheCollection.iterator().forEachRemaining(
+                        cache -> cache.values().iterator().forEachRemaining(
+                                dataEntry -> {
+                                    long ttl = dataEntry.getTtlDuration();
+                                    Duration duration = Duration.between(dataEntry.getLastAccessTime(), LocalDateTime.now());
+                                    if (duration.getSeconds() > ttl) {
+                                        cache.remove(dataEntry.getKey());
+                                    }
+                                }
+                        )
                 );
             }
         });
