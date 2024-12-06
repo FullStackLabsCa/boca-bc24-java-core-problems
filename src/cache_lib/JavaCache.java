@@ -17,7 +17,7 @@ public class JavaCache<K,V> implements CacheLibrary<K, V> {
 
     @Override
     public void put(K key, V value){
-        DataEntry entry = DataEntry.builder()
+        DataEntry<K, V> entry = DataEntry.<K,V>builder()
                 .creationTime(LocalDateTime.now())
                 .lastAccessTime(LocalDateTime.now())
                 .build();
@@ -27,7 +27,7 @@ public class JavaCache<K,V> implements CacheLibrary<K, V> {
 
     @Override
     public void put(K key, V value, long ttlDuration){
-        DataEntry entry = DataEntry.builder()
+        DataEntry<K,V> entry = DataEntry.<K,V>builder()
                 .ttlDuration(ttlDuration)
                 .creationTime(LocalDateTime.now())
                 .lastAccessTime(LocalDateTime.now())
