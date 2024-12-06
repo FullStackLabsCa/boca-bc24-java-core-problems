@@ -3,6 +3,7 @@ package cache_lib;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.Set;
 import java.util.concurrent.*;
 
@@ -44,6 +45,10 @@ public class JavaCache<K,V> implements CacheLibrary<K, V> {
         dataStorage.put(key, dataEntry);
 
         return value;
+    }
+
+    public Collection<DataEntry<K, V>> getValues(){
+        return dataStorage.values();
     }
 
     @Override
