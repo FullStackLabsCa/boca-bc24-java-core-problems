@@ -5,10 +5,6 @@ import java.util.Collection;
 
 public class CacheFactory {
 
-    // This factory maintains a collection of JavaObjects with Certain Policy
-    /*
-    * */
-
     /**
      * it create a given cache object
      * also maintain the cache object references
@@ -16,6 +12,14 @@ public class CacheFactory {
      * Dameon can get list of all caches managed/maintain and perform the house cleaning
      *
      */
+
+    private static Collection<JavaCache<? super Serializable,?>> ttlCaches;
+    private static Collection<JavaCache<? super Serializable,?>> lruCaches;
+    private static Collection<JavaCache<? super Serializable,?>> fifoCaches;
+    private static Collection<JavaCache<? super Serializable,?>> lfuCaches;
+    private static Collection<JavaCache<? super Serializable,?>> rrCaches;
+    private static Collection<JavaCache<? super Serializable,?>> sizeBasedEvictionCaches;
+
 
     /**
      *  factory of creating different tyoe of cache
