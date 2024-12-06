@@ -7,9 +7,7 @@ import java.util.Set;
 import java.util.concurrent.*;
 
 public class JavaCache<K,V> implements CacheLibrary<K, V> {
-    private final ConcurrentHashMap<K, V> dataStorage = new ConcurrentHashMap<>();
-    private final ConcurrentHashMap<K, TTL> ttlManagement = new ConcurrentHashMap<>();
-    private static final long DEFAULT_TTL_DURATION = 60;
+    private final ConcurrentHashMap<K, DataEntry<K,V>> dataStorage = new ConcurrentHashMap<>();
     @Getter
     private final String evictionPolicy;
 
@@ -19,33 +17,31 @@ public class JavaCache<K,V> implements CacheLibrary<K, V> {
 
     @Override
     public void put(K key, V value){
-        dataStorage.put(key, value);
-        TTL ttl = TTL.builder()
-                .ttlDuration(DEFAULT_TTL_DURATION)
+        DataEntry entry = DataEntry.builder()
                 .creationTime(LocalDateTime.now())
                 .lastAccessTime(LocalDateTime.now())
                 .build();
-        ttlManagement.put(key, ttl);
+
+        dataStorage.put(key, entry);
     }
 
     @Override
     public void put(K key, V value, long ttlDuration){
-        dataStorage.put(key, value);
-        TTL ttl = TTL.builder()
+        DataEntry entry = DataEntry.builder()
                 .ttlDuration(ttlDuration)
                 .creationTime(LocalDateTime.now())
                 .lastAccessTime(LocalDateTime.now())
                 .build();
-        ttlManagement.put(key, ttl);
+        dataStorage.put(key, entry);
     }
 
     @Override
     public V get(K key){
-        V value = dataStorage.get(key);
+        DataEntry<K, V> dataEntry = dataStorage.get(key);
+        V value = dataEntry.getValue();
 
-        TTL ttl = ttlManagement.get(key);
-        ttl.setLastAccessTime(LocalDateTime.now());
-        ttlManagement.put(key, ttl);
+        dataEntry.setLastAccessTime(LocalDateTime.now());
+        dataStorage.put(key, dataEntry);
 
         return value;
     }
@@ -56,7 +52,6 @@ public class JavaCache<K,V> implements CacheLibrary<K, V> {
 
         if(dataStorage.containsKey(key)){
             dataStorage.remove(key);
-            ttlManagement.remove(key);
             successState = true;
         }
 
@@ -71,7 +66,6 @@ public class JavaCache<K,V> implements CacheLibrary<K, V> {
     @Override
     public void clear(){
         dataStorage.clear();
-        ttlManagement.clear();
     }
 
     @Override
