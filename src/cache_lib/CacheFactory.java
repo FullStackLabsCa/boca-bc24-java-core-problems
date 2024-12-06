@@ -5,6 +5,13 @@ import java.util.Collection;
 
 public class CacheFactory {
 
+    private static CacheFactory instance;
+
+    public static synchronized CacheFactory getInstance() {
+        if (instance == null) instance = new CacheFactory();
+        return instance;
+    }
+
     /**
      * it create a given cache object
      * also maintain the cache object references
@@ -28,6 +35,9 @@ public class CacheFactory {
      *  - LFU
      *
      */
+
+
+
     private void initTTLMonitoringForCaches(Collection<JavaCache<? super Serializable,?>> cacheCollection){
         DaemonFactory.getInstance().startTTLPolicyMonitoring(cacheCollection);
     }
