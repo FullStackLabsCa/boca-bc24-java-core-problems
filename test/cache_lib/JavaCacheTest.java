@@ -1,10 +1,7 @@
 package cache_lib;
 
-
 import org.junit.Before;
 import org.junit.Test;
-
-import java.sql.PreparedStatement;
 
 import static org.junit.Assert.assertEquals;
 
@@ -20,14 +17,14 @@ public class JavaCacheTest {
     @Test
     public void putTest(){
         assertEquals(0, cache.size());
-        cache.put("akshat", "singla");
+        cache.put("key", "value");
         assertEquals(1, cache.size());
     }
 
     @Test
     public void putWithDurationTest(){
         assertEquals(0, cache.size());
-        cache.put("akshat", "singla",10);
+        cache.put("key", "value",10);
         assertEquals(1, cache.size());
     }
 
