@@ -3,12 +3,12 @@ package cache_lib;
 import java.io.Serializable;
 import java.util.Collection;
 
-public class CacheFactory {
+public class CacheManager {
 
-    private static CacheFactory instance;
+    private static CacheManager instance;
 
-    public static synchronized CacheFactory getInstance() {
-        if (instance == null) instance = new CacheFactory();
+    public static synchronized CacheManager getInstance() {
+        if (instance == null) instance = new CacheManager();
         return instance;
     }
 
@@ -35,7 +35,9 @@ public class CacheFactory {
      *  - LFU
      *
      */
-
+    public void initCacheManagement(JavaCache<? super Serializable, ?> javaCache){
+        //TODO
+    }
 
 
     private void initTTLMonitoringForCaches(Collection<JavaCache<? super Serializable,?>> cacheCollection){
