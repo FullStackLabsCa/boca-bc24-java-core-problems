@@ -15,6 +15,7 @@ public class JavaCache<K extends Serializable,V> implements CacheLibrary<K, V> {
 
     public JavaCache(String evictionPolicy) {
         this.evictionPolicy = evictionPolicy;
+        CacheManager.getInstance().initCacheManagement(JavaCache.this);
     }
 
     @Override

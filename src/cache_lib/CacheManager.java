@@ -35,7 +35,7 @@ public class CacheManager {
      *  - LFU
      *
      */
-    public void initCacheManagement(JavaCache<? super Serializable, ?> javaCache){
+    public void initCacheManagement(JavaCache<?, ?> javaCache){
         //TODO
     }
 
