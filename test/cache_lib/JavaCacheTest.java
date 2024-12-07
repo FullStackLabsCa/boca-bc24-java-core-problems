@@ -4,8 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 public class JavaCacheTest {
 
@@ -124,22 +123,29 @@ public class JavaCacheTest {
 
     @Test
     public void removeNonExistingKeyTest(){
-
+        assertFalse(ttlCache.remove("nonExistingKey"));
     }
 
     @Test
     public void removeNullKeyTest(){
-
+        assertFalse(ttlCache.remove(null));
     }
 
     @Test
     public void removeExistingKeyTest(){
+        assertEquals(0, ttlCache.size());
+        ttlCache.put("key", "value");
+        assertEquals(1, ttlCache.size());
 
+        assertTrue(ttlCache.remove("key"));
+        assertEquals(0, ttlCache.size());
     }
 
     @Test
-    public void removeExpiredKeyTest(){
-
+    public void removeExpiredKeyTest() throws InterruptedException {
+        ttlCache.put("key", "value", 1);
+        Thread.sleep(2000);
+        assertFalse(ttlCache.remove("key"));
     }
 
     @Test

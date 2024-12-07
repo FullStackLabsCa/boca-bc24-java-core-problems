@@ -69,7 +69,7 @@ public class JavaCache<K extends Serializable,V> implements CacheLibrary<K, V> {
     public boolean remove(K key){
         boolean successState = false;
 
-        if(dataStorage.containsKey(key)){
+        if(key!=null && dataStorage.containsKey(key)){
             dataStorage.remove(key);
             successState = true;
         }
