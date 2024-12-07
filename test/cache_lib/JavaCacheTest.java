@@ -4,6 +4,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Set;
+
 import static org.junit.Assert.*;
 
 public class JavaCacheTest {
@@ -190,11 +192,20 @@ public class JavaCacheTest {
 
     @Test
     public void keysTestWithNoElements(){
-
+        Set<String> keys = ttlCache.keys();
+        assertEquals(0, keys.size());
     }
 
     @Test
     public void keysTest(){
+        ttlCache.put("key", "value");
+        ttlCache.put("key1", "value");
 
+        Set<String> keys = ttlCache.keys();
+        assertEquals(2, keys.size());
+
+        assertTrue(keys.contains("key"));
+        assertTrue(keys.contains("key1"));
+        assertFalse(keys.contains("key2"));
     }
 }
