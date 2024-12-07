@@ -150,27 +150,42 @@ public class JavaCacheTest {
 
     @Test
     public void sizeTestWithNoElements(){
-
+        assertEquals(0, ttlCache.size());
     }
 
     @Test
     public void sizeTest(){
-
+        assertEquals(0, ttlCache.size());
+        ttlCache.put("key", "value");
+        ttlCache.put("key1", "value");
+        assertEquals(2, ttlCache.size());
     }
 
     @Test
-    public void sizeBeforeTTLExpirationTest(){
-
+    public void sizeBeforeTTLExpirationTest() throws InterruptedException {
+        assertEquals(0, ttlCache.size());
+        ttlCache.put("key", "value", 2);
+        Thread.sleep(1000);
+        assertEquals(1, ttlCache.size());
     }
 
     @Test
-    public void sizeAfterTTLExpirationTest(){
-
+    public void sizeAfterTTLExpirationTest() throws InterruptedException {
+        assertEquals(0, ttlCache.size());
+        ttlCache.put("key", "value", 2);
+        Thread.sleep(3000);
+        assertEquals(0, ttlCache.size());
     }
 
     @Test
     public void clearTest(){
+        ttlCache.put("key", "value");
+        ttlCache.put("key1", "value");
+        ttlCache.put("key2", "value");
 
+        assertEquals(3, ttlCache.size());
+        ttlCache.clear();
+        assertEquals(0, ttlCache.size());
     }
 
     @Test
