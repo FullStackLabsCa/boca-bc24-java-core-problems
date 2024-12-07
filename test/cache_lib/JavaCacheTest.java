@@ -1,5 +1,6 @@
 package cache_lib;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -7,70 +8,93 @@ import static org.junit.Assert.assertEquals;
 
 public class JavaCacheTest {
 
-    JavaCache<String, String> cache = new JavaCache<>("ttl");
+    JavaCache<String, String> ttlCache;
 
     @Before
     public void setUp(){
-        cache.clear();
+        ttlCache = new JavaCache<>("ttl");
+    }
+
+    @After
+    public void clean(){
+        ttlCache.clear();
+        CacheManager.getInstance().resetCacheManager();
     }
 
     @Test
     public void putTest(){
-        assertEquals(0, cache.size());
-        cache.put("key", "value");
-        assertEquals(1, cache.size());
+        assertEquals(0, ttlCache.size());
+        ttlCache.put("key", "value");
+        assertEquals(1, ttlCache.size());
     }
 
     @Test
     public void putWithDurationTest(){
-        assertEquals(0, cache.size());
-        cache.put("key", "value",10);
-        assertEquals(1, cache.size());
+        assertEquals(0, ttlCache.size());
+        ttlCache.put("key", "value",10);
+        assertEquals(1, ttlCache.size());
     }
 
     @Test
-    public void putTestRemovalAfterTTL(){
-
+    public void putTestRemovalAfterTTL() throws InterruptedException {
+        assertEquals(0, ttlCache.size());
+        ttlCache.put("key", "value");
+        assertEquals(1, ttlCache.size());
+        Thread.sleep(6000);
+        assertEquals(0, ttlCache.size());
     }
 
     @Test
-    public void putWithDurationTestRemovalAfterTTL(){
-
+    public void putWithDurationTestRemovalAfterTTL() throws InterruptedException {
+        assertEquals(0, ttlCache.size());
+        ttlCache.put("key", "value",1);
+        assertEquals(1, ttlCache.size());
+        Thread.sleep(3000);
+        assertEquals(0, ttlCache.size());
     }
 
     @Test
     public void putTestTTLResetAfterRead(){
-
+        //TODO
     }
 
     @Test
     public void putNullKeyTest(){
-
+        assertEquals(0, ttlCache.size());
+        ttlCache.put(null, "value");
+        assertEquals(0, ttlCache.size());
     }
 
     @Test
     public void putNullValueTest(){
-
+        assertEquals(0, ttlCache.size());
+        ttlCache.put("key1", null);
+        assertEquals(1, ttlCache.size());
     }
 
     @Test
     public void putNullKeyAndValueTest(){
-
-    }
-
-    @Test
-    public void putNullKeyMultipleTimesTest(){
-
+        assertEquals(0, ttlCache.size());
+        ttlCache.put(null, null);
+        assertEquals(0, ttlCache.size());
     }
 
     @Test
     public void putNullValueMultipleTimesTest(){
-
+        assertEquals(0, ttlCache.size());
+        ttlCache.put("key1", null);
+        assertEquals(1, ttlCache.size());
+        ttlCache.put("key2", null);
+        assertEquals(2, ttlCache.size());
     }
 
     @Test
     public void putSameKeyMultipleTimesTest(){
-
+        assertEquals(0, ttlCache.size());
+        ttlCache.put("key1", "value1");
+        assertEquals(1, ttlCache.size());
+        ttlCache.put("key1", "value2");
+        assertEquals(1, ttlCache.size());
     }
 
     @Test

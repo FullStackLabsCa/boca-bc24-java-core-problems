@@ -21,15 +21,17 @@ public class JavaCache<K extends Serializable,V> implements CacheLibrary<K, V> {
 
     @Override
     public void put(K key, V value){
-        DataEntry<K, V> entry = DataEntry.<K,V>builder()
-                .key(key)
-                .value(value)
-                .ttlDuration(DEFAULT_TTL_DURATION)
-                .creationTime(LocalDateTime.now())
-                .lastAccessTime(LocalDateTime.now())
-                .build();
+        if(key != null) {
+            DataEntry<K, V> entry = DataEntry.<K, V>builder()
+                    .key(key)
+                    .value(value)
+                    .ttlDuration(DEFAULT_TTL_DURATION)
+                    .creationTime(LocalDateTime.now())
+                    .lastAccessTime(LocalDateTime.now())
+                    .build();
 
-        dataStorage.put(key, entry);
+            dataStorage.put(key, entry);
+        }
     }
 
     @Override
