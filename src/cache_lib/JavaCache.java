@@ -49,12 +49,14 @@ public class JavaCache<K extends Serializable,V> implements CacheLibrary<K, V> {
     @Override
     public V get(K key){
         V value = null;
-        DataEntry<K, V> dataEntry = dataStorage.get(key);
+        if(key != null) {
+            DataEntry<K, V> dataEntry = dataStorage.get(key);
 
-        if(dataEntry != null) {
-            value = dataEntry.getValue();
-            dataEntry.setLastAccessTime(LocalDateTime.now());
-            dataStorage.put(key, dataEntry);
+            if (dataEntry != null) {
+                value = dataEntry.getValue();
+                dataEntry.setLastAccessTime(LocalDateTime.now());
+                dataStorage.put(key, dataEntry);
+            }
         }
         return value;
     }

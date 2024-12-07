@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class JavaCacheTest {
 
@@ -99,22 +100,26 @@ public class JavaCacheTest {
 
     @Test
     public void getNonExistentKeyTest(){
-
+        assertNull(ttlCache.get("nonExistentKey"));
     }
 
     @Test
     public void getExistingKeyTest(){
-
+        ttlCache.put("key", "value");
+        assertEquals("value", ttlCache.get("key"));
     }
 
     @Test
     public void getNullKeyTest(){
-
+        assertNull(ttlCache.get(null));
     }
 
     @Test
-    public void getResetTTLTest(){
-
+    public void getResetTTLTest() throws InterruptedException {
+        ttlCache.put("key", "value", 1);
+        assertEquals("value", ttlCache.get("key"));
+        Thread.sleep(2000);
+        assertNull(ttlCache.get("key"));
     }
 
     @Test
