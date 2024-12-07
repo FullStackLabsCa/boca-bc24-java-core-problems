@@ -3,7 +3,6 @@ package cache_lib;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 
 public class CacheManager {
 
@@ -23,7 +22,7 @@ public class CacheManager {
     public void initCacheManagement(JavaCache<Serializable, ?> javaCache){
         String policy = javaCache.getEvictionPolicy();
         Collection<JavaCache<? super Serializable,?>> cacheCollection = checkIfInitialized(policy);
-        if(cacheCollection.isEmpty()) cacheCollection.add(javaCache);
+        if(cacheCollection != null) cacheCollection.add(javaCache);
         else {
             Collection<JavaCache<? super Serializable, ?>> javaCaches = initPolicy(policy);
             javaCaches.add(javaCache);
@@ -63,9 +62,9 @@ public class CacheManager {
                 if(sizeBasedEvictionCaches!=null) return sizeBasedEvictionCaches;
                 break;
             default:
-                return Collections.emptyList();
+                return null;
         }
-        return Collections.emptyList();
+        return null;
     }
 
 
