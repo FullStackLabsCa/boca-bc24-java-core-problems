@@ -20,7 +20,7 @@ public class CacheManager {
         return instance;
     }
 
-    public void initCacheManagement(JavaCache<?, ?> javaCache){
+    public void initCacheManagement(JavaCache<Serializable, ?> javaCache){
         String policy = javaCache.getEvictionPolicy();
         Collection<JavaCache<? super Serializable,?>> cacheCollection = checkIfInitialized(policy);
         if(cacheCollection.isEmpty()) cacheCollection.add(javaCache);
