@@ -104,4 +104,14 @@ public class CacheManager {
         return sizeBasedEvictionCaches;
     }
 
+    public void resetCacheManager(){
+        ttlCaches=null;
+        lruCaches=null;
+        lfuCaches=null;
+        sizeBasedEvictionCaches=null;
+        fifoCaches=null;
+        rrCaches=null;
+
+    }
+
 }

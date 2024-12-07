@@ -19,7 +19,6 @@ public class DaemonFactory {
     public void startTTLPolicyMonitoring(Collection<JavaCache<? super Serializable,?>> cacheCollection) {
         Thread ttlDaemonThread = new Thread(() -> {
             while (true) {
-                System.out.println("TTL Daemon thread running...");
                 cacheCollection.iterator().forEachRemaining(
                         javaCache -> javaCache.getValues().iterator().forEachRemaining(
                                 dataEntry -> {

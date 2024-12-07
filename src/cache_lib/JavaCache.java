@@ -12,6 +12,7 @@ public class JavaCache<K extends Serializable,V> implements CacheLibrary<K, V> {
     private final ConcurrentHashMap<K, DataEntry<K,V>> dataStorage = new ConcurrentHashMap<>();
     @Getter
     private final String evictionPolicy;
+    private static final long DEFAULT_TTL_DURATION = 5;
 
     public JavaCache(String evictionPolicy) {
         this.evictionPolicy = evictionPolicy;
@@ -23,6 +24,7 @@ public class JavaCache<K extends Serializable,V> implements CacheLibrary<K, V> {
         DataEntry<K, V> entry = DataEntry.<K,V>builder()
                 .key(key)
                 .value(value)
+                .ttlDuration(DEFAULT_TTL_DURATION)
                 .creationTime(LocalDateTime.now())
                 .lastAccessTime(LocalDateTime.now())
                 .build();
