@@ -3,16 +3,20 @@ package cache_lib;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.Set;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 
 class JavaCacheTest {
 
-    JavaCache<String, String> ttlCache;
-    JavaCache<String, String> lruCache;
+    static JavaCache<String, String> ttlCache;
+    static JavaCache<String, String> lruCache;
 
     @BeforeEach
     void setUp(){
@@ -23,14 +27,25 @@ class JavaCacheTest {
     @AfterEach
     void clean(){
         ttlCache.clear();
+        lruCache.clear();
         CacheManager.getInstance().resetCacheManager();
     }
 
-    @Test
-    void putTest(){
-        assertEquals(0, ttlCache.size());
-        ttlCache.put("key", "value");
-        assertEquals(1, ttlCache.size());
+    static Stream<Arguments> cacheProvider(){
+        JavaCache<String, String> localTtlCache = new JavaCache<>("ttl");
+        JavaCache<String, String> localLruCache = new JavaCache<>("lru");
+        return Stream.of(
+                Arguments.of(localTtlCache),
+                Arguments.of(localLruCache)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("cacheProvider")
+    void putTest(JavaCache<String, String> javaCache){
+        assertEquals(0, javaCache.size());
+        javaCache.put("key", "value");
+        assertEquals(1, javaCache.size());
     }
 
     @Test
