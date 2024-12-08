@@ -21,7 +21,7 @@ public class JavaCache<K extends Serializable,V> implements CacheLibrary<K, V> {
     }
 
     private static void configureTTLDuration(String evictionPolicy){
-        if ("ttl".equals(evictionPolicy)) defaultTtlDuration = 5;
+        if ("ttl".equals(evictionPolicy)) defaultTtlDuration = 10;
         else defaultTtlDuration = -1;
     }
 

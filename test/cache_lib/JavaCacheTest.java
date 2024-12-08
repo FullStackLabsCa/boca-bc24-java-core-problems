@@ -49,7 +49,7 @@ class JavaCacheTest {
     }
 
     @Test
-    void putWithDurationTest(){
+    void putWithDurationTest_TTL(){
         assertEquals(0, ttlCache.size());
         ttlCache.put("key", "value",10);
         assertEquals(1, ttlCache.size());
@@ -78,43 +78,48 @@ class JavaCacheTest {
         //TODO
     }
 
-    @Test
-    void putNullKeyTest(){
-        assertEquals(0, ttlCache.size());
-        ttlCache.put(null, "value");
-        assertEquals(0, ttlCache.size());
+    @ParameterizedTest
+    @MethodSource("cacheProvider")
+    void putNullKeyTest(JavaCache<String, String> javaCache){
+        assertEquals(0, javaCache.size());
+        javaCache.put(null, "value");
+        assertEquals(0, javaCache.size());
     }
 
-    @Test
-    void putNullValueTest(){
-        assertEquals(0, ttlCache.size());
-        ttlCache.put("key1", null);
-        assertEquals(1, ttlCache.size());
+    @ParameterizedTest
+    @MethodSource("cacheProvider")
+    void putNullValueTest(JavaCache<String, String> javaCache){
+        assertEquals(0, javaCache.size());
+        javaCache.put("key1", null);
+        assertEquals(1, javaCache.size());
     }
 
-    @Test
-    void putNullKeyAndValueTest(){
-        assertEquals(0, ttlCache.size());
-        ttlCache.put(null, null);
-        assertEquals(0, ttlCache.size());
+    @ParameterizedTest
+    @MethodSource("cacheProvider")
+    void putNullKeyAndValueTest(JavaCache<String, String> javaCache){
+        assertEquals(0, javaCache.size());
+        javaCache.put(null, null);
+        assertEquals(0, javaCache.size());
     }
 
-    @Test
-    void putNullValueMultipleTimesTest(){
-        assertEquals(0, ttlCache.size());
-        ttlCache.put("key1", null);
-        assertEquals(1, ttlCache.size());
-        ttlCache.put("key2", null);
-        assertEquals(2, ttlCache.size());
+    @ParameterizedTest
+    @MethodSource("cacheProvider")
+    void putNullValueMultipleTimesTest(JavaCache<String, String> javaCache){
+        assertEquals(0, javaCache.size());
+        javaCache.put("key1", null);
+        assertEquals(1, javaCache.size());
+        javaCache.put("key2", null);
+        assertEquals(2, javaCache.size());
     }
 
-    @Test
-    void putSameKeyMultipleTimesTest(){
-        assertEquals(0, ttlCache.size());
-        ttlCache.put("key1", "value1");
-        assertEquals(1, ttlCache.size());
-        ttlCache.put("key1", "value2");
-        assertEquals(1, ttlCache.size());
+    @ParameterizedTest
+    @MethodSource("cacheProvider")
+    void putSameKeyMultipleTimesTest(JavaCache<String, String> javaCache){
+        assertEquals(0, javaCache.size());
+        javaCache.put("key1", "value1");
+        assertEquals(1, javaCache.size());
+        javaCache.put("key1", "value2");
+        assertEquals(1, javaCache.size());
     }
 
     @Test
