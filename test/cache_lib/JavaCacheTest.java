@@ -122,20 +122,23 @@ class JavaCacheTest {
         assertEquals(1, javaCache.size());
     }
 
-    @Test
-    void getNonExistentKeyTest(){
-        assertNull(ttlCache.get("nonExistentKey"));
+    @ParameterizedTest
+    @MethodSource("cacheProvider")
+    void getNonExistentKeyTest(JavaCache<String, String> javaCache){
+        assertNull(javaCache.get("nonExistentKey"));
     }
 
-    @Test
-    void getExistingKeyTest(){
-        ttlCache.put("key", "value");
-        assertEquals("value", ttlCache.get("key"));
+    @ParameterizedTest
+    @MethodSource("cacheProvider")
+    void getExistingKeyTest(JavaCache<String, String> javaCache){
+        javaCache.put("key", "value");
+        assertEquals("value", javaCache.get("key"));
     }
 
-    @Test
-    void getNullKeyTest(){
-        assertNull(ttlCache.get(null));
+    @ParameterizedTest
+    @MethodSource("cacheProvider")
+    void getNullKeyTest(JavaCache<String, String> javaCache){
+        assertNull(javaCache.get(null));
     }
 
     @Test
@@ -146,24 +149,27 @@ class JavaCacheTest {
         assertNull(ttlCache.get("key"));
     }
 
-    @Test
-    void removeNonExistingKeyTest(){
-        assertFalse(ttlCache.remove("nonExistingKey"));
+    @ParameterizedTest
+    @MethodSource("cacheProvider")
+    void removeNonExistingKeyTest(JavaCache<String, String> javaCache){
+        assertFalse(javaCache.remove("nonExistingKey"));
     }
 
-    @Test
-    void removeNullKeyTest(){
-        assertFalse(ttlCache.remove(null));
+    @ParameterizedTest
+    @MethodSource("cacheProvider")
+    void removeNullKeyTest(JavaCache<String, String> javaCache){
+        assertFalse(javaCache.remove(null));
     }
 
-    @Test
-    void removeExistingKeyTest(){
-        assertEquals(0, ttlCache.size());
-        ttlCache.put("key", "value");
-        assertEquals(1, ttlCache.size());
+    @ParameterizedTest
+    @MethodSource("cacheProvider")
+    void removeExistingKeyTest(JavaCache<String, String> javaCache){
+        assertEquals(0, javaCache.size());
+        javaCache.put("key", "value");
+        assertEquals(1, javaCache.size());
 
-        assertTrue(ttlCache.remove("key"));
-        assertEquals(0, ttlCache.size());
+        assertTrue(javaCache.remove("key"));
+        assertEquals(0, javaCache.size());
     }
 
     @Test
