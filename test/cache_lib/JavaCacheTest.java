@@ -48,36 +48,6 @@ class JavaCacheTest {
         assertEquals(1, javaCache.size());
     }
 
-    @Test
-    void putWithDurationTest_TTL(){
-        assertEquals(0, ttlCache.size());
-        ttlCache.put("key", "value",10);
-        assertEquals(1, ttlCache.size());
-    }
-
-    @Test
-    void putTestRemovalAfterTTL() throws InterruptedException {
-        assertEquals(0, ttlCache.size());
-        ttlCache.put("key", "value");
-        assertEquals(1, ttlCache.size());
-        Thread.sleep(6000);
-        assertEquals(0, ttlCache.size());
-    }
-
-    @Test
-    void putWithDurationTestRemovalAfterTTL() throws InterruptedException {
-        assertEquals(0, ttlCache.size());
-        ttlCache.put("key", "value",1);
-        assertEquals(1, ttlCache.size());
-        Thread.sleep(3000);
-        assertEquals(0, ttlCache.size());
-    }
-
-    @Test
-    void putTestTTLResetAfterRead(){
-        //TODO
-    }
-
     @ParameterizedTest
     @MethodSource("cacheProvider")
     void putNullKeyTest(JavaCache<String, String> javaCache){
@@ -141,14 +111,6 @@ class JavaCacheTest {
         assertNull(javaCache.get(null));
     }
 
-    @Test
-    void getResetTTLTest() throws InterruptedException {
-        ttlCache.put("key", "value", 1);
-        assertEquals("value", ttlCache.get("key"));
-        Thread.sleep(2000);
-        assertNull(ttlCache.get("key"));
-    }
-
     @ParameterizedTest
     @MethodSource("cacheProvider")
     void removeNonExistingKeyTest(JavaCache<String, String> javaCache){
@@ -172,13 +134,6 @@ class JavaCacheTest {
         assertEquals(0, javaCache.size());
     }
 
-    @Test
-    void removeExpiredKeyTest() throws InterruptedException {
-        ttlCache.put("key", "value", 1);
-        Thread.sleep(2000);
-        assertFalse(ttlCache.remove("key"));
-    }
-
     @ParameterizedTest
     @MethodSource("cacheProvider")
     void sizeTestWithNoElements(JavaCache<String, String> javaCache){
@@ -192,22 +147,6 @@ class JavaCacheTest {
         javaCache.put("key", "value");
         javaCache.put("key1", "value");
         assertEquals(2, javaCache.size());
-    }
-
-    @Test
-    void sizeBeforeTTLExpirationTest() throws InterruptedException {
-        assertEquals(0, ttlCache.size());
-        ttlCache.put("key", "value", 2);
-        Thread.sleep(1000);
-        assertEquals(1, ttlCache.size());
-    }
-
-    @Test
-    void sizeAfterTTLExpirationTest() throws InterruptedException {
-        assertEquals(0, ttlCache.size());
-        ttlCache.put("key", "value", 2);
-        Thread.sleep(3000);
-        assertEquals(0, ttlCache.size());
     }
 
     @ParameterizedTest
@@ -241,5 +180,66 @@ class JavaCacheTest {
         assertTrue(keys.contains("key"));
         assertTrue(keys.contains("key1"));
         assertFalse(keys.contains("key2"));
+    }
+
+    @Test
+    void putWithDurationTest_TTL(){
+        assertEquals(0, ttlCache.size());
+        ttlCache.put("key", "value",10);
+        assertEquals(1, ttlCache.size());
+    }
+
+    @Test
+    void putTestRemovalAfterTTL() throws InterruptedException {
+        assertEquals(0, ttlCache.size());
+        ttlCache.put("key", "value");
+        assertEquals(1, ttlCache.size());
+        Thread.sleep(6000);
+        assertEquals(0, ttlCache.size());
+    }
+
+    @Test
+    void putWithDurationTestRemovalAfterTTL() throws InterruptedException {
+        assertEquals(0, ttlCache.size());
+        ttlCache.put("key", "value",1);
+        assertEquals(1, ttlCache.size());
+        Thread.sleep(3000);
+        assertEquals(0, ttlCache.size());
+    }
+
+    @Test
+    void putTestTTLResetAfterRead(){
+        //TODO
+    }
+
+    @Test
+    void getResetTTLTest() throws InterruptedException {
+        ttlCache.put("key", "value", 1);
+        assertEquals("value", ttlCache.get("key"));
+        Thread.sleep(2000);
+        assertNull(ttlCache.get("key"));
+    }
+
+    @Test
+    void removeTTLExpiredKeyTest() throws InterruptedException {
+        ttlCache.put("key", "value", 1);
+        Thread.sleep(2000);
+        assertFalse(ttlCache.remove("key"));
+    }
+
+    @Test
+    void sizeBeforeTTLExpirationTest() throws InterruptedException {
+        assertEquals(0, ttlCache.size());
+        ttlCache.put("key", "value", 2);
+        Thread.sleep(1000);
+        assertEquals(1, ttlCache.size());
+    }
+
+    @Test
+    void sizeAfterTTLExpirationTest() throws InterruptedException {
+        assertEquals(0, ttlCache.size());
+        ttlCache.put("key", "value", 2);
+        Thread.sleep(3000);
+        assertEquals(0, ttlCache.size());
     }
 }
