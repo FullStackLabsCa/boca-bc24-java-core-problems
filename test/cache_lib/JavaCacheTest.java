@@ -179,17 +179,19 @@ class JavaCacheTest {
         assertFalse(ttlCache.remove("key"));
     }
 
-    @Test
-    void sizeTestWithNoElements(){
-        assertEquals(0, ttlCache.size());
+    @ParameterizedTest
+    @MethodSource("cacheProvider")
+    void sizeTestWithNoElements(JavaCache<String, String> javaCache){
+        assertEquals(0, javaCache.size());
     }
 
-    @Test
-    void sizeTest(){
-        assertEquals(0, ttlCache.size());
-        ttlCache.put("key", "value");
-        ttlCache.put("key1", "value");
-        assertEquals(2, ttlCache.size());
+    @ParameterizedTest
+    @MethodSource("cacheProvider")
+    void sizeTest(JavaCache<String, String> javaCache){
+        assertEquals(0, javaCache.size());
+        javaCache.put("key", "value");
+        javaCache.put("key1", "value");
+        assertEquals(2, javaCache.size());
     }
 
     @Test
@@ -208,29 +210,32 @@ class JavaCacheTest {
         assertEquals(0, ttlCache.size());
     }
 
-    @Test
-    void clearTest(){
-        ttlCache.put("key", "value");
-        ttlCache.put("key1", "value");
-        ttlCache.put("key2", "value");
+    @ParameterizedTest
+    @MethodSource("cacheProvider")
+    void clearTest(JavaCache<String, String> javaCache){
+        javaCache.put("key", "value");
+        javaCache.put("key1", "value");
+        javaCache.put("key2", "value");
 
-        assertEquals(3, ttlCache.size());
-        ttlCache.clear();
-        assertEquals(0, ttlCache.size());
+        assertEquals(3, javaCache.size());
+        javaCache.clear();
+        assertEquals(0, javaCache.size());
     }
 
-    @Test
-    void keysTestWithNoElements(){
-        Set<String> keys = ttlCache.keys();
+    @ParameterizedTest
+    @MethodSource("cacheProvider")
+    void keysTestWithNoElements(JavaCache<String, String> javaCache){
+        Set<String> keys = javaCache.keys();
         assertEquals(0, keys.size());
     }
 
-    @Test
-    void keysTest(){
-        ttlCache.put("key", "value");
-        ttlCache.put("key1", "value");
+    @ParameterizedTest
+    @MethodSource("cacheProvider")
+    void keysTest(JavaCache<String, String> javaCache){
+        javaCache.put("key", "value");
+        javaCache.put("key1", "value");
 
-        Set<String> keys = ttlCache.keys();
+        Set<String> keys = javaCache.keys();
         assertEquals(2, keys.size());
 
         assertTrue(keys.contains("key"));
