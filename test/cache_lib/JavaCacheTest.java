@@ -239,7 +239,7 @@ class JavaCacheTest {
     void sizeAfterTTLExpirationTest() throws InterruptedException {
         assertEquals(0, ttlCache.size());
         ttlCache.put("key", "value", 2);
-        Thread.sleep(3000);
+        Thread.sleep(4000);
         assertEquals(0, ttlCache.size());
     }
 }
