@@ -45,6 +45,30 @@ public class DaemonFactory {
          * Once the iteration through all the objects is cleared off, the Key saved is removed!
          * The next iteration starts
          */
+        Thread lruDaemonThread = new Thread(() -> {
+            while (true) {
+                cacheCollection.iterator().forEachRemaining(
+                        javaCache -> {
+                            Duration[] leastAccessTime = new Duration[1];
+                            Serializable[] key = new Serializable[1];
+
+                            // Iterate over data entries in a Cache
+                            javaCache.getValues().iterator().forEachRemaining(
+                                    dataEntry -> {
+                                        Duration duration = Duration.between(dataEntry.getLastAccessTime(), LocalDateTime.now());
+                                        if (leastAccessTime[0] == null || duration.getSeconds() < leastAccessTime[0].getSeconds()) {
+                                            leastAccessTime[0] = duration;
+                                            key[0] = dataEntry.getKey();
+                                        }
+                                    });
+                            javaCache.remove(key);
+                        }
+                );
+            }
+        });
+
+        lruDaemonThread.setDaemon(true);
+        lruDaemonThread.start();
     }
 
     public void startFIFOPolicyMonitoring(Collection<JavaCache<? super Serializable, ?>> cacheCollection) {
