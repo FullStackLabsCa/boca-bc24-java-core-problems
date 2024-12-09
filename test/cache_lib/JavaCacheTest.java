@@ -182,6 +182,7 @@ class JavaCacheTest {
         assertFalse(keys.contains("key2"));
     }
 
+//TTL Specific Tests
     @Test
     void putWithDurationTest_TTL(){
         assertEquals(0, ttlCache.size());
@@ -194,7 +195,7 @@ class JavaCacheTest {
         assertEquals(0, ttlCache.size());
         ttlCache.put("key", "value");
         assertEquals(1, ttlCache.size());
-        Thread.sleep(6000);
+        Thread.sleep(11000);
         assertEquals(0, ttlCache.size());
     }
 
@@ -241,5 +242,26 @@ class JavaCacheTest {
         ttlCache.put("key", "value", 2);
         Thread.sleep(4000);
         assertEquals(0, ttlCache.size());
+    }
+
+//LRU Specific Tests
+    /*
+    Threshold Reached:
+        The Least Accessed one is removed
+            First Added is removed
+            Call Get on first then 2nd one will be removed
+            (Sleep for 1 second and check the size will still be 5) i.e. no elements are removed when below threshold
+        Add 10 and still the same tests as before
+     */
+    @Test
+    void lruRemovalAfterMaxSizeReachedTest() throws InterruptedException {
+        for (int i = 0; i <= 11; i++) {
+            lruCache.put("key".concat(String.valueOf(i)), "value");
+        }
+        Thread.sleep(1000); // Allow Daemon Thread to iterate through
+        assertEquals(10, lruCache.size());
+        assertNull(lruCache.get("key0"));
+        assertNull(lruCache.get("key1"));
+        assertEquals("value", lruCache.get("key2"));
     }
 }

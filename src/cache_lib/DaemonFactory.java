@@ -9,14 +9,14 @@ public class DaemonFactory {
 
     private static DaemonFactory instance;
 
-    public static synchronized DaemonFactory getInstance(){
-        if(instance == null) instance = new DaemonFactory();
+    public static synchronized DaemonFactory getInstance() {
+        if (instance == null) instance = new DaemonFactory();
         return instance;
     }
 
     // every cache key is serialize
     // ? implements Serializable
-    public void startTTLPolicyMonitoring(Collection<JavaCache<? super Serializable,?>> cacheCollection) {
+    public void startTTLPolicyMonitoring(Collection<JavaCache<? super Serializable, ?>> cacheCollection) {
         Thread ttlDaemonThread = new Thread(() -> {
             while (true) {
                 cacheCollection.iterator().forEachRemaining(
@@ -49,21 +49,21 @@ public class DaemonFactory {
             while (true) {
                 cacheCollection.iterator().forEachRemaining(
                         javaCache -> {
-                            Duration[] leastAccessTime = new Duration[1];
-                            Serializable[] key = new Serializable[1];
+                            if (javaCache.size() > javaCache.getDefaultMaxSize()) {
+                                Duration[] leastAccessTime = new Duration[1];
+                                Serializable[] key = new Serializable[1];
 
-                            // Iterate over data entries in a Cache
-                            javaCache.getValues().iterator().forEachRemaining(
-                                    dataEntry -> {
-                                        if (javaCache.size() > dataEntry.getMaxSizePermitted()) {
+                                // Iterate over data entries in a Cache
+                                javaCache.getValues().iterator().forEachRemaining(
+                                        dataEntry -> {
                                             Duration duration = Duration.between(dataEntry.getLastAccessTime(), LocalDateTime.now());
-                                            if (leastAccessTime[0] == null || duration.getSeconds() < leastAccessTime[0].getSeconds()) {
+                                            if (leastAccessTime[0] == null || duration.getNano() < leastAccessTime[0].getNano()) {
                                                 leastAccessTime[0] = duration;
                                                 key[0] = dataEntry.getKey();
                                             }
-                                        }
-                                    });
-                            javaCache.remove(key);
+                                        });
+                                javaCache.remove(key[0]);
+                            }
                         }
                 );
             }

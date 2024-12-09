@@ -8,12 +8,13 @@ import java.util.Collection;
 import java.util.Set;
 import java.util.concurrent.*;
 
-public class JavaCache<K extends Serializable,V> implements CacheLibrary<K, V> {
-    private final ConcurrentHashMap<K, DataEntry<K,V>> dataStorage = new ConcurrentHashMap<>();
+public class JavaCache<K extends Serializable, V> implements CacheLibrary<K, V> {
+    private final ConcurrentHashMap<K, DataEntry<K, V>> dataStorage = new ConcurrentHashMap<>();
     @Getter
     private final String evictionPolicy;
-    private static long defaultTtlDuration;
-    private static long defaultMaxSize;
+    private long defaultTtlDuration;
+    @Getter
+    private long defaultMaxSize;
 
     public JavaCache(String evictionPolicy) {
         this.evictionPolicy = evictionPolicy;
@@ -21,7 +22,7 @@ public class JavaCache<K extends Serializable,V> implements CacheLibrary<K, V> {
         CacheManager.getInstance().initCacheManagement((JavaCache<Serializable, ?>) JavaCache.this);
     }
 
-    private static void configureDefaultProperties(String evictionPolicy){
+    private void configureDefaultProperties(String evictionPolicy) {
         if ("ttl".equals(evictionPolicy)) {
             defaultTtlDuration = 10;
             defaultMaxSize = -1;
@@ -32,8 +33,8 @@ public class JavaCache<K extends Serializable,V> implements CacheLibrary<K, V> {
     }
 
     @Override
-    public void put(K key, V value){
-        if(key != null) {
+    public void put(K key, V value) {
+        if (key != null) {
             DataEntry<K, V> entry = DataEntry.<K, V>builder()
                     .key(key)
                     .value(value)
@@ -48,8 +49,8 @@ public class JavaCache<K extends Serializable,V> implements CacheLibrary<K, V> {
     }
 
     @Override
-    public void put(K key, V value, long ttlDuration){
-        DataEntry<K,V> entry = DataEntry.<K,V>builder()
+    public void put(K key, V value, long ttlDuration) {
+        DataEntry<K, V> entry = DataEntry.<K, V>builder()
                 .key(key)
                 .value(value)
                 .ttlDuration(ttlDuration)
@@ -61,9 +62,9 @@ public class JavaCache<K extends Serializable,V> implements CacheLibrary<K, V> {
     }
 
     @Override
-    public V get(K key){
+    public V get(K key) {
         V value = null;
-        if(key != null) {
+        if (key != null) {
             DataEntry<K, V> dataEntry = dataStorage.get(key);
 
             if (dataEntry != null) {
@@ -75,15 +76,15 @@ public class JavaCache<K extends Serializable,V> implements CacheLibrary<K, V> {
         return value;
     }
 
-    public Collection<DataEntry<K, V>> getValues(){
+    public Collection<DataEntry<K, V>> getValues() {
         return dataStorage.values();
     }
 
     @Override
-    public boolean remove(K key){
+    public boolean remove(K key) {
         boolean successState = false;
 
-        if(key!=null && dataStorage.containsKey(key)){
+        if (key != null && dataStorage.containsKey(key)) {
             dataStorage.remove(key);
             successState = true;
         }
@@ -92,17 +93,17 @@ public class JavaCache<K extends Serializable,V> implements CacheLibrary<K, V> {
     }
 
     @Override
-    public int size(){
+    public int size() {
         return dataStorage.size();
     }
 
     @Override
-    public void clear(){
+    public void clear() {
         dataStorage.clear();
     }
 
     @Override
-    public Set<K> keys(){
+    public Set<K> keys() {
         return dataStorage.keySet();
     }
 }
