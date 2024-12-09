@@ -74,7 +74,7 @@ public class DaemonFactory {
     }
 
     public void startFIFOPolicyMonitoring(Collection<JavaCache<? super Serializable, ?>> cacheCollection) {
-
+        //Optional
     }
 
     public void startLFUPolicyMonitoring(Collection<JavaCache<? super Serializable, ?>> cacheCollection) {
@@ -82,10 +82,10 @@ public class DaemonFactory {
     }
 
     public void startRRPolicyMonitoring(Collection<JavaCache<? super Serializable, ?>> cacheCollection) {
-
+        //Optional
     }
 
     public void startSizeBasedEvictionPolicyMonitoring(Collection<JavaCache<? super Serializable, ?>> cacheCollection) {
-
+        //Optional
     }
 }

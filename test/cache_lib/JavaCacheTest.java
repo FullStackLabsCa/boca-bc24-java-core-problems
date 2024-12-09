@@ -209,8 +209,12 @@ class JavaCacheTest {
     }
 
     @Test
-    void putTestTTLResetAfterRead(){
-        //TODO
+    void TTLResetAfterReadTest() throws InterruptedException {
+        ttlCache.put("key", "value", 2);
+        Thread.sleep(1000);
+        ttlCache.get("key");
+        Thread.sleep(1000);
+        assertEquals(1, ttlCache.size());
     }
 
     @Test
@@ -245,13 +249,6 @@ class JavaCacheTest {
     }
 
 //LRU Specific Tests
-    /*
-    Threshold Reached:
-        The Least Accessed one is removed
-            First Added is removed
-            Call Get on first then 2nd one will be removed
-            (Sleep for 1 second and check the size will still be 5) i.e. no elements are removed when below threshold
-     */
     @Test
     void lruRemovalAfterMaxSizeReachedTest() throws InterruptedException {
         //SetUp
