@@ -251,22 +251,33 @@ class JavaCacheTest {
             First Added is removed
             Call Get on first then 2nd one will be removed
             (Sleep for 1 second and check the size will still be 5) i.e. no elements are removed when below threshold
-        Add 10 and still the same tests as before
      */
     @Test
     void lruRemovalAfterMaxSizeReachedTest() throws InterruptedException {
+        //SetUp
         for (int i = 0; i <= 11; i++) {
             lruCache.put("key".concat(String.valueOf(i)), "value");
         }
         Thread.sleep(1000); // Allow Daemon Thread to iterate through
+
+        //Assertions
+        //Size
         assertEquals(10, lruCache.size());
+        //Get
         assertNull(lruCache.get("key0"));
         assertNull(lruCache.get("key1"));
         assertEquals("value", lruCache.get("key2"));
+        //Keys
+        assertTrue(lruCache.keys().contains("key3"));
+        assertTrue(lruCache.keys().contains("key10"));
+        assertFalse(lruCache.keys().contains("key0"));
+        assertFalse(lruCache.keys().contains("key1"));
+        //Remove
     }
 
     @Test
     void lruRemovalAfterMaxSizeReachedWithGetUpdateTest() throws InterruptedException {
+        //SetUp
         for (int i = 0; i <= 9; i++) {
             lruCache.put("key".concat(String.valueOf(i)), "value");
         }
@@ -275,12 +286,23 @@ class JavaCacheTest {
         lruCache.put("key10", "value");
         lruCache.put("key11", "value");
         Thread.sleep(1000); // Allow Daemon Thread to iterate through
+
+        //Assertions
+        //Size
         assertEquals(10, lruCache.size());
+        //Get
         assertNotNull(lruCache.get("key0"));
         assertNotNull(lruCache.get("key1"));
         assertNull(lruCache.get("key2"));
         assertNull(lruCache.get("key3"));
         assertEquals("value", lruCache.get("key1"));
         assertEquals("value", lruCache.get("key0"));
+        //Keys
+        assertTrue(lruCache.keys().contains("key0"));
+        assertTrue(lruCache.keys().contains("key1"));
+        assertTrue(lruCache.keys().contains("key10"));
+        assertFalse(lruCache.keys().contains("key2"));
+        assertFalse(lruCache.keys().contains("key3"));
+        //Remove
     }
 }
