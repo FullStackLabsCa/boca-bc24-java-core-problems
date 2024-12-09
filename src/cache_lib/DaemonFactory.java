@@ -55,7 +55,7 @@ public class DaemonFactory {
                             // Iterate over data entries in a Cache
                             javaCache.getValues().iterator().forEachRemaining(
                                     dataEntry -> {
-                                        if(javaCache.size() >= dataEntry.getMaxSizePermitted()) {
+                                        if (javaCache.size() > dataEntry.getMaxSizePermitted()) {
                                             Duration duration = Duration.between(dataEntry.getLastAccessTime(), LocalDateTime.now());
                                             if (leastAccessTime[0] == null || duration.getSeconds() < leastAccessTime[0].getSeconds()) {
                                                 leastAccessTime[0] = duration;

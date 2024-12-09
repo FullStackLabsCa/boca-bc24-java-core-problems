@@ -7,12 +7,12 @@ import java.util.Collection;
 public class CacheManager {
 
     private static CacheManager instance;
-    private static Collection<JavaCache<? super Serializable, ?>> ttlCaches;
-    private static Collection<JavaCache<? super Serializable, ?>> lruCaches;
-    private static Collection<JavaCache<? super Serializable, ?>> fifoCaches;
-    private static Collection<JavaCache<? super Serializable, ?>> lfuCaches;
-    private static Collection<JavaCache<? super Serializable, ?>> rrCaches;
-    private static Collection<JavaCache<? super Serializable, ?>> sizeBasedEvictionCaches;
+    private volatile Collection<JavaCache<? super Serializable, ?>> ttlCaches;
+    private volatile Collection<JavaCache<? super Serializable, ?>> lruCaches;
+    private volatile Collection<JavaCache<? super Serializable, ?>> fifoCaches;
+    private volatile Collection<JavaCache<? super Serializable, ?>> lfuCaches;
+    private volatile Collection<JavaCache<? super Serializable, ?>> rrCaches;
+    private volatile Collection<JavaCache<? super Serializable, ?>> sizeBasedEvictionCaches;
 
     public static synchronized CacheManager getInstance() {
         if (instance == null) instance = new CacheManager();
@@ -51,37 +51,37 @@ public class CacheManager {
     }
 
 
-    private static Collection<JavaCache<? super Serializable, ?>> initTTLMonitoringForCaches() {
+    private Collection<JavaCache<? super Serializable, ?>> initTTLMonitoringForCaches() {
         ttlCaches = new ArrayList<>();
         DaemonFactory.getInstance().startTTLPolicyMonitoring(ttlCaches);
         return ttlCaches;
     }
 
-    private static Collection<JavaCache<? super Serializable, ?>> initLRUMonitoringForCaches() {
+    private Collection<JavaCache<? super Serializable, ?>> initLRUMonitoringForCaches() {
         lruCaches = new ArrayList<>();
         DaemonFactory.getInstance().startLRUPolicyMonitoring(lruCaches);
         return lruCaches;
     }
 
-    private static Collection<JavaCache<? super Serializable, ?>> initFIFOMonitoringForCaches() {
+    private Collection<JavaCache<? super Serializable, ?>> initFIFOMonitoringForCaches() {
         fifoCaches = new ArrayList<>();
         DaemonFactory.getInstance().startFIFOPolicyMonitoring(fifoCaches);
         return fifoCaches;
     }
 
-    private static Collection<JavaCache<? super Serializable, ?>> initLFUMonitoringForCaches() {
+    private Collection<JavaCache<? super Serializable, ?>> initLFUMonitoringForCaches() {
         lfuCaches = new ArrayList<>();
         DaemonFactory.getInstance().startLFUPolicyMonitoring(lfuCaches);
         return lfuCaches;
     }
 
-    private static Collection<JavaCache<? super Serializable, ?>> initRRMonitoringForCaches() {
+    private Collection<JavaCache<? super Serializable, ?>> initRRMonitoringForCaches() {
         rrCaches = new ArrayList<>();
         DaemonFactory.getInstance().startRRPolicyMonitoring(rrCaches);
         return rrCaches;
     }
 
-    private static Collection<JavaCache<? super Serializable, ?>> initSizeBasedEvictionMonitoringForCaches() {
+    private Collection<JavaCache<? super Serializable, ?>> initSizeBasedEvictionMonitoringForCaches() {
         sizeBasedEvictionCaches = new ArrayList<>();
         DaemonFactory.getInstance().startSizeBasedEvictionPolicyMonitoring(sizeBasedEvictionCaches);
         return sizeBasedEvictionCaches;
