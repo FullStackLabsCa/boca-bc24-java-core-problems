@@ -13,16 +13,22 @@ public class JavaCache<K extends Serializable,V> implements CacheLibrary<K, V> {
     @Getter
     private final String evictionPolicy;
     private static long defaultTtlDuration;
+    private static long defaultMaxSize;
 
     public JavaCache(String evictionPolicy) {
         this.evictionPolicy = evictionPolicy;
-        configureTTLDuration(evictionPolicy);
+        configureDefaultProperties(evictionPolicy);
         CacheManager.getInstance().initCacheManagement((JavaCache<Serializable, ?>) JavaCache.this);
     }
 
-    private static void configureTTLDuration(String evictionPolicy){
-        if ("ttl".equals(evictionPolicy)) defaultTtlDuration = 10;
-        else defaultTtlDuration = -1;
+    private static void configureDefaultProperties(String evictionPolicy){
+        if ("ttl".equals(evictionPolicy)) {
+            defaultTtlDuration = 10;
+            defaultMaxSize = -1;
+        } else {
+            defaultTtlDuration = -1;
+            defaultMaxSize = 10;
+        }
     }
 
     @Override
@@ -34,6 +40,7 @@ public class JavaCache<K extends Serializable,V> implements CacheLibrary<K, V> {
                     .ttlDuration(defaultTtlDuration)
                     .creationTime(LocalDateTime.now())
                     .lastAccessTime(LocalDateTime.now())
+                    .maxSizePermitted(defaultMaxSize)
                     .build();
 
             dataStorage.put(key, entry);
@@ -48,6 +55,7 @@ public class JavaCache<K extends Serializable,V> implements CacheLibrary<K, V> {
                 .ttlDuration(ttlDuration)
                 .creationTime(LocalDateTime.now())
                 .lastAccessTime(LocalDateTime.now())
+                .maxSizePermitted(defaultMaxSize)
                 .build();
         dataStorage.put(key, entry);
     }
