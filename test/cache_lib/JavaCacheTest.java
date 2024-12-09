@@ -273,6 +273,12 @@ class JavaCacheTest {
         assertFalse(lruCache.keys().contains("key0"));
         assertFalse(lruCache.keys().contains("key1"));
         //Remove
+        assertFalse(lruCache.remove("key0"));
+        assertFalse(lruCache.remove("key1"));
+        assertTrue(lruCache.remove("key3"));
+        assertTrue(lruCache.remove("key10"));
+        assertFalse(lruCache.keys().contains("key3"));
+        assertFalse(lruCache.keys().contains("key10"));
     }
 
     @Test
@@ -304,5 +310,13 @@ class JavaCacheTest {
         assertFalse(lruCache.keys().contains("key2"));
         assertFalse(lruCache.keys().contains("key3"));
         //Remove
+        assertTrue(lruCache.remove("key0"));
+        assertFalse(lruCache.keys().contains("key0"));
+        assertTrue(lruCache.remove("key1"));
+        assertFalse(lruCache.keys().contains("key1"));
+        assertTrue(lruCache.remove("key10"));
+        assertFalse(lruCache.keys().contains("key10"));
+        assertFalse(lruCache.keys().contains("key2"));
+        assertFalse(lruCache.keys().contains("key3"));
     }
 }
