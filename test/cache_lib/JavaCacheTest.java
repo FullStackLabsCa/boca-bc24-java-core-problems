@@ -264,4 +264,23 @@ class JavaCacheTest {
         assertNull(lruCache.get("key1"));
         assertEquals("value", lruCache.get("key2"));
     }
+
+    @Test
+    void lruRemovalAfterMaxSizeReachedWithGetUpdateTest() throws InterruptedException {
+        for (int i = 0; i <= 9; i++) {
+            lruCache.put("key".concat(String.valueOf(i)), "value");
+        }
+        lruCache.get("key0");
+        lruCache.get("key1");
+        lruCache.put("key10", "value");
+        lruCache.put("key11", "value");
+        Thread.sleep(1000); // Allow Daemon Thread to iterate through
+        assertEquals(10, lruCache.size());
+        assertNotNull(lruCache.get("key0"));
+        assertNotNull(lruCache.get("key1"));
+        assertNull(lruCache.get("key2"));
+        assertNull(lruCache.get("key3"));
+        assertEquals("value", lruCache.get("key1"));
+        assertEquals("value", lruCache.get("key0"));
+    }
 }
