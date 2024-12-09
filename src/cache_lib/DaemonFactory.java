@@ -2,6 +2,7 @@ package cache_lib;
 
 import java.io.Serializable;
 import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collection;
 
@@ -52,12 +53,12 @@ public class DaemonFactory {
                             if (javaCache.size() > javaCache.getDefaultMaxSize()) {
                                 Duration[] leastAccessTime = new Duration[1];
                                 Serializable[] key = new Serializable[1];
-
+                                LocalDateTime now = LocalDateTime.now();
                                 // Iterate over data entries in a Cache
                                 javaCache.getValues().iterator().forEachRemaining(
                                         dataEntry -> {
-                                            Duration duration = Duration.between(dataEntry.getLastAccessTime(), LocalDateTime.now());
-                                            if (leastAccessTime[0] == null || duration.getNano() < leastAccessTime[0].getNano()) {
+                                            Duration duration = Duration.between(dataEntry.getLastAccessTime(), now);
+                                            if (leastAccessTime[0] == null || duration.getNano() > leastAccessTime[0].getNano()) {
                                                 leastAccessTime[0] = duration;
                                                 key[0] = dataEntry.getKey();
                                             }
