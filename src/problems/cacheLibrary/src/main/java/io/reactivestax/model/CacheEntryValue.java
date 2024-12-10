@@ -7,14 +7,14 @@ import java.time.LocalDateTime;
 @Data
 public class CacheEntryValue<V> {
     public V value;
-    public long ttl;
-    public LocalDateTime createdTime;
-    public LocalDateTime lastAccessTime;
+    long ttl;
+    LocalDateTime createdTime;
+    LocalDateTime lastAccessTime;
+    int count;
 
     public CacheEntryValue(V value, long ttl) {
         this.value = value;
         this.ttl = ttl;
-        this.createdTime = LocalDateTime.now();
         this.lastAccessTime = LocalDateTime.now();
     }
 
@@ -34,5 +34,9 @@ public class CacheEntryValue<V> {
 
     public void updateLastAccessTime() {
         this.lastAccessTime = LocalDateTime.now();
+    }
+
+    public void increaseCount() {
+        count = count + 1;
     }
 }

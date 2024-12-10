@@ -2,6 +2,7 @@ package io.reactivestax.service;
 
 import io.reactivestax.model.CacheEntryValue;
 import io.reactivestax.policy.EvictionPolicy;
+import io.reactivestax.policy.LFU;
 import io.reactivestax.policy.TTL;
 
 import java.util.Map;
@@ -53,6 +54,9 @@ public class Cache<K, V> implements CacheService<K, V> {
                     cache.remove(key);
                     return null;
                 }
+            }
+            if (evictionPolicy instanceof LFU<K,V>) {
+                cacheEntryValue.increaseCount();
             }
             cacheEntryValue.updateLastAccessTime();
             return cacheEntryValue;
