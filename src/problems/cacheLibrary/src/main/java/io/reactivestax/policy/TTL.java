@@ -1,12 +1,13 @@
 package io.reactivestax.policy;
 
+import io.reactivestax.model.CacheEntryValue;
 import io.reactivestax.service.Cache;
 
 public class TTL<K, V> implements EvictionPolicy<K, V> {
 
     @Override
-    public void execute(Cache<K, V> cache) {
-       /* while (true) {
+    public void eviction(Cache<K, V> cache) {
+        /*while (true) {
             try {
                 for (K key : cache.getAllKeys()) {
                     CacheEntryValue<V> entry = cache.getById(key);

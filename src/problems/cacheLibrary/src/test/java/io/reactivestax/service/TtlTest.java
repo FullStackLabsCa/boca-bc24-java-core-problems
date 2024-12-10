@@ -3,7 +3,7 @@ package io.reactivestax.service;
 import io.reactivestax.factory.CacheFactory;
 import org.junit.jupiter.api.Test;
 
-class ttlTest {
+class TtlTest {
     @Test
     void testTTL() throws InterruptedException {
         CacheFactory factory = new CacheFactory();

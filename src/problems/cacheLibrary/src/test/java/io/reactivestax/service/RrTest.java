@@ -3,7 +3,7 @@ package io.reactivestax.service;
 import io.reactivestax.factory.CacheFactory;
 import org.junit.jupiter.api.Test;
 
-class rrTest {
+class RrTest {
     @Test
     void testRR() {
         CacheFactory factory = new CacheFactory();

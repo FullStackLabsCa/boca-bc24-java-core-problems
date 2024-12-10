@@ -11,12 +11,14 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class Cache<K, V> implements CacheService<K, V> {
     private static final int DEFAULT_TTL = 60;
+
     private final Map<K, CacheEntryValue<V>> cache = new ConcurrentHashMap<>(16, 0.75f);
 
     EvictionPolicy<K, V> evictionPolicy;
 
     public Cache(EvictionPolicy<K, V> evictionPolicy) {
         this.evictionPolicy = evictionPolicy;
+//        evictionPolicy.startEvictionThread(this);
 
         if (evictionPolicy instanceof TTL<K, V>) {
             Thread ttlDaemonThread = new Thread(this::cleanupExpiredEntries);
@@ -31,7 +33,7 @@ public class Cache<K, V> implements CacheService<K, V> {
             put(key, value, DEFAULT_TTL);
         } else {
             CacheEntryValue<V> entryValue = new CacheEntryValue<>(value);
-            evictionPolicy.execute(this);
+            evictionPolicy.eviction(this);
             cache.put(key, entryValue);
         }
     }
@@ -39,7 +41,7 @@ public class Cache<K, V> implements CacheService<K, V> {
     @Override
     public void put(K key, V value, long ttl) {
         CacheEntryValue<V> entryValue = new CacheEntryValue<>(value, ttl);
-        evictionPolicy.execute(this);
+        evictionPolicy.eviction(this);
         cache.put(key, entryValue);
 
     }
@@ -104,4 +106,11 @@ public class Cache<K, V> implements CacheService<K, V> {
             }
         }
     }
+
+/*    public static void listThreads() {
+        Thread.getAllStackTraces().keySet().forEach(thread -> {
+            System.out.printf("Thread Name: %s | Daemon: %b | State: %s%n",
+                    thread.getName(), thread.isDaemon(), thread.getState());
+        });
+    }*/
 }

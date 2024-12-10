@@ -14,7 +14,7 @@ public class FIFO<K, V> implements EvictionPolicy<K, V> {
     }
 
     @Override
-    public void execute(Cache<K, V> cache) {
+    public void eviction(Cache<K, V> cache) {
         while (cache.getSizeofCache() >= capacity) {
             Set<K> keys = cache.getAllKeys();
             Optional<K> oldestKey = keys.stream()
