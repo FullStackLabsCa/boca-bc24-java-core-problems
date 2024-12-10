@@ -1,6 +1,5 @@
 package io.reactivestax.policy;
 
-import io.reactivestax.model.CacheEntryValue;
 import io.reactivestax.service.Cache;
 
 public class TTL<K, V> implements EvictionPolicy<K, V> {

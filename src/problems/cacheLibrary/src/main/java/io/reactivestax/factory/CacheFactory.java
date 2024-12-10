@@ -6,12 +6,8 @@ import io.reactivestax.type.Eviction;
 
 
 public class CacheFactory {
-//    public <K, V> Cache<K, V> createCache(String evictionPolicy) {
-//        Eviction eviction = Eviction.valueOf(evictionPolicy);
-//        return new Cache(new TTL<>());
-//    }
 
-    public <K, V> Cache<K, V> createCache(String evictionPolicy, int... capacity) {
+    public static <K, V> Cache<K, V> createCache(String evictionPolicy, int... capacity) {
         Eviction eviction = Eviction.valueOf(evictionPolicy);
         return switch (eviction) {
             case TTL -> new Cache<>(new TTL<>());

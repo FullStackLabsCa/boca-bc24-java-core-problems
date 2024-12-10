@@ -15,11 +15,11 @@ public class LRU<K, V> implements EvictionPolicy<K, V> {
 
     @Override
     public void eviction(Cache<K, V> cache) {
-        while (cache.getSizeofCache() >= capacity) {
+        if (cache.getSizeofCache() > capacity) {
             Set<K> keys = cache.getAllKeys();
-            Optional<K> lruKey = keys.stream().peek(i -> System.out.println(cache.getEntry(i)))
+            Optional<K> lruKey = keys.stream()
+                    .peek(i -> System.out.println(cache.getEntry(i).getLastAccessTime()))
                     .min(Comparator.comparing(key -> cache.getEntry(key).getLastAccessTime()));
-
             lruKey.ifPresent(cache::removeById);
         }
     }

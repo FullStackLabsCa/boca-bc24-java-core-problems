@@ -15,7 +15,7 @@ public class RR<K, V> implements EvictionPolicy<K, V> {
 
     @Override
     public void eviction(Cache<K, V> cache) {
-        while (cache.getSizeofCache() >= capacity) {
+        while (cache.getSizeofCache() > capacity) {
             List<K> keys = new ArrayList<>(cache.getAllKeys().stream().toList());
 
             Collections.shuffle(keys);

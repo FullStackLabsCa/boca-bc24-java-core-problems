@@ -12,7 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class Cache<K, V> implements CacheService<K, V> {
     private static final int DEFAULT_TTL = 60;
 
-    private final Map<K, CacheEntryValue<V>> cache = new ConcurrentHashMap<>(16, 0.75f);
+    private final Map<K, CacheEntryValue<V>> cache = new ConcurrentHashMap<>();
 
     EvictionPolicy<K, V> evictionPolicy;
 
@@ -33,8 +33,9 @@ public class Cache<K, V> implements CacheService<K, V> {
             put(key, value, DEFAULT_TTL);
         } else {
             CacheEntryValue<V> entryValue = new CacheEntryValue<>(value);
-            evictionPolicy.eviction(this);
             cache.put(key, entryValue);
+            evictionPolicy.eviction(this);
+
         }
     }
 
