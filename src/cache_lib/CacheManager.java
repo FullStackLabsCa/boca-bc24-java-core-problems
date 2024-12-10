@@ -35,7 +35,6 @@ public class CacheManager {
         };
     }
 
-
     private Collection<JavaCache<? super Serializable, ?>> initTTLMonitoringForCaches() {
         if (ttlCaches == null) {
             ttlCaches = new ArrayList<>();

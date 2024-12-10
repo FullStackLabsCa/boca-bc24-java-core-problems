@@ -1,6 +1,7 @@
 package cache_lib;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -31,6 +32,11 @@ class JavaCacheTest {
                 Arguments.of(localFIFOCache),
                 Arguments.of(localLfuCache)
         );
+    }
+
+    @Test
+    void invalidPolicyTest(){
+        assertThrows(RuntimeException.class, () -> new JavaCache<String, String>("invalidPolicy"));
     }
 
     @ParameterizedTest
