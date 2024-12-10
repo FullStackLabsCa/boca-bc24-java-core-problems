@@ -17,11 +17,13 @@ class JavaCacheTest {
 
     static JavaCache<String, String> ttlCache;
     static JavaCache<String, String> lruCache;
+    static JavaCache<String, String> lfuCache;
 
     @BeforeEach
     void setUp(){
         ttlCache = new JavaCache<>("ttl");
         lruCache = new JavaCache<>("lru");
+        lfuCache = new JavaCache<>("lfu");
     }
 
     @AfterEach
@@ -34,9 +36,11 @@ class JavaCacheTest {
     static Stream<Arguments> cacheProvider(){
         JavaCache<String, String> localTtlCache = new JavaCache<>("ttl");
         JavaCache<String, String> localLruCache = new JavaCache<>("lru");
+        JavaCache<String, String> localLfuCache = new JavaCache<>("lfu");
         return Stream.of(
                 Arguments.of(localTtlCache),
-                Arguments.of(localLruCache)
+                Arguments.of(localLruCache),
+                Arguments.of(localLfuCache)
         );
     }
 
@@ -195,7 +199,7 @@ class JavaCacheTest {
         assertEquals(0, ttlCache.size());
         ttlCache.put("key", "value");
         assertEquals(1, ttlCache.size());
-        Thread.sleep(11000);
+        Thread.sleep(12000);
         assertEquals(0, ttlCache.size());
     }
 
@@ -250,7 +254,7 @@ class JavaCacheTest {
 
 //LRU Specific Tests
     @Test
-    void lruRemovalAfterMaxSizeReachedTest() throws InterruptedException {
+    void lruRemovalAfterMaxSizeReached_SizeTest() throws InterruptedException {
         //SetUp
         for (int i = 0; i <= 11; i++) {
             lruCache.put("key".concat(String.valueOf(i)), "value");
@@ -258,18 +262,48 @@ class JavaCacheTest {
         Thread.sleep(1000); // Allow Daemon Thread to iterate through
 
         //Assertions
-        //Size
         assertEquals(10, lruCache.size());
-        //Get
+
+    }
+
+    @Test
+    void lruRemovalAfterMaxSizeReached_GetTest() throws InterruptedException {
+        //SetUp
+        for (int i = 0; i <= 11; i++) {
+            lruCache.put("key".concat(String.valueOf(i)), "value");
+        }
+        Thread.sleep(1000); // Allow Daemon Thread to iterate through
+
+        //Assertions
         assertNull(lruCache.get("key0"));
         assertNull(lruCache.get("key1"));
         assertEquals("value", lruCache.get("key2"));
-        //Keys
+    }
+
+    @Test
+    void lruRemovalAfterMaxSizeReached_KeysTest() throws InterruptedException {
+        //SetUp
+        for (int i = 0; i <= 11; i++) {
+            lruCache.put("key".concat(String.valueOf(i)), "value");
+        }
+        Thread.sleep(1000); // Allow Daemon Thread to iterate through
+
+        //Assertions
         assertTrue(lruCache.keys().contains("key3"));
         assertTrue(lruCache.keys().contains("key10"));
         assertFalse(lruCache.keys().contains("key0"));
         assertFalse(lruCache.keys().contains("key1"));
-        //Remove
+    }
+
+    @Test
+    void lruRemovalAfterMaxSizeReached_RemoveTest() throws InterruptedException {
+        //SetUp
+        for (int i = 0; i <= 11; i++) {
+            lruCache.put("key".concat(String.valueOf(i)), "value");
+        }
+        Thread.sleep(1000); // Allow Daemon Thread to iterate through
+
+        //Assertions
         assertFalse(lruCache.remove("key0"));
         assertFalse(lruCache.remove("key1"));
         assertTrue(lruCache.remove("key3"));
@@ -279,7 +313,7 @@ class JavaCacheTest {
     }
 
     @Test
-    void lruRemovalAfterMaxSizeReachedWithGetUpdateTest() throws InterruptedException {
+    void lruRemovalWithGetUpdate_SizeTest() throws InterruptedException {
         //SetUp
         for (int i = 0; i <= 9; i++) {
             lruCache.put("key".concat(String.valueOf(i)), "value");
@@ -291,22 +325,63 @@ class JavaCacheTest {
         Thread.sleep(1000); // Allow Daemon Thread to iterate through
 
         //Assertions
-        //Size
         assertEquals(10, lruCache.size());
-        //Get
+    }
+
+    @Test
+    void lruRemovalWithGetUpdate_GetTest() throws InterruptedException {
+        //SetUp
+        for (int i = 0; i <= 9; i++) {
+            lruCache.put("key".concat(String.valueOf(i)), "value");
+        }
+        lruCache.get("key0");
+        lruCache.get("key1");
+        lruCache.put("key10", "value");
+        lruCache.put("key11", "value");
+        Thread.sleep(1000); // Allow Daemon Thread to iterate through
+
+        //Assertions
         assertNotNull(lruCache.get("key0"));
         assertNotNull(lruCache.get("key1"));
         assertNull(lruCache.get("key2"));
         assertNull(lruCache.get("key3"));
         assertEquals("value", lruCache.get("key1"));
         assertEquals("value", lruCache.get("key0"));
-        //Keys
+    }
+
+    @Test
+    void lruRemovalWithGetUpdate_KeysTest() throws InterruptedException {
+        //SetUp
+        for (int i = 0; i <= 9; i++) {
+            lruCache.put("key".concat(String.valueOf(i)), "value");
+        }
+        lruCache.get("key0");
+        lruCache.get("key1");
+        lruCache.put("key10", "value");
+        lruCache.put("key11", "value");
+        Thread.sleep(1000); // Allow Daemon Thread to iterate through
+
+        //Assertions
         assertTrue(lruCache.keys().contains("key0"));
         assertTrue(lruCache.keys().contains("key1"));
         assertTrue(lruCache.keys().contains("key10"));
         assertFalse(lruCache.keys().contains("key2"));
         assertFalse(lruCache.keys().contains("key3"));
-        //Remove
+    }
+
+    @Test
+    void lruRemovalWithGetUpdate_RemoveTest() throws InterruptedException {
+        //SetUp
+        for (int i = 0; i <= 9; i++) {
+            lruCache.put("key".concat(String.valueOf(i)), "value");
+        }
+        lruCache.get("key0");
+        lruCache.get("key1");
+        lruCache.put("key10", "value");
+        lruCache.put("key11", "value");
+        Thread.sleep(1000); // Allow Daemon Thread to iterate through
+
+        //Assertions
         assertTrue(lruCache.remove("key0"));
         assertFalse(lruCache.keys().contains("key0"));
         assertTrue(lruCache.remove("key1"));
@@ -315,5 +390,26 @@ class JavaCacheTest {
         assertFalse(lruCache.keys().contains("key10"));
         assertFalse(lruCache.keys().contains("key2"));
         assertFalse(lruCache.keys().contains("key3"));
+    }
+
+//LFU Tests
+    @Test
+    void lfuSizeTest(){
+
+    }
+
+    @Test
+    void lfuGetTest(){
+
+    }
+
+    @Test
+    void lfuKeysTest(){
+
+    }
+
+    @Test
+    void lfuRemoveTest(){
+
     }
 }
