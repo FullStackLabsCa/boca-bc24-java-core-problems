@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 class LfuTest {
     @Test
-    void testLRU() {
+    void testLFU() {
         CacheFactory factory = new CacheFactory();
 
         System.out.println("***** LFU Example *****");

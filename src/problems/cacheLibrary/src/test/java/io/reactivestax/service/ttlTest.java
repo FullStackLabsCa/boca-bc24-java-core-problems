@@ -1,10 +1,11 @@
-package io.reactivestax;
+package io.reactivestax.service;
 
 import io.reactivestax.factory.CacheFactory;
-import io.reactivestax.service.Cache;
+import org.junit.jupiter.api.Test;
 
-public class CacheRunner {
-    public static void main(String[] args) throws InterruptedException {
+class ttlTest {
+    @Test
+    void testTTL() throws InterruptedException {
         CacheFactory factory = new CacheFactory();
 
         System.out.println("***** TTL Example *****");

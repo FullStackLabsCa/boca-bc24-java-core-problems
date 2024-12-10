@@ -15,10 +15,10 @@ class FifoTest {
         fifoCache.put(3, "Three");
         System.out.println("Initial FIFO Cache: " + fifoCache.getAllKeys());
 
-        fifoCache.put(4, "Four"); // Adding this will evict the first inserted key (key 1)
+        fifoCache.put(4, "Four");
         System.out.println("FIFO Cache after adding key 4: " + fifoCache.getAllKeys());
 
-        fifoCache.put(5, "Five"); // Adding this will evict the next oldest key (key 2)
+        fifoCache.put(5, "Five");
         System.out.println("FIFO Cache after adding key 5: " + fifoCache.getAllKeys());
     }
 }

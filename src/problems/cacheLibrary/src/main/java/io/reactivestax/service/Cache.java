@@ -55,7 +55,7 @@ public class Cache<K, V> implements CacheService<K, V> {
                     return null;
                 }
             }
-            if (evictionPolicy instanceof LFU<K,V>) {
+            if (evictionPolicy instanceof LFU<K, V>) {
                 cacheEntryValue.increaseCount();
             }
             cacheEntryValue.updateLastAccessTime();

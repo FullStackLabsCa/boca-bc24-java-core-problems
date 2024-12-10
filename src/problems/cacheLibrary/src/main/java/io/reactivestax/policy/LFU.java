@@ -17,10 +17,10 @@ public class LFU<K, V> implements EvictionPolicy<K, V> {
     public void execute(Cache<K, V> cache) {
         while (cache.getSizeofCache() >= capacity) {
             Set<K> keys = cache.getAllKeys();
-            Optional<K> lruKey = keys.stream().peek(i -> System.out.println(cache.getEntry(i)))
+            Optional<K> lfuKey = keys.stream().peek(i -> System.out.println(cache.getEntry(i)))
                     .min(Comparator.comparing(key -> cache.getEntry(key).getCount()));
 
-            lruKey.ifPresent(cache::removeById);
+            lfuKey.ifPresent(cache::removeById);
         }
     }
 }
