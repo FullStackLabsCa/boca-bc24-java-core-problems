@@ -19,6 +19,7 @@ class JavaCacheTest {
     static JavaCache<String, String> lruCache;
     static JavaCache<String, String> lfuCache;
     static JavaCache<String, String> fifoCache;
+    static JavaCache<String, String> rrCache;
 
     @BeforeEach
     void setUp(){
@@ -26,6 +27,7 @@ class JavaCacheTest {
         lruCache = new JavaCache<>("lru");
         lfuCache = new JavaCache<>("lfu");
         fifoCache = new JavaCache<>("fifo");
+        rrCache = new JavaCache<>("rr");
     }
 
     @AfterEach
@@ -34,6 +36,7 @@ class JavaCacheTest {
         lruCache.clear();
         lfuCache.clear();
         fifoCache.clear();
+        rrCache.clear();
         CacheManager.getInstance().resetCacheManager();
     }
 
@@ -267,7 +270,6 @@ class JavaCacheTest {
 
         //Assertions
         assertEquals(10, lruCache.size());
-
     }
 
     @Test
@@ -556,5 +558,27 @@ class JavaCacheTest {
         for (int i = 0; i <= 11; i++) {
             assertNull(fifoCache.get("key".concat(String.valueOf(i))));
         }
+    }
+
+//RR Tests
+    @ParameterizedTest
+    @MethodSource("dataInCache")
+    void rrSizeTest(int numberOfItems) throws InterruptedException {
+        //SetUp
+        for (int i = 0; i <= numberOfItems; i++) {
+            rrCache.put("key".concat(String.valueOf(i)), "value");
+        }
+        Thread.sleep(1000); // Allow Daemon Thread to iterate through
+
+        //Assertions
+        assertEquals(10, rrCache.size());
+    }
+
+    static Stream<Arguments> dataInCache(){
+        return Stream.of(
+                Arguments.of(13),
+                Arguments.of(30),
+                Arguments.of(100)
+        );
     }
 }

@@ -6,11 +6,13 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class DaemonFactory {
 
     private static DaemonFactory instance;
+    private final Random random = new Random();
 
     public static synchronized DaemonFactory getInstance() {
         if (instance == null) instance = new DaemonFactory();
@@ -140,7 +142,20 @@ public class DaemonFactory {
     }
 
     public void startRRPolicyMonitoring(Collection<JavaCache<? super Serializable, ?>> cacheCollection) {
-        //Optional
+        Thread rrDaemonThread = new Thread(() -> {
+            while (true) {
+                cacheCollection.forEach(javaCache -> {
+                    if (javaCache.size() > javaCache.getDefaultMaxSize()) {
+                        List<? extends Serializable> keySetArray = new ArrayList<>(javaCache.keys());
+                        int randomIndexToRemove = random.nextInt((int) javaCache.getDefaultMaxSize());
+                        javaCache.remove(keySetArray.remove(randomIndexToRemove));
+                    }}
+                );
+            }
+        });
+
+        rrDaemonThread.setDaemon(true);
+        rrDaemonThread.start();
     }
 
     public void startSizeBasedEvictionPolicyMonitoring(Collection<JavaCache<? super Serializable, ?>> cacheCollection) {
