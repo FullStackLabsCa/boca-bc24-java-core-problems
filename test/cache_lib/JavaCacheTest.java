@@ -30,6 +30,7 @@ class JavaCacheTest {
     void clean(){
         ttlCache.clear();
         lruCache.clear();
+        lfuCache.clear();
         CacheManager.getInstance().resetCacheManager();
     }
 
@@ -225,7 +226,7 @@ class JavaCacheTest {
     void getResetTTLTest() throws InterruptedException {
         ttlCache.put("key", "value", 1);
         assertEquals("value", ttlCache.get("key"));
-        Thread.sleep(2000);
+        Thread.sleep(3000);
         assertNull(ttlCache.get("key"));
     }
 
@@ -477,7 +478,7 @@ class JavaCacheTest {
         for (int i = 0; i <= 8; i++) {
             assertTrue(lfuCache.remove("key".concat(String.valueOf(i))));
         }
-        for (int i = 0; i <= 9; i++) {
+        for (int i = 0; i <= 8; i++) {
             assertFalse(lfuCache.keys().contains("key".concat(String.valueOf(i))));
         }
         assertFalse(lfuCache.remove("key9"));

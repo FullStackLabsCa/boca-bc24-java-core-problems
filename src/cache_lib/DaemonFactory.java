@@ -3,7 +3,9 @@ package cache_lib;
 import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class DaemonFactory {
@@ -20,19 +22,20 @@ public class DaemonFactory {
     public void startTTLPolicyMonitoring(Collection<JavaCache<? super Serializable, ?>> cacheCollection) {
         Thread ttlDaemonThread = new Thread(() -> {
             while (true) {
-                cacheCollection.iterator().forEachRemaining(
-                        javaCache -> javaCache.getValues().iterator().forEachRemaining(
-                                dataEntry -> {
-                                    long ttl = dataEntry.getTtlDuration();
-                                    Duration duration = Duration.between(dataEntry.getLastAccessTime(), LocalDateTime.now());
-                                    if (duration.getSeconds() > ttl) {
-                                        javaCache.remove(dataEntry.getKey());
-                                    }
-                                }
-                        )
-                );
+                cacheCollection.forEach(javaCache -> {
+                    List<Serializable> keysToRemove = new ArrayList<>();
+                    javaCache.getValues().forEach(dataEntry -> {
+                        long ttl = dataEntry.getTtlDuration();
+                        Duration duration = Duration.between(dataEntry.getLastAccessTime(), LocalDateTime.now());
+                        if (duration.getSeconds() > ttl) {
+                            keysToRemove.add(dataEntry.getKey());
+                        }
+                    });
+                    keysToRemove.forEach(javaCache::remove);
+                });
             }
         });
+
 
         ttlDaemonThread.setDaemon(true);
         ttlDaemonThread.start();
@@ -48,24 +51,24 @@ public class DaemonFactory {
          */
         Thread lruDaemonThread = new Thread(() -> {
             while (true) {
-                cacheCollection.iterator().forEachRemaining(
-                        javaCache -> {
-                            if (javaCache.size() > javaCache.getDefaultMaxSize()) {
-                                Duration[] leastAccessTime = new Duration[1];
-                                Serializable[] key = new Serializable[1];
-                                LocalDateTime now = LocalDateTime.now();
-                                // Iterate over data entries in a Cache
-                                javaCache.getValues().iterator().forEachRemaining(
-                                        dataEntry -> {
-                                            Duration duration = Duration.between(dataEntry.getLastAccessTime(), now);
-                                            if (leastAccessTime[0] == null || duration.getNano() > leastAccessTime[0].getNano()) {
-                                                leastAccessTime[0] = duration;
-                                                key[0] = dataEntry.getKey();
-                                            }
-                                        });
-                                javaCache.remove(key[0]);
-                            }
-                        }
+                cacheCollection.forEach(javaCache -> {
+                    if (javaCache.size() > javaCache.getDefaultMaxSize()) {
+
+                        Duration[] leastAccessTime = new Duration[1];
+                        Serializable[] key = new Serializable[1];
+                        LocalDateTime now = LocalDateTime.now();
+
+                        // Iterate over data entries in a Cache
+                        javaCache.getValues().iterator().forEachRemaining(
+                                dataEntry -> {
+                                    Duration duration = Duration.between(dataEntry.getLastAccessTime(), now);
+                                    if (leastAccessTime[0] == null || duration.getNano() > leastAccessTime[0].getNano()) {
+                                        leastAccessTime[0] = duration;
+                                        key[0] = dataEntry.getKey();
+                                    }
+                                });
+                        javaCache.remove(key[0]);
+                    }}
                 );
             }
         });
@@ -81,7 +84,7 @@ public class DaemonFactory {
     public void startLFUPolicyMonitoring(Collection<JavaCache<? super Serializable, ?>> cacheCollection) {
         Thread lfuDaemonThread = new Thread(() -> {
             while (true) {
-                cacheCollection.iterator().forEachRemaining(
+                cacheCollection.forEach(
                         javaCache -> {
                             if (javaCache.size() > javaCache.getDefaultMaxSize()) {
                                 AtomicLong minAccessTimes = new AtomicLong(Long.MAX_VALUE);

@@ -7,7 +7,6 @@ import java.time.LocalDateTime;
 @Data
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
 public class DataEntry<K,V>{
