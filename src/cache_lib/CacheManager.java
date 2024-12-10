@@ -12,7 +12,6 @@ public class CacheManager {
     private volatile Collection<JavaCache<? super Serializable, ?>> fifoCaches;
     private volatile Collection<JavaCache<? super Serializable, ?>> lfuCaches;
     private volatile Collection<JavaCache<? super Serializable, ?>> rrCaches;
-    private volatile Collection<JavaCache<? super Serializable, ?>> sizeBasedEvictionCaches;
 
     public static synchronized CacheManager getInstance() {
         if (instance == null) instance = new CacheManager();
@@ -26,72 +25,61 @@ public class CacheManager {
     }
 
     private Collection<JavaCache<? super Serializable, ?>> initializeCache(String policy) {
-        switch (policy) {
-            case "ttl":
-                if (ttlCaches == null) return initTTLMonitoringForCaches();
-                else return ttlCaches;
-            case "lru":
-                if (lruCaches == null) return initLRUMonitoringForCaches();
-                else return lruCaches;
-            case "lfu":
-                if (lfuCaches == null) return initLFUMonitoringForCaches();
-                else return lfuCaches;
-            case "fifo":
-                if (fifoCaches == null) return initFIFOMonitoringForCaches();
-                else return fifoCaches;
-            case "rr":
-                if (rrCaches == null) return initRRMonitoringForCaches();
-                else return rrCaches;
-            case "sizeBased":
-                if (sizeBasedEvictionCaches == null) return initSizeBasedEvictionMonitoringForCaches();
-                else return sizeBasedEvictionCaches;
-            default:
-                throw new RuntimeException("Invalid Eviction Policy");
-        }
+        return switch (policy) {
+            case "ttl" -> initTTLMonitoringForCaches();
+            case "lru" -> initLRUMonitoringForCaches();
+            case "lfu" -> initLFUMonitoringForCaches();
+            case "fifo" -> initFIFOMonitoringForCaches();
+            case "rr" -> initRRMonitoringForCaches();
+            default -> throw new RuntimeException("Invalid Eviction Policy");
+        };
     }
 
 
     private Collection<JavaCache<? super Serializable, ?>> initTTLMonitoringForCaches() {
-        ttlCaches = new ArrayList<>();
-        DaemonFactory.getInstance().startTTLPolicyMonitoring(ttlCaches);
+        if (ttlCaches == null) {
+            ttlCaches = new ArrayList<>();
+            DaemonFactory.getInstance().startTTLPolicyMonitoring(ttlCaches);
+        }
         return ttlCaches;
     }
 
     private Collection<JavaCache<? super Serializable, ?>> initLRUMonitoringForCaches() {
-        lruCaches = new ArrayList<>();
-        DaemonFactory.getInstance().startLRUPolicyMonitoring(lruCaches);
+        if (lruCaches == null) {
+            lruCaches = new ArrayList<>();
+            DaemonFactory.getInstance().startLRUPolicyMonitoring(lruCaches);
+        }
         return lruCaches;
     }
 
     private Collection<JavaCache<? super Serializable, ?>> initFIFOMonitoringForCaches() {
-        fifoCaches = new ArrayList<>();
-        DaemonFactory.getInstance().startFIFOPolicyMonitoring(fifoCaches);
+        if (fifoCaches == null) {
+            fifoCaches = new ArrayList<>();
+            DaemonFactory.getInstance().startFIFOPolicyMonitoring(fifoCaches);
+        }
         return fifoCaches;
     }
 
     private Collection<JavaCache<? super Serializable, ?>> initLFUMonitoringForCaches() {
-        lfuCaches = new ArrayList<>();
-        DaemonFactory.getInstance().startLFUPolicyMonitoring(lfuCaches);
+        if (lfuCaches == null) {
+            lfuCaches = new ArrayList<>();
+            DaemonFactory.getInstance().startLFUPolicyMonitoring(lfuCaches);
+        }
         return lfuCaches;
     }
 
     private Collection<JavaCache<? super Serializable, ?>> initRRMonitoringForCaches() {
-        rrCaches = new ArrayList<>();
-        DaemonFactory.getInstance().startRRPolicyMonitoring(rrCaches);
+        if (rrCaches == null) {
+            rrCaches = new ArrayList<>();
+            DaemonFactory.getInstance().startRRPolicyMonitoring(rrCaches);
+        }
         return rrCaches;
-    }
-
-    private Collection<JavaCache<? super Serializable, ?>> initSizeBasedEvictionMonitoringForCaches() {
-        sizeBasedEvictionCaches = new ArrayList<>();
-        DaemonFactory.getInstance().startSizeBasedEvictionPolicyMonitoring(sizeBasedEvictionCaches);
-        return sizeBasedEvictionCaches;
     }
 
     public void resetCacheManager() {
         ttlCaches = null;
         lruCaches = null;
         lfuCaches = null;
-        sizeBasedEvictionCaches = null;
         fifoCaches = null;
         rrCaches = null;
 

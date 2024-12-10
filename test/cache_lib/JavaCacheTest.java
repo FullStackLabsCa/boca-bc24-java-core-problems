@@ -22,9 +22,13 @@ class JavaCacheTest {
         JavaCache<String, String> localTtlCache = new JavaCache<>("ttl");
         JavaCache<String, String> localLruCache = new JavaCache<>("lru");
         JavaCache<String, String> localLfuCache = new JavaCache<>("lfu");
+        JavaCache<String, String> localRRCache = new JavaCache<>("rr");
+        JavaCache<String, String> localFIFOCache = new JavaCache<>("fifo");
         return Stream.of(
                 Arguments.of(localTtlCache),
                 Arguments.of(localLruCache),
+                Arguments.of(localRRCache),
+                Arguments.of(localFIFOCache),
                 Arguments.of(localLfuCache)
         );
     }

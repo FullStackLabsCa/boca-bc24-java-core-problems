@@ -44,13 +44,6 @@ public class DaemonFactory {
     }
 
     public void startLRUPolicyMonitoring(Collection<JavaCache<? super Serializable, ?>> cacheCollection) {
-        /**
-         * Least Recently Used:
-         * Monitor the last access time
-         * Maintain a variable for the thread that keeps a track of Min(Current Time - Last Access Time), and KEY
-         * Once the iteration through all the objects is cleared off, the Key saved is removed!
-         * The next iteration starts
-         */
         Thread lruDaemonThread = new Thread(() -> {
             while (true) {
                 cacheCollection.forEach(javaCache -> {
@@ -156,9 +149,5 @@ public class DaemonFactory {
 
         rrDaemonThread.setDaemon(true);
         rrDaemonThread.start();
-    }
-
-    public void startSizeBasedEvictionPolicyMonitoring(Collection<JavaCache<? super Serializable, ?>> cacheCollection) {
-        //Optional
     }
 }
