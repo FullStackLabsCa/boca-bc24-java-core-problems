@@ -84,23 +84,21 @@ public class DaemonFactory {
     public void startLFUPolicyMonitoring(Collection<JavaCache<? super Serializable, ?>> cacheCollection) {
         Thread lfuDaemonThread = new Thread(() -> {
             while (true) {
-                cacheCollection.forEach(
-                        javaCache -> {
-                            if (javaCache.size() > javaCache.getDefaultMaxSize()) {
-                                AtomicLong minAccessTimes = new AtomicLong(Long.MAX_VALUE);
-                                Serializable[] key = new Serializable[1];
+                cacheCollection.forEach(javaCache -> {
+                    if (javaCache.size() > javaCache.getDefaultMaxSize()) {
+                        AtomicLong minAccessTimes = new AtomicLong(Long.MAX_VALUE);
+                        Serializable[] key = new Serializable[1];
 
-                                // Iterate over data entries in a Cache
-                                javaCache.getValues().iterator().forEachRemaining(
-                                        dataEntry -> {
-                                            if (dataEntry.getNumberOfTimesAccessed() < minAccessTimes.get()) {
-                                                minAccessTimes.set(dataEntry.getNumberOfTimesAccessed());
-                                                key[0] = dataEntry.getKey();
-                                            }
-                                        });
-                                javaCache.remove(key[0]);
-                            }
-                        }
+                        // Iterate over data entries in a Cache
+                        javaCache.getValues().iterator().forEachRemaining(
+                                dataEntry -> {
+                                    if (dataEntry.getNumberOfTimesAccessed() < minAccessTimes.get()) {
+                                        minAccessTimes.set(dataEntry.getNumberOfTimesAccessed());
+                                        key[0] = dataEntry.getKey();
+                                    }
+                                });
+                        javaCache.remove(key[0]);
+                    }}
                 );
             }
         });
