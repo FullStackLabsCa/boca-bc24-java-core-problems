@@ -18,12 +18,14 @@ class JavaCacheTest {
     static JavaCache<String, String> ttlCache;
     static JavaCache<String, String> lruCache;
     static JavaCache<String, String> lfuCache;
+    static JavaCache<String, String> fifoCache;
 
     @BeforeEach
     void setUp(){
         ttlCache = new JavaCache<>("ttl");
         lruCache = new JavaCache<>("lru");
         lfuCache = new JavaCache<>("lfu");
+        fifoCache = new JavaCache<>("fifo");
     }
 
     @AfterEach
@@ -31,6 +33,7 @@ class JavaCacheTest {
         ttlCache.clear();
         lruCache.clear();
         lfuCache.clear();
+        fifoCache.clear();
         CacheManager.getInstance().resetCacheManager();
     }
 
@@ -483,5 +486,75 @@ class JavaCacheTest {
         }
         assertFalse(lfuCache.remove("key9"));
         assertFalse(lfuCache.remove("key10"));
+    }
+
+//FIFO Tests
+    @Test
+    void fifoSizeTest() throws InterruptedException {
+        //SetUp
+        for (int i = 0; i <= 11; i++) {
+            fifoCache.put("key".concat(String.valueOf(i)), "value");
+        }
+        Thread.sleep(1000); // Allow Daemon Thread to iterate through
+
+        //Assertions
+        assertEquals(10, fifoCache.size());
+    }
+
+    @Test
+    void fifoGetTest() throws InterruptedException {
+        //SetUp
+        for (int i = 0; i <= 11; i++) {
+            fifoCache.put("key".concat(String.valueOf(i)), "value");
+        }
+        fifoCache.get("key1");
+        Thread.sleep(1000); // Allow Daemon Thread to iterate through
+
+        //Assertions
+        for (int i = 2; i <= 11; i++) {
+            assertNotNull(fifoCache.get("key".concat(String.valueOf(i))));
+        }
+        assertNull(fifoCache.get("key0"));
+        assertNull(fifoCache.get("key1"));
+        for (int i = 2; i <= 11; i++) {
+            assertEquals("value", fifoCache.get("key".concat(String.valueOf(i))));
+        }
+    }
+
+    @Test
+    void fifoKeysTest() throws InterruptedException {
+        //SetUp
+        for (int i = 0; i <= 11; i++) {
+            fifoCache.put("key".concat(String.valueOf(i)), "value");
+        }
+        fifoCache.get("key1");
+        Thread.sleep(1000); // Allow Daemon Thread to iterate through
+
+        //Assertions
+        for (int i = 2; i <= 11; i++) {
+            assertTrue(fifoCache.keys().contains("key".concat(String.valueOf(i))));
+        }
+        assertFalse(fifoCache.keys().contains("key0"));
+        assertFalse(fifoCache.keys().contains("key1"));
+    }
+
+    @Test
+    void fifoRemoveTest() throws InterruptedException {
+        //SetUp
+        for (int i = 0; i <= 11; i++) {
+            fifoCache.put("key".concat(String.valueOf(i)), "value");
+        }
+        fifoCache.get("key1");
+        fifoCache.get("key0");
+        Thread.sleep(1000); // Allow Daemon Thread to iterate through
+
+        //Assertions
+        for (int i = 2; i <= 11; i++) {
+            assertTrue(fifoCache.remove("key".concat(String.valueOf(i))));
+        }
+
+        for (int i = 0; i <= 11; i++) {
+            assertNull(fifoCache.get("key".concat(String.valueOf(i))));
+        }
     }
 }

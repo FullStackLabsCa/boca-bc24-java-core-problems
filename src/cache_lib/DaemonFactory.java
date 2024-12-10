@@ -78,7 +78,39 @@ public class DaemonFactory {
     }
 
     public void startFIFOPolicyMonitoring(Collection<JavaCache<? super Serializable, ?>> cacheCollection) {
-        //Optional
+        Thread fifoDaemonThread = new Thread(() -> {
+            while (true) {
+                cacheCollection.forEach(javaCache -> {
+                    if (javaCache.size() > javaCache.getDefaultMaxSize()) {
+                        Duration[] longestDuration = new Duration[1];
+                        Serializable[] key = new Serializable[1];
+                        LocalDateTime now = LocalDateTime.now();
+
+                        // Iterate over data entries in a Cache
+                        javaCache.getValues().iterator().forEachRemaining(
+                                dataEntry -> {
+                                    Duration duration = Duration.between(now, dataEntry.getCreationTime());
+                                    if (longestDuration[0] == null || !durationGreaterThan(duration, longestDuration[0])) {
+                                        longestDuration[0] = duration;
+                                        key[0] = dataEntry.getKey();
+                                    }
+                                });
+                        javaCache.remove(key[0]);
+                    }}
+                );
+            }
+        });
+
+        fifoDaemonThread.setDaemon(true);
+        fifoDaemonThread.start();
+    }
+
+    private boolean durationGreaterThan(Duration duration1, Duration duration2){
+        if(duration1.getSeconds() > duration2.getSeconds()) return true;
+        else if(duration1.getSeconds() == duration2.getSeconds()){
+            return duration1.getNano() > duration2.getNano();
+        }
+        else return false;
     }
 
     public void startLFUPolicyMonitoring(Collection<JavaCache<? super Serializable, ?>> cacheCollection) {
