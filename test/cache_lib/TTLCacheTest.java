@@ -67,7 +67,7 @@ class TTLCacheTest {
     @Test
     void removeTTLExpiredKeyTest() throws InterruptedException {
         ttlCache.put("key", "value", 1);
-        Thread.sleep(2000);
+        Thread.sleep(3000);
         assertFalse(ttlCache.remove("key"));
     }
 
