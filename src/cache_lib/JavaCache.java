@@ -69,7 +69,9 @@ public class JavaCache<K extends Serializable, V> implements CacheLibrary<K, V> 
 
             if (dataEntry != null) {
                 value = dataEntry.getValue();
+                long numAccess = dataEntry.getNumberOfTimesAccessed();
                 dataEntry.setLastAccessTime(LocalDateTime.now());
+                dataEntry.setNumberOfTimesAccessed(numAccess+1);
                 dataStorage.put(key, dataEntry);
             }
         }

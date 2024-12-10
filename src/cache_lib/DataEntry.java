@@ -17,4 +17,6 @@ public class DataEntry<K,V>{
     private LocalDateTime creationTime;
     private LocalDateTime lastAccessTime;
     private long maxSizePermitted;
+    @Builder.Default
+    private long numberOfTimesAccessed = 0;
 }
