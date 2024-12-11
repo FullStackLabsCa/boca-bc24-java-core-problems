@@ -1,13 +1,11 @@
 package io.reactivestax.cachelibraryv2;
 
-
-
 public class CacheRunner {
 
     public static Thread startDaemonThread(CacheLibrary<Integer, String> cache) {
         Thread daemonThread = new Thread(() -> {
             while (!Thread.currentThread().isInterrupted()) {
-                System.out.println("Running daemon thread");
+               // System.out.println("Running daemon thread");
                 try {
                     Thread.sleep(1000);
                     cache.cleanExpiredValues();
@@ -73,6 +71,30 @@ public class CacheRunner {
         System.out.println("Current Size of map - " + cacheTTL.getSize());
         cacheTTL.clearCache();
         System.out.println("Cleanup done, size of map is : " + cacheTTL.getSize());
+
+        System.out.println("");
+
+        System.out.println("FIFO Eviction Policy ===========");
+        CacheLibrary<Integer, String> cacheFIFO = EvictionPolicyFactory.createCache("FIFO", 3);
+        cacheFIFO.putKeyValueDefaultTtl(1, "Shifa");
+        cacheFIFO.putKeyValueDefaultTtl(2, "Manpreet");
+        cacheFIFO.putKeyValueDefaultTtl(3, "Sukhvir");
+        System.out.println("Keys - " + cacheFIFO.retrieveKeys());
+        cacheFIFO.getValue(1);
+        cacheFIFO.putKeyValueDefaultTtl(4, "RR");
+        System.out.println("Keys after adding 4th value" + cacheFIFO.retrieveKeys());
+
+        System.out.println("");
+        System.out.println("RANDOM Eviction Policy ===========");
+        CacheLibrary<Integer, String> cacheRandom = EvictionPolicyFactory.createCache("RANDOM", 3);
+        cacheRandom.putKeyValueDefaultTtl(1, "Shifa");
+        cacheRandom.putKeyValueDefaultTtl(2, "Manpreet");
+        cacheRandom.putKeyValueDefaultTtl(3, "Sukhvir");
+        System.out.println("Keys - " + cacheRandom.retrieveKeys());
+        cacheRandom.getValue(1);
+        cacheRandom.putKeyValueDefaultTtl(4, "RR");
+        System.out.println("Keys after adding 4th value" + cacheRandom.retrieveKeys());
+
 
     }
 }

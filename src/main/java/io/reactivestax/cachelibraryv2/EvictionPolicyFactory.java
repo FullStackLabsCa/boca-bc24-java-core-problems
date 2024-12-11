@@ -16,6 +16,12 @@ public class EvictionPolicyFactory {
             case "TTL":
                 evictionPolicyType = new TTLEvictionPolicy<>(new ConcurrentHashMap<>());
                 break;
+            case "FIFO":
+                evictionPolicyType = new FIFOEvictionPolicy<>(capacity);
+                break;
+            case "RANDOM":
+                evictionPolicyType = new RandomEvictionPolicy<>(capacity);
+                break;
             default:
                 throw new IllegalArgumentException("Eviction policy not found");
         }
