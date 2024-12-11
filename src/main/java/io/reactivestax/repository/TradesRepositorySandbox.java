@@ -1,24 +1,23 @@
 package io.reactivestax.repository;
 
 import com.zaxxer.hikari.HikariDataSource;
-//import problems.tradesSandbox.tradingwiththreads.model.JournalEntry;
-//import problems.tradesSandbox.tradingwiththreads.model.Positions;
+//import io.reactivestax.problems.tradesSandbox.tradingwiththreads.model.JournalEntry;
+//import io.reactivestax.problems.tradesSandbox.tradingwiththreads.model.Positions;
 import io.reactivestax.model.PositionsSandbox;
 import io.reactivestax.model.RawPayloadSandbox;
-//import problems.tradesSandbox.transactions.utility.OptimisticLockingException;
-import io.reactivestax.model.RawPayloadSandbox;
+//import io.reactivestax.problems.tradesSandbox.transactions.utility.OptimisticLockingException;
 import io.reactivestax.model.JournalEntrySandbox;
-//import problems.tradingwiththreads.model.JournalEntry;
-//import problems.tradingwiththreads.model.Positions;
-import problems.tradingwiththreads.model.Positions;
-import problems.transactions.utility.OptimisticLockingException;
+//import io.reactivestax.problems.tradingwiththreads.model.JournalEntry;
+//import io.reactivestax.problems.tradingwiththreads.model.Positions;
+import io.reactivestax.problems.tradingwiththreads.model.Positions;
+import io.reactivestax.problems.transactions.utility.OptimisticLockingException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-//import static problems.tradesSandbox.tradingwiththreads.TradeThreadMain.dataSource;
+//import static io.reactivestax.problems.tradesSandbox.tradingwiththreads.TradeThreadMain.dataSource;
 
 public class TradesRepositorySandbox {
     public void insertInRawTable(RawPayloadSandbox rawPayload, HikariDataSource dataSource) throws SQLException {

@@ -1,8 +1,9 @@
 package io.reactivestax;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
-import com.mysql.cj.Session;
-import com.mysql.cj.xdevapi.SessionFactory;
 
 public class Schooljdbc {
 

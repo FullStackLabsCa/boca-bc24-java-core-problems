@@ -8,7 +8,7 @@ public class DatabaseConnector {
     public static HikariDataSource configureHikariCP(){
         HikariDataSource dataSource;
         HikariConfig config = new HikariConfig();
-        config.setJdbcUrl("jdbc:mysql://localhost:3306/TradesWithMultiThreading");
+        config.setJdbcUrl("io.reactivestax.jdbc:mysql://localhost:3306/TradesWithMultiThreading");
         config.setUsername("root");
         config.setPassword("password123");
         config.setMaximumPoolSize(100); // Max 10 connections in the pool

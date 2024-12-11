@@ -9,7 +9,7 @@ import java.sql.Statement;
 
 public class TransactionExample {
 
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/Transaction";
+    private static final String JDBC_URL = "io.reactivestax.jdbc:mysql://localhost:3306/Transaction";
     private static final String JDBC_USER = "root";
     private static final String JDBC_PASSWORD = "password123";
 

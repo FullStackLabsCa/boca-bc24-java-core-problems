@@ -4,7 +4,7 @@ package io.reactivestax;
 import com.zaxxer.hikari.HikariDataSource;
 import io.reactivestax.services.QueueDistributorSandbox;
 import io.reactivestax.services.TradeProcessorSandbox;
-import problems.tradingwiththreads.databaseconnector.DatabaseConnector;
+import io.reactivestax.problems.tradingwiththreads.databaseconnector.DatabaseConnector;
 
 
 import java.io.IOException;
