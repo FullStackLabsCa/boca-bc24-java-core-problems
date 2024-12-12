@@ -40,12 +40,9 @@ public class LFUEvictionPolicy<K, V> implements EvictionPolicy<K, V> {
             }
 
             if (leastFrequentKey != null) {
-               // System.out.println("Removing least freq key::" + leastFrequentKey + "==" + iterator);
                 cacheMap.remove(leastFrequentKey);
-//                iterator.remove();
-             //   System.out.println("LFU::" + cacheMap);
             }
         }
-    //    System.out.println("cache map value after removing LFU::" + cacheMap);
+
     }
 }

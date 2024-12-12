@@ -7,8 +7,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.CountDownLatch;
+import java.util.Set;;
 import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.*;
 

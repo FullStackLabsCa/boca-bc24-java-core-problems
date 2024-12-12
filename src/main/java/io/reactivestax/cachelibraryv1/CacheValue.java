@@ -26,7 +26,6 @@ public class CacheValue<V> {
         }
     }
 
-
     public boolean isExpired(long currentTime){
     return  expiryTime != -1  && currentTime > expiryTime;
     }

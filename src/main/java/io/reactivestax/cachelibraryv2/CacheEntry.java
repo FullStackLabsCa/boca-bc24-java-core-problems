@@ -15,10 +15,10 @@ public class CacheEntry<K, V> {
     int accessCount;
     long TTL;
 
-    public CacheEntry(K key,V value, long expiryTime) {
+    public CacheEntry(K key,V value, long TTL) {
         this.key = key;
+        this.TTL = TTL;
         this.value = value;
-        this.expiryTime = expiryTime;
         this.lastAccessedTime = System.currentTimeMillis();
         this.accessCount = 0;
         if(TTL == -1){
