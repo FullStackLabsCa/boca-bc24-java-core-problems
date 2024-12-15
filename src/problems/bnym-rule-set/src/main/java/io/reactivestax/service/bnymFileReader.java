@@ -5,16 +5,13 @@ import io.reactivestax.utilities.Properties;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.*;
+import java.util.Scanner;
+import java.util.Stack;
 
 public class bnymFileReader {
     static int counter = 1;
 
-    static Node node;
-
     static Stack<Node> stack = new Stack<>();
-
-    static Map<String, Integer> map = new HashMap<>();
 
     public static void main(String[] args) {
         Scanner scanner = null;
@@ -29,15 +26,14 @@ public class bnymFileReader {
 
             processLine(line);
         }
-        if (!scanner.hasNext()) {
-            if (!stack.isEmpty()) {
-                System.out.println(stack.size());
-                Node remainingNodeInStack = stack.peek();
-                String line = remainingNodeInStack.getData();
-                processLine(line);
-            }
-            System.out.println("No element left to process");
+        while (!stack.isEmpty()) {
+            Node remainingNodeInStack = stack.pop();
+            counter++;
+            remainingNodeInStack.setRight(counter);
+            System.out.println(remainingNodeInStack.getLeft() + " -- " + remainingNodeInStack.getRight() + " -- " + remainingNodeInStack.getData());
         }
+        System.out.println("Final stack size: " + stack.size());
+        System.out.println("Processing completed.");
     }
 
     private static void processLine(String line) {
@@ -45,7 +41,7 @@ public class bnymFileReader {
 
         switch (key) {
             case "01" -> {
-                node = new Node();
+                Node node = new Node();
 
                 node.setLeft(counter);
                 node.setData(line);
@@ -54,7 +50,7 @@ public class bnymFileReader {
                 System.out.println(node.getLeft() + " -- " + node.getRight() + " -- " + node.getData());
             }
             case "02", "05", "06" -> {
-                node = new Node();
+                Node node = new Node();
 
                 counter++;
                 node.setLeft(counter);
@@ -66,86 +62,47 @@ public class bnymFileReader {
                 System.out.println(node.getLeft() + " -- " + node.getRight() + " -- " + node.getData());
             }
             case "03" -> {
-                node = new Node();
-                if (stack.size() == 1) {
+                while (stack.size() > 1) {
+                    Node node = stack.pop();
                     counter++;
-                    node.setLeft(counter);
-
-                    node.setData(line);
-
-                } else {
-                    while (stack.size() > 1) {
-                        node = stack.pop();
-                        counter++;
-                        node.setRight(counter);
-                        System.out.println(node.getLeft() + " -- " + node.getRight() + " -- " + node.getData());
-                    }
-                    counter++;
-                    node.setLeft(counter);
-
-                    node.setData(line);
-                    node.setRight(0);
+                    node.setRight(counter);
+                    System.out.println(node.getLeft() + " -- " + node.getRight() + " -- " + node.getData());
                 }
+                Node node = new Node();
+                counter++;
+                node.setLeft(counter);
+                node.setData(line);
                 stack.push(node);
                 System.out.println(node.getLeft() + " -- " + node.getRight() + " -- " + node.getData());
             }
             case "04" -> {
-                node = new Node();
-                if (stack.size() == 2) {
-
+                while (stack.size() > 2) {
+                    Node node = stack.pop();
                     counter++;
-                    node.setLeft(counter);
-
-                    node.setData(line);
-
-                } else {
-                    while (stack.size() > 2) {
-                        node = stack.pop();
-                        counter++;
-                        node.setRight(counter);
-                        System.out.println(node.getLeft() + " -- " + node.getRight() + " -- " + node.getData());
-                    }
-                    counter++;
-                    node.setLeft(counter);
-
-                    node.setData(line);
-                    node.setRight(0);
+                    node.setRight(counter);
+                    System.out.println(node.getLeft() + " -- " + node.getRight() + " -- " + node.getData());
                 }
+                Node node = new Node();
+                counter++;
+                node.setLeft(counter);
+                node.setData(line);
                 stack.push(node);
                 System.out.println(node.getLeft() + " -- " + node.getRight() + " -- " + node.getData());
             }
             case "07" -> {
-                node = new Node();
-                if (stack.size() < 2) {
-                    counter++;
-                    node.setLeft(counter);
-
+                while (stack.size() > 2) {
+                    Node node = stack.pop();
                     counter++;
                     node.setRight(counter);
-
-                    node.setData(line);
-                    System.out.println(node.getLeft() + " -- " + node.getRight() + " -- " + node.getData());
-                } else if (stack.size() > 2) {
-                    while (stack.size() > 2) {
-                        node = stack.pop();
-                        counter++;
-                        node.setRight(counter);
-                        System.out.println(node.getLeft() + " -- " + node.getRight() + " -- " + node.getData());
-                    }
-                    counter++;
-                    node.setLeft(counter);
-
-                    node.setData(line);
-                    node.setRight(0);
-                    stack.push(node);
                     System.out.println(node.getLeft() + " -- " + node.getRight() + " -- " + node.getData());
                 }
-                else if (stack.size() == 2) {
-                    Node poppedElement = stack.pop();
-                    counter++;
-                    poppedElement.setRight(counter);
-                    System.out.println(node.getLeft() + " -- " + node.getRight() + " -- " + node.getData());
-                }
+                Node node = new Node();
+                counter++;
+                node.setLeft(counter);
+                counter++;
+                node.setRight(counter);
+                node.setData(line);
+                System.out.println(node.getLeft() + " -- " + node.getRight() + " -- " + node.getData());
             }
             default -> System.out.println("Invalid key!");
         }
