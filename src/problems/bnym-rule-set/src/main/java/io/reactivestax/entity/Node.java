@@ -1,4 +1,4 @@
-package io.reactivestax.service;
+package io.reactivestax.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

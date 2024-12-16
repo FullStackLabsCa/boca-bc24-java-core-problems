@@ -1,10 +1,7 @@
 package io.reactivestax.utilities.database.hibernate;
 
 import io.reactivestax.exception.FileReadingRuntimeException;
-import io.reactivestax.service.Node;
-import io.reactivestax.utilities.ConnectionUtil;
 import io.reactivestax.utilities.Properties;
-import io.reactivestax.utilities.TransactionUtil;
 import lombok.Setter;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -56,7 +53,7 @@ public class HibernateUtil {
         return configuration;
     }
 
-//    @Override
+    //    @Override
     public static Session getConnection() {
         Session session = sessionThreadLocal.get();
         if (session == null || !session.isOpen()) {
@@ -66,18 +63,18 @@ public class HibernateUtil {
         return session;
     }
 
-//    @Override
+    //    @Override
     public static void startTransaction() {
         getConnection().beginTransaction();
     }
 
-//    @Override
+    //    @Override
     public static void commitTransaction() {
         getConnection().getTransaction().commit();
         closeConnection();
     }
 
-//    @Override
+    //    @Override
     public void rollbackTransaction() {
         getConnection().getTransaction().rollback();
         closeConnection();
