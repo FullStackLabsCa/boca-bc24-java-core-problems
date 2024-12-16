@@ -14,7 +14,7 @@ import java.util.Scanner;
 import java.util.Stack;
 
 public class BNYMFileReader {
-    static int counter = 1;
+    static int counter = 0;
 
     static Stack<Node> stack = new Stack<>();
 
@@ -27,16 +27,17 @@ public class BNYMFileReader {
                 String line = scanner.nextLine();
                 processLine(line);
             }
-            while (!stack.isEmpty()) {
+            /*while (!stack.isEmpty()) {
                 Node remainingNodeInStack = stack.pop();
                 counter++;
                 remainingNodeInStack.setRight(counter);
 
                 System.out.println(remainingNodeInStack.getLeft() + " -- " + remainingNodeInStack.getRight() + " -- " + remainingNodeInStack.getData());
-            }
-            for (Node node : nodeList) {
+            }*/
+            for(Node node: nodeList) {
                 System.out.println(node);
             }
+//            insertToDB();
             System.out.println("Processing completed.");
         } catch (IOException e) {
             throw new FileReadingRuntimeException("File not found!");
@@ -57,7 +58,25 @@ public class BNYMFileReader {
     }
 
     private static void handle01(String line) {
+        while (!stack.isEmpty()) {
+            Node remainingNodeInStack = stack.pop();
+            counter++;
+            remainingNodeInStack.setRight(counter);
+
+            counter++;
+
+            System.out.println(remainingNodeInStack.getLeft() + " -- " + remainingNodeInStack.getRight() + " -- " + remainingNodeInStack.getData());
+        }
+
         insertToDB();
+
+//        while (!stack.isEmpty()) {
+//            Node node = stack.pop();
+//            counter++;
+//            node.setRight(counter);
+//
+//            System.out.println(node.getLeft() + " -- " + node.getRight() + " -- " + node.getData());
+//        }
 
         Node node = new Node();
 
