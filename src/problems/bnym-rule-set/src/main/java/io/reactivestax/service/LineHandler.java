@@ -118,24 +118,4 @@ public class LineHandler {
         }
         handle020506(line);
     }
-
-//    private static void insertToDB() {
-//        while (!nodeList.isEmpty()) {
-//
-//            HibernateUtil.startTransaction();
-//            Session session = HibernateUtil.getConnection();
-//
-//            for (Node node : nodeList) {
-//                Node nodeEntity = new Node();
-//                nodeEntity.setData(node.getData());
-//                nodeEntity.setLeft(node.getLeft());
-//                nodeEntity.setRight(node.getRight());
-//
-//                session.persist(nodeEntity);
-//            }
-//            HibernateUtil.commitTransaction();
-//
-//            nodeList.clear();
-//        }
-//    }
 }
