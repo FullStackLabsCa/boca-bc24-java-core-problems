@@ -11,6 +11,12 @@ public class Properties {
     private static Properties instance;
 
     private String filepath;
+    private String dbDriverClass;
+    private String hibernateDialect;
+    private String hibernateDBCreationMode;
+    private String dbUrl;
+    private String dbUsername;
+    private String dbPassword;
 
     private Properties(String applicationPropertiesFileName) {
         loadApplicationProperties(applicationPropertiesFileName);
@@ -47,6 +53,14 @@ public class Properties {
             properties.load(input);
 
             filepath = properties.getProperty("filePath");
+
+            hibernateDialect = properties.getProperty("hibernate.dialect");
+            hibernateDBCreationMode = properties.getProperty("hibernate.hbm2ddl.auto");
+            dbDriverClass = properties.getProperty("db.driver.class");
+
+            dbUrl = properties.getProperty("dbUrl");
+            dbUsername = properties.getProperty("dbUsername");
+            dbPassword = properties.getProperty("dbPassword");
 
         } catch (IOException e) {
             throw new FileReadingRuntimeException("File not found.");

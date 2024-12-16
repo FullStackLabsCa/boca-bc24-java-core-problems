@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+
+        <property name="hibernate.hikari.minimumIdle">5</property>
+        <property name="hibernate.hikari.maximumPoolSize">20</property>
+        <property name="hibernate.hikari.idleTimeout">300000</property>
+        <property name="hibernate.hikari.maxLifetime">1800000</property>
+        <property name="hibernate.hikari.connectionTimeout">30000</property>
+        <property name="hibernate.hikari.poolName">HibernateHikariCP</property>
+
+<!--        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>-->
+
+        <!-- Echo all executed SQL to stdout -->
+        <property name="hibernate.show_sql">false</property>
+
+        <property name="hibernate.connection.isolation">2</property>
+
+        <!-- Format SQL nicely -->
+        <property name="hibernate.format_sql">true</property>
+
+        <property name="hibernate.use_sql_comments">true</property>
+
+        <!-- Automatically create/update tables based on entity annotations -->
+<!--        <property name="hibernate.hbm2ddl.auto">update</property>-->
+
+        <!-- Entity Classes option-1 -->
+        <mapping class="io.reactivestax.service.Node"/>
+
+        <!-- Enable auto-detection of annotated classes (option-2)
+        <property name="hibernate.archive.autodetection">class,hbm</property> -->
+
+        <!-- Package to scan for entities
+        <mapping package="io.reactivestax.entity" />-->
+
+    </session-factory>
+</hibernate-configuration>
