@@ -1,10 +1,15 @@
 package io.reactivestax.service;
 
 import io.reactivestax.exception.FileReadingRuntimeException;
+import io.reactivestax.repo.HibernateNodeRepo;
 import io.reactivestax.utilities.Properties;
+import io.reactivestax.utilities.database.hibernate.HibernateUtil;
+import org.hibernate.Session;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -12,6 +17,8 @@ public class BNYMFileReader {
     static int counter = 1;
 
     static Stack<Node> stack = new Stack<>();
+
+    static List<Node> nodeList = new ArrayList<>();
 
     public static void main(String[] args) {
         try (FileReader fileReader = new FileReader(Properties.getInstance().getFilepath());
@@ -24,7 +31,11 @@ public class BNYMFileReader {
                 Node remainingNodeInStack = stack.pop();
                 counter++;
                 remainingNodeInStack.setRight(counter);
+
                 System.out.println(remainingNodeInStack.getLeft() + " -- " + remainingNodeInStack.getRight() + " -- " + remainingNodeInStack.getData());
+            }
+            for (Node node : nodeList) {
+                System.out.println(node);
             }
             System.out.println("Processing completed.");
         } catch (IOException e) {
@@ -46,12 +57,17 @@ public class BNYMFileReader {
     }
 
     private static void handle01(String line) {
+        insertToDB();
+
         Node node = new Node();
 
         node.setLeft(counter);
         node.setData(line);
 
         stack.push(node);
+
+        nodeList.add(node);
+
         System.out.println(node.getLeft() + " -- " + node.getRight() + " -- " + node.getData());
     }
 
@@ -65,6 +81,9 @@ public class BNYMFileReader {
         node.setRight(counter);
 
         node.setData(line);
+
+        nodeList.add(node);
+
         System.out.println(node.getLeft() + " -- " + node.getRight() + " -- " + node.getData());
     }
 
@@ -73,6 +92,7 @@ public class BNYMFileReader {
             Node node = stack.pop();
             counter++;
             node.setRight(counter);
+
             System.out.println(node.getLeft() + " -- " + node.getRight() + " -- " + node.getData());
         }
         Node node = new Node();
@@ -80,6 +100,9 @@ public class BNYMFileReader {
         node.setLeft(counter);
         node.setData(line);
         stack.push(node);
+
+        nodeList.add(node);
+
         System.out.println(node.getLeft() + " -- " + node.getRight() + " -- " + node.getData());
     }
 
@@ -88,6 +111,7 @@ public class BNYMFileReader {
             Node node = stack.pop();
             counter++;
             node.setRight(counter);
+
             System.out.println(node.getLeft() + " -- " + node.getRight() + " -- " + node.getData());
         }
         Node node = new Node();
@@ -95,6 +119,9 @@ public class BNYMFileReader {
         node.setLeft(counter);
         node.setData(line);
         stack.push(node);
+
+        nodeList.add(node);
+
         System.out.println(node.getLeft() + " -- " + node.getRight() + " -- " + node.getData());
     }
 
@@ -103,8 +130,29 @@ public class BNYMFileReader {
             Node node = stack.pop();
             counter++;
             node.setRight(counter);
+
             System.out.println(node.getLeft() + " -- " + node.getRight() + " -- " + node.getData());
         }
         handle020506(line);
+    }
+
+    private static void insertToDB() {
+        while (!nodeList.isEmpty()) {
+
+            HibernateUtil.startTransaction();
+            Session session = HibernateUtil.getConnection();
+
+            for (Node node : nodeList) {
+                Node nodeEntity = new Node();
+                nodeEntity.setData(node.getData());
+                nodeEntity.setLeft(node.getLeft());
+                nodeEntity.setRight(node.getRight());
+
+                session.persist(nodeEntity);
+            }
+            HibernateUtil.commitTransaction();
+
+            nodeList.clear();
+        }
     }
 }
