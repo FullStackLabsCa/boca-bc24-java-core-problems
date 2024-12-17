@@ -4,7 +4,7 @@ import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+//@Builder
 @Getter
 @Setter
 public class CacheEntry<K, V> {

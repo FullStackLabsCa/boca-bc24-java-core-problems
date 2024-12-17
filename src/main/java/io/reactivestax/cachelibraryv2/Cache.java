@@ -2,18 +2,17 @@ package io.reactivestax.cachelibraryv2;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
+
 
 public class Cache<K, V> implements CacheLibrary<K, V> {
     private final Map<K, CacheEntry<K, V>> cacheEntryMap;
     private EvictionPolicy<K, V> evictionPolicy;
     private long defaultTTLInSeconds = 60;
- //   private long customTtl;
+
 
     public Cache(EvictionPolicy<K,V> evictionPolicy) {
         this.evictionPolicy = evictionPolicy;
         this.cacheEntryMap = new HashMap<>();
-    //    this.customTtl = 1;
 
     }
 
@@ -27,19 +26,6 @@ public class Cache<K, V> implements CacheLibrary<K, V> {
         return null;
     }
 
-    @Override
-    public Set<K> retrieveKeys() {
-        return cacheEntryMap.keySet();
-    }
-
-    @Override
-    public boolean removeKey(K key) {
-        if (cacheEntryMap.containsKey(key)) {
-            cacheEntryMap.remove(key);
-            return true;
-        }
-        return false;
-    }
 
     @Override
     public int getSize() {
@@ -65,15 +51,3 @@ public class Cache<K, V> implements CacheLibrary<K, V> {
             evictionPolicy.evict(cacheEntryMap);
     }
 }
-//    public void cleanExpiredValues() {
-//        long currentTime = System.currentTimeMillis();
-//        Iterator<Map.Entry<K, CacheEntry<K,V>>> cacheIterator = cacheEntryMap.entrySet().iterator();
-//        while (cacheIterator.hasNext()) {
-//            Map.Entry<K, CacheEntry<K,V>> entry = cacheIterator.next();
-//            CacheEntry<K,V> cacheValue = entry.getValue();
-//            if (cacheValue.isExpired(currentTime)) {
-//                cacheIterator.remove();
-//                cacheEntryMap.clear();
-//            }
-//        }
-//    }

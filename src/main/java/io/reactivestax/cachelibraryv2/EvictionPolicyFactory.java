@@ -1,6 +1,5 @@
 package io.reactivestax.cachelibraryv2;
 
-import java.util.concurrent.ConcurrentHashMap;
 
 public class EvictionPolicyFactory {
 

@@ -1,6 +1,5 @@
 package io.reactivestax.cachelibraryv2;
 
-import io.reactivestax.cachelibraryv1.CacheMain;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -58,11 +57,13 @@ public class CacheTest {
         cache.putKeyValueDefaultTtl(1, "A");
         cache.putKeyValueDefaultTtl(2, "B");
         cache.putKeyValueDefaultTtl(3, "C");
-        cache.getValue(2);
         cache.getValue(1);
+        cache.getValue(2);
         cache.getValue(3);
         cache.putKeyValueDefaultTtl(4, "D");
         assertNull(cache.getValue(1));
+        assertNotNull(cache.getValue(2));
+        assertNotNull(cache.getValue(3));
         assertTrue(cache.getValue(4), true);
     }
 
@@ -103,10 +104,28 @@ public class CacheTest {
         TTLEvictionPolicy evictionPolicy = new TTLEvictionPolicy();
         CacheLibrary<Integer, String> cache = EvictionPolicyFactory.createCache("TTL", 4);
         cache.putKeyValueDefaultTtl(1, "test value");
-        evictionPolicy.startDaemonThread(cache);
+        Thread thread = evictionPolicy.startDaemonThread(cache);
         Thread.sleep(3000);
-        evictionPolicy.startDaemonThread(cache).interrupt();
+       thread.interrupt();
         Thread.sleep(1000);
         assertNotNull(cache.getValue(1));
     }
+
+
+    @Test
+    public void testGetSize(){
+        CacheLibrary<Integer, String> cache = EvictionPolicyFactory.createCache("RANDOM", 3);
+        assertNotNull(cache);
+        cache.putKeyValueDefaultTtl(1, "A");
+        cache.putKeyValueDefaultTtl(2, "B");
+        cache.putKeyValueDefaultTtl(3, "C");
+        assertEquals(3, cache.getSize());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testIllegalArgumentException(){
+        EvictionPolicyFactory.createCache("invalid", 3);
+    }
+
+
 }
