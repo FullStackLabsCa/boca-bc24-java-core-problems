@@ -2,11 +2,13 @@ package io.reactivestax.service;
 
 import io.reactivestax.model.Node;
 import io.reactivestax.repo.hibernate.HibernateNodeRepo;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
+@Slf4j
 public class LineHandler implements LineHandlerService {
     int counter = 0;
 
@@ -25,7 +27,7 @@ public class LineHandler implements LineHandlerService {
             case "03" -> eligibilityGroup(line);
             case "04" -> eligibilityRule(line);
             case "07" -> margins(line);
-            default -> System.out.println("Invalid key!");
+            default -> log.warn("Invalid key!");
         }
     }
 
@@ -38,7 +40,7 @@ public class LineHandler implements LineHandlerService {
 
             counter++;
 
-            System.out.println(remainingNodeInStack.getLeft() + " -- " + remainingNodeInStack.getRight() + " -- " + remainingNodeInStack.getData());
+            log.info("{} -- {} -- {}", remainingNodeInStack.getLeft(), remainingNodeInStack.getRight(), remainingNodeInStack.getData());
         }
 
         hibernateNodeRepo.insertToNodeTable();
@@ -52,7 +54,7 @@ public class LineHandler implements LineHandlerService {
 
         nodeList.add(node);
 
-        System.out.println(node.getLeft() + " -- " + node.getRight() + " -- " + node.getData());
+        log.info("{} -- {} -- {}", node.getLeft(), node.getRight(), node.getData());
     }
 
     @Override
@@ -69,7 +71,7 @@ public class LineHandler implements LineHandlerService {
 
         nodeList.add(node);
 
-        System.out.println(node.getLeft() + " -- " + node.getRight() + " -- " + node.getData());
+        log.info("{} -- {} -- {}", node.getLeft(), node.getRight(), node.getData());
     }
 
     @Override
@@ -79,7 +81,7 @@ public class LineHandler implements LineHandlerService {
             counter++;
             node.setRight(counter);
 
-            System.out.println(node.getLeft() + " -- " + node.getRight() + " -- " + node.getData());
+            log.info("{} -- {} -- {}", node.getLeft(), node.getRight(), node.getData());
         }
         Node node = new Node();
         counter++;
@@ -89,7 +91,7 @@ public class LineHandler implements LineHandlerService {
 
         nodeList.add(node);
 
-        System.out.println(node.getLeft() + " -- " + node.getRight() + " -- " + node.getData());
+        log.info("{} -- {} -- {}", node.getLeft(), node.getRight(), node.getData());
     }
 
     @Override
@@ -99,7 +101,7 @@ public class LineHandler implements LineHandlerService {
             counter++;
             node.setRight(counter);
 
-            System.out.println(node.getLeft() + " -- " + node.getRight() + " -- " + node.getData());
+            log.info("{} -- {} -- {}", node.getLeft(), node.getRight(), node.getData());
         }
         Node node = new Node();
         counter++;
@@ -109,7 +111,7 @@ public class LineHandler implements LineHandlerService {
 
         nodeList.add(node);
 
-        System.out.println(node.getLeft() + " -- " + node.getRight() + " -- " + node.getData());
+        log.info("{} -- {} -- {}", node.getLeft(), node.getRight(), node.getData());
     }
 
     @Override
@@ -119,7 +121,7 @@ public class LineHandler implements LineHandlerService {
             counter++;
             node.setRight(counter);
 
-            System.out.println(node.getLeft() + " -- " + node.getRight() + " -- " + node.getData());
+            log.info("{} -- {} -- {}", node.getLeft(), node.getRight(), node.getData());
         }
         accountNumberSetValuesConcentrationLimit(line);
     }
