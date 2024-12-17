@@ -1,6 +1,6 @@
 package io.reactivestax.repo;
 
-import io.reactivestax.entity.Node;
+import io.reactivestax.model.Node;
 import io.reactivestax.utilities.database.hibernate.HibernateUtil;
 import org.hibernate.Session;
 
@@ -14,7 +14,7 @@ public class HibernateNodeRepo {
             Session session = HibernateUtil.getConnection();
 
             for (Node node : nodeList) {
-                Node nodeEntity = new Node();
+                io.reactivestax.entity.Node nodeEntity = new io.reactivestax.entity.Node();
                 nodeEntity.setData(node.getData());
                 nodeEntity.setLeft(node.getLeft());
                 nodeEntity.setRight(node.getRight());

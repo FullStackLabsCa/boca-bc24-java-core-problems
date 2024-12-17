@@ -1,6 +1,6 @@
 package io.reactivestax.service;
 
-import io.reactivestax.entity.Node;
+import io.reactivestax.model.Node;
 import io.reactivestax.repo.HibernateNodeRepo;
 
 import java.util.ArrayList;
