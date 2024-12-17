@@ -7,15 +7,14 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
-import static io.reactivestax.service.LineHandler.processLine;
-
 public class BNYMFileReader {
     public void readFile() {
+        LineHandler lineHandler = new LineHandler();
         try (FileReader fileReader = new FileReader(Properties.getInstance().getFilepath());
              Scanner scanner = new Scanner(fileReader)) {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
-                processLine(line);
+                lineHandler.processLine(line);
             }
             System.out.println("Processing completed.");
         } catch (IOException e) {

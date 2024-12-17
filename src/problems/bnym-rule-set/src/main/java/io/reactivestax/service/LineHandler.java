@@ -7,29 +7,30 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-public class LineHandler {
-    static int counter = 0;
+public class LineHandler implements LineHandlerService {
+    int counter = 0;
 
-    static Stack<Node> stack = new Stack<>();
+    Stack<Node> stack = new Stack<>();
 
     public static List<Node> nodeList = new ArrayList<>();
 
-    static HibernateNodeRepo hibernateNodeRepo = new HibernateNodeRepo();
+    HibernateNodeRepo hibernateNodeRepo = new HibernateNodeRepo();
 
-    public static void processLine(String line) {
+    public void processLine(String line) {
         String key = line.substring(0, 2);
 
         switch (key) {
-            case "01" -> handle01(line);
-            case "02", "05", "06" -> handle020506(line);
-            case "03" -> handle03(line);
-            case "04" -> handle04(line);
-            case "07" -> handle07(line);
+            case "01" -> ruleSetIdentifier(line);
+            case "02", "05", "06" -> accountNumberSetValuesConcentrationLimit(line);
+            case "03" -> eligibilityGroup(line);
+            case "04" -> eligibilityRule(line);
+            case "07" -> margins(line);
             default -> System.out.println("Invalid key!");
         }
     }
 
-    private static void handle01(String line) {
+    @Override
+    public void ruleSetIdentifier(String line) {
         while (!stack.isEmpty()) {
             Node remainingNodeInStack = stack.pop();
             counter++;
@@ -54,7 +55,8 @@ public class LineHandler {
         System.out.println(node.getLeft() + " -- " + node.getRight() + " -- " + node.getData());
     }
 
-    private static void handle020506(String line) {
+    @Override
+    public void accountNumberSetValuesConcentrationLimit(String line) {
         Node node = new Node();
 
         counter++;
@@ -70,7 +72,8 @@ public class LineHandler {
         System.out.println(node.getLeft() + " -- " + node.getRight() + " -- " + node.getData());
     }
 
-    private static void handle03(String line) {
+    @Override
+    public void eligibilityGroup(String line) {
         while (stack.size() > 1) {
             Node node = stack.pop();
             counter++;
@@ -89,7 +92,8 @@ public class LineHandler {
         System.out.println(node.getLeft() + " -- " + node.getRight() + " -- " + node.getData());
     }
 
-    private static void handle04(String line) {
+    @Override
+    public void eligibilityRule(String line) {
         while (stack.size() > 2) {
             Node node = stack.pop();
             counter++;
@@ -108,7 +112,8 @@ public class LineHandler {
         System.out.println(node.getLeft() + " -- " + node.getRight() + " -- " + node.getData());
     }
 
-    private static void handle07(String line) {
+    @Override
+    public void margins(String line) {
         while (stack.size() > 2) {
             Node node = stack.pop();
             counter++;
@@ -116,6 +121,6 @@ public class LineHandler {
 
             System.out.println(node.getLeft() + " -- " + node.getRight() + " -- " + node.getData());
         }
-        handle020506(line);
+        accountNumberSetValuesConcentrationLimit(line);
     }
 }
