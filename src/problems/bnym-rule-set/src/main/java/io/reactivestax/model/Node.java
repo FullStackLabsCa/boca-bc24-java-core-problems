@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Node {
-    int parentId;
+    String parentId;
     String data;
     int left;
     int right;

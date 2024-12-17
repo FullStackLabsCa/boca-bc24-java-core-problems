@@ -9,9 +9,11 @@ import lombok.Data;
 public class Node {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "parentId")
-    int parentId;
-    @Column(name = "data")
+    @Column(name = "id")
+    int id;
+    @Column(name = "keyId")
+    String parentId;
+    @Column(name = "value")
     String data;
     @Column(name = "leftNode")
     int left;

@@ -2,13 +2,13 @@ package io.reactivestax.service;
 
 public interface LineHandlerService {
 
-    void ruleSetIdentifier(String line);
+    void ruleSetIdentifier(String key, String value);
 
-    void accountNumberSetValuesConcentrationLimit(String line);
+    void accountNumberSetValuesConcentrationLimit(String key, String value);
 
-    void eligibilityGroup(String line);
+    void eligibilityGroup(String key, String value);
 
-    void eligibilityRule(String line);
+    void eligibilityRule(String key, String value);
 
-    void margins(String line);
+    void margins(String key, String value);
 }
