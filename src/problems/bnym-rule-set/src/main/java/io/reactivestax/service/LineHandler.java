@@ -2,6 +2,7 @@ package io.reactivestax.service;
 
 import io.reactivestax.model.Node;
 import io.reactivestax.repo.hibernate.HibernateNodeRepo;
+import io.reactivestax.types.RuleSetEnum;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
@@ -22,12 +23,14 @@ public class LineHandler implements LineHandlerService {
         String key = line.substring(0, 2);
         String value = line.substring(2);
 
-        switch (key) {
-            case "01" -> ruleSetIdentifier(key, value);
-            case "02", "05", "06" -> accountNumberSetValuesConcentrationLimit(key, value);
-            case "03" -> eligibilityGroup(key, value);
-            case "04" -> eligibilityRule(key, value);
-            case "07" -> margins(key, value);
+        RuleSetEnum ruleSetEnum = RuleSetEnum.fromCode(key);
+
+        switch (ruleSetEnum) {
+            case RULE_01 -> ruleSetIdentifier(key, value);
+            case RULE_02, RULE_05, RULE_06 -> accountNumberSetValuesConcentrationLimit(key, value);
+            case RULE_03 -> eligibilityGroup(key, value);
+            case RULE_04 -> eligibilityRule(key, value);
+            case RULE_07 -> margins(key, value);
             default -> log.warn("Invalid key!");
         }
     }
