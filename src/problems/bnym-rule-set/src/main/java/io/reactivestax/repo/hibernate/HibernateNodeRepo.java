@@ -1,4 +1,4 @@
-package io.reactivestax.repo;
+package io.reactivestax.repo.hibernate;
 
 import io.reactivestax.model.Node;
 import io.reactivestax.utilities.database.hibernate.HibernateUtil;
