@@ -31,14 +31,11 @@ public class HibernateNodeRepo {
         }
     }
 
-    public List getData() {
+    public List<io.reactivestax.entity.Node> getData() {
         HibernateUtil.startTransaction();
         Session session = HibernateUtil.getInstance().getConnection();
 
         Query query = session.createQuery("from Node");
-        return query.list();
-//        for (io.reactivestax.entity.Node node : nodeList) {
-//            System.out.println(node.getParentId() + node.getData());
-//        }
+        return query.getResultList();
     }
 }

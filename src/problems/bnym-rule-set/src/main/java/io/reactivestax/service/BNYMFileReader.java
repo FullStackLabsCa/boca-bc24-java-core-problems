@@ -14,6 +14,7 @@ import static io.reactivestax.service.LineHandler.nodeList;
 @Slf4j
 public class BNYMFileReader {
     HibernateNodeRepo hibernateNodeRepo = new HibernateNodeRepo();
+
     public void readFile() {
         LineHandler lineHandler = new LineHandler();
         try (FileReader fileReader = new FileReader(Properties.getInstance().getFilepath());

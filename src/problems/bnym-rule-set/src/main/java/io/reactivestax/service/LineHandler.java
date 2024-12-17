@@ -38,8 +38,6 @@ public class LineHandler implements LineHandlerService {
             Node remainingNodeInStack = stack.pop();
             remainingNodeInStack.setRight(++counter);
 
-//            counter++;
-
             log.info("{} -- {} -- {}", remainingNodeInStack.getLeft(), remainingNodeInStack.getRight(), remainingNodeInStack.getData());
         }
 
