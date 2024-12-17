@@ -35,8 +35,7 @@ public class LineHandler implements LineHandlerService {
     public void ruleSetIdentifier(String line) {
         while (!stack.isEmpty()) {
             Node remainingNodeInStack = stack.pop();
-            counter++;
-            remainingNodeInStack.setRight(counter);
+            remainingNodeInStack.setRight(++counter);
 
             counter++;
 
@@ -61,11 +60,9 @@ public class LineHandler implements LineHandlerService {
     public void accountNumberSetValuesConcentrationLimit(String line) {
         Node node = new Node();
 
-        counter++;
-        node.setLeft(counter);
+        node.setLeft(++counter);
 
-        counter++;
-        node.setRight(counter);
+        node.setRight(++counter);
 
         node.setData(line);
 
@@ -78,14 +75,12 @@ public class LineHandler implements LineHandlerService {
     public void eligibilityGroup(String line) {
         while (stack.size() > 1) {
             Node node = stack.pop();
-            counter++;
-            node.setRight(counter);
+            node.setRight(++counter);
 
             log.info("{} -- {} -- {}", node.getLeft(), node.getRight(), node.getData());
         }
         Node node = new Node();
-        counter++;
-        node.setLeft(counter);
+        node.setLeft(++counter);
         node.setData(line);
         stack.push(node);
 
@@ -98,14 +93,12 @@ public class LineHandler implements LineHandlerService {
     public void eligibilityRule(String line) {
         while (stack.size() > 2) {
             Node node = stack.pop();
-            counter++;
-            node.setRight(counter);
+            node.setRight(++counter);
 
             log.info("{} -- {} -- {}", node.getLeft(), node.getRight(), node.getData());
         }
         Node node = new Node();
-        counter++;
-        node.setLeft(counter);
+        node.setLeft(++counter);
         node.setData(line);
         stack.push(node);
 
@@ -118,8 +111,7 @@ public class LineHandler implements LineHandlerService {
     public void margins(String line) {
         while (stack.size() > 2) {
             Node node = stack.pop();
-            counter++;
-            node.setRight(counter);
+            node.setRight(++counter);
 
             log.info("{} -- {} -- {}", node.getLeft(), node.getRight(), node.getData());
         }
