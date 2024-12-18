@@ -1,6 +1,7 @@
 package io.reactivestax.repo.hibernate;
 
 import io.reactivestax.model.Node;
+import io.reactivestax.service.NodeInsertService;
 import io.reactivestax.utilities.database.hibernate.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -9,7 +10,8 @@ import java.util.List;
 
 import static io.reactivestax.service.LineHandler.nodeList;
 
-public class HibernateNodeRepo {
+public class HibernateNodeRepo implements NodeInsertService {
+    @Override
     public void insertToNodeTable() {
         while (!nodeList.isEmpty()) {
 
@@ -39,6 +41,7 @@ public class HibernateNodeRepo {
         }
     }
 
+    @Override
     public List<io.reactivestax.entity.Node> getData() {
         Session session = HibernateUtil.getInstance().getConnection();
 

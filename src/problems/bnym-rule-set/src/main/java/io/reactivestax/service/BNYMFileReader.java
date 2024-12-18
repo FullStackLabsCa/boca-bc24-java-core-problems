@@ -17,7 +17,7 @@ public class BNYMFileReader {
 
     public void readFile() {
         LineHandler lineHandler = new LineHandler();
-        try (FileReader fileReader = new FileReader(Properties.getInstance().getFilepath());
+        try (FileReader fileReader = new FileReader(Properties.getInstance().getReadToFilepath());
              Scanner scanner = new Scanner(fileReader)) {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();

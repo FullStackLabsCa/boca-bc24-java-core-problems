@@ -10,7 +10,8 @@ import java.io.InputStream;
 public class Properties {
     private static Properties instance;
 
-    private String filepath;
+    private String readToFilepath;
+    private String writeToFilepath;
     private String dbDriverClass;
     private String hibernateDialect;
     private String hibernateDBCreationMode;
@@ -52,7 +53,8 @@ public class Properties {
 
             properties.load(input);
 
-            filepath = properties.getProperty("filePath");
+            readToFilepath = properties.getProperty("readToFilePath");
+            writeToFilepath = properties.getProperty("writeToFilePath");
 
             hibernateDialect = properties.getProperty("hibernate.dialect");
             hibernateDBCreationMode = properties.getProperty("hibernate.hbm2ddl.auto");

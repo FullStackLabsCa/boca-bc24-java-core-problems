@@ -3,6 +3,7 @@ package io.reactivestax.service;
 import io.reactivestax.entity.Node;
 import io.reactivestax.exception.FileReadingRuntimeException;
 import io.reactivestax.repo.hibernate.HibernateNodeRepo;
+import io.reactivestax.utilities.Properties;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -16,7 +17,7 @@ public class WriteToFile {
 
         BufferedWriter bufferedWriter = null;
         try {
-            bufferedWriter = new BufferedWriter(new FileWriter("/Users/Dhruv.Desai/source/Student/boca-bc24-java-core-problems/src/problems/bnym-rule-set/src/main/resources/GeneratedFile/bony_ruleset.data"));
+            bufferedWriter = new BufferedWriter(new FileWriter(Properties.getInstance().getWriteToFilepath()));
 
             for (Node line : data) {
                 bufferedWriter.write(line.getParentId() + line.getData());
@@ -25,6 +26,7 @@ public class WriteToFile {
 
             bufferedWriter.close();
             System.out.println("Successfully wrote to the file.");
+            System.out.println();
         } catch (IOException e) {
             throw new FileReadingRuntimeException("File not found!");
         }
