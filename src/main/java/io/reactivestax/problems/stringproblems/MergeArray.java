@@ -12,7 +12,7 @@ public class MergeArray {
         System.arraycopy(array1, 0,  array3, 0, array1.length);
         System.arraycopy(array2, 0,  array3, array1.length, array2.length);
 
-        System.out.println("Merging two arrays" + Arrays.toString(array3));
+        System.out.println("Merging two arrays " + Arrays.toString(array3));
     }
 
     public static void main(String[] args) {
