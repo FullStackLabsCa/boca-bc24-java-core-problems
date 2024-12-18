@@ -16,6 +16,9 @@ public class HibernateNodeRepo {
             HibernateUtil.startTransaction();
             Session session = HibernateUtil.getConnection();
 
+            int batchSize = 50;
+            int count = 0;
+
             for (Node node : nodeList) {
                 io.reactivestax.entity.Node nodeEntity = new io.reactivestax.entity.Node();
                 nodeEntity.setParentId(node.getParentId());
@@ -24,6 +27,11 @@ public class HibernateNodeRepo {
                 nodeEntity.setRight(node.getRight());
 
                 session.persist(nodeEntity);
+
+                if (++count % batchSize == 0) {
+                    session.flush();
+                    session.clear();
+                }
             }
             HibernateUtil.commitTransaction();
 
@@ -32,7 +40,6 @@ public class HibernateNodeRepo {
     }
 
     public List<io.reactivestax.entity.Node> getData() {
-        HibernateUtil.startTransaction();
         Session session = HibernateUtil.getInstance().getConnection();
 
         Query query = session.createQuery("from Node");

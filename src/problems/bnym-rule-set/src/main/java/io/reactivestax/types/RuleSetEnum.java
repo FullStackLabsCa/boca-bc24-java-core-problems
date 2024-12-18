@@ -1,5 +1,8 @@
 package io.reactivestax.types;
 
+import lombok.Getter;
+
+@Getter
 public enum RuleSetEnum {
     RULE_01("01"),
     RULE_02("02"),
@@ -13,10 +16,6 @@ public enum RuleSetEnum {
 
     RuleSetEnum(String code) {
         this.code = code;
-    }
-
-    public String getCode() {
-        return code;
     }
 
     public static RuleSetEnum fromCode(String code) {

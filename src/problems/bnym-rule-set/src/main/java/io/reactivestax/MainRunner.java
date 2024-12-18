@@ -22,6 +22,6 @@ public class MainRunner {
 
         Duration duration = Duration.between(startTime, LocalDateTime.now());
 
-        System.out.println("Duration: " + duration.getNano());
+        System.out.println("Duration: " + duration.getSeconds());
     }
 }
