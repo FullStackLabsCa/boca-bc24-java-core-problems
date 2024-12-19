@@ -2,7 +2,7 @@ package io.reactivestax.service;
 
 import io.reactivestax.entity.Node;
 import io.reactivestax.exception.FileReadingRuntimeException;
-import io.reactivestax.repo.hibernate.HibernateNodeRepo;
+import io.reactivestax.repo.hibernate.HibernateReadFromNodeRepo;
 import io.reactivestax.utilities.Properties;
 
 import java.io.BufferedWriter;
@@ -12,8 +12,8 @@ import java.util.List;
 
 public class WriteToFile {
     public void fileWriter() {
-        HibernateNodeRepo hibernateNodeRepo = new HibernateNodeRepo();
-        List<Node> data = hibernateNodeRepo.getData();
+        HibernateReadFromNodeRepo hibernateReadFromNodeRepo = new HibernateReadFromNodeRepo();
+        List<Node> data = hibernateReadFromNodeRepo.getData();
 
         BufferedWriter bufferedWriter = null;
         try {

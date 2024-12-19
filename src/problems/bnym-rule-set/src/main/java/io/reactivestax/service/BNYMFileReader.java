@@ -1,7 +1,7 @@
 package io.reactivestax.service;
 
 import io.reactivestax.exception.FileReadingRuntimeException;
-import io.reactivestax.repo.hibernate.HibernateNodeRepo;
+import io.reactivestax.repo.hibernate.HibernateInsertToNodeRepo;
 import io.reactivestax.utilities.Properties;
 import lombok.extern.slf4j.Slf4j;
 
@@ -13,7 +13,7 @@ import static io.reactivestax.service.LineHandler.nodeList;
 
 @Slf4j
 public class BNYMFileReader {
-    HibernateNodeRepo hibernateNodeRepo = new HibernateNodeRepo();
+    HibernateInsertToNodeRepo hibernateInsertToNodeRepo = new HibernateInsertToNodeRepo();
 
     public void readFile() {
         LineHandler lineHandler = new LineHandler();
@@ -24,7 +24,7 @@ public class BNYMFileReader {
                 lineHandler.processLine(line);
             }
             if (!nodeList.isEmpty()) {
-                hibernateNodeRepo.insertToNodeTable();
+                hibernateInsertToNodeRepo.insertToNodeTable();
             }
         } catch (IOException e) {
             throw new FileReadingRuntimeException("File not found!");

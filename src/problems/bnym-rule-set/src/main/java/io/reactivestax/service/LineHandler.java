@@ -1,7 +1,7 @@
 package io.reactivestax.service;
 
 import io.reactivestax.model.Node;
-import io.reactivestax.repo.hibernate.HibernateNodeRepo;
+import io.reactivestax.repo.hibernate.HibernateInsertToNodeRepo;
 import io.reactivestax.types.RuleSetEnum;
 import lombok.extern.slf4j.Slf4j;
 
@@ -17,7 +17,7 @@ public class LineHandler implements LineHandlerService {
 
     public static List<Node> nodeList = new ArrayList<>();
 
-    HibernateNodeRepo hibernateNodeRepo = new HibernateNodeRepo();
+    HibernateInsertToNodeRepo hibernateInsertToNodeRepo = new HibernateInsertToNodeRepo();
 
     public void processLine(String line) {
         String key = line.substring(0, 2);
@@ -44,7 +44,7 @@ public class LineHandler implements LineHandlerService {
             log.info("{} -- {} -- {}", remainingNodeInStack.getLeft(), remainingNodeInStack.getRight(), remainingNodeInStack.getData());
         }
 
-        hibernateNodeRepo.insertToNodeTable();
+        hibernateInsertToNodeRepo.insertToNodeTable();
 
         Node node = new Node();
 
