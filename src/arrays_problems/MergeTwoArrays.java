@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class MergeTwoArrays {
 // We can also do with the copy String method
     public static int[] mergeArrays(int[] firstArray, int[] secondArray) {
+
         int mergeArraySize = firstArray.length + secondArray.length;
         int[] mergedArray = new int[mergeArraySize];
 //        System.arraycopy(firstArray,0,mergedArray,0,firstArray.length);

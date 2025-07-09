@@ -8,6 +8,16 @@ public class ShiftElements {
 
     public static int[] shiftArray(int[] input, int position) {
         int[] temp = new int[input.length];
+        int n = input.length;
+
+        position = position%n;
+
+        for (int i = 0; i < n; i++) {
+            int newPos = (i+position+n)%n;
+            temp[newPos]=input[i];
+        }
+
+
         System.arraycopy(input,0,temp,0,input.length);
         for (int i = 0; i < input.length; i++) {
             int newPosition = i + position;

@@ -13,7 +13,7 @@ public class PalindromeChecker {
             String sLowerCase = replaceAll.toLowerCase();
             char[] sCharArray = sLowerCase.toCharArray();
             char rev[] = new char[sCharArray.length];
-            //        System.out.println(rev.length);
+            //        System.out.println(rev.length);;
             int i = sCharArray.length - 1;
             for (char c : sCharArray) {
                 rev[i] = c;

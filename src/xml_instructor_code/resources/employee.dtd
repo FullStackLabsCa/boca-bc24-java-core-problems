@@ -1,0 +1,5 @@
+<!ELEMENT employee (name, age, position)>
+        <!ELEMENT name (#PCDATA)>
+        <!ELEMENT age (#PCDATA)>
+        <!ELEMENT position (#PCDATA)>
+        <!ATTLIST employee id ID #REQUIRED>

@@ -2,20 +2,22 @@ package collection_problems;
 
 import java.util.Scanner;
 import java.util.Stack;
+import java.util.stream.IntStream;
 
 public class BracketBalancingUsingStack {
-    public static boolean validateInput(String userInput){
-        boolean isValid =false;
+    public static boolean validateInput(String userInput) {
+        boolean isValid = false;
         String[] userInputSplit = userInput.split("");
-        FIRST: for (String input: userInputSplit){
-            switch (input){
+        FIRST:
+        for (String input : userInputSplit) {
+            switch (input) {
                 case "{":
                 case "}":
                 case "(":
                 case ")":
                 case "[":
                 case "]":
-                    isValid=true;
+                    isValid = true;
                     break;
                 default:
                     break FIRST;
@@ -23,6 +25,7 @@ public class BracketBalancingUsingStack {
         }
         return isValid;
     }
+
     public static boolean bracketChecker() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter the Bracket to check is it balanced");
@@ -53,7 +56,7 @@ public class BracketBalancingUsingStack {
                     }
                 }
             }
-        }else System.out.println("Invalid Input");
+        } else System.out.println("Invalid Input");
         return isBracketedPair;
     }
 
